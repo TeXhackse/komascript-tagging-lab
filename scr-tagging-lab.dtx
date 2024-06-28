@@ -1,1 +1,701 @@
-../scr-tagging-lab.dtx
+% \iffalse meta-comment
+%
+%% File: scr-taggging-lab.dtx
+%
+%<*driver>
+\documentclass[USenglish]{koma-script-source-doc}
+\EnableCrossrefs
+\CodelineIndex
+\begin{document}
+  \DocInput{scr-tagging-lab.dtx}
+\end{document}
+%</driver>
+%
+% \fi
+%
+%    \begin{macrocode}
+%<*package|koma>
+%    \end{macrocode}
+%
+% \section{Implementation}
+%    \begin{macrocode}
+\ProvidesExplPackage {scr-tagging-lab} {2024-06-30} {0.18}{KOMA-Script tagging experiments}
+%    \end{macrocode}
+% First some macros are undefined to be able to redefine those lter.
+% This is to simplify moving the changes from this experiment to the official KOMA-Script SVN.
+%    \begin{macrocode}
+\let\scr@dte@tocline\@undefined
+\letTOCLineLeaderFill\@undefined
+%    \end{ma
+% \begin{macro}{\@sect}
+% As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
+% This change has to be adjusted to match the kernel changes of the testphase.
+% The Following code has been taken from scrkernel-sections.dtx by Markus Kohm.
+% Changes have been marked
+%    \begin{macrocode}
+%</package|koma>
+%<*package>
+%<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro \string\@sect}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum \scr@osectarg=\z@
+    \@scr@tempswafalse
+  \else
+    \scr@istest#7=\@nil
+  \fi
+  \@currentusenumbertrue  
+  \if@scr@tempswa
+    \setkeys{KOMAarg.section}{tocentry={#8},head={#8},reference={#8},#7}%
+  \else
+    \ifcase \scr@osectarg\relax
+      \setkeys{KOMAarg.section}{tocentry={#7},head={#7},reference={#7}}%
+    \or
+      \setkeys{KOMAarg.section}{tocentry={#8},head={#7},reference={#8}}%
+    \or
+      \setkeys{KOMAarg.section}{tocentry={#7},head={#8},reference={#7}}%
+    \or
+      \setkeys{KOMAarg.section}{tocentry={#7},head={#7},reference={#7}}%
+    \fi
+  \fi
+%    \end{macrocode}
+% \changes{v3.23}{2017/02/04}{support for \pkg{minitoc}}
+% \changes{v3.23}{2017/03/24}{usage of \cs{ext@figure} and \cs{ext@table}
+%    instead of \texttt{lof} and \texttt{lot}}
+% Add the \texttt{xsect} entries to \texttt{lof} and \texttt{lot}. Note, that
+% the original \cs{starsection} tests of \pkg{minitoc} has a bug and so
+% does not work. And the original code of \pkg{minitoc} has hard coded
+% \texttt{lot} and \texttt{lof} instead of \cs{ext@figure} and
+% \cs{ext@table}. This is a fixed one:
+%    \begin{macrocode}
+  \scr@ifundefinedorrelax{scr@mt@saved@sect}{}{%
+    \expandafter\ifx\csname #1\endcsname\section
+      \addcontentsline{\ext@figure}{xsect}{\@currenttocentry}%
+      \addcontentsline{\ext@table}{xsect}{\@currenttocentry}%
+    \fi
+    \expandafter\ifx\csname #1\endcsname\starsection\relax
+      \addcontentsline{\ext@figure}{xsect}{\@currenttocentry}%
+      \addcontentsline{\ext@table}{xsect}{\@currenttocentry}%
+    \fi
+  }%
+  \let\IfUsePrefixLine\@secondoftwo
+  \ifcase
+    \if@currentusenumber
+      \ifnum \numexpr #2\relax>\c@secnumdepth \z@\else \@ne\fi
+    \else
+      \z@
+    \fi
+%    \end{macrocode}
+% \changes{lab}{0000/00/00}{Adjust definition of \cs{@svsec}}
+% The following line was changed to match the change between the Kernel and the Testphase version of \cs{@svsec}.
+%    \begin{macrocode}
+    \def\@svsec{\@hyp@section@target@nnn{[section]}{}{#3}}
+%    \end{macrocode}
+% \changes{v3.31}{2020/06/02}{execute counter reset list}
+% Even for not numbered sections, the reset list für the section counter has
+% to be executed.
+%    \begin{macrocode}
+%<!v4>    \expandafter\ifnum\scr@v@is@ge{3.31}\relax
+      \begingroup
+        \let\@elt\@stpelt
+        \csname cl@#1\endcsname
+      \endgroup
+%<!v4>    \fi
+%    \end{macrocode}
+% \changes{v3.31}{2020/06/02}{\cs{hy@insteadofrefstepcounter} added}
+% At this point we have to make sure, that the \pkg{hyperref} code for not
+% increasing a counter is executed.
+%    \begin{macrocode}
+    \hy@insteadofrefstepcounter{#1}%
+  \else
+%    \end{macrocode}
+% \changes{lab}{0000/00/00}{Copy change of the Testphase definition}
+%    \begin{macrocode}
+    \LinkTargetOff
+    \refstepcounter{#1}%
+    \expandafter\@maybeautodot\csname the#1\endcsname
+    \LinkTargetOn
+    \protected@edef\@svsec{\@hyp@section@target@nnn{}{#1}{#3}\@seccntformat{#1}\relax}%
+  \fi
+%    \end{macrocode}
+% \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
+% \changes{v3.27}{2019/02/02}{\cs{IfUseNumber} defined locally}
+%    \begin{macrocode}
+  \ifdim
+    \scr@sect@runin{\z@}{\p@}{\glueexpr #5\relax}>\z@
+    \begingroup
+%    \end{macrocode}
+% \changes{lab}{0000/00/00}{Copy change of the Testphase definition}
+%    \begin{macrocode}
+       \tagtool{para-flattened=true} % or \bool_set_true\l__tag_para_flattened_bool
+      \ifx\@svsec\@empty
+        \let\IfUseNumber\@secondoftwo
+      \else
+        \let\IfUseNumber\@firstoftwo
+      \fi
+%    \end{macrocode}
+% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
+% \changes{v3.27}{2019/02/02}{\cs{scr@do@at} added}
+%    \begin{macrocode}
+      \ExecuteDoHook{heading/begingroup/#1}%
+      #6{\nobreak\interlinepenalty \@M
+%    \end{macrocode}
+% \changes{lab}{0000/00/00}{add @kernel@tag@svsec}
+% The following line was changed to match the change between the Kernel and the Testphase version.
+%    \begin{macrocode}
+        \sectionlinesformat{#1}{\glueexpr #3\relax}{\IfUseNumber{\@svsec}{\@kernel@tag@svsec}}{#8}\@@par}%
+%    \end{macrocode}
+%    \begin{macrocode}
+      \ExecuteDoHook{heading/endgroup/#1}%
+    \endgroup
+%<*trace>
+    \ClassInfo{\KOMAClassName}{%
+      head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
+      tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
+      reference=`\detokenize\expandafter{\@currentlabelname}'}%
+%</trace>
+    \expandafter\csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+    \ifx\@currenttocentry\@empty\else
+      \scr@ifundefinedorrelax{add#1tocentry}{%
+        \expandafter\gdef\csname add#1tocentry\endcsname##1##2{%
+          \addtocentrydefault{#1}{##1}{##2}%
+        }%
+      }{}%
+      \ifcase
+        \if@currentusenumber
+          \ifnum \numexpr #2\relax>\c@secnumdepth \z@\else \@ne\fi
+        \else
+          \z@
+        \fi
+        \csname add#1tocentry\endcsname{}{\@currenttocentry}%
+      \else
+%    \end{macrocode}
+% \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
+% \begin{description}
+% \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
+% \end{description}
+%    \begin{macrocode}
+        \@ifundefined{#1tocformat}{%
+          \expandafter\gdef\csname #1tocformat\endcsname
+          {\csname the#1\endcsname}%
+        }{}%
+        \csname add#1tocentry\endcsname{\csname #1tocformat\endcsname}{%
+          \@currenttocentry}%
+      \fi
+    \fi
+  \else
+%    \end{macrocode}
+% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
+% \changes{v3.27}{2019/02/02}{\cs{ExecuteDoHook} added}
+%    \begin{macrocode}
+    \def\@svsechd{%
+      \ifx\@svsec\@empty
+        \let\IfUseNumber\@secondoftwo
+      \else
+        \let\IfUseNumber\@firstoftwo
+      \fi
+      \ExecuteDoHook{heading/begingroup/#1}%
+      #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}\@svsec{#8}}%
+%<*trace>
+      \ClassInfo{\KOMAClassName}{%
+        head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
+        tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
+        reference=`\detokenize\expandafter{\@currentlabelname}'}%
+%</trace>
+      \expandafter\csname #1mark\expandafter\endcsname
+      \expandafter{\@currentheadentry}%
+      \ifx\@currenttocentry\@empty\else
+        \scr@ifundefinedorrelax{add#1tocentry}{%
+          \expandafter\gdef\csname add#1tocentry\endcsname####1####2{%
+            \addtocentrydefault{#1}{####1}{####2}%
+          }%
+        }{}%
+        \ifcase
+          \if@currentusenumber
+            \ifnum \numexpr #2\relax>\c@secnumdepth \z@\else \@ne\fi
+          \else
+            \z@
+          \fi
+          \csname add#1tocentry\endcsname{}{\@currenttocentry}%
+        \else
+%    \end{macrocode}
+% \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
+% \begin{description}
+% \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
+% \end{description}
+%    \begin{macrocode}
+        \@ifundefined{#1tocformat}{%
+          \expandafter\gdef\csname #1tocformat\endcsname
+          {\csname the#1\endcsname}%
+        }{}%
+        \csname add#1tocentry\endcsname{\csname #1tocformat\endcsname}{%
+          \@currenttocentry}%
+        \fi
+      \fi
+      \ExecuteDoHook{heading/endgroup/#1}%  
+    }%
+  \fi
+  \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
+  \@xsect{\glueexpr #5\relax}%
+}
+%    \end{macrocode}
+% \end{macro}^^A \@sect
+% \begin{macro}{\@ssect}
+%    \begin{macrocode}
+%<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
+%<trace>  \string\@ssect}
+\def\@ssect#1#2#3#4#5{%
+  \scr@ifundefinedorrelax{scr@s@ct@@nn@m@}{%
+    \ClassWarning{\KOMAClassName}{Incompatible usage of
+      \string\@ssect\space detected.\MessageBreak
+      You've used the KOMA-Script implementation of
+      \string\@ssect\MessageBreak
+      from within a non compatible caller, that does not\MessageBreak
+      \string\scr@s@ct@@nn@m@\space locally.\MessageBreak
+      This could result in several error messages}%
+    \def\scr@s@ct@@nn@m@{\string\scr@s@ct@@nn@m@}%
+  }{%
+%    \end{macrocode}
+% \changes{v3.31}{2020/06/02}{execute counter reset list}
+% Even for not numbered sections, the reset list für the corresponding section
+% counter has to be executed.
+%    \begin{macrocode}
+%<!v4>    \expandafter\ifnum\scr@v@is@ge{3.31}\relax
+      \begingroup
+        \let\@elt\@stpelt
+        \csname cl@\scr@s@ct@@nn@m@\endcsname
+      \endgroup
+%<!v4>    \fi
+  }%
+%    \end{macrocode}
+% \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
+% \changes{v3.27}{2019/02/02}{defining \cs{IfUseNumber} locally}
+%    \begin{macrocode}
+  \ifdim
+    \scr@sect@runin{\z@}{\p@}{\glueexpr #3\relax}>\z@
+    \begingroup
+      \tagtool{para-flattened=true}
+      \let\IfUseNumber\@secondoftwo
+%    \end{macrocode}
+% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
+% \changes{v3.27}{2019/02/02}{\cs{ExecuteDoHook} added}
+%    \begin{macrocode}
+      \edef\reserved@a{%
+        \noexpand\ExecuteDoHook{heading/begingroup/\scr@s@ct@@nn@m@}%
+      }\reserved@a
+      #4{\nobreak\interlinepenalty \@M
+        \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
+        {\glueexpr #1\relax}%
+          {\@hyp@section@target@nnn{[section]}{}{#3}}%
+        \@empty{#5}\@@par}%
+      \edef\reserved@a{%
+        \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
+      }\reserved@a
+    \endgroup
+  \else
+    \edef\@svsechd{%
+      \unexpanded{\let\IfUseNumber\@secondoftwo}%
+      \noexpand\ExecuteDoHook{heading/begingroup/\scr@s@ct@@nn@m@}%
+      \unexpanded{#4}{%
+%    \end{macrocode}
+% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
+%    \begin{macrocode}
+        \noexpand\nobreak
+        \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
+        \unexpanded{{\glueexpr #1\relax}%
+          {\@hyp@section@target@nnn{[section]}{}{#1}}%
+          {#5}}%
+      }%
+      \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
+    }%
+  \fi
+  \let\scr@s@ct@@nn@m@\relax
+  \@xsect{\glueexpr #3\relax}%
+}
+%    \end{macrocode}
+% \end{macro}^^A \@ssect
+% \begin{macro}{\@xsect}
+%    \begin{macrocode}
+%<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
+%<trace> \string\@xsect}
+\def\@xsect#1{%
+  \@ifundefined{scr@sect@runin}{%
+    \def\scr@sect@runin##1##2##3{##3}%
+  }%
+  \@tempskipa #1\relax
+  \ifdim \scr@sect@runin{\z@}{\p@}{\@tempskipa}>\z@
+    \par \nobreak
+    \vskip \@tempskipa
+    \tag_tool:n {restore-para}
+    \@afterheading
+  \else
+    \@nobreakfalse
+    \global\@noskipsectrue
+    \everypar{%
+      \if@noskipsec
+        \global\@noskipsecfalse
+       {\setbox\z@\lastbox}%
+        \clubpenalty\@M
+        \begingroup \@svsechd \endgroup
+        \unskip
+        \tag_tool:n {sec-split-para}
+        \@tempskipa #1\relax
+        \ifdim \@tempskipa<\z@
+          \hskip -\@tempskipa
+        \else
+          \hskip \@tempskipa
+        \fi
+      \else
+        \clubpenalty \@clubpenalty
+        \everypar{}%
+      \fi}%
+  \fi
+  \def\scr@sect@runin##1##2##3{##3}%
+  \ignorespaces
+}
+%    \end{macrocode}
+% \end{macro}^^A \@xsect
+% \begin{macro}{\sectionlinesformat}
+%    \begin{macrocode}
+\renewcommand{\sectionlinesformat}[4]{%
+  \IfUseNumber\@kernel@tag@hangfrom\@hangfrom
+  {\hskip #2#3}{#4}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\@startsection}
+%    \begin{macrocode}
+  \renewcommand*{\scr@startsection}[6]{%
+    \ExecuteDoHook{heading/preinit/#1}%
+    \if@noskipsec \leavevmode \fi
+    \par
+    \@tempskipa \glueexpr #4\relax
+    \@ifundefined{scr@#1@afterindent}{%
+      \def\startsection@afterindent##1##2##3{##3}%
+    }{%
+      \expandafter\let\expandafter\startsection@afterindent
+      \csname scr@#1@afterindent\endcsname
+    }%
+    \startsection@afterindent{\@afterindenttrue}{\@afterindentfalse}{%
+      \@afterindenttrue
+      \ifdim \@tempskipa <\z@
+        \@tempskipa -\@tempskipa \@afterindentfalse
+      \fi
+    }%
+    \def\startsection@sectionname{#1}%
+    \def\startsection@secnumdepth{\numexpr #2\relax}%
+    \def\startsection@indent{\glueexpr #3\relax}%
+    \let\startsection@beforeskip\@tempskipa
+    \@ifundefined{scr@#1@runin}{%
+      \def\scr@sect@runin##1##2##3{##3}%
+    }{%
+      \expandafter\let\expandafter\scr@sect@runin
+      \csname scr@#1@runin\endcsname
+    }%
+    \scr@sect@runin{%
+      \def\startsection@afterskip{\glueexpr #3\relax}%
+      \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+      \csname iftrue\endcsname
+    }{%
+      \def\startsection@afterskip{\glueexpr #3\relax}%
+      \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+      \csname iffalse\endcsname
+    }{%
+      \ifdim \glueexpr #5\relax <\z@
+        \def\startsection@afterskip{\glueexpr (#3)*\m@ne\relax}%
+        \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+        \csname iftrue\endcsname
+      \else
+        \def\startsection@afterskip{\glueexpr #3\relax}%
+        \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+        \csname iffalse\endcsname
+      \fi
+    }%
+    \ExecuteDoHook{heading/postinit/#1}%
+    \if@nobreak
+      \everypar{}%
+    \else
+      \addpenalty\@secpenalty\addvspace\@tempskipa
+    \fi
+    \tag_tool:n { sec-start=#1}%new
+    \@ifstar {%
+      \ExecuteDoHook{heading/branch/star/#1}%
+      \def\scr@s@ct@@nn@m@{#1}%
+      \@ssect{\glueexpr #3\relax}{\glueexpr #4\relax}{\glueexpr #5\relax}{#6}%
+    }{%
+      \ExecuteDoHook{heading/branch/nostar/#1}%
+      \scr@section@dblarg{%
+        \@sect{#1}{\numexpr #2\relax}{\glueexpr #3\relax}{\glueexpr #4\relax}%
+        {\glueexpr #5\relax}{#6}%
+      }%
+    }%
+ }
+ \renewcommand*{\@startsection}{%
+   \ifnum \scr@osectarg=\z@
+     \expandafter\scr@saved@startsection
+   \else
+     \expandafter\orig@startsection
+   \fi
+ }
+%    \end{macrocode}
+% \end{macro}^^A \@startsection
+% \begin{macro}{\scr@numberline}
+% Numberline needs to be extended by the contentsline/number hooks.
+% As the command is also used for calculation, these have to be disabled by default, and are only swichtched on for the actual outout.
+%    \begin{macrocode}
+\renewcommand*{\scr@numberline}[1]{%
+	\numberline@box{%
+		  \bool_if:NF \l__scr_skip_tags_bool {\UseHookWithArguments{contentsline/number/before}{1}{#1}}%
+		  \numberline@prefix
+		  \Ifstr{#1}{}{#1}{%
+		    \numberline@numberformat{#1}%
+		  }%
+		  \numberline@postfix
+		 \bool_if:NF \l__scr_skip_tags_bool {\UseHookWithArguments{contentsline/number/after}{1}{#1}}%
+	}%
+}
+% Define the new boolean for the switch to skip tagging inside the numberwidth calculation box.
+%    \begin{macrocode}
+\bool_new:N \l__scr_skip_tags_bool
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\scr@dte@tocline}
+% \changes{v3.20}{2015/11/22}{added}
+% \changes{v3.27}{2019/05/12}{support for \opt{noindent}}
+% \changes{v3.28}{2019/11/19}{\cs{iftocfeature} replaced by \cs{Iftocfeature}}
+% This is somehow like the \LaTeX{} kernel macro \cs{@dottedtocline}. But it
+% supports a lot of more attributes, not only the level, the numberwidth, the
+% indent and the text. The attributes are handled by options. So we need only
+% three arguments:
+% \begin{description}
+% \item[\marg{level name}:] the name of the ToC entry level;
+% \item[\marg{entry}:] the ToC entry;
+% \item[\marg{page number}:] the page number of the ToC entry.
+% \end{description}
+% \begin{length}{\scr@dte@tocline@numberwidth}
+% \changes{v3.20}{2016/01/15}{added}
+% Sometimes the real width of a formatted number is of interest. So we store
+% it in \len{scr@dte@tocline@numberwidth}.
+%    \begin{macrocode}
+\newlength\scr@dte@tocline@numberwidth
+\newcommand*{\scr@dte@tocline}[3]{%
+  \bool_set_true:N \l__scr_skip_tags_bool
+  \ifnum \@nameuse{#1tocdepth}>\c@tocdepth
+  \else
+    \tocbasic@DependOnPenaltyAndTOCLevel{#1}%
+    \addvspace{\@nameuse{scr@tso@#1@beforeskip}}\relax
+%    \end{macrocode}
+% \changes{v3.31}{2020/06/08}{code for indent following list processing}
+% If a indent following list exists and the depth of an entry is lower than
+% the depth of the current entry, use the maximum of the ident + number width
+% for the indent of this entry.
+%    \begin{macrocode}
+    \@nameuse{Ifscr@tso@#1@dynindent}{%
+      \expandafter\ifx\csname scr@tso@#1@indentfollows\endcsname\@empty
+        \PackageWarning{tocbasic}{`dynindent' for `#1' not available}%
+      \else
+        \edef\reserved@a{\@nameuse{scr@tso@#1@indentfollows}}%
+        \@for \reserved@a:=\reserved@a\do {%
+          \scr@trim@spaces\reserved@a
+          \ifx\reserved@a\@empty\else
+            \scr@ifundefinedorrelax{\reserved@a tocdepth}{%
+            }{%
+              \ifnum \@nameuse{\reserved@a tocdepth}<\@nameuse{#1tocdepth}%
+                \@tempdima\@nameuse{scr@tso@\reserved@a @indent}\relax
+                \@nameuse{Ifscr@tso@\reserved@a @dynnumwidth}{%
+                  \scr@ifundefinedorrelax
+                  {scr@dte@\reserved@a @lastmaxnumwidth}{%
+                    \advance\@tempdima
+                    \@nameuse{scr@tso@\reserved@a @numwidth}\relax
+                  }{%
+                    \advance\@tempdima
+                    \@nameuse{scr@dte@\reserved@a @lastmaxnumwidth}\relax
+                  }%
+                }{%
+                  \advance\@tempdima
+                  \@nameuse{scr@tso@\reserved@a @numwidth}\relax
+                }%
+                \ifdim \@tempdima>\@nameuse{scr@tso@#1@indent}\relax
+                  \expandafter\edef\csname scr@tso@#1@indent\endcsname
+                  {\the\@tempdima}%
+                \fi
+              \fi
+            }%
+          \fi
+        }%
+      \fi
+    }{}%
+    {%
+      \Iftocfeature{\@currext}{noindent}{%
+        \leftskip \z@
+      }{%
+        \leftskip \@nameuse{scr@tso@#1@indent}\relax
+      }%
+      \rightskip \@nameuse{scr@tso@#1@rightindent}\relax
+      \parfillskip -\rightskip
+      \@nameuse{Ifscr@tso@#1@raggedpage}{%
+        \addtolength{\parfillskip}{\z@ \@plus 1fil}%
+      }{}%
+      \Iftocfeature{\@currext}{noindent}{%
+        \parindent \z@
+      }{%
+        \parindent \@nameuse{scr@tso@#1@indent}\relax
+      }%
+      \@afterindenttrue
+      \interlinepenalty\@M
+%    \end{macrocode}
+% \changes{v3.21}{2016/06/06}{\cs{ragged\dots entry} is supported (again)}
+%    \begin{macrocode}
+      \expandafter\ifx\csname ragged#1entry\endcsname\raggedright
+        \addtolength\rightskip\@flushglue
+      \else
+        \def\reserved@a{\raggedright}%
+        \expandafter\ifx\csname ragged#1entry\endcsname\reserved@a
+          \addtolength\rightskip\@flushglue
+        \else
+          \renewcommand\reserved@a{\raggedright}%
+          \expandafter\ifx\csname ragged#1entry\endcsname\reserved@a
+            \addtolength\rightskip\@flushglue
+          \fi
+        \fi
+      \fi
+      \leavevmode
+      \@tempdima \@nameuse{scr@tso@#1@numwidth}\relax
+      \@nameuse{Ifscr@tso@#1@dynnumwidth}{%
+        \scr@ifundefinedorrelax{scr@dte@#1@lastmaxnumwidth}{}{%
+          \ifdim \@nameuse{scr@dte@#1@lastmaxnumwidth}>\@tempdima
+            \@tempdima\@nameuse{scr@dte@#1@lastmaxnumwidth}\relax
+          \fi
+        }%
+      }{}%
+      \advance\leftskip \@tempdima
+      \null\nobreak\hskip -\leftskip
+      {%
+%    \end{macrocode}
+% Here we use a trick to detect the width of an eventually existing number
+% while printing it. For this it is a must to use the internal definition of
+% \cs{numberline}.
+%    \begin{macrocode}
+        \usetocbasicnumberline
+        \let\scr@dte@numberline@box\numberline@box
+        \def\numberline@box##1{%
+          \sbox\scr@dte@tocline@numbox{\@nameuse{scr@tso@#1@numberformat}{##1}}%
+%    \end{macrocode}
+% We are inside a group, so we have to set the length globally.
+%    \begin{macrocode}
+          \global\scr@dte@tocline@numberwidth
+          \dimexpr\wd\scr@dte@tocline@numbox+\@nameuse{scr@tso@#1@numsep}\relax
+%    \end{macrocode}
+% \changes{v3.22}{2016/12/02}{missing second \cs{relax} added}
+% Attention: We need two \cs{relax}, because the first one is eaten by
+% \cs{dimexpr}.
+%    \begin{macrocode}
+          \relax
+          \ifdim \scr@dte@tocline@numberwidth
+                >\@nameuse{scr@dte@#1@maxnumwidth}\relax
+            \global\@nameuse{scr@dte@#1@maxnumwidth}\scr@dte@tocline@numberwidth
+          \fi
+          \@nameuse{Ifscr@tso@#1@dynnumwidth}{}{%
+            \ifdim \scr@dte@tocline@numberwidth
+                  >\dimexpr \@nameuse{scr@tso@#1@numwidth}%
+                           +\@nameuse{scr@tso@#1@numsep}\relax\relax
+              \PackageWarning{tocbasic}{%
+                number width of #1 toc entries should be
+                increased!\MessageBreak
+                Currently used number width =
+                \the\wd\scr@dte@tocline@numbox,\MessageBreak
+                Wanted number separation
+                \space\space\space =
+                \the\dimexpr\@nameuse{scr@tso@#1@numsep}\relax,\MessageBreak
+                Reserved number width \space\space\space\space\space\space =
+                \the\dimexpr\@nameuse{scr@tso@#1@numwidth}\relax%
+              }%
+            \fi
+          }%
+%    \end{macrocode}
+% Enable the number tags for the actual output.
+% See Redefinition of \cs{scr@numberline} for more information.
+%    \begin{macrocode}
+          \bool_set_false:N \l__scr_skip_tags_bool
+          \scr@dte@numberline@box{\@nameuse{scr@tso@#1@numberformat}{##1}}%
+          \@nameuse{Ifscr@tso@#1@breakafternumber}{%
+            {\parfillskip\@flushglue\par}\nobreak\hskip-\leftskip
+          }{}%
+        }%
+        \@nameuse{scr@tso@#1@entryformat}{%
+          \UseHookWithArguments{contentsline/text/before}{4}
+             {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+          #2%
+          \UseHookWithArguments{contentsline/text/after}{4}%
+             {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+          \nobreak
+          {%
+            \normalfont\normalsize\@nameuse{scr@tso@#1@linefill}%
+            \nobreak
+%    \end{macrocode}
+% \changes{v3.27}{2019/10/02}{\cs{scr@dte@pagenumberwidth} is defined}
+% We don't want a dependency of entry variable from entry variables. So
+% locally \cs{scr@dte@pagenumberwidth} will become
+% \cs{scr@tso@\meta{Eintragsname}@pagenumberwidth} and in the definition of
+% \cs{scr@tso@\meta{Eintragsname}@pagenumberbox} we use this local macro.
+%    \begin{macrocode}
+            \expandafter\let\expandafter\scr@dte@pagenumberwidth
+            \csname scr@tso@#1@pagenumberwidth\endcsname
+            \@nameuse{scr@tso@#1@pagenumberbox}{%
+              \@nameuse{scr@tso@#1@pagenumberformat}{%
+              \UseHookWithArguments{contentsline/page/before}{4}%
+                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+              #3%
+              \UseHookWithArguments{contentsline/page/after}{4}%
+                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+              }%
+            }%
+          }%
+          \@par
+        }%
+      }%
+    }%
+    \tocbasic@SetPenaltyByTOCLevel{#1}%
+  \fi
+}
+%    \end{macrocode}
+% \end{length}^^A \scr@dte@tocline@numberwidth
+%%%%% additional unchanged content at scrkernal-tocstyle.dtx
+%    \begin{macrocode}
+\newcommand*{\TOCLineLeaderFill}[1][.]{%
+  \@dottedtocline@cfgpoint@leaders{
+    \leaders\hbox{$\m@th
+      \mkern \@dotsep mu\hbox{#1}\mkern \@dotsep
+      mu$}\hfill
+    }
+}
+%</package>
+%    \end{macrocode}
+% \end{command}^^A \TOCLineLeaderFill
+% \end{macro}^^A \scr@dte@tocline
+% Because the KOMA hooks don't have additional arguments it's necessary to use hooks with arguments on the surrounding macro to save the title.
+% Maybe it's easier to pass those with changing the hooks, but this needs to be discussed.
+%    \begin{macrocode}
+%<*package|heading-hooks>
+\tl_new:N \__scr_current_heading_tl
+\hook_gput_code_with_args:nnn {cmd/scr@@startchapter/before} {tagging-save-heading} {
+	\tl_set:Nn \__scr_current_heading_tl {#2}
+}
+\AddtoDoHook{heading/begingroup/chapter}{
+	\exp_args:No \tag_tool:n { sec-start-chapter=  \__scr_current_heading_tl  }
+	\IfUseNumber\relax{\MakeLinkTarget[chapter]{}}
+}
+\AddtoDoHook{heading/endgroup/chapter}{
+   \tag_tool:n {sec-stop-chapter}
+}
+\hook_gput_code_with_args:nnn {cmd/scr@@startpart/before} {tagging-save-heading} {
+	\tl_set:Nn \__scr_current_heading_tl {#2}
+}
+\AddtoDoHook{heading/begingroup/part}{
+	\exp_args:No \tag_tool:n { sec-start-part=  \__scr_current_heading_tl  }
+	\IfUseNumber\relax{\MakeLinkTarget[part]{}}
+}
+\AddtoDoHook{heading/endgroup/part}{
+   \tag_tool:n {sec-stop-part}
+}
+%    \end{macrocode}
+%</package|heading-hooks>
+%    \end{macrocode}

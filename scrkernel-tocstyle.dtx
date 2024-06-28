@@ -114,17 +114,22 @@
 % This macro is used indirectly in the ToC and has to be redefined to fulfil
 % rules~5 and 6 of DUDDEN, 20th edition.
 %    \begin{macrocode}
-%<*package&body>
+%<*package&(body|tagging-lab)>
+%<tagging-lab>\bool_new:N \l__scr_skip_tags_bool
 \newcommand*{\scr@numberline}[1]{%
   \numberline@box{%
+%<tagging-lab>      \bool_if:NF \l__scr_skip_tags_bool {\UseHookWithArguments{contentsline/number/before}{1}{#1}}%
     \numberline@prefix
     \Ifstr{#1}{}{#1}{%
       \numberline@numberformat{#1}%
     }%
     \numberline@postfix
+%<tagging-lab>    \bool_if:NF \l__scr_skip_tags_bool {\UseHookWithArguments{contentsline/number/after}{1}{#1}}%
   }%
 }
 %    \end{macrocode}
+%</package&(body|tagging-lab)>
+%<*package&body>
 % \begin{command}{\usetocbasicnumberline}
 % \changes{v3.20}{2016/03/15}{added}
 % The macro tests, whether \cs{numberline} used \cs{scr@numberline}. If not,
@@ -2450,17 +2455,19 @@
 %    \end{macrocode}
 % \end{command}^^A \LastTOCLevelWasHigher … \LastTOCLevelWasLower
 % \end{macro}^^A \tocbasic@SetPenaltyByTOCLevel,\tocbasic@DependOnPenaltyAndTOCLevel
+%</!tagging-lab>
 % \begin{command}{\TOCLineLeaderFill}
 % \changes{v3.20}{2015/11/14}{added}
 % Filler between the last text line and the page number. The optional argument
 % \texttt{\#1} is the character used for filling.
 %    \begin{macrocode}
 \newcommand*{\TOCLineLeaderFill}[1][.]{%
+%<tagging-lab>  \@dottedtocline@cfgpoint@leaders{
   \leaders\hbox{$\m@th
     \mkern \@dotsep mu\hbox{#1}\mkern \@dotsep
     mu$}\hfill
+%<tagging-lab>  }
 }
-%</!tagging-lab>
 %</tocline>
 %    \end{macrocode}
 % \end{command}^^A \TOCLineLeaderFill
