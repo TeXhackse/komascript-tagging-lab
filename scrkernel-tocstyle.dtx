@@ -1353,7 +1353,7 @@
 % code several times to generate all the styles.
 %
 %    \begin{macrocode}
-%<*style>
+%<*style&!tagging-lab>
 %    \end{macrocode}
 % 
 % \begin{macro}{\scr@dte@def@l@gobble}
@@ -2152,6 +2152,8 @@
 %</toctext>
 }
 %</dottedtocline|undottedtocline|largetocline|tocline|toctext>
+%</style&!tagging-lab>
+%<*style>
 %    \end{macrocode}
 % \end{macro}^^A \scr@dte@def@l@toctext
 % \end{macro}^^A \scr@dte@def@l@tocline
@@ -2162,6 +2164,7 @@
 % Style |tocline| needs several additional settings and macros:
 %    \begin{macrocode}
 %<*tocline>
+%<*!tagging-lab>
 \AtBeginDocument{%
   \BeforeClosingMainAux{%
     \begingroup
@@ -2214,7 +2217,9 @@
 % it in \len{scr@dte@tocline@numberwidth}.
 %    \begin{macrocode}
 \newlength\scr@dte@tocline@numberwidth
+%</!tagging-lab>
 \newcommand*{\scr@dte@tocline}[3]{%
+%<tagging-lab>  \bool_set_true:N \l__scr_skip_tags_bool
   \ifnum \@nameuse{#1tocdepth}>\c@tocdepth
   \else
     \tocbasic@DependOnPenaltyAndTOCLevel{#1}%
@@ -2347,13 +2352,25 @@
               }%
             \fi
           }%
+%    \end{macrocode}
+% tagging: Enable the number tags for the actual output.
+% See Redefinition of \cs{scr@numberline} for more information.
+%    \begin{macrocode}
+%<tagging-lab>	  \bool_set_false:N \l__scr_skip_tags_bool
           \scr@dte@numberline@box{\@nameuse{scr@tso@#1@numberformat}{##1}}%
           \@nameuse{Ifscr@tso@#1@breakafternumber}{%
             {\parfillskip\@flushglue\par}\nobreak\hskip-\leftskip
           }{}%
         }%
         \@nameuse{scr@tso@#1@entryformat}{%
+%    \end{macrocode}
+% tagging: Inserting the contentsline/text hooks defined in \file{latex-lab-testphase-toc.sty}
+%    \begin{macrocode}
+%<tagging-lab>          \UseHookWithArguments{contentsline/text/before}{4}
+%<tagging-lab>            {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
           #2%
+%<tagging-lab>          \UseHookWithArguments{contentsline/text/after}{4}%
+%<tagging-lab>             {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
           \nobreak
           {%
             \normalfont\normalsize\@nameuse{scr@tso@#1@linefill}%
@@ -2369,7 +2386,14 @@
             \csname scr@tso@#1@pagenumberwidth\endcsname
             \@nameuse{scr@tso@#1@pagenumberbox}{%
               \@nameuse{scr@tso@#1@pagenumberformat}{%
-                #3%
+%    \end{macrocode}
+% tagging: Inserting the contentsline/page hooks defined in \file{latex-lab-testphase-toc.sty}
+%    \begin{macrocode}
+%<tagging-lab>              \UseHookWithArguments{contentsline/page/before}{4}%
+%<tagging-lab>                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+              #3%
+%<tagging-lab>              \UseHookWithArguments{contentsline/page/after}{4}%
+%<tagging-lab>                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
                }%
             }%
           }%
@@ -2380,6 +2404,7 @@
     \tocbasic@SetPenaltyByTOCLevel{#1}%
   \fi
 }
+%<*!tagging-lab>
 %    \end{macrocode}
 % \end{length}^^A \scr@dte@tocline@numberwidth
 % \begin{macro}{\scr@dte@tocline@numbox}
@@ -2435,6 +2460,7 @@
     \mkern \@dotsep mu\hbox{#1}\mkern \@dotsep
     mu$}\hfill
 }
+%</!tagging-lab>
 %</tocline>
 %    \end{macrocode}
 % \end{command}^^A \TOCLineLeaderFill
