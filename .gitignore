@@ -1,0 +1,14 @@
+*.hd
+*.pdf
+*-old.dtx
+*-old.sty
+*-old.cls
+build
+ChangeLog*
+LCO
+TAGS
+list
+scrjura.ins
+*.zip
+*.version
+Makefile.cfg
