@@ -1,0 +1,1141 @@
+% \CheckSum{903}
+% \iffalse
+% ======================================================================
+% scrpage-obsolete.dtx
+% Copyright (c) Markus Kohm, 1995-2020
+%
+% This file is part of the LaTeX2e KOMA-Script obsolete bundle.
+%
+% This work may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, version 1.3c of the license.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX 
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance "not maintained" and is deprecated!
+% It has been replaced by KOMA-Script package scrlayer-scrpage.
+%
+% The author of this work is Markus Kohm.
+%
+% This work consists of the files `scrpage-obsolete.dtx' and `README'.
+% ----------------------------------------------------------------------
+% scrpage-obsolete.dtx
+% Copyright (c) Markus Kohm, 1995-2020
+%
+% Dieses Werk darf nach den Bedingungen der LaTeX Project Public Lizenz,
+% Version 1.3c, verteilt und/oder veraendert werden.
+% Die neuste Version dieser Lizenz ist
+%   http://www.latex-project.org/lppl.txt
+% und Version 1.3c ist Teil aller Verteilungen von LaTeX
+% Version 2005/12/01 oder spaeter.
+%
+% Dieses Werk hat den LPPL-Verwaltungs-Status "not maintained"
+% (nicht verwaltet), ist veraltet und wurde durch das KOMA-Script-Paket
+% scrlayer-scrpage ersetzt.
+%
+% Der Autor dieses Werkes ist Markus Kohm.
+% 
+% Dieses Werk besteht aus den Dateien `scrpage-obsolete.dtx' und 
+% `README'.
+% ======================================================================
+% \fi
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \iffalse
+%%% From File: scrpage-obsolete.dtx
+%<*dtx>
+\def\LaTeXformat{LaTeX2e}
+\ifx\fmtname\LaTeXformat
+  \makeatletter
+    \let\saved@@end\@@end
+    \def\@@end{\csname fi\endcsname\saved@@end}
+  \makeatother
+  \ProvidesFile{scrpage.dtx}
+%</dtx>
+%<scrpage>\NeedsTeXFormat{LaTeX2e}[1995/06/01]
+%<driver>\ProvidesFile{scrpage.drv}
+%<scrpage>\ProvidesPackage{scrpage}[2008/02/29 v1.3e KOMA-Script package]
+%<*dtx|driver>
+  [2020/02/27 v1.3e unsupported obsolete KOMA-Script package
+%<driver>    driver]
+%<*dtx>
+    source]
+%</dtx>
+%</dtx|driver>
+%<*driver>
+  \documentclass{scrdoc}
+  \usepackage[german,english]{babel}
+  \usepackage[latin1]{inputenc}
+  \CodelineIndex
+  \RecordChanges
+  \GetFileInfo{scrpage.dtx}
+  \title{The \textsf{KOMA}-pagestyle-package\thanks{This file has
+      version number \fileversion, last revised \filedate.}}
+  \begin{document}
+  \maketitle
+  \begin{abstract}
+    This is \texttt{scrpage.sty}. This obsolete package is part of the
+    \textsf{KOMA}-script-bundle. It defines an user interface for
+    pagestyle-definition. It's something like \texttt{fancyheadings} but not
+    the same. You may use \texttt{scrpage} or \texttt{fancyhdr}.  You may
+    use \texttt{scrpage} with standard classes, too. Note: Package
+    \texttt{scrpage} was replaced by package \texttt{scrpage2} and that was
+    replaced by \texttt{scrlayer-scrpage}. The manual for
+    package \texttt{scrlayer-scrpage} is part of the \KOMAScript{} guide.
+  \end{abstract}
+  \tableofcontents
+  \DocInput{scrpage-obsolete.dtx}
+\end{document}
+%</driver>
+%<*dtx>
+\fi
+% Now the installation driver:
+%</dtx>
+%<*insfile>
+\def\batchfile{scrpage-obsolete.dtx}
+\input docstrip.tex
+\Msg{*************************************************************************}
+\Msg{*}
+\Msg{* THIS WILL PRODUCE AN OBSOLETE PACKAGE, THAT IS NOT LONGER SUPPORTED OR}
+\Msg{* PART OF KOMA-SCRIPT!!!}
+\Msg{*}
+\Msg{*************************************************************************}
+\ifToplevel{\keepsilent\askforoverwritefalse}
+\preamble
+
+Copyright (c) 1995-2020 by Markus Kohm <komascript(at)gmx.info>
+
+This file has been generated.
+-----------------------------
+
+This work may be distributed and/or modified under the conditions of
+the LaTeX Project Public License, version 1.3c of the license.
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3c or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status "not maintained".
+
+This file may only be distributed together with the file
+`scrpage-obsolete.dtx'. You may however distribute the file 
+`scrpage-obsolete.dtx' without this file.
+
+An English manual may be generated from the source file 
+`scrpage-obsolete.dtx' using:
+    pdflatex scrpage-obsolete.dtx
+
+THIS IS AN OBSOLETE PACKAGE! YOU SHOULD USE THE KOMA-SCRIPT PACKAGE
+scrlayer-scrpage INSTEAD OF THIS PACKAGE!
+
+\endpreamble
+
+\generate{\usepreamble\defaultpreamble
+  \file{scrpage.sty}{%
+    \from{scrpage-obsolete.dtx}{scrpage}%
+  }%
+}%
+
+%</insfile>
+%<*dtx>
+\csname endinput\endcsname
+%</dtx>
+% \fi
+%
+% \changes{2020/02/27}{v1.3e}{comment and guide changes only}
+%
+% \section{Introduction}
+%
+% There is a simple user-interface and a expert-interface. Using the
+% user-interface you can define a lot of different pagestyles. But there are
+% combinations, you cannot define. Using the expert-interface you can do
+% allmost all you may ever want. To do more, you should learn more about
+% defining macros yourself.
+%
+%
+% \subsection{Interface for all users}
+% \sloppy
+%
+% \DescribeMacro
+% \headfont\\
+% This font is used to write page heads and foots. You may change it using
+% |\renewcommand|, e.g. |\renewcommand\headfont{\normalfont\slshape}|.
+%
+% \DescribeMacro
+% \footfont\\
+% This font is used to write page foots different from page heads. You may
+% change it using |\renewcommand|,
+% e.g. |\renewcommand\footfont{\normalfont\slshape}|.
+%
+% \DescribeMacro
+% \headmark\\
+% Using \texttt{twoside}-option this is |\leftmark| at left/even pages and
+% |\rightmark| at right/odd pages. Using \texttt{oneside}-option there are
+% only right pages, so it is |\rightmark|.
+%
+% \DescribeMacro
+% \pnumfont\\
+% This font is used to write pagenumbers at |\pagemark|. You may change it
+% using |\renewcommand| (see |\headfont|).
+%
+% \DescribeMacro
+% \pagemark\\
+% This is the number of the actual page written with |\pnumfont|.
+%
+% \DescribeMacro\deftripstyle
+% \DescribeMacro{\deftripstyle*}
+% The command \cs{deftripstyle}\linebreak[2]%^^A
+%             \marg{name}\linebreak[1]%^^A
+%             \oarg{olw}\linebreak[1]\oarg{ilw}\linebreak[2]%^^A
+%             \marg{headleft}\linebreak[1]%^^A
+%             \marg{headmiddle}\linebreak[1]%^^A
+%             \marg{headright}\linebreak[2]%^^A
+%             \marg{footleft}\linebreak[1]%^^A
+%             \marg{footmiddle}\linebreak[1]%^^A
+%             \marg{footright}
+% defines a new pagestyle. You can activate this pagestyle using
+% |\pagestyle| or |\thispagestyle|. Without optional argument this defines a
+% page like this:
+% \begin{center}\unitlength1mm\begin{picture}(120,82)
+% \put(0,0){\dashbox{2}(58,82){\nobreakspace}}
+% \put(1,78){\makebox(0,0)[l]{\emph{headright}}}
+% \put(29,78){\makebox(0,0){\emph{headmiddle}}}
+% \put(57,78){\makebox(0,0)[r]{\emph{headleft}}}
+% \put(29,41){\makebox(0,0){left page}}
+% \put(1,3){\makebox(0,0)[l]{\emph{footright}}}
+% \put(29,3){\makebox(0,0){\emph{footmiddle}}}
+% \put(57,3){\makebox(0,0)[r]{\emph{footleft}}}
+% \put(60,0){\dashbox{2}(58,82){\nobreakspace}}
+% \put(61,78){\makebox(0,0)[l]{\emph{headleft}}}
+% \put(89,78){\makebox(0,0){\emph{headmiddle}}}
+% \put(117,78){\makebox(0,0)[r]{\emph{headright}}}
+% \put(89,41){\makebox(0,0){right page}}
+% \put(61,3){\makebox(0,0)[l]{\emph{footleft}}}
+% \put(89,3){\makebox(0,0){\emph{footmiddle}}}
+% \put(117,3){\makebox(0,0)[r]{\emph{footright}}}
+% \end{picture}\end{center}
+% Using one optional argument \oarg{ilw} (means \emph{i}nner \emph{l}ine
+% \emph{w}idth) you get a separationline between head and text and between
+% text and foot like this (\emph{ilw}=0.5pt):
+% \begin{center}\unitlength1mm\begin{picture}(120,82)
+% \put(0,0){\dashbox{2}(58,82){\nobreakspace}}
+% \put(1,78){\makebox(0,0)[l]{\emph{headright}}}
+% \put(29,78){\makebox(0,0){\emph{headmiddle}}}
+% \put(57,78){\makebox(0,0)[r]{\emph{headleft}}}
+% \put(1,76){\rule{56\unitlength}{0.5pt}}
+% \put(29,41){\makebox(0,0){left page}}
+% \put(1,5){\rule{56\unitlength}{0.5pt}}
+% \put(1,3){\makebox(0,0)[l]{\emph{footright}}}
+% \put(29,3){\makebox(0,0){\emph{footmiddle}}}
+% \put(57,3){\makebox(0,0)[r]{\emph{footleft}}}
+% \put(60,0){\dashbox{2}(58,82){\nobreakspace}}
+% \put(61,78){\makebox(0,0)[l]{\emph{headleft}}}
+% \put(89,78){\makebox(0,0){\emph{headmiddle}}}
+% \put(117,78){\makebox(0,0)[r]{\emph{headright}}}
+% \put(61,76){\rule{56\unitlength}{0.5pt}}
+% \put(89,41){\makebox(0,0){right page}}
+% \put(61,5){\rule{56\unitlength}{0.5pt}}
+% \put(61,3){\makebox(0,0)[l]{\emph{footleft}}}
+% \put(89,3){\makebox(0,0){\emph{footmiddle}}}
+% \put(117,3){\makebox(0,0)[r]{\emph{footright}}}
+% \end{picture}\end{center}
+% Using both optional arguments \oarg{olw} (means \emph{o}uter \emph{l}ine
+% \emph{w}idth) and \oarg{ilw} you get a separationline between head and
+% text and between text and foot and a line above head and below foot like
+% this (\emph{olw}=2pt, \emph{ilw}=0.5pt):
+% \begin{center}\unitlength1mm\begin{picture}(120,82)
+% \put(0,0){\dashbox{2}(58,82){\nobreakspace}}
+% \put(1,80){\rule{56\unitlength}{2pt}}
+% \put(1,78){\makebox(0,0)[l]{\emph{headright}}}
+% \put(29,78){\makebox(0,0){\emph{headmiddle}}}
+% \put(57,78){\makebox(0,0)[r]{\emph{headleft}}}
+% \put(1,76){\rule{56\unitlength}{0.5pt}}
+% \put(29,41){\makebox(0,0){left page}}
+% \put(1,5){\rule{56\unitlength}{0.5pt}}
+% \put(1,3){\makebox(0,0)[l]{\emph{footright}}}
+% \put(29,3){\makebox(0,0){\emph{footmiddle}}}
+% \put(57,3){\makebox(0,0)[r]{\emph{footleft}}}
+% \put(1,1){\rule{56\unitlength}{2pt}}
+% \put(60,0){\dashbox{2}(58,82){\nobreakspace}}
+% \put(61,80){\rule{56\unitlength}{2pt}}
+% \put(61,78){\makebox(0,0)[l]{\emph{headleft}}}
+% \put(89,78){\makebox(0,0){\emph{headmiddle}}}
+% \put(117,78){\makebox(0,0)[r]{\emph{headright}}}
+% \put(61,76){\rule{56\unitlength}{0.5pt}}
+% \put(89,41){\makebox(0,0){right page}}
+% \put(61,5){\rule{56\unitlength}{0.5pt}}
+% \put(61,3){\makebox(0,0)[l]{\emph{footleft}}}
+% \put(89,3){\makebox(0,0){\emph{footmiddle}}}
+% \put(117,3){\makebox(0,0)[r]{\emph{footright}}}
+% \put(61,1){\rule{56\unitlength}{2pt}}
+% \end{picture}\end{center}
+%
+% You can define new pagestyles and you can redefine existing pagestyles. If
+% you redefine an active pagestyle, this doesn't change the actual shown
+% pagestyle. To activate you have to use always a |\pagestyle|- or
+% |\thispagestyle|-command.
+%
+% You can change the standard pagestyle \texttt{headings} to. If you want to
+% change pagestyle \texttt{myheadings}, you should use the star-version of
+% the command:\\
+% \cs{deftripstyle*}\linebreak[2]%^^A
+%               \marg{name}\linebreak[2]%^^A
+%               \oarg{olw}\linebreak[1]\oarg{ilw}\linebreak[2]%
+%               \marg{headleft}\linebreak[1]%^^A
+%               \marg{headmiddle}\linebreak[1]%^^A
+%               \marg{headright}\linebreak[2]%^^A
+%               \marg{footleft}\linebreak[1]%^^A
+%               \marg{footmiddle}\linebreak[1]%^^A
+%               \marg{footright}
+% this defines a my-version pagestyle. This means, section- and
+% chapter-commands or perhaps |\tableofcontents| don't change the
+% marks. Only |\markboth| and |\markright| change them. But if you don't
+% use |\headmark|, |\leftmark| or |\rightmark|, star- and starless version
+% of |\deftripstyle| are almost the same.
+%
+%
+% \subsection{Interface for experts}
+%
+% \DescribeMacro\defpagestyle 
+% Command
+% \cs{defpagestyle}\marg{name}\marg{head-definition}\marg{foot-definition}
+% defines a new pagestyle \emph{name}. \emph{head-definition} defines the head
+% at the new pagestyle. It contains five parts:
+% \begin{flushleft}
+% (\emph{toplinelength},\emph{toplinewidth})\\%
+% \marg{evenpagehead}\marg{oddpagehead}\marg{onesidepagehead}\\%
+% (\emph{headseplinelength},\emph{headseplinewidth})\\
+% \end{flushleft}
+% These five parts have to be \textbf{one} argument! So you should put them
+% together in group-braces (``|{|'' and ``|}|'').
+%
+% \emph{foot-definition} analogous defines the foot at the new pagestyle.
+%
+% \DescribeMacro\newpagestyle
+% Command
+% \cs{newpagestyle}\marg{name}\marg{head-definition}\marg{foot-definition}
+% defines a real new pagestyle. If there's already a pagestyle named
+% \emph{name}, you'll get an error. Otherwise it's the same like
+% |\defpagestyle|.
+%
+% \DescribeMacro\renewpagestyle
+% Command
+% \cs{renewpagestyle}\marg{name}\marg{head-definition}\marg{foot-definition}
+% redefines a old pagestyle. If there isn't a pagestyle named \emph{name},
+% you'll get an error. Otherwise it's the same like |\defpagestyle|.
+%
+% \DescribeMacro\providepagestyle
+% Command
+% \cs{providepagestyle}\marg{name}\marg{head-definition}\marg{foot-definition}
+% defines a new pagestyle, if it is realy new. If there is already a pagestyle
+% named \emph{name}, it does nothing (but writing an info to the log
+% file). Otherwise it's the same like |\defpagestyle|.
+%
+% You may use the user-interface-macros |\pagemark| and |\headmark|, too.
+%
+%
+% \subsection{Configuration file}
+% There's a configuration file \texttt{scrpage.cfg}, included at the end
+% of \texttt{scrpage.sty}, if it exists. There you can define your own
+% default pagestyles using all the commands above.
+%
+%
+% \subsection{Example}
+% The pagestyles of this documentation was defined using:
+% \begin{verbatim}
+% \renewpagestyle{headings}{(\textwidth,1pt)%
+%                 {\headmark\hfill}{\hfill\headmark}{\hfill\headmark\hfill}%
+%                 (\textwidth,.4pt)}%
+%                {(\textwidth,.4pt)%
+%                 {\pagemark\hfill%
+%                  Copyright \copyright\ Markus Kohm, 1994--2002}%
+%                 {Package \texttt{scrpage}\hfill\pagemark}%
+%                 {\rlap{Package \texttt{scrpage}}\hfill%
+%                  Copyright \copyright\ Markus Kohm, 1994--2002\hfill%
+%                  \llap\pagemark}%
+%                 (\textwidth,1pt)}
+% \renewpagestyle{plain}{(\textwidth,1pt)%
+%                        {\hfill}{\hfill}{\hfill}%
+%                        (\textwidth,.4pt)}%
+%                       {(\textwidth,.4pt)%
+%                        {\pagemark\hfill}%
+%                        {\hfill\pagemark}%
+%                        {\hfill\pagemark\hfill}%
+%                        (\textwidth,1pt)}
+% \pagestyle{headings} % activate new version
+% \end{verbatim}
+%
+%
+% \StopEventually{\PrintIndex\PrintChanges}
+%
+% \section{Implementation}
+%
+%    \begin{macrocode}
+%<*scrpage>
+%    \end{macrocode}
+% \changes{v1.1}{1995/06/27}{\cs{hbox to} changed into \cs{hb@xt@}.}
+% \changes{v1.3e}{2012/11/06}{removed from \KOMAScript}
+%
+% \subsection{Options}
+% \begin{option}{headinclude}
+% \begin{option}{headexclude}
+% \begin{option}{footinclude}
+% \begin{option}{footexclude}
+% \texttt{scrpage} knows some options. They are similar to the
+% \textsf{KOMA}-script-classes. To work with and without
+% the \textsf{KOMA}-script-classes their definitions are not quite simple.
+%
+%    \begin{macrocode}
+\DeclareOption{headinclude}{%
+  \PassOptionsToPackage{headinclude}{typearea}%
+}
+\DeclareOption{headexclude}{%
+  \PassOptionsToPackage{headexclude}{typearea}%
+}
+\DeclareOption{footinclude}{%
+  \PassOptionsToPackage{footinclude}{typearea}%
+}
+\DeclareOption{footexclude}{%
+  \PassOptionsToPackage{footexclude}{typearea}%
+}
+%    \end{macrocode}
+% We do so, because we want so set |headinclude|, |footinclude| by
+% default at old version (see below)!
+% \end{option}
+% \end{option}
+% \end{option}
+% \end{option}
+%
+% Set the default options.
+%    \begin{macrocode}
+\ExecuteOptions{headinclude,footinclude}
+%    \end{macrocode}
+% But you may set other Options:
+%    \begin{macrocode}
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+%
+% \subsection{Some Initialisation}
+%
+% For easier handling of the differences between article-, report- and
+% book-classes we define some more switches.
+%
+% \begin{macro}{\if@chapter}
+% First distinguish between article and others.
+%    \begin{macrocode}
+\newif\if@chapter
+\begingroup\expandafter\expandafter\expandafter\endgroup
+\expandafter\ifx\csname chapter\endcsname\relax 
+  \@chapterfalse
+\else
+  \@chaptertrue
+\fi
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\if@mainmatter}
+%   \changes{v1.2}{1995/07/08}{Definition changed}
+% Next distinguish between matter- and nomatter-classes.
+%    \begin{macrocode}
+\def\@tempa{\newif\if@mainmatter\@mainmattertrue}
+\begingroup\expandafter\expandafter\expandafter\endgroup
+\expandafter\ifx\csname mainmatter\endcsname\relax
+\else
+    \let\@tempa\relax
+\fi
+\@tempa
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsection{Predefinitions}
+% There are some commands, you can use at pagestyle-definition.
+%
+% \begin{macro}{\headmark}
+% This macro is |\rightmark| or |\leftmark|. But outside
+% pagestyle-definition it's nothing.
+%    \begin{macrocode}
+\let\headmark\relax
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\pagemark}
+% This macro is the number of the page at the pagenumberfont:
+%    \begin{macrocode}
+\DeclareRobustCommand\pagemark{{\pnumfont\thepage}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsection{Expert-Pagestyle-Definition-Interface}
+% The pagestyle-definition-interface for experts is not as easy as the
+% simple interface we'll define later. But it's more flexible. We'll
+% later use it to define the pagestyle-definition-interface for users.
+%
+% \begin{macro}{\defpagestyle}
+% First we define the simple definition-interface. There's no test, if
+% the pagestyle's defined twice.
+%
+% First there has to be the definition of head and foot.
+%    \begin{macrocode}
+\def\defpagestyle{%
+%    \end{macrocode}
+% We have to decide, whether it is a my-version or not:
+%    \begin{macrocode}
+  \@ifstar
+  {\@defpagestyle[-]}%
+  {\@defpagestyle[+]}}
+%    \end{macrocode}
+% \begin{macro}{\@defpagestyle}
+% Now the we can define the head and the foot.
+% \changes{v1.0b}{1995/05/25}{Dot deleted after number at
+%   chapter- and sectionmark}
+% \changes{v1.0b}{1995/05/25}{Use CJK at \cs{chaptermark},
+%   \cs{sectionmark} and \cs{subsectionmark}}
+% \changes{v1.3e}{2008/02/29}{usage of \cs{if@mainmatter} fixed}
+% Before version 2.5 we have distinguished one- and two-side definitions while
+% loading the package and have had all the definitions of \cs{@mkboth},
+% \cs{chaptermark}, \cs{sectionmark}, and \cs{subsectionmark} at the
+% definition of the page style. This was a lot of code:
+%    \begin{macrocode}
+\if@twoside
+  \def\@defpagestyle[#1]#2#3#4{%
+    \expandafter\def\csname ps@#2\endcsname{%
+      \def\@tempa{+}%
+      \def\@tempb{#1}%
+      \ifx\@tempa\@tempb
+        \let\@mkboth\markboth
+        \if@chapter
+          \def\chaptermark####1{%
+            \markboth {\ifnum \c@secnumdepth >\m@ne%
+              \if@mainmatter\chaptermarkformat\fi\fi ####1}{%
+              \ifnum \c@secnumdepth >\m@ne%
+              \if@mainmatter\chaptermarkformat\fi\fi ####1}}%
+          \def\sectionmark####1{%
+            \markright {\ifnum \c@secnumdepth >\z@%
+              \sectionmarkformat\fi ####1}}%
+        \else
+          \def\sectionmark####1{%
+            \markboth {\ifnum \c@secnumdepth >\z@%
+              \if@mainmatter\sectionmarkformat\fi\fi ####1}{%
+              \ifnum \c@secnumdepth >\z@%
+              \if@mainmatter\sectionmarkformat\fi\fi ####1}}%
+          \def\subsectionmark####1{%
+            \markright {\ifnum \c@secnumdepth >\@ne%
+              \subsectionmarkformat\fi ####1}}%
+        \fi
+      \else
+        \let\@mkboth\@gobbletwo
+        \if@chapter
+          \def\chaptermark####1{}%
+        \else
+          \def\subsectionmark####1{}%
+        \fi
+        \def\sectionmark####1{}%
+      \fi
+      \def@twosidehead#3
+      \def@twosidefoot#4
+    }
+  }
+\else
+  \def\@defpagestyle[#1]#2#3#4{%
+    \expandafter\def\csname ps@#2\endcsname{%
+      \def\@tempa{+}%
+      \def\@tempb{#1}%
+      \ifx\@tempa\@tempb
+        \let\@mkboth\markboth
+        \if@chapter
+          \def\chaptermark####1{%
+            \markright {\ifnum \c@secnumdepth >\m@ne%
+              \if@mainmatter\chaptermarkformat\fi\fi ####1}}%
+          \def\sectionmark####1{}%
+        \else
+          \def\sectionmark####1{%
+            \markright{\ifnum \c@secnumdepth >\z@%
+              \if@mainmatter\sectionmarkformat\fi\fi ####1}}%
+          \def\subsectionmark####1{}%
+        \fi
+      \else
+        \let\@mkboth\@gobbletwo
+        \if@chapter
+          \def\chaptermark####1{}%
+        \else
+          \def\subsectionmark####1{}%
+        \fi
+        \def\sectionmark####1{}%
+      \fi
+      \def@onesidehead#3
+      \def@onesidefoot#4
+    }
+  }
+\fi
+%    \end{macrocode}
+% \begin{macro}{\def@twosidehead}
+% \begin{macro}{\def@@twosidehead}
+%   \changes{v1.3}{2001/03/30}{Use of \cs{@headwidth} instead of
+%     \cs{textwidth}}
+%    \begin{macrocode}
+\def\def@twosidehead(#1,#2)#3#4#5(#6,#7){%
+  \def\@evenhead{\let\headmark\leftmark%
+    \hss\hskip\@evenheadshift\vbox{\hsize=\@headwidth\relax%
+      \hf@rule{#1}{#2}{\@headwidth}%
+      \vskip#2
+      \vskip\baselineskip
+      \hb@xt@\@headwidth{{%
+          \headfont\strut #3}}%
+      \hf@rule{#6}{#7}{\@headwidth}%
+  }\hskip\@oddheadshift\hss}%
+  \def\@oddhead{\let\headmark\rightmark
+    \hss\hskip\@oddheadshift\vbox{\hsize=\@headwidth\relax
+      \hf@rule{#1}{#2}{\@headwidth}%
+      \vskip#2%
+      \vskip\baselineskip
+      \hb@xt@\@headwidth{{%
+          \headfont\strut #4}}%
+      \hf@rule{#6}{#7}{\@headwidth}%
+  }\hskip\@evenheadshift\hss}%
+}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\def@onesidehead}
+%   \changes{v1.3}{2001/03/30}{Use of \cmd\@headwidth instead of
+%     \cs{textwidth}}
+% \begin{macro}{\def@@onesidehead}
+% \begin{macro}{\def@@@onesidehead}
+% Next the onesided head:
+%    \begin{macrocode}
+\def\def@onesidehead(#1,#2)#3#4#5(#6,#7){%
+  \def\@evenhead{}%
+  \def\@oddhead{\let\headmark\rightmark
+    \hss\hskip\@oddheadshift\vbox{\hsize=\@headwidth\relax
+      \hf@rule{#1}{#2}{\@headwidth}%
+      \vskip#2%
+      \vskip\baselineskip
+      \hb@xt@\@headwidth{{%
+          \headfont\strut #5}}%
+      \hf@rule{#6}{#7}{\@headwidth}%
+  }\hskip\@evenheadshift\hss}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\def@twosidefoot}
+%   \changes{v1.3}{2001/03/30}{Use of \cmd\@footwidth instead of
+%     \cs{textwidth}}
+% \begin{macro}{\def@@twosidefoot}
+% \begin{macro}{\def@@@twosidefoot}
+% Next the twosided foot:
+%    \begin{macrocode}
+\def\def@twosidefoot(#1,#2)#3#4#5(#6,#7){%
+  \def\@evenfoot{\let\headmark\leftmark
+    \hss\hskip\@evenfootshift\vbox{\hsize=\@footwidth\relax
+      \topfoot@rule{#1}{#2}\hb@xt@\@footwidth{{%
+          \headfont\footfont\strut #3}}%
+      \botfoot@rule{#6}{#7}}\hskip\@oddfootshift\hss}%
+  \def\@oddfoot{\let\headmark\rightmark
+    \hss\hskip\@oddfootshift\vbox{\hsize=\@footwidth\relax
+      \topfoot@rule{#1}{#2}\hb@xt@\@footwidth{{%
+          \headfont\footfont\strut #4}}%
+      \botfoot@rule{#6}{#7}}\hskip\@evenfootshift\hss}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\def@onesidefoot}
+%   \changes{v1.3}{2001/03/30}{Use of \cmd\@footwidth instead of
+%     \cs{textwidth}}
+% \begin{macro}{\def@@onesidefoot}
+% \begin{macro}{\def@@@onesidefoot}
+%    \begin{macrocode}
+\def\def@onesidefoot(#1,#2)#3#4#5(#6,#7){%
+  \def\@evenfoot{}%
+  \def\@oddfoot{\let\headmark\rightmark
+    \hss\hskip\@oddfootshift\vbox{\hsize=\@footwidth\relax
+      \topfoot@rule{#1}{#2}\hb@xt@\@footwidth{{%
+          \headfont\footfont\strut #5}}
+      \botfoot@rule{#6}{#7}}\hskip\@evenfootshift\hss}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% We now define the rules used at head and foot.
+% \begin{macro}{\topfoot@rule}
+%    \begin{macrocode}
+\newcommand\topfoot@rule[2]{%
+  \@tempdima\baselineskip\advance\@tempdima by-.7\normalbaselineskip
+  \advance\@tempdima by -#2
+  \vskip\@tempdima\hf@rule{#1}{#2}{\@footwidth}%
+  \vskip-\@tempdima}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\botfoot@rule}
+%    \begin{macrocode}
+\newcommand\botfoot@rule[2]{%
+  \@tempdima-\baselineskip\advance\@tempdima by .3\normalbaselineskip
+  \advance\@tempdima by #2
+  \vskip\@tempdima\hf@rule{#1}{#2}{\@footwidth}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\hf@rule}
+%   \changes{v1.3}{2001/03/30}{New, third parameter ``boxwidth''}
+%    \begin{macrocode}
+\newcommand\hf@rule[3]{%
+  \setlength{\@tempdimb}{#1}%
+  \setlength{\@tempdimb}{.5\@tempdimb}%
+  \hb@xt@#3{%
+    \hfill%
+    \llap{\vrule\@depth#2\@height\z@\@width\@tempdimb}%
+    \rlap{\vrule\@depth#2\@height\z@\@width\@tempdimb}%
+    \hfill%
+  }%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% Using these definitions, we can define the testing macros.
+%
+% \begin{macro}{\newpagestyle}
+% First the simple star/starless-selection:
+%    \begin{macrocode}
+\def\newpagestyle{%
+%    \end{macrocode}
+% We have to decide, whether it is a my-version or not:
+%    \begin{macrocode}
+  \@ifstar
+  {\@newpagestyle[-]}%
+  {\@newpagestyle[+]}}
+%    \end{macrocode}
+% \begin{macro}{\@newpagestyle}
+% There we have to distinguish, whether the pagestyle is already
+% defined or not.
+%    \begin{macrocode}
+\def\@newpagestyle[#1]#2#3#4{%
+  \expandafter\ifx\csname ps@#2\endcsname\relax
+%    \end{macrocode}
+% Then we can use the already defined |\@defpagestyle|.
+%    \begin{macrocode}
+    \@defpagestyle[#1]{#2}{#3}{#4}%
+  \else
+    \PackageError
+      {scrpage}%
+      {Your command was ignored}%
+      {There is already a pagestyle named ``#1''.\MessageBreak%
+       Use \protect\defpagestyle\space, \protect\renewpagestyle or
+       \protect\providepagestyle.}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\renewpagestyle}
+% First the simple star/starless-selection:
+%    \begin{macrocode}
+\def\renewpagestyle{%
+%    \end{macrocode}
+% We have to decide, whether it is a my-version or not:
+%    \begin{macrocode}
+  \@ifstar
+  {\@renewpagestyle[-]}%
+  {\@renewpagestyle[+]}}
+%    \end{macrocode}
+% \begin{macro}{\@renewpagestyle}
+%   \changes{v1.2a}{1996/12/07}{Avoid to define pagestyle as \cs{relax}
+%     if it wasn't defined (Thanks to Bernd).}
+% There we have to distinguish, whether the pagestyle is already
+% defined or not.
+%    \begin{macrocode}
+\def\@renewpagestyle[#1]#2#3#4{%
+  \begingroup\expandafter\expandafter\expandafter\endgroup
+  \expandafter\ifx\csname ps@#2\endcsname\relax
+    \PackageError
+      {scrpage}%
+      {Your command was ignored}%
+      {There is no pagestyle named ``#1''.\MessageBreak%
+       Use \protect\defpagestyle, \protect\newpagestyle or
+       \protect\providepagestyle.}%
+  \else
+%    \end{macrocode}
+% Then we can use the already defined |\@defpagestyle|.
+%    \begin{macrocode}
+    \@defpagestyle[#1]{#2}{#3}{#4}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\providepagestyle}
+% First the simple star/starless-selection:
+%    \begin{macrocode}
+\def\providepagestyle{%
+%    \end{macrocode}
+% We have to decide, whether it is a my-version or not:
+%    \begin{macrocode}
+  \@ifstar
+  {\@providepagestyle[-]}%
+  {\@providepagestyle[+]}}
+%    \end{macrocode}
+% \begin{macro}{\@providepagestyle}
+% There we have to distinguish, whether the pagestyle is already
+% defined or not.
+%    \begin{macrocode}
+\def\@providepagestyle[#1]#2#3#4{%
+  \expandafter\ifx\csname ps@#2\endcsname\relax
+%    \end{macrocode}
+% Then we can use the already defined |\@defpagestyle|.
+%    \begin{macrocode}
+    \@defpagestyle[#1]{#2}{#3}{#4}%
+  \else
+    \PackageInfo
+      {scrpage}%
+      {\protect\providepagestyle\protect{#1\protect} ignored.}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsection{User-Pagestyle-Definition-Interface}
+% The pagestyle-definition-interface for users is much easier than the
+% expert-version. Using the expert-macros, the definition is easy, too.
+%
+% \begin{macro}{\deftripstyle}
+% At version 1 we define the selection of star- or starless-version first:
+%    \begin{macrocode}
+\def\deftripstyle{%
+  \@ifstar
+  {\@deftripstyle[-]}%
+  {\@deftripstyle[+]}}
+%    \end{macrocode}
+% \end{macro}
+% Next we check, if there is an optional argument:
+% \begin{macro}{\@deftripstyle}
+%    \begin{macrocode}
+\def\@deftripstyle[#1]#2{%
+  \@ifnextchar[%]
+  {\@@deftripstyle[#1]{#2}}%
+  {\@@deftripstyle[#1]{#2}[\z@]}}
+%    \end{macrocode}
+% \end{macro}
+% or perhaps two optional arguments:
+% \begin{macro}{\@@deftripstyle}
+%    \begin{macrocode}
+\def\@@deftripstyle[#1]#2[#3]{%
+%    \end{macrocode}
+% Ok, now we have the problem, that there can be only 9 arguments. So we
+% have to distinguish the star-versions by a macro:
+%    \begin{macrocode}
+  \def\@tempa{#1}%
+  \@ifnextchar[%]
+  {\@@@deftripstyle#2[#3]}%
+  {\@@@deftripstyle#2[\z@][#3]}}
+%    \end{macrocode}
+% \end{macro}
+% Now the main-definition:
+% \begin{macro}{\@@@deftripstyle}
+%    \begin{macrocode}
+\def\@@@deftripstyle#1[#2][#3]#4#5#6#7#8#9{%
+  \def\@tempb{+}%
+  \ifx\@tempa\@tempb
+    \defpagestyle{#1}%
+      {(\@headwidth,#2)%
+       {\rlap{#6}\hfill{#5}\hfill\llap{#4}}%
+       {\rlap{#4}\hfill{#5}\hfill\llap{#6}}%
+       {\rlap{#4}\hfill{#5}\hfill\llap{#6}}%
+       (\@headwidth,#3)}%
+      {(\@footwidth,#3)%
+       {\rlap{#9}\hfill{#8}\hfill\llap{#7}}%
+       {\rlap{#7}\hfill{#8}\hfill\llap{#9}}%
+       {\rlap{#7}\hfill{#8}\hfill\llap{#9}}%
+       (\@footwidth,#2)}%
+  \else
+    \defpagestyle*{#1}%
+      {(\@headwidth,#2)%
+       {\rlap{#6}\hfill{#5}\hfill\llap{#4}}%
+       {\rlap{#4}\hfill{#5}\hfill\llap{#6}}%
+       {\rlap{#4}\hfill{#5}\hfill\llap{#6}}%
+       (\@headwidth,#3)}%
+      {(\@footwidth,#3)%
+       {\rlap{#9}\hfill{#8}\hfill\llap{#7}}%
+       {\rlap{#7}\hfill{#8}\hfill\llap{#9}}%
+       {\rlap{#7}\hfill{#8}\hfill\llap{#9}}%
+       (\@footwidth,#2)}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsection{Width of head and foot}
+% \begin{macro}{\setheadwidth}
+%   \changes{v1.3}{2001/03/30}{New}
+% \begin{macro}{\setfootwidth}
+%   \changes{v1.3}{2001/03/30}{New}
+% \begin{macro}{\set@hf@width}
+%   \changes{v1.3}{2001/03/30}{New}
+%   \changes{v1.3a}{2001/05/31}{symbolic values ``paper'', ``text'',
+%     `textwidthmarginpar''} 
+% \begin{macro}{\settowidthof}
+% \begin{macro}{\deftowidthof}
+% Until version 1.3, head and foot of a page had same width like the
+% text block. Since version 1.3 this was changed. Now the head and
+% foot have their own width and an optional shift relative to the text
+% part of the page. This shift can be positive or negative. We set
+% the width and shift with one macro and save them at macros. The set
+% macros have an optional argument: the shift.
+%
+% For definition of symbolic length values there is the macro
+% \cs{settowidthof}. And to define a macro with this value, there
+% is \cs{deftowidthof}.
+%    \begin{macrocode}
+\newcommand*{\settowidthof}[2]{%
+  \edef\@tempa{#2}%
+  \edef\@tempb{paper}\ifx\@tempa\@tempb
+    \setlength{#1}{\paperwidth}%
+  \else\edef\@tempb{text}\ifx\@tempa\@tempb
+      \setlength{#1}{\textwidth}%
+    \else\edef\@tempb{textwithmarginpar}\ifx\@tempa\@tempb
+        \setlength{#1}{\textwidth}%
+        \addtolength{#1}{\marginparwidth}%
+        \addtolength{#1}{\marginparsep}%
+      \else\edef\@tempb{head}\ifx\@tempa\@tempb
+          \setlength{#1}{\@headwidth}%
+        \else\edef\@tempb{foot}\ifx\@tempa\@tempb
+            \setlength{#1}{\@footwidth}%
+          \else\edef\@tempb{headtopline}\ifx\@tempa\@tempb
+              \setlength{#1}{\scr@headabove@linelength}%
+            \else\edef\@tempb{headsepline}\ifx\@tempa\@tempb
+                \setlength{#1}{\scr@headbelow@linelength}%
+              \else\edef\@tempb{footsepline}\ifx\@tempa\@tempb
+                  \setlength{#1}{\scr@footabove@linelength}%
+                \else\edef\@tempb{footbotline}\ifx\@tempa\@tempb
+                    \setlength{#1}{\scr@footbelow@linelength}%
+                  \else\edef\@tempb{page}\ifx\@tempa\@tempb
+                      \setlength{#1}{\paperwidth}%
+                      \begingroup\expandafter\expandafter\expandafter\endgroup
+                      \expandafter\ifx\csname ta@bcor\endcsname\relax\else
+                        \addtolength{#1}{-\ta@bcor}%
+                      \fi
+                    \else
+                      \setlength{#1}{#2}%
+                    \fi
+                  \fi
+                \fi
+              \fi
+            \fi
+          \fi
+        \fi
+      \fi
+    \fi
+  \fi
+}
+\newcommand*{\deftowidthof}[2]{%
+  \edef\@tempa{#2}\edef\@tempb{autohead}\ifx\@tempa\@tempb
+    \expandafter\def\csname #1\endcsname{\@headwidth}%
+  \else\edef\@tempb{autofoot}\ifx\@tempa\@tempb
+      \expandafter\def\csname #1\endcsname{\@footwidth}%
+    \else
+      \settowidthof{\@tempdima}{#2}%
+      \expandafter\edef\csname #1\endcsname{\the\@tempdima}%
+    \fi
+  \fi
+}
+\newcommand*{\setheadwidth}[2][\@empty]{%
+  \set@hf@width{head}{#1}{#2} %
+}
+\newcommand*{\setfootwidth}[2][\@empty]{%
+  \set@hf@width{foot}{#1}{#2}%
+}
+\newcommand*{\set@hf@width}[3]{%
+  \settowidthof{\@tempdima}{#3}%
+  \ifdim\@tempdima>\paperwidth
+    \PackageWarning
+      {scrpage}%
+      {You've set width of #1 to a value\MessageBreak
+        greater than width of page!\MessageBreak%
+        I`ll reduce width of #1 to width of page}%
+    \setlength{\@tempdima}{\paperwidth}%
+  \else
+    \ifdim\@tempdima<\z@
+       \PackageWarning
+         {scrpage}%
+         {You've set width of #1 to negative value!\MessageBreak%
+           I'll set it to 0pt}%
+       \setlength{\@tempdima}{\z@}%
+     \fi
+  \fi
+  \expandafter\edef\csname @#1width\endcsname{\the\@tempdima}%
+  \edef\@tempa{#2}%
+  \setlength{\@tempdima}{\textwidth}%
+  \addtolength{\@tempdima}{-\csname @#1width\endcsname}%
+  \ifx\@tempa\@empty
+    \if@twoside
+      \setlength{\@tempdimb}{.3333333333\@tempdima}%
+    \else
+      \setlength{\@tempdimb}{.5\@tempdima}%
+    \fi
+  \else
+    \setlength{\@tempdimb}{#2}%
+  \fi
+  \addtolength{\@tempdima}{-\@tempdimb}%
+  \ifdim\@tempdimb<\z@
+    \setlength{\@tempdimb}{-\@tempdimb}%
+    \expandafter\edef\csname @odd#1shift\endcsname{-\the\@tempdimb}%
+  \else
+    \expandafter\edef\csname @odd#1shift\endcsname{\the\@tempdimb}%
+  \fi
+  \ifdim\@tempdima<\z@
+    \setlength{\@tempdima}{-\@tempdima}%
+    \expandafter\edef\csname @even#1shift\endcsname{-\the\@tempdima}%
+  \else
+    \expandafter\edef\csname @even#1shift\endcsname{\the\@tempdima}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\@headwidth}
+%   \changes{v1.3}{2001/03/30}{New}
+% \begin{macro}{\@footwidth}
+%   \changes{v1.3}{2001/03/30}{New}
+% \begin{macro}{\@oddheadshift}
+%   \changes{v1.3}{2001/03/30}{New}
+% \begin{macro}{\@evenheadshift}
+%   \changes{v1.3}{2001/03/30}{New}
+% \begin{macro}{\@oddfootshift}
+%   \changes{v1.3}{2001/03/30}{New}
+% \begin{macro}{\@evenfootshift}
+%   \changes{v1.3}{2001/03/30}{New}
+% The values of width and shift of head and foot are saved at internal
+% macros. 
+%    \begin{macrocode}
+\newcommand*{\@headwidth}{\textwidth}%
+\newcommand*{\@oddheadshift}{\z@}%
+\newcommand*{\@evenheadshift}{\z@}%
+\newcommand*{\@footwidth}{\textwidth}%
+\newcommand*{\@oddfootshift}{\z@}%
+\newcommand*{\@evenfootshift}{\z@}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsection{Fonts}
+% \begin{macro}{\pnumfont}
+% We have to define a macro defining the font, used by |\pagemark|. Because
+% of this macro may already be defined by a \textsf{KOMA}-script-class, we
+% have to do this, using |\providecommand|
+%    \begin{macrocode}
+\providecommand*{\pnumfont}{\normalfont}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\headfont}
+% There is also a macro used by |\@evenhead|, |\@oddhead| and |\@evenfoot|,
+% |\@oddfoot|:
+%    \begin{macrocode}
+\providecommand*{\headfont}{\normalfont%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsection{Extended multilanguage formats}
+% \begin{macro}{\partmarkformat}
+%   \changes{v1.3e}{2004/07/05}{New}
+% \begin{macro}{\chaptermarkformat}
+%   \changes{v1.1}{1995/06/27}{Space after chapternumber increased.}
+% \begin{macro}{\sectionmarkformat}
+%   \changes{v1.1}{1995/06/27}{Space after sectionnumber increased.}
+% \begin{macro}{\subsectionmarkformat}
+%   \changes{v1.1}{1995/06/27}{Space after subsectionnumber increased.}
+% There are some macros to handle languages like Chinese, Japanese or Korean.
+% These macros were defined first by Werner Lemberg at his CJK-bundle. See
+% |scrclass.dtx| for further information.
+%    \begin{macrocode}
+\providecommand{\partmarkformat}         {\partname\ \thepart. \ }
+\if@chapter
+  \providecommand{\chaptermarkformat}    {\@chapapp\ \thechapter. \ }
+  \providecommand{\sectionmarkformat}    {\thesection. \ }
+\else
+  \providecommand{\sectionmarkformat}    {\thesection\quad}
+  \providecommand{\subsectionmarkformat} {\thesubsection\quad}
+\fi
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsection{Configurationfile}
+% Not last and not least we include the local configuration-file
+% \texttt{scrpage.cfg}, if it exists.
+%    \begin{macrocode}
+\InputIfFileExists{scrpage.cfg}
+           {\typeout{*************************************^^J%
+                     * Local config file scrpage.cfg used^^J%
+                     *************************************}}
+           {}
+%    \end{macrocode}
+%
+%
+% \subsection{End}
+% \begin{macro}{\KOMAScript}
+% Das \KOMAScript-Logo wird in allen \KOMAScript-Paketen und -Klassen
+% definiert, falls es nicht bereits definiert ist. Dabei werden die
+% Versalien moderat gesperrt. Es wird jedoch darauf verzichtet, die
+% Versalien etwa einen Punkt kleiner zu setzen, da das Logo aktiv
+% ausgezeichnet erscheinen soll.
+%    \begin{macrocode}
+\@ifundefined{KOMAScript}{%
+  \DeclareRobustCommand{\KOMAScript}{\textsf{K\kern.05em O\kern.05em%
+      M\kern.05em A\kern.1em-\kern.1em Script}}}{}
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
+%</scrpage>
+%    \end{macrocode}
+%
+% \Finale
+%
+\endinput
+%
+% end of file `scrpage-obsolete.dtx'
+%%% Local Variables:
+%%% mode: doctex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,58 @@
+% Testfile
+% Test, if counters are within another counter with scrbook class
+%
+% Issue #25 Incorrect equation numbers
+% →  https://sourceforge.net/p/koma-script/tickets/25/
+
+\input regression-test.tex
+\documentclass{scrbook}
+\begin{document}
+\frontmatter
+\chapter{Test}
+\[a=b\]
+
+\START
+\begin{equation}
+  y=x
+  \TEST{equation counter without chapter}{%
+    \typeout{1 = \theequation}%
+  }
+\end{equation}
+\begin{figure}
+  \caption{Test}
+  \TEST{figure counter without chapter}{%
+    \typeout{1 = \thefigure}%
+  }
+\end{figure}
+\begin{table}
+  \caption{Test}
+  \TEST{figure counter without chapter}{%
+    \typeout{1 = \thetable}%
+  }
+\end{table}
+\OMIT
+
+\mainmatter
+\chapter{Test}
+\TIMO
+\begin{equation}
+  y=x
+  \TEST{equation counter within chapter}{%
+    \typeout{1.1 = \theequation}%
+  }
+\end{equation}
+\begin{figure}
+  \caption{Test}
+  \TEST{figure counter within chapter}{%
+    \typeout{1.1 = \thefigure}%
+  }
+\end{figure}
+\begin{table}
+  \caption{Test}
+  \TEST{figure counter within chapter}{%
+    \typeout{1.1 = \thetable}%
+  }
+\end{table}
+\END
+
+\end{document}

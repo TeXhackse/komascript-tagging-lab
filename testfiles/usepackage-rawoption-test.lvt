@@ -1,0 +1,39 @@
+% Testfile
+%
+% Test for using the raw option list with \usepackage.
+
+\input regression-test.tex
+
+\begin{filecontents}[force]{\jobname.sty}
+\ProvidesPackage{\@currname}[2023/02/02 temporary test package]
+\RequirePackage{scrbase}
+\DefineFamily{testfamily}
+\DefineFamilyMember{testfamily}
+\FamilyStringKey{testfamily}{teststring}{\teststring}
+\FamilyStringKey{testfamily}{globalteststring}{\globalteststring}
+\FamilyProcessOptions{testfamily}
+\end{filecontents}
+\documentclass[globalteststring=this is a test string]{article}
+
+\usepackage[teststring=this is a test string]{\jobname}
+\newcommand*{\comparestring}{this is a test string}
+
+\START
+\TEST{Test for global raw options (should be true):}{%
+  \typeout{Global test string is raw: \ifx\globalteststring\comparestring
+    true\else false\fi}%
+}
+\TEST{Test for package raw options (should be true):}{%
+  \typeout{Package test string is raw: \ifx\teststring\comparestring
+    true\else false\fi}%
+}
+\END
+
+\begin{document}
+All three should be equal: ``\globalteststring'', ``\teststring'', ``\comparestring''.
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

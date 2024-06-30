@@ -1,0 +1,113 @@
+============================================================================
+List of things that I may have to do or to decide whether or not I have 
+to do them.
+Language of this file is mixed. Charset is UTF-8.
+----------------------------------------------------------------------------
+Liste der Dinge, die ich noch zu tun oder von denen ich noch zu entscheiden
+habe, ob ich sie noch zu tun habe. 
+Die Sprache dieser Datei ist gemischt. Der Zeichensatz ist UTF-8.
+============================================================================
+
+Fehler/Issues:
+
+- \if@dynlist wirkt sich auch auf Verzeichnisse aus, die gar keine
+  Gleitumgebungsverzeichnisse sind. Vermutlich sollte hier eine Beschränkung
+  auf Verzeichnisse des Besitzers "float" vorgenommen werden. Noch besser wäre
+  eventuell, das ganze als tocbasic feature zu implementieren. Dann stünde es
+  auch für andere Klassen zur Verfügung.
+
+----------------------------------------------------------------------------
+
+Doku/Doc:
+
+----------------------------------------------------------------------------
+
+Baustelle/Nice to have:
+
+- scrletter:
+  - Seitenstil notepaper mit Layer foldmarks + notepaper
+  - neue Variablen addressee, togivenname, tofamilyname und
+    deren Zusammenhang insbesondere bei leerem Argument für die
+    letter-Umgebung
+  wurden alles über den docstrip-Schalter "willbe" deaktiviert.
+  Darüber muss noch einmal gründlich nachgedacht werden. Die Variablen
+  werden wohl kommen, der Rest könnte auch anders geregelt werden.
+
+- Etwas wie \ModifyTOC für tocbasic wäre schön, damit man beispielsweise
+  nachträglich float oder nonfloat ergänzen kann.
+
+- Die Sache mit numwidth & numsep bei tocline in tocbasic gefällt mir
+  so noch nicht. Insbesondere erschwert sie die Implementierung einer
+  Option wie numberalign. Es wäre besser, wenn numsep wirklich ein extra
+  behandelter Abstand wäre (auch wenn die derzeitige Implementierung
+  einfacher war und diverse Stellen zu ändern sind).
+
+- Überlegen wie die Optionen für die Voreinstellungen der Behandlung des
+  optionalen Arguments von \chapter, \section etc. bezüglich `reference' zu
+  überarbeiten sind.
+
+- Spezielle Bedeutung der Mitgliedsoption @else@ auch für 
+  \FamilyProcessOptions.
+
+- Neues TOC-Feature pagestyle (eventuell auch noch firstpagestyle und
+  nextpagestyle). Vorsicht: Benötigt ggf. ein \clearpage am Ende des
+  Verzeichnisses, was bei \section natürlich nicht in Frage kommt.
+
+- Die Erklärung zu \chaptermark, \sectionmark etc. erneuern und dabei auf 
+  den Umstand \addchap, \addsec etwas genauer eingehen.
+
+- Ev. \RedeclareSectionCommand bereits im Anwenderteil (teilweise) 
+  erklären.
+
+- Dokumentieren (und dabei weiter implementieren) wie man eigene
+  Überschriftenstile erstellen kann.
+
+- In scrlayer-notecolumn.dtx eventuell bei einigen Boxen \color@begingroup
+  und \color@endgroup ergänzen.
+
+- Da ein Seitenstil selbst \pagestyle verwenden kann (was Alias-Seitenstile
+  auch tun) wird der \BeforeSelectAnyPageStyle in diesem Fall ggf. auch
+  innerhalb eines mit \thispagestyle aktivierten Seitenstils aufgerufen, nur
+  nicht für den Seitenstil selbst. Die Doku ist diesbezüglich also etwas
+  missverständlich. Eventuell sollte man sogar das Verhalten so abändern, 
+  dass zumindest \thispagestyle den Hook (natürlich verzögert) auch für den
+  Seitenstil selbst aufruft. Das wäre über die Verwendung eines Aliases
+  @specialstyle möglich.
+
+- Dokumentation für das Paket scrfontsizes.
+
+----------------------------------------------------------------------------
+
+Neue Ideen/Ideas:
+
+- Eventuell wäre es sinnvoll eine ganze Reihe von Optionen von scrlayer und
+  scrlayer-scrpage je Seitenstil(paar) zu betrachten und die globalen 
+  Optionen lediglich als Voreinstellungen dafür zu verwenden. Das würde es
+  beispielsweise ermöglichen im init-Code von Seitenstilen Optionen zu 
+  setzen, die dann nur für diesen Seitenstil bzw. dieses Paar gelten.
+
+- Eigene \raggedright-, \raggedleft- und \centering-Definition verwenden.
+
+- Erweiterung des Pakets scrfontsizes, so dass man für jede Größe die Größen
+  auch explizit vorgeben kann.
+
+- In der englischen Anleitung "simple switch" durch "boolean" oder "on/off
+  switch" oder "true/false switch" oder etwas ganz anderes ersetzen?
+
+----------------------------------------------------------------------------
+
+Vorerst verworfen/Not yet:
+
+- scrlayer-notecolumn innerhalb von Gleitumgebungen etc.
+
+- "Paketes" und "Pakets" vereinheitlichen.
+
+- "Buchs" und "Buches" vereinheitlichen.
+
+- Bei \@savevbox in scrkernel-notepaper.dtx innerhalb der "Messbox" die
+  Befehle \stepcounter, \refstepcounter, \addtocounter deaktivieren.
+  [Das würde zu Problemen mit (ggf. geschachtelter) Verwendung von
+  irgendwelchen Anwenderkonstrukten führen, bei denen Zähler beispielsweise in
+  Schleifen die Ausgabe beinflussen.]
+
+----------------------------------------------------------------------------

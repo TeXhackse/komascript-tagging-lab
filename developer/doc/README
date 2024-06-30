@@ -1,0 +1,58 @@
+DEVELOPERS README
+
+Copyright (c) Markus Kohm, 2006-2018
+
+This file prepares KOMA-Script for release.
+
+This file is not part of KOMA-Script bundle. You are not allowed
+to redistribute or modify this file!
+
+----------------------------------------------------------------------------
+
+Some Notes for KOMA-Script Developers only
+==========================================
+
+Making a New BETA Release:
+--------------------------
+
+- Change and commit scrkernel-version.dtx to set a new beta version number.
+
+- To update the ChangeLog simply call:
+
+    PREPARERELEASE=true make bindist
+
+  This should abort with an error because of BETA or RC string at version
+  information.
+
+- Call:
+
+    make bindist
+
+  This will create a new komascript-*.zip with the binary distribution.
+
+
+Making a New Release:
+--------------------------
+
+- Call:
+
+    make clean
+
+- Change and commit scrkernel-version.dtx and scrkernel-compatibility.dtx to
+  set a new non beta version number.
+
+- To update the ChangeLog simply call:
+
+    PREPARERELEASE=true make bindist
+
+  or
+
+    PREPARERELEASE=true make ctandist
+  
+  for a CTAN distribution.
+
+  This will create a new komascript-*.zip with the binary distribution.
+
+- Change and commit releaselist.txt.
+
+- Change and commit scrkernel-version.dtx to get a new beta version number.

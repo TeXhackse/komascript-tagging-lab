@@ -1,0 +1,137 @@
+% ======================================================================
+% scrsource.tex
+% Copyright (c) Markus Kohm, 2002-2022
+%
+% This file is part of the LaTeX2e KOMA-Script bundle.
+%
+% This work may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, version 1.3c of the license.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX 
+% version 2005/12/01 or later and of this work.
+%
+% This work has the LPPL maintenance status "author-maintained".
+%
+% The Current Maintainer and author of this work is Markus Kohm.
+%
+% This work consists of all files listed in manifest.txt.
+% ======================================================================
+% $Id: scrsource.tex 3748 2022-03-09 10:02:51Z kohm $
+
+% Try to get the version of KOMA-Script from scrkernel-version.dtx.
+\begingroup
+  \def\ProvidesFile#1[#2]{\csname endinput\endcsname}%
+  \input scrkernel-version.dtx
+  \newcommand*{\ParseKOMAScriptVersion}{}
+  \def\ParseKOMAScriptVersion#1/#2/#3 v#4 #5\ParseKOMAScriptVersion{%
+    \gdef\filedate{#1\kern1pt-\kern0pt#2\kern1pt-\kern0pt#3}%
+    \gdef\fileversion{#4}%
+  }
+  \expandafter
+  \ParseKOMAScriptVersion\KOMAScriptVersion\ParseKOMAScriptVersion
+  \gdef\filename{\jobname.tex}
+\endgroup
+
+\edef\releaselink{https://sf.net/p/koma-script/code/HEAD/tree/tags/release-\fileversion}
+\edef\releaseurl{\noexpand\url{\releaselink}}
+
+\ProvidesFile{scrsource.tex}[\KOMAScriptVersion (source)]
+\documentclass[USenglish]{koma-script-source-doc}
+\usepackage{babel}
+\usepackage{alltt}
+
+\title{\KOMAScript\,---\,The Source}
+\date{Version \fileversion{} of \filedate}
+\author{Markus Kohm}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  Formerly this was the implementation documentation of the whole
+  \KOMAScript. But currently it is a dummy only, that explains how to make the
+  implementation documentation from \KOMAScript{} v3.36 or newer.
+\end{abstract}
+
+\addsec{How to Make the Implementation Documentation}
+
+To make the implementation documentation you either can use \file{l3build} to
+make all files at once or do all the work step by step manually.
+
+To be able to use \file{l3build} you need the original sources from
+SourceForge. Best is, to use \file{subversion} to check out the sources of the
+release you are currently using. If you, e.g., use \KOMAScript{} v\fileversion
+you can checkout \releaseurl{} using:
+\begin{alltt}\small
+svn co \releaseurl koma-script-\fileversion
+\end{alltt}
+within a terminal window. Note: You have to make sure, that the Subversion
+command line client \file{svn} is installed before.
+
+This will copy the whole source of the release to a new directory
+\file{koma-script-\fileversion}. Change to the directory and run:
+\begin{verbatim}
+l3build doc
+\end{verbatim}
+This will make a lot of new PDF files with the implementation documentation of
+all the source files of \KOMAScript.
+
+If you cannot use \file{l3build}, e.g., because you cannot checkout the
+sources from SourceForge, you can just use an already installed legal
+distribution of \KOMAScript. In this case:
+\begin{itemize}
+\item Copy all \file{*.dtx} files from the source directory of the installed
+  \KOMAScript{} to a new directory where you have the right to write to.
+\item Open the first of these files, e.g., \file{koma-script-source-doc.dtx},
+  into your preferred \LaTeX{} editor and \emph{compile} the file using
+  \file{lualatex-dev}. If you have already installed \LaTeX{} 2022/06/01 you
+  can also use \file{lualatex} instead of \file{lualatex-dev}.
+
+  Instead of using your \LaTeX{} editor, you can also use
+\begin{verbatim}
+lualatex-dev koma-script-source-doc.dtx
+\end{verbatim}
+  from a terminal. If you get an error because of missing
+  \file{koma-script-source-doc.cls}, you do not have a correctly installed
+  \KOMAScript. However, you can generate the class using
+\begin{verbatim}
+tex koma-script-source-doc.dtx
+\end{verbatim}
+  Note: You really have to use either \file{tex}, \file{pdftex}, \file{luatex}
+  or \file{xetex} for this step and not \file{latex}, \file{pdflatex},
+  \file{lualatex} or \file{xelatex}!
+
+  If you want the index and the changes, you also have to run
+\begin{verbatim}
+makeindex -s gind.ist koma-script-source-doc
+makeindex -s gglo.ist -o koma-script-source-doc.gls koma-script-source.doc.glo
+\end{verbatim}
+  and also repeat the \file{lualatex-dev} and the two \file{makeindex} runs at
+  least three or four times.
+\item Repeat the last step for every \file{*.dtx} file replacing the
+  \file{koma-script-source-doc} by the base name of the corresponding
+  \file{*.dtx} file.
+\end{itemize}
+
+As you can see, using \file{l3build} is much easier.
+
+\addsec{How to Make the Implementation Documentation \KOMAScript{} before 3.36}
+
+In case of using an older \KOMAScript{} release, you have to check out the
+older release (see above) and run:
+\begin{verbatim}
+make scrsource.pdf
+\end{verbatim}
+But this can be used with a Linux like build system using GNU make only. And
+note: The implementation documentation of \KOMAScript{} up to version 3.35 was
+generally in German.
+
+\end{document}
+% Local Variables:
+% mode: latex
+% ispell-local-dictionary: "en_US"
+% eval: (flyspell-mode 1)
+% TeX-master: t
+% TeX-engine: luatex-dev
+% eval: (setcar (or (cl-member "Index" (setq-local TeX-command-list (copy-alist TeX-command-list)) :key #'car :test #'string-equal) (setq-local TeX-command-list (cons nil TeX-command-list))) '("Index" "mkindex %s" TeX-run-index nil t :help "makeindex for dtx"))
+% End:

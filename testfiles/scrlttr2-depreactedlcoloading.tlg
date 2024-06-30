@@ -1,0 +1,18 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Depreacted loading of LCO files by option
+============================================================
+Class scrlttr2 Warning: loading of LCO via class option `DINmtext'.
+(scrlttr2)              Note: Loading a LCO via class option is deprecated.
+(scrlttr2)                    You should use `\LoadLetterOption{DINmtext}'
+(scrlttr2)              instead.
+============================================================
+============================================================
+TEST 2: Loading of LCO file by \LoadLetterOption 
+============================================================
+Class scrlttr2 Info: Letter-Class-Option `DIN' loaded on input line ....
+(DIN.lco
+File: DIN.lco ....-..-.. v... KOMA-Script letter-class-option
+)
+============================================================

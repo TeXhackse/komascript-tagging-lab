@@ -1,0 +1,123 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Defining a family
+============================================================
+Family `family' defined successfully
+============================================================
+============================================================
+TEST 2: Defining a member
+============================================================
+Members of family `family': family.member,
+============================================================
+============================================================
+TEST 3: Defining a counter macro key without default
+============================================================
+Counter key `counterkeynodefault' defined successfully
+============================================================
+============================================================
+TEST 4: Setting counter macro key without default without value
+============================================================
+! Package scrbase Error: unknown option `counterkeynodefault'.
+See the scrbase package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+l. ...}
+The members of family `family' cannot set option `counterkeynodefault' .
+Here's what each member says: 
+  - `.member': value expected 
+============================================================
+============================================================
+TEST 5: Setting counter macro key without default value to 1
+============================================================
+counterkeynodefault has value 1
+============================================================
+============================================================
+TEST 6: Defining a counter macro key with default -1
+============================================================
+Counter key `counterkeydefault' defined successfully
+============================================================
+============================================================
+TEST 7: Setting counter macro key with default without value
+============================================================
+counterkeydefault has value -1
+============================================================
+============================================================
+TEST 8: Setting counter macro key with default value to 1
+============================================================
+counterkeydefault has value 1
+============================================================
+============================================================
+TEST 9: Defining a string key without default
+============================================================
+String key `stringkeynodefault' defined successfully
+============================================================
+============================================================
+TEST 10: Setting string key without default without value
+============================================================
+! Package scrbase Error: unknown option `stringkeynodefault'.
+See the scrbase package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+l. ...}
+The members of family `family' cannot set option `stringkeynodefault' .
+Here's what each member says: 
+  - `.member': value expected 
+============================================================
+============================================================
+TEST 11: Setting string macro key without default value to `value'
+============================================================
+stringkeynodefault has value `value'
+============================================================
+============================================================
+TEST 12: Defining a string key with default
+============================================================
+String key `stringkeydefault' defined successfully
+============================================================
+============================================================
+TEST 13: Setting string key with default without value
+============================================================
+stringkeydefault has value `default'
+============================================================
+============================================================
+TEST 14: Setting string macro key with default value to `value'
+============================================================
+stringkeydefault has value `value'
+============================================================
+============================================================
+TEST 15: Defining a CS key without default
+============================================================
+CS key `CSkeynodefault' defined successfully
+============================================================
+============================================================
+TEST 16: Setting CS key without default without value
+============================================================
+! Package scrbase Error: unknown option `CSkeynodefault'.
+See the scrbase package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+l. ...}
+The members of family `family' cannot set option `CSkeynodefault' .
+Here's what each member says: 
+  - `.member': value expected 
+============================================================
+============================================================
+TEST 17: Setting CS macro key without default value to `value'
+============================================================
+CSkeynodefault has value `value'
+============================================================
+============================================================
+TEST 18: Defining a CS key with default
+============================================================
+CS key `CSkeydefault' defined successfully
+============================================================
+============================================================
+TEST 19: Setting CS key with default without value
+============================================================
+CSkeydefault has value `default'
+============================================================
+============================================================
+TEST 20: Setting CS macro key with default value to `value'
+============================================================
+CSkeydefault has value `value'
+============================================================

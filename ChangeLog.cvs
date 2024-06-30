@@ -1,0 +1,693 @@
+-------	Switch from CVS to subversion ----------------------------------------
+
+2005-07-25  Markus Kohm  <komascript@gmx.info>
+
+	* doc/german/scrlttr2.tex:
+	- Wiesenweg
+
+	* doc/german/scrbookreportarticle.tex:
+	- font-lock
+
+	* doc/german/introduction.tex:
+	- changed encoding
+
+	* doc/german/Makefile:
+	- simplified
+
+	* doc/guide.bib:
+	- umlaute fixed
+
+	* Makefile.baserules:
+	- make_recursive improved
+
+	* Makefile.baseinit:
+	- MV and SMV added
+
+	* ChangeLog: *** empty log message ***
+
+2005-06-09  Markus Kohm  <komascript@gmx.info>
+
+	* doc/german/scrpage2.tex:
+	- Tippfehler
+
+2005-05-18  Markus Kohm  <komascript@gmx.info>
+
+	* doc/bin/genindex.pl, doc/german/scrlfile.tex:
+	- current version at add time
+
+	* doc/Makefile.guide:
+	- more chapters
+
+	* doc/german/scraddr.tex:
+	- TeX-master
+
+	* doc/german/scraddr.tex:
+	- initial comment
+
+	* doc/german/scraddr.tex:
+	- current version at add time
+
+	* doc/Makefile.guide:
+	- cleaned: clean rules
+
+	* doc/german/scrlttr2.tex:
+	- plenDINde --> plenDIN
+
+	* doc/Makefile.latexinit:
+	- MPOST added
+
+	* doc/Makefile.guide:
+	- Generation of plenDIN.mps
+
+	* doc/scrguide.cls:
+	- fixed: \@procidesfile
+
+	* doc/Makefile:
+	- more source files
+
+	* doc/plength.dtx:
+	- language independant figure generator
+
+	* doc/Makefile.guide:
+	- some more chapters added
+
+	* doc/german/scrlttr2.tex, doc/german/scrdatetime.tex:
+	- current version at add time
+
+	* doc/german/scrpage2.tex:
+	- initial comment
+
+	* doc/german/scrpage2.tex:
+	- current version at add time
+
+	* doc/german/guide-ngerman.tex:
+	- \Xmp... added
+
+2005-05-17  Markus Kohm  <komascript@gmx.info>
+
+	* doc/german/scrbookreportarticle.tex:
+	- current version at add time
+
+	* doc/german/typearea.tex, doc/scrguide.cls:
+	- utf8 --> latin1
+
+	* doc/Makefile.guide:
+	- don't remove every pdf, only some
+
+	* doc/Makefile.guide:
+	- added *.glo at rule clean_local
+
+	* doc/Makefile:
+	- one more Makefile
+
+	* doc/Makefile.guide:
+	- language independent part of the Makefile to make a guide
+
+	* doc/Makefile.latexinit:
+	- language dependency at the call of pdflatex
+
+	* doc/german/guide-ngerman.tex:
+	- a lot of new macros
+
+	* doc/guide.tex:
+	- no more language dependencies (hope so)
+
+	* doc/scrguide.cls:
+	- a lot of fixes
+
+	* doc/german/typearea.tex:
+	- current version at add time
+
+	* doc/german/introduction.tex:
+	- starting comment
+
+2005-05-14  Markus Kohm  <komascript@gmx.info>
+
+	* doc/scrguide.cls:
+	- everything of the old scrguide2.tex implemented;
+	  NOTE: Some of these features need fixes.
+
+	* doc/guide.tex:
+	- change log activated
+
+	* doc/german/guide-ngerman.tex:
+	- change log
+
+	* doc/scrguide.cls:
+	- change log, examples
+
+2005-05-13  Markus Kohm  <komascript@gmx.info>
+
+	* doc/scrguide.cls:
+	- Special Tables and Tabulars
+
+	* doc/german/guide-ngerman.tex:
+	- language dependencies of hyperref; hyphenation
+
+	* doc/scrguide.cls:
+	- hyperref addons completed
+
+	* doc/scrguide.cls:
+	- CTAN:// is an alias for hyperref
+
+2005-05-12  Markus Kohm  <komascript@gmx.info>
+
+	* doc/german/guide-ngerman.tex:
+	- initial version
+
+	* doc/german/introduction.tex:
+	- name of the game changed
+
+	* doc/german/introduction.tex:
+	- released version
+
+	* doc/guide.tex:
+	- with index
+
+	* doc/guide.bib:
+	- initial version (not yet finished)
+
+	* doc/Makefile.latexinit:
+	- BibTeX rules added
+
+	* doc/german/Makefile:
+	- initial rules for guide generation
+
+	* doc/scrguide.cls:
+	- some options changed, bibliography added, index (not yet
+	  finished) added
+
+	* Makefile.baseinit:
+	- fix: CHSUM
+
+	* doc/Makefile.latexinit:
+	- BIBINPUTS and BSTINPUTS added
+
+	* doc/Makefile:
+	- some DOC_SRC added
+
+	* doc/scrguide.bst:
+	- initial version based on babelbib
+
+	* scrkbib.dtx:
+	- fix: \list at thebibiography
+
+	* doc/guide.tex:
+	- replaces chapter file adrconv by adrconvnote to avoid problems with
+	  adrconv package
+
+	* doc/guide.tex:
+	- initial version
+
+	* scrkmisc.dtx:
+	- some options are KOMAoptions
+
+	* doc/Makefile:
+	- guide.tex is part of this level of the documentation
+
+2005-05-02  Markus Kohm  <komascript@gmx.info>
+
+	* doc/Makefile:
+	- use of babalpha.bst instead of scrguide.bst
+
+	* doc/scrguide.ist:
+	- initial version of a MakeIndex style file
+
+	* doc/Makefile:
+	- new DOC_SRC files scrguide.ist and scrguide.bst
+
+	* doc/Makefile:
+	- new Makefile: Makefile.latexinit
+
+2005-04-22  Markus Kohm  <komascript@gmx.info>
+
+	* doc/scrguide.cls:
+	- initial version of the guide class
+
+	* doc/Makefile:
+	- maintain
+
+	* doc/german/Makefile:
+	- nothing but basics
+
+	* doc/german/Makefile:
+	- initial version
+
+	* doc/Makefile:
+	- First version of documentation make file
+
+	* Makefile:
+	- DISTDIR and MAINTAINDIR using direct assignment
+
+	* Makefile:
+	- new variable MAINTAINDIR
+
+	* Makefile.baserules:
+	- make_recursive fixed
+
+	* Makefile.baseinit:
+	- use of function shell and assignment ?=
+
+	* .cvsignore:
+	- *.flc added
+
+2005-01-03  Markus Kohm  <komascript@gmx.info>
+
+	* scrksect.dtx:
+	- Copyright date
+
+	* scrksect.dtx:
+	- fix: \@@makeschapterhead defined using \newcommand instead of
+	  \renewcommand
+
+2004-12-07  Markus Kohm  <komascript@gmx.info>
+
+	* Makefile:
+	- CLS_MAIN_SUBINS
+
+	* Makefile:
+	- added scrkmisc.dtx
+	- MISC_SRC fixed (INS_TEMPLATES)
+
+2004-11-16  Markus Kohm  <komascript@gmx.info>
+
+	* Makefile: scrdoc.dtx added zu MISC_SRC
+
+2004-11-05  Markus Kohm  <komascript@gmx.info>
+
+	* scrkliof.dtx, scrkpar.dtx, scrksect.dtx: 
+	- \setparskip fixed
+
+	* scrkpar.dtx, scrsource.tex: 
+	- Use of \setparskip
+
+	* scrmain.ins:
+	- while we are in pre release state we use additional key "trace"
+
+	* scrkliof.dtx:
+	- \@parskipfalse und \@parskip@indent ersetzt
+
+	* scrksect.dtx:
+	- \cs{@parskipfalse} und \cs{@parskip@indent} ersetzt
+
+2004-11-04  Markus Kohm  <komascript@gmx.info>
+
+	* scrklang.dtx, scrbeta.dtx, scrkfloa.dtx, scrkfont.dtx,
+	scrkmisc.dtx, scrksect.dtx, scrktitl.dtx:
+	- fix of use of \KOMAClassName
+
+	* scrktitl.dtx, scrksect.dtx, scrkmisc.dtx, scrklang.dtx,
+	scrkfont.dtx, scrkfloa.dtx, scrbeta.dtx, scrdoc.dtx, scrkbase.dtx,
+	scrkbib.dtx, scrkftn.dtx, scrkidx.dtx, scrkliof.dtx, scrklist.dtx,
+	scrkpage.dtx, scrkpar.dtx, scrktare.dtx, scrkvers.dtx,
+	scrkxflo.dtx, scrlfile.dtx, scrlogo.dtx:
+	- use of \KOMAClassName
+
+	* scrkpage.dtx: 
+	- Use of \KOMA@DeclareObsoleteOption fixed
+
+2004-08-24  Markus Kohm  <komascript@gmx.info>
+
+	* scrkpage.dtx:
+	- options replaced by keyvals
+
+	* scrkfloa.dtx:
+	- checksum fix
+
+	* scrkfloa.dtx:
+	- longtable caption fix of KOMA-Script 2.9s
+
+	* scrkfloa.dtx:
+	- "Geplant!" margin note
+
+2004-07-21  Markus Kohm  <komascript@gmx.info>
+
+	* scrkfont.dtx:
+	- new macros \newkomafont and \aliaskomafont
+
+	* scrkpage.dtx:
+	- compatibility mode removed
+	- note of planned scrpage2 using
+
+	* scrklang.dtx:
+	- Activiation of current language changes from KOMA-Script v2.9r
+
+	* scrkfloa.dtx:
+	- some notes added
+
+2004-07-20  Markus Kohm  <komascript@gmx.info>
+
+	* README:
+	- removed umlauts
+
+	* scrkvers.dtx:
+	- fix: class identification
+
+	* scrlfile.dtx, scrktare.dtx, scrkbase.dtx:
+	- fix: package identification
+
+	* scrkbase.dtx:
+	- some \if... more expandable
+
+	* scrktare.dtx:
+	- \ifdefined --> \ifnotundefined
+
+	* scrdoc.dtx:
+	- \eTeX
+
+	* scrkbase.dtx:
+	- \ifdefined --> \ifnotundefined
+
+	* scrksect.dtx:
+	- all KOMA-Script 2 changes till 2004-07-16
+
+	* scrkfloa.dtx:
+	- changes of scrclass 2.9r
+
+2004-04-19  Markus Kohm  <komascript@gmx.info>
+
+	* scrkmisc.dtx:
+	- dictum fix of KOMA-Script v2.9q
+
+2004-03-24  Markus Kohm  <komascript@gmx.info>
+
+	* scrklist.dtx:
+	- addmargin fix of KOMA-Script 2.9q: don't touch \labelsep
+
+	* scrksect.dtx:
+	- \@@makeschapterhead fix from KOMA-Script 2.9q
+
+2004-01-31  Markus Kohm  <komascript@gmx.info>
+
+	* scrkftn.dtx:
+	- change at \deffootnote for more compatibility with footnote.sty
+
+2004-01-30  Markus Kohm  <komascript@gmx.info>
+
+	* scrkvers.dtx:
+	- update of version date
+
+	* scrkfloa.dtx:
+	- caption fixes of KOMA-Script 2.9q
+
+	* scrktare.dtx:
+	- warning fixes of KOMA-Script 2.9q
+
+2004-01-24  Markus Kohm  <komascript@gmx.info>
+
+	* scrbeta.dtx:
+	- scrxfloat added
+
+2004-01-21  Markus Kohm  <komascript@gmx.info>
+
+	* scrktare.dtx:
+	- \ProcessGlobalKeyValOptions --> \ProcessAllOptions
+
+	* scrkbase.dtx:
+	- \ProcessGlobalKeyValOptions replaced by \Pr@cessGl@balKeyValOptions
+	- \Pr@cessGl@balKeyValOptions fixed
+	- \ProcessKeyValOptions
+	- \ProcessAllOptions
+
+2004-01-15  Markus Kohm  <komascript@gmx.info>
+
+	* General:
+	- Changes till KOMA-Script 2.9p
+
+	* scrkftn.dtx:
+	- \deffootnote change of KOMA-Script 2.9p
+	
+	* scrksect.dtx:
+	- \@seccntformat change of KOMA-Script 2.9p
+	- chapter change of KOMA-Script 2.9p
+	- autodot change of KOMA-Script 2.9k
+	- use of \BeforeClosingMainAux instead if \AtEndDocument
+	- tocleft changes of KOMA-Script v2.9k
+	- minisec fix of KOMA-Script 2.9o
+
+	* scrkbib.dtx:
+	- bibtotocnumbered change of KOMA-Script 2.9p
+	- thebibliography fix of KOMA-Script 2.9o
+
+	* scrkliof.dtx:
+	- liststotocnumbered change of KOMA-Script 2.9p
+	- \@dottedtocline change of KOMA-Script 2.9k
+
+	* scrkidx.dtx:
+	- \idx@heading change of KOMA-Script 2.9l
+
+	* scrkmisc.dtx:
+	- ifthispageodd changes of KOMA-Script 2.9l
+	- dictum change of KOMA-Script 2.9l
+
+	* scrkfloa.dtx:
+	- captionbeside fix of KOMA-Script 2.9p
+
+	* scrkpar.dtx:
+	- \small and \footnotesize changes of KOMA-Script 2.9h
+
+2004-01-05  Markus Kohm  <komascript@gmx.info>
+
+	* scrkxflo.dtx:
+	- what happens with not floating consultations and option "float"
+	- missing text notes
+
+	* scrkxflo.dtx:
+	- what happens with not floating consultations and option "float"
+
+	* scrkxflo.dtx:
+	- description replaced by labeling at description of option float
+
+	* scrkxflo.dtx:
+	- Option "float"
+
+2004-01-04  Markus Kohm  <komascript@gmx.info>
+
+	* scrkxflo.dtx:
+	- \newconsultation*, \setupconsultation*
+	- minor fixes
+
+	* scrkxflo.dtx:
+	- Start of description (not yet finished) of an idea,
+	  currently no implementation!
+
+	* scrdoc.dtx:
+	- \newDescribe, \DescribeOption (by \newDescribe{Option})
+
+2003-01-21  Markus Kohm  <komascript@gmx.info>
+
+	* scrdoc.dtx:
+	- Fix: \EnvNames --> \EnvsName
+
+2002-12-08  Markus Kohm  <komascript@gmx.info>
+
+	* README:
+	- Initial version of a Do-Not-Use-Or-Distribute-README
+
+2002-12-06  Markus Kohm  <komascript@gmx.info>
+
+	* scrktare.dtx:
+	- missing option "headlines=<Value>" added
+
+2002-12-05  Markus Kohm  <mjk@mungojerrie.local>
+
+	* scrkpar.dtx:
+	- \parfillskip wil change at \begin{document}
+
+	* scrktare.dtx:
+	- Recalculation of type area also recalls option pagesize
+
+	* scrkbase.dtx:
+	- \if@atdocument added
+
+2002-12-04  Markus Kohm  <mjk@mungojerrie.local>
+
+	* scrktare.dtx:
+	- all options are keyval options
+
+	* scrkmisc.dtx:
+	- Activation of keyval options added
+
+	* scrktare.dtx:
+	- Options "paper=landscape" and "paper=portrait"
+
+	* scrdoc.dtx:
+	- Changed: Two columns at index (instead of three)
+
+	* Makefile:
+	- Fix: MKINDEX call at makedvifromdtx
+
+2002-12-03  Markus Kohm  <mjk@mungojerrie.local>
+
+	* scrktare.dtx:
+	- \isopaper allowes upper case at optional argument
+	- papersize options implemented
+
+	* scrlfile.dtx:
+	- \scr@hook@bcma fixed
+
+	* scrkbase.dtx:
+	- some small fixes (macro spelling etc.)
+
+	* scrbeta.dtx:
+	- scrkbase added
+
+2002-09-03  Markus Kohm  <komascript@gmx.info>
+
+	* scrlfile.dtx:
+	- \AfterClearpageAtEnddocument replaced by \BeforeClosingMainAux
+
+2002-09-01  Markus Kohm  <komascript@gmx.info>
+
+	* scrksect.dtx:
+	- Fix at \make@@chapterhead: \size@chapter after \sectfont
+
+2002-08-29  Markus Kohm  <komascript@gmx.info>
+
+	* scrlfile.dtx:
+	- Fix: \AfterClass*, \AfterPackage*
+
+2002-08-27  Markus Kohm  <komascript@gmx.info>
+
+	* scrktare.dtx:
+	- option `pagesize' reimplemented
+	- options `dvips' and `pdftex' obsolete reimplemented
+
+	* scrkbase.dtx:
+	- Some minor documentation changes
+	- Fix: \KOMA@unkown@keyval uses 3 arguments
+
+2002-08-25  Markus Kohm  <komascript@gmx.info>
+
+	* scrktare.dtx:
+	- 2 \relax and 2 % inserted
+
+2002-08-23  Markus Kohm  <komascript@gmx.info>
+
+	* scrkbase.dtx:
+	- new: \KOMA@unkown@keyval
+
+2002-08-21  Markus Kohm  <komascript@gmx.info>
+
+	* Makefile:
+	- checksum test at makedvifromdtx
+
+	* Makefile.baseinit:
+	- new: CKSUM
+
+	* scrksect.dtx:
+	- \part fixed
+
+	* scrkbase.dtx:
+	- new: \ifundefined, \ifdefined
+	- new: \let@as@internal@defined
+	- \ifpdfoutput pays attention to VTeX
+	- new: \ifpdftex, \ifpsoutput, \ifdvioutput
+
+2002-07-18  Markus Kohm  <komascript@gmx.info>
+
+	* scrkvars.dtx:
+	- moved to scrkbase.dtx
+
+	* Makefile:
+	- scrkbase.sty
+	- scrkvars.dtx --> scrkbase.dtx
+
+	* scrmain.ins:
+	- scrkvars.dtx --> scrkbase.dtx
+	- scrkeyvl.sty --> scrkbase.sty
+
+	* scrsource.tex:
+	- scrkvars.dtx --> scrkbase.dtx
+
+	* scrktare.dtx:
+	- moved \ifpdfoutput to scrkbase.dtx
+
+	* scrkbase.dtx:
+	- moved scrkvars.dtx to scrkbase.dtx
+	- \ifpdfoutput added
+
+2002-07-12  Markus Kohm  <komascript@gmx.info>
+
+	* template.sh:
+	- some fixes
+
+	* scrsource.tex:
+	- scrkvars.dtx
+
+	* scrkvars.dtx:
+	- a lot of bug fixes
+
+	* scrktare.dtx:
+	- first version which uses (and not only loads) scrkeyvl
+
+	* .cvsignore:
+	- generated files *.cls and *.sty added
+	- test files test* added
+
+	* scrbeta.dtx:
+	- scrkeyvl added
+
+	* Makefile:
+	- scrkvars.dtx added to CLS_MAIN_DTX
+
+2002-07-11  Markus Kohm  <komascript@gmx.info>
+
+	* scrkftn.dtx:
+	- \show removed
+	- \CheckSum fixed
+
+	* scrkvers.dtx:
+	- \ProvidesClass
+
+	* Makefile:
+	- dvi-file will be removed at makedvifromdtx if compilation error
+
+	* scrktare.dtx:
+	- Laden von scrkeyvl.sty
+
+	* scrkvars.dtx:
+	- Neu
+
+	* scrmain.ins:
+	- load scrkvars at every class
+	- scrkeyvl
+
+2002-07-06  Markus Kohm  <komascript@gmx.info>
+
+	* scrkpage.dtx:
+	- two spaces removed
+
+	* scrmain.ins:
+	- Changed order of scrk...-files to fit dependencies
+
+2002-07-05  Markus Kohm  <komascript@gmx.info>
+
+	* Makefile:
+	- makedvifromdtx improved (dvi will be removed at error)
+
+	* scrlfile.dtx:
+	- New command \AfterClearpageAtEndDocument
+
+2002-07-04  Markus Kohm  <komascript@gmx.info>
+
+	* Makefile:
+	- ChangeLog.2 added
+
+	* ChangeLog:
+	- New file for KOMA-Script 3
+
+	* ChangeLog.2:
+	- ChangeLog moved to ChangeLog.2
+
+	* .cvsignore, ChangeLog, Makefile, Makefile.baseinit,
+	Makefile.baserules, Makefile.cfg, missing.dtx, scrbeta.dtx,
+	scrdoc.dtx, scrkbib.dtx, scrkfloa.dtx, scrkfont.dtx, scrkftn.dtx,
+	scrkidx.dtx, scrklang.dtx, scrkliof.dtx, scrklist.dtx,
+	scrkmisc.dtx, scrkpage.dtx, scrkpar.dtx, scrksect.dtx,
+	scrktare.dtx, scrktitl.dtx, scrkvers.dtx, scrlfile.dtx,
+	scrlfile.ins, scrlogo.dtx, scrmain.ins, scrsource.tex,
+	scrstrip.inc, scrstrop.inc, template.sh:
+	- New file.
+
+-------	Start of KOMA-Script Version 3 ---------------------------------------

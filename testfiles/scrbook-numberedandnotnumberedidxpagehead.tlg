@@ -1,0 +1,75 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: not numbered index results in no number at page head
+============================================================
+(scrbook-numberedandnotnumberedidxpagehead.ind
+[1
+]
+[2]
+[3])
+============================================================
+[4
+]
+============================================================
+TEST 2: not numbered index with toc entry results in one number at page head
+============================================================
+(scrbook-numberedandnotnumberedidxpagehead.ind
+chapter without number
+[5
+]
+[6]
+[7])
+============================================================
+[8
+]
+============================================================
+TEST 3: numbered index results in one number at page head
+============================================================
+(scrbook-numberedandnotnumberedidxpagehead.ind
+chapter 1.
+[9
+]
+index number in page head
+[10]
+[11])
+============================================================
+[12
+]
+chapter without number
+[13
+]
+[14
+]
+============================================================
+TEST 4: not numbered, leveldown index results in no number at page head
+============================================================
+(scrbook-numberedandnotnumberedidxpagehead.ind
+[15
+]
+[16]
+[17])
+============================================================
+[18
+]
+============================================================
+TEST 5: not numbered, leveldown index with toc entry results in no number at page head
+============================================================
+(scrbook-numberedandnotnumberedidxpagehead.ind
+[19
+]
+[20]
+[21])
+============================================================
+[22
+]
+============================================================
+TEST 6: numbered, leveldown index results in one number at page head
+============================================================
+(scrbook-numberedandnotnumberedidxpagehead.ind
+[23
+]
+[24]
+index number in page head
+[25])
+============================================================

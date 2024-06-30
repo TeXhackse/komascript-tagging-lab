@@ -1,0 +1,21 @@
+% Testfile
+% Test, if option sfdefaults works correct with class scrbook
+%
+% Issue #48 Incorrect sfdefaults initial value
+% →  https://sourceforge.net/p/koma-script/tickets/48/
+
+\input regression-test.tex
+\documentclass{scrbook}
+\begin{document}
+\DeclareRobustCommand{\sffamily}{\typeout{use sffamily}}
+\START
+\TEST{element disposition}{\usekomafont{disposition}}
+\TEST{element dictum}{\usekomafont{dictum}}
+\TEST{element descriptionlabel}{\usekomafont{descriptionlabel}}
+
+\KOMAoptions{sfdefaults=false}
+\TEST{element disposition}{\usekomafont{disposition}}
+\TEST{element dictum}{\usekomafont{dictum}}
+\TEST{element descriptionlabel}{\usekomafont{descriptionlabel}}
+\END
+\end{document}

@@ -1,0 +1,29 @@
+% Testfile
+% Test for definition of old font commands without warning.
+
+\input regression-test.tex
+\documentclass{scrartcl}
+\START
+\makeatletter
+\@ifundefined{bf}{%
+  \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}%
+}{}
+\TEST{old font command \it should be undefined}{%
+  \typeout{\string\it\space is \@ifundefined{it}{un}{}defined.}%
+  \typeout{\string\bf\space is \@ifundefined{bf}{un}{}defined.}%
+}
+\makeatother
+\OMIT
+\begin{document}
+\TIMO
+\makeatletter
+\TEST{both old font commands should be defined}{%
+  \typeout{\string\it\space is \@ifundefined{it}{un}{}defined.}%
+  \typeout{\string\bf\space is \@ifundefined{bf}{un}{}defined.}%
+}
+\makeatother
+\TEST{\it should result in an error}{%
+  \it\bf
+}
+\END
+\end{document}

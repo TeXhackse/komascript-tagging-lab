@@ -1,0 +1,128 @@
+% Testfile
+%
+% Several tests for family options with scrbase
+
+\input regression-test.tex
+
+\documentclass{article}
+
+\usepackage{scrbase}
+
+\START
+\makeatletter
+\TEST{Defining a family}{%
+  \DefineFamily{family}%
+  \typeout{Family `family'
+    \ifdefined\family@key@familylist\else not \fi
+    defined successfully}%
+}
+\DefineFamily{family}% Do it again, because of grouping tests.
+\TEST{Defining a member}{%
+  \DefineFamilyMember[.member]{family}%
+  \typeout{Members of family `family': \family@key@familylist}
+}
+\DefineFamilyMember[.member]{family}% Do it again, because of grouping tests.
+
+% \FamilyCounterMacroKey -----------------------------------------------------
+
+\TEST{Defining a counter macro key without default}{%
+  \FamilyCounterMacroKey[.member]{family}{counterkeynodefault}{\counterkeynodefaultvalue}%
+  \typeout{Counter key `counterkeynodefault'
+    \ifdefined\counterkeynodefaultvalue\else not \fi
+    defined successfully}%
+}
+\FamilyCounterMacroKey[.member]{family}{counterkeynodefault}{\counterkeynodefaultvalue}% Do it again, because of grouping tests.
+\TEST{Setting counter macro key without default without value}{%
+  \FamilyOptions{family}{counterkeynodefault}% should result in error
+}
+\TEST{Setting counter macro key without default value to 1}{%
+  \FamilyOptions{family}{counterkeynodefault=1}%
+  \typeout{counterkeynodefault has value \the\numexpr\counterkeynodefaultvalue\relax}%
+}
+
+\TEST{Defining a counter macro key with default -1}{%
+  \FamilyCounterMacroKey[.member]{family}{counterkeydefault}[-1]{\counterkeydefaultvalue}%
+  \typeout{Counter key `counterkeydefault'
+    \ifdefined\counterkeydefaultvalue\else not \fi
+    defined successfully}%
+}
+\FamilyCounterMacroKey[.member]{family}{counterkeydefault}[-1]{\counterkeydefaultvalue}% Do it again, because of grouping tests.
+\TEST{Setting counter macro key with default without value}{%
+  \FamilyOptions{family}{counterkeydefault}%
+  \typeout{counterkeydefault has value \the\numexpr\counterkeydefaultvalue\relax}%
+}
+\TEST{Setting counter macro key with default value to 1}{%
+  \FamilyOptions{family}{counterkeydefault=1}%
+  \typeout{counterkeydefault has value \the\numexpr\counterkeydefaultvalue\relax}%
+}
+
+% \FamilyStringKey -----------------------------------------------------------
+
+\TEST{Defining a string key without default}{%
+  \FamilyStringKey[.member]{family}{stringkeynodefault}{\stringkeynodefaultvalue}%
+  \typeout{String key `stringkeynodefault'
+    \ifcsname KV@family.member@stringkeynodefault\endcsname\else not \fi
+    defined successfully}%
+}
+\FamilyStringKey[.member]{family}{stringkeynodefault}{\stringkeynodefaultvalue}% Do it again, because of grouping tests.
+\TEST{Setting string key without default without value}{%
+  \FamilyOptions{family}{stringkeynodefault}% should result in error
+}
+\TEST{Setting string macro key without default value to `value'}{%
+  \FamilyOptions{family}{stringkeynodefault=value}%
+  \typeout{stringkeynodefault has value `\stringkeynodefaultvalue'}%
+}
+
+\TEST{Defining a string key with default}{%
+  \FamilyStringKey[.member]{family}{stringkeydefault}[default]{\stringkeydefaultvalue}%
+  \typeout{String key `stringkeydefault'
+    \ifcsname KV@family.member@stringkeydefault\endcsname\else not \fi
+    defined successfully}%
+}
+\FamilyStringKey[.member]{family}{stringkeydefault}[default]{\stringkeydefaultvalue}% Do it again, because of grouping tests.
+\TEST{Setting string key with default without value}{%
+  \FamilyOptions{family}{stringkeydefault}%
+  \typeout{stringkeydefault has value `\stringkeydefaultvalue'}%
+}
+\TEST{Setting string macro key with default value to `value'}{%
+  \FamilyOptions{family}{stringkeydefault=value}%
+  \typeout{stringkeydefault has value `\stringkeydefaultvalue'}%
+}
+
+% \FamilyCSKey -----------------------------------------------------------
+
+\TEST{Defining a CS key without default}{%
+  \FamilyCSKey[.member]{family}{CSkeynodefault}{CSkeynodefaultvalue}%
+  \typeout{CS key `CSkeynodefault'
+    \ifcsname KV@family.member@CSkeynodefault\endcsname\else not \fi
+    defined successfully}%
+}
+\FamilyCSKey[.member]{family}{CSkeynodefault}{CSkeynodefaultvalue}% Do it again, because of grouping tests.
+\TEST{Setting CS key without default without value}{%
+  \FamilyOptions{family}{CSkeynodefault}% should result in error
+}
+\TEST{Setting CS macro key without default value to `value'}{%
+  \FamilyOptions{family}{CSkeynodefault=value}%
+  \typeout{CSkeynodefault has value `\CSkeynodefaultvalue'}%
+}
+
+\TEST{Defining a CS key with default}{%
+  \FamilyCSKey[.member]{family}{CSkeydefault}[default]{CSkeydefaultvalue}%
+  \typeout{CS key `CSkeydefault'
+    \ifcsname KV@family.member@CSkeydefault\endcsname\else not \fi
+    defined successfully}%
+}
+\FamilyCSKey[.member]{family}{CSkeydefault}[default]{CSkeydefaultvalue}% Do it again, because of grouping tests.
+\TEST{Setting CS key with default without value}{%
+  \FamilyOptions{family}{CSkeydefault}%
+  \typeout{CSkeydefault has value `\CSkeydefaultvalue'}%
+}
+\TEST{Setting CS macro key with default value to `value'}{%
+  \FamilyOptions{family}{CSkeydefault=value}%
+  \typeout{CSkeydefault has value `\CSkeydefaultvalue'}%
+}
+\END
+
+\begin{document}
+Test
+\end{document}

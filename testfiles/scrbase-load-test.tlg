@@ -1,0 +1,14 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: scrbase: loading the package before any class
+============================================================
+NOTE: Result moved after test, to avoid package loading inside group
+============================================================
+(scrbase.sty
+Package: scrbase ....-..-.. v... KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+)
+)
+Applying: [....-..-..] Usage of raw or classic option list on input line ....
+Already applied: [....-..-..] Usage of raw or classic option list on input line ....
+)

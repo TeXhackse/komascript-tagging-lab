@@ -1,0 +1,15 @@
+% Testfile
+% Using options of scrextend
+
+\input regression-test.tex
+\documentclass[twoside]{article}
+\usepackage{scrextend}
+\begin{document}
+\START
+\TEST{scrextend: Option `cleardoublepage'}{%
+  \KOMAoptions{cleardoublepage=plain}
+  Test
+  \typeout{\meaning\cleardoublepage}
+}
+\END
+\end{document}

@@ -1,0 +1,86 @@
+KOMA-Script obsolete
+==============================================================================
+Author:         Markus Kohm
+E-Mail:         komascript at gmx info
+Version:        2020-06-06
+Abstract:       KOMA-Script obsolete contains in the classes and packages,
+                that has been removed from KOMA-Script, because they are
+                obsolete for a long time.
+                You don't need those classes and packages to work with
+                KOMA-Script.  You should not use those classes and packages
+                any longer.  There are new classes and packages at 
+                KOMA-Script that should be uses instead of those obsolete
+                classes and packages.
+                You need KOMA-Script obsolete only if you have old 
+                documents that cannot be transferred into new once using
+                current classes and packages.  In this case, you may 
+                install KOMA-Script obsolete classes and packages.  See 
+                ``Installation instructions'' for more information about
+                the installation.
+License:        LPPL 1.3c or later
+State:          not maintained, NOT SUPPORTED
+==============================================================================
+Package:        tocstyle
+Author:         Markus Kohm
+Version:        2020/06/06 v0.2k-alpha
+Source files:   tocstyle-obsolete.dtx
+Classification: TOC etc. configuration package (experimental)
+Successor:      tocbasic + scrwfile
+------------------------------------------------------------------------------
+Package:        scrpage2
+Author:         Markus Kohm
+Version:        2020/02/27 v3.30
+Source files:   scrpage2-obsolete.dtx
+Classification: Page layout package
+Successor:      scrlayer-scrpage
+------------------------------------------------------------------------------
+Package:        scrpage
+Author:         Markus Kohm
+Version:        2008/02/29 v1.3e
+Source files:   scrpage-obsolete.dtx
+Classification: Page layout package
+Successor:      scrpage2
+------------------------------------------------------------------------------
+Class:          scrlettr
+Authors:        Axel Kielhorn and Markus Kohm
+Version:        2002/05/24 v2.6e
+Source files:   scrlettr.ins scrlettr.dtx
+Classification: Letter class
+Successor:      scrlttr2
+==============================================================================
+Installation instructions:
+                If this is a source distribution without cls- and sty-files
+                you first need to generate the cls- and sty-files you need.
+                To do so, have a look at the ``Source files'' section of 
+                the class or package, you need.  If there's an ins-file at
+                the source files list, you have to call
+                       tex FOO.ins
+                with FOO.ins is the ins-file of the source file list.  If
+                there isn't an ins-file use the first dtx-file of the 
+                source file list of the wanted class or package instead of
+                the ins-file, e.g.:
+                       tex FOO.dtx
+                This will generate one or several new files, that have to 
+                be copied into a directory where LaTeX may find them.  See 
+                the instructions of your TeX distribution to see, how to 
+                install single class or package files.  Alternatively you
+                may just copy the generated files into the main directory
+                of you document file.
+                You should not need documentation for the obsolete classes
+                and packages, because you should not use them for new 
+                documents, but only to process existing old documents 
+                without changes. Nevertheless, you may generate the 
+                documentation from the
+                source files using
+                       pdflatex FOO.dtx
+                several times.  FOO.dtx should be the first dtx-file at the
+                source file list of the wanted class or package.
+
+                If this is a TDS distribution, you may simply copy all the
+                files with their directory structure into a TEXMF tree.  
+                You may also generate a new TEXMF tree and activate it.  
+                After copying you may have to recreate the file name 
+                database. MiKTeX users should use the FNDB button of MiKTeX
+                setup to do so.  TeX Live users may use texhash or maybe 
+                the TeX Live manager, tlmgr.
+==============================================================================

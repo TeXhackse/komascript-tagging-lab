@@ -1,0 +1,21 @@
+% Testfile
+% Load scrbase.sty (before any class is loaded)
+
+\input regression-test.tex
+\RequirePackage{xparse}
+\let\RP\RequirePackage
+\makeatletter\let\scrWMSG\@gobble\makeatother
+\RenewDocumentCommand\RequirePackage{omo}{%
+  \OMIT
+  \IfValueTF{#1}{\RP[#1]}{\RP}{#2}[#3]%
+  \TIMO
+}
+\START
+\TEST{scrbase: loading the package before any class}{%
+  \typeout{NOTE: Result moved after test, to avoid package loading inside group}
+}
+\RP{scrbase}
+\END
+\documentclass{minimal}
+\begin{document}
+\end{document}

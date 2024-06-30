@@ -1,0 +1,37 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: old font command \it should be undefined
+============================================================
+\it is undefined.
+\bf is defined.
+============================================================
+============================================================
+TEST 2: both old font commands should be defined
+============================================================
+\it is defined.
+\bf is defined.
+============================================================
+============================================================
+TEST 3: \it should result in an error
+============================================================
+! Class scrartcl Error: undefined old font command `\it'.
+See the scrartcl class documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+l. ...}
+You should note that since 1994 LaTeX2e provides a new font selection scheme
+called NFSS2 with several new, combinable font commands. KOMA-Script
+classes had defined the old font commands like `\it' only for compatibility
+with old LaTeX 2.09 document styles of Script 2.0. Nevertheless, these
+commands are deprecated and undocumented at least since 2003. Since 2013
+KOMA-Script classes warned about soon removement of these deprecated commands.
+Now, after two decades of LaTeX2e and NFSS2, these commands will not work any
+more. If loading a package results in this error message, you should contact
+the author of that package and ask him to replace the deprecated font command
+`\it', e.g., by `\normalfont \itshape `. Otherwise you should reconfigure
+or replace the package. If you have used the old font command `\it' yourself,
+you should replace it, e.g., by `\normalfont \itshape '.
+To make it work for now, you can use the already also deprecated class option
+`enabledeprecatedfontcommands'.
+============================================================

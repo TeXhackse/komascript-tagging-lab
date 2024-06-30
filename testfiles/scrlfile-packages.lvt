@@ -1,0 +1,78 @@
+% Testfile
+% Several basic scrlfile tests
+
+\input regression-test.tex
+\RequirePackage{xparse}
+\RequirePackage{scrlfile}
+\newcommand*{\ALLTests}{}
+\makeatletter
+\NewDocumentCommand{\InitHookTest}{smm}{%
+  \IfBooleanTF{#1}{%
+    \expandafter\newif\csname if@#2*@#3@\endcsname
+    \csname #2Package\endcsname*{#3}{\csname @#2*@#3@true\endcsname}%
+    \csname if@#2*@#3@\endcsname
+      \g@addto@macro\ALLTests{%
+        \edef\@testname{Test Hook Execute (immediate):
+          \expandafter\string\csname #2Package\endcsname*{#3}
+        }\expandafter\TEST\expandafter{\@testname}{%
+          \typeout{Result: TRUE}%
+        }%
+      }%
+    \else
+      \g@addto@macro\ALLTests{%
+        \edef\@testname{Test Hook Executed (immediate):
+          \expandafter\string\csname #2Package\endcsname*{#3}
+        }\expandafter\TEST\expandafter{\@testname}{%
+          \typeout{Result: FALSE}%
+        }%
+      }%
+    \fi  
+    \g@addto@macro\ALLTests{%
+      \edef\@testname{Test Hook Executed:
+        \expandafter\string\csname #2Package\endcsname*{#3}%
+      }\expandafter\TEST\expandafter{\@testname}{%
+        \typeout{Result:
+          \csname if@#2*@#3@\endcsname TRUE\else FALSE\fi}
+      }%
+    }%
+  }{%
+    \expandafter\newif\csname if@#2@#3@\endcsname
+    \csname #2Package\endcsname{#3}{\csname @#2@#3@true\endcsname}%
+    \g@addto@macro\ALLTests{%
+      \edef\@testname{Test Hook Executed:
+        \expandafter\string\csname #2Package\endcsname{#3}%
+      }\expandafter\TEST\expandafter{\@testname}{%
+        \typeout{Result:
+          \csname if@#2@#3@\endcsname TRUE\else FALSE\fi}
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\InitHookTest{Before}{inputenc}
+\InitHookTest{After}{inputenc}
+\InitHookTest*{After}{inputenc}
+\InitHookTest{AfterAtEndOf}{inputenc}
+\InitHookTest*{AfterAtEndOf}{inputenc}
+\InitHookTest{Before}{alltt}
+\InitHookTest{After}{alltt}
+\InitHookTest*{After}{alltt}
+\InitHookTest{AfterAtEndOf}{alltt}
+\InitHookTest*{AfterAtEndOf}{alltt}
+
+\documentclass{minimal}
+
+\usepackage{alltt}
+\usepackage{ifthen}
+\InitHookTest{After}{ifthen}
+\InitHookTest*{After}{ifthen}
+\InitHookTest{AfterAtEndOf}{ifthen}
+\InitHookTest*{AfterAtEndOf}{ifthen}
+
+\START
+\ALLTests
+\END
+
+\begin{document}
+\end{document}

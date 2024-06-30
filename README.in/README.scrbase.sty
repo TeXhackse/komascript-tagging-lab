@@ -1,0 +1,38 @@
+scrbase - basic features for KOMA-Script, e.g. conditionals and key=value
+------------------------------------------------------------------------------
+Maintainer:     Markus Kohm
+E-Mail:         komascript at gmx info
+Abstract:       scrbase is a LaTeX package of the KOMA-Script bundle.  It
+                provides some basic functions used by KOMA-Script that can
+                also be used by authors and users of other classes and
+                packages.
+
+                First, it provides extended handling of key=value pairs
+                that can be used for run-time options of classes and
+                packages. Several packages in a family can share options,
+                and all the options in a family can be changed with a
+                single command.
+
+                Additional conditions like \ifundefinedorrelax, \ifpdftex,
+                \ifVTeX, \ifpdfoutput, \ifstr etc. are provided. Most of
+                them can be prevented from being defined and have
+                additional internal representations that can be used by
+                package or class authors.
+
+                It also provides commands to easily define or change
+                language-dependent terms that work not only with babel but
+                with other packages like ngerman too.
+
+                It provides some commands for package and class authors
+                missing in the LaTeX kernel like \ClassInfoNoLine,
+                \PackageInfoNoLine or \l@addto@macro.
+
+                Last but not least, it provides commands for integer
+                division and integer modulo operation that can be used,
+                for example, inside \numexpr ...\relax or with \ifnum.
+Requires:       keyval   - key=value package from the graphics bundle
+                scrlfile - KOMA-Script package for file loading 
+                           manipulation
+License:        LPPL 1.3c or later
+State:          Author maintained
+Version:        !!!THIS WILL BE SET BY THE RELEASE PROCESS!!!

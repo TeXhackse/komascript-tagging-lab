@@ -1,0 +1,27 @@
+% Testfile
+% Test, if typearea option `pagesize' works with the standard classes.
+%
+% Issue #23 pagesize has no effect if typearea is used with standard class
+% →  https://sourceforge.net/p/koma-script/tickets/23/
+
+\input regression-test.tex
+\documentclass[a5paper]{article}
+\usepackage{typearea}
+\begin{document}
+\START
+\makeatletter
+\TEST{typearea: pagesize option with standard classes}{%
+  \typeout{Paper: width=\the\paperwidth, height=\the\paperheight}%
+  \@ifundefined{pdfpagewidth}{%
+    \@ifundefined{pagewidth}{%
+      \typeout{Media: width=\the\paperwidth, height=\the\paperheight}%
+    }{%
+      \typeout{Media: width=\the\pagewidth, height=\the\pageheight}%
+    }%
+  }{%
+    \typeout{Media: width=\the\pdfpagewidth, height=\the\pdfpageheight}%
+  }%
+}
+\makeatother
+\END
+\end{document}

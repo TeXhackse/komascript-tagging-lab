@@ -1,0 +1,35 @@
+% Testfile
+% Test for warning about deprecated loading of LCO files by option 
+
+\input regression-test.tex
+\RequirePackage{xpatch}
+\RequirePackage{scrkbase}
+\makeatletter
+\let\scrWMSG\@gobble
+\xpretocmd{\KOMAProcessOptions}{%
+  \@ifundefined{lco@test}{}{%
+    \@ifundefined{lco@test@original}{%
+      \let\lco@test@original\lco@test
+      \def\lco@test{%
+        \TIMO
+        \TEST{Depreacted loading of LCO files by option}{\lco@test@original}%
+        \OMIT
+      }%
+    }{}%
+  }%
+}{}{\PatchFailed}
+\makeatother
+
+\START
+\OMIT
+\documentclass[DINmtext]{scrlttr2}
+\TIMO
+\TEST{Loading of LCO file by \LoadLetterOption}{%
+  \LoadLetterOption{DIN}%
+}
+\END
+\begin{document}
+\end{document}
+% Local Variables:
+% mode: latex
+% TeX-master: t

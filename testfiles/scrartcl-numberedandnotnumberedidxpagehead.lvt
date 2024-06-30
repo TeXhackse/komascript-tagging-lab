@@ -1,0 +1,72 @@
+\begin{filecontents*}[force]{\jobname.ind}
+\begin{theindex}
+  \item Test (first page, first column), 1
+  \newpage
+  \item Test (first page, second column), 1
+  \newpage
+  \item Test (second page, first column), 1
+  \newpage
+  \item Test (second page, second column), 1
+\end{theindex}
+\end{filecontents*}
+\input regression-test.tex
+\documentclass[twoside]{scrartcl}
+\usepackage[ngerman]{babel}
+\usepackage{makeidx}
+\makeindex
+
+\renewcommand*{\sectionmarkformat}{\typeout{index number in page head}\thesection\enskip}%
+\renewcommand*{\subsectionmarkformat}{\typeout{index number in page head}\thesubsection\enskip}
+\pagestyle{headings}
+
+\begin{document}
+
+\START
+\TEST{not numbered index results in no number at page head}{%
+  \printindex
+}
+
+\clearpage
+\KOMAoptions{index=totoc}
+
+\TEST{not numbered index with toc entry results in one number at page head}{%
+  \printindex
+}
+
+\clearpage
+\KOMAoptions{index=numbered}
+
+\TEST{numbered index results in one number at page head}{%
+  \printindex
+}
+
+\clearpage
+\addsec{Level down}
+\clearpage
+
+\KOMAoptions{index=leveldown,index=notoc}
+\TEST{not numbered, leveldown index results in no number at page head}{%
+  \printindex
+}
+
+\clearpage
+\KOMAoptions{index=leveldown,index=totoc}
+
+\TEST{not numbered, leveldown index with toc entry results in no number at page head}{%
+  \printindex
+}
+
+\clearpage
+\KOMAoptions{index=leveldown,index=numbered}
+
+\TEST{numbered, leveldown index results in one number at page head}{%
+  \printindex
+}
+\END
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

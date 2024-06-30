@@ -1,0 +1,26 @@
+% Testfile
+% Test, if the language handling is correct.
+
+\input regression-test.tex
+\documentclass[ngerman]{scrartcl}
+\usepackage[english,main=ngerman]{babel}
+\newcaptionname{english}\testname{English}
+\newcaptionname{ngerman}\testname{German}
+\begin{document}
+\START
+\TEST{Is German the active main language:}{%
+  \typeout{Main language is \languagename.}%
+}
+\TEST{Language extension is working:}{%
+  \typeout{\string\testname\space is \testname.}%
+}
+\TEST{Switching to a second language is working:}{%
+  {\selectlanguage{english}\typeout{\string\testname\space is \testname}.}%
+}
+\END
+.
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
