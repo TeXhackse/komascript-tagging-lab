@@ -1,0 +1,83 @@
+\makeatletter
+\let\scr@@@saved@startsection\@startsection
+\makeatother
+\DocumentMetadata{
+  lang        = en,
+  pdfversion  = 2.0,
+  pdfstandard = ua-2,
+  pdfstandard = a-4f, 
+  testphase   =  {
+    phase-III,
+    title,
+    table,
+%    firstaid
+ },
+  uncompress,
+}
+\tagpdfsetup{%	
+	activate/all,
+	tabsorder=structure,
+}
+
+
+
+
+\RequirePackage{tagpdf-debug}
+\ShowTagging{debug/structures,
+mc-data,
+%%mc-current,
+%%struct-stack
+}
+
+\makeatletter
+\let\@startsection\scr@@@saved@startsection
+\makeatother
+
+\RemoveFromHook{class/after}[latex-lab-testphase-sec]
+\documentclass{scrbook}
+\RequirePackage{scr-tagging-lab}
+
+
+
+
+\AddToHook{cmd/contentsline/before}{\ShowTagging{mc-current,struct-stack=log}}
+
+\begin{document}
+
+\tableofcontents
+
+\chapter{chapter}
+
+Text
+
+\section{section}
+
+text
+
+\subsection{subsection}
+
+text
+
+second par
+
+\begin{itemize}
+\item list of 
+\item another item
+\end{itemize}
+
+
+\begin{enumerate}
+\item first
+\item second
+\end{enumerate}
+
+\chapter*{chapter no number}
+
+\section*{section no number}
+
+
+\addchap{addchap}
+
+\addsec{addsec}
+
+\end{document}
