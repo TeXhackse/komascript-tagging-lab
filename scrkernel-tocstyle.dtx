@@ -2229,7 +2229,7 @@
       \expandafter\ifx\csname scr@tso@#1@indentfollows\endcsname\@empty
         \PackageWarning{tocbasic}{`dynindent' for `#1' not available}%
       \else
-        \edef\reserved@a{\@nameuse{scr@tso@#1@indentfollows}}%    
+        \edef\reserved@a{\@nameuse{scr@tso@#1@indentfollows}}%
         \@for \reserved@a:=\reserved@a\do {%
           \scr@trim@spaces\reserved@a
           \ifx\reserved@a\@empty\else
@@ -2259,7 +2259,7 @@
           \fi
         }%
       \fi
-    }{}%  
+    }{}%
     {%
       \Iftocfeature{\@currext}{noindent}{%
         \leftskip \z@
@@ -2303,7 +2303,7 @@
           \fi
         }%
       }{}%
-      \advance\leftskip \@tempdima 
+      \advance\leftskip \@tempdima
       \null\nobreak\hskip -\leftskip
       {%
 %    \end{macrocode}
@@ -2368,7 +2368,9 @@
             \expandafter\let\expandafter\scr@dte@pagenumberwidth
             \csname scr@tso@#1@pagenumberwidth\endcsname
             \@nameuse{scr@tso@#1@pagenumberbox}{%
-              \@nameuse{scr@tso@#1@pagenumberformat}{#3}%
+              \@nameuse{scr@tso@#1@pagenumberformat}{%
+                #3%
+               }%
             }%
           }%
           \@par
