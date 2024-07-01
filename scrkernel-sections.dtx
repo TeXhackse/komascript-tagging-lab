@@ -1021,7 +1021,11 @@
     \else
       \z@
     \fi
-    \let\@svsec\@empty
+%    \end{macrocode}
+% tagging: The following line was changed to match the change between the Kernel and the Testphase version of \cs{@svsec}.
+%    \begin{macrocode}
+<!tagging-lab>    \let\@svsec\@empty
+<tagging-lab>    \def\@svsec{\@hyp@section@target@nnn{[section]}{}{#3}}
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/02}{execute counter reset list}
 % Even for not numbered sections, the reset list für the section counter has
@@ -1040,9 +1044,16 @@
 %    \begin{macrocode}
     \hy@insteadofrefstepcounter{#1}%
   \else
+%    \end{macrocode}
+% tagging: Copy change of testphase definition
+%    \begin{macrocode}
+%<tagging-lab>    \LinkTargetOff
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
-    \protected@edef\@svsec{\@seccntformat{#1}\relax}%
+%<tagging-lab>    \LinkTargetOn
+    \protected@edef\@svsec{%
+%<tagging-lab>    \@hyp@section@target@nnn{}{#1}{#3}%
+      \@seccntformat{#1}\relax}%
   \fi
 %    \end{macrocode}
 % \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
@@ -1051,6 +1062,10 @@
   \ifdim
     \scr@sect@runin{\z@}{\p@}{\glueexpr #5\relax}>\z@
     \begingroup
+%    \end{macrocode}
+% tagging: Copy change of testphase definition
+%    \begin{macrocode}
+%<tagging-lab>       \tagtool{para-flattened=true}
       \ifx\@svsec\@empty
         \let\IfUseNumber\@secondoftwo
       \else
@@ -1062,7 +1077,14 @@
 %    \begin{macrocode}
       \ExecuteDoHook{heading/begingroup/#1}%
       #6{\nobreak\interlinepenalty \@M
-        \sectionlinesformat{#1}{\glueexpr #3\relax}\@svsec{#8}\@@par}%
+%    \end{macrocode}
+% tagging: Adapt change of testphase definition
+%    \begin{macrocode}
+        \sectionlinesformat{#1}{\glueexpr #3\relax}%
+%<!tagging-lab>          \@svsec%
+%<tagging-lab>           {\IfUseNumber{\@svsec}{\@kernel@tag@svsec}}%
+	  {#8}
+      \@@par}%
       \ExecuteDoHook{heading/endgroup/#1}%
     \endgroup
 %<*trace>
