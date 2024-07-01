@@ -26,6 +26,8 @@
 %    \begin{macrocode}
 \let\scr@dte@tocline\@undefined
 \let\TOCLineLeaderFill\@undefined
+\let\sectionlinesformat\@undefined
+\let\scr@numberline\@undefined
 %    \end{macrocode}
 % Insted of redefining \cs{scr@startsection} it's possible to use hooks.
 % Be aware that using the generic hook needs a check to limit the action to exclude chapter/part.
@@ -45,123 +47,7 @@
 % Changes have been marked
 %    \begin{macrocode}
 %</package|koma>
-%<*package>
-% \begin{macro}{\@ssect}
-%    \begin{macrocode}
-%<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
-%<trace>  \string\@ssect}
-\def\@ssect#1#2#3#4#5{%
-  \scr@ifundefinedorrelax{scr@s@ct@@nn@m@}{%
-    \ClassWarning{\KOMAClassName}{Incompatible usage of
-      \string\@ssect\space detected.\MessageBreak
-      You've used the KOMA-Script implementation of
-      \string\@ssect\MessageBreak
-      from within a non compatible caller, that does not\MessageBreak
-      \string\scr@s@ct@@nn@m@\space locally.\MessageBreak
-      This could result in several error messages}%
-    \def\scr@s@ct@@nn@m@{\string\scr@s@ct@@nn@m@}%
-  }{%
 %    \end{macrocode}
-% \changes{v3.31}{2020/06/02}{execute counter reset list}
-% Even for not numbered sections, the reset list für the corresponding section
-% counter has to be executed.
-%    \begin{macrocode}
-%<!v4>    \expandafter\ifnum\scr@v@is@ge{3.31}\relax
-      \begingroup
-        \let\@elt\@stpelt
-        \csname cl@\scr@s@ct@@nn@m@\endcsname
-      \endgroup
-%<!v4>    \fi
-  }%
-%    \end{macrocode}
-% \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
-% \changes{v3.27}{2019/02/02}{defining \cs{IfUseNumber} locally}
-%    \begin{macrocode}
-  \ifdim
-    \scr@sect@runin{\z@}{\p@}{\glueexpr #3\relax}>\z@
-    \begingroup
-      \tagtool{para-flattened=true}
-      \let\IfUseNumber\@secondoftwo
-%    \end{macrocode}
-% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
-% \changes{v3.27}{2019/02/02}{\cs{ExecuteDoHook} added}
-%    \begin{macrocode}
-      \edef\reserved@a{%
-        \noexpand\ExecuteDoHook{heading/begingroup/\scr@s@ct@@nn@m@}%
-      }\reserved@a
-      #4{\nobreak\interlinepenalty \@M
-        \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
-        {\glueexpr #1\relax}%
-          {\@hyp@section@target@nnn{[section]}{}{#3}}%
-        \@empty{#5}\@@par}%
-      \edef\reserved@a{%
-        \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
-      }\reserved@a
-    \endgroup
-  \else
-    \edef\@svsechd{%
-      \unexpanded{\let\IfUseNumber\@secondoftwo}%
-      \noexpand\ExecuteDoHook{heading/begingroup/\scr@s@ct@@nn@m@}%
-      \unexpanded{#4}{%
-%    \end{macrocode}
-% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
-%    \begin{macrocode}
-        \noexpand\nobreak
-        \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
-        \unexpanded{{\glueexpr #1\relax}%
-          {\@hyp@section@target@nnn{[section]}{}{#1}}%
-          {#5}}%
-      }%
-      \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
-    }%
-  \fi
-  \let\scr@s@ct@@nn@m@\relax
-  \@xsect{\glueexpr #3\relax}%
-}
-%    \end{macrocode}
-% \end{macro}^^A \@ssect
-% \begin{macro}{\@xsect}
-%    \begin{macrocode}
-%<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
-%<trace> \string\@xsect}
-\def\@xsect#1{%
-  \@ifundefined{scr@sect@runin}{%
-    \def\scr@sect@runin##1##2##3{##3}%
-  }%
-  \@tempskipa #1\relax
-  \ifdim \scr@sect@runin{\z@}{\p@}{\@tempskipa}>\z@
-    \par \nobreak
-    \vskip \@tempskipa
-    \tag_tool:n {restore-para}
-    \@afterheading
-  \else
-    \@nobreakfalse
-    \global\@noskipsectrue
-    \everypar{%
-      \if@noskipsec
-        \global\@noskipsecfalse
-       {\setbox\z@\lastbox}%
-        \clubpenalty\@M
-        \begingroup \@svsechd \endgroup
-        \unskip
-        \tag_tool:n {sec-split-para}
-        \@tempskipa #1\relax
-        \ifdim \@tempskipa<\z@
-          \hskip -\@tempskipa
-        \else
-          \hskip \@tempskipa
-        \fi
-      \else
-        \clubpenalty \@clubpenalty
-        \everypar{}%
-      \fi}%
-  \fi
-  \def\scr@sect@runin##1##2##3{##3}%
-  \ignorespaces
-}
-%</package>
-%    \end{macrocode}
-% \end{macro}^^A \@xsect
 % Because the KOMA hooks don't have additional arguments it's necessary to use hooks with arguments on the surrounding macro to save the title.
 % Maybe it's easier to pass those with changing the hooks, but this needs to be discussed.
 %    \begin{macrocode}
