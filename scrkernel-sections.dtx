@@ -613,7 +613,7 @@
       \ifdim \@tempskipa <\z@
         \@tempskipa -\@tempskipa \@afterindentfalse
       \fi
-    }%  
+    }%
     \def\startsection@sectionname{#1}%
     \def\startsection@secnumdepth{\numexpr #2\relax}%
     \def\startsection@indent{\glueexpr #3\relax}%
@@ -970,9 +970,13 @@
     Maybe LaTeX will be broken by the redefinition\MessageBreak
     of \string\@sect}%
 \fi
+%</body>
 %    \end{macrocode}
 % \end{macro}^^A \scr@latex@sect
 %    \begin{macrocode}
+%</class&!letter>
+%<*(class&!letter)|tagging-lab>
+%<*body|tagging-lab>
 %<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro \string\@sect}
 \def\@sect#1#2#3#4#5#6[#7]#8{%
   \ifnum \scr@osectarg=\z@
@@ -1024,8 +1028,8 @@
 %    \end{macrocode}
 % tagging: The following line was changed to match the change between the Kernel and the Testphase version of \cs{@svsec}.
 %    \begin{macrocode}
-<!tagging-lab>    \let\@svsec\@empty
-<tagging-lab>    \def\@svsec{\@hyp@section@target@nnn{[section]}{}{#3}}
+%<!tagging-lab>    \let\@svsec\@empty
+%<tagging-lab>    \def\@svsec{\@hyp@section@target@nnn{[section]}{}{#3}}
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/02}{execute counter reset list}
 % Even for not numbered sections, the reset list für the section counter has
@@ -1083,8 +1087,8 @@
         \sectionlinesformat{#1}{\glueexpr #3\relax}%
 %<!tagging-lab>          \@svsec%
 %<tagging-lab>           {\IfUseNumber{\@svsec}{\@kernel@tag@svsec}}%
-	  {#8}
-      \@@par}%
+           {#8}%
+        \@@par}%
       \ExecuteDoHook{heading/endgroup/#1}%
     \endgroup
 %<*trace>
@@ -1177,6 +1181,8 @@
   \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
   \@xsect{\glueexpr #5\relax}%
 }
+%</body|tagging-lab>
+%<*body>
 %    \end{macrocode}
 % \begin{macro}{\scr@ds@tocentry,\@currenttocentry}
 % \changes{v3.10}{2011/08/30}{added}
@@ -1298,9 +1304,14 @@
 %   the command.
 % \end{description}
 %    \begin{macrocode}
+%</body>
+%<*body|tagging-lab>
 \newcommand{\sectionlinesformat}[4]{%
+%<tagging-lab>  \IfUseNumber\@kernel@tag@hangfrom
   \@hangfrom{\hskip #2#3}{#4}%
 }
+%</body|tagging-lab>
+%<*body>
 \newcommand{\sectioncatchphraseformat}[4]{%
   \hskip #2#3#4%
 }
@@ -1350,9 +1361,11 @@
     Maybe LaTeX will be broken by the redefinition\MessageBreak
     of \string\@ssect}%
 \fi
+%</body>
 %    \end{macrocode}
 % \end{macro}^^A \scr@latex@ssect
 %    \begin{macrocode}
+%<*body|tagging-lab>
 %<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
 %<trace>  \string\@ssect}
 \def\@ssect#1#2#3#4#5{%
@@ -1385,6 +1398,10 @@
   \ifdim
     \scr@sect@runin{\z@}{\p@}{\glueexpr #3\relax}>\z@
     \begingroup
+%    \end{macrocode}
+% tagging: Copy change of testphase definition
+%    \begin{macrocode}
+%<tagging-lab>       \tagtool{para-flattened=true}
       \let\IfUseNumber\@secondoftwo
 %    \end{macrocode}
 % \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
@@ -1394,8 +1411,14 @@
         \noexpand\ExecuteDoHook{heading/begingroup/\scr@s@ct@@nn@m@}%
       }\reserved@a
       #4{\nobreak\interlinepenalty \@M
+%    \end{macrocode}
+% tagging: Adapt change of testphase definition
+%    \begin{macrocode}
         \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
-        {\glueexpr #1\relax}\@empty{#5}\@@par}%
+        {\glueexpr #1\relax}%
+%<!tagging-lab>        \@empty
+%<tagging-lab>         {\@hyp@section@target@nnn{[section]}{}{#3}}%
+        {#5}\@@par}%
       \edef\reserved@a{%
         \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
       }\reserved@a
@@ -1409,8 +1432,14 @@
 % \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
 %    \begin{macrocode}
         \noexpand\nobreak
+%    \end{macrocode}
+% tagging: Adapt change of testphase definition
+%    \begin{macrocode}
         \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
-        \unexpanded{{\glueexpr #1\relax}\@empty{#5}}%
+        \unexpanded{{\glueexpr #1\relax}%
+%<!tagging-lab>        \@empty
+%<tagging-lab>         {\@hyp@section@target@nnn{[section]}{}{#1}}%
+          {#5}}%
       }%
       \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
     }%
@@ -1418,7 +1447,7 @@
   \let\scr@s@ct@@nn@m@\relax
   \@xsect{\glueexpr #3\relax}%
 }
-%</body>
+%</body|tagging-lab>
 %    \end{macrocode}
 % \end{macro}^^A \@ssect
 % \begin{macro}{\@xsect}
@@ -1468,9 +1497,11 @@
     Maybe LaTeX will be broken by the redefinition\MessageBreak
     of \string\@xsect}%
 \fi
+%</body>
 %    \end{macrocode}
 % \end{macro}^^A \scr@latex@xsect
 %    \begin{macrocode}
+%<*body|tagging-lab>
 %<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
 %<trace> \string\@xsect}
 \def\@xsect#1{%
@@ -1481,6 +1512,10 @@
   \ifdim \scr@sect@runin{\z@}{\p@}{\@tempskipa}>\z@
     \par \nobreak
     \vskip \@tempskipa
+%    \end{macrocode}
+% tagging: Copy change of testphase definition
+%    \begin{macrocode}
+    \tag_tool:n {restore-para}
     \@afterheading
   \else
     \@nobreakfalse
@@ -1492,6 +1527,10 @@
         \clubpenalty\@M
         \begingroup \@svsechd \endgroup
         \unskip
+%    \end{macrocode}
+% tagging: Copy change of testphase definition
+%    \begin{macrocode}
+        \tag_tool:n {sec-split-para}
         \@tempskipa #1\relax
         \ifdim \@tempskipa<\z@
           \hskip -\@tempskipa
@@ -1506,7 +1545,9 @@
   \def\scr@sect@runin##1##2##3{##3}%
   \ignorespaces
 }
-%</body>
+%</body|tagging-lab>
+%</(class&!letter)|tagging-lab>
+%<*class&!letter>
 %    \end{macrocode}
 % \end{macro}^^A \@xsect
 %
