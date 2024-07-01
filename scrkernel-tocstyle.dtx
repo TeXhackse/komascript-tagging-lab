@@ -118,7 +118,7 @@
 %<tagging-lab>\bool_new:N \l__scr_skip_tags_bool
 \newcommand*{\scr@numberline}[1]{%
   \numberline@box{%
-%<tagging-lab>      \bool_if:NF \l__scr_skip_tags_bool {\UseHookWithArguments{contentsline/number/before}{1}{#1}}%
+%<tagging-lab>    \bool_if:NF \l__scr_skip_tags_bool {\UseHookWithArguments{contentsline/number/before}{1}{#1}}%
     \numberline@prefix
     \Ifstr{#1}{}{#1}{%
       \numberline@numberformat{#1}%
