@@ -25,8 +25,19 @@
 % This is to simplify moving the changes from this experiment to the official KOMA-Script SVN.
 %    \begin{macrocode}
 \let\scr@dte@tocline\@undefined
-\letTOCLineLeaderFill\@undefined
-%    \end{ma
+\let\TOCLineLeaderFill\@undefined
+%    \end{macrocode}
+% Insted of redefining \cs{scr@startsection} it's possible to use hooks.
+% Be aware that using the generic hook needs a check to limit the action to exclude chapter/part.
+%    \begin{macrocode}
+\cs_new:Nn \__scr_scr_start_aux:n {
+	\clist_if_in:nnF { chapter, part } {#1} {
+		\tag_tool:n {sec-start=#1}
+	}
+}
+\AddtoDoHook{heading/branch/star}{\__scr_scr_start_aux:n}
+\AddtoDoHook{heading/branch/nostar}{\__scr_scr_start_aux:n}
+%    \end{macrocode}
 % \begin{macro}{\@sect}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
 % This change has to be adjusted to match the kernel changes of the testphase.
@@ -148,96 +159,9 @@
   \def\scr@sect@runin##1##2##3{##3}%
   \ignorespaces
 }
-%    \end{macrocode}
-% \end{macro}^^A \@xsect
-% \begin{macro}{\sectionlinesformat}
-%    \begin{macrocode}
-\renewcommand{\sectionlinesformat}[4]{%
-  \IfUseNumber\@kernel@tag@hangfrom\@hangfrom
-  {\hskip #2#3}{#4}%
-}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\@startsection}
-%    \begin{macrocode}
-  \renewcommand*{\scr@startsection}[6]{%
-    \ExecuteDoHook{heading/preinit/#1}%
-    \if@noskipsec \leavevmode \fi
-    \par
-    \@tempskipa \glueexpr #4\relax
-    \@ifundefined{scr@#1@afterindent}{%
-      \def\startsection@afterindent##1##2##3{##3}%
-    }{%
-      \expandafter\let\expandafter\startsection@afterindent
-      \csname scr@#1@afterindent\endcsname
-    }%
-    \startsection@afterindent{\@afterindenttrue}{\@afterindentfalse}{%
-      \@afterindenttrue
-      \ifdim \@tempskipa <\z@
-        \@tempskipa -\@tempskipa \@afterindentfalse
-      \fi
-    }%
-    \def\startsection@sectionname{#1}%
-    \def\startsection@secnumdepth{\numexpr #2\relax}%
-    \def\startsection@indent{\glueexpr #3\relax}%
-    \let\startsection@beforeskip\@tempskipa
-    \@ifundefined{scr@#1@runin}{%
-      \def\scr@sect@runin##1##2##3{##3}%
-    }{%
-      \expandafter\let\expandafter\scr@sect@runin
-      \csname scr@#1@runin\endcsname
-    }%
-    \scr@sect@runin{%
-      \def\startsection@afterskip{\glueexpr #3\relax}%
-      \expandafter\let\csname if@startsection@runin\expandafter\endcsname
-      \csname iftrue\endcsname
-    }{%
-      \def\startsection@afterskip{\glueexpr #3\relax}%
-      \expandafter\let\csname if@startsection@runin\expandafter\endcsname
-      \csname iffalse\endcsname
-    }{%
-      \ifdim \glueexpr #5\relax <\z@
-        \def\startsection@afterskip{\glueexpr (#3)*\m@ne\relax}%
-        \expandafter\let\csname if@startsection@runin\expandafter\endcsname
-        \csname iftrue\endcsname
-      \else
-        \def\startsection@afterskip{\glueexpr #3\relax}%
-        \expandafter\let\csname if@startsection@runin\expandafter\endcsname
-        \csname iffalse\endcsname
-      \fi
-    }%
-    \ExecuteDoHook{heading/postinit/#1}%
-    \if@nobreak
-      \everypar{}%
-    \else
-      \addpenalty\@secpenalty\addvspace\@tempskipa
-    \fi
-    \tag_tool:n { sec-start=#1}%new
-    \@ifstar {%
-      \ExecuteDoHook{heading/branch/star/#1}%
-      \def\scr@s@ct@@nn@m@{#1}%
-      \@ssect{\glueexpr #3\relax}{\glueexpr #4\relax}{\glueexpr #5\relax}{#6}%
-    }{%
-      \ExecuteDoHook{heading/branch/nostar/#1}%
-      \scr@section@dblarg{%
-        \@sect{#1}{\numexpr #2\relax}{\glueexpr #3\relax}{\glueexpr #4\relax}%
-        {\glueexpr #5\relax}{#6}%
-      }%
-    }%
- }
- \renewcommand*{\@startsection}{%
-   \ifnum \scr@osectarg=\z@
-     \expandafter\scr@saved@startsection
-   \else
-     \expandafter\orig@startsection
-   \fi
- }
-%    \end{macrocode}
-% \end{macro}^^A \@startsection
 %</package>
 %    \end{macrocode}
-% \end{command}^^A \TOCLineLeaderFill
-% \end{macro}^^A \scr@dte@tocline
+% \end{macro}^^A \@xsect
 % Because the KOMA hooks don't have additional arguments it's necessary to use hooks with arguments on the surrounding macro to save the title.
 % Maybe it's easier to pass those with changing the hooks, but this needs to be discussed.
 %    \begin{macrocode}
