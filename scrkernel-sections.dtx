@@ -6260,9 +6260,13 @@
 % \item[ToDo:] Can we somehow change this for \KOMAScript~4 to no longer
 %   support the second argument (unless a low compatibility level is used)?
 % \end{description}
+% tagging: As the number format might be changed by the user using a
+% redefinition of \cs{…format} tagging has to be disabled in here to avoid
+% nesting inside the Lbl tag.
 %    \begin{macrocode}
 \newcommand*{\othersectionlevelsformat}[3]{#3\autodot\enskip}
 \renewcommand*{\@seccntformat}[1]{%
+%<tagging-lab>        \tag_stop:n{seccntformat}
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
 %<!v4>    \protect\othersectionlevelsformat{#1}{%
 %<!v4>      \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
@@ -6272,6 +6276,7 @@
         \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
     }{\expandafter\protect\csname #1format\endcsname}%
 %<!v4>  \fi
+%<tagging-lab>	      \tag_start:n{seccntformat}}%
 }
 %    \end{macrocode}
 % \end{command}^^A \othersectonlevelsformat
