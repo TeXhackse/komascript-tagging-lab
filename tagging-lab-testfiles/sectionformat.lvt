@@ -1,0 +1,35 @@
+\ExplSyntaxOn
+\debug_on:n { check-declarations , deprecation }
+\ExplSyntaxOff
+
+\input{regression-test}
+\def\CLASS{scrbook}
+\input{scr-tagging-lab-test-setup}
+
+\begin{document}
+\START
+\showoutput
+
+%I don't want to handle pagestyles, so set everything to empty:
+\pagestyle{empty}\renewcommand\chapterpagestyle{empty}
+
+\tableofcontents
+
+\chapter{chapter}
+\addchap{chapter}
+\section{section}
+\subsection{subsection}
+\subsubsection{subsubsection}
+
+paragraph
+
+\newcommand*{\othersectionlevelsformat}[3]{\frame{#3\autodot\enskip}}
+\let\chapterformat\relax
+\let\sectionformat\relax
+\let\subsectionformat\relax
+\let\subsubsectionformat\relax
+
+paragraph
+
+
+\end{document}
