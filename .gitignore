@@ -12,3 +12,7 @@ scrjura.ins
 *.zip
 *.version
 Makefile.cfg
+
+
+/obsolete/
+/developer/
