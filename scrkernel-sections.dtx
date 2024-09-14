@@ -568,8 +568,11 @@
 %   not allowed and the result is unspecified. Inside \cs{scr@startsection}
 %   they have to be interpreted as constants, so changing them is not allowed!
 % \end{description}
+% tagging: We need this definition to be able to remove the warning when the testphase key is used.
 %    \begin{macrocode}
-%<*body>
+%</class&!letter>
+%<*class&!letter|workarounds>
+%<*body|workarounds>
 \newcommand*{\scr@saved@startsection}[6]{%
   \if@noskipsec \leavevmode \fi
   \par
@@ -587,6 +590,9 @@
     {\@ssect{#3}{#4}{#5}{#6}}%
     {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}%
 }
+%</body|workarounds>
+%<workarounds>\let\@startsection\scr@saved@startsection
+%<*body>
 \def\reserved@a#1#2#3#4#5#6{%
   \if@noskipsec \leavevmode \fi
   \par
@@ -940,8 +946,9 @@
 % \item[Note:] \cs{chapter} and \cs{part} do not use \cs{@sect} but
 %   \cs{SecDef}.
 % \end{description}
+% tagging: We need this definition to be able to remove the warning when the testphase key is used.
 %    \begin{macrocode}
-%<*body>
+%<*body|workarounds>
 \def\scr@latex@sect#1#2#3#4#5#6[#7]#8{%
   \ifnum #2>\c@secnumdepth
     \let\@svsec\@empty
@@ -974,6 +981,9 @@
         #7}}%
   \fi
   \@xsect{#5}}
+%</body|workarounds>
+%<workarounds>\let\@sect\scr@latex@sect
+%<*body>
 \ifx\@sect\scr@latex@sect\else
   \let\scr@latex@sect\@sect
   \ClassWarning{\KOMAClassName}{%
@@ -987,11 +997,12 @@
 %    \end{macrocode}
 % \end{macro}^^A \scr@latex@sect
 %    \begin{macrocode}
-%</class&!letter>
-%<*(class&!letter)|tagging-lab>
+%</class&!letter|workarounds>
+%<*(class&!letter)|tagging-lab|workarounds>
 %<*body|tagging-lab>
 %<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro \string\@sect}
-\def\@sect#1#2#3#4#5#6[#7]#8{%
+%<!tagging-lab>\def\@sect#1#2#3#4#5#6[#7]#8{%
+%<tagging-lab>\def\scr@lab@sect#1#2#3#4#5#6[#7]#8{%
   \ifnum \scr@osectarg=\z@
     \@scr@tempswafalse
   \else
@@ -1352,6 +1363,8 @@
 %   \cs{SecDef}.
 % \end{description}
 %    \begin{macrocode}
+%</body>
+%<*body|workarounds>
 \def\scr@latex@ssect#1#2#3#4#5{%
   \@tempskipa #3\relax
   \ifdim \@tempskipa>\z@
@@ -1364,6 +1377,9 @@
     \def\@svsechd{#4{\hskip #1\relax #5}}%
   \fi
   \@xsect{#3}}
+%</body|workarounds>
+%<workarounds>\let\@ssect\scr@latex@ssect
+%<*body>
 \ifx\@ssect\scr@latex@ssect
 \else
   \let\scr@latex@ssect\@ssect
@@ -1475,8 +1491,9 @@
 %   macro, but to define and use our own one.
 % \end{description}
 %    \begin{macrocode}
-%<*body>
-\def\scr@latex@xsect#1{%
+%<*body|workarounds>
+%<body>\def\scr@latex@xsect#1{%
+%<workarounds>\def\@xsect#1{%
   \@tempskipa #1\relax
   \ifdim \@tempskipa>\z@
     \par \nobreak
@@ -1501,6 +1518,8 @@
   \fi
   \ignorespaces
 }
+%</body|workarounds>
+%<*body>
 \ifx\@xsect\scr@latex@xsect\else
   \let\scr@latex@xsect\@xsect
   \ClassWarning{\KOMAClassName}{%
@@ -1517,7 +1536,8 @@
 %<*body|tagging-lab>
 %<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
 %<trace> \string\@xsect}
-\def\@xsect#1{%
+%<body>\def\@xsect#1{%
+%<tagging-lab>\def\scr@lab@xsect#1{%
   \@ifundefined{scr@sect@runin}{%
     \def\scr@sect@runin##1##2##3{##3}%
   }%
@@ -1559,7 +1579,7 @@
   \ignorespaces
 }
 %</body|tagging-lab>
-%</(class&!letter)|tagging-lab>
+%</(class&!letter)|tagging-lab|workarounds>
 %<*class&!letter>
 %    \end{macrocode}
 % \end{macro}^^A \@xsect

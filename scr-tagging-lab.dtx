@@ -26,13 +26,37 @@
 %    \begin{macrocode}
 \ProvidesExplPackage {scr-tagging-lab} {2024-06-30} {0.18}{KOMA-Script tagging experiments}
 %    \end{macrocode}
-% First some macros are undefined to be able to redefine those lter.
+% As this project is constructed to be integrated into KOMA-Script, we define some macros which are also defined by KOMA-Script itself.
+% We use file hooks to do save the meaning before loading the class and restore it afterwards.
 % This is to simplify moving the changes from this experiment to the official KOMA-Script SVN.
 %    \begin{macrocode}
-\let\scr@dte@tocline\@undefined
-\let\TOCLineLeaderFill\@undefined
-\let\sectionlinesformat\@undefined
-\let\scr@numberline\@undefined
+\clist_new:N \_@@_changed_macros_clist
+\clist_set:Nn  \_@@_changed_macros_clist {
+	scr@dte@tocline,
+	TOCLineLeaderFill,
+	sectionlinesformat,
+	scr@numberline,
+	scr@saved@startsection,
+}
+\hook_gput_code:nnn {class/before}{scr-tagging-lab-catch-meanings}  {
+	\clist_map_inline:Nn \_@@_changed_macros_clist {
+		\cs_set_eq:cc {_@@_#1} {#1}
+		\cs_undefine:c {#1}
+	}
+}
+\hook_gput_code:nnn {class/after}{scr-tagging-lab-catch-meanings}  {
+	\clist_map_inline:Nn \_@@_changed_macros_clist {
+		\cs_set_eq:cc {#1}{_@@_#1}
+	}
+	\let\scr@lab@sect\@sect
+	\let\scr@lab@xsect\@xsect
+}
+\iffalse
+\providecommand{\@startsection}{\scr@saved@startsection
+\newcommand{\scr@saved@footnotetext}{}}
+\scr@saved@footnotemark
+\newcommand*{\scr@saved@startsection}[6]{%
+\fi
 %    \end{macrocode}
 % Insted of redefining \cs{scr@startsection} it's possible to use hooks.
 % Be aware that using the generic hook needs a check to limit the action to exclude chapter/part.
@@ -42,8 +66,12 @@
 		\tag_tool:n {sec-start=#1}
 	}
 }
-\AddtoDoHook{heading/branch/star}{\__scr_scr_start_aux:n}
-\AddtoDoHook{heading/branch/nostar}{\__scr_scr_start_aux:n}
+
+\hook_gput_code:nnn {class/after}{scr-tagging-lab-scrstart}  {
+	\AddtoDoHook{heading/branch/star}{\__scr_scr_start_aux:n}
+	\AddtoDoHook{heading/branch/nostar}{\__scr_scr_start_aux:n}
+}
+
 %    \end{macrocode}
 % \begin{macro}{\@sect}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
@@ -57,26 +85,31 @@
 % Maybe it's easier to pass those with changing the hooks, but this needs to be discussed.
 %    \begin{macrocode}
 %<*package|heading-hooks>
+
 \tl_new:N \__scr_current_heading_tl
+%\hook_new:n {scr/heading/endgroup/chapter}%TODO
 \hook_gput_code_with_args:nnn {cmd/scr@@startchapter/before} {tagging-save-heading} {
 	\tl_set:Nn \__scr_current_heading_tl {#2}
-}
-\AddtoDoHook{heading/begingroup/chapter}{
-	\exp_args:No \tag_tool:n { sec-start-chapter=  \__scr_current_heading_tl  }
-	\IfUseNumber\relax{\MakeLinkTarget[chapter]{}}
-}
-\AddtoDoHook{heading/endgroup/chapter}{
-   \tag_tool:n {sec-stop-chapter}
 }
 \hook_gput_code_with_args:nnn {cmd/scr@@startpart/before} {tagging-save-heading} {
 	\tl_set:Nn \__scr_current_heading_tl {#2}
 }
-\AddtoDoHook{heading/begingroup/part}{
-	\exp_args:No \tag_tool:n { sec-start-part=  \__scr_current_heading_tl  }
-	\IfUseNumber\relax{\MakeLinkTarget[part]{}}
-}
-\AddtoDoHook{heading/endgroup/part}{
-   \tag_tool:n {sec-stop-part}
+
+\hook_gput_code:nnn {class/after}{scr-tagging-lab-setions}  {
+	\AddtoDoHook{heading/begingroup/chapter}{
+		\exp_args:No \tag_tool:n { sec-start-chapter=  \__scr_current_heading_tl  }
+		\IfUseNumber\relax{\MakeLinkTarget[chapter]{}}
+	}
+	\AddtoDoHook{heading/endgroup/chapter}{
+	   \tag_tool:n {sec-stop-chapter}
+	}
+	\AddtoDoHook{heading/begingroup/part}{
+		\exp_args:No \tag_tool:n { sec-start-part=  \__scr_current_heading_tl  }
+		\IfUseNumber\relax{\MakeLinkTarget[part]{}}
+	}
+	\AddtoDoHook{heading/endgroup/part}{
+	   \tag_tool:n {sec-stop-part}
+	}
 }
 %    \end{macrocode}
 %</package|heading-hooks>
