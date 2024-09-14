@@ -2474,14 +2474,27 @@
 % Filler between the last text line and the page number. The optional argument
 % \texttt{\#1} is the character used for filling.
 %    \begin{macrocode}
+%<tagging-lab> \NewSocket{tagsupport/@@/toc/leaders/before}{0}
+%<tagging-lab> \NewSocket{tagsupport/@@/toc/leaders/after}{0}
 \newcommand*{\TOCLineLeaderFill}[1][.]{%
-%<tagging-lab>  \@dottedtocline@cfgpoint@leaders{
+%<tagging-lab>  \UseTaggingSocket{@@/toc/leaders/before}\SuspendTagging{toc/leaders}%
   \leaders\hbox{$\m@th
     \mkern \@dotsep mu\hbox{#1}\mkern \@dotsep
     mu$}\hfill
-%<tagging-lab>  }
+%<tagging-lab>  \ResumeTagging{toc/leaders}\UseTaggingSocket{@@/toc/leaders/after}%
 }
 %</tocline>
+%    \end{macrocode}
+% Socket setup is the same as provided by \pkg{latex-lab-testphase-toc.sty}.
+%    \begin{macrocode}
+%<*tagging-lab>
+\NewSocketPlug{tagsupport/@@/toc/leaders/before}{artifact}
+ {\tag_mc_begin:n{artifact}\nobreak}
+\NewSocketPlug{tagsupport/@@/toc/leaders/after}{artifact}
+ {\nobreak\tag_mc_end:}
+\AssignSocketPlug{tagsupport/@@/toc/leaders/before}{artifact}
+\AssignSocketPlug{tagsupport/@@/toc/leaders/after}{artifact}
+%</tagging-lab>
 %    \end{macrocode}
 % \end{command}^^A \TOCLineLeaderFill
 % \end{macro}^^A \scr@dte@tocline
