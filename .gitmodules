@@ -1,0 +1,3 @@
+[submodule "KOMA-SVN"]
+	path = KOMA-SVN
+	url = gitea@git.texhackse.de:KOMA-Script/koma-svn.git
