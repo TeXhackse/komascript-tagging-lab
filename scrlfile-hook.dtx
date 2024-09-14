@@ -10,7 +10,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -93,7 +93,7 @@
 %   authors but may also be used by \LaTeX{} users.
 % \end{abstract}
 % \tableofcontents
-% 
+%
 %
 % \section{User Manual}
 %
@@ -117,7 +117,7 @@
 %   Tests if the class \meta{class name} resp. the package \meta{package name}
 %   has been loaded completely. It runs the \Arg{true code} only, if the input
 %   of the class file with the name \meta{class
-%   name}\file{.}\cs{@clsextension} resp. the package file with the name 
+%   name}\file{.}\cs{@clsextension} resp. the package file with the name
 %   \meta{package name}\file{.}\cs{@pkgextension} has already been
 %   finished. It runs the \Arg{false code}, if the class or package has not
 %   been loaded or the input of the class or package file is still in
@@ -211,8 +211,8 @@
 %    \begin{macrocode}
 \NewDocumentCommand \BeforeFile { m }
   {
-%<3.34>    \AddToHook { file / before / #1 } 
-%<current>    \AddToHook { file / #1 / before } 
+%<3.34>    \AddToHook { file / before / #1 }
+%<current>    \AddToHook { file / #1 / before }
   }
 %    \end{macrocode}
 % \end{macro}
@@ -227,8 +227,8 @@
 %    \begin{macrocode}
 \NewDocumentCommand \AfterFile { m }
   {
-%<3.34>    \AddToHook { file / after / #1 } 
-%<current>    \AddToHook { file / #1 / after } 
+%<3.34>    \AddToHook { file / after / #1 }
+%<current>    \AddToHook { file / #1 / after }
   }
 %    \end{macrocode}
 % \end{macro}
@@ -559,7 +559,7 @@
               { \tl_use:c { g__scrlfile_exclude_package_##1_tl } }
           }
       }
-    \clist_clear:N \l__scrlfile_package_clist  
+    \clist_clear:N \l__scrlfile_package_clist
   }
 %    \end{macrocode}
 %
@@ -646,7 +646,7 @@
         \cs_set_eq:NN \protected@write \__scrlfile_protected@write:Nnn
         \debug_resume:
       }
-  }  
+  }
 %    \end{macrocode}
 % \end{macro}
 %
@@ -666,7 +666,7 @@
         \cs_set_eq:NN \protected@write \__scrlfile_protected@write:Nnn
         \debug_resume:
       }
-  }  
+  }
 %    \end{macrocode}
 % \end{macro}
 %
@@ -692,7 +692,7 @@
   }
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 % \Finale
 % \PrintChanges
 %

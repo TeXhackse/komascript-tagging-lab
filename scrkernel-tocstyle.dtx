@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -31,13 +31,13 @@
 %<option>%%%            (run: option)
 % - definition of options (unused)
 %<execoption>%%%            (run: execoption)
-% - initial option executions up to \KOMAProcessOptions 
+% - initial option executions up to \KOMAProcessOptions
 %   (unused)
 %<body>%%%            (run: body)
 % - everything, that should be done after \KOMAProcessOptions
 %<exit>%%%            (run: exit)
 % - everything, that should be done immediately before leaving the file
-%   (unused) 
+%   (unused)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
@@ -87,7 +87,7 @@
 % You can find the user documentation the commands implemented here in the
 % \KOMAScript{} manual, either the German \file{scrguide-de.pdf} or the
 % English \file{scrguide-en.pdf}.
-% 
+%
 % \MaybeStop{\PrintIndex}
 %
 % \section{Implementation of the Basic ToC Styles of Package
@@ -163,7 +163,7 @@
 %    \end{macrocode}
 % \end{macro}^^A \numberline@prefix
 % \begin{macro}{\numberline@postfix}
-% \changes{v3.06}{2010/05/18}{added} 
+% \changes{v3.06}{2010/05/18}{added}
 % The default is \cs{hfil} to make the number left aligned.
 %    \begin{macrocode}
 \newcommand*{\numberline@postfix}{\hfil}
@@ -386,7 +386,7 @@
   }%
   \edef\scr@dte@doopts{%
     \unexpanded\expandafter{\scr@dte@doopts}\noexpand\do{#2:}\noexpand\do{#2+}%
-  }%  
+  }%
 }
 %</body>
 %    \end{macrocode}
@@ -1360,7 +1360,7 @@
 %    \begin{macrocode}
 %<*style&!tagging-lab>
 %    \end{macrocode}
-% 
+%
 % \begin{macro}{\scr@dte@def@l@gobble}
 % \changes{v3.20}{2015/11/20}{ToC style \texttt{gobble} added}
 % Der aller einfachste Verzeichniseintragsstil ist |gobble|. Er nimmt
@@ -1488,10 +1488,10 @@
   \DefineTOCEntryCommandOption{pagenumberbox}%
     {scr@tso@}{@pagenumberbox}[1]{page number box}%
 %</tocline>
-%<*tocline|toctext> 
+%<*tocline|toctext>
   \DefineTOCEntryCommandOption{pagenumberformat}%
     {scr@tso@}{@pagenumberformat}[1]{page number format}%
-%</tocline|toctext>  
+%</tocline|toctext>
 %    \end{macrocode}
 % \changes{v3.27}{2019/05/24}{new option \opt{pagenumberwidth}}
 % \changes{v3.27}{2019/05/24}{new option \opt{rightindent}}
@@ -1506,7 +1506,7 @@
 %<*tocline|toctext>
   \DefineTOCEntryLengthOption{rightindent}%
     {scr@tso@}{@rightindent}{entry's text right indent}%
-%</tocline|toctext>  
+%</tocline|toctext>
 %    \end{macrocode}
 % \changes{v3.21}{2016/06/06}{new option \opt{raggedentrytext}}
 % Unfortunately definition of option \opt{raggedentrytext} is somehow
@@ -1938,7 +1938,7 @@
 %</tocline>
       \expandafter\providecommand%
       \csname scr@tso@#1@entryformat\endcsname[1]{##1}%
-%<*tocline>      
+%<*tocline>
     }%
   }%
 %</tocline>
@@ -2066,7 +2066,7 @@
     \@dottedtocline{\@nameuse{#1tocdepth}}{\@nameuse{scr@tso@#1@indent}}%
                    {\@nameuse{scr@tso@#1@numwidth}}{##1}{##2}%
   }%
-%</dottedtocline> 
+%</dottedtocline>
 %<*undottedtocline|largetocline>
   \ifnum \c@tocdepth >\numexpr \@nameuse{#1tocdepth}-\@ne\relax
 %    \end{macrocode}
@@ -2772,7 +2772,7 @@
 %
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex
@@ -2782,4 +2782,3 @@
 % TeX-engine: luatex-dev
 % eval: (setcar (or (cl-member "Index" (setq-local TeX-command-list (copy-alist TeX-command-list)) :key #'car :test #'string-equal) (setq-local TeX-command-list (cons nil TeX-command-list))) '("Index" "mkindex %s" TeX-run-index nil t :help "makeindex for dtx"))
 % End:
-

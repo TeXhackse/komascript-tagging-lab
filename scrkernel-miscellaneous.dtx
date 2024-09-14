@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -148,7 +148,7 @@
 % \begin{description}
 % \item[ToDo:] Should we move this to \file{scrkernel-paragraphs.dtx}?
 % \end{description}
-% 
+%
 % \begin{option}{draft}
 % \changes{v2.95}{2002/12/05}{re-implemented using \pkg{keyval}}
 % \changes{v3.17}{2015/03/12}{using internal value storage}
@@ -356,7 +356,7 @@
 %   \file{scrkernel-notepaper.dtx}, and \file{scrkernel-title.dtx} (and also
 %   in \file{scrhack.dtx}, which also defines it of needed).
 % \end{description}
-% 
+%
 % \begin{macro}{\@restonecolfalse,\@restonecoltrue,\if@restonecol}
 % We need a local switch to be able to restore two column mode after locally
 % switching to one column mode (or visa versa). For \pkg*{scrextend} this is a
@@ -376,7 +376,7 @@
 %</!letter&body>
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 % \section{Implementation of the Dictum}
 %
 % Printing a \emph{dictum} is also not supported by letters.
@@ -384,7 +384,7 @@
 % \item[ToDo:] Should we move this to \file{scrkernel-sections.dtx} or to a
 %   new file?
 % \end{description}
-% 
+%
 % \begin{command}{\dictum}
 % \changes{v2.8q}{2001/20/04}{added}
 % \changes{v2.9l}{2003/01/28}{\cs{edef} replaced by \cs{def} ersetzt}
@@ -910,7 +910,7 @@
 }
 %</!letter>
 %    \end{macrocode}
-% \item[\pkg{tocloft}:] 
+% \item[\pkg{tocloft}:]
 % \changes{v3.26}{2018/07/18}{Usage of \textsf{tocloft} not recommended}
 % redefines \cs{tableofcontents}, \cs{listoffigures},
 % \cs{listoftables}, \cs{l@part} \dots{} \cs{l@subparagraph} and breaks
@@ -981,9 +981,9 @@
 }
 \AfterPackage{minitoc}{%
   \def\@tempa#1#2#3#4#5#6[#7]#8{%
-    \ifnum #2<1 \relax 
+    \ifnum #2<1 \relax
       \addtocontents{toc}{\protect\sectbegin}
-    \fi 
+    \fi
     \stc@sect{#1}{#2}{#3}{#4}{#5}{#6}[{#7}]{#8}%
   }%
   \ifx\@sect\@tempa
@@ -1089,7 +1089,7 @@
 %
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex

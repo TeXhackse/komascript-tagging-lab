@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -45,7 +45,7 @@
 %<package&koma>  scrkbase%
 %<package>}[%
 %!KOMAScriptVersion
-  package 
+  package
 %<*dtx>
   source
 %</dtx>
@@ -124,7 +124,7 @@
 % commands implemented in \file{scrkernel-basics.dtx} in the \KOMAScript{}
 % manual, either the German \file{scrguide-de.pdf} or the English
 % \file{scrguide-en.pdf}.
-% 
+%
 %
 % \subsection{Features not yet in the user manuals}
 %
@@ -788,7 +788,7 @@
     Please send a bug report with a minimal but complete example,
     that\MessageBreak
     shows this error, to komascript at gmx dot info or report it
-    at\MessageBreak 
+    at\MessageBreak
     <https://sf.net/p/koma-script/tickets/> (you need an account to do so).%
   }%
 }
@@ -2268,7 +2268,7 @@
                             \relpenalty,\widowpenalty,%
                             \skip,\splitmaxdepth,\splittopskip,%
                             \tolerance,\topskip,%
-                            \wd,\vbadness,\vfuzz,\vsize 
+                            \wd,\vbadness,\vfuzz,\vsize
           \do {%
             \expandafter\Ifstr\expandafter{\expandafter\string\reserved@a}{%
               \meaning #1%
@@ -2409,7 +2409,7 @@
                             \relpenalty,\widowpenalty,%
                             \skip,\splitmaxdepth,\splittopskip,%
                             \tolerance,\topskip,%
-                            \wd,\vbadness,\vfuzz,\vsize 
+                            \wd,\vbadness,\vfuzz,\vsize
           \do {%
             \expandafter\Ifstr\expandafter{\expandafter\string\reserved@a}{%
               \meaning #1%
@@ -2572,7 +2572,7 @@
                             \relpenalty,\widowpenalty,%
                             \skip,\splitmaxdepth,\splittopskip,%
                             \tolerance,\topskip,%
-                            \wd,\vbadness,\vfuzz,\vsize 
+                            \wd,\vbadness,\vfuzz,\vsize
           \do {%
             \expandafter\Ifstr\expandafter{\expandafter\string\reserved@a}{%
               \meaning #1%
@@ -2729,7 +2729,7 @@
     \fi
   \fi
   \scr@next
-}       
+}
 %</base>
 %    \end{macrocode}
 % \end{macro}^^A \scr@test@sign
@@ -2890,7 +2890,7 @@
 %</base>
 %    \end{macrocode}
 % \end{macro}
-%  
+%
 % \begin{command}{\ifvtex,\ifVTeX}
 % \changes{v2.95}{2002/08/19}{added}
 % \changes{v2.97c}{2007/06/20}{\cs{ifvtex} renamed to \cs{ifVTeX}}
@@ -2948,7 +2948,7 @@
       \fi
     }%
   }{%
-    \ifnum\pdfoutput>0 
+    \ifnum\pdfoutput>0
       \expandafter\@firstoftwo
     \else
       \expandafter\@secondoftwo
@@ -2985,9 +2985,9 @@
 %<*base>
 \newcommand*{\scr@ifpsoutput}{%
   \Ifnotundefined{if@dvips}{%
-    \if@dvips 
+    \if@dvips
       \expandafter\@firstoftwo
-    \else 
+    \else
       \expandafter\@secondoftwo
     \fi
   }{%
@@ -3221,7 +3221,7 @@
 %
 %
 % \subsection{Definition of the \KOMAScript{} \pkg*{keyval} main handling}
-% 
+%
 % \begin{command}{\FamilyExecuteOptions}
 % \changes{v3.00}{2008/04/30}{added}
 % \changes{v3.04b}{2010/01/29}{\cs{edef} replaced by \cs{protected@edef}}
@@ -3363,7 +3363,7 @@
         \ifx\FamilyKeyState\FamilyKeyStateUnknownValue
           value at
         \fi
-      \fi  
+      \fi
       `\expandafter\detokenize\expandafter{\scr@key@atlist}'%
     }{%
       Option
@@ -3650,7 +3650,7 @@
                     \scr@key@run@errors
                   }%
                 \fi
-              }%  
+              }%
             \fi
           \fi
         \else
@@ -3687,7 +3687,7 @@
                 \fi.%
               }%
             \fi
-          }%  
+          }%
         \fi
       \fi
     \fi
@@ -3730,7 +3730,7 @@
   \reserved@a
   \ifx\FamilyKeyState\FamilyKeyStateUnknown
     \PackageInfo{scrbase}{Unknown processing state.\MessageBreak
-      Processing option 
+      Processing option
       `\expandafter\detokenize\expandafter{\scr@key@atlist}'\MessageBreak
       \ifx\FamilyMemberOfKey\@empty\else
         of member `\FamilyMemberOfKey'\MessageBreak
@@ -4050,7 +4050,7 @@
 % \end{command}^^A \AfterKOMAoptions
 %
 % \begin{macro}{\l@addto@macro}
-% \changes{v2.8p}{2001/09/22}{added} 
+% \changes{v2.8p}{2001/09/22}{added}
 % \changes{v2.95}{2006/06/02}{changed to handle macros with arguments same
 %   like \cs{g@addto@macro}}
 % \changes{v3.12}{2013/04/20}{removed non-\eTeX{} implementation}
@@ -4531,7 +4531,7 @@
       }%
     \fi
   \reserved@a
-}    
+}
 %</base>
 %    \end{macrocode}
 % \end{command}^^A \FamilySetCounterMacro
@@ -4645,7 +4645,7 @@
 %</neveruse>
 %    \end{macrocode}
 %   would be nice. But there are reasons I've decided not to use
-%   this. Unfortunately I cannot remember the reason (and because of this I've 
+%   this. Unfortunately I cannot remember the reason (and because of this I've
 %   added the code as \texttt{neveruse}). So the simple assignment is used
 %   instead:
 % \end{description}
@@ -4726,7 +4726,7 @@
       }%
     \fi
   \reserved@a
-}    
+}
 %</base>
 %    \end{macrocode}
 % \end{macro}^^A \Family@@Length@@Macro@@Key,\Family@Length@Macro@Key
@@ -4779,7 +4779,7 @@
       }%
     \fi
   \reserved@a
-}    
+}
 %</base>
 %    \end{macrocode}
 % \end{macro}^^A \Family@@UseLength@@Macro@@Key,\Family@USeLength@Macro@Key
@@ -5190,7 +5190,7 @@
 % package authors. All hooks newly implemented in \KOMAScript{} \emph{should}
 % use this new mechanism.
 %
-% 
+%
 % \begin{command}{\ForDoHook}
 % \changes{v3.27}{2019/02/05}{added}
 % \changes{v3.28}{2019/11/18}{\cs{ifstr} renamed to \cs{Ifstr}}
@@ -5242,7 +5242,7 @@
 % \item[\meta{specificator}:]
 %   \meta{string} or \meta{string}\texttt{/}\meta{specificator}
 % \item[\meta{prefix command}:] \LaTeX{} macro
-% \item[\meta{postfix command}:] \LaTeX{} macro 
+% \item[\meta{postfix command}:] \LaTeX{} macro
 % \end{description}
 % Splits of the \emph{last} element of the \meta{specificator}. The
 % \meta{postfix command} is defined to be that last element, the \meta{prefix
@@ -5391,7 +5391,7 @@
 %
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex

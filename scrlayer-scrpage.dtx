@@ -124,7 +124,7 @@
 %    \begin{macrocode}
 %<*interface>
 %    \end{macrocode}
-% 
+%
 %
 % \subsection{Initialising some values before the options}
 %
@@ -147,7 +147,7 @@
 %    \begin{macrocode}
 %<*options>
 %    \end{macrocode}
-% 
+%
 % Package \pkg{scrpage2} didn't support \KOMAScript{} options but only
 % regular \LaTeX{} package options.  This interface will also support those
 % options, but uses \KOMAScript{} options for the implementation.  This
@@ -168,7 +168,7 @@
 %    \begin{macrocode}
 %</options>
 %    \end{macrocode}
-% 
+%
 %
 % \subsection{Width of header and footer}
 %
@@ -882,13 +882,13 @@
       detected!\MessageBreak
       Using scrlayer-scrpage the head height\MessageBreak
       should be at least \string\baselineskip, which is\MessageBreak
-      \if@ps@singlespacing\f@baselineskip\else\the\baselineskip\fi\space 
+      \if@ps@singlespacing\f@baselineskip\else\the\baselineskip\fi\space
       currently.\MessageBreak
       But head height is currently
       \the\headheight\space only.\MessageBreak
       You may use\MessageBreak
       \@ifpackageloaded{geometry}{%
-        geometry option 
+        geometry option
         `head=\if@ps@singlespacing\f@baselineskip\else\the\baselineskip\fi'%
       }{%
         \@ifpackageloaded{typearea}{%
@@ -912,7 +912,7 @@
         detected!\MessageBreak
         Using scrlayer-scrpage the foot height\MessageBreak
         should be at least \string\baselineskip, which is\MessageBreak
-        \if@ps@singlespacing\f@baselineskip\else\the\baselineskip\fi\space 
+        \if@ps@singlespacing\f@baselineskip\else\the\baselineskip\fi\space
         currently.\MessageBreak
         But foot height is currently
         \the\footheight\space only.\MessageBreak
@@ -1182,7 +1182,7 @@
 %<*body>
 \newcommand*{\defpagestyle}[3]{%
   \sls@defhead{#1}#2\@empty\@empty\@empty
-  \sls@deffoot{#1}#3\@empty\@empty\@empty 
+  \sls@deffoot{#1}#3\@empty\@empty\@empty
   \DeclarePageStyleByLayers{#1}{%
     #1.head.odd,#1.head.even,#1.head.oneside,%
     #1.head.above.line,#1.head.below.line,%
@@ -1411,7 +1411,7 @@
 \newcommand*{\sls@secure@box}[2]{%
   \begingroup
     \setbox\z@\vbox{%
-      \ifsls@leavevmode\leavevmode\expandafter\ignorespaces\fi 
+      \ifsls@leavevmode\leavevmode\expandafter\ignorespaces\fi
       #2\par
     }%
     \ifdim #1<\dimexpr \ht\z@+\dp\z@\relax
@@ -1592,7 +1592,7 @@
         \fi
         \par
       }%
-    }%      
+    }%
   \endgroup
 }%
 %    \end{macrocode}
@@ -1611,7 +1611,7 @@
     \fi
   \else
     \oddsidemargin+\csname sls@odd#1shift\endcsname
-  \fi 
+  \fi
   +1in\relax
 }%
 %</body>
@@ -2511,7 +2511,7 @@
 %    \begin{macrocode}
 %</interface>
 %    \end{macrocode}
-% 
+%
 % \Finale
 % \PrintChanges
 %

@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -94,7 +94,7 @@
 %    \begin{macrocode}
 %<*class&!letter>
 %    \end{macrocode}
-% 
+%
 % \subsection{Some macros and configurations for the options}
 %
 % We need some of the macros an settings already when processing the options.
@@ -107,7 +107,7 @@
 %    \begin{macrocode}
 %<*option>
 \newif\if@captionabove\@captionabovefalse
-%    \end{macrocode}  
+%    \end{macrocode}
 % \end{macro}^^A \if@captionabove
 %
 % \begin{macro}{\@tablecaptionabovefalse,\@tablecaptionabovetrue,\if@tablecaptionabove}
@@ -409,7 +409,7 @@
 % \begin{option}{tablecaptionabove,tablecaptionbelow}
 % \changes{v2.8h}{2001/07/19}{added}
 % \changes{v2.8k}{2001/08/15}{moved from \pkg*{typearea} into the classes}
-% \changes{v2.98c}{2008/02/18}{obsolete} 
+% \changes{v2.98c}{2008/02/18}{obsolete}
 % \changes{v3.01a}{2008/11/20}{deprecated}
 % \changes{v3.99}{2022/11/16}{not with \KOMAScript~4}
 % Implementation of deprecated options by mapping them to corresponding
@@ -438,7 +438,7 @@
 %
 % \begin{option}{onelinecaption,noonelinecaption}
 % \changes{v2.8q}{2001/11/17}{new option}
-% \changes{v2.98c}{2008/03/03}{obsolete} 
+% \changes{v2.98c}{2008/03/03}{obsolete}
 % \changes{v2.98c}{2008/03/03}{extra code for \pkg{caption2} removed}
 % \changes{v3.01a}{2008/11/20}{deprecated}
 % \changes{v3.99}{2022/11/16}{not with \KOMAScript~4}
@@ -449,7 +449,7 @@
 \KOMA@DeclareDeprecatedOption{onelinecaption}{captions=oneline}
 \KOMA@DeclareDeprecatedOption{noonelinecaption}{captions=nooneline}
 %</!v4>
-%</option> 
+%</option>
 %    \end{macrocode}
 % \end{option}^^A onelinecaption,noonelinecaption
 %
@@ -670,7 +670,7 @@
       }%
       \setlength{\abovecaptionskip}{-\@tempdima}%
     \fi
-    \if b\scap@valign  
+    \if b\scap@valign
       {%
         \usekomafont{caption}{%
           \global\@tempdima\dp\strutbox
@@ -734,7 +734,7 @@
 % \changes{v3.38}{2022/07/20}{using \cs{scap@currentcounter}}
 % \changes{v3.38}{2022/07/20}{using \cs{scap@currentlabelname}}
 % \changes{v3.38}{2022/07/20}{using \cs{scap@currentHref}}
-%    \begin{macrocode}   
+%    \begin{macrocode}
   \if l\@tempa
     \rlap{%
       \parbox[\scap@valign]{\@tempdimb}{\scap@caption
@@ -1400,7 +1400,7 @@
 % the command.
 %    \begin{macrocode}
   \IfArgIsEmpty{#1}{}{%
-    \expandafter\ifnum 
+    \expandafter\ifnum
     \scr@ifundefinedorrelax{#1}{0}{\scr@ifundefinedorrelax{end#1}{0}{1}}=0
       \ClassWarning{\KOMAClassName}{%
         float type `#1' defined not yet,\MessageBreak
@@ -1498,21 +1498,21 @@
                   }{%
                     \ClassError{\KOMAClassName}{unknown alignment char `#2'}{%
                       \string\setcaptionalignment\space supports
-                      only:\MessageBreak 
+                      only:\MessageBreak
                       \space\space c - centered captions,\MessageBreak
                       \space\space j - justified captions,\MessageBreak
                       \space\space l - left align captions,\MessageBreak
                       \space\space r - right aligned captions,\MessageBreak
                       \space\space C - centered captions with
-                      `ragged2e',\MessageBreak 
+                      `ragged2e',\MessageBreak
                       \space\space J - justified captions with
-                      `ragged2e',\MessageBreak 
+                      `ragged2e',\MessageBreak
                       \space\space L - left align captions with
-                      `ragged2e',\MessageBreak 
+                      `ragged2e',\MessageBreak
                       \space\space R - right aligned captions with
-                      `ragged2e',\MessageBreak 
+                      `ragged2e',\MessageBreak
                       or an empty argument to remove special
-                      alignment.\MessageBreak 
+                      alignment.\MessageBreak
                       If you'd continue, I'd not change the alignment.%
                     }%
                   }%
@@ -1578,7 +1578,7 @@
     `longtable'!\MessageBreak
     Because of this package `#1' isn't able to\MessageBreak
     control `\string\caption' at longtables. \space After loading
-    \MessageBreak 
+    \MessageBreak
     package `#1' KOMA-Script also doesn't control\MessageBreak
     `\string\caption'.\MessageBreak
     I think, you should load package `caption' after\MessageBreak
@@ -1634,7 +1634,7 @@
     }%
   \fi
 }
-%    \end{macrocode}  
+%    \end{macrocode}
 % \end{macro}^^A \scr@caption@before@longtable@warning
 % \end{macro}^^A \LT@array,\LT@caption
 % \end{macro}^^A \LT@makecaption
@@ -1833,7 +1833,7 @@
   \renewcommand*\thefigure{\@arabic\c@figure}
 \fi
 %</article>
-%</!v4>  
+%</!v4>
 %    \end{macrocode}
 % \end{command}
 % \begin{macro}{\fnum@figure}
@@ -1927,10 +1927,10 @@
 %    \begin{macrocode}
 %</class&!letter>
 %    \end{macrocode}
-% 
+%
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex

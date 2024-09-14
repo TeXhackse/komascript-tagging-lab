@@ -1,6 +1,6 @@
 % \iffalse
 % ======================================================================
-% scrtime.dtx 
+% scrtime.dtx
 % Copyright (c) Markus Kohm, 1995-2024
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -178,7 +178,7 @@
 %    \begin{macrocode}
 %<*body>
 %    \end{macrocode}
-% 
+%
 % \subsubsection{Commands and Macros of \pkg*{scrtime}}
 %
 %    \begin{macrocode}
@@ -222,7 +222,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{command}
-% 
+%
 %  \begin{command}{\settime}
 % \changes{v1.1b}{1995/02/15}{redefines \cs{@thistime}}
 % \changes{v1.1c}{1995/05/24}{missing macrocode-environment inserted}
@@ -236,14 +236,14 @@
 %    \begin{macrocode}
 %</scrtime>
 %    \end{macrocode}
-% 
+%
 %
 % \subsubsection{Commands and Macros of \pkg*{scrdate}}
 %
 %    \begin{macrocode}
 %<*scrdate>
 %    \end{macrocode}
-% 
+%
 % \changes{v1.1a}{1995/02/12}{changed all but the user-interface}
 % \changes{v3.05a}{2010/03/10}{changed everything}
 % With version~3.05a \pkg*{scrdate} was rewritten.  First step was to make
@@ -259,7 +259,7 @@
 \newcommand*{\CenturyPart}[1]{\XdivY{#1}{100}}
 %    \end{macrocode}
 % \end{command}
-% 
+%
 % \begin{command}{\DecadePart}
 % \changes{v3.05a}{2010/03/10}{added}
 % This is the year number withoud the century part and therefrso only a
@@ -268,7 +268,7 @@
 \newcommand*{\DecadePart}[1]{\XmodY{#1}{100}}
 %    \end{macrocode}
 % \end{command}
-% 
+%
 % \begin{macro}{\@GaussYear}
 % \changes{v3.05a}{2010/03/10}{added}
 % At the Gauss calculation of the day of the week January and February relates
@@ -299,12 +299,12 @@
 %    \begin{macrocode}
 \newcommand*{\DayNumber}[3]{%
   \XmodY{%
-    \numexpr #3 
+    \numexpr #3
            + \ifcase #2
                \PackageError{scrdate}{month out of range}{%
                  You've asked for the dayname of ISO date #1-#2-#3,\MessageBreak
                  this means, that month hat invalid value '#2'.}%
-             \or 28 \or 31 \or 2 \or 5 \or 7 \or 10 \or 12 \or 15 \or 18 
+             \or 28 \or 31 \or 2 \or 5 \or 7 \or 10 \or 12 \or 15 \or 18
              \or 20 \or 23 \or 25
              \else
                \PackageError{scrdate}{month out of range}{%
@@ -333,7 +333,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{command}
-% 
+%
 % \begin{command}{\DayName}
 % \changes{v3.05a}{2010/03/10}{added}
 % Returns the name of the day of the week. Arguments like \cs{DayNumber}.
@@ -348,7 +348,7 @@
 \newcommand*{\ISODayName}[1]{\@dayname{\ISODayNumber{#1}}}
 %    \end{macrocode}
 % \end{command}
-% 
+%
 % \begin{command}{\DayNameByNumber}
 % \changes{v3.05a}{2010/03/10}{added}
 % Returns the name of the day of the week. The argument is a number that will
@@ -494,7 +494,7 @@
 }
 %    \end{macrocode}
 % \end{command}
-% 
+%
 % \begin{macro}{\@dayname}
 % This should be named selecting the language. Since I changed the definitions
 % package \pkg{german} and equal may be loaded before or after \pkg*{scrdate}
@@ -756,10 +756,10 @@
 %    \begin{macrocode}
 %</body>
 %    \end{macrocode}
-% 
+%
 % \Finale
 % \PrintChanges
-% 
+%
 % \endinput
 % Local Variables:
 % mode: doctex

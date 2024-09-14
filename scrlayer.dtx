@@ -1,7 +1,7 @@
 % \iffalse^^A meta-comment
 % ======================================================================
 % scrlayer.dtx
-% Copyright (c) Markus Kohm, 2012-2023
+% Copyright (c) Markus Kohm, 2012-2024
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrlayer.dtx 4097 2024-02-01 09:27:59Z kohm $
+%%% From File: $Id: scrlayer.dtx 4118 2024-09-02 12:05:30Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -28,9 +28,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-02-01 10:27:59 +0100 (Thu, 01 Feb 2024) $
+  \filedate$Date: 2024-09-02 14:05:30 +0200 (Mon, 02 Sep 2024) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4097 $
+  \filerevision$Revision: 4118 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrlayer.dtx}%
@@ -161,7 +161,7 @@
   \else
     \g@addto@macro\scrlayer@@inherited@options@cslist{,#1}%
   \fi
-}  
+}
 \newcommand*{\scrlayer@do@inherited@options}[2][.\@currname.\@currext]{%
   \@for \reserved@a:=\scrlayer@@inherited@options@cslist \do {%
     \edef\reserved@a{\unexpanded{#2}{#1}{\reserved@a}}%
@@ -277,14 +277,14 @@
 %    \begin{macrocode}
 %</init>
 %    \end{macrocode}
-% 
+%
 %
 % \subsection{Process Options}
 %
 %    \begin{macrocode}
 %<*body>
 %    \end{macrocode}
-% 
+%
 % The very first thing at  the body is processing the options:
 %    \begin{macrocode}
 %<*package|interface>
@@ -299,7 +299,7 @@
 %    \begin{macrocode}
 %</body>
 %    \end{macrocode}
-% 
+%
 %
 % \subsection{Extended Running Heads}
 %
@@ -341,7 +341,7 @@
           \aftergroup\MakeLowercase
           \aftergroup\scrlayer@forceignoreuppercasefalse
         \or
-          \scr@ifundefinedorrelax{MakeTitlecase}{%  
+          \scr@ifundefinedorrelax{MakeTitlecase}{%
             \PackageWarning{scrlayer}{`markcase=title' ignored because
               \string\MakeTitlecase\space not available}%
             \aftergroup\MakeMarkcase
@@ -349,7 +349,7 @@
             \aftergroup\MakeTitlecase
           }%
           \aftergroup\scrlayer@forceignoreuppercasefalse
-        \or  
+        \or
           \aftergroup\@firstofone
           \aftergroup\scrlayer@forceignoreuppercasefalse
         \else
@@ -888,7 +888,7 @@
 %    \begin{macrocode}
           \expandafter\def\csname #2mark\endcsname##1{%
             \@mkdouble{%
-              \ifnum \c@secnumdepth<\numexpr 
+              \ifnum \c@secnumdepth<\numexpr
                 \csname #2numdepth\endcsname +0\relax
               \else
                 \if@mainmatter \MakeMarkcase{\csname #2markformat\endcsname}\fi
@@ -899,9 +899,21 @@
         \else
 %    \end{macrocode}
 % Level of left mark is less than level of right mark. This is
-% usual.
+% unusual, nevertheless it should work:
+% \changes{v3.42}{2024/09/02}{argument reversal corrected
+% (\href{https://sourceforge.net/p/koma-script/tickets/74/}{issue 74})}
 %    \begin{macrocode}
           \expandafter\def\csname #1mark\endcsname##1{%
+            \@mkboth{}{%
+              \ifnum \c@secnumdepth
+                   < \numexpr \csname #1numdepth\endcsname +0\relax
+              \else
+                \if@mainmatter \MakeMarkcase{\csname #1markformat\endcsname}\fi
+              \fi
+              \MakeMarkcase{##1}%
+            }%
+          }%
+          \expandafter\def\csname #2mark\endcsname##1{%
             \begingroup
               \@tempswafalse
               \if@twoside\@tempswatrue
@@ -910,23 +922,13 @@
             \if@tempswa
               \@mkleft{%
                 \ifnum \c@secnumdepth
-                     < \numexpr\csname #1numdepth\endcsname +0\relax
+                     < \numexpr\csname #2numdepth\endcsname +0\relax
                 \else
-                  \if@mainmatter \MakeMarkcase{\csname #1markformat\endcsname}\fi
+                  \if@mainmatter \MakeMarkcase{\csname #2markformat\endcsname}\fi
                 \fi
                 \MakeMarkcase{##1}%
               }%
             \fi
-          }%
-          \expandafter\def\csname #2mark\endcsname##1{%
-            \@mkboth{}{%
-              \ifnum \c@secnumdepth
-                   < \numexpr \csname #2numdepth\endcsname +0\relax
-              \else
-                \if@mainmatter \MakeMarkcase{\csname #2markformat\endcsname}\fi
-              \fi
-              \MakeMarkcase{##1}%
-            }%
           }%
         \fi
       \fi
@@ -2086,7 +2088,7 @@
     \expandafter\let\csname scr@l@#1@postcontents@hook\relax
     \expandafter\let\csname scr@l@#1@artifact\relax
   }{%
-%<*trace>    
+%<*trace>
     \PackageInfo{scrlayer}{\string\DestroyLayer{#1} ignored,\MessageBreak
       because that layer doesn't exist\MessageBreak
       (any longer)%
@@ -2266,7 +2268,7 @@
 }
 \AtBeginDocument{%
   \ifdim\footheight=-12345sp
-%<*trace>    
+%<*trace>
     \PackageInfo{scrlayer}{Setting magic \string\footheight\space to
       \string\baselineskip\space while\MessageBreak
       \string\begin{document}}%
@@ -2760,7 +2762,7 @@
 %   \cs{textwidth}}
 % \changes{v3.18}{2015/06/09}{usage of \cs{parbox[b]} instead of
 %   \cs{parbox[t]} because of strange effect with package
-%   \textsf{multicol}} 
+%   \textsf{multicol}}
 % \changes{v3.24}{2017/05/22}{test for \cs{if@ps@singlespacing} added}
 % \changes{v3.26}{2018/08/29}{\cs{scr@trim@spaces} added}
 % \changes{v3.28}{2019/11/18}{\cs{ifstr} renamed to \cs{Ifstr}}
@@ -3051,7 +3053,7 @@
                          (\csname scr@l@#3@w\endcsname,%
                           \csname scr@l@#3@h\endcsname)%
                          [\csname scr@l@#3@align\endcsname]%
-                         {\csname layer\csname scr@l@#3@mode\endcsname 
+                         {\csname layer\csname scr@l@#3@mode\endcsname
                                   mode\expandafter\endcsname{%
                              \csname scr@l@#3@precontents@hook\endcsname
                              \scr@ifundefinedorrelax{scr@l@#3@artifact}{}{%
@@ -3071,7 +3073,7 @@
                              }%
                              \csname scr@l@#3@postcontents@hook\endcsname
                            }%
-                         }%     
+                         }%
           \fi
         \fi
       \fi
@@ -3249,7 +3251,7 @@
 %</package&body>
 %    \end{macrocode}
 % \end{command}^^A \layerpicturemode
-% 
+%
 % \begin{option}{draft}
 % \changes{v3.39}{2022/11/11}{initial dot in member argument of option storage
 %   commands removed}
@@ -3700,7 +3702,7 @@
   }{%
     \scrlayer@lpm@error{#1}{modifying}%
   }%
-}        
+}
 %</package&body>
 %    \end{macrocode}
 % \end{command}^^A \ModifyLayerPageStyleOptions,\AddToLayerPageStyleOptions
@@ -4201,7 +4203,7 @@
             has been defined already, when\MessageBreak
             `#1' tried to define it again.\MessageBreak
             Nevertheless, while scrlayer is in force overwrite\MessageBreak
-            mode currently, the original definition will be\MessageBreak 
+            mode currently, the original definition will be\MessageBreak
             removed%
           }%
           \expandafter\let\csname #2\endcsname\relax
@@ -4428,7 +4430,7 @@
 %    \begin{macrocode}
 %</package|interface|class>
 %    \end{macrocode}
-% 
+%
 % \Finale
 % \PrintChanges
 %

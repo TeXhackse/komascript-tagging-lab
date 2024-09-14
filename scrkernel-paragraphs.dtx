@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -643,7 +643,7 @@
 %</body>
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 % \subsection{Extra code for font sizes}
 %
 % \begin{description}
@@ -671,8 +671,8 @@
 \@ifundefined{@list@extra}{}{%
   \scr@ifundefinedorrelax{scr@v@is@ge}{\par@updaterelative}{%
     \expandafter\ifnum\scr@v@is@ge{3.17}\par@updaterelative\fi
-  }%  
-%</10pt|11pt|12pt> 
+  }%
+%</10pt|11pt|12pt>
   \l@addto@macro{\@listi}{\@list@extra}%
   \let\@listI=\@listi
   \l@addto@macro{\@listii}{\@list@extra}%
@@ -720,10 +720,10 @@
 %    \begin{macrocode}
 %</class>
 %    \end{macrocode}
-% 
+%
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex
@@ -733,4 +733,3 @@
 % TeX-engine: luatex-dev
 % eval: (setcar (or (cl-member "Index" (setq-local TeX-command-list (copy-alist TeX-command-list)) :key #'car :test #'string-equal) (setq-local TeX-command-list (cons nil TeX-command-list))) '("Index" "mkindex %s" TeX-run-index nil t :help "makeindex for dtx"))
 % End:
-

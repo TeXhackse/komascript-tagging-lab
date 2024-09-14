@@ -117,7 +117,7 @@
 %   contents but also for the already mentioned lists of figures and tables.
 % \end{abstract}
 % \tableofcontents
-% 
+%
 % \section{User Manual}
 %
 % You can find the user manuals of \pkg*{tocbasic} in the \KOMAScript{}
@@ -349,7 +349,7 @@
 %    \end{macrocode}
 % \item[\texttt{starttoc}:] executes \cs{tocbasicautomode}
 %    \begin{macrocode}
-      \bool_if:NT \@@_patch_starttoc_bool \tocbasicautomode  
+      \bool_if:NT \@@_patch_starttoc_bool \tocbasicautomode
 
 %    \end{macrocode}
 % \item[\texttt{listoffigures}] redefines \cs{listoffigures} to use
@@ -779,7 +779,7 @@
 % \changes{v3.41}{2023/06/28}{removed}
 % \end{macro}
 % \end{command}
-% 
+%
 % \begin{command}{\addtoeachtocfile}
 % \changes{v3.20}{2016/04/12}{\cs{@ifnextchar} replaced by
 %   \cs{kernel@ifnextchar}}
@@ -819,14 +819,14 @@
 %<*body>
 \NewDocumentCommand\addcontentslinetoeachtocfile{omm}{%
    \doforeachtocfile[{#1}]{\addcontentsline{\@currext}{#2}{#3}}%
-} 
+}
 %    \end{macrocode}
 % \begin{macro}[noprint]{\@addcontentslinetoeachtocfile,
 %                        \@@addcontentslinetoeachtocfile}
 % \changes{v3.41}{2023/06/28}{removed}
 % \end{macro}
 % \end{command}
-% 
+%
 % \begin{command}{\addxcontentsline}
 % \changes{v3.12}{2013/09/24}{added}
 % \changes{v3.20}{2016/04/12}{\cs{@ifnextchar} replaced by
@@ -2091,7 +2091,7 @@
                   \expandafter\noexpand\csname the\tb@nt@counterwithin\endcsname
                   .%
                 \noexpand\fi
-              \noexpand\fi  
+              \noexpand\fi
               \noexpand\arabic{\tb@nt@type}%
             }%
           }%

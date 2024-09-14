@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -456,7 +456,7 @@
     }%
   \else
     \expandafter\@secondoftwo
-  \fi  
+  \fi
 }
 \providecommand*{\ifunnumbered}{%
   \ClassWarning{\KOMAClassName}{Usage of deprecated command
@@ -840,7 +840,7 @@
 % \end{macro}^^A \scr@startsection
 % \begin{description}
 % \item[ToDo:] Currently we still redefine \cs{@startsection} to use either
-%   \cs{scr@saved@startsection} or \cs{scr@startsection}. But it would be
+%   \cs{scr@saced@startsection} or \cs{scr@startsection}. But it would be
 %   better to not redefine a \LaTeX{} kernel macro. However, if not doing so,
 %   packages, that use \cs{@startsection} would not support \KOMAScript{}
 %   features without detecting \KOMAScript{} and using \cs{scr@startsection}.
@@ -984,7 +984,7 @@
   \else
     \scr@istest#7=\@nil
   \fi
-  \@currentusenumbertrue  
+  \@currentusenumbertrue
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#8},head={#8},reference={#8},#7}%
   \else
@@ -1175,7 +1175,7 @@
           \@currenttocentry}%
         \fi
       \fi
-      \ExecuteDoHook{heading/endgroup/#1}%  
+      \ExecuteDoHook{heading/endgroup/#1}%
     }%
   \fi
   \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
@@ -1699,7 +1699,7 @@
 % \begin{center}
 %   \begin{tabular}{lll}
 %     \cs{DeclareSectionCommand} & \pkg*{scrbase} & meaning \\\hline
-%     \cs{DeclareSectionCommandStyleLengthOption} 
+%     \cs{DeclareSectionCommandStyleLengthOption}
 %                                  & \cs{FamilyLengthMacroKey} & length option\\
 %     \cs{DeclareSectionCommandStyleNumberOption}
 %                                  & \cs{FamilyCounterMacroKey} & numerical option\\
@@ -1831,7 +1831,7 @@
         \expandafter\def\csname #3\scr@dsc@current#4\endcsname{%
           \@nameuse{#3##1#4}%
         }%
-      \fi  
+      \fi
       \FamilyKeyStateProcessed
     }%
   }%
@@ -1999,7 +1999,7 @@
                                        {innerskip}{scr@}{@innerskip}
 %    \end{macrocode}
 % \begin{description}
-% \item[\opt{afterskip=\meta{length}}:] 
+% \item[\opt{afterskip=\meta{length}}:]
 %   The vertical distance after the heading.
 % \end{description}
 %    \begin{macrocode}
@@ -2116,7 +2116,7 @@
 %</book|report>
 %    \end{macrocode}
 % \begin{description}
-% \item[\opt{afterskip=\meta{length}}:] 
+% \item[\opt{afterskip=\meta{length}}:]
 %   The vertical distance after the heading.
 % \end{description}
 %    \begin{macrocode}
@@ -2501,7 +2501,7 @@
   }%
 %    \end{macrocode}
 % \begin{description}
-% \item[\texttt{@else@=\meta{value}}:] 
+% \item[\texttt{@else@=\meta{value}}:]
 %   \changes{v3.20}{2015/11/18}{early evaluation of option \opt{tocstyle}}
 %   All other options are ignored using the \opt{@else@} option, which simply
 %   accepts every option. So the first pass does not report any unknown
@@ -3181,7 +3181,7 @@
         command `\expandafter\string\csname\reserved@a\endcsname' already
         defined%
       }{%
-        You've tried to define the section command 
+        You've tried to define the section command
         `\expandafter\string\csname\reserved@a\endcsname' newly,\MessageBreak
         but a command, token, box or length with this name already
         exists.\MessageBreak
@@ -3226,7 +3226,7 @@
       \ClassError{\KOMAClassName}{%
         command `\expandafter\string\csname\reserved@a\endcsname' not defined%
       }{%
-        You've tried to re-define the section command 
+        You've tried to re-define the section command
         `\expandafter\string\csname\reserved@a\endcsname',\MessageBreak
         but a command with this name does not exists.\MessageBreak
         Maybe you should use one of \string\DeclareSectionCommand,
@@ -3461,7 +3461,7 @@
             }%
             \activatequoting
           \else
-            \RequirePackage{bookmark}%  
+            \RequirePackage{bookmark}%
           \fi
         }%
 %    \end{macrocode}
@@ -3496,9 +3496,9 @@
               \@beginmainauxhook
             \fi
           \fi
-        }%  
+        }%
 %</!v4>
-      \fi  
+      \fi
     }%
   }%
 }
@@ -4072,7 +4072,7 @@
   \else
     \scr@istest#2=\@nil
   \fi
-  \@currentusenumbertrue  
+  \@currentusenumbertrue
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#3},head={#3},reference={#3},#2}%
   \else
@@ -4611,7 +4611,7 @@
 % \end{fontelement}
 %
 %
-% \subsection{Chapters} 
+% \subsection{Chapters}
 %
 % Classes \cls*{scrbook} and \cls*{scrreprt} provide chapters. These are
 % realized by \cs{DeclareSectionCommand} and the \texttt{chapter} style. The
@@ -4730,7 +4730,7 @@
                     {\@chapterprefixfalse}%
         \fi
       \fi
-    }%  
+    }%
   }%
 }{%
   \KOMA@key{appendixprefix}[true]{%
@@ -4755,7 +4755,7 @@
         }%
       \fi
     \fi
-  }%  
+  }%
 }
 %    \end{macrocode}
 % \begin{option}{noappendixprefix}
@@ -4890,7 +4890,7 @@
         \ifdim\glueexpr\@nameuse{scr@#1@beforeskip}\relax<\z@
           \@afterindentfalse
         \fi
-      }%  
+      }%
     }%
   }%
   \ExecuteDoHook{heading/postinit/#1}%
@@ -4928,7 +4928,7 @@
   \else
     \scr@istest#2=\@nil
   \fi
-  \@currentusenumbertrue  
+  \@currentusenumbertrue
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#3},head={#3},reference={#3},#2}%
   \else
@@ -5287,7 +5287,7 @@
   {%
     \def\IfUseNumber{\Ifnumbered{#1}}%
 %<book>    \if@mainmatter\else\let\IfUseNumber\@secondoftwo\fi
-    \ExecuteDoHook{heading/begingroup/#1}%  
+    \ExecuteDoHook{heading/begingroup/#1}%
     \if@chapterprefix
       \let\IfUsePrefixLine\@firstoftwo
     \else
@@ -5389,7 +5389,7 @@
   \chapterheadstartvskip
   {%
     \let\IfUseNumber\@secondoftwo
-    \ExecuteDoHook{heading/begingroup/#1}%  
+    \ExecuteDoHook{heading/begingroup/#1}%
     \if@chapterprefix
       \let\IfUsePrefixLine\@firstoftwo
     \else
@@ -5494,7 +5494,7 @@
         the `beforeskip' value using
         \string\RedeclareSectionCommand\MessageBreak
         at the preamble of your document.\MessageBreak
-        You may also change \string\setchapterpreamble\MessageBreak 
+        You may also change \string\setchapterpreamble\MessageBreak
         before the command, which generates the message
         about\MessageBreak
         an overfull \string\vbox
@@ -5716,7 +5716,7 @@
 %    \begin{macrocode}
 %<*body>
 \newcommand*{\raggedchapterentry}{}
-%    \end{macrocode}   
+%    \end{macrocode}
 % \end{command}^^A \raggedchapterentry
 % \end{macro}^^A \l@chapter
 %
@@ -5728,7 +5728,7 @@
 % setup all the attributes/options on their own.
 %    \begin{macrocode}
 \newcommand*{\l@chapteratlist}{\l@chapter}
-%    \end{macrocode}   
+%    \end{macrocode}
 % \end{macro}^^A \l@chapteratlist
 %
 % \begin{counter}{chapter}
@@ -6014,7 +6014,7 @@
 \newcommand*{\raggedsectionentry}{}
 %</body>
 %</article>
-%    \end{macrocode}   
+%    \end{macrocode}
 % \end{command}^^A \raggedsectionentry
 % \end{macro}^^A \l@section
 %
@@ -6201,7 +6201,7 @@
 \newcounter{section}[chapter]
 \renewcommand*\thesection{%
 %<*book>
-%<!v4>  \expandafter\ifnum\scr@v@is@gt{2.97d}% 
+%<!v4>  \expandafter\ifnum\scr@v@is@gt{2.97d}%
     \if@mainmatter\thechapter.\fi
 %<!v4>  \else
 %</book>
@@ -6551,7 +6551,7 @@
 %    \begin{macrocode}
 %</class&!letter>
 %<*(class&!letter)|(package&extend)>
-%<*prepare>      
+%<*prepare>
 \newcommand*{\sectfont}{\normalcolor\maybesffamily\bfseries}
 %</prepare>
 %</(class&!letter)|(package&extend)>
@@ -6929,17 +6929,17 @@
 \KOMA@DeclareDeprecatedOption{normalheadings}{headings=normal}
 \KOMA@DeclareDeprecatedOption{smallheadings}{headings=small}
 %</!v4>
-%</option> 
+%</option>
 %    \end{macrocode}
 % \end{option}^^A smallheading,normalheadings,bigheadings
 %
 %    \begin{macrocode}
 %</class&!letter>
 %    \end{macrocode}
-% 
+%
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex

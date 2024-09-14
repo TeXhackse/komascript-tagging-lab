@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -507,7 +507,7 @@
 \KOMA@DeclareDeprecatedOption{wlocfield}{locfield=wide}
 \KOMA@DeclareDeprecatedOption{slocfield}{locfield=narrow}
 %</!v4>
-%</option> 
+%</option>
 %    \end{macrocode}
 % \end{option}^^A wlocfield,slocfield
 % \end{macro}^^A \if@bigloc
@@ -1537,7 +1537,7 @@
 % \changes{v2.97c}{2007/05/14}{added}
 % \changes{v2.97d}{2007/10/09}{initial value changed}
 % \changes{v3.39}{2022/10/25}{using \cs{scr@v@is@eq}}
-% The font of the field values of the reference line. 
+% The font of the field values of the reference line.
 % Support for option \opt{sfdefaults} is not needed on
 % compatibility mode, because the option did not exist in version 2.97.
 %    \begin{macrocode}
@@ -1962,7 +1962,7 @@
 %   dropped, because there was not enough man power to design and implement it
 %   all and to keep \KOMAScript{} compatible with \LaTeX{} at the same time.
 % \end{description}
-% 
+%
 % \begin{macro}{\scr@notepaper@printallelements}
 % \changes{v3.27}{2019/04/16}{added}
 % This is used by page style \pstyle{notepaper} (see
@@ -2019,7 +2019,7 @@
     \ifdim \useplength{lfoldmarklength}=\z@
       \setplength{lfoldmarklength}{4mm}%
     \fi
-    \@hfoldmark{P}%  
+    \@hfoldmark{P}%
     \@hfoldmark{T}%
     \@hfoldmark{M}%
     \@hfoldmark{B}%
@@ -2179,7 +2179,7 @@
         }%
       }%
     \fi
-    \color@endgroup  
+    \color@endgroup
   }%
   \ifdim \dimexpr\ht\@tempboxa+\dp\@tempboxa>\useplength{backaddrheight}\relax
     \PackageWarning{scrletter}{Element `backaddress' to high.\MessageBreak
@@ -2201,7 +2201,7 @@
           {\usekomafont{prioritykey}{A}}%
           -PRIORITY}}%
     }%
-  \fi  
+  \fi
   \Ifkomavarempty{specialmail}{%
     \@tempdima=\z@
   }{%
@@ -2434,7 +2434,7 @@
 % Everything else only, if the field is not empty.
 %    \begin{macrocode}
   \Ifkomavarempty{location}{}{%
-%    \end{macrocode}  
+%    \end{macrocode}
 % Calculation of height and vertical position.
 %    \begin{macrocode}
     \ifdim \useplength{locheight}=\z@%
@@ -2617,7 +2617,7 @@
       \csname if@tempswa\endcsname
       \@test@reffield{date}%
     \fi
-  \fi  
+  \fi
   \if@tempswa
 %    \end{macrocode}
 % We have to print something, so let's calculate the position and height.
@@ -2953,7 +2953,7 @@
         \@foldmark(\useplength{lfoldmarkhpos},\useplength{foldmarkvpos})%
                   (0,1)%
                   {\useplength{lfoldmarklength}}%
-%</package&willbe> 
+%</package&willbe>
       \fi
     \fi
   \endgroup
@@ -4484,7 +4484,7 @@
 \newcommand{\AtEndLetter}{\g@addto@macro\stopletter}
 %    \end{macrocode}
 % \end{command}
-% 
+%
 % \begin{command}{\stopbreaks}
 % \begin{command}{\startbreaks}
 % \changes{v3.33}{2021/03/05}{\cs{relax} added}
@@ -4750,7 +4750,7 @@
 % \end{variable}^^A addresseeimage
 % \end{variable}^^A fromzipcode,PPcode,PPdatamatrix
 % \end{variable}^^A place,location,specialmail,title,fromlogo
-% 
+%
 % \begin{option}{symbolicnames}
 % \changes{v3.12}{2013/05/13}{added}
 % \changes{v3.17}{2015/03/16}{using internal value storage}
@@ -4784,7 +4784,7 @@
   \fi
   \ifx \FamilyKeyState\FamilyKeyStateProcessed
     \KOMA@kav@xreplacevalue{%
-%<class>      \KOMAClassFileName    
+%<class>      \KOMAClassFileName
 %<package>      scrletter.\scr@pkgextension
     }{symbolicnames}{#1}%
     \if@scrsymbols
@@ -5044,7 +5044,7 @@
 %
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex

@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -78,7 +78,7 @@
 %    \begin{macrocode}
 %<*!letter>
 %    \end{macrocode}
-% 
+%
 % \begin{option}{titlepage}
 % \changes{v2.95c}{2006/08/21}{using \pkg*{scrkbase}}
 % \changes{v3.12}{2013/11/21}{value \opt{\quotechar=firstiscover} added}
@@ -454,7 +454,7 @@
           \next@tpage
           \noindent\@frontispiece
         \fi
-        \next@tdpage  
+        \next@tdpage
       \fi
 %<!extend>      \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
 %<extend>      \parskip\z@ \parindent\z@ \parfillskip\z@\@plus 1fil
@@ -534,9 +534,9 @@
             by \string\maketitle\MessageBreak
             in `twoside=false' mode%
           }%
-        \fi          
+        \fi
       \fi
-      \ifx\@dedication\@empty 
+      \ifx\@dedication\@empty
       \else
         \next@tdpage\null\vfill
         {\centering\usekomafont{dedication}{\@dedication \par}}%
@@ -588,7 +588,7 @@
         by \string\maketitle\MessageBreak
         in `titlepage=false' mode%
       }%
-    \fi          
+    \fi
     \begingroup
       \let\titlepage@restore\relax
       \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
@@ -656,7 +656,7 @@
     \global\let\@title\@empty
     \global\let\@subtitle\@empty
     \global\let\@extratitle\@empty
-    \global\let\@frontispiece\@empty    
+    \global\let\@frontispiece\@empty
     \global\let\@titlehead\@empty
     \global\let\@subject\@empty
     \global\let\@publishers\@empty
@@ -873,7 +873,7 @@
 %    \begin{macrocode}
 \newcommand*\titlefont{\sectfont}%
 \newcommand*{\scr@fnt@title}{\titlefont}%
-%    \end{macrocode}           
+%    \end{macrocode}
 % \end{macro}
 % \end{fontelement}
 %
@@ -910,7 +910,7 @@
 % It is only defined for the classes \cls*{scrartcl} and \cls*{scrreprt} but
 % not for \cls*{scrbook}, \cls*{scrlttr2} or package \pkg*{scrextend}.
 %    \begin{macrocode}
-%<*class&(article|report)>           
+%<*class&(article|report)>
 %    \end{macrocode}
 %
 % \begin{option}{abstract}
@@ -993,18 +993,18 @@
 \newcommand*\abstractname{Abstract}
 \providecaptionname{american,australian,british,canadian,english,newzealand,%
   UKenglish,ukenglish,USenglish,usenglish}\abstractname{Abstract}
-%</body> 
+%</body>
 %    \end{macrocode}
 % \end{command}^^A \abstractname
 %
 %    \begin{macrocode}
-%</class&(article|report)>           
+%</class&(article|report)>
 %    \end{macrocode}
 %
 %
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex

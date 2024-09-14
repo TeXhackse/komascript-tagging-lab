@@ -9,7 +9,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -43,7 +43,7 @@
 %<*dtx|(package&typearea&identify)>
 %<package>\ProvidesPackage{typearea}[%
 %!KOMAScriptVersion
-  package 
+  package
 %<*dtx>
   source
 %</dtx>
@@ -409,7 +409,7 @@
     \KOMA@kav@remove{typearea.\scr@pkgextension}{paper}{portrait}%
     \KOMA@kav@remove{typearea.\scr@pkgextension}{paper}{seascape}%
     \KOMA@kav@add{typearea.\scr@pkgextension}{paper}{seascape}%
-  }{%      
+  }{%
     \Ifstr{#1}{landscape}{%
       \@seascapefalse
 %<!v4>      \expandafter\ifnum\scr@ta@v@is@ge{3.22}\relax
@@ -595,7 +595,7 @@
 %</package&typearea&options>
 %    \end{macrocode}
 % \end{option}
-% 
+%
 %
 % \subsection{Setting the output paper size}
 %
@@ -633,7 +633,7 @@
 % \item[\opt{pdftex}] set \cs{pdfpagewidth} and \cs{pdfpageheight} if
 %   available.
 % \end{labeling}
-%    \begin{macrocode} 
+%    \begin{macrocode}
 %<*package&typearea&options>
 \KOMA@key{pagesize}[auto]{%
   \KOMA@set@ncmdkey{pagesize}{@pagesizelast}{%
@@ -889,12 +889,12 @@
 }
 \newcommand*{\scr@updatedvipspagesize}{%
   \scr@ifundefinedorrelax{XeTeXversion}{%
-    \special{ps::\@percentchar\@percentchar 
+    \special{ps::\@percentchar\@percentchar
       PageBoundingBox: 0 0 \the\numexpr\paperwidth/\dimexpr 1bp\relax\relax
       \space \the\numexpr\paperheight/\dimexpr 1bp\relax\relax^^J%
       \@percentchar\@percentchar BeginPageSetup^^J%
       << /PageSize [\the\numexpr\paperwidth/\dimexpr 1bp\relax\relax\space
-      \the\numexpr\paperheight/\dimexpr 1bp\relax\relax] 
+      \the\numexpr\paperheight/\dimexpr 1bp\relax\relax]
       >> setpagedevice^^J%<<
       0 0 bop^^J%
       \@percentchar\@percentchar EndPageSetup}%
@@ -1366,7 +1366,7 @@
 % \end{macro}
 % \end{option}
 % \end{option}
-% 
+%
 %
 % \subsection{Typing area for the emulation of the standard classes}
 %
@@ -1411,7 +1411,7 @@
         \if@areasetadvanced\else\noexpand\@areasetadvancedfalse\fi
       }\reserved@a
     \fi
-  }%  
+  }%
 \fi
 %</class&body&!letter>
 %    \end{macrocode}
@@ -1449,7 +1449,7 @@
 % We also need a macro to get one of the values stored at \cs{ta@divlist}
 % depending on the font size given by the real number argument. The real
 % number will be rounded to the nearest integer.
-% \changes{v2.4g}{1996/11/04}{usage of the default value list} 
+% \changes{v2.4g}{1996/11/04}{usage of the default value list}
 % \changes{v2.6}{2000/01/04}{usage of the extended list}
 % \changes{v2.8q}{2002/03/28}{respect option \opt{mpinclude}}
 % \changes{v2.96}{2006/08/11}{font size does not need to be an integer}
@@ -1611,7 +1611,7 @@
 %</package&typearea&body>
 %    \end{macrocode}
 % \end{ilength}
-% 
+%
 % \begin{ilength}{\ta@temp}
 % Used several times instead of \cs{@tempdima}, \cs{@tempdimb} or another
 % temporary dimension or glue of the LaTeX{} kernel. Nevertheless I should
@@ -1683,7 +1683,7 @@
   \edef\@tempa{#1}%
   \def\@tempb{last}\ifx\@tempa\@tempb\let\@tempa=\@lastdiv
     \ifx\@tempa\relax\def\@tempa{current}\fi
-  \fi  
+  \fi
   \def\@tempb{current}\ifx\@tempa\@tempb\else
     \def\@tempb{default}\ifx\@tempa\@tempb\ta@div=\z@ \else
       \def\@tempb{calc}\ifx\@tempa\@tempb\ta@div=\tw@ \else
@@ -1695,7 +1695,7 @@
             \ta@div=\@tempcnta
             \edef\@tempa{\the\ta@div}%
           \else
-            \let\@tempa\relax  
+            \let\@tempa\relax
           \fi
         \fi
       \fi
@@ -1734,7 +1734,7 @@
 % one for too large text area. They values are integer percentages. By default
 % both of them are 15. Negative values deactivate the warning messages.
 %    \begin{macrocode}
-%<*package&typearea&options> 
+%<*package&typearea&options>
 \newcommand*{\ta@warnlimit}{\numexpr 15\relax}
 \newcommand*{\ta@infolimit}{\numexpr 15\relax}
 \KOMA@key{typeareawarnlimit}{%
@@ -1762,7 +1762,7 @@
 }
 %</package&typearea&options>
 %    \end{macrocode}
-% \end{macro}  
+% \end{macro}
 % \end{option}
 %
 % \begin{command}{\typearea}
@@ -1974,7 +1974,7 @@
 % \changes{v2.95a}{2006/07/20}{fix of large font calculation}
 %    \begin{macrocode}
 \newcommand*\ta@temp@goodwidth{%
-  \settowidth{\ta@temp}{\normalfont\normalsize 
+  \settowidth{\ta@temp}{\normalfont\normalsize
     abcdefghijklmnopqrstuvwxyz}%
   \ifdim\ta@temp >200\p@
     \setlength{\ta@temp}{2.53846\ta@temp}%
@@ -2045,16 +2045,16 @@
 % dimensions.
 %    \begin{macrocode}
     \@colht=\textheight
-    \@colroom=\textheight 
+    \@colroom=\textheight
     \vsize=\textheight
     \columnwidth=\textwidth
     \if@twocolumn
       \advance\columnwidth by-\columnsep
-      \divide\columnwidth by\tw@ 
+      \divide\columnwidth by\tw@
       \hsize=\columnwidth
       \@firstcolumntrue
     \fi
-    \hsize=\columnwidth 
+    \hsize=\columnwidth
     \linewidth\hsize
     \scr@ifundefinedorrelax{@pagesizelast}{}{%
       \KOMAoptions{pagesize=\@pagesizelast}%
@@ -2147,7 +2147,7 @@
 % \changes{v3.10}{2011/09/13}{using \cs{scr@grouplevel@test}}
 % \changes{v3.12}{2013/03/26}{page footer height configurable}
 % \changes{v3.30}{2020/03/24}{\opt{current} after \cs{areaset} is \opt{areaset}}
-%      
+%
 % The symbolic values of the obligatory argument of \cs{typearea}:
 % \begin{center}\begin{tabular}{lll}
 %     Symbol           & Value & Meaning \\\hline\\[-2ex]
@@ -2159,7 +2159,7 @@
 %     \cs{typearea} \\
 %     \opt{areaset} & --- & replace the current typing area \\
 % \end{tabular}\end{center}
-%    
+%
 % There is only one symbolic value that can be used as the optional argument:
 % \opt{current}.
 %    \begin{macrocode}
@@ -2203,7 +2203,7 @@
 %    \begin{macrocode}
     \if@atdocument
       \newpage
-      \if@twocolumn\ifnum\@colnum=\z@\else\null\newpage\fi\fi    
+      \if@twocolumn\ifnum\@colnum=\z@\else\null\newpage\fi\fi
     \fi
 %    \end{macrocode}
 % \changes{v2.95a}{2006/07/20}{select document font size}%
@@ -2495,7 +2495,7 @@
         \@tempcnta=-\@tempcnta
       \fi
     \fi
-    \ifnum \ta@infolimit<\z@\else  
+    \ifnum \ta@infolimit<\z@\else
       \ifnum\@tempcnta>\numexpr \ta@infolimit\relax
         \PackageInfoNoLine{typearea}{%
           Maybe no optimal type area settings!\MessageBreak
@@ -3026,7 +3026,7 @@
     Unknown ISO/DIN-papersize-letter #1%
   }{%
     There are only four defined paper scalings:\MessageBreak
-    a = ISO/DIN-A, b = ISO/DIN-B, c = ISO/DIN-C, 
+    a = ISO/DIN-A, b = ISO/DIN-B, c = ISO/DIN-C,
     d = ISO/DIN-D\MessageBreak
     Read KOMA-Script-documentation for further information.%
   }%
@@ -3130,7 +3130,7 @@
 % \changes{v3.31}{2020/04/27}{improved valid value recognization}
 % \changes{v3.99}{2022/11/16}{deprecated option not with \KOMAScript~4}
 %    \begin{macrocode}
-%<*class>  
+%<*class>
       \Ifstrstart{#2}{=}{%
         \edef\reserved@a{\noexpand\Ifdimen{\@gobble#2}}%
         \reserved@a{\PassOptionsToPackage{BCOR#2}{typearea}}{\OptionNotUsed}%
@@ -3173,7 +3173,7 @@
 \def\@@DIV #1DIV#2DIV#3\@@DIV{%
   \edef\@tempa{#1}\ifx\@tempa\@empty
     \edef\@tempa{#3}\def\@tempb{DIV}\ifx\@tempa\@tempb
-%<*class>  
+%<*class>
       \Ifstrstart{#2}{=}{%
         \edef\reserved@a{\noexpand\Ifnumber{\@gobble#2}}%
         \reserved@a{\PassOptionsToPackage{DIV#2}{typearea}}{\OptionNotUsed}%
@@ -3267,7 +3267,7 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\scr@pti@nerr@r}
-% \changes{v2.95}{2002/06/20}{\cs{OptionNotUsed} instead of \cs{PackageError}} 
+% \changes{v2.95}{2002/06/20}{\cs{OptionNotUsed} instead of \cs{PackageError}}
 % If the addition option is neither \opt{BCOR\dots} nor \opt{DIV\dots} nor
 % \opt{headlines} nor a known paper size, it is still unused.
 %    \begin{macrocode}
@@ -3365,7 +3365,7 @@
 %
 % \Finale
 % \PrintChanges
-% 
+%
 \endinput
 % Local Variables:
 % mode: doctex
