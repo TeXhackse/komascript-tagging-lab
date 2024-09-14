@@ -5,6 +5,11 @@ module          = "scr-tagging-lab"
 typesetexe      = "lualatex-dev"
 
 typesetfiles={}
+installfiles = {
+	"**/*.sty",
+	"**/*.cls",
+	"**/*.ltx",
+}
 
 unpackfiles = {"scr-tagging-lab.ins"}
 testfiledir = "tagging-lab-testfiles"
@@ -13,6 +18,7 @@ testfiledir = "tagging-lab-testfiles"
 checksuppfiles={"*.tex"}
 supportdir="tagging-lab-support"
 checkruns = 2
+typesetruns=2
 
 demofiles={"tagging-experiments/*.tex"}
 typesetdemofiles={"tagging-experiments/*.tex"}

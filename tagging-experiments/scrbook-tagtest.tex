@@ -5,16 +5,17 @@
   lang        = en,
   pdfversion  = 2.0,
   pdfstandard = ua-2,
-  pdfstandard = a-4f, 
+  pdfstandard = a-4f,
   testphase   =  {
     phase-III,
     title,
     table,
+    KOMA-fixes
 %    firstaid
  },
   uncompress,
 }
-\tagpdfsetup{%	
+\tagpdfsetup{%
 	activate/all,
 	tabsorder=structure,
 }
@@ -35,7 +36,6 @@ mc-data,
 
 \RemoveFromHook{class/after}[latex-lab-testphase-sec]
 \documentclass{scrbook}
-\RequirePackage{scr-tagging-lab}
 
 
 
@@ -61,7 +61,7 @@ text
 second par
 
 \begin{itemize}
-\item list of 
+\item list of
 \item another item
 \end{itemize}
 
