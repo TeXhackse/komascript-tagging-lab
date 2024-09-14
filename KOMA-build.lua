@@ -17,7 +17,7 @@
         KOMA-Script distributions. However, following targets can used:
 
           unpack:  to unpack all classes, packages etc. to build/unpacked
-   
+
           check:   unpack + do test(s) from testfiles/
 
           save:    unpack + save a test comparison file in testfiles/
@@ -30,7 +30,7 @@
           ctan:    create a CTAN upload archive
 
           tag:     does not tag files but generate a new REAMDE.md
-   
+
           install: do a local install (usually in TEXMFHOME) without
                    any documentation
 
@@ -39,13 +39,13 @@
           upload:  should be used by the (upload) maintainer only and
                    does an interactive upload of the CTAN upload archive
                    to CTAN
-   
+
         The result of following tagets are currently invalid:
 
           manifest: we are using a manually created MANIFEST.md,
                     therefore the automatic generation should never be
                     used.
-   
+
         See the l3build manual for more information about the targets.
 
   You should neither use this file to generate the distribution
@@ -436,12 +436,12 @@ function generate_package_doc()
       if info.chapter_en ~= nil then
 	 local title = string.gsub( info.chapter_en, '</?tt>', '' )
 	 html:write( [[<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html 
+<!DOCTYPE html
           PUBLIC "-//W3C//DTD XHTML 1.1//EN"
           "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <meta name="keywords" content="KOMA-Script, ]] .. pkg .. [[ 
+    <meta name="keywords" content="KOMA-Script, ]] .. pkg .. [[
     <meta name="DC.Title" content="]] .. title .. [[" />
     <meta name="DC.Creator" content="l3build" />
     <meta name="DC.Subject" content="KOMA-Script Documentation" />
@@ -462,8 +462,8 @@ function generate_package_doc()
           body {}
           #en { position:absolute; left:10px; width:45%; }
           #de { position:absolute; right:10px; width:45%; }
-          #fn { position:absolute; bottom:0px; width:50%; 
-                border-top-width:1px; border-top-style:solid; 
+          #fn { position:absolute; bottom:0px; width:50%;
+                border-top-width:1px; border-top-style:solid;
                 font-size:x-small; }
           h1.right { text-align:right; }
         -->
@@ -488,7 +488,7 @@ function generate_package_doc()
       Markus Kohm, 2022-06-03
       <p><a
         href="http://validator.w3.org/check?uri=referer"><img
-        src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" 
+        src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1"
         height="31" width="88" /></a></p>
      </div>
   </body>
@@ -503,12 +503,12 @@ function generate_package_doc()
 	 local note_en = info.note_en or ""
 	 local note_de = info.note_de or ""
 	 html:write( [[<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html 
+<!DOCTYPE html
           PUBLIC "-//W3C//DTD XHTML 1.1//EN"
           "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <meta name="keywords" content="KOMA-Script, ]] .. pkg .. [[ 
+    <meta name="keywords" content="KOMA-Script, ]] .. pkg .. [[
     <meta name="DC.Title" content="]] .. title .. [[" />
     <meta name="DC.Creator" content="l3build" />
     <meta name="DC.Subject" content="KOMA-Script Documentation" />
@@ -529,8 +529,8 @@ function generate_package_doc()
           body {}
           #en { position:absolute; left:10px; width:45%; }
           #de { position:absolute; right:10px; width:45%; }
-          #fn { position:absolute; bottom:0px; width:50%; 
-                border-top-width:1px; border-top-style:solid; 
+          #fn { position:absolute; bottom:0px; width:50%;
+                border-top-width:1px; border-top-style:solid;
                 font-size:x-small; }
           h1.right { text-align:right; }
         -->
@@ -553,7 +553,7 @@ function generate_package_doc()
       Markus Kohm, 2022-06-03
       <p><a
         href="http://validator.w3.org/check?uri=referer"><img
-        src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" 
+        src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1"
         height="31" width="88" /></a></p>
      </div>
   </body>
@@ -612,7 +612,7 @@ function typeset_guide(file,dir,exe)
       return errorlevel
    end
    for i = 2,guidetypesetruns do
-      errorlevel = 
+      errorlevel =
 	 makeindex(name,dir,".glo",".gls",".glg",guideglossarystyle) +
 	 genindex(name,dir,".idx",".ind",".ilg",guideindexstyle)    +
 	 tex(file,dir,exedraftmode(exe,i,guidetypesetruns))
@@ -686,7 +686,7 @@ function genindex(name,dir,extidx,extind,extlog,style)
 	 dstfile[subidx]:write(line,"\n")
       end
    end
-   
+
    -- close all files
    srcfile:close()
    local subfile
@@ -773,7 +773,7 @@ local function getclsversion(filename)
 \begin{document}\end{document}
 ]])
    f:close()
-   
+
    if tex("testversion.tex",unpackdir,"pdflatex --interaction=batchmode") == 0 then
       f=assert(io.open(unpackdir.."/testversion.txt"))
       versionstring=f:read("*all")
@@ -809,7 +809,7 @@ local function getstyversion(filename)
 \begin{document}\end{document}
 ]])
    f:close()
-   
+
    if tex("testversion.tex",unpackdir,"pdflatex --interaction=batchmode") == 0 then
       f=assert(io.open(unpackdir.."/testversion.txt"))
       versionstring=f:read("*all")
@@ -1013,7 +1013,7 @@ If you want to generate KOMA-Script step by step from the sources, first run `te
 If you like to have the implementation documentation of KOMA-Script as a PDF, first create the required class `koma-script-source-doc.cls` with `tex koma-script-source-doc.dx`. This class can then be used to generate the implementation documentation of this class with repeated calls to `lualatex-dev koma-script-source-doc.dtx` and `mkindex koma-script-source-doc`. Correspondingly, the documentation of the other KOMA-Script components can be generated.
 ]]
    )
-   
+
    readme_out:close()
 
    return 0

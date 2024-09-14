@@ -216,7 +216,6 @@
 \RequirePackage{multicol}
 \RequirePackage{marginnote}
 \RequirePackage{tabularx}
-\RequirePackage{scrhack}%
 \RequirePackage{mparhack}%
 %    \end{macrocode}
 %
