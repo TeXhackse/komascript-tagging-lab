@@ -1,5 +1,5 @@
 #!/usr/bin/env texlua
-
+svn_revision=12344
 module          = "scr-tagging-lab"
 
 typesetexe      = "lualatex-dev"
@@ -32,7 +32,7 @@ specialformats["latex"] = specialformats["latex"] or
 --    xetex      = {format = "xelatex-dev"},
 --    latexdvips = {binary="latex",format = "latex-dev"}
   }
-  
+
 checkengines = {"pdftex","luatex","pdftexmain"}
 
 
