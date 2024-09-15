@@ -1122,8 +1122,7 @@
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
         \sectionlinesformat{#1}{\glueexpr #3\relax}%
-%<!tagging-lab>          \@svsec%
-%<tagging-lab>           {\IfUseNumber{\@svsec}{\@kernel@tag@svsec}}%
+          \@svsec%
            {#8}%
         \@@par}%
       \ExecuteDoHook{heading/endgroup/#1}%
@@ -1175,7 +1174,10 @@
         \let\IfUseNumber\@firstoftwo
       \fi
       \ExecuteDoHook{heading/begingroup/#1}%
-      #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}\@svsec{#8}}%
+      #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}
+%<!tagging-lab>     \@svsec%
+%<tagging-lab>     \IfUseNumber{\@svsec}{\@kernel@tag@svsec}%
+     {#8}}%
 %<*trace>
       \ClassInfo{\KOMAClassName}{%
         head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
@@ -6292,8 +6294,11 @@
 % nesting inside the Lbl tag.
 %    \begin{macrocode}
 \newcommand*{\othersectionlevelsformat}[3]{#3\autodot\enskip}
+%</body>
+%</class&!letter>
+%<*(body&class&!letter)|tagging-lab>
 \renewcommand*{\@seccntformat}[1]{%
-%<tagging-lab>        \tag_stop:n{seccntformat}
+%<tagging-lab>   \tag_stop:n{seccntformat}{}
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
 %<!v4>    \protect\othersectionlevelsformat{#1}{%
 %<!v4>      \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
@@ -6303,8 +6308,11 @@
         \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
     }{\expandafter\protect\csname #1format\endcsname}%
 %<!v4>  \fi
-%<tagging-lab>	      \tag_start:n{seccntformat}}%
+%<tagging-lab>	      \tag_start:n{seccntformat}%
 }
+%</(body&class&!letter)|tagging-lab>
+%<*class&!letter>
+%<*body>
 %    \end{macrocode}
 % \end{command}^^A \othersectonlevelsformat
 % \end{macro}^^A \@seccntformat

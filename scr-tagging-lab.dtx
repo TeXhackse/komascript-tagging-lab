@@ -37,6 +37,7 @@
 	sectionlinesformat,
 	scr@numberline,
 	scr@saved@startsection,
+	@seccntformat
 }
 
 \cs_new:Nn \_@@_capture_changed_macros: {
@@ -44,6 +45,7 @@
 		\cs_set_eq:cc {_@@_##1} {##1}
 		\cs_undefine:c {##1}
 	}
+	\def\@seccntformat{}
 }
 
 \cs_new:Nn \_@@_restore_changed_macros: {
