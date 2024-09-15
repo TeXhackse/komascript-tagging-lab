@@ -1,10 +1,28 @@
-\makeatletter
-\let\scr@@@saved@startsection\@startsection
-\makeatother
-\input{scr-tagging-lab-test-general}
-\makeatletter
-\let\@startsection\scr@@@saved@startsection
-\makeatother
-\DocumentMetadata{testphase=KOMA-fixes}
+\DocumentMetadata{
+  lang        = en,
+  pdfversion  = 2.0,
+  pdfstandard = ua-2,
+  pdfstandard = a-4f,
+  testphase   =  {
+    phase-III,
+    title,
+    table,
+    KOMA-fixes
+%    firstaid
+ },
+  uncompress,
+}
+\tagpdfsetup{%
+	activate/all,
+	tabsorder=structure,
+}
+
+\RequirePackage{tagpdf-debug}
+\ShowTagging{debug/structures,
+mc-data,
+%%mc-current,
+%%struct-stack
+}
+
 \RemoveFromHook{class/after}[latex-lab-testphase-sec]
 \documentclass{\CLASS}
