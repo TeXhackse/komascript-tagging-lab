@@ -127,20 +127,20 @@
 % This macro is used indirectly in the ToC and has to be redefined to fulfil
 % rules~5 and 6 of DUDDEN, 20th edition.
 %    \begin{macrocode}
-%<*package&(body|tagging-lab)>
+%<*package&(body|tagging-lab)&!style>
 \newcommand*{\scr@numberline}[1]{%
   \numberline@box{%
-%<tagging-lab>    \UseHookWithArguments{contentsline/number/before}{1}{#1}%
+%<tagging-lab|tagging>    \UseHookWithArguments{contentsline/number/before}{1}{#1}%
     \numberline@prefix
     \Ifstr{#1}{}{#1}{%
       \numberline@numberformat{#1}%
     }%
     \numberline@postfix
-%<tagging-lab>    \UseHookWithArguments{contentsline/number/after}{1}{#1}%
+%<tagging-lab|tagging>    \UseHookWithArguments{contentsline/number/after}{1}{#1}%
   }%
 }
 %    \end{macrocode}
-%</package&(body|tagging-lab)>
+%</package&(body|tagging-lab)&!style>
 %<*package&body>
 % \begin{command}{\usetocbasicnumberline}
 % \changes{v3.20}{2016/03/15}{added}
@@ -2236,7 +2236,7 @@
 \newlength\scr@dte@tocline@numberwidth
 %</!tagging-lab>
 \newcommand*{\scr@dte@tocline}[3]{%
-%<tagging-lab>\SuspendTagging{toc/tocline-measure}
+%<tagging-lab|tagging>\SuspendTagging{toc/tocline-measure}
   \ifnum \@nameuse{#1tocdepth}>\c@tocdepth
   \else
     \tocbasic@DependOnPenaltyAndTOCLevel{#1}%
@@ -2373,7 +2373,7 @@
 % tagging: Enable the number tags for the actual output.
 % See Redefinition of \cs{scr@numberline} for more information.
 %    \begin{macrocode}
-%<tagging-lab>	  \ResumeTaggingg{toc/tocline-measure}
+%<tagging-lab|tagging>	  \ResumeTaggingg{toc/tocline-measure}
           \scr@dte@numberline@box{\@nameuse{scr@tso@#1@numberformat}{##1}}%
           \@nameuse{Ifscr@tso@#1@breakafternumber}{%
             {\parfillskip\@flushglue\par}\nobreak\hskip-\leftskip
@@ -2383,11 +2383,11 @@
 %    \end{macrocode}
 % tagging: Inserting the contentsline/text hooks defined in \file{latex-lab-testphase-toc.sty}
 %    \begin{macrocode}
-%<tagging-lab>          \UseHookWithArguments{contentsline/text/before}{4}
-%<tagging-lab>            {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+%<tagging-lab|tagging>          \UseHookWithArguments{contentsline/text/before}{4}
+%<tagging-lab|tagging>            {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
           #2%
-%<tagging-lab>          \UseHookWithArguments{contentsline/text/after}{4}%
-%<tagging-lab>             {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+%<tagging-lab|tagging>          \UseHookWithArguments{contentsline/text/after}{4}%
+%<tagging-lab|tagging>             {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
           \nobreak
           {%
             \normalfont\normalsize\@nameuse{scr@tso@#1@linefill}%
@@ -2406,11 +2406,11 @@
 %    \end{macrocode}
 % tagging: Inserting the contentsline/page hooks defined in \file{latex-lab-testphase-toc.sty}
 %    \begin{macrocode}
-%<tagging-lab>              \UseHookWithArguments{contentsline/page/before}{4}%
-%<tagging-lab>                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+%<tagging-lab|tagging>              \UseHookWithArguments{contentsline/page/before}{4}%
+%<tagging-lab|tagging>                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
               #3%
-%<tagging-lab>              \UseHookWithArguments{contentsline/page/after}{4}%
-%<tagging-lab>                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+%<tagging-lab|tagging>              \UseHookWithArguments{contentsline/page/after}{4}%
+%<tagging-lab|tagging>                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
                }%
             }%
           }%
@@ -2473,30 +2473,32 @@
 % Filler between the last text line and the page number. The optional argument
 % \texttt{\#1} is the character used for filling.
 %    \begin{macrocode}
-%<*tagging-lab>
+%<*tagging-lab|(tagging&body)>
 %<@@=scrlab>
 \NewSocket{tagsupport/@@/toc/leaders/before}{0}
 \NewSocket{tagsupport/@@/toc/leaders/after}{0}
-%</tagging-lab>
+%</tagging-lab|(tagging&body)>
 \newcommand*{\TOCLineLeaderFill}[1][.]{%
-%<tagging-lab>  \UseTaggingSocket{@@/toc/leaders/before}\SuspendTagging{toc/leaders}%
+%<tagging-lab|tagging&tocline>  \UseTaggingSocket{@@/toc/leaders/before}\SuspendTagging{toc/leaders}%
   \leaders\hbox{$\m@th
     \mkern \@dotsep mu\hbox{#1}\mkern \@dotsep
     mu$}\hfill
-%<tagging-lab>  \ResumeTagging{toc/leaders}\UseTaggingSocket{@@/toc/leaders/after}%
+%<tagging-lab|(tagging&tocline)>  \ResumeTagging{toc/leaders}\UseTaggingSocket{@@/toc/leaders/after}%
 }
 %</tocline>
 %    \end{macrocode}
 % Socket setup is the same as provided by \pkg{latex-lab-testphase-toc.sty}.
 %    \begin{macrocode}
-%<*tagging-lab>
+%<tagging-lab|(tagging&body)>\ExplSyntaxOn
+%<*tagging-lab|(tagging&body)>
 \NewSocketPlug{tagsupport/@@/toc/leaders/before}{artifact}
  {\tag_mc_begin:n{artifact}\nobreak}
 \NewSocketPlug{tagsupport/@@/toc/leaders/after}{artifact}
  {\nobreak\tag_mc_end:}
 \AssignSocketPlug{tagsupport/@@/toc/leaders/before}{artifact}
 \AssignSocketPlug{tagsupport/@@/toc/leaders/after}{artifact}
-%</tagging-lab>
+%</tagging-lab|(tagging&body)>
+%<tagging-lab|(tagging&body)>\ExplSyntaxOff
 %    \end{macrocode}
 % \end{command}^^A \TOCLineLeaderFill
 % \end{macro}^^A \scr@dte@tocline

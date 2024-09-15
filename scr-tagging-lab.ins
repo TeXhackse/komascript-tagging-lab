@@ -27,4 +27,25 @@
 %  \from{scrlogo.dtx}{logo}%
 }%
 }%
+
+% testing purpose: create an own tocbasic variant
+  \generate{
+    \file{tocbasic-tagging.sty}{%
+      \from{tocbasic.dtx}{package,identify,tagging-lab}%
+      \from{tocbasic.dtx}{package,prepare}%
+      \from{tocbasic.dtx}{package,option}%
+      \from{tocbasic.dtx}{package,execoption}%
+      \from{tocbasic.dtx}{package,body,deprecated}%
+      \from{scrkernel-tocstyle.dtx}{package,body,tagging}%
+      \from{scrkernel-tocstyle.dtx}{package,style,gobble}%
+      \from{scrkernel-tocstyle.dtx}{tagging,package,style,dottedtocline,tagging}%
+      \from{scrkernel-tocstyle.dtx}{tagging,package,style,undottedtocline,tagging}%
+      \from{scrkernel-tocstyle.dtx}{package,style,largetocline,tagging}%
+      \from{scrkernel-tocstyle.dtx}{package,style,tocline,tagging}%
+      \from{scrkernel-tocstyle.dtx}{package,style,toctext,tagging}%
+      \from{scrkernel-tocstyle.dtx}{package,style,default,tagging}%
+      \from{tocbasic.dtx}{package,exit}%
+      \from{scrlogo.dtx}{logo}%
+    }%
+  }%
 \endbatchfile
