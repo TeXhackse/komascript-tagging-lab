@@ -99,7 +99,7 @@
 \hook_gput_code:nnn {class/after}{scr-tagging-lab-setions}  {
 	\AddtoDoHook{heading/begingroup/chapter}{
 		\exp_args:No \tag_tool:n { sec-start-chapter=  \__scr_current_heading_tl  }
-		\IfUseNumber\relax{\MakeLinkTarget[chapter]{}}
+		\Ifnumbered{chapter} \relax {\MakeLinkTarget[chapter]}
 	}
 	\AddtoDoHook{heading/endgroup/chapter}{
 	   \tag_tool:n {sec-stop-chapter}
@@ -107,6 +107,10 @@
 	\AddtoDoHook{heading/begingroup/part}{
 		\exp_args:No \tag_tool:n { sec-start-part=  \__scr_current_heading_tl  }
 		\IfUseNumber\relax{\MakeLinkTarget[part]{}}
+	}
+	\AddtoDoHook{heading/begingroup/part}{
+		\exp_args:No \tag_tool:n { sec-start-part=  \__scr_current_heading_tl  }
+		\Ifnumbered{part} \relax {\MakeLinkTarget[part]}
 	}
 	\AddtoDoHook{heading/endgroup/part}{
 	   \tag_tool:n {sec-stop-part}
