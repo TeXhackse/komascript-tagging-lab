@@ -672,6 +672,10 @@
     \else
       \addpenalty\@secpenalty\addvspace\@tempskipa
     \fi
+%    \end{macrocode}
+% tagging: latex-lab is starting the section here.
+% As we have the hook directly after the test scr-tagging-lab is using the hook instead.
+%    \begin{macrocode}
     \kernel@ifstar {%
       \ExecuteDoHook{heading/branch/star/#1}%
       \def\scr@s@ct@@nn@m@{#1}%
@@ -1055,8 +1059,10 @@
     \fi
 %    \end{macrocode}
 % tagging: The following line was changed to match the change between the Kernel and the Testphase version of \cs{@svsec}.
+% As we also define \cs{@svsec} if the section is not numberes we use a local boolean for the test.
 %    \begin{macrocode}
 %<!tagging-lab>    \let\@svsec\@empty
+%<tagging-lab>	   \@tempswatrue% not numbered instead of ifx\@svsec\@empty
 %<tagging-lab>    \def\@svsec{\@hyp@section@target@nnn{[section]}{}{#3}}
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/02}{execute counter reset list}
@@ -1074,8 +1080,10 @@
 % At this point we have to make sure, that the \pkg{hyperref} code for not
 % increasing a counter is executed.
 %    \begin{macrocode}
-    \hy@insteadofrefstepcounter{#1}%
+%<!tagging-lab>    \hy@insteadofrefstepcounter{#1}%
+%<tagging-lab>    \def\@svsec{\@hyp@section@target@nnn{[#1]}{}{#3}}
   \else
+%<tagging-lab>	  \@tempswafalse% numbered instead of ifx\@svsec\@empty
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
@@ -1095,10 +1103,12 @@
     \scr@sect@runin{\z@}{\p@}{\glueexpr #5\relax}>\z@
     \begingroup
 %    \end{macrocode}
-% tagging: Copy change of testphase definition
+% tagging:
+% \cs{@svsec} is no longer empty here. The test was changed to use a boolean.
 %    \begin{macrocode}
 %<tagging-lab>       \tagtool{para-flattened=true}
-      \ifx\@svsec\@empty
+%!tagging-lab>      \ifx\@svsec\@empty
+%<tagging-lab>      \if@tempswa
         \let\IfUseNumber\@secondoftwo
       \else
         \let\IfUseNumber\@firstoftwo
