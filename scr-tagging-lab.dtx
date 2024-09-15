@@ -48,8 +48,8 @@
 	\clist_map_inline:Nn \_@@_changed_macros_clist {
 		\cs_set_eq:cc {#1}{_@@_#1}
 	}
-	\let\scr@lab@sect\@sect
-	\let\scr@lab@xsect\@xsect
+	\let\@sect\scr@lab@sect
+	\let\@xsect\scr@lab@xsect
 }
 \iffalse
 \providecommand{\@startsection}{\scr@saved@startsection
