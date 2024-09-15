@@ -1344,7 +1344,7 @@
 %</body>
 %<*body|tagging-lab>
 \newcommand{\sectionlinesformat}[4]{%
-%<tagging-lab>  \Ifnumbered{#1}\@kernel@tag@hangfrom
+%<tagging-lab>  \IfUseNumber\@kernel@tag@hangfrom
   \@hangfrom{\hskip #2#3}{#4}%
 }
 %</body|tagging-lab>
