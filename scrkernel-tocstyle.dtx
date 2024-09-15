@@ -128,16 +128,15 @@
 % rules~5 and 6 of DUDDEN, 20th edition.
 %    \begin{macrocode}
 %<*package&(body|tagging-lab)>
-%<tagging-lab>\bool_new:N \l__scr_skip_tags_bool
 \newcommand*{\scr@numberline}[1]{%
   \numberline@box{%
-%<tagging-lab>    \bool_if:NF \l__scr_skip_tags_bool {\UseHookWithArguments{contentsline/number/before}{1}{#1}}%
+%<tagging-lab>    \UseHookWithArguments{contentsline/number/before}{1}{#1}%
     \numberline@prefix
     \Ifstr{#1}{}{#1}{%
       \numberline@numberformat{#1}%
     }%
     \numberline@postfix
-%<tagging-lab>    \bool_if:NF \l__scr_skip_tags_bool {\UseHookWithArguments{contentsline/number/after}{1}{#1}}%
+%<tagging-lab>    \UseHookWithArguments{contentsline/number/after}{1}{#1}%
   }%
 }
 %    \end{macrocode}
@@ -2237,7 +2236,7 @@
 \newlength\scr@dte@tocline@numberwidth
 %</!tagging-lab>
 \newcommand*{\scr@dte@tocline}[3]{%
-%<tagging-lab>  \bool_set_true:N \l__scr_skip_tags_bool
+%<tagging-lab>\SuspendTagging{toc/tocline-measure}
   \ifnum \@nameuse{#1tocdepth}>\c@tocdepth
   \else
     \tocbasic@DependOnPenaltyAndTOCLevel{#1}%
@@ -2374,7 +2373,7 @@
 % tagging: Enable the number tags for the actual output.
 % See Redefinition of \cs{scr@numberline} for more information.
 %    \begin{macrocode}
-%<tagging-lab>	  \bool_set_false:N \l__scr_skip_tags_bool
+%<tagging-lab>	  \ResumeTaggingg{toc/tocline-measure}
           \scr@dte@numberline@box{\@nameuse{scr@tso@#1@numberformat}{##1}}%
           \@nameuse{Ifscr@tso@#1@breakafternumber}{%
             {\parfillskip\@flushglue\par}\nobreak\hskip-\leftskip
