@@ -97,6 +97,7 @@
 }
 
 \hook_gput_code:nnn {class/after}{scr-tagging-lab-setions}  {
+	\AddtoDoHook{heading/begingroup}{\tagtool{para-flattened=true}\use_none:n}
 	\AddtoDoHook{heading/begingroup/chapter}{
 		\exp_args:No \tag_tool:n { sec-start-chapter=  \__scr_current_heading_tl  }
 		\Ifnumbered{chapter} \relax {\MakeLinkTarget[chapter]}
