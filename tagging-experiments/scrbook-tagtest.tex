@@ -1,6 +1,3 @@
-\makeatletter
-\let\scr@@@saved@startsection\@startsection
-\makeatother
 \DocumentMetadata{
   lang        = en,
   pdfversion  = 2.0,
@@ -18,10 +15,6 @@
 	activate/all,
 	tabsorder=structure,
 }
-
-
-
-
 \RequirePackage{tagpdf-debug}
 \ShowTagging{debug/structures,
 mc-data,
@@ -29,17 +22,13 @@ mc-data,
 %%struct-stack
 }
 
-\makeatletter
-\let\@startsection\scr@@@saved@startsection
-\makeatother
-
 \RemoveFromHook{class/after}[latex-lab-testphase-sec]
-\documentclass{scrbook}
+
+\documentclass[chapterprefix=true]{scrbook}
+\setkomafont{disposition}{\bfseries}
 
 
-
-
-\AddToHook{cmd/contentsline/before}{\ShowTagging{mc-current,struct-stack=log}}
+\pagestyle{empty}\renewcommand*{\chapterpagestyle}{empty}
 
 \begin{document}
 
