@@ -1061,9 +1061,7 @@
 % tagging: The following line was changed to match the change between the Kernel and the Testphase version of \cs{@svsec}.
 % As we also define \cs{@svsec} if the section is not numberes we use a local boolean for the test.
 %    \begin{macrocode}
-%<!tagging-lab>    \let\@svsec\@empty
 %<tagging-lab>	   \@tempswatrue% not numbered instead of ifx\@svsec\@empty
-%<tagging-lab>    \def\@svsec{\@hyp@section@target@nnn{[section]}{}{#3}}
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/02}{execute counter reset list}
 % Even for not numbered sections, the reset list für the section counter has
@@ -1081,7 +1079,7 @@
 % increasing a counter is executed.
 %    \begin{macrocode}
 %<!tagging-lab>    \hy@insteadofrefstepcounter{#1}%
-%<tagging-lab>    \def\@svsec{\@hyp@section@target@nnn{[#1]}{}{#3}}
+%<tagging-lab>    \def\@svsec{\scrlab@section@target{[#1]}{}{#3}}
   \else
 %<tagging-lab>	  \@tempswafalse% numbered instead of ifx\@svsec\@empty
 %    \end{macrocode}
@@ -1092,7 +1090,7 @@
     \expandafter\@maybeautodot\csname the#1\endcsname
 %<tagging-lab>    \LinkTargetOn
     \protected@edef\@svsec{%
-%<tagging-lab>    \@hyp@section@target@nnn{}{#1}{#3}%
+%<tagging-lab>    \scrlab@section@target{}{#1}{#3}%
       \@seccntformat{#1}\relax}%
   \fi
 %    \end{macrocode}
@@ -1460,7 +1458,7 @@
         \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
         {\glueexpr #1\relax}%
 %<!tagging-lab>        \@empty
-%<tagging-lab>         {\@hyp@section@target@nnn{[section]}{}{#3}}%
+%<tagging-lab>         {\scrlab@section@target{[section]}{}{#3}}%
         {#5}\@@par}%
       \edef\reserved@a{%
         \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
@@ -1481,7 +1479,7 @@
         \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
         \unexpanded{{\glueexpr #1\relax}%
 %<!tagging-lab>        \@empty
-%<tagging-lab>         {\@hyp@section@target@nnn{[section]}{}{#1}}%
+%<tagging-lab>         {\scrlab@section@target{[section]}{}{#1}}%
           {#5}}%
       }%
       \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%

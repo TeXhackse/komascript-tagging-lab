@@ -139,5 +139,25 @@
 	}
 }
 %    \end{macrocode}
+% \begin{macro}{\scrlab@section@target}
+% \changes{tagging}{2024/09/15}{Adapt our own \cs{@hyp@section@target@nnn}  as  \cs{\scrlab@section@target}}
+% tagging: Hyperref has some internal command \cs{@hyp@section@target@nnn} to move the anchor in case the indent in front of the section heading is negative.
+% We copy this command to adjust the anchor in the same way.
+% The definition is taken from the \pkg{latex-lab-sec}.dtx.
+%    \begin{macrocode}
+%% This definition was adapted from
+%% latex-lab-sec.dtx
+%% Copyright 2021-2023 LaTeX Project
+\cs_new_protected:Npn \scrlab@section@target #1 #2 #3 %#1 optarg #2 name/counter, #3 indent
+  {
+    \makebox[0pt][l]
+     {
+       \skip_set:Nn \@tempskipa {#3}
+       \dim_compare:nNnF {\@tempskipa}<{0pt}{\kern-\@tempskipa}
+       \MakeLinkTarget#1{#2}
+     }
+  }
+%    \end{macrocode}
+% \end{macro}^^A \scrlab@section@target
 %</package|heading-hooks>
 %    \end{macrocode}
