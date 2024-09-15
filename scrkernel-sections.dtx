@@ -4394,22 +4394,7 @@
 % \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack}}
 % \changes{v3.32}{2020/09/11}{\cs{AfterPackage!} replaced by
 %   \cs{AfterAtEndOfPackage}}
-% Usually \pkg{hyperref} uses \cs{refstepcounter} to process extra codes for
-% anchors and bookmarks. However, if a not numbered heading is used,
-% \pkg{hyperref} cannot use \cs{refstepcounter} but still has to add
-% code. Usually \pkg{hyperref} patchs several commands like \cs{@chapter},
-% \cs{@schapter}, \cs{@part}, \cs{@spart} etc. to do so. But I think, it would
-% be better to provide a hook for this, \pkg*{hyperref} can change. So we've
-% designed \cs{hy@insteadofrefstepcounter}. Unfortunately \pkg{hyperref}
-% currently does not care for this, but still does its patches. So we need to
-% prevent \pkg{hyperref} from doing so and additionally define
-% \cs{hy@insteadofrefstepcounter} ourselves. But because \cs{autoref} is
-% nonsense for not numbered headings, I do not use \cs{Hy@chapapp} for
-% \cs{Hy@MakeCurrentHrefAuto}.
-% \begin{description}
-% \item[ToDo:] Explain the Oberdiek support team, what we are doing here and
-%   what they should do.
-% \end{description}
+% tagging: Hyperref has \cs{\MakeLinkTarget} for this.
 %    \begin{macrocode}
 \newcommand*{\hy@insteadofrefstepcounter}[1]{}
 \let\hy@insteadofrefstepcounter\@gobble
@@ -4425,10 +4410,7 @@
   \let\@addchap\scr@orig@addchap
   \ifx\hy@insteadofrefstepcounter\@gobble
     \renewcommand*{\hy@insteadofrefstepcounter}[1]{%
-      \Hy@MakeCurrentHrefAuto{##1*}%
-      \Hy@raisedlink{%
-        \hyper@anchorstart{\@currentHref}\hyper@anchorend
-      }%
+        \MakeLinkTarget[##1]{}%
     }%
   \fi
 }
