@@ -3,25 +3,26 @@
 \ExplSyntaxOff
 
 \input{regression-test}
-\def\CLASS{scrbook}
+\def\CLASS{scrartcl}
 \input{scr-tagging-lab-test-setup}
-
-\begin{document}
-\START
-\showoutput
 
 %I don't want to handle pagestyles, so set everything to empty:
 \pagestyle{empty}\renewcommand\chapterpagestyle{empty}
 
-\tableofcontents
+\begin{document}
+\START
 
 \tableofcontents
 
 \section{section}
+
 \addsec{addsec}
 
 \section*{starred}
 
-\subsection{blub}
+
+\ShowTagging{debug/structures}
+
+\END
 
 \end{document}
