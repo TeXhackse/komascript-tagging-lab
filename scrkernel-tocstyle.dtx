@@ -2474,8 +2474,11 @@
 % Filler between the last text line and the page number. The optional argument
 % \texttt{\#1} is the character used for filling.
 %    \begin{macrocode}
-%<tagging-lab> \NewSocket{tagsupport/@@/toc/leaders/before}{0}
-%<tagging-lab> \NewSocket{tagsupport/@@/toc/leaders/after}{0}
+%<*tagging-lab>
+%<@@=scrlab>
+\NewSocket{tagsupport/@@/toc/leaders/before}{0}
+\NewSocket{tagsupport/@@/toc/leaders/after}{0}
+%</tagging-lab>
 \newcommand*{\TOCLineLeaderFill}[1][.]{%
 %<tagging-lab>  \UseTaggingSocket{@@/toc/leaders/before}\SuspendTagging{toc/leaders}%
   \leaders\hbox{$\m@th

@@ -31,27 +31,46 @@
 % We use file hooks to do save the meaning before loading the class and restore it afterwards.
 % This is to simplify moving the changes from this experiment to the official KOMA-Script SVN.
 %    \begin{macrocode}
-\clist_new:N \_@@_changed_macros_clist
-\clist_set:Nn  \_@@_changed_macros_clist {
+\clist_new:N \g_@@_changed_macros_clist
+\clist_gset:Nn  \g_@@_changed_macros_clist {
 	scr@dte@tocline,
-	TOCLineLeaderFill,
 	sectionlinesformat,
 	scr@numberline,
 	scr@saved@startsection,
 }
-\hook_gput_code:nnn {class/before}{scr-tagging-lab-catch-meanings}  {
-	\clist_map_inline:Nn \_@@_changed_macros_clist {
-		\cs_set_eq:cc {_@@_#1} {#1}
-		\cs_undefine:c {#1}
+
+\cs_new:Nn \_@@_capture_changed_macros: {
+	\clist_map_inline:Nn \g_@@_changed_macros_clist {
+		\cs_set_eq:cc {_@@_##1} {##1}
+		\cs_undefine:c {##1}
 	}
 }
-\hook_gput_code:nnn {class/after}{scr-tagging-lab-catch-meanings}  {
-	\clist_map_inline:Nn \_@@_changed_macros_clist {
-		\cs_set_eq:cc {#1}{_@@_#1}
+
+\cs_new:Nn \_@@_restore_changed_macros: {
+	\clist_map_inline:Nn \g_@@_changed_macros_clist {
+		\cs_set_eq:cc {##1}{_@@_##1}
 	}
 	\let\@sect\scr@lab@sect
 	\let\@xsect\scr@lab@xsect
 }
+
+\hook_gput_code:nnn {class/before}{scr-tagging-lab-catch-meanings}  {
+	\_@@_capture_changed_macros:
+}
+\hook_gput_code:nnn {class/after}{scr-tagging-lab-catch-meanings}  {
+	\_@@_restore_changed_macros:
+}
+
+% save and restore \TOCLineLeaderFill before and after tocbasic
+\hook_gput_code:nnn {package/tocbasic/before} {toclineleaderfill}{
+	\cs_set_eq:cc{_@@_TOCLineLeaderFill} {\string\TOCLineLeaderFill}
+	\cs_undefine:c {TOCLineLeaderFill}
+}
+
+\hook_gput_code:nnn {package/tocbasic/after}{toclineleaderfill}{
+	\cs_set_eq:cc {\string\TOCLineLeaderFill}{_@@_TOCLineLeaderFill}
+}
+
 \iffalse
 \providecommand{\@startsection}{\scr@saved@startsection
 \newcommand{\scr@saved@footnotetext}{}}
