@@ -389,7 +389,13 @@
 % with all the title macros filled before.
 %    \begin{macrocode}
 %<package&extend>\let\maketitle\relax\let\@maketitle\relax
-\newcommand*\maketitle[1][1]{%
+%</body>
+%<*tagging-lab>
+%<@@=scrlab>
+%</tagging-lab>
+%<*body|tagging-lab>
+%<body>\newcommand*\maketitle[1][1]{%
+%<tagging-lab>\cs_set:Npn\_@@_maketitle[#1]{%
 %    \end{macrocode}
 % \changes{v3.39}{2022/10/25}{using \cs{scr@v@is@ge}}
 % To support several \cs{maketitle} in the same document, we have to take care
@@ -409,6 +415,11 @@
 %    \begin{macrocode}
   \if@titlepage
     \begin{titlepage}
+%    \end{macrocode}
+% tagging: This is an internal command. This is copied from the latex-lab for the moment.
+% TODO: Ask for an interface
+%    \begin{macrocode}
+%<tagging-lab>      \cs_if_exist_use:N\__tag_tbl_disable:
       \setcounter{page}{%
 %<extend>        ##1%
 %<!extend>        #1%
@@ -482,7 +493,15 @@
           {\usekomafont{subject}{\@subject\par}}%
           \vskip 3em
         \fi
-        {\usekomafont{title}{\huge \@title\par}}%
+%    \end{macrocode}
+% tagging: it's possible to reduce the code, but to keep it easier to compare the variants, I decided to repeat, similar to the latex-lab-testphase-title definition
+%    \begin{macrocode}
+%<!tagging-lab>        {\usekomafont{title}{\huge \@title\par}}%
+%<*tagging-lab>
+	\pdf_version_compare:NnTF > {1.7}
+          {\usekomafont{title}{\huge\tag_struct_begin:n{tag=Title}\@title\par\tag_struct_end:}}%
+          {\usekomafont{title}{\huge\tagtool{paratag=Title}\@title \par}}%
+%</tagging-lab>
         \vskip 1em
         {\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi}%
         \vskip 2em
@@ -690,6 +709,8 @@
 %</!v4>
   \global\let\and\relax
 }%
+%</body|tagging-lab>
+%<*body>
 %    \end{macrocode}
 % \begin{macro}{\@maketitle}
 % \changes{v2.95c}{2006/08/21}{default paragraph settings}
@@ -713,7 +734,10 @@
     \noindent\@frontispiece\par
   \fi
 }
-\newcommand*{\@maketitle}{%
+%</body>
+%<*body|tagging-lab>
+%<body>\newcommand*{\@maketitle}{%
+%<tagging-lab>\newcommand*\_@@_@maketitle{%
   \global\@topnum=\z@
 %<!extend>  \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
 %<extend>  \parskip\z@ \parindent\z@ \parfillskip\z@\@plus 1fil
@@ -753,6 +777,8 @@
   \par
   \vskip 2em
 }%
+%</body|tagging-lab>
+%<*body>
 %    \end{macrocode}
 % \end{macro}^^A \@makefrontispiece
 % \end{macro}^^A \@makeextratitle

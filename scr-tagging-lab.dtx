@@ -118,7 +118,13 @@
 	\tl_set:Nn \__scr_current_heading_tl {#2}
 }
 
+
+
 \hook_gput_code:nnn {class/after} {scr-tagging-lab-sections}  {
+
+}
+
+\cs_new:Nn \_@@_patch_sectioning: {
 	\AddtoDoHook{heading/begingroup}{\tagtool{para-flattened=true}\use_none:n}
 	\AddtoDoHook{heading/begingroup/chapter}{
 		\exp_args:No \tag_tool:n { sec-start-chapter=  \__scr_current_heading_tl  }
@@ -138,6 +144,26 @@
 	\AddtoDoHook{heading/endgroup/part}{
 	   \tag_tool:n {sec-stop-part}
 	}
+}
+
+\cs_new:Nn \_@@_patch_maketitle: {
+	\cs_gset_eq:cN {\string\maketitle} \_@@_maketitle
+	\cs_gset_eq:NN \@maketitle \_@@_@maketitle
+}
+%    \end{macrocode}
+% we probably also should add those hooks after scrextend. But first the classes should work properly.
+%    \begin{macrocode}
+\hook_gput_code:nnn {class/scrartcl/after} {scr-tagging-lab-title} {
+	\_@@_patch_sectioning:
+	\_@@_patch_maketitle:
+}
+\hook_gput_code:nnn {class/scrbook/after} {scr-tagging-lab-title} {
+	\_@@_patch_sectioning:
+	\_@@_patch_maketitle:
+}
+\hook_gput_code:nnn {class/scrreprt/after} {scr-tagging-lab-title} {
+	\_@@_patch_sectioning:
+	\_@@_patch_maketitle:
 }
 %    \end{macrocode}
 % \begin{macro}{\scrlab@section@target}
