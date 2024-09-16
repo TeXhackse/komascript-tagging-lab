@@ -144,19 +144,25 @@
   }%
 }
 %    \end{macrocode}
-%</package&(body|tagging-lab)&!style>
-%<*package&body>
 % \begin{command}{\usetocbasicnumberline}
 % \changes{v3.20}{2016/03/15}{added}
 % The macro tests, whether \cs{numberline} used \cs{scr@numberline}. If not,
 % the optional argument is executed and a afterwards \cs{numberline} is
 % redefined.
 %    \begin{macrocode}
+%<tagging-lab>\cs_new:Npn \_@@_usetocbasicnumberline [ #1 ]{%
+%<*!tagging-lab>
 \newcommand*{\usetocbasicnumberline}[1][%
   \PackageInfo{tocbasic}{Using my definition of `\string\numberline'}%
 ]{%
+%</!tagging-lab>
   \@tempswatrue
   \begingroup
+%    \end{macrocode}
+% tagging: \SuspendTagging does not exist before |begin{document}|
+% TODO: ask if theres a better option
+%    \begin{macrocode}
+%<tagging-lab>    \tag_stop:n {toc/tocline-measure}
     \def\scr@numberline##1{\global\@tempswafalse}%
 %    \end{macrocode}
 % For \cs{numberline} \cs{@tempdima} usually is the width reserved for the
@@ -165,6 +171,7 @@
 %    \begin{macrocode}
     \@tempdima\maxdimen
     \sbox\@tempboxa{\numberline{0}}%
+%<tagging-lab>    \ResumeTagging{toc/tocline-measure}
   \endgroup
   \if@tempswa #1\renewcommand*{\numberline}[1]{\scr@numberline{##1}}\fi
 }
