@@ -1,0 +1,29 @@
+kind: pipeline
+type: docker
+name: latexmk
+
+environment:
+  SVN_PATH: KOMA-SVN
+
+steps:
+- name: submodules
+  image: alpine/git
+  commands:
+  - git submodule update --init --recursive
+- name: compare-koma-script
+  image: registry.gitlab.com/islandoftex/images/texlive:latest
+  settings:
+    repo: KOMA-Script/tagging-lab
+    tags: latest
+    cache_from: "KOMA-Script/tagging-lab:latest"
+    dry_run: true
+  environment:
+    LANG: de_DE.UTF-8
+    LC_ALL: de_DE.UTF-8
+  commands:
+  - export LC_ALL=C
+  - rm build.lua
+  - mv KOMA-build.lua build.lua
+  - l3build check
+  - mv $SVN_PATH/KOMA-build.lua $SVN_PATH/KOMA-build.lua
+  - cd $SVN_PATH && l3build check && cd -
