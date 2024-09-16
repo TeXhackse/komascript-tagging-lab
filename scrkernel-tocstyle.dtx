@@ -128,7 +128,8 @@
 % rules~5 and 6 of DUDDEN, 20th edition.
 %    \begin{macrocode}
 %<*package&(body|tagging-lab)&!style>
-\newcommand*{\scr@numberline}[1]{%
+%<!tagging-lab>\newcommand*{\scr@numberline}[1]{%
+%<tagging-lab>\newcommand*{\_@@_scr@numberline}[1]{%
   \numberline@box{%
 %<tagging-lab|tagging>    \UseHookWithArguments{contentsline/number/before}{1}{#1}%
     \numberline@prefix
@@ -2235,7 +2236,8 @@
 %    \begin{macrocode}
 \newlength\scr@dte@tocline@numberwidth
 %</!tagging-lab>
-\newcommand*{\scr@dte@tocline}[3]{%
+%<!tagging-lab>\newcommand*{\scr@dte@tocline}[3]{%
+%<tagging-lab>\newcommand*{\_@@_scr@dte@tocline}[3]{%
 %<tagging-lab|tagging>\SuspendTagging{toc/tocline-measure}
   \ifnum \@nameuse{#1tocdepth}>\c@tocdepth
   \else
@@ -2478,7 +2480,8 @@
 \NewSocket{tagsupport/@@/toc/leaders/before}{0}
 \NewSocket{tagsupport/@@/toc/leaders/after}{0}
 %</tagging-lab|(tagging&body)>
-\newcommand*{\TOCLineLeaderFill}[1][.]{%
+%<!tagging-lab>\newcommand*{\TOCLineLeaderFill}[1][.]{%
+%<tagging-lab>\cs_new:Npn [ #1 ] \_@@_TOCLineLeaderFill {%
 %<tagging-lab|tagging&tocline>  \UseTaggingSocket{@@/toc/leaders/before}\SuspendTagging{toc/leaders}%
   \leaders\hbox{$\m@th
     \mkern \@dotsep mu\hbox{#1}\mkern \@dotsep
@@ -2515,6 +2518,7 @@
 % \item[\marg{entry}:] The ToC entry \meta{string}.
 % \item[\marg{pagenumber}:] The page number \meta{string} of the ToC entry.
 % \end{description}
+% tagging: TODO: this style is not adapted yet!!
 %    \begin{macrocode}
 %<*toctext>
 \newcommand*{\scr@dte@toctext}[3]{%

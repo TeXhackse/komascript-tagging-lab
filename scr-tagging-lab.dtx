@@ -62,39 +62,23 @@
 \hook_gput_code:nnn {class/after}{scr-tagging-lab-catch-meanings}  {
 	\_@@_restore_changed_macros:
 }
-
-%
-% save and restore \TOCLineLeaderFill before and after tocbasic
-\hook_gput_code:nnn {package/tocbasic/before} {toclineleaderfill}{
-	\cs_set_eq:cc{_@@_TOCLineLeaderFill} {\string\TOCLineLeaderFill}
-	\cs_undefine:c {TOCLineLeaderFill}
-}
-
+%    \end{macrocode}
+% Move the redefinitions after the tocbasic package
+%    \begin{macrocode}
 \hook_gput_code:nnn {package/tocbasic/after}{toclineleaderfill}{
-	\cs_set_eq:cc {\string\TOCLineLeaderFill}{_@@_TOCLineLeaderFill}
+	\cs_set_eq:cc {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
+	\cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
+	\cs_set_eq:NN \scr@numberline \_@@_scr@numberline
 }
-
-\iffalse
-\providecommand{\@startsection}{\scr@saved@startsection
-\newcommand{\scr@saved@footnotetext}{}}
-\scr@saved@footnotemark
-\newcommand*{\scr@saved@startsection}[6]{%
-\fi
 %    \end{macrocode}
 % Insted of redefining \cs{scr@startsection} it's possible to use hooks.
 % Be aware that using the generic hook needs a check to limit the action to exclude chapter/part.
 %    \begin{macrocode}
-\cs_new:Nn \__scr_scr_start_aux:n {
+\cs_new:Nn \_@@_sec_start_aux:n {
 	\clist_if_in:nnF { chapter, part } {#1} {
 		\tag_tool:n {sec-start=#1}
 	}
 }
-
-\hook_gput_code:nnn {class/after}{scr-tagging-lab-scrstart}  {
-	\AddtoDoHook{heading/branch/star}{\__scr_scr_start_aux:n}
-	\AddtoDoHook{heading/branch/nostar}{\__scr_scr_start_aux:n}
-}
-
 %    \end{macrocode}
 % \begin{macro}{\@sect}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
@@ -109,41 +93,37 @@
 %    \begin{macrocode}
 %<*package|heading-hooks>
 
-\tl_new:N \__scr_current_heading_tl
+\tl_new:N \l_@@_current_heading_tl
 %\hook_new:n {scr/heading/endgroup/chapter}%TODO
 \hook_gput_code_with_args:nnn {cmd/scr@@startchapter/before} {tagging-save-heading} {
-	\tl_set:Nn \__scr_current_heading_tl {#2}
+	\tl_set:Nn \l_@@_current_heading_tl {#2}
 }
 \hook_gput_code_with_args:nnn {cmd/scr@@startpart/before} {tagging-save-heading} {
-	\tl_set:Nn \__scr_current_heading_tl {#2}
-}
-
-
-
-\hook_gput_code:nnn {class/after} {scr-tagging-lab-sections}  {
-
+	\tl_set:Nn \l_@@_current_heading_tl {#2}
 }
 
 \cs_new:Nn \_@@_patch_sectioning: {
 	\AddtoDoHook{heading/begingroup}{\tagtool{para-flattened=true}\use_none:n}
 	\AddtoDoHook{heading/begingroup/chapter}{
-		\exp_args:No \tag_tool:n { sec-start-chapter=  \__scr_current_heading_tl  }
+		\exp_args:No \tag_tool:n { sec-start-chapter=  \_@@_current_heading_tl  }
 		\Ifnumbered{chapter} \relax {\MakeLinkTarget[chapter]}
 	}
 	\AddtoDoHook{heading/endgroup/chapter}{
 	   \tag_tool:n {sec-stop-chapter}
 	}
 	\AddtoDoHook{heading/begingroup/part}{
-		\exp_args:No \tag_tool:n { sec-start-part=  \__scr_current_heading_tl  }
+		\exp_args:No \tag_tool:n { sec-start-part=  \_@@__@@_heading_tl  }
 		\IfUseNumber\relax{\MakeLinkTarget[part]{}}
 	}
 	\AddtoDoHook{heading/begingroup/part}{
-		\exp_args:No \tag_tool:n { sec-start-part=  \__scr_current_heading_tl  }
+		\exp_args:No \tag_tool:n { sec-start-part=  \_@@_current_heading_tl  }
 		\Ifnumbered{part} \relax {\MakeLinkTarget[part]}
 	}
 	\AddtoDoHook{heading/endgroup/part}{
 	   \tag_tool:n {sec-stop-part}
 	}
+	\AddtoDoHook{heading/branch/star}{\_@@_sec_start_aux:n}
+	\AddtoDoHook{heading/branch/nostar}{\_@@_sec_tart_aux:n}
 }
 
 \cs_new:Nn \_@@_patch_maketitle: {
