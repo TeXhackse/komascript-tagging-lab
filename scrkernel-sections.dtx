@@ -1061,7 +1061,8 @@
 % tagging: The following line was changed to match the change between the Kernel and the Testphase version of \cs{@svsec}.
 % As we also define \cs{@svsec} if the section is not numberes we use a local boolean for the test.
 %    \begin{macrocode}
-%<tagging-lab>	   \@tempswatrue% not numbered instead of ifx\@svsec\@empty
+%<tagging-lab>	   \@tempswatrue%% not numbered instead of ifx @svsec @empty
+%<!tagging-lab>    \let\@svsec\@empty
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/02}{execute counter reset list}
 % Even for not numbered sections, the reset list für the section counter has
@@ -1104,7 +1105,7 @@
 % tagging:
 % \cs{@svsec} is no longer empty here. The test was changed to use a boolean.
 %    \begin{macrocode}
-%!tagging-lab>      \ifx\@svsec\@empty
+%<!tagging-lab>      \ifx\@svsec\@empty
 %<tagging-lab>      \if@tempswa
         \let\IfUseNumber\@secondoftwo
       \else
@@ -1560,7 +1561,7 @@
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
-    \tag_tool:n {restore-para}
+%<tagging-lab>    \tag_tool:n {restore-para}
     \@afterheading
   \else
     \@nobreakfalse
@@ -1575,7 +1576,7 @@
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
-        \tag_tool:n {sec-split-para}
+%<tagging-lab>        \tag_tool:n {sec-split-para}
         \@tempskipa #1\relax
         \ifdim \@tempskipa<\z@
           \hskip -\@tempskipa
