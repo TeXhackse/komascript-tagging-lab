@@ -8,8 +8,15 @@ environment:
   SVN_PATH: KOMA-SVN
 
 steps:
+- name: check-l3build doc
+  image: registry.gitlab.com/islandoftex/images/texlive:latest
+  pull: if-not-exists
+  # detach: true
+  commands:
+  - l3build doc
 - name: compare-koma-script
   image: registry.gitlab.com/islandoftex/images/texlive:latest
+  pull: if-not-exists
   settings:
     repo: KOMA-Script/tagging-lab
     tags: latest
