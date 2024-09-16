@@ -68,9 +68,9 @@ The structure has the following kids:
 The structure 6 contains:
 >  Type  =>  /StructElem
 >  S  =>  /section
->  NS  =>  latex-book
->  rolemap  =>  {H2}{pdf2}
->  parentrole  =>  {H2}{pdf2}
+>  NS  =>  latex
+>  rolemap  =>  {H1}{pdf2}
+>  parentrole  =>  {H1}{pdf2}
 >  P  =>  parent structure: 5 = /Sect
 The structure has the following kids:
 >  Struct 7
@@ -104,9 +104,9 @@ The structure 9 contains:
 >  Type  =>  /StructElem
 >  C  =>  /justify
 >  S  =>  /section
->  NS  =>  latex-book
->  rolemap  =>  {H2}{pdf2}
->  parentrole  =>  {H2}{pdf2}
+>  NS  =>  latex
+>  rolemap  =>  {H1}{pdf2}
+>  parentrole  =>  {H1}{pdf2}
 >  P  =>  parent structure: 8 = /Sect
 The structure has the following kids:
 >  MC 3
@@ -151,9 +151,9 @@ The structure 13 contains:
 >  Type  =>  /StructElem
 >  C  =>  /justify
 >  S  =>  /section
->  NS  =>  latex-book
->  rolemap  =>  {H2}{pdf2}
->  parentrole  =>  {H2}{pdf2}
+>  NS  =>  latex
+>  rolemap  =>  {H1}{pdf2}
+>  parentrole  =>  {H1}{pdf2}
 >  P  =>  parent structure: 12 = /Sect
 The structure has the following kids:
 >  MC 5
@@ -173,9 +173,9 @@ The structure has the following kids:
 The structure 15 contains:
 >  Type  =>  /StructElem
 >  S  =>  /subsection
->  NS  =>  latex-book
->  rolemap  =>  {H3}{pdf2}
->  parentrole  =>  {H3}{pdf2}
+>  NS  =>  latex
+>  rolemap  =>  {H2}{pdf2}
+>  parentrole  =>  {H2}{pdf2}
 >  P  =>  parent structure: 14 = /Sect
 The structure has the following kids:
 >  Struct 16
@@ -208,9 +208,9 @@ The structure 18 contains:
 >  Type  =>  /StructElem
 >  C  =>  /justify
 >  S  =>  /section
->  NS  =>  latex-book
->  rolemap  =>  {H2}{pdf2}
->  parentrole  =>  {H2}{pdf2}
+>  NS  =>  latex
+>  rolemap  =>  {H1}{pdf2}
+>  parentrole  =>  {H1}{pdf2}
 >  P  =>  parent structure: 17 = /Sect
 The structure has the following kids:
 >  MC 8

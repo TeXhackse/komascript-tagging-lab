@@ -3,15 +3,15 @@
 \ExplSyntaxOff
 
 \input{regression-test}
-\def\CLASS{scrbook}
-\input{scr-tagging-lab-test-setup}
 
-%I don't want to handle pagestyles, so set everything to empty:
+\input{testsetup}
+\documentclass{scrartcl}
+
 \pagestyle{empty}\renewcommand\chapterpagestyle{empty}
 
 \begin{document}
+
 \START
-%\showoutput
 
 \section{section}
 

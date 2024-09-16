@@ -3,15 +3,15 @@
 \ExplSyntaxOff
 
 \input{regression-test}
-\input{scr-tagging-lab-test-general}
-\documentclass{book}
 
-%I don't want to handle pagestyles, so set everything to empty:
+\input{testsetup-compare}
+\documentclass{article}
+
 \pagestyle{empty}
 
 \begin{document}
+
 \START
-%\showoutput
 
 \section{section}
 
