@@ -1,15 +1,13 @@
 kind: pipeline
 type: docker
-name: latexmk
+name: testing
+clone:
+  recursive: true
 
 environment:
   SVN_PATH: KOMA-SVN
 
 steps:
-- name: submodules
-  image: alpine/git
-  commands:
-  - git submodule update --init --recursive
 - name: compare-koma-script
   image: registry.gitlab.com/islandoftex/images/texlive:latest
   settings:
