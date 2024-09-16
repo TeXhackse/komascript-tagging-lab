@@ -63,6 +63,7 @@
 	\_@@_restore_changed_macros:
 }
 
+%
 % save and restore \TOCLineLeaderFill before and after tocbasic
 \hook_gput_code:nnn {package/tocbasic/before} {toclineleaderfill}{
 	\cs_set_eq:cc{_@@_TOCLineLeaderFill} {\string\TOCLineLeaderFill}
@@ -154,7 +155,7 @@
      {
        \skip_set:Nn \@tempskipa {#3}
        \dim_compare:nNnF {\@tempskipa}<{0pt}{\kern-\@tempskipa}
-       \MakeLinkTarget#1{#2}
+         \MakeLinkTarget#1{#2}
      }
   }
 %    \end{macrocode}

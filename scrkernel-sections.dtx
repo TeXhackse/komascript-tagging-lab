@@ -1120,10 +1120,7 @@
 %    \end{macrocode}
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
-        \sectionlinesformat{#1}{\glueexpr #3\relax}%
-          \@svsec%
-           {#8}%
-        \@@par}%
+        \sectionlinesformat{#1}{\glueexpr #3\relax}\@svsec{#8}\@@par}%
       \ExecuteDoHook{heading/endgroup/#1}%
     \endgroup
 %<*trace>
@@ -1173,10 +1170,10 @@
         \let\IfUseNumber\@firstoftwo
       \fi
       \ExecuteDoHook{heading/begingroup/#1}%
-      #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}
-%<!tagging-lab>     \@svsec%
-%<tagging-lab>     \IfUseNumber{\@svsec}{\@kernel@tag@svsec}%
-     {#8}}%
+      #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}%
+%<!tagging-lab>        \@svsec%
+%<tagging-lab>         \IfUseNumber{\@svsec}{\@kernel@tag@svsec}%
+        {#8}}%
 %<*trace>
       \ClassInfo{\KOMAClassName}{%
         head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
@@ -1459,7 +1456,7 @@
         \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
         {\glueexpr #1\relax}%
 %<!tagging-lab>        \@empty
-%<tagging-lab>         {\scrlab@section@target{[section]}{}{#3}}%
+%<tagging-lab>        {\scrlab@section@target{[section]}{}{#3}}%
         {#5}\@@par}%
       \edef\reserved@a{%
         \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
@@ -1479,8 +1476,8 @@
 %    \begin{macrocode}
         \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
         \unexpanded{{\glueexpr #1\relax}%
-%<!tagging-lab>        \@empty
-%<tagging-lab>         {\scrlab@section@target{[section]}{}{#1}}%
+%<!tagging-lab>          \@empty
+%<tagging-lab>           {\scrlab@section@target{[section]}{}{#1}}%
           {#5}}%
       }%
       \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
@@ -4419,7 +4416,7 @@
   \let\@addchap\scr@orig@addchap
   \ifx\hy@insteadofrefstepcounter\@gobble
     \renewcommand*{\hy@insteadofrefstepcounter}[1]{%
-        \MakeLinkTarget[##1]{}%
+      \MakeLinkTarget[##1]{}%
     }%
   \fi
 }
