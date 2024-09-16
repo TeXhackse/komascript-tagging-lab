@@ -1,4 +1,17 @@
 % ======================================================================
+% ======================================================================
+%
+% This is a modified version of scrmain.ins, explicitly
+% permitted by Markus Kohm. Maintainer of this modified version is
+% Marei Peischl.
+%
+% This file is based on revision 4120 of the repository:
+% https://sourceforge.net/p/koma-script/.
+% The copyright notice below is left unchanged to simplify
+% the integration of this project into KOMA-Script
+%
+% ======================================================================
+% ======================================================================
 % scrmain.ins
 % Copyright (c) Markus Kohm, 2002-2023
 %
@@ -255,15 +268,15 @@
   }%
 }%
 
-%\generate{\usepreamble\defaultpreamble
-%  \file{scrfontsizes.sty}{%
-%    \from{scrkernel-version.dtx}{package}%
-%    \from{scrkernel-fonts.dtx}{package,generator,identify}%
-%    \from{scrkernel-fonts.dtx}{package,generator,option}%
-%    \from{scrkernel-fonts.dtx}{package,generator,body}%
-%    \from{scrlogo.dtx}{logo}%
-%  }%
-%}%
+\generate{\usepreamble\defaultpreamble
+  \file{scrfontsizes.sty}{%
+    \from{scrkernel-version.dtx}{package}%
+    \from{scrkernel-fonts.dtx}{package,generator,identify}%
+    \from{scrkernel-fonts.dtx}{package,generator,option}%
+    \from{scrkernel-fonts.dtx}{package,generator,body}%
+    \from{scrlogo.dtx}{logo}%
+  }%
+}%
 
 \generate{\usepreamble\defaultpreamble
   \file{scrlttr2.cls}{%
@@ -348,65 +361,65 @@
   }%
 }%
 
-%\generate{\usepreamble\defaultpreamble
-%  \file{visualize.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,visualize,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,visualize,body}%
-%    \from{scrkernel-notepaper.dtx}{lco,visualize,body}%
-%  }%
-%  \file{KOMAold.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,KOMAold,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,KOMAold,body}%
-%    \from{scrkernel-notepaper.dtx}{lco,KOMAold,body}%
-%  }%
-%  \file{DIN.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,DIN,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,DIN,body}%
-%  }%
-%  \file{DINmtext.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,DINmoretext,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,DINmoretext,body}%
-%  }%
-%  \file{DIN5008A.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,5008,A,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,5008,A,body}%
-%  }%
-%  \file{DIN5008B.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,5008,B,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,5008,B,body}%
-%  }%
-%  \file{SN.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,SN,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,SN,body}%
-%  }%
-%  \file{SNleft.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,SwissLeft,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,SwissLeft,body}%
-%  }%
-%  \file{NF.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,NF,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,NF,body}%
-%  }%
-%  \file{UScommercial9.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9,body}%
-%  }%
-%  \file{UScommercial9DW.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9DW,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9DW,body}%
-%  }%
-%}%
+\generate{\usepreamble\defaultpreamble
+  \file{visualize.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,visualize,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,visualize,body}%
+    \from{scrkernel-notepaper.dtx}{lco,visualize,body}%
+  }%
+  \file{KOMAold.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,KOMAold,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,KOMAold,body}%
+    \from{scrkernel-notepaper.dtx}{lco,KOMAold,body}%
+  }%
+  \file{DIN.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,DIN,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,DIN,body}%
+  }%
+  \file{DINmtext.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,DINmoretext,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,DINmoretext,body}%
+  }%
+  \file{DIN5008A.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,5008,A,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,5008,A,body}%
+  }%
+  \file{DIN5008B.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,5008,B,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,5008,B,body}%
+  }%
+  \file{SN.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,SN,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,SN,body}%
+  }%
+  \file{SNleft.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,SwissLeft,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,SwissLeft,body}%
+  }%
+  \file{NF.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,NF,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,NF,body}%
+  }%
+  \file{UScommercial9.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9,body}%
+  }%
+  \file{UScommercial9DW.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9DW,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9DW,body}%
+  }%
+}%
 
 % \generate{\usepreamble\defaultpreamble
 %  \file{USletter2w.lco}{%
@@ -416,30 +429,30 @@
 %  }%
 % }
 
-%\generate{\usepreamble\defaultpreamble
-%  \file{scrkbase.sty}{%
-%    \from{scrkernel-version.dtx}{package,scrkbase}%
-%    \from{scrkernel-basics.dtx}{package,prepare,koma}%
-%    \from{scrkernel-basics.dtx}{package,option,koma}%
-%    \from{scrkernel-fonts.dtx}{package,option,scrkbase}%
-%    \from{scrkernel-basics.dtx}{package,body,koma}%
-%    \from{scrkernel-fonts.dtx}{package,body,scrkbase}%
-%    \from{scrlogo.dtx}{logo}%
-%  }%
-%}
+\generate{\usepreamble\defaultpreamble
+  \file{scrkbase.sty}{%
+    \from{scrkernel-version.dtx}{package,scrkbase}%
+    \from{scrkernel-basics.dtx}{package,prepare,koma}%
+    \from{scrkernel-basics.dtx}{package,option,koma}%
+    \from{scrkernel-fonts.dtx}{package,option,scrkbase}%
+    \from{scrkernel-basics.dtx}{package,body,koma}%
+    \from{scrkernel-fonts.dtx}{package,body,scrkbase}%
+    \from{scrlogo.dtx}{logo}%
+  }%
+}
 
 % --- additional package batches (maybe used with other classes, too) --
 
-%\batchinput{japanlco.dtx}% several Japanese lco-files
-%\batchinput{scrlogo.dtx}% scrlogo.sty
-%\batchinput{scrkernel-typearea.dtx}% typearea.sty
-%\batchinput{scrkernel-basics.dtx}% scrbase.sty
-%\batchinput{scrtime.dtx}% scrtime.sty, scrdate.sty
-%\batchinput{scrlfile.dtx}% scrlfile.sty
-%\batchinput{scraddr.dtx}% scraddr.sty
+\batchinput{japanlco.dtx}% several Japanese lco-files
+\batchinput{scrlogo.dtx}% scrlogo.sty
+\batchinput{scrkernel-typearea.dtx}% typearea.sty
+\batchinput{scrkernel-basics.dtx}% scrbase.sty
+\batchinput{scrtime.dtx}% scrtime.sty, scrdate.sty
+\batchinput{scrlfile.dtx}% scrlfile.sty
+\batchinput{scraddr.dtx}% scraddr.sty
 \batchinput{tocbasic.dtx}% tocbasic.sty
-%\batchinput{scrlayer.dtx}% scrlayer.sty, scrlayer-scrpage.sty ...
-%\batchinput{scrjura.dtx}% scrjura.sty
+\batchinput{scrlayer.dtx}% scrlayer.sty, scrlayer-scrpage.sty ...
+\batchinput{scrjura.dtx}% scrjura.sty
 
 % ---------- end of docstrip process -----------------------------------
 

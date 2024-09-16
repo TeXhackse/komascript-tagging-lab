@@ -30,5 +30,4 @@ steps:
   - rm build.lua
   - mv KOMA-build.lua build.lua
   - l3build check
-  - mv $SVN_PATH/KOMA-build.lua $SVN_PATH/KOMA-build.lua
-  - cd $SVN_PATH && l3build check && cd -
+  - cd $SVN_PATH && cp ../build.lua scrmain.ins . && l3build check && cd -
