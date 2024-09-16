@@ -1,0 +1,32 @@
+\ExplSyntaxOn
+\debug_on:n { check-declarations , deprecation }
+\ExplSyntaxOff
+
+\input{regression-test}
+\def\CLASS{scrbook}
+\input{scr-tagging-lab-test-setup}
+
+%I don't want to handle pagestyles, so set everything to empty:
+\pagestyle{empty}\renewcommand\chapterpagestyle{empty}
+
+\begin{document}
+\START
+%\showoutput
+
+\section{section}
+
+\addsec{addsec}
+
+text
+
+\section*{starred}
+
+\subsection{blub}
+
+\setcounter{secnumdepth}{-3}
+
+\section{section}
+
+\ShowTagging{debug/structures}
+
+\end{document}
