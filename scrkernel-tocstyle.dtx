@@ -127,7 +127,10 @@
 % This macro is used indirectly in the ToC and has to be redefined to fulfil
 % rules~5 and 6 of DUDDEN, 20th edition.
 %    \begin{macrocode}
-%<*package&(body|tagging-lab)&!style>
+%<*tagging-lab>
+%<@@=scrlab>
+%</tagging-lab>
+%<*package&(body|tagging-lab)>
 %<!tagging-lab>\newcommand*{\scr@numberline}[1]{%
 %<tagging-lab>\newcommand*{\_@@_scr@numberline}[1]{%
   \numberline@box{%
@@ -165,6 +168,8 @@
   \endgroup
   \if@tempswa #1\renewcommand*{\numberline}[1]{\scr@numberline{##1}}\fi
 }
+%</package&(body|tagging-lab)>
+%<*package&body>
 %    \end{macrocode}
 % \end{command}^^A \usetocbasicnumberline
 % \begin{macro}{\numberline@prefix}
@@ -2476,12 +2481,11 @@
 % \texttt{\#1} is the character used for filling.
 %    \begin{macrocode}
 %<*tagging-lab|(tagging&body)>
-%<@@=scrlab>
 \NewSocket{tagsupport/@@/toc/leaders/before}{0}
 \NewSocket{tagsupport/@@/toc/leaders/after}{0}
 %</tagging-lab|(tagging&body)>
 %<!tagging-lab>\newcommand*{\TOCLineLeaderFill}[1][.]{%
-%<tagging-lab>\cs_new:Npn [ #1 ] \_@@_TOCLineLeaderFill {%
+%<tagging-lab>\cs_new:Npn \_@@_TOCLineLeaderFill  [ #1 ] {%
 %<tagging-lab|tagging&tocline>  \UseTaggingSocket{@@/toc/leaders/before}\SuspendTagging{toc/leaders}%
   \leaders\hbox{$\m@th
     \mkern \@dotsep mu\hbox{#1}\mkern \@dotsep

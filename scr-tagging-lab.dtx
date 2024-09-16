@@ -52,21 +52,14 @@
 	\clist_map_inline:Nn \g_@@_changed_macros_clist {
 		\cs_set_eq:cc {##1}{_@@_##1}
 	}
-	\let\@sect\scr@lab@sect
-	\let\@xsect\scr@lab@xsect
 }
 
-\hook_gput_code:nnn {class/before}{scr-tagging-lab-catch-meanings}  {
-	\_@@_capture_changed_macros:
-}
-\hook_gput_code:nnn {class/after}{scr-tagging-lab-catch-meanings}  {
-	\_@@_restore_changed_macros:
-}
 %    \end{macrocode}
 % Move the redefinitions after the tocbasic package
 %    \begin{macrocode}
 \hook_gput_code:nnn {package/tocbasic/after}{toclineleaderfill}{
-	\cs_set_eq:cc {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
+	\cs_set_eq:cN {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
+	\cs_set_eq:cN {\string\usetocbasicnumberline} \_@@_usetocbasicnumberline
 	\cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
 	\cs_set_eq:NN \scr@numberline \_@@_scr@numberline
 }
@@ -94,7 +87,6 @@
 %<*package|heading-hooks>
 
 \tl_new:N \l_@@_current_heading_tl
-%\hook_new:n {scr/heading/endgroup/chapter}%TODO
 \hook_gput_code_with_args:nnn {cmd/scr@@startchapter/before} {tagging-save-heading} {
 	\tl_set:Nn \l_@@_current_heading_tl {#2}
 }
@@ -103,6 +95,11 @@
 }
 
 \cs_new:Nn \_@@_patch_sectioning: {
+	\cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
+	\cs_set_eq:NN \@seccntformat \scrlab@seccntformat
+	\let\@sect\scrlab@sect
+	\let\@xsect\scrlab@xsect
+
 	\AddtoDoHook{heading/begingroup}{\tagtool{para-flattened=true}\use_none:n}
 	\AddtoDoHook{heading/begingroup/chapter}{
 		\exp_args:No \tag_tool:n { sec-start-chapter=  \_@@_current_heading_tl  }
@@ -123,7 +120,7 @@
 	   \tag_tool:n {sec-stop-part}
 	}
 	\AddtoDoHook{heading/branch/star}{\_@@_sec_start_aux:n}
-	\AddtoDoHook{heading/branch/nostar}{\_@@_sec_tart_aux:n}
+	\AddtoDoHook{heading/branch/nostar}{\_@@_sec_start_aux:n}
 }
 
 \cs_new:Nn \_@@_patch_maketitle: {
@@ -136,14 +133,24 @@
 \hook_gput_code:nnn {class/scrartcl/after} {scr-tagging-lab-title} {
 	\_@@_patch_sectioning:
 	\_@@_patch_maketitle:
+	\let\numberline\scr@numberline
 }
 \hook_gput_code:nnn {class/scrbook/after} {scr-tagging-lab-title} {
 	\_@@_patch_sectioning:
 	\_@@_patch_maketitle:
+	\let\numberline\scr@numberline
 }
 \hook_gput_code:nnn {class/scrreprt/after} {scr-tagging-lab-title} {
 	\_@@_patch_sectioning:
 	\_@@_patch_maketitle:
+	\let\numberline\scr@numberline
+}
+%    \end{macrocode}
+% Workaround to avoid extra warnings
+%    \begin{macrocode}
+\AtEndOfPackage{
+	\let\@startsection\scr@saved@startsection
+	\cs_undefine:N \scr@saved@startsection
 }
 %    \end{macrocode}
 % \begin{macro}{\scrlab@section@target}

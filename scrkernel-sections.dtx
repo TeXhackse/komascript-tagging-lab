@@ -595,7 +595,6 @@
     {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}%
 }
 %</body|workarounds>
-%<workarounds>\let\@startsection\scr@saved@startsection
 %<*body>
 \def\reserved@a#1#2#3#4#5#6{%
   \if@noskipsec \leavevmode \fi
@@ -1010,7 +1009,7 @@
 %<*body|tagging-lab>
 %<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro \string\@sect}
 %<!tagging-lab>\def\@sect#1#2#3#4#5#6[#7]#8{%
-%<tagging-lab>\def\scr@lab@sect#1#2#3#4#5#6[#7]#8{%
+%<tagging-lab>\def\scrlab@sect#1#2#3#4#5#6[#7]#8{%
   \ifnum \scr@osectarg=\z@
     \@scr@tempswafalse
   \else
@@ -1341,7 +1340,8 @@
 %    \begin{macrocode}
 %</body>
 %<*body|tagging-lab>
-\newcommand{\sectionlinesformat}[4]{%
+%<!tagging-lab>\newcommand{\sectionlinesformat}[4]{%
+%<tagging-lab>\newcommand{\scrlab@sectionlinesformat}[4]{%
 %<tagging-lab>  \IfUseNumber\@kernel@tag@hangfrom
   \@hangfrom{\hskip #2#3}{#4}%
 }
@@ -1547,7 +1547,7 @@
 %<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
 %<trace> \string\@xsect}
 %<body>\def\@xsect#1{%
-%<tagging-lab>\def\scr@lab@xsect#1{%
+%<tagging-lab>\def\scrlab@xsect#1{%
   \@ifundefined{scr@sect@runin}{%
     \def\scr@sect@runin##1##2##3{##3}%
   }%
@@ -6293,7 +6293,8 @@
 %</body>
 %</class&!letter>
 %<*(body&class&!letter)|tagging-lab>
-\renewcommand*{\@seccntformat}[1]{%
+%<!tagging-lab>\renewcommand*{\@seccntformat}[1]{%
+%<tagging-lab>\newcommand*{\scrlab@seccntformat}[1]{%
 %<tagging-lab>   \tag_stop:n{seccntformat}{}
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
 %<!v4>    \protect\othersectionlevelsformat{#1}{%
