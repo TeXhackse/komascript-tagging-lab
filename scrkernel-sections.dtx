@@ -5460,13 +5460,13 @@
 % prevent page breaks!
 %    \begin{macrocode}
 %</body>
-%<*body|tagging-lab>
+%<*(body&class&!letter&(report|book))|tagging-lab>
 %<!tagging-lab>\newcommand{\chapterlinesformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlinesformat}[3]{%
 %<tagging-lab>  \IfUseNumber\@kernel@tag@hangfrom
   \@hangfrom{#2}{#3}%
 }
-%</body|tagging-lab>
+%</(body&class&!letter&(report|book))|tagging-lab>
 %<*body>
 \newcommand{\chapterlineswithprefixformat}[3]{%
   #2#3%
