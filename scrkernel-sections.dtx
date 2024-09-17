@@ -4984,7 +4984,9 @@
 %<book>    \else\@tempswafalse\fi
   }{\@tempswafalse}%
   \if@tempswa
+%<tagging-lab>    \LinkTargetOff
     \refstepcounter{#1}%
+%<tagging-lab>    \LinkTargetOn
     \expandafter\@maybeautodot\csname the#1\endcsname
     \typeout{#1 \csname the#1\endcsname.}%
     \ifx\@currenttocentry\@empty\else
@@ -5789,10 +5791,13 @@
 \renewcommand*{\thechapter}{\@arabic\c@chapter}
 \newcommand*{\chapterformat}{%
   \mbox{\chapappifchapterprefix{\nobreakspace}\thechapter\autodot
+%<tagging-lab>    \MakeLinkTarget {chapter}
     \IfUsePrefixLine{}{\enskip}}%
 }
 \newcommand*\chaptermarkformat{\chapappifchapterprefix{\ }%
-  \thechapter\autodot\enskip}
+  \thechapter\autodot
+%<tagging-lab>    \MakeLinkTarget {chapter}
+  \enskip}
 %    \end{macrocode}
 % \end{command}^^A \chaptermarkformat
 % \end{command}^^A \chapterformat
