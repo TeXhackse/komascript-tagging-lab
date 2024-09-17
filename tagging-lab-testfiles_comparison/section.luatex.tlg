@@ -1,13 +1,286 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+Package tagpdf Info: Parent-Child 'Document' --> 'Sect'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Document/pdf2' --> 'Sect/pdf2' on line ...
+tagpdf DEBUG Info: Struct 5 begin inserted with options: tag={\int_compare:nNnTF {\cs_if_exist_use:c {toclevel@section}+0}={-1}{Part}{Sect}},tag=Sect 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Sect' --> 'H1'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Sect/pdf2' --> 'section/latex' on line ...
+tagpdf DEBUG Info: Struct 6 begin inserted with options: tag=\l__tag_para_tag_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{section}{H1}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'H1' --> 'Lbl'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'H1/pdf2' --> 'Lbl/pdf2' on line ...
+tagpdf DEBUG Info: Struct 7 begin inserted with options: tag=Lbl 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Lbl}{Lbl}}
+>  {{section}{H1}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Lbl' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Lbl/pdf2' --> 'MC' on line ...
 tagpdf DEBUG Info: Tagging stopped
 (tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
+==> @endpe=false on input line ...
+==> increment P on input line ...
+tagpdf DEBUG Info: Struct 7 begin ignored with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
 tagpdf DEBUG Info: Tagging restarted
 (tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
+Package tagpdf Info: Parent-Child 'Lbl' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Lbl/pdf2' --> 'MC' on line ...
+Package tagpdf Info: closing structure 7 tagged /Lbl
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{section}{H1}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'H1' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'H1/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+Package tagpdf Info: closing structure 6 tagged /section
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 5 tagged /Sect
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Document' --> 'Sect'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Document/pdf2' --> 'Sect/pdf2' on line ...
+tagpdf DEBUG Info: Struct 8 begin inserted with options: tag={\int_compare:nNnTF {\cs_if_exist_use:c {toclevel@section}+0}={-1}{Part}{Sect}},tag=Sect 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> @endpe=false on input line ...
+==> increment P on input line ...
+Package tagpdf Info: Parent-Child 'Sect' --> 'H1'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Sect/pdf2' --> 'section/latex' on line ...
+tagpdf DEBUG Info: Struct 9 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{section}{H1}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'H1' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'H1/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+Package tagpdf Info: closing structure 9 tagged /section
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> @endpe=false on input line ...
+Package tagpdf Info: Parent-Child 'Sect' --> 'Part'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Sect/pdf2' --> 'text-unit/latex' on line ...
+tagpdf DEBUG Info: Struct 10 begin inserted with options: tag=\l__tag_para_main_tag_tl ,attribute-class=\l__tag_para_main_attr_class_tl , 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{text-unit}{Part}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> increment P on input line ...
+Package tagpdf Info: Parent-Child 'Sect' --> 'P'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Sect/pdf2' --> 'text/latex' on line ...
+tagpdf DEBUG Info: Struct 11 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{text}{P}}
+>  {{text-unit}{Part}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'P' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'P/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+Package tagpdf Info: closing structure 11 tagged /text
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{text-unit}{Part}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 10 tagged /text-unit
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 8 tagged /Sect
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Document' --> 'Sect'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Document/pdf2' --> 'Sect/pdf2' on line ...
+tagpdf DEBUG Info: Struct 12 begin inserted with options: tag={\int_compare:nNnTF {\cs_if_exist_use:c {toclevel@section}+0}={-1}{Part}{Sect}},tag=Sect 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> @endpe=false on input line ...
+==> increment P on input line ...
+Package tagpdf Info: Parent-Child 'Sect' --> 'H1'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Sect/pdf2' --> 'section/latex' on line ...
+tagpdf DEBUG Info: Struct 13 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{section}{H1}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'H1' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'H1/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+Package tagpdf Info: closing structure 13 tagged /section
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Sect' --> 'Sect'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Sect/pdf2' --> 'Sect/pdf2' on line ...
+tagpdf DEBUG Info: Struct 14 begin inserted with options: tag={\int_compare:nNnTF {\cs_if_exist_use:c {toclevel@subsection}+0}={-1}{Part}{Sect}},tag=Sect 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Sect' --> 'H2'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Sect/pdf2' --> 'subsection/latex' on line ...
+tagpdf DEBUG Info: Struct 15 begin inserted with options: tag=\l__tag_para_tag_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{subsection}{H2}}
+>  {{Sect}{Sect}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'H2' --> 'Lbl'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'H2/pdf2' --> 'Lbl/pdf2' on line ...
+tagpdf DEBUG Info: Struct 16 begin inserted with options: tag=Lbl 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Lbl}{Lbl}}
+>  {{subsection}{H2}}
+>  {{Sect}{Sect}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Lbl' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Lbl/pdf2' --> 'MC' on line ...
 tagpdf DEBUG Info: Tagging stopped
 (tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
+==> @endpe=false on input line ...
+==> increment P on input line ...
+tagpdf DEBUG Info: Struct 16 begin ignored with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
 tagpdf DEBUG Info: Tagging restarted
 (tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
+Package tagpdf Info: Parent-Child 'Lbl' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Lbl/pdf2' --> 'MC' on line ...
+Package tagpdf Info: closing structure 16 tagged /Lbl
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{subsection}{H2}}
+>  {{Sect}{Sect}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'H2' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'H2/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+Package tagpdf Info: closing structure 15 tagged /subsection
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 14 tagged /Sect
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 12 tagged /Sect
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Document' --> 'Sect'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Document/pdf2' --> 'Sect/pdf2' on line ...
+tagpdf DEBUG Info: Struct 17 begin inserted with options: tag={\int_compare:nNnTF {\cs_if_exist_use:c {toclevel@section}+0}={-1}{Part}{Sect}},tag=Sect 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> @endpe=false on input line ...
+==> increment P on input line ...
+Package tagpdf Info: Parent-Child 'Sect' --> 'H1'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Sect/pdf2' --> 'section/latex' on line ...
+tagpdf DEBUG Info: Struct 18 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{section}{H1}}
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'H1' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'H1/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+Package tagpdf Info: closing structure 18 tagged /section
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Sect}{Sect}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
 =========================
 The structure 1 contains:
 >  Type  =>  /StructTreeRoot
@@ -227,6 +500,15 @@ tagpdf DEBUG Info: Tagging restarted
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 [1
 ] (section.aux)
+Package tagpdf Info: closing structure 17 tagged /Sect
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 2 tagged /Document
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Root}{StructTreeRoot}}.
 Package tagpdf Info: Finalizing the tagging structure:
 (tagpdf)             Writing out ~18 structure objects
 (tagpdf)             with ~12 'MC' leaf nodes.
