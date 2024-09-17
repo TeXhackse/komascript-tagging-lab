@@ -15,6 +15,10 @@
 %
 %    \begin{macrocode}
 %<@@=scrlab>
+%<*testphase>
+\ProvidesExplFile{KOMA-fixes-latex-lab-testphase.ltx}{2024-09-14}{v0.1}{KOMA-fixes testphase}
+\RequirePackage{scr-tagging-lab}
+%</testphase>
 %<*package|koma>
 %    \end{macrocode}
 % \section{Implementation}
@@ -44,7 +48,6 @@
 	}
 }
 %    \end{macrocode}
-% \begin{macro}{\@sect}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
 % This change has to be adjusted to match the kernel changes of the testphase.
 % The Following code has been taken from scrkernel-sections.dtx by Markus Kohm.
