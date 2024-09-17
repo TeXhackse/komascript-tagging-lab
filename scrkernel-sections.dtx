@@ -5459,9 +5459,15 @@
 % user used more paragraphs than this is final one, the user is responsible to
 % prevent page breaks!
 %    \begin{macrocode}
-\newcommand{\chapterlinesformat}[3]{%
+%</body>
+%<*body|tagging-lab>
+%<!tagging-lab>\newcommand{\chapterlinesformat}[3]{%
+%<tagging-lab>\newcommand{\scrlab@chapterlinesformat}[3]{%
+%<tagging-lab>  \IfUseNumber\@kernel@tag@hangfrom
   \@hangfrom{#2}{#3}%
 }
+%</body|tagging-lab>
+%<*body>
 \newcommand{\chapterlineswithprefixformat}[3]{%
   #2#3%
 }
