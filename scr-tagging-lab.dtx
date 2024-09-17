@@ -28,7 +28,7 @@
 %
 % Move the redefinitions after the tocbasic package
 %    \begin{macrocode}
-\hook_gput_code:nnn {package/tocbasic/after}{toclineleaderfill}{
+\hook_gput_code:nnn {package/tocbasic/after}{scr-tagging-lab}{
 	\cs_set_eq:cN {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
 	\cs_set_eq:cN {\string\usetocbasicnumberline} \_@@_usetocbasicnumberline
 	\cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
@@ -58,10 +58,10 @@
 %<*package|heading-hooks>
 
 \tl_new:N \l_@@_current_heading_tl
-\hook_gput_code_with_args:nnn {cmd/scr@@@@startchapter/before} {tagging-save-heading} {
+\hook_gput_code_with_args:nnn {cmd/scr@@@@startchapter/before} {scr-tagging-lab} {
 	\tl_set:Nn \l_@@_current_heading_tl {#2}
 }
-\hook_gput_code_with_args:nnn {cmd/scr@@@@startpart/before} {tagging-save-heading} {
+\hook_gput_code_with_args:nnn {cmd/scr@@@@startpart/before} {scr-tagging-lab} {
 	\tl_set:Nn \l_@@_current_heading_tl {#2}
 }
 
@@ -100,17 +100,17 @@
 %    \end{macrocode}
 % we probably also should add those hooks after scrextend. But first the classes should work properly.
 %    \begin{macrocode}
-\hook_gput_code:nnn {class/scrartcl/after} {scr-tagging-lab-title} {
+\hook_gput_code:nnn {class/scrartcl/after} {scr-tagging-lab} {
 	\_@@_patch_sectioning:
 	\_@@_patch_maketitle:
 	\let\numberline\scr@numberline
 }
-\hook_gput_code:nnn {class/scrbook/after} {scr-tagging-lab-title} {
+\hook_gput_code:nnn {class/scrbook/after} {scr-tagging-lab} {
 	\_@@_patch_sectioning:
 	\_@@_patch_maketitle:
 	\let\numberline\scr@numberline
 }
-\hook_gput_code:nnn {class/scrreprt/after} {scr-tagging-lab-title} {
+\hook_gput_code:nnn {class/scrreprt/after} {scr-tagging-lab} {
 	\_@@_patch_sectioning:
 	\_@@_patch_maketitle:
 	\let\numberline\scr@numberline
