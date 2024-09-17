@@ -43,9 +43,9 @@
 % Be aware that using the generic hook needs a check to limit the action to exclude chapter/part.
 %    \begin{macrocode}
 \cs_new:Nn \_@@_sec_start_aux:n {
-	\clist_if_in:nnF { chapter, part } {#1} {
+	%\clist_if_in:nnF { chapter, part } {#1} {
 		\tag_tool:n {sec-start=#1}
-	}
+	%}
 }
 %    \end{macrocode}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
@@ -79,20 +79,20 @@
 %    \end{macrocode}
 % probably it's a good idea to define a hook with arguments there instead of this workaround
 %    \begin{macrocode}
-	\AddtoDoHook{heading/begingroup/chapter}{
-		\exp_args:Ne  \tag_tool:n { sec-start-chapter=  \exp_not:V \l_@@_current_heading_tl  }
-		\Ifnumbered{chapter} \relax {\MakeLinkTarget[chapter]}
-	}
-	\AddtoDoHook{heading/endgroup/chapter}{
-	   \tag_tool:n {sec-stop-chapter}
-	}
-	\AddtoDoHook{heading/begingroup/part}{
-		\exp_args:Ne  \tag_tool:n { sec-start-part=  \exp_not:V \l_@@_current_heading_tl  }
-		\Ifnumbered{part} \relax {\MakeLinkTarget[part]}
-	}
-	\AddtoDoHook{heading/endgroup/part}{
-	   \tag_tool:n {sec-stop-part}
-	}
+%	\AddtoDoHook{heading/begingroup/chapter}{
+%		\exp_args:Ne  \tag_tool:n { sec-start=chapter}%=  \exp_not:V \l_@@_current_heading_tl  }
+%		\Ifnumbered{chapter} \relax {\MakeLinkTarget[chapter]}%
+%	}
+%	\AddtoDoHook{heading/endgroup/chapter}{
+%	   \tag_tool:n {sec-stop-chapter}
+%	}
+%	\AddtoDoHook{heading/begingroup/part}{
+	%	\exp_args:Ne  \tag_tool:n { sec-start-part=  \exp_not:V \l_@@_current_heading_tl  }
+%		\Ifnumbered{part} \relax {\MakeLinkTarget[part]}
+%	}
+%	\AddtoDoHook{heading/endgroup/part}{
+%	   \tag_tool:n {sec-stop-part}
+%	}
 	\AddtoDoHook{heading/branch/star}{\_@@_sec_start_aux:n}
 	\AddtoDoHook{heading/branch/nostar}{\_@@_sec_start_aux:n}
 }

@@ -4355,7 +4355,9 @@
 % user is responsible to prevent page breaks!
 %    \begin{macrocode}
 \newcommand{\partlineswithprefixformat}[3]{%
-  #2#3%
+  #2%
+%<tagging-lab>  \MakeLinkTarget[#1]{}{}
+  #3%
 }
 %    \end{macrocode}
 % \end{command}^^A \partlineswithprefixformat
@@ -5466,13 +5468,18 @@
 %<!tagging-lab>\newcommand{\chapterlinesformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlinesformat}[3]{%
 %<tagging-lab>  \IfUseNumber\@kernel@tag@hangfrom
-  \@hangfrom{#2}{#3}%
+  \@hangfrom{#2%
+%<tagging-lab>\IfUseNumber\relax\MakeLinkTarget[#1]{}{}
+  }{#3}%
+}
+%<!tagging-lab>\newcommand{\chapterlineswithprefixformat}[3]{%
+%<tagging-lab>\newcommand{\scrlab@chapterlineswithprefixformat}[3]{%
+  #2%
+%<tagging-lab>  \MakeLinkTarget[#1]{}{}
+  #3%
 }
 %</(body&class&!letter&(report|book))|tagging-lab>
 %<*body>
-\newcommand{\chapterlineswithprefixformat}[3]{%
-  #2#3%
-}
 %    \end{macrocode}
 % \end{command}^^A \chapterlinesformat,\chapterlineswithprefixformat
 %
@@ -5790,13 +5797,14 @@
 \newcounter{chapter}
 \renewcommand*{\thechapter}{\@arabic\c@chapter}
 \newcommand*{\chapterformat}{%
+%<tagging-lab>  \SuspendTagging{chapterformat}%
   \mbox{\chapappifchapterprefix{\nobreakspace}\thechapter\autodot
 %<tagging-lab>    \MakeLinkTarget {chapter}
     \IfUsePrefixLine{}{\enskip}}%
+%<tagging-lab>  \ResumeTagging{chapterformat}
 }
 \newcommand*\chaptermarkformat{\chapappifchapterprefix{\ }%
   \thechapter\autodot
-%<tagging-lab>    \MakeLinkTarget {chapter}
   \enskip}
 %    \end{macrocode}
 % \end{command}^^A \chaptermarkformat
@@ -6306,7 +6314,7 @@
 %<*(body&class&!letter)|tagging-lab>
 %<!tagging-lab>\renewcommand*{\@seccntformat}[1]{%
 %<tagging-lab>\newcommand*{\scrlab@seccntformat}[1]{%
-%<tagging-lab>   \tag_stop:n{seccntformat}{}
+%<tagging-lab>   \SuspendTagging{seccntformat}{}
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
 %<!v4>    \protect\othersectionlevelsformat{#1}{%
 %<!v4>      \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
@@ -6316,7 +6324,7 @@
         \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
     }{\expandafter\protect\csname #1format\endcsname}%
 %<!v4>  \fi
-%<tagging-lab>	      \tag_start:n{seccntformat}%
+%<tagging-lab>    \ResumeTagging{seccntformat}%
 }
 %</(body&class&!letter)|tagging-lab>
 %<*class&!letter>
