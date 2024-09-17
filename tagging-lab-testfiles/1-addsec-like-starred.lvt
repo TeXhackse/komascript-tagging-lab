@@ -3,8 +3,8 @@
 \ExplSyntaxOff
 
 \input{regression-test}
-\def\CLASS{scrartcl}
-\input{scr-tagging-lab-test-setup}
+\input{testsetup}
+\documentclass{scrartcl}
 
 %I don't want to handle pagestyles, so set everything to empty:
 \pagestyle{empty}\renewcommand\chapterpagestyle{empty}
