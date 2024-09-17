@@ -58,10 +58,10 @@
 %<*package|heading-hooks>
 
 \tl_new:N \l_@@_current_heading_tl
-\hook_gput_code_with_args:nnn {cmd/scr@@startchapter/before} {tagging-save-heading} {
+\hook_gput_code_with_args:nnn {cmd/scr@@@@startchapter/before} {tagging-save-heading} {
 	\tl_set:Nn \l_@@_current_heading_tl {#2}
 }
-\hook_gput_code_with_args:nnn {cmd/scr@@startpart/before} {tagging-save-heading} {
+\hook_gput_code_with_args:nnn {cmd/scr@@@@startpart/before} {tagging-save-heading} {
 	\tl_set:Nn \l_@@_current_heading_tl {#2}
 }
 
