@@ -72,19 +72,18 @@
 	\let\@xsect\scrlab@xsect
 
 	\AddtoDoHook{heading/begingroup}{\tagtool{para-flattened=true}\use_none:n}
+%    \end{macrocode}
+% probably it's a good idea to define a hook with arguments there instead of this workaround
+%    \begin{macrocode}
 	\AddtoDoHook{heading/begingroup/chapter}{
-		\exp_args:No \tag_tool:n { sec-start-chapter=  \_@@_current_heading_tl  }
+		\exp_args:Ne  \tag_tool:n { sec-start-chapter=  \exp_not:V \l_@@_current_heading_tl  }
 		\Ifnumbered{chapter} \relax {\MakeLinkTarget[chapter]}
 	}
 	\AddtoDoHook{heading/endgroup/chapter}{
 	   \tag_tool:n {sec-stop-chapter}
 	}
 	\AddtoDoHook{heading/begingroup/part}{
-		\exp_args:No \tag_tool:n { sec-start-part=  \_@@__@@_heading_tl  }
-		\IfUseNumber\relax{\MakeLinkTarget[part]{}}
-	}
-	\AddtoDoHook{heading/begingroup/part}{
-		\exp_args:No \tag_tool:n { sec-start-part=  \_@@_current_heading_tl  }
+		\exp_args:Ne  \tag_tool:n { sec-start-part=  \exp_not:V \l_@@_current_heading_tl  }
 		\Ifnumbered{part} \relax {\MakeLinkTarget[part]}
 	}
 	\AddtoDoHook{heading/endgroup/part}{
