@@ -4555,7 +4555,16 @@
 %    \begin{macrocode}
 \newcounter{part}
 \renewcommand*{\thepart}{\@Roman\c@part}
-\newcommand*{\partformat}{\partname~\thepart\autodot}
+%</body>
+%<*tagging-lab|body>
+%<!tagging-lab>  \newcommand*{\partformat}{%
+%<tagging-lab>  \newcommand*{\scrlab@partformat}{%
+%<tagging-lab>  \SuspendTagging{partformat}%
+	\partname~\thepart\MakeLinkTarget{part}{}\autodot%
+%<tagging-lab>  \ResumeTagging{partformat}	%
+}
+%</tagging-lab|body>
+%<*body>
 %    \end{macrocode}
 % \end{command}^^A \partformat
 % \end{command}^^A \thepart
@@ -5475,6 +5484,7 @@
 %<!tagging-lab>\newcommand{\chapterlineswithprefixformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlineswithprefixformat}[3]{%
   #2%
+  % TODO with \IfUseNumber?
 %<tagging-lab>  \MakeLinkTarget[#1]{}{}
   #3%
 }
@@ -5796,13 +5806,18 @@
 %    \begin{macrocode}
 \newcounter{chapter}
 \renewcommand*{\thechapter}{\@arabic\c@chapter}
-\newcommand*{\chapterformat}{%
+%</body>
+%<*tagging-lab|body>
+%<tagging-lab>\newcommand*{\scrlab@chapterformat}{%
+%<!tagging-lab>\newcommand*{\chapterformat}{%
 %<tagging-lab>  \SuspendTagging{chapterformat}%
   \mbox{\chapappifchapterprefix{\nobreakspace}\thechapter\autodot
 %<tagging-lab>    \MakeLinkTarget {chapter}
     \IfUsePrefixLine{}{\enskip}}%
 %<tagging-lab>  \ResumeTagging{chapterformat}
 }
+%</tagging-lab|body>
+%<*body>
 \newcommand*\chaptermarkformat{\chapappifchapterprefix{\ }%
   \thechapter\autodot
   \enskip}
