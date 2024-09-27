@@ -43,19 +43,7 @@
 % Be aware that using the generic hook needs a check to limit the action to exclude chapter/part.
 %    \begin{macrocode}
 \cs_new:Nn \_@@_sec_start_aux:n {
-	\tl_if_eq:nnTF {#1} {part} {
-%    \end{macrocode}
-% I know, the following block is using internals. But the way the tool is currently provciding sec-start-part is not really matching this usecase, and as the documentation says it will be changed anyway, I thought it's probably easier to start like this.
-%    \begin{macrocode}
-        \bool_if:NT\l__tag_sec_Sect_bool
-          {
-            \__tag_sec_end:n    {\cs_if_exist_use:c{toclevel@#1}+0}
-            \__tag_sec_begin:nn {\cs_if_exist_use:c{toclevel@#1}+0}{tag=Part}
-          }
-        \tl_set:Nn\l__tag_para_tag_tl{part}
-	} {
-		\tag_tool:n {sec-start=#1}
-	}
+	\tag_tool:n {sec-start=#1}
 }
 %    \end{macrocode}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
