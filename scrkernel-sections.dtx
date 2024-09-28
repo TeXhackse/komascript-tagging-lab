@@ -4354,11 +4354,39 @@
 % \cs{@@par}. But if the user uses more paragraphs than this final one, the
 % user is responsible to prevent page breaks!
 %    \begin{macrocode}
+%<*!tagging-lab>
 \newcommand{\partlineswithprefixformat}[3]{%
-  #2%
-%<tagging-lab>  \MakeLinkTarget[#1]{}{}
-  #3%
+  #2#3%
 }
+%</!tagging-lab>
+%     \end{macrocode}
+% tagging: Separate prefix and title for the part tagging.
+%    \begin{macrocode}
+%<*tagging-lab>
+\newcommand{\scrlab@partlineswithprefixformat}[3]{%
+	\tagstructbegin{tag=#1}
+		\tl_if_blank:nTF {#2}%
+			{\MakeLinkTarget[#1]{}{}}%TODO no number
+			{
+				\tagstructbegin{tag=Lbl}
+					\bool_lazy_and:nnT
+						{\tag_if_active_p:}
+						{\g__tag_mode_lua_bool}
+						{\tagmcbegin{tag=Lbl}}
+					\SuspendTagging{part-number}
+				           {#2}
+					\ResumeTagging{part-number}
+				\tagmcend
+			\tagstructend
+		}
+		\tagmcbegin{}
+				\SuspendTagging {part-heading}
+				#3%
+				\ResumeTagging{part-heading}
+		\tagmcend
+	\tagstructend
+}
+%</tgging-lab>
 %    \end{macrocode}
 % \end{command}^^A \partlineswithprefixformat
 %
