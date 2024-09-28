@@ -168,3 +168,14 @@
 % \end{macro}^^A \scrlab@section@target
 %</package|heading-hooks>
 %    \end{macrocode}
+%<*toggle>
+%   \@namedef{@end#1}{\scr@@endpart{#1}}%
+%<*book|report>
+%\SuspendTagging{use@preamble}
+  \vbox to\z@{\vss\use@preamble{#1@o}\strut\par}%
+  \vskip-\baselineskip\nobreak
+%  \ResumeTagging{use@preamble}
+%</book|report>
+  \expandafter\SecDef\csname @#1\expandafter\endcsname\csname @s#1\endcsname
+}
+%</toggle>

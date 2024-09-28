@@ -41,9 +41,16 @@ mc-data,
 
 \AddToHook{cmd/contentsline/before}{\ShowTagging{mc-current,struct-stack=log}}
 
+\title{title}
+\author{author}
+
 \begin{document}
 
+\maketitle
+
 \tableofcontents
+
+\part{part}
 
 \chapter{chapter}
 
@@ -69,6 +76,8 @@ second par
 \item first
 \item second
 \end{enumerate}
+
+\part{second part}
 
 \chapter*{chapter no number}
 

@@ -5506,7 +5506,7 @@
 %<tagging-lab>\newcommand{\scrlab@chapterlinesformat}[3]{%
 %<tagging-lab>  \IfUseNumber\@kernel@tag@hangfrom
   \@hangfrom{#2%
-%<tagging-lab>\IfUseNumber\relax\MakeLinkTarget[#1]{}{}
+%<tagging-lab>\IfUseNumber\relax{\MakeLinkTarget[#1]{}{}}
   }{#3}%
 }
 %<!tagging-lab>\newcommand{\chapterlineswithprefixformat}[3]{%

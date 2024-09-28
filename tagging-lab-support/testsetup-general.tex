@@ -11,8 +11,10 @@ mc-data,
 %%struct-stack
 }
 
-\tagpdfsetup{
-      debug/log=v
+\AddToHook{begindocument/end}{
+	\tagpdfsetup{
+	      debug/log=v
+	}
 }
 
 \title{Title}
