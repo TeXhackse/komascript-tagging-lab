@@ -75,6 +75,15 @@
  \ResumeTagging{partformat}%
 }
 
+\hook_gput_code:nnn {cmd/@endpart/before} {scr-tagging-lab}{
+	\SuspendTagging{endpart}
+}
+
+\hook_gput_code:nnn {cmd/@endpart/after}{scr-tagging-lab}{
+	\ResumeTagging{endpart}
+	\tag_tool:n {restore-para}
+}
+
 \cs_new:Nn \_@@_patch_sectioning: {
 	\cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
 	\cs_set_eq:NN \chapterlinesformat \scrlab@chapterlinesformat

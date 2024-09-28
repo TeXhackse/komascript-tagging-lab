@@ -4354,11 +4354,10 @@
 % \cs{@@par}. But if the user uses more paragraphs than this final one, the
 % user is responsible to prevent page breaks!
 %    \begin{macrocode}
-%<*!tagging-lab>
 \newcommand{\partlineswithprefixformat}[3]{%
   #2#3%
 }
-%</!tagging-lab>
+%</body>
 %     \end{macrocode}
 % tagging: Separate prefix and title for the part tagging.
 %    \begin{macrocode}
@@ -4386,7 +4385,8 @@
 		\tagmcend
 	\tagstructend
 }
-%</tgging-lab>
+%</tagging-lab>
+%<*body>
 %    \end{macrocode}
 % \end{command}^^A \partlineswithprefixformat
 %
