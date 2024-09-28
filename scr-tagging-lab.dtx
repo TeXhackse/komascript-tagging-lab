@@ -40,10 +40,21 @@
 }
 %    \end{macrocode}
 % Insted of redefining \cs{scr@startsection} it's possible to use hooks.
-% Be aware that using the generic hook needs a check to limit the action to exclude chapter/part.
+% The public interface |sec-start| is enforcing a |Sect| tag.
+% As the formal structure in my opinion differs I decided to use the internals to use the Part-Tag instead.
+% The mechanism inside the latex-lab is already aware just the public interface is not (yet).
 %    \begin{macrocode}
 \cs_new:Nn \_@@_sec_start_aux:n {
-	\tag_tool:n {sec-start=#1}
+	\tl_if_eq:nnTF {#1} {part} {
+		\bool_if:NT\l__tag_sec_Sect_bool
+			{
+				\__tag_sec_end:n   {-1}
+				\__tag_sec_begin:nn{-1}{tag=Part}
+			}
+		\tl_set:Nn\l__tag_para_tag_tl{part}
+	} {
+		\tag_tool:n {sec-start=#1}
+	}
 }
 %    \end{macrocode}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
@@ -57,19 +68,9 @@
 % Maybe it's easier to pass those with changing the hooks, but this needs to be discussed.
 %    \begin{macrocode}
 %<*package|heading-hooks>
-
-\tl_new:N \l_@@_current_heading_tl
-\hook_gput_code_with_args:nnn {cmd/scr@@@@startchapter/before} {scr-tagging-lab} {
-	\tl_set:Nn \l_@@_current_heading_tl {#2}
-}
-\hook_gput_code_with_args:nnn {cmd/scr@@@@startpart/before} {scr-tagging-lab} {
-	\tl_set:Nn \l_@@_current_heading_tl {#2}
-}
-
 \hook_gput_code:nnn {cmd/partformat/before}{scr-tagging-lab} {
  \SuspendTagging{partformat}%
 }
-
 \hook_gput_code:nnn {cmd/partformat/after}{scr-tagging-lab}{
  \ResumeTagging{partformat}%
 }
@@ -77,6 +78,11 @@
 \cs_new:Nn \_@@_patch_sectioning: {
 	\cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
 	\cs_set_eq:NN \chapterlinesformat \scrlab@chapterlinesformat
+	\cs_set_eq:NN \chapterformat \scrlab@chapterformat
+	\cs_set_eq:NN \chapterlineswithprefixformat \scrlab@chapterlineswithprefixformat
+	% PART?
+	%\cs_set_eq:NN partlineswithprefixformat \scrlab@chapterlinesformat
+	\cs_set_eq:NN \partformat \scrlab@partformat
 	\cs_set_eq:NN \@seccntformat \scrlab@seccntformat
 	\let\@sect\scrlab@sect
 	\let\@xsect\scrlab@xsect
