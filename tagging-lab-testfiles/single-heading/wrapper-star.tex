@@ -5,21 +5,10 @@
 \input{regression-test}
 
 \input{testsetup}
-
-\documentclass{scrbook}
 \errorstopmode
 
-\pagestyle{empty}
+\pagestyle{empty}\def\chapterpagestyle{empty}
 
-\tagpdfsetup{
-      debug/log=v
-}
-
-\title{test}
-\author{author}
-
-\pagestyle{empty}
-\def\chapterpagestyle{empty}
 
 \ExplSyntaxOn
 \str_new:N \TestCommandName

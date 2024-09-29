@@ -30,16 +30,17 @@ add_extensions ('lualatex', 'lvt', 'pvt');
 add_extensions ('xelatex', 'lvt', 'pvt');
 
 my $wrapper="wrapper.tex";
+my $class = "scrbook";
 
 sub autobuild {
 	$out_file = pop @_;
-     if (index($out_file, "star") != -1) {
+	if (index($out_file, "star") != -1) {
 		$wrapper="wrapper-star.tex";
-	 }
+	}
 	# Maybe also create PDF 1.7 ?!
-	#$return = system("lualatex-dev -jobname=$pac_out_file @_ 'wrapper17.tex'");
-	$return = system("lualatex-dev -jobname=$out_file @_ '$wrapper'");
-    return $return;
+	#$return = system("lualatex-dev -jobname=$pac_out_file @_ '\\def\\CLASS{$class}\\input{wrapper17.tex'");
+	$return = system("lualatex-dev -jobname=$out_file @_ '\\def\\CLASS{$class}\\input{$wrapper}'");
+	return $return;
 }
 
 $success_cmd =  "verapdf  \"%D\" && echo \"%D is valid\" && true ||  echo \"%D is invalid\" && false ";
