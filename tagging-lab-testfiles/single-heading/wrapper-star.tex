@@ -1,0 +1,35 @@
+\ExplSyntaxOn
+\debug_on:n { check-declarations , deprecation }
+\ExplSyntaxOff
+
+\input{regression-test}
+
+\input{testsetup}
+
+\documentclass{scrbook}
+\errorstopmode
+
+\pagestyle{empty}
+
+\tagpdfsetup{
+      debug/log=v
+}
+
+\title{test}
+\author{author}
+
+\pagestyle{empty}
+\def\chapterpagestyle{empty}
+
+\ExplSyntaxOn
+\str_new:N \TestCommandName
+\str_set:Ne \TestCommandName {\jobname}
+\str_remove_once:Nn \TestCommandName {-star}
+\ExplSyntaxOff
+
+\begin{document}
+\START
+
+\UseName{\TestCommandName}*{heading}
+
+\end{document}

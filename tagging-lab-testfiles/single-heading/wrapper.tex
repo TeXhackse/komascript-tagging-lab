@@ -1,0 +1,21 @@
+\ExplSyntaxOn
+\debug_on:n { check-declarations , deprecation }
+\ExplSyntaxOff
+
+\input{regression-test}
+
+\input{testsetup}
+\documentclass{scrbook}
+\errorstopmode
+
+\title{test}
+\author{author}
+
+\pagestyle{empty}\def\chapterpagestyle{empty}
+\begin{document}
+
+\START
+
+\UseName{\jobname}{heading}
+
+\end{document}
