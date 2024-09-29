@@ -29,16 +29,17 @@ add_extensions ('pdflatex', 'lvt', 'pvt');
 add_extensions ('lualatex', 'lvt', 'pvt');
 add_extensions ('xelatex', 'lvt', 'pvt');
 
+my $wrapper="wrapper.tex";
 
 sub autobuild {
 	$out_file = pop @_;
      if (index($out_file, "star") != -1) {
-		my $wrapper="wrapper-star.tex";
-	 } else {
-		my $wrapper="wrapper.tex";
+		$wrapper="wrapper-star.tex";
 	 }
 	# Maybe also create PDF 1.7 ?!
 	#$return = system("lualatex-dev -jobname=$pac_out_file @_ 'wrapper17.tex'");
 	$return = system("lualatex-dev -jobname=$out_file @_ '$wrapper'");
     return $return;
 }
+
+$success_cmd =  "verapdf  \"%D\" && echo \"%D is valid\" && true ||  echo \"%D is invalid\" && false ";
