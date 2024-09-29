@@ -156,13 +156,13 @@
   \PackageInfo{tocbasic}{Using my definition of `\string\numberline'}%
 ]{%
 %</!tagging-lab>
-  \@tempswatrue
-  \begingroup
 %    \end{macrocode}
 % tagging: \SuspendTagging does not exist before |begin{document}|
-% TODO: ask if theres a better option
+% TODO: ask if theres a better option otherwhise we have to check if the command exists for the main version of KOMA-Script.
 %    \begin{macrocode}
 %<tagging-lab>    \tag_stop:n {toc/tocline-measure}
+  \@tempswatrue
+  \begingroup
     \def\scr@numberline##1{\global\@tempswafalse}%
 %    \end{macrocode}
 % For \cs{numberline} \cs{@tempdima} usually is the width reserved for the
@@ -171,9 +171,9 @@
 %    \begin{macrocode}
     \@tempdima\maxdimen
     \sbox\@tempboxa{\numberline{0}}%
-%<tagging-lab>    \ResumeTagging{toc/tocline-measure}
   \endgroup
   \if@tempswa #1\renewcommand*{\numberline}[1]{\scr@numberline{##1}}\fi
+%<tagging-lab>    \tag_start:n {toc/tocline-measure}
 }
 %</package&(body|tagging-lab)>
 %<*package&body>
@@ -2250,7 +2250,6 @@
 %</!tagging-lab>
 %<!tagging-lab>\newcommand*{\scr@dte@tocline}[3]{%
 %<tagging-lab>\newcommand*{\_@@_scr@dte@tocline}[3]{%
-%<tagging-lab|tagging>\SuspendTagging{toc/tocline-measure}
   \ifnum \@nameuse{#1tocdepth}>\c@tocdepth
   \else
     \tocbasic@DependOnPenaltyAndTOCLevel{#1}%
@@ -2387,7 +2386,6 @@
 % tagging: Enable the number tags for the actual output.
 % See Redefinition of \cs{scr@numberline} for more information.
 %    \begin{macrocode}
-%<tagging-lab|tagging>	  \ResumeTagging{toc/tocline-measure}
           \scr@dte@numberline@box{\@nameuse{scr@tso@#1@numberformat}{##1}}%
           \@nameuse{Ifscr@tso@#1@breakafternumber}{%
             {\parfillskip\@flushglue\par}\nobreak\hskip-\leftskip
