@@ -4,14 +4,14 @@
 
 \input{regression-test}
 \def\CLASS{scrbook}
-\input{scr-tagging-lab-test-setup}
+\input{testsetup}
+
+% don't handle pagestyles here
+\pagestyle{empty}\def\chapterpagestyle{empty}
 
 \begin{document}
 \START
 \showoutput
-
-%I don't want to handle pagestyles, so set everything to empty:
-\pagestyle{empty}\renewcommand\chapterpagestyle{empty}
 
 \tableofcontents
 

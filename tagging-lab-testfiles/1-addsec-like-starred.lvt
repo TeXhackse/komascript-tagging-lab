@@ -6,7 +6,7 @@
 \input{testsetup}
 \documentclass{scrartcl}
 
-%I don't want to handle pagestyles, so set everything to empty:
+% don't handle pagestyles here
 \pagestyle{empty}\def\chapterpagestyle{empty}
 
 \begin{document}
