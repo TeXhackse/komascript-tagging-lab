@@ -1,0 +1,31 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Test for deprecated l3 functions while loading scrlfile
+============================================================
+============================================================
+(scrlfile.sty
+Package: scrlfile ....-..-.. v... KOMA-Script package (file load hooks)
+(scrlfile-hook.sty
+Package: scrlfile-hook ....-..-.. v... KOMA-Script package (using LaTeX hooks)
+(scrlogo.sty
+Package: scrlogo ....-..-.. v... KOMA-Script package (logo)
+)))
+============================================================
+TEST 2: Test for deprecated l3 functions while loading tocbasic
+============================================================
+============================================================
+(tocbasic.sty
+Package: tocbasic ....-..-.. v... KOMA-Script package (handling toc-files)
+(scrbase.sty
+Package: scrbase ....-..-.. v... KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+(../keyval.sty
+Package: keyval ....-..-.. v... key=value parser (DPC)
+\KV@toks@=\toks...
+)
+Applying: [....-..-..] Usage of raw or classic option list on input line ....
+Already applied: [....-..-..] Usage of raw or classic option list on input line ....
+)
+\scr@dte@tocline@numberwidth=\skip...
+\scr@dte@tocline@numbox=\box...
+)

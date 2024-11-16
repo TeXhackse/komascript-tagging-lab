@@ -1,0 +1,22 @@
+% Testfile
+% Test for deprecated l3 functions in all packages, that use l3 functions
+
+\input regression-test.tex
+\documentclass{article}
+\ExplSyntaxOn
+\debug_on:n { check-declarations, deprecation }
+\ExplSyntaxOff
+\START
+\TEST{Test for deprecated l3 functions while loading scrlfile}{}{}
+\makeatletter\let\scrWMSG\@gobble\makeatother
+\usepackage{scrlfile}
+\TEST{Test for deprecated l3 functions while loading tocbasic}{}{}
+\makeatletter\let\scrWMSG\@gobble\makeatother
+\usepackage{tocbasic}
+\END
+\begin{document}
+\end{document}
+
+% Local Variables:
+% mode: latex
+% End:
