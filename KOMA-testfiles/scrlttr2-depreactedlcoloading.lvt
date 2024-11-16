@@ -1,5 +1,5 @@
 % Testfile
-% Test for warning about deprecated loading of LCO files by option 
+% Test for warning about deprecated loading of LCO files by option
 
 \input regression-test.tex
 \RequirePackage{xpatch}
