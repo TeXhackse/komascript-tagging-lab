@@ -1,0 +1,618 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+(toc.toc
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line ....
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line ....
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
+)
+\tf@toc=\write...
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
+=========================
+The structure 1 contains:
+>  Type  =>  /StructTreeRoot
+>  S  =>  /StructTreeRoot
+>  rolemap  =>  {StructTreeRoot}{pdf}
+>  parentrole  =>  {StructTreeRoot}{pdf}
+The structure has the following kids:
+>  Struct 2
+=========================
+=========================
+The structure 2 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Document
+>  NS  =>  pdf2
+>  rolemap  =>  {Document}{pdf2}
+>  parentrole  =>  {Document}{pdf2}
+>  P  =>  parent structure: 1 = /StructTreeRoot
+The structure has the following kids:
+>  Struct 5
+=========================
+=========================
+The structure 3 contains:
+>  Type  =>  /StructElem
+>  S  =>  /figures
+>  NS  =>  latex
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  no parent: stashed
+The structure has the following kids:
+> NONE
+=========================
+=========================
+The structure 4 contains:
+>  Type  =>  /StructElem
+>  S  =>  /tables
+>  NS  =>  latex
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  no parent: stashed
+The structure has the following kids:
+> NONE
+=========================
+=========================
+The structure 5 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Sect
+>  NS  =>  pdf2
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  parent structure: 2 = /Document
+The structure has the following kids:
+>  Struct 6
+>  Struct 7
+>  Struct 26
+>  Struct 32
+>  Struct 36
+>  Struct 41
+=========================
+=========================
+The structure 6 contains:
+>  Type  =>  /StructElem
+>  C  =>  /raggedright
+>  S  =>  /chapter
+>  NS  =>  latex-book
+>  rolemap  =>  {H1}{pdf2}
+>  parentrole  =>  {H1}{pdf2}
+>  P  =>  parent structure: 5 = /Sect
+The structure has the following kids:
+>  MC 1
+=========================
+=========================
+The structure 7 contains:
+>  Type  =>  /StructElem
+>  T  =>  <FEFF0074006F0063>
+>  S  =>  /TOC
+>  NS  =>  pdf
+>  rolemap  =>  {TOC}{pdf}
+>  parentrole  =>  {TOC}{pdf}
+>  P  =>  parent structure: 5 = /Sect
+The structure has the following kids:
+>  Struct 8
+>  Struct 12
+>  Struct 17
+>  Struct 19
+>  Struct 24
+=========================
+=========================
+The structure 8 contains:
+>  Type  =>  /StructElem
+>  T  =>  <FEFF00730065006300740069006F006E>
+>  S  =>  /TOCI
+>  NS  =>  pdf
+>  rolemap  =>  {TOCI}{pdf}
+>  parentrole  =>  {TOCI}{pdf}
+>  P  =>  parent structure: 7 = /TOC
+>  Ref  =>  \__tag_struct_Ref_dest:nN {target*.2},
+The structure has the following kids:
+>  Struct 9
+=========================
+=========================
+The structure 9 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Reference
+>  NS  =>  pdf
+>  rolemap  =>  {Reference}{pdf}
+>  parentrole  =>  {Reference}{pdf}
+>  P  =>  parent structure: 8 = /TOCI
+The structure has the following kids:
+>  MC 2
+>  Struct 10
+>  MC 4
+>  Struct 11
+>  MC 6
+>  MC 8
+=========================
+=========================
+The structure 10 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 9 = /Reference
+The structure has the following kids:
+>  MC 3
+=========================
+=========================
+The structure 11 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 9 = /Reference
+The structure has the following kids:
+>  MC 5
+=========================
+=========================
+The structure 12 contains:
+>  Type  =>  /StructElem
+>  S  =>  /TOC
+>  NS  =>  pdf
+>  rolemap  =>  {TOC}{pdf}
+>  parentrole  =>  {TOC}{pdf}
+>  P  =>  parent structure: 7 = /TOC
+The structure has the following kids:
+>  Struct 13
+=========================
+=========================
+The structure 13 contains:
+>  Type  =>  /StructElem
+>  T  =>  <FEFF00730075006200730065006300740069006F006E>
+>  S  =>  /TOCI
+>  NS  =>  pdf
+>  rolemap  =>  {TOCI}{pdf}
+>  parentrole  =>  {TOCI}{pdf}
+>  P  =>  parent structure: 12 = /TOC
+>  Ref  =>  \__tag_struct_Ref_dest:nN {target*.3},
+The structure has the following kids:
+>  Struct 14
+=========================
+=========================
+The structure 14 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Reference
+>  NS  =>  pdf
+>  rolemap  =>  {Reference}{pdf}
+>  parentrole  =>  {Reference}{pdf}
+>  P  =>  parent structure: 13 = /TOCI
+The structure has the following kids:
+>  MC 9
+>  Struct 15
+>  MC 11
+>  Struct 16
+>  MC 13
+>  MC 15
+=========================
+=========================
+The structure 15 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 14 = /Reference
+The structure has the following kids:
+>  MC 10
+=========================
+=========================
+The structure 16 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 14 = /Reference
+The structure has the following kids:
+>  MC 12
+=========================
+=========================
+The structure 17 contains:
+>  Type  =>  /StructElem
+>  T  =>  <FEFF006100640064007300650063>
+>  S  =>  /TOCI
+>  NS  =>  pdf
+>  rolemap  =>  {TOCI}{pdf}
+>  parentrole  =>  {TOCI}{pdf}
+>  P  =>  parent structure: 7 = /TOC
+>  Ref  =>  \__tag_struct_Ref_dest:nN {target*.4},
+The structure has the following kids:
+>  Struct 18
+=========================
+=========================
+The structure 18 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Reference
+>  NS  =>  pdf
+>  rolemap  =>  {Reference}{pdf}
+>  parentrole  =>  {Reference}{pdf}
+>  P  =>  parent structure: 17 = /TOCI
+The structure has the following kids:
+>  MC 16
+>  MC 18
+=========================
+=========================
+The structure 19 contains:
+>  Type  =>  /StructElem
+>  S  =>  /TOC
+>  NS  =>  pdf
+>  rolemap  =>  {TOC}{pdf}
+>  parentrole  =>  {TOC}{pdf}
+>  P  =>  parent structure: 7 = /TOC
+The structure has the following kids:
+>  Struct 20
+=========================
+=========================
+The structure 20 contains:
+>  Type  =>  /StructElem
+>  T  =>  <FEFF0062006C00750062>
+>  S  =>  /TOCI
+>  NS  =>  pdf
+>  rolemap  =>  {TOCI}{pdf}
+>  parentrole  =>  {TOCI}{pdf}
+>  P  =>  parent structure: 19 = /TOC
+>  Ref  =>  \__tag_struct_Ref_dest:nN {target*.5},
+The structure has the following kids:
+>  Struct 21
+=========================
+=========================
+The structure 21 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Reference
+>  NS  =>  pdf
+>  rolemap  =>  {Reference}{pdf}
+>  parentrole  =>  {Reference}{pdf}
+>  P  =>  parent structure: 20 = /TOCI
+The structure has the following kids:
+>  MC 19
+>  Struct 22
+>  MC 21
+>  Struct 23
+>  MC 23
+>  MC 25
+=========================
+=========================
+The structure 22 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 21 = /Reference
+The structure has the following kids:
+>  MC 20
+=========================
+=========================
+The structure 23 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 21 = /Reference
+The structure has the following kids:
+>  MC 22
+=========================
+=========================
+The structure 24 contains:
+>  Type  =>  /StructElem
+>  T  =>  <FEFF00730065006300740069006F006E>
+>  S  =>  /TOCI
+>  NS  =>  pdf
+>  rolemap  =>  {TOCI}{pdf}
+>  parentrole  =>  {TOCI}{pdf}
+>  P  =>  parent structure: 7 = /TOC
+>  Ref  =>  \__tag_struct_Ref_dest:nN {target*.6},
+The structure has the following kids:
+>  Struct 25
+=========================
+=========================
+The structure 25 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Reference
+>  NS  =>  pdf
+>  rolemap  =>  {Reference}{pdf}
+>  parentrole  =>  {Reference}{pdf}
+>  P  =>  parent structure: 24 = /TOCI
+The structure has the following kids:
+>  MC 26
+>  MC 28
+=========================
+=========================
+The structure 26 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Sect
+>  NS  =>  pdf2
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  parent structure: 5 = /Sect
+The structure has the following kids:
+>  Struct 27
+>  Struct 29
+=========================
+=========================
+The structure 27 contains:
+>  Type  =>  /StructElem
+>  S  =>  /section
+>  NS  =>  latex-book
+>  rolemap  =>  {H2}{pdf2}
+>  parentrole  =>  {H2}{pdf2}
+>  P  =>  parent structure: 26 = /Sect
+The structure has the following kids:
+>  Struct 28
+>  MC 30
+=========================
+=========================
+The structure 28 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 27 = /section
+The structure has the following kids:
+>  MC 29
+=========================
+=========================
+The structure 29 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Sect
+>  NS  =>  pdf2
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  parent structure: 26 = /Sect
+The structure has the following kids:
+>  Struct 30
+=========================
+=========================
+The structure 30 contains:
+>  Type  =>  /StructElem
+>  S  =>  /subsection
+>  NS  =>  latex-book
+>  rolemap  =>  {H3}{pdf2}
+>  parentrole  =>  {H3}{pdf2}
+>  P  =>  parent structure: 29 = /Sect
+The structure has the following kids:
+>  Struct 31
+>  MC 32
+=========================
+=========================
+The structure 31 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 30 = /subsection
+The structure has the following kids:
+>  MC 31
+=========================
+=========================
+The structure 32 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Sect
+>  NS  =>  pdf2
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  parent structure: 5 = /Sect
+The structure has the following kids:
+>  Struct 33
+>  Struct 34
+=========================
+=========================
+The structure 33 contains:
+>  Type  =>  /StructElem
+>  C  =>  /raggedright
+>  S  =>  /section
+>  NS  =>  latex-book
+>  rolemap  =>  {H2}{pdf2}
+>  parentrole  =>  {H2}{pdf2}
+>  P  =>  parent structure: 32 = /Sect
+The structure has the following kids:
+>  MC 33
+=========================
+=========================
+The structure 34 contains:
+>  Type  =>  /StructElem
+>  S  =>  /text-unit
+>  NS  =>  latex
+>  rolemap  =>  {Part}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  parent structure: 32 = /Sect
+The structure has the following kids:
+>  Struct 35
+=========================
+=========================
+The structure 35 contains:
+>  Type  =>  /StructElem
+>  C  =>  /justify
+>  S  =>  /text
+>  NS  =>  latex
+>  rolemap  =>  {P}{pdf2}
+>  parentrole  =>  {P}{pdf2}
+>  P  =>  parent structure: 34 = /text-unit
+The structure has the following kids:
+>  MC 34
+=========================
+=========================
+The structure 36 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Sect
+>  NS  =>  pdf2
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  parent structure: 5 = /Sect
+The structure has the following kids:
+>  Struct 37
+>  Struct 38
+=========================
+=========================
+The structure 37 contains:
+>  Type  =>  /StructElem
+>  C  =>  /raggedright
+>  S  =>  /section
+>  NS  =>  latex-book
+>  rolemap  =>  {H2}{pdf2}
+>  parentrole  =>  {H2}{pdf2}
+>  P  =>  parent structure: 36 = /Sect
+The structure has the following kids:
+>  MC 35
+=========================
+=========================
+The structure 38 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Sect
+>  NS  =>  pdf2
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  parent structure: 36 = /Sect
+The structure has the following kids:
+>  Struct 39
+=========================
+=========================
+The structure 39 contains:
+>  Type  =>  /StructElem
+>  S  =>  /subsection
+>  NS  =>  latex-book
+>  rolemap  =>  {H3}{pdf2}
+>  parentrole  =>  {H3}{pdf2}
+>  P  =>  parent structure: 38 = /Sect
+The structure has the following kids:
+>  Struct 40
+>  MC 37
+=========================
+=========================
+The structure 40 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  P  =>  parent structure: 39 = /subsection
+The structure has the following kids:
+>  MC 36
+=========================
+=========================
+The structure 41 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Sect
+>  NS  =>  pdf2
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  P  =>  parent structure: 5 = /Sect
+The structure has the following kids:
+>  Struct 42
+=========================
+=========================
+The structure 42 contains:
+>  Type  =>  /StructElem
+>  C  =>  /raggedright
+>  S  =>  /section
+>  NS  =>  latex-book
+>  rolemap  =>  {H2}{pdf2}
+>  parentrole  =>  {H2}{pdf2}
+>  P  =>  parent structure: 41 = /Sect
+The structure has the following kids:
+>  MC 38
+=========================
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
+[1
+] (toc.aux)
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Package tagpdf Info: Finalizing the tagging structure:
+(tagpdf)             Writing out ~42 structure objects
+(tagpdf)             with ~40 'MC' leaf nodes.
+(tagpdf)             Be patient if there are lots of objects!
+Package tagpdf Info: writing ParentTree
+Package tagpdf Info: writing IDTree
+Package tagpdf Info: writing RoleMap
+Package tagpdf Info: writing ClassMap
+Package tagpdf Info: writing NameSpaces
+Package tagpdf Info: writing StructElems
+Package tagpdf Info: writing Root
