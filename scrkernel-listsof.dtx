@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-listsof.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2024
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-listsof.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrkernel-listsof.dtx 4130 2024-10-24 08:14:37Z kohm $
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
@@ -26,9 +26,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2024-10-24 10:14:37 +0200 (Thu, 24 Oct 2024) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4130 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-listsof.dtx}%
@@ -1134,21 +1134,39 @@
 % \changes{v3.12a}{2014/03/05}{text corrected}
 % \changes{v3.30}{2020/02/25}{spurious space at end of warning message
 %   removed}
+% \changes{v3.43}{2024/10/24}{warning changed}
 % Here the warning messages, that are used for using the deprecated interface.
 %    \begin{macrocode}
 \newcommand*{\scr@float@listhead@warning}{%
   \ClassWarning{\KOMAClassName}{%
-    \string\float@listhead\space detected!\MessageBreak
+    Usage of \string\float@listhead\space detected!\MessageBreak
+    This could be, because you are using\MessageBreak
+    \@ifpackageloaded{floatrow}{%
+      \@ifpackageloaded{floatrowbytocbasic}{%
+        a package that does not support the KOMA-Script\MessageBreak
+        interface of KOMA-Script package `tocbasic`.\MessageBreak
+      }{%
+        package `floatrow` without `floatrowbytocbasic`.\MessageBreak
+      }%
+    }{%
+      \@ifpackageloaded{float}{%
+        \@ifpackageloaded{floatbytocbasic}{%
+          a package that does not support the KOMA-Script\MessageBreak
+          interface of KOMA-Script package `tocbasic`.\MessageBreak
+        }{%
+          package `float` without `floatbytocbasic`.\MessageBreak
+        }%
+      }{%
+        a package that does not support the KOMA-Script\MessageBreak
+        interface of KOMA-Script package `tocbasic`.\MessageBreak
+      }%
+    }%
     Implementation of \string\float@listhead\space became\MessageBreak
     deprecated in KOMA-Script v3.01 2008/11/14 and\MessageBreak
     has been replaced by several more flexible\MessageBreak
     features of package `tocbasic`.\MessageBreak
-    Maybe implementation of \string\float@listhead\space will\MessageBreak
-    be removed from KOMA-Script soon.\MessageBreak
-    Loading of package `scrhack' may help to\MessageBreak
-    avoid this warning, if you are using a\MessageBreak
-    a package that still implements the\MessageBreak
-    deprecated \string\float@listhead\space interface%
+    Implementation of \string\float@listhead\space will\MessageBreak
+    be removed from KOMA-Script soon%
   }%
 }
 \newcommand*{\scr@float@addtolists@warning}{%
@@ -1162,10 +1180,9 @@
     \string\float@addtolist\space interface has been\MessageBreak
     restricted to only some of the KOMA-Script\MessageBreak
     features and been removed from others.\MessageBreak
-    Loading of package `scrhack' may help to\MessageBreak
-    avoid this warning, if you are using a\MessageBreak
-    a package that still implements the\MessageBreak
-    deprecated \string\float@addtolist\space interface%
+    Since Version 3.43 support for deprecated\MessageBreak
+    \string\float@addtolist\space interface has been\MessageBreak
+    removed from all KOMA-Script classes%
   }%
   \global\let\scr@float@addtolists@warning\relax
 }

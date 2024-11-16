@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-variables.dtx 4109 2024-04-24 12:06:57Z kohm $
+%%% From File: $Id: scrkernel-variables.dtx 4129 2024-10-23 19:02:04Z texhackse $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\def\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-04-24 14:06:57 +0200 (Wed, 24 Apr 2024) $
+  \filedate$Date: 2024-10-23 21:02:04 +0200 (Wed, 23 Oct 2024) $
   \def\filerevision$#1: #2 ${\def\filerevision{r#2}}
-  \filerevision$Revision: 4109 $
+  \filerevision$Revision: 4129 $
   \xdef\fileinfo{\filedate\space\filerevision\space}
   \edef\reserved@a{%
     \noexpand\endgroup
@@ -155,6 +155,8 @@
 %  \cs{kernel@ifnextchar}}
 % \changes{v3.42}{2024/04/24}{new implementation using
 %   \cs{NewDocumentCommand}}
+% \changes{v3.43}{2024/10/23}{add missing call of \cs{scr@\emph{name}@postsetname}
+%   and \cs{scr@\meta{name}@postsetvar}}
 % After defining a new variable we also need a command to set the
 % \meta{value}. This is the second mandatory argument (\texttt{\#3}) of
 % \cs{setkomavar}. The first mandatory argument (\texttt{\#2}) once again is
@@ -171,6 +173,7 @@
   \Ifkomavar{#2}{%
     \IfValueT{#3}{\@namedef{scr@#2@name}{#3}}%
     \@namedef{scr@#2@\IfBooleanTF{#1}{name}{var}}{#4}%
+    \csname scr@#2@postset\IfBooleanTF{#1}{name}{var}\endcsname
   }{%
     \@koma@var@err{set}{#2}%
   }%

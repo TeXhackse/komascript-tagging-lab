@@ -1,4 +1,4 @@
-# KOMA-Script 2024/04/17 v3.42 BETA 
+# KOMA-Script 2024/10/24 v3.43
 Copyright [Markus Kohm](mailto:komascript@gmx.info) 1994–2024
 
 This material is subject to the LaTeX Project Public License Version 1.3c. See [`lppl.txt`](lppl.txt) (English) or [`lppl-de.txt`](lppl-de.txt) (German) for the details of that license.
@@ -28,7 +28,7 @@ Requires:       ltxdoc   - the LaTeX2e source documentation class
                 scrartcl - the KOMA-Script article class
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2022-07-08 v0.92 
+Version:        2022-07-08 v0.92
 </pre>
 ***
 
@@ -41,10 +41,10 @@ Abstract:       scraddr is a LaTeX package of the KOMA-Script bundle.
                 package provides commands to read such files and to use the
                 data of the address entries not only with the scrlttr2 class
                 and not only for form letters.
-Requires:       
+Requires:
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2022/01/24 v1.1d 
+Version:        2022/01/24 v1.1d
 </pre>
 ***
 
@@ -68,7 +68,7 @@ Requires:       scrkbase - internal KOMA-Script package
 Recommended:    scrlayer-scrpage - KOMA-Script package
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -85,7 +85,7 @@ Abstract:       scrarticle is a very simple wrapper class to scrartcl. It has
 Requires:       scrartcl.cls - KOMA-Script class
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -122,11 +122,11 @@ Abstract:       scrbase is a LaTeX package of the KOMA-Script bundle.  It
                 division and integer modulo operation that can be used,
                 for example, inside \numexpr ...\relax or with \ifnum.
 Requires:       keyval   - key=value package from the graphics bundle
-                scrlfile - KOMA-Script package for file loading 
+                scrlfile - KOMA-Script package for file loading
                            manipulation
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -135,9 +135,9 @@ Version:        2024/04/17 v3.42 BETA
 Maintainer:     Markus Kohm
 E-Mail:         komascript@gmx.info
 Abstract:       scrbook is a LaTeX class of the KOMA-Script bundle and a
-                drop-in replacement for the standard LaTeX book class. It 
+                drop-in replacement for the standard LaTeX book class. It
                 provides all options, environments, commands, etc. of the
-                standard LaTeX book class, as well as several additional 
+                standard LaTeX book class, as well as several additional
                 options, environments, commands, etc. to make it much more
                 versatile. The default layout of scrbook differs from book,
                 with an emphasis on good typography. Nevertheless, by changing
@@ -148,7 +148,7 @@ Requires:       scrkbase - internal KOMA-Script package
                 typearea - KOMA-Script package
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -169,7 +169,7 @@ Requires:       scrkbase - KOMA-Script package for some basic features.
                            manipulation
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -184,7 +184,7 @@ Requires:       scrkbase - internal package with some basics of KOMA-Script
                 etoolbox - tool-box for LaTeX programming using e-TeX
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -192,13 +192,13 @@ Version:        2024/04/17 v3.42 BETA
 <pre>
 Maintainer:     Markus Kohm
 E-Mail:         komascript@gmx.info
-Abstract:       scrfontsizes is a LaTeX package of the KOMA-Script bundle.  
+Abstract:       scrfontsizes is a LaTeX package of the KOMA-Script bundle.
                 It provides a simple interface to generate KOMA-Script
                 font-size files.
 Requires:       scrextend - some KOMA-Script features for other classes
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -216,7 +216,7 @@ Requires:       scrkbase - internal KOMA-Script package with basics
                 tocbasic - features for helper files and float environments
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -233,7 +233,7 @@ Requires:       scrbase  - KOMA-Script package for some basic features.
                            manipulation
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -256,7 +256,7 @@ Abstract:       scrlayer-notecolumn is a LaTeX package of the KOMA-Script
 Requires:       scrlayer.sty
 License:        LPPL 1.3c or later
 State:          Author maintained, proof of concept
-Version:        2023/04/17 v0.3.4032 
+Version:        2023/04/17 v0.3.4032
 </pre>
 ***
 
@@ -278,7 +278,7 @@ Abstract:       scrlayer-scrpage is a LaTeX package of the KOMA-Script
 Requires:       scrlayer.sty
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -296,7 +296,7 @@ Abstract:       scrlayer is a LaTeX package of the KOMA-Script bundle.
 
                 In short, the page-style interface of scrlayer provides
                 commands to define page styles based on a stack of layers and
-                to manage those layer stacks. 
+                to manage those layer stacks.
 
                 Nevertheless, using the layers directly is recommended for
                 advanced users only. End-user interfaces for beginners or
@@ -305,7 +305,7 @@ Abstract:       scrlayer is a LaTeX package of the KOMA-Script bundle.
 Requires:       scrkbase.sty
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -320,7 +320,7 @@ Requires:       scrartcl.cls  – KOMA-Script class
                 scrletter.sty – KOMA-Script package
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -337,7 +337,7 @@ Requires:       scrkbase - internal KOMA-Script package
 Recommended:    marvosym - package by Martin Vogel providing symbols
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -351,7 +351,7 @@ Abstract:       scrlfile-hook-3.34 is an internal subpackage of scrlfile to
 Requires:       scrlogo.sty
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -364,7 +364,7 @@ Abstract:       scrlfile-hook is an internal subpackage of scrlfile to be
 Requires:       scrlogo.sty
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -377,7 +377,7 @@ Abstract:       scrlfile-patcholdlatex is an internal subpackage of scrlfile
 Requires:       scrlogo.sty
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -397,7 +397,7 @@ Abstract:       scrlfile is a LaTeX package of the KOMA-Script bundle. It
 Requires:       scrlfile-hook.sty, scrlfile-patcholdlatex.sty, scrlogo.sty
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -411,7 +411,7 @@ Abstract:       scrlogo is a LaTeX package of the KOMA-Script bundle. It
 Requires:
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -446,7 +446,7 @@ Requires:       scrkbase - internal KOMA-Script package
 Recommended:    marvosym - package by Martin Vogel providing symbols
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -463,7 +463,7 @@ Abstract:       scrreport is a very simple wrapper class to scrreprt. It has
 Requires:       scrreprt.cls - KOMA-Script class
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -485,7 +485,7 @@ Requires:       scrkbase - internal KOMA-Script package
                 typearea - KOMA-Script package
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -499,7 +499,7 @@ Abstract:       scrtime is a LaTeX package of the KOMA-Script bundle.  It
 Requires:       scrkbase - internal package with some basics of KOMA-Script
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -526,7 +526,7 @@ Abstract:       tocbasic is a LaTeX package of the KOMA-Script bundle.  The
 Requires:       scrbase  - KOMA-Script package for some basic features.
 License:        LPPL 1.3c or later
 State:          Author maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 
@@ -534,7 +534,7 @@ Version:        2024/04/17 v3.42 BETA
 <pre>
 Maintainer:     Markus Kohm
 E-Mail:         komascript@gmx.info
-Abstract:       Many LaTeX classes, including the standard classes, present 
+Abstract:       Many LaTeX classes, including the standard classes, present
                 the user with the largely fixed configuration of margins
                 and type area.  With the standard classes, the choice is
                 limited to selecting a font size. There are separate packages,
@@ -549,7 +549,7 @@ Abstract:       Many LaTeX classes, including the standard classes, present
 Requires:       scrkbase - internal basic features for KOMA-Script packages
 License:        LPPL 1.3c or later
 State:          Autor maintained
-Version:        2024/04/17 v3.42 BETA 
+Version:        2024/10/24 v3.43
 </pre>
 ***
 

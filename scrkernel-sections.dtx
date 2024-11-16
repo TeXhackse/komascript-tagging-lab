@@ -14,7 +14,7 @@
 % ======================================================================
 % ======================================================================
 % scrkernel-sections.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2024
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4112 2024-06-04 08:46:46Z kohm $
+%%% From File: $Id: scrkernel-sections.dtx 4130 2024-10-24 08:14:37Z kohm $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-06-04 10:46:46 +0200 (Tue, 04 Jun 2024) $
+  \filedate$Date: 2024-10-24 10:14:37 +0200 (Thu, 24 Oct 2024) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4112 $
+  \filerevision$Revision: 4130 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -5084,12 +5084,13 @@
   \csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
 %    \end{macrocode}
 % \changes{v2.8g}{2001/07/18}{support for \cs{float@addtolists}}
+% \changes{v3.43}{2024/10/24}{support for \cs{float@addtolists} removed}
 % \changes{v3.28}{2019/11/19}{\cs{iftocfeature} replaced by \cs{Iftocfeature}}
 % Depending on feature \texttt{chapteratlist} we have to add a vertical space
 % to other directories. And for compatibility we also support the deprecated
 % \cs{float@addtolists} but not without warning.
 % \begin{description}
-% \item[ToDo:] Why do we add the gap here but also use \cs{addctontentsline}
+% \item[ToDo:] Why do we add the gap here but also use \cs{addcontentsline}
 %   in \cs{addchaptertocentry}? Is this a bug? Should this be standardized?
 % \end{description}
 %    \begin{macrocode}
@@ -5099,10 +5100,12 @@
         \addtocontents{\@currext}{\protect\addvspace{\@chapterlistsgap}}%
       }{}%
     }%
-    \@ifundefined{float@addtolists}{}{%
-      \scr@float@addtolists@warning
-      \float@addtolists{\protect\addvspace{\@chapterlistsgap}}%
-    }%
+    \expandafter\ifnum \scr@v@is@lt{3.43}\relax
+      \@ifundefined{float@addtolists}{}{%
+        \scr@float@addtolists@warning
+        \float@addtolists{\protect\addvspace{\@chapterlistsgap}}%
+      }%
+    \fi
   \fi
 %    \end{macrocode}
 % \changes{v3.18}{2015/05/22}{\cs{@makechapterhead} replaced by
@@ -5591,6 +5594,7 @@
 % \changes{v3.12}{2013/09/24}{using\cs{addxcontentsline}}
 % \changes{v3.28}{2019/11/19}{\cs{iftocfeature} replaced by
 %   \cs{Iftocfeature}}
+% \changes{v3.43}{2024/10/24}{\cs{float@addtolists} warning removed}
 % We do not use \cs{addcontentsline} directly for the entries to the table of
 % contents. Using
 % \begin{quote}
@@ -5617,7 +5621,6 @@
         \addxcontentsline{\@currext}{chapteratlist}[{#1}]{#2}%
       }{}%
     }%
-    \@ifundefined{float@addtolists}{}{\scr@float@addtolists@warning}%
   \fi
 }
 %    \end{macrocode}

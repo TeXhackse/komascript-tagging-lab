@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: tocbasic.dtx 4089 2023-09-08 19:57:09Z kohm $
+%%% From File: $Id: tocbasic.dtx 4132 2024-10-24 09:32:44Z kohm $
 %<identify>%%%            (run: identify)
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
@@ -42,9 +42,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-09-08 21:57:09 +0200 (Fri, 08 Sep 2023) $
+  \filedate$Date: 2024-10-24 11:32:44 +0200 (Thu, 24 Oct 2024) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4089 $
+  \filerevision$Revision: 4132 $
 \endgroup
 \ProvidesFile{tocbasic.dtx}[\filedate\space\filerevision\space
 %</dtx>
@@ -256,12 +256,14 @@
 % \begin{macro}{\@@_endisable_patch:nn}
 % \ExplSyntaxOff
 % \changes{v3.42}{2023/09/08}{new}
+% \changes{v3.43}{2024/10/22}{deprecated \cs{char\_uppercase:N} replaced by
+%   \cs{text\_uppercase:n}}
 % Switch the patch \#1 depending on argument \#2 or raise a warning for
 % unknown patches.
 %    \begin{macrocode}
   \msg_new:nnnn { tocbasic } { unknown-patch }
     {
-      \char_uppercase:N #1bling~of~unknown~patch~#2~ignored.
+      \text_uppercase:n #1bling~of~unknown~patch~#2~ignored.
     }
     {
       You've~tried~to~#1able~patch~#2,~

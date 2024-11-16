@@ -358,7 +358,7 @@ package_doc = {
    scrlayer = {
       chapter_en = 'Defining Layers and Page Styles with <tt>scrlayer</tt>',
       chapter_de = 'Definition von Ebenen und Seitenstilen mit <tt>scrlayer</tt>',
-      link       = 'chapter.17'
+      link       = 'chapter.16'
    },
    scrletter = {
       chapter_en = 'Letters with the <tt>scrlttr2</tt> Class or the <tt>scrletter</tt> Package',
@@ -417,7 +417,7 @@ package_doc["scrlfile-patcholdlatex"] = package_doc["scrlfile-hook"]
 package_doc["scrlayer-notecolumn"] = {
    chapter_en = 'Note Columns with <tt>scrlayer-notecolumn</tt>',
    chapter_de = 'Notizspalten mit <tt>scrlayer-notecolumn</tt>',
-   link       = 'chapter.19'
+   link       = 'chapter.18'
 }
 
 package_doc["scrlayer-scrpage"] = {

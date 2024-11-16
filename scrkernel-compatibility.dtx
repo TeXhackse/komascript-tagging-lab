@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-compatibility.dtx 4073 2023-07-13 08:37:54Z kohm $
+%%% From File: $Id: scrkernel-compatibility.dtx 4133 2024-10-24 09:54:28Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<option>%%%            (run: option)
@@ -27,9 +27,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\def\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-07-13 10:37:54 +0200 (Thu, 13 Jul 2023) $
+  \filedate$Date: 2024-10-24 11:54:28 +0200 (Thu, 24 Oct 2024) $
   \def\filerevision$#1: #2 ${\def\filerevision{r#2}}
-  \filerevision$Revision: 4073 $
+  \filerevision$Revision: 4133 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-compatibility.dtx}%
@@ -249,7 +249,7 @@
         old KOMA-Script release. However, in that case you\MessageBreak
         could also need old releases of other packages and\MessageBreak
         even of the LaTeX kernel.\MessageBreak
-        You should also note, that the KOMA-Script developers\MessageBreak
+        Please also note, that the KOMA-Script developers\MessageBreak
         refuse support for documents using `version=#1'.\MessageBreak
         We recommend to eliminate all deprecated options\MessageBreak
         and commands. We also recommend to not use option\MessageBreak
@@ -462,6 +462,8 @@
 % \changes{v3.41}{2023/04/24}{added}
 % \begin{macro}{\scr@v@3.42}
 % \changes{v3.42}{2023/07/13}{added}
+% \begin{macro}{\scr@v@3.43}
+% \changes{v3.43}{2024/10/22}{added}
 % \begin{macro}{\scr@v@last}
 % \changes{v2.9u}{2005/03/05}{added}
 % Nun die unterschiedlichen möglichen Werte (|\scr@v@last| ist jeweils die
@@ -553,8 +555,10 @@
 \@namedef{scr@v@3.40}{20}
 \@namedef{scr@v@3.41}{21}
 \@namedef{scr@v@3.42}{21}
-\@namedef{scr@v@last}{21}
+\@namedef{scr@v@3.43}{3430}
+\@namedef{scr@v@last}{3430}
 %    \end{macrocode}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
