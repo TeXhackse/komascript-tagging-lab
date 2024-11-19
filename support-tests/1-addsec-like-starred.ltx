@@ -1,0 +1,28 @@
+\ExplSyntaxOn
+\debug_on:n { check-declarations , deprecation }
+\ExplSyntaxOff
+
+\input{regression-test}
+\input{testsetup}
+\documentclass{scrartcl}
+
+% don't handle pagestyles here
+\pagestyle{empty}\def\chapterpagestyle{empty}
+
+\begin{document}
+\START
+
+\tableofcontents
+
+\section{section}
+
+\addsec{addsec}
+
+\section*{starred}
+
+
+\ShowTagging{debug/structures}
+
+\END
+
+\end{document}

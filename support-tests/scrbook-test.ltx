@@ -1,0 +1,27 @@
+\ExplSyntaxOn
+\debug_on:n { check-declarations , deprecation }
+\ExplSyntaxOff
+
+\input{regression-test}
+\def\CLASS{scrbook}
+\input{testsetup}
+
+% don't handle pagestyles here
+\pagestyle{empty}\def\chapterpagestyle{empty}
+
+\begin{document}
+\START
+\showoutput
+
+\tableofcontents
+
+\chapter{chapter}
+\addchap{chapter}
+\section{section}
+\subsection{subsection}
+\subsubsection{subsubsection}
+
+paragraph
+
+
+\end{document}

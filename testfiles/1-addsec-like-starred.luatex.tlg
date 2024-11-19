@@ -112,7 +112,7 @@ The structure 9 contains:
 >  P  =>  parent structure: 8 = /Sect
 The structure has the following kids:
 >  Struct 10
->  MC 3
+>  MC 4
 =========================
 =========================
 The structure 10 contains:
@@ -124,6 +124,7 @@ The structure 10 contains:
 >  P  =>  parent structure: 9 = /section
 The structure has the following kids:
 >  MC 2
+>  MC 3
 =========================
 =========================
 The structure 11 contains:
@@ -146,7 +147,7 @@ The structure 12 contains:
 >  parentrole  =>  {H1}{pdf2}
 >  P  =>  parent structure: 11 = /Sect
 The structure has the following kids:
->  MC 4
+>  MC 5
 =========================
 =========================
 The structure 13 contains:
@@ -169,5 +170,5 @@ The structure 14 contains:
 >  parentrole  =>  {H1}{pdf2}
 >  P  =>  parent structure: 13 = /Sect
 The structure has the following kids:
->  MC 5
+>  MC 6
 =========================

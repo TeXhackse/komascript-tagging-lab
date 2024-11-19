@@ -1,29 +1,57 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
 (scrbook-test.toc
-tagpdf DEBUG Info: Tagging stopped
-(tagpdf DEBUG)     level: 0 ==> 1, label: leaders [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line ....
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line ....
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line ....
-tagpdf DEBUG Info: Tagging restarted
-(tagpdf DEBUG)     level: 1 ==> 0, label: leaders [on line ...]
-tagpdf DEBUG Info: Tagging stopped
-(tagpdf DEBUG)     level: 0 ==> 1, label: leaders [on line ...]
-tagpdf DEBUG Info: Tagging restarted
-(tagpdf DEBUG)     level: 1 ==> 0, label: leaders [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
 )
 \tf@toc=\write...
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [1]
 \vbox(655.63496+0.0)x405.73636, direction TLT
@@ -63,7 +91,6 @@ Completed box being shipped out [1]
 ...\glue -13.6
 ...\glue 44.88005 plus 1.0
 ...\glue 0.0
-...\special{}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 10.35756
@@ -74,13 +101,14 @@ Completed box being shipped out [1]
 .....\localleftbox=null
 .....\localrightbox=null
 ....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
 ....\TU/lmss/bx/n/20.74 C
 ....\TU/lmss/bx/n/20.74 o
 ....\TU/lmss/bx/n/20.74 n
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/20.74 -
+.....< \TU/lmss/bx/n/20.74 ^^ad
 ....\TU/lmss/bx/n/20.74 t
 ....\TU/lmss/bx/n/20.74 e
 ....\TU/lmss/bx/n/20.74 n
@@ -121,7 +149,7 @@ Completed box being shipped out [1]
 ....\TU/lmss/bx/n/10.95 a
 ....\TU/lmss/bx/n/10.95 p
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 -
+.....< \TU/lmss/bx/n/10.95 ^^ad
 ....\TU/lmss/bx/n/10.95 t
 ....\TU/lmss/bx/n/10.95 e
 ....\TU/lmss/bx/n/10.95 r
@@ -160,7 +188,7 @@ Completed box being shipped out [1]
 ....\TU/lmss/bx/n/10.95 a
 ....\TU/lmss/bx/n/10.95 p
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 -
+.....< \TU/lmss/bx/n/10.95 ^^ad
 ....\TU/lmss/bx/n/10.95 t
 ....\TU/lmss/bx/n/10.95 e
 ....\TU/lmss/bx/n/10.95 r
@@ -204,7 +232,7 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10.95 e
 ....\TU/lmr/m/n/10.95 c
 ....\discretionary (penalty 50)
-.....< \TU/lmr/m/n/10.95 -
+.....< \TU/lmr/m/n/10.95 ^^ad
 ....\TU/lmr/m/n/10.95 t
 ....\TU/lmr/m/n/10.95 i
 ....\TU/lmr/m/n/10.95 o
@@ -262,12 +290,12 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10.95 u
 ....\TU/lmr/m/n/10.95 b
 ....\discretionary (penalty 50)
-.....< \TU/lmr/m/n/10.95 -
+.....< \TU/lmr/m/n/10.95 ^^ad
 ....\TU/lmr/m/n/10.95 s
 ....\TU/lmr/m/n/10.95 e
 ....\TU/lmr/m/n/10.95 c
 ....\discretionary (penalty 50)
-.....< \TU/lmr/m/n/10.95 -
+.....< \TU/lmr/m/n/10.95 ^^ad
 ....\TU/lmr/m/n/10.95 t
 ....\TU/lmr/m/n/10.95 i
 ....\TU/lmr/m/n/10.95 o
@@ -307,14 +335,13 @@ Completed box being shipped out [1]
 ..\pdflinkstate 0
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
-Non-PDF special ignored!
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [2]
 \vbox(655.63496+0.0)x465.48715, direction TLT
@@ -351,20 +378,34 @@ Completed box being shipped out [2]
 ..\pdflinkstate 0
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
-! LaTeX Error: Inconsistent local/global assignment
-For immediate help type H <return>.
- ...                                              
-l. ...\chapter{chapter}
-This is a coding error.
-Local assignment to a constant variable '\__scr_current_heading_tl'.
 chapter 1.
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: chapterformat [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: chapterformat [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [3]
 \vbox(655.63496+0.0)x405.73636, direction TLT
@@ -416,9 +457,11 @@ Completed box being shipped out [3]
 .....\localrightbox=null
 ....\hbox(14.84984+0.0)x21.777, direction TLT
 .....\hbox(14.84984+0.0)x21.777, direction TLT
+......\pdfliteral page <lua data reference ...>
+......\pdfliteral page <lua data reference ...>
 ......\TU/lmss/bx/n/20.74 1
-......\TU/lmss/bx/n/20.74  
-......\glue 2.7584
+......\hbox(0.0+0.0)x0.0, direction TLT
+......\glue 10.37
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
 ....\TU/lmss/bx/n/20.74 c
@@ -426,7 +469,7 @@ Completed box being shipped out [3]
 ....\TU/lmss/bx/n/20.74 a
 ....\TU/lmss/bx/n/20.74 p
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/20.74 -
+.....< \TU/lmss/bx/n/20.74 ^^ad
 ....\TU/lmss/bx/n/20.74 t
 ....\TU/lmss/bx/n/20.74 e
 ....\TU/lmss/bx/n/20.74 r
@@ -448,13 +491,13 @@ Completed box being shipped out [3]
 ..\pdflinkstate 0
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [4]
 \vbox(655.63496+0.0)x465.48715, direction TLT
@@ -491,32 +534,42 @@ Completed box being shipped out [4]
 ..\pdflinkstate 0
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
-! LaTeX Error: Inconsistent local/global assignment
-For immediate help type H <return>.
- ...                                              
-l. ...\addchap{chapter}
-This is a coding error.
-Local assignment to a constant variable '\__scr_current_heading_tl'.
 chapter without number
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging stopped
-(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging restarted
-(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging stopped
+tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging restarted
+tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [5]
 \vbox(655.63496+0.0)x405.73636, direction TLT
@@ -540,7 +593,7 @@ Completed box being shipped out [5]
 ..\glue 20.40001
 ..\glue(\lineskip) 0.0
 ..\vbox(595.80026+0.0)x418.25555, glue set 420.84702fil, direction TLT
-...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \nonumberline chapter}{\thepage }{chapter.1}\protected@file@percent }}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \nonumberline chapter}{\thepage }{target*.2}\protected@file@percent }}
 ...\marks1{\__mark_id:n {3}chapter}
 ...\marks2{\__mark_id:n {4}}
 ...\mark{{chapter}{}}
@@ -557,7 +610,6 @@ Completed box being shipped out [5]
 ...\glue -13.6
 ...\glue 44.88005 plus 1.0
 ...\glue 0.0
-...\special{}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 10.60643
@@ -568,6 +620,7 @@ Completed box being shipped out [5]
 .....\localleftbox=null
 .....\localrightbox=null
 ....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
 ....\TU/lmss/bx/n/20.74 c
@@ -575,7 +628,7 @@ Completed box being shipped out [5]
 ....\TU/lmss/bx/n/20.74 a
 ....\TU/lmss/bx/n/20.74 p
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/20.74 -
+.....< \TU/lmss/bx/n/20.74 ^^ad
 ....\TU/lmss/bx/n/20.74 t
 ....\TU/lmss/bx/n/20.74 e
 ....\TU/lmss/bx/n/20.74 r
@@ -615,7 +668,7 @@ Completed box being shipped out [5]
 ....\TU/lmss/bx/n/14.4 e
 ....\TU/lmss/bx/n/14.4 c
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/14.4 -
+.....< \TU/lmss/bx/n/14.4 ^^ad
 ....\TU/lmss/bx/n/14.4 t
 ....\TU/lmss/bx/n/14.4 i
 ....\TU/lmss/bx/n/14.4 o
@@ -629,7 +682,7 @@ Completed box being shipped out [5]
 ...\marks3{\__mark_id:n {6}1.1\hskip .5em\relax section}
 ...\mark{{chapter}{1.1\hskip .5em\relax section}}
 ...\penalty 10000
-...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline {1.1}section}{\thepage }{target*.3}\protected@file@percent }}
+...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline {1.1}section}{\thepage }{target*.4}\protected@file@percent }}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 10.85475 plus 0.94386
@@ -665,12 +718,12 @@ Completed box being shipped out [5]
 ....\TU/lmss/bx/n/12 u
 ....\TU/lmss/bx/n/12 b
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/12 -
+.....< \TU/lmss/bx/n/12 ^^ad
 ....\TU/lmss/bx/n/12 s
 ....\TU/lmss/bx/n/12 e
 ....\TU/lmss/bx/n/12 c
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/12 -
+.....< \TU/lmss/bx/n/12 ^^ad
 ....\TU/lmss/bx/n/12 t
 ....\TU/lmss/bx/n/12 i
 ....\TU/lmss/bx/n/12 o
@@ -680,7 +733,7 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\pdfliteral page <lua data reference ...>
 ...\pdfliteral page <lua data reference ...>
-...\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline {1.1.1}subsection}{\thepage }{target*.4}\protected@file@percent }}
+...\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline {1.1.1}subsection}{\thepage }{target*.5}\protected@file@percent }}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 7.07918 plus 0.94386
@@ -707,17 +760,17 @@ Completed box being shipped out [5]
 ....\TU/lmss/bx/n/10.95 u
 ....\TU/lmss/bx/n/10.95 b
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 -
+.....< \TU/lmss/bx/n/10.95 ^^ad
 ....\TU/lmss/bx/n/10.95 s
 ....\TU/lmss/bx/n/10.95 u
 ....\TU/lmss/bx/n/10.95 b
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 -
+.....< \TU/lmss/bx/n/10.95 ^^ad
 ....\TU/lmss/bx/n/10.95 s
 ....\TU/lmss/bx/n/10.95 e
 ....\TU/lmss/bx/n/10.95 c
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 -
+.....< \TU/lmss/bx/n/10.95 ^^ad
 ....\TU/lmss/bx/n/10.95 t
 ....\TU/lmss/bx/n/10.95 i
 ....\TU/lmss/bx/n/10.95 o
@@ -727,7 +780,7 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\pdfliteral page <lua data reference ...>
 ...\pdfliteral page <lua data reference ...>
-...\write1{\@writefile{toc}{\protect \contentsline {subsubsection}{\protect \nonumberline subsubsection}{\thepage }{target*.5}\protected@file@percent }}
+...\write1{\@writefile{toc}{\protect \contentsline {subsubsection}{\protect \nonumberline subsubsection}{\thepage }{target*.6}\protected@file@percent }}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 7.07918 plus 0.94386
@@ -747,7 +800,7 @@ Completed box being shipped out [5]
 ....\TU/lmr/m/n/10.95 r
 ....\TU/lmr/m/n/10.95 a
 ....\discretionary (penalty 50)
-.....< \TU/lmr/m/n/10.95 -
+.....< \TU/lmr/m/n/10.95 ^^ad
 ....\TU/lmr/m/n/10.95 g
 ....\TU/lmr/m/n/10.95 r
 ....\TU/lmr/m/n/10.95 a
@@ -771,11 +824,11 @@ Completed box being shipped out [5]
 .\hbox(0.0+0.0)x0.0, direction TLT
 .\kern655.63496
 .\pdfliteral page <lua data reference ...>
-Non-PDF special ignored! (scrbook-test.aux)
+(scrbook-test.aux)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package tagpdf Info: Finalizing the tagging structure:
-(tagpdf)             Writing out ~41 structure objects
-(tagpdf)             with ~39 'MC' leaf nodes.
+(tagpdf)             Writing out ~38 structure objects
+(tagpdf)             with ~45 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
 Package tagpdf Info: writing IDTree
@@ -783,4 +836,6 @@ Package tagpdf Info: writing RoleMap
 Package tagpdf Info: writing ClassMap
 Package tagpdf Info: writing NameSpaces
 Package tagpdf Info: writing StructElems
+Package tagpdf Warning: Destination 'target*.2' has no related structure.
+(tagpdf)                /Ref not updated.
 Package tagpdf Info: writing Root
