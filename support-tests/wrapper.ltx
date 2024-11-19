@@ -1,0 +1,26 @@
+\ExplSyntaxOn
+\debug_on:n { check-declarations , deprecation }
+\ExplSyntaxOff
+
+\input{regression-test}
+
+\input{testsetup}
+\documentclass{scrbook}
+
+\pagestyle{empty}
+
+\tagpdfsetup{
+   debug/log=v
+}
+
+\begin{document}
+
+\errorstopmode
+
+\START
+
+\UseName{\jobname}{Heading \jobname}
+
+Text
+
+\end{document}
