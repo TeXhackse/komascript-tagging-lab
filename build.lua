@@ -14,8 +14,9 @@ installfiles = {
 unpackfiles = {"scr-tagging-lab.ins"}
 -- checkconfigs = {"build", "compare"} compare config is only used when the real testfiles failed
 
-checksuppfiles={"*.tex"}
-supportdir="tagging-lab-support"
+checksuppfiles={"*.tex","*.ltx"}
+supportdir  = "support"
+testsuppdir = "support-tests"
 checkruns = 2
 typesetruns=2
 

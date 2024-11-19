@@ -1,0 +1,22 @@
+\DocumentMetadata{
+  lang        = en,
+  pdfversion  = 2.0,
+  pdfstandard = ua-2,
+  testphase   =  {
+    phase-III,
+    title,
+    table,
+%   firstaid
+ },
+  uncompress,
+}
+
+\newcommand{\addpart}[2][]{\part*{#2}\addcontentsline{toc}{part}{#2}}
+\newcommand{\addsec}[2][]{\section*{#2}\addcontentsline{toc}{section}{#2}}
+\newcommand{\addchap}[2][]{\chapter*{#2}\addcontentsline{toc}{chapter}{#2}}
+\makeatletter
+\declare@file@substitution {scrartcl.cls} {article.cls}
+\declare@file@substitution {scrbook.cls} {book.cls}
+\makeatother
+
+\input{testsetup-general}
