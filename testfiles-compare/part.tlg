@@ -1,0 +1,249 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+Package tagpdf Info: Parent-Child 'Document' --> 'Part'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Document/pdf2' --> 'Part/pdf2' on line ...
+tagpdf DEBUG Info: Struct 5 begin inserted with options: tag={\int_compare:nNnTF {-1}={-1}{Part}{Sect}},tag=Part 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Parent-Child 'Document' --> 'Title'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Document/pdf2' --> 'part/latex' on line ...
+tagpdf DEBUG Info: Struct 6 begin inserted with options: tag=part,title=Heading \jobname  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> @endpe=false on input line ...
+Package tagpdf Info: Parent-Child 'Title' --> 'NonStruct'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Title/pdf2' --> 'NonStruct/pdf2' on line ...
+tagpdf DEBUG Info: Struct 7 begin inserted with options: tag=\l__tag_para_main_tag_tl ,attribute-class=\l__tag_para_main_attr_class_tl , 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{NonStruct}{NonStruct}}
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> increment P on input line ...
+Package tagpdf Info: Parent-Child 'Title' --> 'Span'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Title/pdf2' --> 'Span/pdf2' on line ...
+tagpdf DEBUG Info: Struct 8 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Span}{Span}}
+>  {{NonStruct}{NonStruct}}
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+tagpdf DEBUG Info: MC begin inserted with options:  [on line ...]
+Package tagpdf Info: Parent-Child 'Span' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Span/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+tagpdf DEBUG Info: MC end inserted [on line ...]
+Package tagpdf Info: closing structure 8 tagged /Span
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{NonStruct}{NonStruct}}
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 7 tagged /NonStruct
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> @endpe=false on input line ...
+Package tagpdf Info: Parent-Child 'Title' --> 'NonStruct'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Title/pdf2' --> 'NonStruct/pdf2' on line ...
+tagpdf DEBUG Info: Struct 9 begin inserted with options: tag=\l__tag_para_main_tag_tl ,attribute-class=\l__tag_para_main_attr_class_tl , 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{NonStruct}{NonStruct}}
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> increment P on input line ...
+Package tagpdf Info: Parent-Child 'Title' --> 'Span'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Title/pdf2' --> 'Span/pdf2' on line ...
+tagpdf DEBUG Info: Struct 10 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Span}{Span}}
+>  {{NonStruct}{NonStruct}}
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+tagpdf DEBUG Info: MC begin inserted with options:  [on line ...]
+Package tagpdf Info: Parent-Child 'Span' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Span/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+tagpdf DEBUG Info: MC end inserted [on line ...]
+Package tagpdf Info: closing structure 10 tagged /Span
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{NonStruct}{NonStruct}}
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 9 tagged /NonStruct
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{part}{Title}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+====> In \@makecol 1
+Pick up new bot mark!
+=> first b-, 1, 8, Span
+=> bot e+, 2, 10
+=> TMB not missing
+=> TME not missing
+The sequence \g__tag_mc_main_marks_seq is empty
+> .
+tagpdf DEBUG Info: MC begin inserted with options: artifact [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
+tagpdf DEBUG Info: MC end inserted [on line ...]
+tagpdf DEBUG Info: MC begin inserted with options: artifact [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
+tagpdf DEBUG Info: MC end inserted [on line ...]
+[1
+]
+====> In \@makecol 2
+No marks so use saved bot mark: e+, 2, 10
+=> first e+, 2, 10
+=> bot e+, 2, 10
+=> TMB not missing
+=> TME not missing
+The sequence \g__tag_mc_main_marks_seq contains the items (without outer braces):
+>  {e+}
+>  {2}
+>  {10}.
+tagpdf DEBUG Info: MC begin inserted with options: artifact [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
+tagpdf DEBUG Info: MC end inserted [on line ...]
+tagpdf DEBUG Info: MC begin inserted with options: artifact [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
+tagpdf DEBUG Info: MC end inserted [on line ...]
+[2]
+Package tagpdf Info: closing structure 6 tagged /part
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> @endpe=false on input line ...
+Package tagpdf Info: Parent-Child 'Document' --> 'Part'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Document/pdf2' --> 'text-unit/latex' on line ...
+tagpdf DEBUG Info: Struct 11 begin inserted with options: tag=\l__tag_para_main_tag_tl ,attribute-class=\l__tag_para_main_attr_class_tl , 
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{text-unit}{Part}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+==> increment P on input line ...
+Package tagpdf Info: Parent-Child 'Document' --> 'P'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'Document/pdf2' --> 'text/latex' on line ...
+tagpdf DEBUG Info: Struct 12 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
+(tagpdf DEBUG)     [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{text}{P}}
+>  {{text-unit}{Part}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+tagpdf DEBUG Info: MC begin inserted with options:  [on line ...]
+Package tagpdf Info: Parent-Child 'P' --> 'MC'.
+(tagpdf)             Relation is 1 (='0..n')
+(tagpdf)             Rolemapped from 'P/pdf2' --> 'MC' on line ...
+==> increment /P on input line ...
+tagpdf DEBUG Info: MC end inserted [on line ...]
+Package tagpdf Info: closing structure 12 tagged /text
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{text-unit}{Part}}
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 11 tagged /text-unit
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Part}{Part}}
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+====> In \@makecol 3
+Pick up new bot mark!
+=> first b-, 7, 12, text
+=> bot e+, 7, 12
+=> TMB not missing
+=> TME not missing
+The sequence \g__tag_mc_main_marks_seq contains the items (without outer braces):
+>  {e+}
+>  {2}
+>  {10}.
+tagpdf DEBUG Info: MC begin inserted with options: artifact [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
+tagpdf DEBUG Info: MC end inserted [on line ...]
+tagpdf DEBUG Info: MC begin inserted with options: artifact [on line ...]
+tagpdf DEBUG Info: Tagging suspended
+(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
+tagpdf DEBUG Info: Tagging resumed
+(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
+tagpdf DEBUG Info: MC end inserted [on line ...]
+[3] (part.aux)
+Package tagpdf Info: closing structure 5 tagged /Part
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Document}{Document}}
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: closing structure 2 tagged /Document
+tagpdf DEBUG Info: Struct end inserted [on line ...]
+The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
+>  {{Root}{StructTreeRoot}}.
+Package tagpdf Info: Finalizing the tagging structure:
+(tagpdf)             Writing out ~12 structure objects
+(tagpdf)             with ~9 'MC' leaf nodes.
+(tagpdf)             Be patient if there are lots of objects!
+Package tagpdf Info: writing ParentTree
+Package tagpdf Info: writing IDTree
+Package tagpdf Info: writing RoleMap
+Package tagpdf Info: writing ClassMap
+Package tagpdf Info: writing NameSpaces
+Package tagpdf Info: writing StructElems
+Package tagpdf Info: writing Root
