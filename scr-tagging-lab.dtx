@@ -84,6 +84,10 @@
 	\tag_tool:n {restore-para}
 }
 
+\hook_gput_code:nnn {cmd/scr@@@@startchapter/after}{scr-tagging-lab}{
+	\tag_tool:n {restore-para}
+}
+
 \cs_new:Nn \_@@_patch_sectioning: {
 	\cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
 	\cs_set_eq:NN \chapterlinesformat \scrlab@chapterlinesformat
