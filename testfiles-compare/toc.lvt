@@ -1,0 +1,2 @@
+\UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
+\input{toc.ltx}
