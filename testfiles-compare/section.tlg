@@ -19,13 +19,13 @@ The sequence \g__tag_struct_tag_stack_seq contains the items (without outer brac
 >  {{Sect}{Sect}}
 >  {{Document}{Document}}
 >  {{Root}{StructTreeRoot}}.
-Package tagpdf Info: Parent-Child 'H2' --> 'Lbl'.
+Package tagpdf Info: Parent-Child 'H2' --> 'Span'.
 (tagpdf)             Relation is 1 (='0..n')
-(tagpdf)             Rolemapped from 'H2/pdf2' --> 'Lbl/pdf2' on line ...
-tagpdf DEBUG Info: Struct 7 begin inserted with options: tag=Lbl 
+(tagpdf)             Rolemapped from 'H2/pdf2' --> 'section-number/latex' on line ...
+tagpdf DEBUG Info: Struct 7 begin inserted with options: tag=section-number 
 (tagpdf DEBUG)     [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
->  {{Lbl}{Lbl}}
+>  {{section-number}{Span}}
 >  {{section}{H2}}
 >  {{Sect}{Sect}}
 >  {{Document}{Document}}
@@ -40,11 +40,11 @@ tagpdf DEBUG Info: MC begin ignored with options:  [on line ...]
 tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
 tagpdf DEBUG Info: MC begin inserted with options:  [on line ...]
-Package tagpdf Info: Parent-Child 'Lbl' --> 'MC'.
+Package tagpdf Info: Parent-Child 'Span' --> 'MC'.
 (tagpdf)             Relation is 1 (='0..n')
-(tagpdf)             Rolemapped from 'Lbl/pdf2' --> 'MC' on line ...
+(tagpdf)             Rolemapped from 'Span/pdf2' --> 'MC' on line ...
 tagpdf DEBUG Info: MC end inserted [on line ...]
-Package tagpdf Info: closing structure 7 tagged /Lbl
+Package tagpdf Info: closing structure 7 tagged /section-number
 tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{section}{H2}}
@@ -107,7 +107,7 @@ The sequence \g__tag_struct_tag_stack_seq contains the items (without outer brac
 >  {{Root}{StructTreeRoot}}.
 ====> In \@makecol 1
 Pick up new bot mark!
-=> first b-, 1, 7, Lbl
+=> first b-, 1, 7, section-number
 => bot e+, 3, 9
 => TMB not missing
 => TME not missing
@@ -126,7 +126,7 @@ tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 tagpdf DEBUG Info: MC end inserted [on line ...]
 [1
-] (section.aux)
+] (section.aux)<<latex-list-css.html>><<latex-align-css.html>>
 Package tagpdf Info: closing structure 5 tagged /Sect
 tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):

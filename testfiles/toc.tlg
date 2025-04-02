@@ -424,10 +424,10 @@ The structure has the following kids:
 =========================
 The structure 28 contains:
 >  Type  =>  /StructElem
->  S  =>  /Lbl
->  NS  =>  pdf2
->  rolemap  =>  {Lbl}{pdf2}
->  parentrole  =>  {Lbl}{pdf2}
+>  S  =>  /section-number
+>  NS  =>  latex
+>  rolemap  =>  {Span}{pdf2}
+>  parentrole  =>  {Span}{pdf2}
 >  P  =>  parent structure: 27 = /section
 The structure has the following kids:
 >  MC 29
@@ -458,10 +458,10 @@ The structure has the following kids:
 =========================
 The structure 31 contains:
 >  Type  =>  /StructElem
->  S  =>  /Lbl
->  NS  =>  pdf2
->  rolemap  =>  {Lbl}{pdf2}
->  parentrole  =>  {Lbl}{pdf2}
+>  S  =>  /section-number
+>  NS  =>  latex
+>  rolemap  =>  {Span}{pdf2}
+>  parentrole  =>  {Span}{pdf2}
 >  P  =>  parent structure: 30 = /subsection
 The structure has the following kids:
 >  MC 31
@@ -563,10 +563,10 @@ The structure has the following kids:
 =========================
 The structure 40 contains:
 >  Type  =>  /StructElem
->  S  =>  /Lbl
->  NS  =>  pdf2
->  rolemap  =>  {Lbl}{pdf2}
->  parentrole  =>  {Lbl}{pdf2}
+>  S  =>  /section-number
+>  NS  =>  latex
+>  rolemap  =>  {Span}{pdf2}
+>  parentrole  =>  {Span}{pdf2}
 >  P  =>  parent structure: 39 = /subsection
 The structure has the following kids:
 >  MC 36
@@ -605,6 +605,7 @@ tagpdf DEBUG Info: Tagging resumed
 [1
 ] (toc.aux)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+<<latex-list-css.html>><<latex-align-css.html>>
 Package tagpdf Info: Finalizing the tagging structure:
 (tagpdf)             Writing out ~42 structure objects
 (tagpdf)             with ~40 'MC' leaf nodes.

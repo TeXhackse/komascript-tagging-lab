@@ -75,8 +75,6 @@ Completed box being shipped out [1]
 ..\glue 20.40001
 ..\glue(\lineskip) 0.0
 ..\vbox(595.80026+0.0)x418.25555, glue set 439.71011fil, direction TLT
-...\latelua0{ltx.__pdf.Page.Resources.ExtGState=true}
-...\latelua0{ltx.pdf.Page_Resources_gpush(tex.count["g_shipout_readonly_int"])}
 ...\write-{}
 ...\write-{}
 ...\write-{}
@@ -430,9 +428,8 @@ Completed box being shipped out [3]
 ..\glue(\lineskip) 0.0
 ..\vbox(595.80026+0.0)x418.25555, glue set 505.06012fil, direction TLT
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline {1}chapter}{\thepage }{chapter.1}\protected@file@percent }}
-...\marks1{\__mark_id:n {1}1\hskip .5em\relax chapter}
-...\marks2{\__mark_id:n {2}}
-...\mark{{1\hskip .5em\relax chapter}{}}
+...\marks1{\__mark_value:nn {1}{1\hskip .5em\relax chapter}}
+...\marks2{\__mark_value:nn {2}{}}
 ...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
 ...\write1{\@writefile{lot}{\protect \addvspace {10\p@ }}}
 ...\glue(\topskip) 11.0
@@ -594,9 +591,8 @@ Completed box being shipped out [5]
 ..\glue(\lineskip) 0.0
 ..\vbox(595.80026+0.0)x418.25555, glue set 420.84702fil, direction TLT
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \nonumberline chapter}{\thepage }{target*.2}\protected@file@percent }}
-...\marks1{\__mark_id:n {3}chapter}
-...\marks2{\__mark_id:n {4}}
-...\mark{{chapter}{}}
+...\marks1{\__mark_value:nn {3}{chapter}}
+...\marks2{\__mark_value:nn {4}{}}
 ...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
 ...\write1{\@writefile{lot}{\protect \addvspace {10\p@ }}}
 ...\glue(\topskip) 11.0
@@ -678,9 +674,9 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\pdfliteral page <lua data reference ...>
 ...\pdfliteral page <lua data reference ...>
-...\marks2{\__mark_id:n {5}1.1\hskip .5em\relax section}
-...\marks3{\__mark_id:n {6}1.1\hskip .5em\relax section}
-...\mark{{chapter}{1.1\hskip .5em\relax section}}
+...\marks2{\__mark_value:nn {5}{1.1\hskip .5em\relax section}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {6}{1.1\hskip .5em\relax section}}
 ...\penalty 10000
 ...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline {1.1}section}{\thepage }{target*.4}\protected@file@percent }}
 ...\penalty 10000
@@ -826,6 +822,7 @@ Completed box being shipped out [5]
 .\pdfliteral page <lua data reference ...>
 (scrbook-test.aux)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+<<latex-list-css.html>><<latex-align-css.html>>
 Package tagpdf Info: Finalizing the tagging structure:
 (tagpdf)             Writing out ~38 structure objects
 (tagpdf)             with ~45 'MC' leaf nodes.

@@ -117,10 +117,10 @@ The structure has the following kids:
 =========================
 The structure 10 contains:
 >  Type  =>  /StructElem
->  S  =>  /Lbl
->  NS  =>  pdf2
->  rolemap  =>  {Lbl}{pdf2}
->  parentrole  =>  {Lbl}{pdf2}
+>  S  =>  /section-number
+>  NS  =>  latex
+>  rolemap  =>  {Span}{pdf2}
+>  parentrole  =>  {Span}{pdf2}
 >  P  =>  parent structure: 9 = /section
 The structure has the following kids:
 >  MC 2

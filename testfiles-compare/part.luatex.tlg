@@ -180,7 +180,7 @@ tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
 tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-[3] (part.aux)
+[3] (part.aux)<<latex-list-css.html>><<latex-align-css.html>>
 Package tagpdf Info: closing structure 5 tagged /Part
 tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
