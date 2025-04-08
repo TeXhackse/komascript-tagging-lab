@@ -2,18 +2,8 @@
   lang        = en,
   pdfversion  = 2.0,
   pdfstandard = ua-2,
-  testphase   =  {
-    phase-III,
-    title,
-    table,
-    KOMA-fixes
-%    firstaid
- },
+  tagging-setup={tabsorder=structure,extra-modules=KOMA-fixes},
   uncompress,
-}
-\tagpdfsetup{%
-	activate/all,
-	tabsorder=structure,
 }
 \RequirePackage{tagpdf-debug}
 \ShowTagging{debug/structures,
@@ -22,7 +12,6 @@ mc-data,
 %%struct-stack
 }
 
-\RemoveFromHook{class/after}[latex-lab-testphase-sec]
 
 \documentclass[chapterprefix=true]{scrbook}
 \setkomafont{disposition}{\bfseries}
