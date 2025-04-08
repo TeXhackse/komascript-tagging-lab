@@ -26,6 +26,13 @@ testphase]
 %    \begin{macrocode}
 \ProvidesExplPackage {scr-tagging-lab} {2024-06-30} {0.18}{KOMA-Script tagging experiments}
 %    \end{macrocode}
+% We need to avoid that latex-lab-testphase redefines part and chapter
+% after the class, for this we void its hook with a hook rule.
+%    \begin{macrocode}
+\AddToHook{class/after}[koma/tagging]{}
+\DeclareHookRule{class/after}{koma/tagging}{voids}{latex-lab-testphase-sec}
+%    \end{macrocode}
+%
 % As this project is constructed to be integrated into KOMA-Script, we define some macros which are also defined by KOMA-Script itself.
 % We use file hooks to do save the meaning before loading the class and restore it afterwards.
 % This is to simplify moving the changes from this experiment to the official KOMA-Script SVN.
