@@ -26,12 +26,6 @@ tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
 tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line ....
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line ....
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line ....
 tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
 tagpdf DEBUG Info: Tagging suspended

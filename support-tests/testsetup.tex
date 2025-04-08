@@ -2,15 +2,12 @@
   lang        = en,
   pdfversion  = 2.0,
   pdfstandard = ua-2,
-  testphase   =  {
-    phase-III,
-    title,
-    table,
-    KOMA-fixes
-%   firstaid
+  tagging-setup= {
+   extra-modules=  KOMA-fixes,
+   tabsorder=structure,
+   role/user-NS=KOMA,
  },
   uncompress,
 }
 
-\RemoveFromHook{class/after}[latex-lab-testphase-sec]
 \input{testsetup-general}

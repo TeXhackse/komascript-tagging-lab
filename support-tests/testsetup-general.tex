@@ -1,7 +1,3 @@
-\tagpdfsetup{%
-	activate/all,
-	tabsorder=structure,
-}
 
 \RequirePackage{tagpdf-debug}
 \ShowTagging{debug/structures,
@@ -10,11 +6,7 @@ mc-data,
 %%struct-stack
 }
 
-%\AddToHook{begindocument/end}{
-%	\tagpdfsetup{
-%	      debug/log=v
-%	}
-%}
+
 
 % I case there are generated tests as for the single-heading setup
 \expandafter\ifx\csname CLASS\endcsname\relax\else
