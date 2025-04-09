@@ -168,6 +168,7 @@ babel-latin
 hyphen-latin
 lualatex-math
 luamml
+tagpdf
 
 # fonts
 amsfonts 
