@@ -39,4 +39,4 @@ specialformats["latex"] = specialformats["latex"] or
 --    latexdvips = {binary="latex",format = "latex-dev"}
   }
 
-checkengines = {"pdftex","luatex","pdftexmain"}
+checkengines = {"pdftex","luatex"}
