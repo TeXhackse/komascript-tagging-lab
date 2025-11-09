@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-compatibility.dtx
-% Copyright (c) Markus Kohm, 2006-2023
+% Copyright (c) Markus Kohm, 2006-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-compatibility.dtx 4133 2024-10-24 09:54:28Z kohm $
+%%% From File: $Id: scrkernel-compatibility.dtx 4224 2025-09-11 12:26:42Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<option>%%%            (run: option)
@@ -27,9 +27,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\def\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-10-24 11:54:28 +0200 (Thu, 24 Oct 2024) $
+  \filedate$Date: 2025-09-11 14:26:42 +0200 (Thu, 11 Sep 2025) $
   \def\filerevision$#1: #2 ${\def\filerevision{r#2}}
-  \filerevision$Revision: 4133 $
+  \filerevision$Revision: 4224 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-compatibility.dtx}%
@@ -107,8 +107,9 @@
 %
 % \begin{option}{emulatestandardclasses}
 % \changes{v3.12}{2013/11/11}{added}
-% \changes{v3.20}{2016/02/16}{\opt{headings\quotechar=standardclasses} also for
-%   \cls*{scrartcl}}
+% \changes{v3.20}{2016/02/16}{\opt{headings\quotechar=standardclasses} also
+%   for \cls*{scrartcl}}
+% \changes{v3.44}{2025/03/13}{warning added}
 % Because this option has to change several defaults, it should be used as
 % early as possible. The earliest time is the load time. So it has been
 % defined as a classic option.
@@ -123,6 +124,14 @@
 \let\scr@emulatestandardclassestrue\relax
 \let\scr@emulatestandardclassesfalse\relax
 \DeclareOption{emulatestandardclasses}{%
+  \ClassWarningNoLine{\KOMAClassName}{%
+    The use of the undocumented and therefore unofficial\MessageBreak
+    and highly experimental option `emulatestandardclasses'\MessageBreak
+    leads to restrictions in support. In particular, it is\MessageBreak
+    to be expected that the function of the option will\MessageBreak
+    change at any time or that the option will be removed\MessageBreak
+    from the \KOMAClassName\space class.%
+  }%
   \let\if@scr@emulatestandardclasses\iftrue
   \KOMAExecuteOptions{%
     fontsize=10pt,%
@@ -292,272 +301,379 @@
 %    \end{macrocode}
 % \begin{macro}{\scr@v@first}
 % \changes{v2.9u}{2005/03/05}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.9}
 % \changes{v2.9u}{2005/03/05}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.9t}
 % \changes{v2.9u}{2005/03/05}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.95}
 % \changes{v2.95}{2006/03/23}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.95a}
 % \changes{v2.96a}{2006/11/27}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.95b}
 % \changes{v2.96a}{2006/11/27}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.96}
 % \changes{v2.96a}{2006/11/27}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.96a}
 % \changes{v2.96a}{2006/11/27}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.97}
 % \changes{v2.97}{2007/03/02}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.97a}
 % \changes{v2.97a}{2007/03/07}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.97b}
 % \changes{v2.97b}{2007/03/25}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.97c}
 % \changes{v2.97c}{2007/05/12}{added}
-% \changes{v2.97d}{2007/10/09}{Wert geändert}%^^A
+% \changes{v2.97d}{2007/10/09}{value changed}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.97d}
 % \changes{v2.97d}{2007/10/03}{added}
-% \changes{v2.97d}{2007/10/09}{Wert geändert}%^^A
+% \changes{v2.97d}{2007/10/09}{value changed}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.97e}
 % \changes{v2.97e}{2007/11/27}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.98}
 % \changes{v2.98}{2007/12/24}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.98a}
 % \changes{v2.98a}{2008/01/08}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.98b}
 % \changes{v2.98b}{2008/01/30}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@2.98c}
 % \changes{v2.98c}{2008/02/01}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.00}
 % \changes{v3.00}{2008/11/04}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.01}
 % \changes{v3.01}{2008/11/14}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.01a}
 % \changes{v3.01a}{2008/11/20}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.01b}
 % \changes{v3.01b}{2008/11/24}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.01c}
 % \changes{v3.01c}{2008/12/09}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.02}
 % \changes{v3.02}{2009/01/01}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.02b}
 % \changes{v3.02b}{2009/01/24}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.02c}
 % \changes{v3.02c}{2009/01/28}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.03}
 % \changes{v3.03}{2009/04/01}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.03a}
 % \changes{v3.03a}{2009/04/02}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.03b}
 % \changes{v3.03b}{2009/04/12}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.04}
 % \changes{v3.04}{2009/07/07}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.05}
 % \changes{v3.05}{2009/07/08}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.04a}
 % \changes{v3.04a}{2009/07/24}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.05a}
 % \changes{v3.05a}{2010/03/10}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.06}
 % \changes{v3.06}{2010/06/17}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.07}
 % \changes{v3.07}{2010/09/14}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.08}
 % \changes{v3.08}{2010/10/28}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.08a}
 % \changes{v3.08a}{2011/01/25}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.08b}
 % \changes{v3.08b}{2011/02/22}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.09}
 % \changes{v3.09}{2011/04/02}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.09a}
 % \changes{v3.09a}{2011/04/12}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.10}
 % \changes{v3.10}{2011/08/30}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.10a}
 % \changes{v3.10a}{2012/03/08}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.10b}
 % \changes{v3.10b}{2012/03/13}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.11}
 % \changes{v3.11}{2012/05/15}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.11a}
 % \changes{v3.11a}{2012/05/25}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.11b}
 % \changes{v3.11b}{2012/07/29}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.12}
 % \changes{v3.12}{2013/03/05}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.13}
 % \changes{v3.13}{2014/03/19}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.13a}
 % \changes{v3.13a}{2014/08/07}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.14}
 % \changes{v3.14}{2014/10/28}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.15}
 % \changes{v3.15}{2014/11/20}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.16}
 % \changes{v3.16}{2015/02/08}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.17}
 % \changes{v3.17}{2015/02/08}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.17a}
 % \changes{v3.17a}{2015/05/06}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.17c}
 % \changes{v3.17c}{2015/05/13}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.18}
 % \changes{v3.18}{2015/05/14}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.18a}
 % \changes{v3.18a}{2015/07/03}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.19}
 % \changes{v3.19}{2015/07/26}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.19a}
 % \changes{v3.19a}{2015/10/03}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.20}
 % \changes{v3.20}{2015/10/06}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.21}
 % \changes{v3.21}{2016/05/19}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.22}
 % \changes{v3.22}{2016/07/29}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.23}
 % \changes{v3.23}{2017/02/04}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.23}
 % \changes{v3.24}{2017/04/22}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.25}
 % \changes{v3.25}{2017/09/07}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.26}
 % \changes{v3.26}{2018/03/31}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.26a}
 % \changes{v3.26a}{2018/12/30}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.26b}
 % \changes{v3.26b}{2018/12/30}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.27}
 % \changes{v3.27}{2019/02/02}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.27a}
 % \changes{v3.27a}{2019/10/13}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.28}
 % \changes{v3.28}{2019/11/20}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.29}
 % \changes{v3.29}{2020/01/06}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.30}
 % \changes{v3.30}{2020/02/24}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.31}
 % \changes{v3.31}{2020/04/26}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.32}
 % \changes{v3.32}{2020/08/06}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.33}
 % \changes{v3.33}{2021/01/01}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.34}
 % \changes{v3.34}{2021/03/22}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.35}
 % \changes{v3.35}{2021/10/12}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.36}
 % \changes{v3.36}{2021/11/17}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.37}
 % \changes{v3.37}{2022/05/04}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.38}
 % \changes{v3.38}{2022/07/06}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.39}
 % \changes{v3.39}{2022/10/13}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.40}
 % \changes{v3.40}{2023/04/17}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.41}
 % \changes{v3.41}{2023/04/24}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.42}
 % \changes{v3.42}{2023/07/13}{added}
+% \changes{v3.45}{2025/06/04}{value changed}
 % \begin{macro}{\scr@v@3.43}
 % \changes{v3.43}{2024/10/22}{added}
+% \begin{macro}{\scr@v@3.44}
+% \changes{v3.44}{2024//11/27}{added}
+% \begin{macro}{\scr@v@3.45}
+% \changes{v3.45}{2025/06/04}{added}
+% \begin{macro}{\scr@v@3.46}
+% \changes{v3.46}{2025/06/05}{added}
+% \begin{macro}{\scr@v@3.47}
+% \changes{v3.47}{2025/08/28}{added}
+% \begin{macro}{\scr@v@3.48}
+% \changes{v3.48}{2025/08/28}{added}
+% \begin{macro}{\scr@v@3.49}
+% \changes{v3.49}{2025/09/11}{added}
 % \begin{macro}{\scr@v@last}
 % \changes{v2.9u}{2005/03/05}{added}
-% Nun die unterschiedlichen möglichen Werte (|\scr@v@last| ist jeweils die
-% höchste vorhandene Nummer):
 %    \begin{macrocode}
-\@namedef{scr@v@first}{0}
-\@namedef{scr@v@2.9}{0}
-\@namedef{scr@v@2.9t}{0}
-\@namedef{scr@v@2.9u}{1}
-\@namedef{scr@v@2.95}{2}
-\@namedef{scr@v@2.95a}{2}
-\@namedef{scr@v@2.95b}{2}
-\@namedef{scr@v@2.96}{2}
-\@namedef{scr@v@2.96a}{3}
-\@namedef{scr@v@2.97}{3}
-\@namedef{scr@v@2.97a}{3}
-\@namedef{scr@v@2.97b}{3}
-\@namedef{scr@v@2.97c}{4}
-\@namedef{scr@v@2.97d}{5}
-\@namedef{scr@v@2.97e}{6}
-\@namedef{scr@v@2.98}{6}
-\@namedef{scr@v@2.98a}{6}
-\@namedef{scr@v@2.98b}{6}
-\@namedef{scr@v@2.98c}{7}
-\@namedef{scr@v@3.00}{8}
-\@namedef{scr@v@3.01}{8}
-\@namedef{scr@v@3.01a}{8}
-\@namedef{scr@v@3.01b}{9}
-\@namedef{scr@v@3.01c}{9}
-\@namedef{scr@v@3.02}{9}
-\@namedef{scr@v@3.02b}{9}
-\@namedef{scr@v@3.02c}{10}
-\@namedef{scr@v@3.03}{10}
-\@namedef{scr@v@3.03a}{10}
-\@namedef{scr@v@3.03b}{10}
-\@namedef{scr@v@3.04}{10}
-\@namedef{scr@v@3.04a}{10}
-\@namedef{scr@v@3.05}{10}
-\@namedef{scr@v@3.05a}{10}
-\@namedef{scr@v@3.06}{10}
-\@namedef{scr@v@3.07}{10}
-\@namedef{scr@v@3.08}{10}
-\@namedef{scr@v@3.08a}{10}
-\@namedef{scr@v@3.08b}{10}
-\@namedef{scr@v@3.09}{10}
-\@namedef{scr@v@3.09a}{10}
-\@namedef{scr@v@3.10}{10}
-\@namedef{scr@v@3.10a}{10}
-\@namedef{scr@v@3.10b}{10}
-\@namedef{scr@v@3.11}{10}
-\@namedef{scr@v@3.11a}{10}
-\@namedef{scr@v@3.11b}{10}
-\@namedef{scr@v@3.12}{11}
-\@namedef{scr@v@3.13}{12}
-\@namedef{scr@v@3.13a}{13}
-\@namedef{scr@v@3.14}{13}
-\@namedef{scr@v@3.15}{14}
-\@namedef{scr@v@3.16}{14}
-\@namedef{scr@v@3.17}{15}
-\@namedef{scr@v@3.17a}{15}
-\@namedef{scr@v@3.17c}{15}
-\@namedef{scr@v@3.18}{15}
-\@namedef{scr@v@3.18a}{15}
-\@namedef{scr@v@3.19}{15}
-\@namedef{scr@v@3.19a}{15}
-\@namedef{scr@v@3.20}{15}
-\@namedef{scr@v@3.21}{15}
-\@namedef{scr@v@3.22}{16}
-\@namedef{scr@v@3.23}{16}
-\@namedef{scr@v@3.24}{16}
-\@namedef{scr@v@3.25}{17}
-\@namedef{scr@v@3.26}{17}
-\@namedef{scr@v@3.26a}{17}
-\@namedef{scr@v@3.26b}{17}
-\@namedef{scr@v@3.27}{17}
-\@namedef{scr@v@3.27a}{17}
-\@namedef{scr@v@3.28}{17}
-\@namedef{scr@v@3.29}{17}
-\@namedef{scr@v@3.30}{17}
-\@namedef{scr@v@3.31}{18}
-\@namedef{scr@v@3.32}{18}
-\@namedef{scr@v@3.33}{18}
-\@namedef{scr@v@3.34}{18}
-\@namedef{scr@v@3.35}{19}
-\@namedef{scr@v@3.36}{20}
-\@namedef{scr@v@3.37}{20}
-\@namedef{scr@v@3.38}{20}
-\@namedef{scr@v@3.39}{20}
-\@namedef{scr@v@3.40}{20}
-\@namedef{scr@v@3.41}{21}
-\@namedef{scr@v@3.42}{21}
-\@namedef{scr@v@3.43}{3430}
-\@namedef{scr@v@last}{3430}
+\@namedef{scr@v@first}{29000}
+\@namedef{scr@v@2.9}{29000}
+\@namedef{scr@v@2.9t}{29019}
+\@namedef{scr@v@2.9u}{29020}
+\@namedef{scr@v@2.95}{29500}
+\@namedef{scr@v@2.95a}{29501}
+\@namedef{scr@v@2.95b}{29502}
+\@namedef{scr@v@2.96}{29600}
+\@namedef{scr@v@2.96a}{29601}
+\@namedef{scr@v@2.97}{29700}
+\@namedef{scr@v@2.97a}{29701}
+\@namedef{scr@v@2.97b}{29702}
+\@namedef{scr@v@2.97c}{29703}
+\@namedef{scr@v@2.97d}{29704}
+\@namedef{scr@v@2.97e}{29705}
+\@namedef{scr@v@2.98}{29800}
+\@namedef{scr@v@2.98a}{29801}
+\@namedef{scr@v@2.98b}{29802}
+\@namedef{scr@v@2.98c}{29803}
+\@namedef{scr@v@3.00}{30000}
+\@namedef{scr@v@3.01}{30100}
+\@namedef{scr@v@3.01a}{30101}
+\@namedef{scr@v@3.01b}{30102}
+\@namedef{scr@v@3.01c}{30103}
+\@namedef{scr@v@3.02}{30200}
+\@namedef{scr@v@3.02b}{30202}
+\@namedef{scr@v@3.02c}{30203}
+\@namedef{scr@v@3.03}{30300}
+\@namedef{scr@v@3.03a}{30301}
+\@namedef{scr@v@3.03b}{30302}
+\@namedef{scr@v@3.04}{30400}
+\@namedef{scr@v@3.04a}{30401}
+\@namedef{scr@v@3.05}{30500}
+\@namedef{scr@v@3.05a}{30501}
+\@namedef{scr@v@3.06}{30600}
+\@namedef{scr@v@3.07}{30700}
+\@namedef{scr@v@3.08}{30800}
+\@namedef{scr@v@3.08a}{30801}
+\@namedef{scr@v@3.08b}{30802}
+\@namedef{scr@v@3.09}{30900}
+\@namedef{scr@v@3.09a}{30901}
+\@namedef{scr@v@3.10}{31000}
+\@namedef{scr@v@3.10a}{31001}
+\@namedef{scr@v@3.10b}{31002}
+\@namedef{scr@v@3.11}{31100}
+\@namedef{scr@v@3.11a}{31101}
+\@namedef{scr@v@3.11b}{31102}
+\@namedef{scr@v@3.12}{31200}
+\@namedef{scr@v@3.13}{31300}
+\@namedef{scr@v@3.13a}{31301}
+\@namedef{scr@v@3.14}{31400}
+\@namedef{scr@v@3.15}{31500}
+\@namedef{scr@v@3.16}{31600}
+\@namedef{scr@v@3.17}{31700}
+\@namedef{scr@v@3.17a}{31701}
+\@namedef{scr@v@3.17c}{31703}
+\@namedef{scr@v@3.18}{31800}
+\@namedef{scr@v@3.18a}{31801}
+\@namedef{scr@v@3.19}{31900}
+\@namedef{scr@v@3.19a}{31901}
+\@namedef{scr@v@3.20}{32000}
+\@namedef{scr@v@3.21}{32100}
+\@namedef{scr@v@3.22}{32200}
+\@namedef{scr@v@3.23}{32300}
+\@namedef{scr@v@3.24}{32400}
+\@namedef{scr@v@3.25}{32500}
+\@namedef{scr@v@3.26}{32600}
+\@namedef{scr@v@3.26a}{32601}
+\@namedef{scr@v@3.26b}{32602}
+\@namedef{scr@v@3.27}{32700}
+\@namedef{scr@v@3.27a}{32701}
+\@namedef{scr@v@3.28}{32800}
+\@namedef{scr@v@3.29}{32900}
+\@namedef{scr@v@3.30}{33300}
+\@namedef{scr@v@3.31}{33100}
+\@namedef{scr@v@3.32}{33200}
+\@namedef{scr@v@3.33}{33300}
+\@namedef{scr@v@3.34}{33400}
+\@namedef{scr@v@3.35}{33500}
+\@namedef{scr@v@3.36}{33600}
+\@namedef{scr@v@3.37}{33700}
+\@namedef{scr@v@3.38}{33800}
+\@namedef{scr@v@3.39}{33900}
+\@namedef{scr@v@3.40}{34000}
+\@namedef{scr@v@3.41}{34100}
+\@namedef{scr@v@3.42}{34200}
+\@namedef{scr@v@3.43}{34300}
+\@namedef{scr@v@3.44}{34400}
+\@namedef{scr@v@3.45}{34500}
+\@namedef{scr@v@3.46}{34600}
+\@namedef{scr@v@3.47}{34700}
+\@namedef{scr@v@3.48}{34800}
+\@namedef{scr@v@3.49}{34900}
+\@namedef{scr@v@last}{34900}
 %    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -771,7 +887,7 @@
           We recommend, to update the whole TeX distribution.\MessageBreak
           If this could not be done, we suggest to use at\MessageBreak
           least an older KOMA-Script release, e.g., from\MessageBreak
-          <https://komascript.de/current>%
+          <https://sf.net/projects/koma-script/files/KOMA-Script/>%
         }%
       }%
     }%

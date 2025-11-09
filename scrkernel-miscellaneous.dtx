@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-miscellaneous.dtx 4094 2023-12-05 16:17:40Z kohm $
+%%% From File: $Id: scrkernel-miscellaneous.dtx 4223 2025-09-11 09:09:44Z kohm $
 %<init>%%%            (run: init)
 %<option>%%%            (run: option)
 %<execoption>%%%            (run: execoption)
@@ -27,9 +27,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-12-05 17:17:40 +0100 (Tue, 05 Dec 2023) $
+  \filedate$Date: 2025-09-11 11:09:44 +0200 (Thu, 11 Sep 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4094 $
+  \filerevision$Revision: 4223 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-miscellaneous.dtx}%
@@ -73,6 +73,45 @@
 %
 % \MaybeStop{\PrintIndex}
 %
+% \section{\KOMAScript{} Classes do Currently not Support Tagging}
+%
+% \changes{v3.49}{2025/09/11}{tagging warning added}
+% In future \KOMAScript{} classes should support tagging, but currently they
+% don't. So if tagging is enabled, we warn. I expect the tagging support to be
+% added step by step. So the warning here will also change step by
+% step. However the name of the message used to warn, will not change. So
+% packages can add tagging support and also deactivate the message using
+%\begin{verbatim}
+%\msg_redirect_name:nnn { \KOMAClassName } { tagging-not-supported } { none }
+%\end{verbatim}
+% As an alternative packages could change the message.
+%    \begin{macrocode}
+%<*class&body>
+\ExplSyntaxOn
+\cs_if_exist:NT \tag_if_active:T
+  {
+    \msg_new:nnn { \KOMAClassName } { tagging-not-supported }
+      {
+        Activated~tagging~detected~but~not~supported!\\
+        Note:~This~class~currently~does~not~actively~support~tagging.~
+        This~means:~Several~elements~will~not~be~tagged~correctly.~
+        We~therefore~currently~suggest~to~not~use~tagging~and~i.e.~
+        use\\
+        \ \ \token_to_str:N\RequirePackage{pdfmetadata}\\
+        \ \ \token_to_str:N\SetKeys[document/metadata]{...}\\
+        instead~of\\
+        \ \ \token_to_str:N\DocumentMetadata{...}\\
+        to~avoid~automatic~activation~of~tagging.
+      }
+    \hook_gput_code:nnn { begindocument } { \KOMAClassName }
+      {
+        \tag_if_active:T
+          { \msg_warning:nn { \KOMAClassName } { tagging-not-supported } }
+      }
+  }
+\ExplSyntaxOff
+%</class&body>
+%    \end{macrocode}
 %
 % \section{Implementation of Special Requirements of Package \pkg*{scrletter}}
 %

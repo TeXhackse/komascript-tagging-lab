@@ -1,6 +1,6 @@
 % ======================================================================
 % common-textmarkup-de.tex
-% Copyright (c) Markus Kohm, 2001-2023
+% Copyright (c) Markus Kohm, 2001-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-textmarkup-de.tex}
-                 [$Date: 2023-04-20 10:04:17 +0200 (Thu, 20 Apr 2023) $
+                 [$Date: 2025-02-12 11:47:33 +0100 (Wed, 12 Feb 2025) $
                   KOMA-Script guide (common paragraphs)]
 
 \section{Textauszeichnungen}
@@ -108,17 +108,17 @@
       Damit schreiben Sie dann:
 \begin{lstcode}
   Die Zelle bezieht ihre Energie unter anderem aus
-  der Reaktion von \Molek C6\Molek H{12}\Molek O6 
-  und \Molek O2 zu \Molek H2\Molek O{} und 
+  der Reaktion von \Molek C6\Molek H{12}\Molek O6
+  und \Molek O2 zu \Molek H2\Molek O{} und
   \Molek C{}\Molek O2. Arsen (\Molek{As}{}) wirkt
   sich auf den Stoffwechsel sehr nachteilig aus.
 \end{lstcode}
       Das Ergebnis sieht daraufhin so aus:
       \begin{ShowOutput}
         Die Zelle bezieht ihre Energie unter anderem
-        aus der Reaktion von 
+        aus der Reaktion von
         \Molek C6\Molek H{12}\Molek O6 und \Molek O2 zu
-        \Molek H2\Molek O{} und \Molek C{}\Molek O2.  
+        \Molek H2\Molek O{} und \Molek C{}\Molek O2.
         Arsen (\Molek{As}{}) wirkt sich auf
         den Stoffwechsel sehr nachteilig aus.
       \end{ShowOutput}
@@ -397,6 +397,12 @@ den jeweiligen Elementen.%
       Zusammenfassung; die Anwendung erfolgt vor dem Element der jeweiligen
       Gliederungsebene (siehe \autoref{sec:maincls.structure} ab
       \autopageref{sec:maincls.structure})}%
+    \feentry{enumeratelabel}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Grundeinstellung für die voreingestellten Aufzählungsnummern der
+      Umgebung \DescRef{\ThisCommonLabelBase.env.enumerate} (siehe
+      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.enumerate})}%
     \feentry{footnote}{%
       Marke und Text einer Fußnote (siehe \autoref{sec:maincls.footnotes},
       \DescPageRef{maincls.cmd.footnote})}%
@@ -418,6 +424,30 @@ den jeweiligen Elementen.%
       Grundeinstellung für die voreingestellten Aufzählungszeichen der
       Umgebung \DescRef{\ThisCommonLabelBase.env.itemize} (siehe
       \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.itemize})}%
+    \feentry{labelenumi}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Schriftart für die Verwendung in der Definition der Aufzählungsnummer
+      \DescRef{\ThisCommonLabelBase.cmd.labelenumi} (siehe
+      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.enumerate})}%
+    \feentry{labelenumii}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Schriftart für die Verwendung in der Definition der Aufzählungsnummer
+      \DescRef{\ThisCommonLabelBase.cmd.labelenumii} (siehe
+      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.enumerate})}%
+    \feentry{labelenumiii}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Schriftart für die Verwendung in der Definition der Aufzählungsnummer
+      \DescRef{\ThisCommonLabelBase.cmd.labelenumiii} (siehe
+      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.enumerate})}%
+    \feentry{labelenumiv}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Schriftart für die Verwendung in der Definition der Aufzählungsnummer
+      \DescRef{\ThisCommonLabelBase.cmd.labelenumiv} (siehe
+      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.enumerate})}%
     \feentry{labelinglabel}{%
       Label, also das optionale Argument der
       \DescRef{\ThisCommonLabelBase.cmd.item.labeling}-Anweisung, und
@@ -622,48 +652,79 @@ den jeweiligen Elementen.%
         }%
         \feentry{addressee}{Name und Anschrift im Anschriftfenster
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.option.addrfield})}%
+          \DescPageRef{\ThisCommonLabelBase.option.addrfield})}%
         \feentry{backaddress}{Rücksendeadresse für einen Fensterbriefumschlag
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.option.backaddress})}%
+          \DescPageRef{\ThisCommonLabelBase.option.backaddress})}%
         \feentry{descriptionlabel}{Label, also das optionale Argument von
           \DescRef{\ThisCommonLabelBase.cmd.item.description}, in einer
           \DescRef{\ThisCommonLabelBase.env.description}-Umgebung
           (\autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.description})}%
+          \DescPageRef{\ThisCommonLabelBase.env.description})}%
+        \feentry{enumeratelabel}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Grundeinstellung für die voreingestellten Aufzählungsnummern der
+          Umgebung \DescRef{\ThisCommonLabelBase.env.enumerate}
+          (\autoref{sec:scrlttr2.lists},
+          \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
         \feentry{foldmark}{Faltmarke auf dem Briefpapier; ermöglicht Änderung
           der Linienfarbe (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.option.foldmarks})}%
+          \DescPageRef{\ThisCommonLabelBase.option.foldmarks})}%
         \feentry{footnote}{%
           Marke und Text einer Fußnote (\autoref{sec:scrlttr2.footnotes},
-          \DescPageRef{scrlttr2.cmd.footnote})}%
+          \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
         \feentry{footnotelabel}{%
           Marke einer Fußnote; Anwendung erfolgt nach dem Element
           \DescRef{\ThisCommonLabelBase.fontelement.footnote}
           (\autoref{sec:scrlttr2.footnotes},
-          \DescPageRef{scrlttr2.cmd.footnote})}%
+          \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
         \feentry{footnotereference}{%
           Referenzierung der Fußnotenmarke im Text
           (\autoref{sec:scrlttr2.footnotes},
-          \DescPageRef{scrlttr2.cmd.footnote})}%
+          \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
         \feentry{footnoterule}{%
           Linie\ChangedAt{v3.07}{\Class{scrlttr2}} über dem Fußnotenapparat
           (\autoref{sec:scrlttr2.footnotes},
-          \DescPageRef{scrlttr2.cmd.setfootnoterule})}%
+          \DescPageRef{\ThisCommonLabelBase.cmd.setfootnoterule})}%
         \feentry{fromaddress}{Absenderadresse im Briefkopf
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.fromaddress})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.fromaddress})}%
         \feentry{fromname}{Name des Absenders im Briefkopf abweichend von
           \PValue{fromaddress} (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.fromname})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.fromname})}%
         \feentry{fromrule}{Linie im Absender im Briefkopf; gedacht für
           Farbänderungen (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.option.fromrule})}%
+          \DescPageRef{\ThisCommonLabelBase.option.fromrule})}%
         \feentry{itemizelabel}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Grundeinstellung für die voreingestellten Aufzählungszeichen der
           Umgebung \DescRef{\ThisCommonLabelBase.env.itemize} (siehe
-          \autoref{sec:scrlttr2.lists}, \DescPageRef{scrlttr2.env.itemize})}%
+          \autoref{sec:scrlttr2.lists},
+          \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
+        \feentry{labelenumi}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Schriftart für die Verwendung in der Definition der
+          Aufzählungsnummer \DescRef{\ThisCommonLabelBase.cmd.labelenumi}
+          (siehe \autoref{sec:scrlttr2.lists},
+          \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+        \feentry{labelenumii}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Schriftart für die Verwendung in der Definition der
+          Aufzählungsnummer \DescRef{\ThisCommonLabelBase.cmd.labelenumii}
+          (siehe \autoref{sec:scrlttr2.lists},
+          \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+        \feentry{labelenumiii}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Schriftart für die Verwendung in der Definition der
+          Aufzählungsnummer \DescRef{\ThisCommonLabelBase.cmd.labelenumiii}
+          (siehe \autoref{sec:scrlttr2.lists},
+          \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+        \feentry{labelenumiv}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Schriftart für die Verwendung in der Definition der
+          Aufzählungsnummer \DescRef{\ThisCommonLabelBase.cmd.labelenumiv}
+          (siehe \autoref{sec:scrlttr2.lists},
+          \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
         \feentry{labelinglabel}{%
           Label, also das optionale Argument der
           \DescRef{\ThisCommonLabelBase.cmd.item.labeling}-Anweisung, und
@@ -671,7 +732,7 @@ den jeweiligen Elementen.%
           \DescRef{\ThisCommonLabelBase.env.labeling}-Umgebung, in einer
           \DescRef{\ThisCommonLabelBase.env.labeling}-Umgebung
           (\autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.labeling})}%
+          \DescPageRef{\ThisCommonLabelBase.env.labeling})}%
         \feentry{labelingseparator}{%
           Trennzeichen, also das optionale Argument der
           \DescRef{\ThisCommonLabelBase.env.labeling}-Umgebung, in einer
@@ -679,31 +740,31 @@ den jeweiligen Elementen.%
           erfolgt nach dem Element
           \DescRef{\ThisCommonLabelBase.fontelement.labelinglabel}
           (\autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.labeling})}%
+          \DescPageRef{\ThisCommonLabelBase.env.labeling})}%
         \feentry{labelitemi}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Schriftart für die Verwendung in der Definition des
           Aufzählungszeichens \DescRef{\ThisCommonLabelBase.cmd.labelitemi}
           (siehe \autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.itemize})}%
+          \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
         \feentry{labelitemii}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Schriftart für die Verwendung in der Definition des
           Aufzählungszeichens \DescRef{\ThisCommonLabelBase.cmd.labelitemii}
           (siehe \autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.itemize})}%
+          \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
         \feentry{labelitemiii}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Schriftart für die Verwendung in der Definition des
           Aufzählungszeichens \DescRef{\ThisCommonLabelBase.cmd.labelitemiii}
           (siehe \autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.itemize})}%
+          \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
         \feentry{labelitemiv}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Schriftart für die Verwendung in der Definition des
           Aufzählungszeichens \DescRef{\ThisCommonLabelBase.cmd.labelitemiv}
           (siehe \autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.itemize})}%
+          \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
         \feentry{pagefoot}{%
           wird je nach Seitenstil nach
           \DescRef{\ThisCommonLabelBase.fontelement.pageheadfoot} auf den
@@ -729,35 +790,35 @@ den jeweiligen Elementen.%
           \ChangedAt{v3.12}{\Class{scrlttr2}}%
           Ort und Datum, falls statt einer Geschäftszeile nur eine Datumszeile
           verwendet wird (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.placeseparator})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.placeseparator})}%
         \feentry{refname}{%
           Bezeichnung der Felder in der Geschäftszeile
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.yourref})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.yourref})}%
         \feentry{refvalue}{%
           Werte der Felder in der Geschäftszeile
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.yourref})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.yourref})}%
         \feentry{specialmail}{Versandart im Anschriftfenster
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.specialmail})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.specialmail})}%
         \feentry{lettersubject}{%
           \ChangedAt{v3.17}{\Class{scrlttr2}\and \Package{scrletter}}%
           Betreff in der Brieferöffnung (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.subject})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.subject})}%
         \feentry{lettertitle}{%
           \ChangedAt{v3.17}{\Class{scrlttr2}\and \Package{scrletter}}%
           Titel in der Brieferöffnung (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.title})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.title})}%
         \feentry{toaddress}{Abweichung vom Element
           \DescRef{\ThisCommonLabelBase.fontelement.addressee} für die
           Anschrift (ohne Name) des Empfängers im Anschriftfeld
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.toaddress})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.toaddress})}%
         \feentry{toname}{Abweichung vom Element
           \DescRef{\ThisCommonLabelBase.fontelement.addressee} für den Namen
           des Empfängers im Anschriftfeld (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.toname})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.toname})}%
       \end{desclist}
     }{%
       \IfThisCommonLabelBase{scrlayer-scrpage}{%
@@ -995,10 +1056,10 @@ Schriftgröße als auch den Grundlinienabstand.%
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

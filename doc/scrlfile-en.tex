@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlfile-en.tex
-% Copyright (c) Markus Kohm, 2001-2022
+% Copyright (c) Markus Kohm, 2001-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlfile-en.tex}
-                 [$Date: 2022-07-17 12:36:46 +0200 (Sun, 17 Jul 2022) $
+                 [$Date: 2025-07-01 20:35:29 +0200 (Tue, 01 Jul 2025) $
                   KOMA-Script guide (chapter: scrlfile)]
 \translator{Gernot Hassenpflug\and Markus Kohm\and Karl Hagen}
 
@@ -238,11 +238,11 @@ argument is recommended. With older \LaTeX{} versions this is ignored anyway.
   \AfterPackage{hyperref}{%
     \@ifpackagelater{hyperref}{2001/02/19}{}{%
       \ClassWarningNoLine{scrbook}{%
-        You are using an old version of the hyperref 
+        You are using an old version of the hyperref
         package!\MessageBreak%
-        This version has a buggy hack in many 
+        This version has a buggy hack in many
         drivers,\MessageBreak%
-        causing \string\addchap\space to behave 
+        causing \string\addchap\space to behave
         strangely.\MessageBreak%
         Please update hyperref to at least version
         6.71b}}}
@@ -256,19 +256,6 @@ argument is recommended. With older \LaTeX{} versions this is ignored anyway.
   immediately after the package is loaded. If this is not the case, a warning
   is issued.
 
-  Elsewhere in three of the \KOMAScript{} classes, you can find the following:
-\begin{lstcode}
-  \AfterPackage{caption2}{%
-    \renewcommand*{\setcapindent}{%
-\end{lstcode}
-  After loading \Package{caption2}, and only if it has been loaded,
-  \KOMAScript{} redefines its own \DescRef{maincls.cmd.setcapindent} command.
-  The exact code of the redefinition is irrelevant. The important thing to
-  note is that \Package{caption2} takes control of the
-  \DescRef{maincls.cmd.caption} macro and that therefore the normal definition
-  of the \DescRef{maincls.cmd.setcapindent} command would have no effect. The
-  redefinition thus improves interoperability with \Package{caption2}.
-
   There are also, however, instances where these commands are useful to normal
   \LaTeX{} users. For example, suppose you create a document from which you
   want to generate both a PostScript file, using \LaTeX{} and dvips, and a PDF
@@ -280,7 +267,7 @@ argument is recommended. With older \LaTeX{} versions this is ignored anyway.
   would like \Package{hyperref} to use the \Option{linktocpage} option. The
   decision as to which driver is loaded is made automatically by
   \File{hyperref}.
-  
+
   Everything else can now be left to \DescRef{\LabelBase.cmd.AfterFile}:
 \begin{lstcode}
   \documentclass{article}
@@ -338,7 +325,7 @@ resulting problems they create, they often use code such as the following:
         \protect\writethistoaux%
       }%
     \fi
-  } 
+  }
 \end{lstcode}
 However, this does not really solve the problem. If the last page of the
 document has already been shipped out before \Macro{end}\PParameter{document},
@@ -356,7 +343,7 @@ like:
         \protect\writethistoaux%
       }%
     \fi
-  } 
+  }
 \end{lstcode}
 However, this solution has the disadvantage that it forces the last page to be
 shipped out. A command such as
@@ -516,7 +503,7 @@ functionality.%
 You\ChangedAt{v3.12}{\Package{scrlfile}} can also remove a replacement. You
 should remove the replacement definition for an input file using
 \Macro{UnReplaceInput}, for a package using \Macro{UnReplacePackage}, and for
-a class using \Macro{UnReplaceClass}.% 
+a class using \Macro{UnReplaceClass}.%
 \EndIndexGroup
 
 
@@ -623,7 +610,7 @@ can be restored. For example, the list elements must be separated by comma,
 must not contain white space or group braces, and must be fully expandable.
 
 Also note\textnote{Attention!}, that \Macro{ResetPreventPackageFromLoading}
-does not clear the \PName{alternate code} for a package. But this code 
+does not clear the \PName{alternate code} for a package. But this code
 will not be executed so long as the package is not added again to the
 do-not-load list.%
 \EndIndexGroup
@@ -669,7 +656,7 @@ code} in this case.%
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8

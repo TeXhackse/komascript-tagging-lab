@@ -1,6 +1,6 @@
 % ======================================================================
 % preface-de.tex
-% Copyright (c) Markus Kohm, 2008-2022
+% Copyright (c) Markus Kohm, 2008-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -19,88 +19,63 @@
 % ======================================================================
 
 \KOMAProvidesFile{preface-de.tex}
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2025-08-19 15:21:00 +0200 (Tue, 19 Aug 2025) $
                   preface to a dedicated version]
 
-\addchap{Vorwort zu \KOMAScript~3.36 und 3.37}
+\addchap{Vorwort zu \KOMAScript~3.46}
 
-Mit \KOMAScript~3.36 wurde eine Phase größerer Umbauten an den Quellen von
-\KOMAScript{} eingeläutet. Begonnen wurde mit den Quellen der Klassen und
-Pakete. Dabei wurde nicht nur eine Umstellung auf Version~3 des Pakets
-\Package{doc} durchgeführt. Die ursprüngliche Quellcode-Dokumentationsklasse
-\Class{scrdoc} wurde auch obsolet und durch \Class{koma-script-source-doc}
-ersetzt. Die komplette Dokumentation des Quellcodes wurde außerdem ins
-Englische übertrage oder in Englisch neu erstellt. Im Zuge dieser Änderung
-wurden die Quellen teilweise auch innerhalb der Dateien umorganisiert oder in
-neue Dateien verschoben. Dabei entstand viele Dutzend neue Anmerkungen über
-unerledigte Aufgaben. Ob ich die jemals alle selbst abarbeiten
-kann, sei dahingestellt.
+Bei den Arbeiten an \KOMAScript{} 3.46 hat mich die Hiobsbotschaft erreicht,
+dass Axel Sommerfeldt die Pflege des \Package{caption}-Pakets einstellen will
+und deshalb keine Änderungs- und Verbesserungsvorschläge mehr annehmen
+wird. Das ist für \KOMAScript{} insofern relevant als nach einigen
+Verbesserungen an der \Macro{caption}-Verarbeitung offenkundig wurde, dass
+\Package{caption} für den Erhalt und die Verbesserung der Kompatibilität mit
+\KOMAScript{} ebenfalls einige kleinere Änderungen benötigt. Auf keinen Fall
+sollten sich Verbesserungen bei der \Macro{caption}-Verarbeitung innerhalb von
+\KOMAScript{} negativ auf die Kompatibilität des \Package{caption}-Pakets
+auswirken. Die Konsequenz ist, dass nun nicht mehr das
+\Package{caption}-Paket selbst für die Kompatibilität sorgt, sondern
+\KOMAScript{} auf das Lade von \Package{caption} reagiert, um dann selbst die
+Kompatibilität herbeizuführen.
 
-Durch die massiven Umbauten an den Quellen war von vornherein leider nicht
-auszuschließen, dass sich neue Fehler einschleichen. Aufgrund des akuten
-Mangels an Beta-Testern hat sich diese Befürchtung leider bewahrheitet. Ob all
-diese Fehler inzwischen beseitigt sind, ist schwer zu sagen.
+Wie in vielen anderen Fällen auch, bedeutet das natürlich wieder einmal mehr
+Arbeit sowohl in der Entwicklung als auch im Testen für mich selbst. Zusammen
+mit den unzähligen Änderungen, die beispielsweise aufgrund der rasanten
+Weiterentwicklung von \LaTeX{} selbst neuerdings immer wieder notwendig
+werden, führt das leider dazu, dass einige dringende Arbeiten an \KOMAScript{}
+ständig liegen bleiben. Auch einige andere Projekte, die letztlich sogar für
+den Fortbestand von \KOMAScript{} zunehmend wichtig werden, konnten wieder
+nicht in Angriff genommen werden. Dazu gehört leider auch der Tagging-Support.
 
-Mehr oder weniger nebenbei wurde eine neue, auf \Package{l3build} basierende
-Teststruktur aufgebaut. Damit soll zukünftig sichergestellt werden, dass
-einmal gemeldete Fehler künftig nicht wieder auftreten.
+Trotzdem ist es gelungen, in dieser Version von \KOMAScript{} die dringend
+notwendige Überarbeitung der Verteilung von Aufgaben zwischen den Klassen und
+den Paketen weiter voran zu bringen. Auch ein paar andere Probleme konnten
+angegangen werden, führen aber unter Umständen zu geänderten Seitenumbrüchen
+bei zweispaltigen Dokumenten mit Kapitelüberschriften. Siehe hierzu die
+Internet-Seite
+»\href{https://sourceforge.net/p/koma-script/wiki-de/Releases/}
+{Wichtige Hinweise und Änderungen}« und dort insbesondere
+»\href{https://sourceforge.net/p/koma-script/wiki-de/Release%203.46/}
+{Bekannte Probleme und wichtige Änderungen in \KOMAScript{} 3.46}«.
 
-Mit \KOMAScript~3.37 wurde begonnen, die Quellen der Anleitung zu
-restrukturieren. Für die Erzeugung der Deutschen und Englischen
-Benutzeranleitung einschließlich der vollständigen Beispiele mit PDF wird nun
-ebenfalls \Package{l3build} verwendet. Außerdem wird eine flache Hierarchie
-für die Anleitungen in allen Sprachen verwendet. Es gibt dadurch in den
-Quellen keine unterschiedlichen Dateien mit demselben Dateinamen
-mehr. Dadurch sollen nicht nur Anforderungen von CTAN befriedigt werden. Damit
-ist es auch erstmals seit langem wieder möglich, aus den CTAN-Quellen von
-\KOMAScript{} selbst die Anleitungen zu erzeugen.
-
-Aufgrund der bereits im Vorwort zu \KOMAScript~3.28 erklärten Probleme mit der
-Endlichkeit der Zeit eines einzelnen Entwicklers, werde ich mich auch in
-Zukunft weiterhin auf die Fehlerbehebung, die notwendige Reorganisation der
-Quellen und die Kompatibilität mit neuen \LaTeX-Kernel-Versionen
-konzentrieren. Vor allem bei letzterem steht mir inzwischen auch Marei
-Peischl zur Seite, die eigentlich mit eigenen Projekten bereits sehr gut
-ausgelastet ist. Von ihr stammt auch der ursprüngliche Code für die
-Abbildungen zu Pseudolängen und Variablen, für den ich mich recht herzlich
-bedanke. Damit war es mir endlich möglich, einem lange gehegten Wunsch vieler
-Anwender nachzukommen. Mit wenigen Änderungen sind die Pseudolängen in der
-Abbildung nun mit den zugehörigen Erklärungen im Text verlinkt.
-
-Durch den weitgehenden Verzicht auf neue Funktionen schwindet natürlich auch
-der Aufwand für die Dokumentation derselben. Leser dieser freien
-Bildschirm-Version der Anleitung müssen aber auch weiterhin mit gewissen
-Einschränkungen leben. So sind einige Informationen -- hauptsächliche solche
-für fortgeschrittene Anwender oder die dazu geeignet sind, aus einem Anwender
-einen fortgeschrittenen Anwender zu machen -- der Buchfassung vorbehalten. Das
-führt auch dazu, dass weiterhin einige Links in dieser Anleitung lediglich zu
-einer Seite führen, auf der genau diese Tatsache erwähnt ist. Darüber hinaus
-ist die freie Version nur eingeschränkt zum Ausdruck geeignet. Der Fokus liegt
-vielmehr auf der Verwendung am Bildschirm parallel zur Arbeit an einem
-Dokument. Sie hat auch weiterhin keinen optimierten Umbruch, sondern ist quasi
-ein erster Entwurf, bei dem Absatz- und Seitenumbruch in einigen Fällen
-durchaus dürftig sind. Entsprechende Optimierungen bleiben den Buchausgaben
-vorbehalten.
-
-Mein Dank geht hauptsächlich an meine Familie und allen voran an meine
-Frau. Sie federn all meine unschönen Erfahrungen im Internet ab. Ebenso
-erdulden sie seit teilweise mehr als 25~Jahren, wenn ich wieder einmal nicht
-ansprechbar bin, weil ich ganz und gar in \KOMAScript{} oder irgendwelche
-\LaTeX-Probleme vertieft bin. Dass ich es mir leisten kann, überhaupt geradezu
-wahnsinnig viel Zeit in ein derartiges Projekt zu investieren, ist allein
-meiner Frau zu verdanken.
+Mein Dank geht hauptsächlich an meine Frau. Sie federn all meine unschönen
+Erfahrungen im Internet ab. Ebenso erdulden sie seit mehr als 30~Jahren, wenn
+ich wieder einmal nicht ansprechbar bin, weil ich ganz und gar in
+\KOMAScript{} oder irgendwelche \LaTeX-Probleme vertieft bin. Dass ich es mir
+leisten kann, überhaupt geradezu wahnsinnig viel Zeit in ein derartiges
+Projekt zu investieren, ist ebenfalls allein meiner Frau zu verdanken.
 
 \bigskip\noindent
-Markus Kohm, Neckarhausen im Mai 2022
+Markus Kohm, Neckarhausen im August 2025
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:
 
 % LocalWords:  Dokumentationsklasse Teststruktur Benutzeranleitung
 % LocalWords:  Pseudolängen Buchausgaben

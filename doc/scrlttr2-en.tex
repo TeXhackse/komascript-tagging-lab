@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlttr2-en.tex
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   https://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlttr2-en.tex}%
-                 [$Date: 2023-04-25 09:00:44 +0200 (Tue, 25 Apr 2023) $
+                 [$Date: 2025-09-05 12:23:59 +0200 (Fri, 05 Sep 2025) $
                   KOMA-Script guide (chapter: scrlttr2)]
 
 \translator{Harald Bongartz\and Georg Grandke\and Raimund Kohl\and Jens-Uwe
@@ -124,12 +124,12 @@ class and the package. An overview of all defined variables is given in
 %
 \begin{desclist}
   %\renewcommand*{\abovecaptionskipcorrection}{-\normalbaselineskip}%
-  \desccaption{Supported variables in \Class{scrlttr2} and 
+  \desccaption{Supported variables in \Class{scrlttr2} and
     \Package{scrletter}\label{tab:\LabelBase.variables}}%
     {Supported variables in \Class{scrlttr2} and \Package{scrletter}
     (\emph{continued})}%
   \ventry{addresseeimage}{%
-    commands used to print the postpaid postmark for the 
+    commands used to print the postpaid postmark for the
     \OptionValueRef{\LabelBase}{addrfield}{backgroundimage} option or the
     postpaid address for the \OptionValueRef{\LabelBase}{addrfield}{image}
     option (\autoref{sec:\LabelBase.firstpage},
@@ -254,7 +254,7 @@ class and the package. An overview of all defined variables is given in
     (\autoref{sec:\LabelBase.firstpage},
     \DescPageRef{\LabelBase.variable.placeseparator})}%
   \ventry{PPdatamatrix}{%
-    command to print the data array for the 
+    command to print the data array for the
     \OptionValueRef{\LabelBase}{addrfield}{PP} option %
     (\autoref{sec:\LabelBase.firstpage},
     \DescPageRef{\LabelBase.variable.PPdatamatrix})}%
@@ -801,7 +801,7 @@ same functionality. These commands still exist for the use of package authors.%
 The\ChangedAt{v3.26}{\Class{scrlttr2}\and \Package{scrletter}} first three
 commands essentially correspond with \Macro{settowidth},
 \Macro{settoheight}, and \Macro{settodepth} from the \LaTeX{} kernel, but set
-\PName{pseudo-length}s instead of lengths. Like 
+\PName{pseudo-length}s instead of lengths. Like
 \DescRef{\LabelBase.cmd.setplength}, these commands extend their \LaTeX{}
 kernel equivalents with an optional \PName{factor}. They set a
 \PName{pseudo-length} to the natural width, height or depth of the given
@@ -1133,7 +1133,7 @@ an empty argument.
   \begin{figure}
     \setcapindent{0pt}%
     \begin{captionbeside}[{Example: letter with recipient and salutation}]{%
-        result of a minimalist letter with recipient and salutation only 
+        result of a minimalist letter with recipient and salutation only
         (the date is set by default)}[l]
     \frame{\includegraphics[width=.4\textwidth]{letter-example-00-en}}
     \end{captionbeside}
@@ -1531,7 +1531,7 @@ This\ChangedAt{v2.97e}{\Class{scrlttr2}} pseudo-length determines the distance o
 all vertical fold marks from the upper edge of the paper. Normally this is
 3.5\Unit{mm}, but\textnote{Hint!} you can change the value in your own
 \File{lco} file in case your printer has a wider unprintable
-top margin. Whether or not the foldmarks are actually typeset depends on the 
+top margin. Whether or not the foldmarks are actually typeset depends on the
 \DescRef{\LabelBase.option.foldmarks}%
 \important{\DescRef{\LabelBase.option.foldmarks}}%
 \IndexOption{foldmarks~=\PName{setting}} option (see
@@ -2224,10 +2224,10 @@ but place it flush with the top of the available space.%
     \toprule
     element & font style \\
     \midrule
-    \DescRef{\LabelBase.fontelement.addressee}\IndexFontElement{addressee} & 
+    \DescRef{\LabelBase.fontelement.addressee}\IndexFontElement{addressee} &
     \\
     \ChangedAt{v3.39}{\Class{scrlttr2}}%
-    \DescRef{\LabelBase.fontelement.backaddress}\IndexFontElement{backaddress} & 
+    \DescRef{\LabelBase.fontelement.backaddress}\IndexFontElement{backaddress} &
     \DescRef{\LabelBase.cmd.maybesffamily}\IndexCmd{maybesffamily}%
     \\
     \DescRef{\LabelBase.fontelement.PPdata}\IndexFontElement{PPdata} &
@@ -2244,11 +2244,11 @@ but place it flush with the top of the available space.%
     \Macro{fontsize}\PParameter{24.88pt}\PParameter{24.88pt}%
     \Macro{selectfont}%
     \\
-    \DescRef{\LabelBase.fontelement.specialmail}\IndexFontElement{specialmail} & 
+    \DescRef{\LabelBase.fontelement.specialmail}\IndexFontElement{specialmail} &
     \\
-    \DescRef{\LabelBase.fontelement.toaddress}\IndexFontElement{toaddress} & 
+    \DescRef{\LabelBase.fontelement.toaddress}\IndexFontElement{toaddress} &
     \\
-    \DescRef{\LabelBase.fontelement.toname}\IndexFontElement{toname} & 
+    \DescRef{\LabelBase.fontelement.toname}\IndexFontElement{toname} &
     \\
     \bottomrule
   \end{tabular}
@@ -2309,13 +2309,13 @@ You can find the default font styles listed in
     \entry{\PValue{false}, \PValue{off}, \PValue{no}, \PValue{manual}}{%
       Priority will not be printed.}%
     \entry{\PValue{B}, \PValue{b}, \PValue{economy}, \PValue{Economy},
-      \PValue{ECONOMY}, \PValue{B-ECONOMY}, \PValue{B-Economy}, 
+      \PValue{ECONOMY}, \PValue{B-ECONOMY}, \PValue{B-Economy},
       \PValue{b-economy}}{%
       Use international priority B-Economy. With
       \OptionValue{addrfield}{true}, this is printed instead of the delivery
       type.}%
     \entry{\PValue{A}, \PValue{a}, \PValue{priority}, \PValue{Priority},
-      \PValue{PRIORITY}, \PValue{A-PRIORITY}, \PValue{A-Priority}, 
+      \PValue{PRIORITY}, \PValue{A-PRIORITY}, \PValue{A-Priority},
       \PValue{a-priority}}{%
       Use international priority A-Priority. With
       \OptionValue{addrfield}{true}, this is printed instead of the delivery
@@ -2378,7 +2378,7 @@ postpaid address is defined by the \PLength{toaddrindent} pseudo-length (see
 \DescPageRef{\LabelBase.plength.toaddrindent}) as well as
 \PLength{PPheadwidth} and \PLength{PPheadheight} (see
 \DescPageRef{\LabelBase.plength.PPheadheight}). The position of
-the data array is defined by the \PLength{PPdatamatrixvskip} pseudo-length 
+the data array is defined by the \PLength{PPdatamatrixvskip} pseudo-length
 (see \DescPageRef{\LabelBase.plength.PPdatamatrixvskip}).
 
 Note\textnote{Attention!} that \KOMAScript{} cannot print any external
@@ -2420,7 +2420,7 @@ centred in the address field, taking into account the presence or absence of
 the delivery method, depends on the \DescRef{\LabelBase.option.addrfield}
 option.%
 \EndIndexGroup
- 
+
 
 \begin{Declaration}
   \PLength{toaddrwidth}
@@ -3057,7 +3057,7 @@ a colon followed by a space.
       variable name      & description \\
       \midrule
       \Variable{subject} & \DescRef{\LabelBase.cmd.usekomavar*}\PParameter{subjectseparator}%
-                           \texttt{\%} \\ 
+                           \texttt{\%} \\
                          & \texttt{\quad}%
                            \DescRef{\LabelBase.cmd.usekomavar}\PParameter{subjectseparator} \\
       \Variable{subjectseparator} & \DescRef{scrlttr2-experts.cmd.subjectname} \\
@@ -3214,19 +3214,28 @@ actual signature.
 
 
 \begin{Declaration}
-  \Variable{signature}%
+  \Variable{signature}
+  \Macro{sigspace}
 \end{Declaration}
 The \Variable{signature} variable contains the printed name or annotation for
 the handwritten signature. Its default \PName{content} is the
 \DescRef{\LabelBase.cmd.usekomavar}\PParameter{fromname}. This annotation can
 consist of multiple lines. In that case, you should separate the individual
 lines with double backslashes. Paragraph\textnote{Attention!} breaks in the
-signature annotation, however, are not permitted.%
+signature annotation, however, are not permitted.
+
+For\ChangedAt{v3.44}{\Class{scrlttr2}\and \Package{scrletter}} letters with
+multiple signatories, the individual signatures can be separated within the
+\Variable{signature} variable by \Macro{and}. They are then placed as
+blocks next to each others. Between the individual signatures,
+\Macro{sigspace} is inserted. This is defined with \Macro{quad}, which is a
+horizontal distance of 1\,em.%
 \EndIndexGroup
 
 
 \begin{Declaration}
   \Macro{raggedsignature}
+  \Macro{sigalign}
 \end{Declaration}
 The closing phrase and the signature will be typeset in a box. The width of
 the box is determined by the length of the longest line in the closing
@@ -3239,10 +3248,16 @@ exactly where this box is placed (see \autoref{sec:\LabelBase.closing},
 command defines the alignment inside the box. In the default \File{lco} files,
 the command is either defined as \Macro{centering} (all besides
 \Option{KOMAold}) or \Macro{raggedright} (\Option{KOMAold}). In order to
-obtain flush-right or flush-left alignment inside the box, you can redefine
-the command in the same way as \DescRef{maincls.cmd.raggedsection} (see the
-example in \autoref{sec:maincls.structure},
-\DescPageRef{maincls.cmd.raggedsection}).
+obtain flush-right, centered or flush-left alignment inside the box, you can
+redefine the command using \Macro{renewcommand}. Experienced users are also
+permitted to use \Macro{let}. Valid definitions are \Macro{raggedleft},
+\Macro{centering} or
+\Macro{raggedright}. Other\ChangedAt{v3.44}{\Class{scrlttr2}\and
+  \Package{scrletter}} definitions are only permitted if \Macro{sigalign} is
+defined at the same time. In this case, \Macro{sigalign} must expand to a
+valid table column definition, for example \texttt{l}, \texttt{c}, \texttt{r}
+or \texttt{p\{.5\Length{textwidth}\}}. \Macro{sigalign} is decisive for the
+alignment within a signature if it is multi-line.
 
 \begin{Example}
   Now Mr Public wants to make himself seem really important, and therefore he uses the
@@ -3321,6 +3336,7 @@ style but directly within \DescRef{\LabelBase.cmd.opening}\IndexCmd{opening}%
 
 
 \begin{Declaration}
+  \OptionVName{shrinkfirstpage}{simple switch}
   \OptionVName{enlargefirstpage}{simple switch}
 \end{Declaration}
 \begin{Explain}
@@ -3333,13 +3349,28 @@ style but directly within \DescRef{\LabelBase.cmd.opening}\IndexCmd{opening}%
   automatically reduced using
   \Macro{enlargethispage}\IndexCmd{enlargethispage}.
 \end{Explain}
-If the text area should become larger, assuming the footer on the first page
-permits this, you can use this option. At best, a little more text will then
-fit on the first page. See also the description of the \PLength{firstfootvpos}
-pseudo-length on \DescPageRef{\LabelBase.plength.firstfootvpos}.  This
-option takes the standard values for simple switches, as listed in
-\autoref{tab:truefalseswitch}, \autopageref{tab:truefalseswitch}. The default
-is \PValue{false}.\textnote{default}%
+If\ChangedAt{v3.48}{\Class{scrlttr2}\and \Package{scrletter}} the text area
+should not automatically become smaller to avoid collision of the text and the
+footer, you can use option \OptionValue{shrinkfirstpage}{false}%
+\important{\OptionValue{shrinkfirstpage}{false}}.  If the text area should
+become larger, assuming the footer on the first page permits this, you can use
+\OptionValue{enlargefirstpage}{true}%
+\important{\OptionValue{enlargefirstpage}{true}}. At best, a little more text
+will then fit on the first page. See also the description of the
+\PLength{firstfootvpos} pseudo-length on
+\DescPageRef{\LabelBase.plength.firstfootvpos}.  This options take the
+standard values for simple switches, as listed in
+\autoref{tab:truefalseswitch}, \autopageref{tab:truefalseswitch}.
+
+Since\ChangedAt{v3.48}{\Class{scrlttr2}\and \Package{scrletter}} version 3.48,
+\KOMAScript{} has also been somewhat tolerant in collision detection. If the
+reduction or enlargement is less than \Length{maxdepth}, it is automatically
+omitted. \Length{maxdepth} is normally set by the \Package{typearea} package
+to half of \Length{topskip}. \Length{topskip}, in turn, usually corresponds to
+the base font size and is therefore dependent on the option
+\DescRef{\LabelBase.option.fontsize}. For \Class{scrlttr2}, this only applies
+if compatibility with an earlier version is not enforced by the option
+\DescRef{\LabelBase.option.version}.%
 \EndIndexGroup
 
 
@@ -3350,7 +3381,7 @@ is \PValue{false}.\textnote{default}%
 This\ChangedAt{v2.97e}{\Class{scrlttr2}} option determines whether the footer
 for the letterhead page is output. Switching off the letterhead page footer
 with \OptionValue{firstfoot}{false}\important{\OptionValue{firstfoot}{false}},
-has an effect when the \DescRef{\LabelBase.option.enlargefirstpage} option 
+has an effect when the \DescRef{\LabelBase.option.enlargefirstpage} option
 (see \DescPageRef{\LabelBase.option.enlargefirstpage}) is used at the same
 time, as this will logically extend the page downwards. In this case, the
 distance that is ordinarily between type area and the footer becomes the
@@ -3766,7 +3797,7 @@ page styles.
   \important{\hyperref[cha:scrlayer-scrpage]{\Package{scrlayer-scrpage}}}
   (see \autoref{sec:scrlayer-scrpage.pagestyle.content},
   \DescPageRef{scrlayer-scrpage.cmd.automark}).
-    
+
   Since \Package{scrletter}\OnlyAt{scrletter} uses
   \hyperref[cha:scrlayer-scrpage]{\Package{scrlayer-scrpage}} internally, any
   page style \DescRef{maincls.pagestyle.headings} provided by the class are
@@ -3788,7 +3819,7 @@ page styles.
   \important{\OptionValueRef{scrlayer-scrpage}{automark}{false}}%
   \IndexOption{automark} set, \PageStyle{letter} assumes the role of
   \PageStyle{myheadings}.
-  
+
   When\textnote{Attention!} you use
   \hyperref[cha:scrlayer-scrpage]{\Package{scrlayer-scrpage}} with
   \Package{scrletter}, you cannot use the obsolete
@@ -4364,7 +4395,7 @@ interfere with existing \TeX{} or \LaTeX{} commands.
   either put your address file in the same directory as your letter or
   configure your \TeX{} system to look for a dedicated address directory.
 \end{Example}
-% 
+%
 \EndIndexGroup
 
 
@@ -4401,7 +4432,7 @@ mass mailings without a complicated connection to a database system.
       \opening{Dear members,}
       Our next general meeting will be on
       Monday, 12 August 2002.
-      
+
       The following topics are \dots
       \closing{Regards,}
     \end{letter}
@@ -4550,11 +4581,11 @@ its documentation.%
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:
 

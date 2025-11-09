@@ -1,6 +1,6 @@
 % ======================================================================
 % scrbookreportarticle-de.tex
-% Copyright (c) Markus Kohm, 2001-2023
+% Copyright (c) Markus Kohm, 2001-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrbookreportarticle-de.tex}
-                 [$Date: 2023-07-31 15:38:10 +0200 (Mon, 31 Jul 2023) $
+                 [$Date: 2025-10-28 12:58:48 +0100 (Tue, 28 Oct 2025) $
                   KOMA-Script guide (chapter: scrbook, scrreprt, scrartcl)]
 
 \chapter{Die Hauptklassen \Class{scrbook}, \Class{scrreprt}, \Class{scrartcl}}
@@ -709,7 +709,7 @@ nicht zum Setzen von \Counter{tocdepth} verwendet werden.%
   Sie setzen den Zähler \Counter{tocdepth} daher auf den in Anweisung
   \Macro{subsectiontocdepth} gespeicherten Wert. Dass dies normalerweise der
   Wert 2 ist, müssen Sie sich also gar nicht merken.
-  
+
   Wollen Sie stattdessen nur, dass eine Ebene weniger in das
   Inhaltsverzeichnis eingetragen wird als normalerweise, können Sie auch
   einfach vom voreingestellten Wert des Zählers \Counter{tocdepth} eins
@@ -1109,7 +1109,7 @@ werden.
 \begin{lstcode}
   \renewcommand*{\chapterpagestyle}{chapter}
 \end{lstcode}
-  
+
   Angenommen, Sie wollen das
   Inhaltsverzeichnis\Index{Inhaltsverzeichnis}\textnote{Inhaltsverzeichnis}
   eines Buches insgesamt nicht mit Seitenzahlen versehen. Danach soll aber
@@ -1306,7 +1306,7 @@ eingefügten Vakatseite erfahren Sie im nächsten Abschnitt.
   die beiden Anweisungen \DescRef{\LabelBase.cmd.frontmatter}%
   \important{\DescRef{\LabelBase.cmd.frontmatter}\\
     \DescRef{\LabelBase.cmd.mainmatter}}%
-  \IndexCmd{fontmatter} und \DescRef{\LabelBase.cmd.mainmatter}%
+  \IndexCmd{frontmatter} und \DescRef{\LabelBase.cmd.mainmatter}%
   \IndexCmd{mainmatter} bei der am häufigsten verwendeten Umschaltung
   unterstützt. Nähere Informationen entnehmen Sie bitte
   \autoref{sec:maincls.separation}, ab
@@ -1334,13 +1334,26 @@ Bei Büchern gibt es teilweise die Grobauf"|teilung in
 
 
 \begin{Declaration}
-  \Macro{frontmatter}
-  \Macro{mainmatter}
-  \Macro{backmatter}
+  \Macro{frontmatter}\OParameter{Nummerierungsstil}
+  \Macro{frontmatter*}
+  \Macro{mainmatter}\OParameter{Nummerierungsstil}
+  \Macro{mainmatter*}
+  \Macro{backmatter}\OParameter{Nummerierungsstil}
+  \Macro{backmatter*}
 \end{Declaration}%
 Mit \Macro{frontmatter}\important{\Macro{frontmatter}} wird der Vorspann
-eingeleitet. Dadurch werden die nummerierten Seiten mit römischen
-Seitenzahlen versehen.  Kapitelüberschriften sind im Vorspann nicht
+eingeleitet. Dadurch werden die nummerierten Seiten mit römischen Seitenzahlen
+versehen. Soll\ChangedAt{v3.49}{\Class{scrbook}} ein anderer
+\PName{Nummerierungsstil} verwendet werden, so kann dieser per optionalem
+Argument eingestellt werden. Erlaubt sind hier alle Angaben, die auch für
+\DescRef{\LabelBase.cmd.pagenumbering}%
+\important{\DescRef{\LabelBase.cmd.pagenumbering}} aus
+\autoref{sec:\LabelBase.pagestyle}, \DescPageRef{\LabelBase.cmd.pagenumbering}
+möglich sind. Soll die Seitennummerierung durchgehend erfolgen, sich also
+durch \Macro{frontmatter} nicht ändern, so kann wahlweise ein leeres
+optionales Argument oder die Sternform \Macro{frontmatter*} verwendet werden.
+
+Kapitelüberschriften sind im Vorspann nicht
 nummeriert.  Abschnittsüberschriften wären jedoch nummeriert, gingen von
 Kapitelnummer~0 aus und wären außerdem über Kapitelgrenzen hinweg durchgehend
 nummeriert. Dies spielt jedoch keine Rolle, da der Vorspann allenfalls für die
@@ -1362,10 +1375,11 @@ Kompatibilität ab Version~2.97e eingestellt ist (siehe Option
 \autoref{sec:\LabelBase.compatibilityOptions},
 \DescPageRef{\LabelBase.option.version}). Es wird ausdrücklich darauf
 hingewiesen, dass dadurch bezüglich der Nummern eine Verwechslung mit
-Kapitelnummern gegeben ist! Die Verwendung von \DescRef{\LabelBase.cmd.addsec} und
-\DescRef{\LabelBase.cmd.section*} (siehe \autoref{sec:\LabelBase.structure},
-\DescPageRef{\LabelBase.cmd.section*} und \DescPageRef{\LabelBase.cmd.addsec})
-sind aus Sicht des Autors im Vorspann deshalb unbedingt vorzuziehen!
+Kapitelnummern gegeben ist! Die Verwendung von \DescRef{\LabelBase.cmd.addsec}
+und \DescRef{\LabelBase.cmd.section*} (siehe
+\autoref{sec:\LabelBase.structure}, \DescPageRef{\LabelBase.cmd.section*} und
+\DescPageRef{\LabelBase.cmd.addsec}) sind aus Sicht des Autors im Vorspann
+deshalb unbedingt vorzuziehen!
 
 Ab Version~2.97e\ChangedAt{v2.97e}{\Class{scrbook}}%
 \important{\OptionValueRef{\LabelBase}{version}{2.97e}} enthalten auch die
@@ -1380,7 +1394,16 @@ Kompatibilitätseinstellung (siehe Option \DescRef{\LabelBase.option.version},
 Mit \Macro{mainmatter}\important{\Macro{mainmatter}} wird der Hauptteil
 eingeleitet. Existiert kein Vorspann, so kann diese Anweisung auch
 entfallen. Im Hauptteil sind arabische Seitenzahlen voreingestellt. Die
-Seitenzählung beginnt im Hauptteil neu mit der 1.
+Seitenzählung beginnt im Hauptteil neu mit der
+1. Soll\ChangedAt{v3.49}{\Class{scrbook}} ein anderer
+\PName{Nummerierungsstil} verwendet werden, so kann dieser per optionalem
+Argument eingestellt werden. Erlaubt sind hier alle Angaben, die auch für
+\DescRef{\LabelBase.cmd.pagenumbering}%
+\important{\DescRef{\LabelBase.cmd.pagenumbering}} aus
+\autoref{sec:\LabelBase.pagestyle}, \DescPageRef{\LabelBase.cmd.pagenumbering}
+möglich sind. Soll die Seitennummerierung durchgehend erfolgen, sich also
+durch \Macro{mainmatter} nicht ändern, so kann wahlweise ein leeres
+optionales Argument oder die Sternform \Macro{mainmatter*} verwendet werden.
 
 Mit \Macro{backmatter}\important{\Macro{backmatter}} wird der Nachspann
 eingeleitet. Was zum Nachspann gehört, ist unterschiedlich. Manchmal wird im
@@ -1388,11 +1411,15 @@ Nachspann nur das Literaturverzeichnis\Index{Literaturverzeichnis}, manchmal
 nur das Stichwortverzeichnis\Index{Stichwortverzeichnis} gesetzt. Manchmal
 erscheint der gesamte Anhang im Nachspann. Der Nachspann gleicht bezüglich der
 Gliederungsüberschriften dem Vorspann. Eine getrennte Seitennummerierung ist
-jedoch nicht vorgesehen. Falls Sie dies ebenfalls benötigen, bedienen Sie sich
-bitte der Anweisung \DescRef{\LabelBase.cmd.pagenumbering}%
+jedoch nicht voreingestellt. Soll\ChangedAt{v3.49}{\Class{scrbook}} für die
+Seiten dennoch ein anderer \PName{Nummerierungsstil} verwendet werden, so kann
+dieser per optionalem Argument eingestellt werden. Erlaubt sind hier alle
+Angaben, die auch für \DescRef{\LabelBase.cmd.pagenumbering}%
 \important{\DescRef{\LabelBase.cmd.pagenumbering}} aus
-\autoref{sec:\LabelBase.pagestyle},
-\DescPageRef{\LabelBase.cmd.pagenumbering}.%
+\autoref{sec:\LabelBase.pagestyle}, \DescPageRef{\LabelBase.cmd.pagenumbering}
+möglich sind. Die Sternform \Macro{backmatter*} führt zu demselben Ergebnis
+wie die Normalform \Macro{backmatter} ohne oder mit leerem optionalem
+Argument.%
 %
 \EndIndexGroup
 
@@ -1639,7 +1666,7 @@ Verwendung der Option \DescRef{\LabelBase.option.open} mit den Werten
 
 Eine\ChangedAt{v3.10}{\Class{scrbook}\and \Class{scrreprt}\and
   \Class{scrartcl}} weitere Besonderheit von \KOMAScript{} betrifft die
-Behandlung des optionalen 
+Behandlung des optionalen
 Arguments der Gliederungsbefehle. Sowohl dessen
 Funktion%
 \important{\OptionValue{headings}{optiontohead}\\
@@ -1906,7 +1933,7 @@ Verzeichnis auswirkt.%
 Die Standardgliederungsbefehle funktionieren bei {\KOMAScript} im Grundsatz
 wie bei den Standardklassen. So kann in der Voreinstellung ganz normal über
 ein optionales Argument ein abweichender Text für den Kolumnentitel und das
-Inhaltsverzeichnis vorgegeben werden. 
+Inhaltsverzeichnis vorgegeben werden.
 
 Mit\ChangedAt{v3.10}{\Class{scrbook}\and \Class{scrreprt}\and
   \Class{scrartcl}}\textnote{\KOMAScript{} vs. Standardklassen} der
@@ -1974,10 +2001,10 @@ wie \lstinline|\mbox{}| erreicht werden.
   Argument von \Macro{chapter} vor.
 \begin{lstcode}
   \chapter[Kurzformen für Kapitel]
-          {Der Gliederungsbefehl für 
-            Kapitelüberschriften erlaubt neben dem 
+          {Der Gliederungsbefehl für
+            Kapitelüberschriften erlaubt neben dem
             Text für die eigentliche
-            Kapitelüberschrift auch eine Kurzform 
+            Kapitelüberschrift auch eine Kurzform
             mit steuerbarer Verwendung}
 \end{lstcode}
 
@@ -1987,15 +2014,15 @@ wie \lstinline|\mbox{}| erreicht werden.
   umbrochen werden. Mit
 \begin{lstcode}
   \chapter[head={Kurzformen für Kapitel},
-           tocentry={Der Gliederungsbefehl für 
+           tocentry={Der Gliederungsbefehl für
              Kapitelüberschriften erlaubt neben
              dem Text für die eigentliche
-             Kapitelüberschrift auch eine Kurzform 
+             Kapitelüberschrift auch eine Kurzform
              mit steuerbarer Verwendung}]
           {Der Gliederungsbefehl für
             Kapitelüberschriften\\
             erlaubt neben dem\\
-            Text für die eigentliche 
+            Text für die eigentliche
             Kapitelüberschrift\\
             auch eine Kurzform\\
             mit steuerbarer Verwendung}
@@ -2174,16 +2201,16 @@ vorbelegt und daher von den Einstellungen \PValue{big}, \PValue{normal} und
     \toprule
     Klassenoption & Element                     & Voreinstellung     \\
     \midrule
-    \OptionValueRef{\LabelBase}{headings}{big} 
-                  & \FontElement{part}\IndexFontElement{part}          
+    \OptionValueRef{\LabelBase}{headings}{big}
+                  & \FontElement{part}\IndexFontElement{part}
                   & \Macro{Huge}                                     \\
-                  & \FontElement{partnumber}\IndexFontElement{partnumber}    
+                  & \FontElement{partnumber}\IndexFontElement{partnumber}
                   & \Macro{huge}                                     \\
-                  & \FontElement{chapter}\IndexFontElement{chapter}       
+                  & \FontElement{chapter}\IndexFontElement{chapter}
                   & \Macro{huge}                                     \\
                   & \FontElement{chapterprefix}\IndexFontElement{chapterprefix}
                   & \DescRef{\LabelBase.cmd.usekomafont}\PParameter{chapter} \\
-                  & \FontElement{section}\IndexFontElement{section}       
+                  & \FontElement{section}\IndexFontElement{section}
                   & \Macro{Large}                                    \\
                   & \FontElement{subsection}\IndexFontElement{subsection}
                   & \Macro{large}                                    \\
@@ -2264,7 +2291,7 @@ vorbelegt und daher von den Einstellungen \PValue{big}, \PValue{normal} und
   Mit dieser Änderung verzichten Sie darauf, für alle
   Gliederungsebenen serifenlose Schrift voreinzustellen.
 \end{Example}
- 
+
 Ich möchte eindringlich davon abraten, die Möglichkeit zur
 Schriftumschaltung zu missbrauchen, um wild Schriften, Schriftgrößen und
 Schriftattribute miteinander zu mischen. Die Auswahl der richtigen Schrift für
@@ -2354,7 +2381,7 @@ Bei den Standardklassen\textnote{\KOMAScript{} vs.  Standardklassen} gibt
 es keine weiteren Gliederungsbefehle. Es existieren also insbesondere keine
 Anweisungen, mit denen man nicht nummerierte Kapitel oder nicht nummerierte
 Abschnitte erzeugen kann, die ins Inhaltsverzeichnis aufgenommen werden und
-bei denen ein automatischer Kolumnentitel erzeugt wird.  
+bei denen ein automatischer Kolumnentitel erzeugt wird.
 \fi
 
 
@@ -2499,7 +2526,7 @@ umschalten. Der jeweilige Seitenstil ist in den Makros
   \Blindtext[10]
   \end{document}
 \end{lstcode}
-  erreicht werden kann.  
+  erreicht werden kann.
 \end{Example}%
 \fi
 
@@ -2575,10 +2602,10 @@ werden (siehe \autoref{tab:maincls.fontelements},
 
   Zunächst suche man das Mauseloch. Dann lege man
   die Reißzwecke innen unmittelbar hinter das Loch,
-  damit bei den folgenden Aktionen die Maus nicht 
+  damit bei den folgenden Aktionen die Maus nicht
   entschlüpfen kann.
   Anschließend klopfe man mit dem Hammer den
-  Bierflaschenschnappverschluss in das Mauseloch. 
+  Bierflaschenschnappverschluss in das Mauseloch.
   Sollte der Verschluss nicht groß genug sein, um
   das Loch vollständig und dauerhaft zu
   verschließen, nehme man stattdessen das Brett
@@ -2608,13 +2635,13 @@ werden (siehe \autoref{tab:maincls.fontelements},
     \minisec{Montage}
 
     Zunächst suche man das Mauseloch. Dann lege man die
-    Reißzwecke innen unmittelbar hinter das Loch, damit 
-    bei den folgenden Aktionen die Maus nicht 
+    Reißzwecke innen unmittelbar hinter das Loch, damit
+    bei den folgenden Aktionen die Maus nicht
     entschlüpfen kann.
     Anschließend klopfe man mit dem Hammer den
-    Bierflaschenschnappverschluss in das Mauseloch. 
+    Bierflaschenschnappverschluss in das Mauseloch.
     Sollte der Verschluss nicht groß genug sein, um das
-    Loch vollständig und dauerhaft zu verschließen, 
+    Loch vollständig und dauerhaft zu verschließen,
     nehme man stattdessen das Brett und schraube es
     unter Zuhilfenahme der beiden Schrauben und des
     Messers vor das Loch. Statt des Messers kann
@@ -2628,8 +2655,7 @@ werden (siehe \autoref{tab:maincls.fontelements},
   \end{ShowOutput}%
 \end{Example}%
 \EndIndexGroup%
-% Zusammentreffen von Ausgabeende, Beispielende und Beschreibungsende:
-\vskip -1\baselineskip plus .75\ht\strutbox
+\ExampleEndFix
 
 \begin{Declaration}
   \Macro{raggedsection}
@@ -2754,7 +2780,7 @@ Kompatibilitätseinstellung zu Versionen vor
 Funktion. Stattdessen wird für diese Ebenen dann weiterhin
 \Macro{othersectionlevelsformat} verwendet.
 
-Mit Hilfe von \Macro{renewcommand} kann jede der 
+Mit Hilfe von \Macro{renewcommand} kann jede der
 Formatierungsanweisungen umdefiniert werden, um sie eigenen Anforderungen
 anzupassen.  Nachfolgend finden Sie einige Definitionen, die denen aus den
 {\KOMAScript}-Klassen entsprechen:
@@ -2802,7 +2828,7 @@ ist.
   \important{\DescRef{\LabelBase.option.numbers}} einzusetzen und so von der
   Regel abzuweichen. Näheres zu der Option siehe
   \DescPageRef{\LabelBase.option.numbers}.
-  
+
   Eine weitere Möglichkeit besteht darin, die Nummerierung der Abschnitte
   so in den Rand zu platzieren, dass der Überschriftentext
   links mit dem umgebenden Text abschließt. Dies erreicht man
@@ -2862,7 +2888,7 @@ Diese \OnlyAt{\Class{scrbook}\and \Class{scrreprt}}%
 \ChangedAt{v2.8o}{\Class{scrbook}\and \Class{scrreprt}}%
 beiden Anweisungen werden nicht nur intern von {\KOMAScript} verwendet,
 sondern stehen auch dem Anwender zur Verfügung.  Nachfolgend werden sie
-beispielsweise für die Umdefinierung anderer Anweisungen verwendet. 
+beispielsweise für die Umdefinierung anderer Anweisungen verwendet.
 
 Bei Verwendung von Option \OptionValueRef{\LabelBase}{chapterprefix}{true}%
 \important{\DescRef{\LabelBase.option.chapterprefix}} (siehe
@@ -3307,7 +3333,11 @@ mindestens zwei gute Gründe, in der Regel alle Tabellen mit Überschriften zu
 versehen. \KOMAScript{} bietet daher mit der Einstellung
 \OptionValue{captions}{tableheading}%
 \IndexOption{captions~=\textKValue{tableheading}} die Möglichkeit, bei
-Tabellen die Formatierung auf Überschriften zu ändern.
+Tabellen die Formatierung auf Überschriften zu
+ändern. Intern\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+  \Class{scrartcl}} wird dies durch Verwendung der \Package{tocbasic}-Option
+\OptionValueRef{tocbasic}{tablecaptionposition}{top}%
+\IndexOption{tablecaptionposition~=top} erreicht.
 
 Es\textnote{Achtung!} sei %
 \iffalse an dieser Stelle \fi % Umbruchkorrektur
@@ -3319,17 +3349,21 @@ Zusatzpakete wie \Package{longtable}\IndexPackage{longtable} (siehe
 \Package{supertabular}\IndexPackage{supertabular} (siehe
 \cite{package:supertabular}) benötigt.
 
-Mit\important{\OptionValue{captions}{tablesignature}}
-der Einstellung
+Mit\important{\OptionValue{captions}{tablesignature}} der Einstellung
 \OptionValue{captions}{tablesignature}%
-\IndexOption{captions~=\textKValue{tablesignature}}
-wird wieder die Voreinstellung der Formatierung als Tabellenunterschrift
-gewählt. Es\textnote{Achtung!} sei an dieser Stelle darauf hingewiesen, dass
-die beiden Werte lediglich die Formatierung ändern. Der Ort, an dem die Über"~
-oder Unterschrift gesetzt wird, hängt bei den Gleitumgebungen von
-\KOMAScript{} allein vom Ort ab, an dem die Anweisung
-\DescRef{\LabelBase.cmd.caption} verwendet wird. Dies ändert sich jedoch bei
-Verwendung des Pakets \Package{float}\IndexPackage{float} mit der Anweisung 
+\IndexOption{captions~=\textKValue{tablesignature}} wird wieder die
+Voreinstellung der Formatierung als Tabellenunterschrift gewählt.
+Intern\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+  \Class{scrartcl}} wird dies durch Verwendung der \Package{tocbasic}-Option
+\OptionValueRef{tocbasic}{tablecaptionposition}{bottom}%
+\IndexOption{tablecaptionposition~=bottom} erreicht.
+
+Es\textnote{Achtung!} sei an dieser Stelle darauf hingewiesen, dass die beiden
+Werte lediglich die Formatierung ändern. Der Ort, an dem die Über"~ oder
+Unterschrift gesetzt wird, hängt bei den Gleitumgebungen von \KOMAScript{}
+allein vom Ort ab, an dem die Anweisung \DescRef{\LabelBase.cmd.caption}
+verwendet wird. Dies ändert sich jedoch bei Verwendung des Pakets
+\Package{float}\IndexPackage{float} mit der Anweisung
 \Macro{restylefloat}\IndexCmd{restylefloat}\important{\Macro{restylefloat}}
 (siehe \cite{package:float}).
 
@@ -3340,11 +3374,17 @@ existiert\ChangedAt{v3.09}{\Class{scrbook}\and \Class{scrreprt}\and
 \IndexOption{captions~=\textKValue{figureheading}} und
 \OptionValue{captions}{figuresignature}%
 \IndexOption{captions~=\textKValue{figuresignature}} auch die entsprechende
-Funktion für Abbildungen. Allerdings werden Abbildungen in der Regel wie im
-Falle von Fotos eher als Ganzes und im Falle von Diagrammen oder Graphen eher
-von unten links her betrachtet. In den wenigsten Fällen dürfte es daher
-sinnvoll sein, nur bei Abbildungen die Formatierung von Unterschriften in
-Überschriften zu ändern.
+Funktion für Abbildungen. Intern\ChangedAt{v3.46}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}} werden diese durch Verwendung der
+\Package{tocbasic}-Option
+\OptionValueRef{tocbasic}{figurecaptionposition}{top}%
+\IndexOption{figurecaptionposition~=top} beziehungsweise
+\OptionValueRef{tocbasic}{figurecaptionposition}{bottom}%
+\IndexOption{figurecaptionposition~=bottom} realisiert. Allerdings werden
+Abbildungen in der Regel wie im Falle von Fotos eher als Ganzes und im Falle
+von Diagrammen oder Graphen eher von unten links her betrachtet. In den
+wenigsten Fällen dürfte es daher sinnvoll sein, nur bei Abbildungen die
+Formatierung von Unterschriften in Überschriften zu ändern.
 
 Manchmal wird jedoch gewünscht, alle Gleitumgebungen mit Überschriften zu
 versehen. Daher gibt es bei \KOMAScript{} die Einstellungen\important{%
@@ -3353,8 +3393,13 @@ versehen. Daher gibt es bei \KOMAScript{} die Einstellungen\important{%
 \IndexOption{captions~=\textKValue{heading}} und
 \OptionValue{captions}{signature}\IndexOption{captions~=\textKValue{signature}},
 mit der man die Formatierungen aller Gleitumgebungen entsprechend ändern
-kann. Diese entfalten ihre Wirkung auch noch, wenn sie innerhalb einer
-Gleitumgebung verwendet werden.
+kann. Intern\ChangedAt{v3.46}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}} werden diese durch Verwendung der
+\Package{tocbasic}-Option
+\OptionValueRef{tocbasic}{captionposition}{top}%
+\IndexOption{captionposition~=top} beziehungsweise
+\OptionValueRef{tocbasic}{captionposition}{bottom}%
+\IndexOption{captionposition~=bottom} realisiert.
 
 Bitte\textnote{Achtung!}\OnlyAt{\Package{float}}\IndexPackage{float} beachten
 Sie, dass bei Verwendung des \Package{float}-Pakets die Einstellungen von
@@ -3430,7 +3475,12 @@ werden. Die dabei möglichen Werte für die jeweilige \PName{Einstellung} sind
       \Class{scrartcl}}%
     Bei Abbildungen wird (gegebenenfalls abweichend von
     \OptionValue{captions}{signature}) die Formatierung als Überschrift
-    gewählt.}%
+    gewählt. Diese\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} Option basiert auf Option
+    \OptionValueRef{tocbasic}{figurecaptionposition}{top}%
+    \IndexOption{figurecaptionposition~=\KValue{top}} von Paket
+    \Package{tocbasic}. Siehe dazu \autoref{sec:tocbasic.caption}, ab
+    \autopageref{sec:tocbasic.caption}.}%
   \entry{\PValue{figuresignature}, \PValue{figurebelow}, \PValue{belowfigure},
     \PValue{bottomatfigure}%
     \IndexOption{captions~=\textKValue{figuresignature}}}{%
@@ -3438,15 +3488,24 @@ werden. Die dabei möglichen Werte für die jeweilige \PName{Einstellung} sind
       \Class{scrartcl}}%
     Bei Abbildungen wird (gegebenenfalls abweichend von
     \OptionValue{captions}{heading}) die Formatierung als Unterschrift
-    gewählt.}%
+    gewählt. Diese\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} Option basiert auf Option
+    \OptionValueRef{tocbasic}{figurecaptionposition}{bottom}%
+    \IndexOption{figurecaptionposition~=\KValue{bottom}} von Paket
+    \Package{tocbasic}. Siehe dazu \autoref{sec:tocbasic.caption}, ab
+    \autopageref{sec:tocbasic.caption}.}%
   \entry{\PValue{heading}, \PValue{above}, \PValue{top}%
     \IndexOption{captions~=\textKValue{heading}}}{%
     Gleitumgebungstitel\ChangedAt{v3.09}{\Class{scrbook}\and
       \Class{scrreprt}\and \Class{scrartcl}} werden als Überschriften
     formatiert. Dies hat jedoch keinen Einfluss darauf, ob sie über oder unter
-    der Gleitumgebung platziert werden. Die Option impliziert auch
-    \OptionValue{captions}{tableheading} und
-    \OptionValue{captions}{figureheading}.}%
+    der Gleitumgebung platziert werden.
+    Diese\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} Option basiert auf Option
+    \OptionValueRef{tocbasic}{captionposition}{top}%
+    \IndexOption{captionposition~=\KValue{top}} von Paket
+    \Package{tocbasic}. Siehe dazu \autoref{sec:tocbasic.caption}, ab
+    \autopageref{sec:tocbasic.caption}.}%
   \entry{\PValue{innerbeside},
     \PValue{besideinner}\IndexOption{captions~=\textKValue{innerbeside}}}{%
     Gleitumgebungstitel der Umgebung \DescRef{\LabelBase.env.captionbeside}
@@ -3489,20 +3548,34 @@ werden. Die dabei möglichen Werte für die jeweilige \PName{Einstellung} sind
       \Class{scrartcl}}%
     Gleitumgebungstitel werden als Unterschriften formatiert. Dies hat jedoch
     keinen Einfluss darauf, ob sie über oder unter der Gleitumgebung platziert
-    werden. Die Option impliziert auch \OptionValue{captions}{tablesignature}
-    und \OptionValue{captions}{figuresignature}.}%
+    werden. Diese\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} Option basiert auf Option
+    \OptionValueRef{tocbasic}{captionposition}{bottom}%
+    \IndexOption{captionposition~=\KValue{bottom}} von Paket
+    \Package{tocbasic}. Siehe dazu \autoref{sec:tocbasic.caption}, ab
+    \autopageref{sec:tocbasic.caption}.}%
   \entry{\PValue{tableheading}, \PValue{tableabove}, \PValue{abovetable},
     \PValue{abovetabular}, \PValue{topattable}%
     \IndexOption{captions~=\textKValue{tableheading}}}{%
     Bei Tabellen wird (gegebenenfalls abweichend von
     \OptionValue{captions}{signature}) die Formatierung als Überschrift
-    gewählt.}%
+    gewählt. Diese\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} Option basiert auf Option
+    \OptionValueRef{tocbasic}{tablecaptionposition}{top}%
+    \IndexOption{tablecaptionposition~=\KValue{top}} von Paket
+    \Package{tocbasic}. Siehe dazu \autoref{sec:tocbasic.caption}, ab
+    \autopageref{sec:tocbasic.caption}.}%
   \entry{\PValue{tablesignature}, \PValue{belowtable}, \PValue{belowtabular},
     \PValue{bottomattable}%
     \IndexOption{captions~=\textKValue{tablesignature}}}{%
     Bei Tabellen wird (gegebenenfalls abweichend von
     \OptionValue{captions}{heading}) die Formatierung als Unterschrift
-    gewählt.}%
+    gewählt. Diese\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} Option basiert auf Option
+    \OptionValueRef{tocbasic}{tablecaptionposition}{bottom}%
+    \IndexOption{tablecaptionposition~=\KValue{bottom}} von Paket
+    \Package{tocbasic}. Siehe dazu \autoref{sec:tocbasic.caption}, ab
+    \autopageref{sec:tocbasic.caption}.}%
   \entry{\PValue{topbeside}, \PValue{besidetop}}{%
     Gleitumgebungstitel der Umgebung \DescRef{\LabelBase.env.captionbeside}
     (siehe \autoref{sec:\LabelBase.floats},
@@ -3519,84 +3592,16 @@ werden. Die dabei möglichen Werte für die jeweilige \PName{Einstellung} sind
   \Macro{caption}\OParameter{Verzeichniseintrag}\Parameter{Titel}
   \Macro{captionbelow}\OParameter{Verzeichniseintrag}\Parameter{Titel}
   \Macro{captionabove}\OParameter{Verzeichniseintrag}\Parameter{Titel}
+  \Macro{captionof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
+                   \Parameter{Titel}
+  \Macro{captionaboveof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
+                        \Parameter{Titel}
+  \Macro{captionbelowof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
+                        \Parameter{Titel}
 \end{Declaration}%
-Tabellen und Abbildungen werden bei den Standardklassen mit Hilfe der
-Anweisung \Macro{caption} mit einem \PName{Titel} in Form einer
-Unterschrift\Index{Tabellen>Unterschrift} versehen. Bei Abbildungen ist dies
-grundsätzlich korrekt. Bei Tabellen wird gestritten, ob der \PName{Titel} als
-Überschrift über oder konsistent mit der
-Bildunterschrift\Index{Bildunterschrift} unter die Tabelle gehört. Daher
-bietet \KOMAScript{}\textnote{\KOMAScript{} vs. Standardklassen} im
-Gegensatz zu den Standardklassen die Anweisungen \Macro{captionbelow} für
-\PName{Titel} in Form von Unterschriften und \Macro{captionabove} für
-\PName{Titel} in Form von Überschriften. 
-
-Sowohl bei Tabellen als auch bei Abbildungen oder generell für alle
-Gleitumgebungen lässt sich das Verhalten von \Macro{caption} mit der Option
-\DescRef{\LabelBase.option.captions}\IndexOption{captions} steuern, die am
-Anfang dieses Abschnitts zu finden ist. Aus Gründen der Kompatibilität ist
-voreingestellt, dass sich \Macro{caption} bei allen Gleitumgebungen wie
-\Macro{captionbelow} verhält. Es wird jedoch empfohlen\textnote{Tipp!},
-Tabellenüberschriften zu verwenden und auf die Formatierung mit
-\OptionValueRef{\LabelBase}{captions}{tableheading} entsprechend umzustellen
-oder bei Tabellen auf \Macro{captionabove} zurückzugreifen.
-%
-\begin{Example}
-  Sie wollen mit
-  Tabellenüberschriften\Index{Tabellen>Ueberschrift=Überschrift} statt mit
-  Tabellenunterschriften arbeiten, weil Sie teilweise Tabellen haben, die über
-  mehr als eine Seite gehen. Mit den Standardklassen bliebe Ihnen nur die
-  Möglichkeit:
-\begin{lstcode}
-  \begin{table}
-    \caption{Dies ist nur eine Beispieltabelle}
-    \begin{tabular}{llll}
-      Dies & ist & ein & Beispiel.\\\hline
-      Bitte & lassen & Sie & den \\
-      Inhalt & dieser & Tabelle & unbeachtet.
-    \end{tabular}
-  \end{table}
-\end{lstcode}
-  Damit hätten Sie das unschöne Ergebnis:
-  \begin{ShowOutput}\centering
-    {\usekomafont{caption}{\usekomafont{captionlabel}\tablename~30.2:}
-      Dies ist nur eine
-      Beispieltabelle}\\
-    \begin{tabular}{llll}
-      Dies & ist & ein & Beispiel.\\\hline
-      Bitte & lassen & Sie & den \\
-      Inhalt & dieser & Tabelle & unbeachtet.
-    \end{tabular}
-  \end{ShowOutput}
-  Bei \KOMAScript{} schreiben Sie hingegen:
-\begin{lstcode}
-  \begin{table}
-    \captionabove{Dies ist nur eine Beispieltabelle}
-    \begin{tabular}{llll}
-      Dies & ist & ein & Beispiel.\\\hline
-      Bitte & lassen & Sie & den \\
-      Inhalt & dieser & Tabelle & unbeachtet.
-    \end{tabular}
-  \end{table}
-\end{lstcode}
-  Sie erhalten dann das gewünschte Ergebnis:
-  \begin{ShowOutput}\centering
-    {\usekomafont{caption}{\usekomafont{captionlabel}\tablename~30.2:}
-      Dies ist nur eine
-      Beispieltabelle}\\\vskip\abovecaptionskip
-    \begin{tabular}{llll}
-      Dies & ist & ein & Beispiel.\\\hline
-      Bitte & lassen & Sie & den \\
-      Inhalt & dieser & Tabelle & unbeachtet.
-    \end{tabular}
-  \end{ShowOutput}
-  Da Sie konsequent nicht nur eine, sondern alle Tabellen mit Überschriften
-  versehen, können Sie stattdessen auch die Option
-  \OptionValueRef{\LabelBase}{captions}{tableheading} setzen (siehe
-  \DescPageRef{\LabelBase.option.captions.tableheading}). Dann genügt es,
-  wenn Sie wie bei den Standardklassen \Macro{caption} verwenden.  Sie
-  erhalten trotzdem das Ergebnis von \Macro{captionabove}.
-\end{Example}
+Bezüglich der generellen Funktion dieser Anweisungen zum Setzen eines Titels
+für Tabellen und Abbildungen sei \autoref{sec:tocbasic.caption}, ab
+\autopageref{sec:tocbasic.caption} verwiesen.
 
 \BeginIndex[indexother]{}{Schrift>Art}%
 \BeginIndex{FontElement}{caption}\LabelFontElement{caption}%
@@ -3659,144 +3664,7 @@ entnehmen.
   \fi
 \end{Example}%
 \EndIndexGroup
-\vskip -1\ht\strutbox plus .75\strutbox% Beispiel am Beschreibungsende
-
-
-\begin{Declaration}
-  \Macro{captionof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
-                   \Parameter{Titel}
-  \Macro{captionaboveof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
-                        \Parameter{Titel}
-  \Macro{captionbelowof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
-                        \Parameter{Titel}
-\end{Declaration}
-Ähnlich wie die Pakete \Package{caption}\IndexPackage{caption} und
-\Package{capt-of}\IndexPackage{capt-of} bietet auch \KOMAScript{} die
-Anweisung \Macro{captionof}\ChangedAt{v3.05}{\Class{scrbook}\and
-  \Class{scrreprt}\and \Class{scrartcl}} mit der man auch außerhalb einer
-Gleitumgebung oder in einer fremden Gleitumgebung einen entsprechenden Titel
-mit Eintrag in das jeweilige Verzeichnis setzen kann. Dabei muss im Gegensatz
-zu \DescRef{\LabelBase.cmd.caption} die Art des Gleitobjekts als zusätzliches
-erstes Argument angegeben werden.
-
-Darüber hinaus bietet \KOMAScript{} zusätzlich auch die Anweisungen
-\Macro{captionaboveof}\ChangedAt{v3.09}{\Class{scrbook}\and
-  \Class{scrreprt}\and \Class{scrartcl}} und \Macro{captionbelowof}. Diese
-dienen als Gegenstücke zu \DescRef{\LabelBase.cmd.captionabove} und
-\DescRef{\LabelBase.cmd.captionbelow}.
-
-Selbstverständlich berücksichtigt\ChangedAt{v3.09a}{\Class{scrbook}\and
-  \Class{scrreprt}\and \Class{scrartcl}} \Macro{captionof} auch die
-Einstellungen von Option \DescRef{\LabelBase.option.captions} bezüglich der
-Formatierung des Titels als Über- oder Unterschrift. Diese Fähigkeit geht
-jedoch eventuell durch das Laden von Paketen wie
-\Package{capt-of}\IndexPackage{capt-of} oder
-\Package{caption}\IndexPackage{caption} verloren. Bei Verwendung von
-\Package{caption} ist die Anleitung zu diesem Paket zu beachten (siehe
-\cite{package:caption})!%
-\begin{Example}
-  Angenommen, Sie wollen ein Gleitobjekt erstellen, bei dem eine Tabelle und
-  eine Abbildung nebeneinander stehen. Da es keine gemischten Gleitobjekte gibt,
-  verwenden Sie primär eine \Environment{figure}-Umgebung:
-\begin{lstcode}
-  \begin{figure}
-    \begin{minipage}{.5\linewidth}
-      \centering
-      \rule{4cm}{5cm}
-      \caption{Ein Rechteck}\label{fig:rechteck}
-    \end{minipage}%
-    \begin{minipage}{.5\linewidth}
-      \centering
-      \captionaboveof{table}
-      [Maße des Rechtecks aus
-        Abbildung~\ref{fig:rechteck}]%
-      {Rechtecksmaße}
-      \label{tab:rechteck}
-      \begin{tabular}{ll}
-        Breite: & 4\,cm\\
-        Höhe:   & 5\,cm
-      \end{tabular}
-    \end{minipage}
-  \end{figure}
-\end{lstcode}
-  Um Abbildung und Tabelle nebeneinander zu setzen, wurden zwei
-  \Environment{minipage}-Umgebungen verwendet. %
-  \iffalse % Umbruchkorrektur
-  Wichtig\textnote{Achtung!} ist hier das Prozentzeichen nach der ersten
-  \Environment{minipage}, ohne das ein zusätzlicher Wortabstand zwischen die
-  beiden \Environment{minipage}-Umgebungen gesetzt würde.%
-  \else %
-  Wichtig\textnote{Achtung!} ist das Prozentzeichen nach der ersten
-  \Environment{minipage} zur Unterdrückung des Wortabstands zwischen den
-  Umgebungen.%
-  \fi %
-
-  \iffalse % Umbruchkorrektur
-  Die Abbildungsunterschrift wurde mit \DescRef{\LabelBase.cmd.caption}
-  gesetzt. %
-  \fi %
-  Für die Tabellenüberschrift wurde \Macro{captionaboveof} verwendet. Als
-  erstes Argument wurde \PValue{table} angegeben. Dadurch weiß \KOMAScript{},
-  dass es sich trotz \Environment{figure}-Umgebung um eine Tabellenüberschrift
-  handelt.
-
-  Das optionale Argument von \Macro{captionaboveof} setzt den Eintrag in das
-  Tabellenverzeichnis. Ohne das optionale Argument würde der als letztes
-  Argument angegebene Titel ebenfalls in das Tabellenverzeichnis
-  geschrieben. Während dieser Titel im Gleitobjekt selbst völlig ausreichend
-  ist, wäre er jedoch im Tabellenverzeichnis wenig aussagekräftig. Daher wird
-  hier für das Verzeichnis ein abweichender Titel über das optionale Argument
-  verwendet. Das Ergebnis der Bemühungen zeigt
-  \autoref{fig:maincls.captionaboveof}.%
-%
-\begin{figure}
-%  \centering
-%  \caption
-  \KOMAoptions{captions=bottombeside}%
-  \setcapindent{0pt}%
-  \begin{captionbeside}
-    [{Beispiel: Verwendung von \Macro{captionaboveof} innerhalb einer
-      fremden Gleitumgebung}]
-    {\hspace{0pt plus 1ex}Verwendung von \Macro{captionaboveof} innerhalb einer
-      fremden Gleitumgebung\label{fig:maincls.captionaboveof}}
-    [l]
-  \begin{minipage}[b]{.66\linewidth}%
-  \raisebox{\depth}{\fbox{\KOMAoptions{captions=oneline}%
-    \begin{minipage}{.5\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-      \centering
-      \rule{4cm}{5cm}
-      \caption[Beispiel: Ein Rechteck]{Ein Rechteck}\label{fig:maincls.rechteck}
-    \end{minipage}%
-    \begin{minipage}{.5\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-      \centering
-      \captionaboveof{table}[Beispiel: Maße des Rechtecks aus
-      Abbildung~\ref{fig:maincls.rechteck}]{Rechteckmaße}
-      \label{tab:maincls.rechteck}
-      \begin{tabular}{ll}
-        Breite: & 4\,cm\\
-        Höhe:   & 5\,cm
-      \end{tabular}
-    \end{minipage}}}%
-  \end{minipage}%
-  \end{captionbeside}%
-\end{figure}%
-\end{Example}%
-In gleicher Weise, wie in obigem Beispiel eine Tabelle innerhalb einer
-Abbildungsumgebung gesetzt und mit einem Titel versehen wird, könnte man auch
-eine nicht gleitende Tabelle außerhalb jeder Gleitumgebung
-setzen. Dabei\ChangedAt{v3.41}{\Class{scrbook}\and \Class{scrreprt}\and
-  \Class{scrartcl}} versucht \KOMAScript{} auch einen Seitenumbruch zwischen
-der Überschrift und der Tabelle zu verhindern. Das kann allerdings nicht in
-allen Fällen sichergestellt werden. Daher sollte in der Regel eine
-\Environment{minipage} verwendet werden, um zu verhindern, dass zwischen
-Überschrift und Tabelle ein Seitenumbruch erfolgen kann. Zusätzlich sollte man
-die \Environment{minipage} dann noch in eine \Environment{flushleft}-Umgebung
-einbetten, um einerseits einen gefälligen Abstand zum Text davor und dahinter
-zu erreichen und andererseits den Absatzeinzug vor der \Environment{minipage}
-zu verhindern. Einfacher ist natürlich direkt die Umgebung
-\DescRef{\LabelBase.env.table-}\IndexEnv{table-} zu verwenden.%
-\EndIndexGroup
-
+\ExampleEndFix
 
 \begin{Declaration}
   \begin{Environment}{captionbeside}
@@ -3907,12 +3775,12 @@ Anweisung \Macro{raisebox}\IndexCmd{raisebox} verändert werden.
   \autoref{fig:maincls.captionbeside} veranschaulicht die folgende Verwendung
   der \Environment{captionbeside}-Umgebung:%
   \fi
-  
+
 \begin{lstcode}
   \begin{figure}
     \begin{captionbeside}%
       [Beispiel: Bildbeschreibung daneben, unten]%
-      {Eine Bildbeschreibung weder über noch unter 
+      {Eine Bildbeschreibung weder über noch unter
         der Abbildung, sondern unten daneben}%
       [i][\dimexpr \linewidth
         +\marginparwidth+\marginparsep\relax][0pt]*
@@ -3945,7 +3813,7 @@ Anweisung \Macro{raisebox}\IndexCmd{raisebox} verändert werden.
   \fi %
   steht innen neben der Abbildung. Damit erscheint die Abbildung selbst bis in
   die Marginalienspalte in den Rand gerückt.
-  
+
 \iffalse% Umbruchkorrekturtext
   Mit \Macro{dimexpr} wird hier eine \eTeX-Anweisung verwendet, da
   \KOMAScript{} dessen Verwendung voraussetzt und bei jeder halbwegs aktuellen
@@ -4030,10 +3898,8 @@ Anweisung \Macro{raisebox}\IndexCmd{raisebox} verändert werden.
     \label{fig:maincls.captionbesidetop}
   \end{figure}
 \end{Example}
-\vskip -1\ht\strutbox plus .75\strutbox% Beispiel am Ende der Erklärung
-%
 \EndIndexGroup
-
+\ExampleEndFix
 
 \begin{Declaration}
   \begin{Environment}{captionofbeside}
@@ -4119,7 +3985,7 @@ Auch diese kann mit \Macro{renewcommand} geändert werden.
 \end{Example}
 %
 \EndIndexGroup
-\vskip -1\ht\strutbox plus .75\ht\strutbox% Beispiel am Ende
+\ExampleEndFix
 
 \begin{Declaration}
   \Macro{figureformat}
@@ -4168,7 +4034,7 @@ Mit \Macro{renewcommand} können diese leicht umdefiniert werden.%
 \end{Example}
 %
 \EndIndexGroup
-\vskip -1\ht\strutbox plus  .75\ht\strutbox% Beispiel am Ende der Erklärung
+\ExampleEndFix
 
 \begin{Declaration}
   \Macro{setcapindent}\Parameter{Einzug}
@@ -4216,7 +4082,7 @@ den Werten \PValue{oneline} und \PValue{nooneline} dieser Option auf
     \setcapindent{1em}
     \fbox{\parbox{.95\linewidth}{%
         \centering\KOMAScript}}
-    \caption{Beispiel mit teilweise hängendem Einzug 
+    \caption{Beispiel mit teilweise hängendem Einzug
       ab der zweiten Zeile}
   \end{figure}
 \end{lstcode}
@@ -4741,8 +4607,8 @@ sowie die Werte \PValue{totoc} und \PValue{numbered} der oben erläuterten
 Option \DescRef{\LabelBase.option.listof} auf die Verzeichnisse aus.
 
 In\textnote{Tipp!} der Regel findet man die Verzeichnisse der
-Gleitumgebungen\Index{Gleitumgebungen}, also das 
-\index{Tabellen>Verzeichnis}Tabellen- und das 
+Gleitumgebungen\Index{Gleitumgebungen}, also das
+\index{Tabellen>Verzeichnis}Tabellen- und das
 Abbildungsverzeichnis\index{Abbildungen>Verzeichnis}, unmittelbar nach dem
 Inhaltsverzeichnis. In einigen Dokumenten wandern diese auch in den
 Anhang. Der Autor bevorzugt jedoch die Platzierung unmittelbar nach dem
@@ -4961,9 +4827,9 @@ funktioniert (siehe \cite{package:natbib}).
   der Reihenfolge der Zitierung im Dokument, sondern alphabetisch
   sortiert ist. Daher setzen Sie folgende Anweisung:
 \begin{lstcode}
-  \setbibpreamble{Die Literaturangaben sind 
-    alphabetisch nach den Namen der Autoren 
-    sortiert. Bei mehreren Autoren wird nach dem 
+  \setbibpreamble{Die Literaturangaben sind
+    alphabetisch nach den Namen der Autoren
+    sortiert. Bei mehreren Autoren wird nach dem
     ersten Autor sortiert.\par\bigskip}
 \end{lstcode}
   Mit \Macro{bigskip} wird der Abstand nach der Präambel sichergestellt.%
@@ -5132,9 +4998,9 @@ Hervorhebung der Seitenzahlen markiert werden.
   Index:
 \begin{lstcode}
   \setindexpreamble{Alle \textbf{fett} gedruckten
-    Seitenzahlen sind Referenzen auf die Definition 
-    des jeweiligen Begriffs. Demgegenüber geben 
-    normal gedruckte Seitenzahlen die Seiten der 
+    Seitenzahlen sind Referenzen auf die Definition
+    des jeweiligen Begriffs. Demgegenüber geben
+    normal gedruckte Seitenzahlen die Seiten der
     Verwendung des jeweiligen Begriffs wieder.\par
     \bigskip}
 \end{lstcode}
@@ -5176,13 +5042,13 @@ zuständig.%
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:
 
 %  LocalWords:  Teildokumenten Klassenoption Tabellenunterschrift float
 %  LocalWords:  Satzspiegels Schrifteinstellung Abschnittseinträgen Nachspann

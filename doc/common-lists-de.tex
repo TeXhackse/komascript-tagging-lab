@@ -1,6 +1,6 @@
 % ======================================================================
 % common-lists-de.tex
-% Copyright (c) Markus Kohm, 2001-2023
+% Copyright (c) Markus Kohm, 2001-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-lists-de.tex}%
-                 [$Date: 2023-04-20 10:04:17 +0200 (Thu, 20 Apr 2023) $
+                 [$Date: 2025-06-04 18:44:23 +0200 (Wed, 04 Jun 2025) $
                   KOMA-Script guide (common paragraphs)]
 
 \section{Listen}
@@ -99,10 +99,10 @@
   Form einer Liste ist die Stichpunkt-\textnote{Stichpunktliste} oder
   \Environment{itemize}-Liste. %
   \iffalse % Umbruchoptimierungstext
-  Die Benutzer einer unbeliebten Textverarbeitung nennen diese Form der Liste
-  auch gerne \emph{Bulletpoints}. Vermutlich können sie sich nicht vorstellen,
-  dass je nach Ebene auch ein anderes Zeichen als ein fetter Punkt zur
-  Einleitung eines Stichpunkts verwendet werden kann. %
+    Die Benutzer einer unbeliebten Textverarbeitung nennen diese Form der
+    Liste auch gerne \emph{Bulletpoints}. Vermutlich können sie sich nicht
+    vorstellen, dass je nach Ebene auch ein anderes Zeichen als ein fetter
+    Punkt zur Einleitung eines Stichpunkts verwendet werden kann. %
   \fi%
   Bei den \KOMAScript-Klassen werden je nach Ebene folgende Aufzählungszeichen
   zur Einleitung eines Listenelements verwendet: »{\labelitemi}«,
@@ -129,9 +129,15 @@
   werden. In der Voreinstellung verwenden diese alle die Schrifteinstellung
   für Element
   \FontElement{itemizelabel}\important{\FontElement{itemizelabel}}. Lediglich
-  Element \FontElement{labelitemii} verwendet zusätzlich
-  \Macro{bfseries}. Die Voreinstellung von \FontElement{itemizelabel} selbst
-  ist \Macro{normalfont}. Die einzelnen Stichpunkte der Umgebung werden mit
+  Element \FontElement{labelitemii} verwendet zusätzlich \Macro{bfseries}.
+  Die Voreinstellung von \FontElement{itemizelabel} selbst ist
+  \Macro{normalfont}.%
+  \EndIndex{FontElement}{labelitemiv}%
+  \EndIndex{FontElement}{labelitemiii}%
+  \EndIndex{FontElement}{labelitemii}%
+  \EndIndex{FontElement}{labelitemi}%
+  \EndIndex{FontElement}{itemizelabel}
+  Die einzelnen Stichpunkte der Umgebung werden mit
   \Macro{item} eingeleitet.%
   \IfThisCommonFirstRun{\iftrue}{%
     \ In \autoref{sec:maincls.lists} auf \PageRefxmpl{maincls.env.itemize}
@@ -213,7 +219,7 @@
       \end{ShowOutput}
     \end{Example}%
   \fi
-  % 
+  %
   \EndIndexGroup
 
 
@@ -243,12 +249,40 @@
   \Macro{labelenumi} bis \Macro{labelenumiv} bestimmt. Dabei folgt auf den
   Wert der zweiten Ebene, der in Kleinbuchstaben ausgegeben wird, eine runde
   Klammer, während die Werte aller anderen Ebenen von einem Punkt gefolgt
-  werden.  Die einzelnen Stichpunkte werden wieder mit \Macro{item}
-  eingeleitet.%
+  werden.
+  \BeginIndex{FontElement}{enumeratelabel}\LabelFontElement{enumeratelabel}%
+  \BeginIndex{FontElement}{labelenumi}\LabelFontElement{labelenumi}%
+  \BeginIndex{FontElement}{labelenumii}\LabelFontElement{labelenumii}%
+  \BeginIndex{FontElement}{labelenumiii}\LabelFontElement{labelenumiii}%
+  \BeginIndex{FontElement}{labelenumiv}\LabelFontElement{labelenumiv}%
+  Die
+  Schriftart\Index{Schrift>Art}\IfThisCommonLabelBase{scrlttr2}{\ChangedAt{v3.44}{\Class{scrlttr2}\and
+      \Package{scrletter}}}{\ChangedAt{v3.44}{\Class{scrbook}\and
+      \Class{scrreprt}\and \Class{scrartcl}}} der Nummern beziehungsweise
+  Label für die einzelnen Ebenen kann außerdem bei den \KOMAScript-Klassen mit
+  Hilfe der Anweisungen \DescRef{\ThisCommonLabelBase.cmd.setkomafont} und
+  \DescRef{\ThisCommonLabelBase.cmd.addtokomafont} (siehe
+  \autoref{sec:\ThisCommonLabelBase.textmarkup},
+  \DescPageRef{\ThisCommonLabelBase.cmd.setkomafont}) für die Elemente
+  \FontElement{labelenumi}\important{\FontElement{labelenumi}},
+  \FontElement{labelenumii}\important{\FontElement{labelenumii}},
+  \FontElement{labelenumiii}\important{\FontElement{labelenumiii}} und
+  \FontElement{labelenumiv}\important{\FontElement{labelenumiv}} geändert
+  werden. In der Voreinstellung verwenden diese alle die Schrifteinstellung
+  für Element
+  \FontElement{enumeratelabel}\important{\FontElement{enumeratelabel}}. Die
+  Voreinstellung für \FontElement{enumeratelabel} selbst ist leer, also keine
+  Änderung der Schrift.%
+  \EndIndex{FontElement}{labelenumiv}%
+  \EndIndex{FontElement}{labelenumiii}%
+  \EndIndex{FontElement}{labelenumii}%
+  \EndIndex{FontElement}{labelenumi}%
+  \EndIndex{FontElement}{enumeratelabel} Die einzelnen Stichpunkte werden
+  wieder mit \Macro{item} eingeleitet.%
   \IfThisCommonFirstRun{\iftrue}{%
-    \ In \autoref{sec:maincls.lists} auf \PageRefxmpl{maincls.env.enumerate}
-    finden Sie ein Beispiel für die Anwendung.%
-    \csname iffalse\endcsname}
+      \ In \autoref{sec:maincls.lists} auf \PageRefxmpl{maincls.env.enumerate}
+      finden Sie ein Beispiel für die Anwendung.%
+      \csname iffalse\endcsname}
     \begin{Example}
       \phantomsection\xmpllabel{env.enumerate}%
       Verkürzen wir das vorherige Beispiel und verwenden statt der
@@ -298,9 +332,9 @@
     \end{Example}%
     \ExampleEndFix
   \fi
-  % 
+  %
   \EndIndexGroup
-  
+
 
   \begin{Declaration}
     \begin{Environment}{description}\labelsuffix[description]
@@ -359,13 +393,13 @@
       der Seitenstile. Der Quelltext dazu lautet beispielsweise:
 \begin{lstcode}
   \begin{description}
-    \item[empty] ist der Seitenstil, bei dem Kopf- 
+    \item[empty] ist der Seitenstil, bei dem Kopf-
       und Fußzeile vollständig leer bleiben.
-    \item[plain] ist der Seitenstil, bei dem 
+    \item[plain] ist der Seitenstil, bei dem
       keinerlei Kolumnentitel verwendet wird.
-    \item[headings] ist der Seitenstil für 
+    \item[headings] ist der Seitenstil für
       automatische Kolumnentitel.
-    \item[myheadings] ist der Seitenstil für 
+    \item[myheadings] ist der Seitenstil für
       manuelle Kolumnentitel.
   \end{description}
 \end{lstcode}
@@ -384,7 +418,7 @@
       \end{ShowOutput}
     \end{Example}%
   \fi
-  % 
+  %
   \EndIndexGroup%
 \fi
 
@@ -465,12 +499,12 @@ Schriftumschaltung statt.%
   \setkomafont{labelinglabel}{\ttfamily}
   \setkomafont{labelingseparator}{\normalfont}
   \begin{labeling}[~--]{myheadings}
-    \item[empty] 
+    \item[empty]
       Seitenstil für leere Seiten ohne Kopf und Fuß
-    \item[plain] 
-      Seitenstil für Kapitelanfänge ganz ohne 
+    \item[plain]
+      Seitenstil für Kapitelanfänge ganz ohne
       Kolumnentitel
-    \item[headings] 
+    \item[headings]
       Seitenstil für automatische Kolumnentitel
     \item[myheadings]
       Seitenstil für manuelle Kolumnentitel
@@ -481,12 +515,12 @@ Schriftumschaltung statt.%
       \setkomafont{labelinglabel}{\ttfamily}
       \setkomafont{labelingseparator}{\normalfont}
       \begin{labeling}[~--]{myheadings}
-      \item[empty] 
+      \item[empty]
         Seitenstil für leere Seiten ohne Kopf und Fuß
-      \item[plain] 
-        Seitenstil für Kapitelanfänge ganz ohne 
+      \item[plain]
+        Seitenstil für Kapitelanfänge ganz ohne
         Kolumnentitel
-      \item[headings] 
+      \item[headings]
         Seitenstil für automatische Kolumnentitel
       \item[myheadings]
         Seitenstil für manuelle Kolumnentitel
@@ -563,10 +597,10 @@ Schriftumschaltung statt.%
       Bei einem sehr langen Vers wie:
 \begin{lstcode}
   \begin{verse}
-    Der Philosoph wie der Hausbesitzer hat 
-    immer Reparaturen.\\* 
+    Der Philosoph wie der Hausbesitzer hat
+    immer Reparaturen.\\*
     \bigskip
-    Wer dir sagt, er hätte noch nie gelogen, 
+    Wer dir sagt, er hätte noch nie gelogen,
     dem traue nicht, mein Sohn.
   \end{verse}
 \end{lstcode}
@@ -624,7 +658,7 @@ Schriftumschaltung statt.%
     \end{Example}%
     \vskip -1\ht\strutbox plus .75\strutbox% Ende Beispiel + Beschreibung
   \fi
-  % 
+  %
   \EndIndexGroup
 
 
@@ -690,10 +724,10 @@ Schriftumschaltung statt.%
   \documentclass[paper=a5,pagesize]{scrartcl}
   \usepackage[ngerman]{babel}
   \begin{document}
-  Ein kleines Beispiel für eine Anekdote, die sich 
+  Ein kleines Beispiel für eine Anekdote, die sich
   einst in Schwaben zugetragen haben soll:
   \begin{quotation}
-    Es klingelt an der Tür eines Pfarrhauses in 
+    Es klingelt an der Tür eines Pfarrhauses in
     Stuttgart. Als die Haushälterin öffnet, steht
     ein unrasierter Mann in reichlich schäbigem
     Mantel vor der Tür und hält seine Strickmütze
@@ -701,10 +735,10 @@ Schriftumschaltung statt.%
 
     "`Gute Frau,"' verkündet der Mann in gequältem
     Ton, doch bestem Hochdeutsch,
-    "`ich habe seit drei Tagen nichts mehr 
+    "`ich habe seit drei Tagen nichts mehr
     gegessen."'
 
-    Die Frau schüttelt mitleidig den Kopf und 
+    Die Frau schüttelt mitleidig den Kopf und
     entgegnet im Brustton vollster Überzeugung:
 
     "`Guda Moh, Sie missat sich halt zwinga!"'
@@ -718,18 +752,18 @@ Schriftumschaltung statt.%
             in Schwaben zugetragen haben soll:
           \fi
           \begin{quotation}
-            Es klingelt an der Tür eines Pfarrhauses in 
-            Stuttgart. Als die Haushälterin öffnet, steht ein 
+            Es klingelt an der Tür eines Pfarrhauses in
+            Stuttgart. Als die Haushälterin öffnet, steht ein
             unrasierter Mann in reichlich schäbigem
             Mantel vor der Tür und hält seine Strickmütze in
             der Hand.
 
             "`Gute Frau,"' verkündet der Mann in gequältem Ton,
-            doch bestem Hochdeutsch, 
+            doch bestem Hochdeutsch,
             \iffalse% Umbruchkorrekturtext
-              während er verlegen von einem Bein auf das andere wechselt, 
+              während er verlegen von einem Bein auf das andere wechselt,
             \fi
-            "`ich habe 
+            "`ich habe
             seit drei Tagen nichts mehr gegessen."'
 
             Die Frau schüttelt mitleidig den Kopf und entgegnet
@@ -752,7 +786,7 @@ Schriftumschaltung statt.%
             schäbigem Mantel vor der Tür und hält seine Strickmütze in der Hand.
 
             "`Gute Frau,"' verkündet der Mann in gequältem Ton, doch bestem
-            Hochdeutsch, 
+            Hochdeutsch,
             \iffalse% Umbruchkorrekturtext
               während er verlegen von einem Bein auf das andere wechselt,
             \fi
@@ -764,10 +798,10 @@ Schriftumschaltung statt.%
             "`Guda Moh, Sie missat sich halt zwinga!"'
           \end{quote}
         \end{ShowOutput}
-        % 
+        %
       \end{Example}%
     \fi
-    % 
+    %
     \EndIndexGroup
 \fi
 
@@ -898,10 +932,10 @@ Erklärungen zu den Anweisungen
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

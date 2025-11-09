@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlttr2-de.tex
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   https://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlttr2-de.tex}%
-                 [$Date: 2023-04-25 09:00:44 +0200 (Tue, 25 Apr 2023) $
+                 [$Date: 2025-09-05 12:23:59 +0200 (Fri, 05 Sep 2025) $
                   KOMA-Script guide (chapter: scrlttr2)]
 
 \chapter{Briefe mit Klasse \Class{scrlttr2} oder Paket \Package{scrletter}}
@@ -861,7 +861,7 @@ Anweisung auch verwenden, wenn man einer \PName{Länge} den negativen Wert
 einer \PName{Pseudolänge} zuweisen will. %
 \iffalse % Umbruchkorrektur
   Als \PName{Faktor} kann dann wahlweise ein Minuszeichen oder \PValue{-1}
-  verwendet werden. 
+  verwendet werden.
 %
 \else %
   \PName{Faktor} ist dann \PValue{-1}.
@@ -1606,7 +1606,7 @@ bestimmt. Für die Position der mittleren Faltmarke ist Pseudolänge
 Faltmarke \PLength{bfoldmarkvpos} zuständig. Mit der
 Locher-\Index{Lochermarke} oder Seitenmittenmarke kommt noch eine weitere
 horizontale Marke dazu. Diese wird jedoch immer in der vertikalen Seitenmitte
-platziert. 
+platziert.
 \iffalse% Umbruchkorrekturtext!
 Da ihre vertikale Position also nicht konfigurierbar ist, existiert
 auch keine Pseudolänge dafür.
@@ -1985,9 +1985,9 @@ der Linie %
 \EndIndexGroup
 %
 \begin{Example}
-  Geben wir nun dem Absender 
+  Geben wir nun dem Absender
   \iffalse % Umbruchkorrektur
-  aus den bisherigen Beispielen 
+  aus den bisherigen Beispielen
   \fi %
   einen Namen.
   \lstinputcode[xleftmargin=1em]{letter-example-08-de.tex}
@@ -2029,11 +2029,11 @@ der Linie %
   \iffalse % Umbruchkorrektur
   Im Vergleich dazu ist links daneben das gleiche Beispiel noch einmal mit dem
   einfachen Briefkopf und ohne Reaktion auf die zusätzliche Option.
-  % 
+  %
   \else %
   Links steht zum Vergleich ein Beispiel mit dem einfachen Briefkopf.
   %
-  \fi 
+  \fi
   %
   \begin{figure}
     \centering
@@ -2389,7 +2389,7 @@ Mit der Option \Option{addrfield} kann gewählt werden, ob ein Anschriftfeld
 gesetzt werden soll oder nicht. Voreingestellt\textnote{Voreinstellung} ist
 mit \PValue{true} die Verwendung eines Anschriftfeldes.  Die Option versteht
 die in \autoref{tab:\LabelBase.addrfield}\ChangedAt{v3.03}{\Class{scrlttr2}}
-%, \autopageref{tab:\LabelBase.addrfield} 
+%, \autopageref{tab:\LabelBase.addrfield}
 angegebenen Werte für den \PName{Modus}.  Bei den Werten \PValue{true},
 \PValue{topaligned}\ChangedAt{v3.17}{\Class{scrlttr2}\and
   \Package{scrletter}}, \PValue{PP} und \PValue{backgroundimage} werden Name
@@ -2519,10 +2519,10 @@ verfügbaren Platz gesetzt.
     \toprule
     Element & Voreinstellung \\
     \midrule
-    \DescRef{\LabelBase.fontelement.addressee}\IndexFontElement{addressee} & 
+    \DescRef{\LabelBase.fontelement.addressee}\IndexFontElement{addressee} &
     \\
     \ChangedAt{v3.39}{\Class{scrlttr2}}%
-    \DescRef{\LabelBase.fontelement.backaddress}\IndexFontElement{backaddress} & 
+    \DescRef{\LabelBase.fontelement.backaddress}\IndexFontElement{backaddress} &
     \DescRef{\LabelBase.cmd.maybesffamily}\IndexCmd{maybesffamily}%
     \\
     \DescRef{\LabelBase.fontelement.PPdata}\IndexFontElement{PPdata} &
@@ -2539,11 +2539,11 @@ verfügbaren Platz gesetzt.
     \Macro{fontsize}\PParameter{24.88pt}\PParameter{24.88pt}%
     \Macro{selectfont}%
     \\
-    \DescRef{\LabelBase.fontelement.specialmail}\IndexFontElement{specialmail} & 
+    \DescRef{\LabelBase.fontelement.specialmail}\IndexFontElement{specialmail} &
     \\
-    \DescRef{\LabelBase.fontelement.toaddress}\IndexFontElement{toaddress} & 
+    \DescRef{\LabelBase.fontelement.toaddress}\IndexFontElement{toaddress} &
     \\
-    \DescRef{\LabelBase.fontelement.toname}\IndexFontElement{toname} & 
+    \DescRef{\LabelBase.fontelement.toname}\IndexFontElement{toname} &
     \\
     \bottomrule
   \end{tabular}
@@ -2981,7 +2981,7 @@ wird von \KOMAScript{} nicht genutzt.
     \begin{captionbeside}[{Beispiel: Brief mit erweitertem Absender, Logo,
         Anschrift, Absenderergänzung, Anrede, Text, Grußfloskel,
         Signatur, Postskriptum, Anlagen, Verteiler und Lochermarke}]{Ergebnis
-        eines kleinen Briefes mit erweitertem Absender, Logo, 
+        eines kleinen Briefes mit erweitertem Absender, Logo,
         Anschrift, Absenderergänzung, Anrede, Text, Grußfloskel, Signatur,
         Postskriptum, Anlagen, Verteiler und Lochermarke (das Datum entstammt
         den Voreinstellungen für DIN-Briefe)}[l]
@@ -3353,7 +3353,7 @@ se %
 Breite richtet sich \iffree{dann }{}nach der Einstellung der Option
 \DescRef{\LabelBase.option.refline}\important{\DescRef{\LabelBase.option.refline}}%
 \IndexOption{refline~=\PName{Einstellung}} (siehe
-\DescPageRef{\LabelBase.option.refline}). Gleichzeitig wird 
+\DescPageRef{\LabelBase.option.refline}). Gleichzeitig wird
 \PLength{refhpos} entsprechend der Option gesetzt. Bei
 \OptionValueRef{scrlttr2}{refline}{wide}%
 \IndexOption{refline~=\textKValue{wide}} wird die Geschäftszeile zentriert,
@@ -3502,7 +3502,7 @@ werden.
       Name               & Bezeichnung \\
       \midrule
       \Variable{subject} & \DescRef{\LabelBase.cmd.usekomavar*}\PParameter{subjectseparator}%
-                           \texttt{\%} \\ 
+                           \texttt{\%} \\
                          & \texttt{\quad}%
                            \DescRef{\LabelBase.cmd.usekomavar}\PParameter{subjectseparator} \\
       \Variable{subjectseparator} & \DescRef{scrlttr2-experts.cmd.subjectname} \\
@@ -3654,7 +3654,7 @@ der Voreinstellung\textnote{Voreinstellung} wird daher in der Regel kein
 weiterer Abstand an dieser Stelle eingefügt. Der Abstand nach dem Betreff
 beträgt in der Voreinstellung von Klasse und Paket zwei Zeilen.%
 \EndIndexGroup
-% 
+%
 \EndIndexGroup
 
 
@@ -3678,6 +3678,7 @@ Erläuterung oder Klartext der Unterschrift gesetzt.%
 
 \begin{Declaration}
   \Variable{signature}
+  \Macro{sigspace}
 \end{Declaration}
 Die Variable \Variable{signature}\Index{Signatur} nimmt eine Art Erläuterung
 zur Unterschrift\Index{Unterschrift} auf. Ihr \PName{Inhalt} ist mit
@@ -3685,13 +3686,20 @@ zur Unterschrift\Index{Unterschrift} auf. Ihr \PName{Inhalt} ist mit
 solche Erläuterung kann auch mehrzeilig sein. Die einzelnen Zeilen sollten
 dann mit doppeltem Backslash voneinander getrennt
 werden. Absätze\textnote{Achtung!} innerhalb der Erläuterung sind jedoch nicht
-gestattet.%
-%
+gestattet.
+
+Bei\ChangedAt{v3.44}{\Class{scrlttr2}\and \Package{scrletter}} Briefen mit
+mehreren Unterzeichners können die einzelnen Signaturen innerhalb der
+Variablen \Variable{signature} mit \Macro{and} voneinander getrennt
+werden. Sie werden dann blockweise nebeneinander gesetzt. Zwischen den
+einzelnen Signaturen wird jeweils \Macro{sigspace} eingefügt. Dieses ist mit
+\Macro{quad} also einem horizontalen Abstand von einem Geviert voreingestellt.%
 \EndIndexGroup
 
 
 \begin{Declaration}
   \Macro{raggedsignature}
+  \Macro{sigalign}
 \end{Declaration}
 Grußfloskel\Index{Gruss=Gruß}\Index{Signatur} und Erläuterung der
 Unterschrift\Index{Unterschrift} werden innerhalb einer gemeinsamen Box
@@ -3704,15 +3712,18 @@ Wo genau diese Box platziert wird, ist durch die Pseudolängen
 (siehe \DescPageRef{\LabelBase.plength.sigindent}) bestimmt.  Durch den Befehl
 \Macro{raggedsignature} wird die Ausrichtung innerhalb der Box bestimmt. In
 den vordefinierten\textnote{Voreinstellung} \File{lco}-Dateien ist die
-Anweisung entweder auf \Macro{centering} oder
-auf \Macro{raggedright} (nur \Option{KOMAold}) gesetzt. Um innerhalb der Box
-beispielsweise eine linksbündige oder rechtsbündige Ausrichtung zu erhalten,
-kann der Befehl in gleicher Weise umdefiniert werden wie
-\DescRef{maincls.cmd.raggedsection} (siehe %
-\iffalse % Umbruchkorrektur
-das entsprechende Beispiel in %
-\fi %
-\autoref{sec:maincls.structure}, \DescPageRef{maincls.cmd.raggedsection}).
+Anweisung entweder auf \Macro{centering} oder auf \Macro{raggedright} (nur
+\Option{KOMAold}) gesetzt. Um innerhalb der Box eine linksbündige, zentrierte
+oder rechtsbündige Ausrichtung zu erhalten, kann der Befehl mit
+\Macro{renewcommand} zu \Macro{raggedleft}, \Macro{centering} oder
+\Macro{raggedright} umdefiniert werden. Erfahrenen Anwender ist auch die
+Verwendung von \Macro{let}
+gestattet. Andere\ChangedAt{v3.44}{\Class{scrlttr2}\and \Package{scrletter}}
+Definitionen sind nur zulässig, wenn gleichzeitig \Macro{sigalign} definiert
+wird. In diesem Fall muss \Macro{sigalign} zu einer gültigen Spaltendefinition
+expandieren, beispielsweise \texttt{l}, \texttt{c}, \texttt{r} oder auch
+\texttt{p\{.5\Length{textwidth}\}}. \Macro{sigalign} ist maßgeblich für die
+Ausrichtung innerhalb einer Signatur, falls diese mehrzeilig ist.
 
 \begin{Example}
   Herr Musterfrau will sich nun wirklich wichtig machen und deshalb in der
@@ -3747,7 +3758,7 @@ das entsprechende Beispiel in %
   Elemente eines Briefes. Es kann jedoch sehr gut als allgemeines Muster
   dienen.%
 \else
-  \ExampleEndFix% Beispiel am Ende der Erklärung  
+  \ExampleEndFix% Beispiel am Ende der Erklärung
 \fi
 %
 \EndIndexGroup
@@ -3779,7 +3790,7 @@ einzufügen, wäre es also sinnvoll den Wert von \PLength{sigbeforevskip} und
 damit die Lücke zwischen Schlussgruß und Signatur zu verringern.%
 \fi%
 \EndIndexGroup
-% 
+%
 \EndIndexGroup
 
 
@@ -3801,6 +3812,7 @@ Genau wie der Briefkopf wird der Briefbogenfuß nicht über den Seitenstil%
 
 
 \begin{Declaration}
+  \OptionVName{shrinkfirstpage}{Ein-Aus-Wert}
   \OptionVName{enlargefirstpage}{Ein-Aus-Wert}
 \end{Declaration}
 \begin{Explain}
@@ -3808,25 +3820,40 @@ Genau wie der Briefkopf wird der Briefbogenfuß nicht über den Seitenstil%
   \iftrue % Umbruchkorrektur
     aufgrund der vielen Konsultationselemente, wie dem Briefkopf oder der
     Anschrift,
-    % 
+    %
   \fi %
   immer aus dem normalen Satzspiegel. Von \KOMAScript{} werden Mechanismen
   bereitgestellt, um die Höhe und vertikale Ausrichtung von Kopf und Fuß der
   ersten Seite unabhängig von den Folgeseiten zu bestimmen. Würde dadurch der
   Fuß der ersten Seite in den Textbereich\Index{Text>Bereich} ragen, so wird
   der Textbereich der ersten Seite automatisch mit Hilfe von
-  \Macro{enlargethispage}\IndexCmd{enlargethispage} verkleinert. 
+  \Macro{enlargethispage}\IndexCmd{enlargethispage} verkleinert.
 \end{Explain}
-Soll der Textbereich auch automatisch mit \Macro{enlargethispage} vergrößert
-werden, falls der Fuß der ersten Seite dies erlaubt, so kann das mit dieser
-Option erreicht werden. Es passt dann bestenfalls etwas mehr Text auf die
-erste Seite.  Siehe hierzu auch die Erklärung zur Pseudolänge
-\DescRef{\LabelBase.plength.firstfootvpos} auf
+Soll\ChangedAt{v3.48}{\Class{scrlttr2}\and \Package{scrletter}} der
+Textbereich nicht automatisch verkleiner werden, um Kollisionen von Text und
+Fuß zu verhindern, so kann dies mit \OptionValue{shrinkfirstpage}{false}%
+\important{\OptionValue{shrinkfirstpage}{false}} erreicht werden. Soll der
+Textbereich auch automatisch mit \Macro{enlargethispage} vergrößert werden,
+falls der Fuß der ersten Seite dies erlaubt, so kann das mit
+\OptionValue{enlargefirstpage}{true}%
+\important{\OptionValue{enlargefirstpage}{true}} erreicht werden. Es passt
+dann bestenfalls etwas mehr Text auf die erste Seite.  Siehe hierzu auch die
+Erklärung zur Pseudolänge \DescRef{\LabelBase.plength.firstfootvpos} auf
 \DescPageRef{\LabelBase.plength.firstfootvpos}. Als \PName{Ein-Aus-Wert} kann
 einer der Standardwerte für einfache Schalter aus
 \autoref{tab:truefalseswitch}, \autopageref{tab:truefalseswitch} verwendet
-werden. Voreingestellt\textnote{Voreinstellung} ist
-\PValue{false}.%
+werden.
+
+Seit\ChangedAt{v3.48}{\Class{scrlttr2}\and \Package{scrletter}} Version 3.48
+ist \KOMAScript{} außerdem etwas tolerant bei der Kollisionserkennung. Sollte
+die Verkleinerung oder die Vergrößerung geringer als \Length{maxdepth}
+ausfallen, so unterbleibt sie automatisch. \Length{maxdepth} wird vom Paket
+\Package{typearea} normalerweise auf die Hälfte von \Length{topskip}
+eingestellt. \Length{topskip} wiederum entspricht in der Regel der
+Grundschriftgröße und ist damit von Option
+\DescRef{\LabelBase.option.fontsize} abhängig. Bei \Class{scrlttr2} gilt dies
+nur, wenn nicht per Option \DescRef{\LabelBase.option.version}
+Kompatibilität zu einer früheren Version erzwungen wird.%
 \EndIndexGroup
 
 
@@ -3883,7 +3910,7 @@ Die \PName{Bezeichnung} der Variablen wird von \KOMAScript{} nicht genutzt.
   \iffalse % Umbruchkorrektunr
   Ich überlasse dem Leser dies als Übung.%
   \fi%
-  
+
   Will man eine Art Brief"|fuß als Gegengewicht zum Briefkopf verwenden, so
   kann dieser beispielsweise wie folgt definiert werden:
 \begin{lstcode}
@@ -4040,7 +4067,7 @@ Briefbogens, an. Der Wert stimmt in den vordefinierten \File{lco}-Dateien mit
 \EndIndexGroup
 %
 \EndIndexGroup
-% 
+%
 \EndIndexGroup
 
 \iffree{}{\clearpage}% Umbruchkorrektur
@@ -4315,7 +4342,7 @@ verschiedenen Seitenstilen unterschieden. Dagegen definiert
   \important{\OptionValueRef{scrlayer-scrpage}{automark}{false}}%
   \IndexOption{automark} übernimmt \PageStyle{letter} dagegen die Rolle von
   \DescRef{\LabelBase.pagestyle.myheadings}.
-  
+
   Durch\textnote{Achtung!} die Verwendung von
   \hyperref[cha:scrlayer-scrpage]{\Package{scrlayer-scrpage}} kann das
   veraltete Paket \Package{scrpage2}\IndexPackage{scrpage2} oder das mit
@@ -4358,7 +4385,7 @@ verschiedenen Seitenstilen unterschieden. Dagegen definiert
   Aktivierung von \DescRef{\LabelBase.pagestyle.letter} bis zum Ende des
   Briefes ist \PageStyle{plain} dann ein Alias für diesen Stil.
   \iffalse% Umbruchkorrektur (steht auch schon oben bei letter)
-  
+
   Durch\textnote{Achtung!}  die Verwendung von
   \hyperref[cha:scrlayer-scrpage]{\Package{scrlayer-scrpage}}%
   \IndexPackage{scrlayer-scrpage} kann das veraltete Pakete
@@ -4988,7 +5015,7 @@ Großbuchstaben zu verwenden.
   \end{letter}
 \end{lstcode}
   Achten Sie bitte darauf, dass Ihr \TeX-System auch auf die
-  \File{.adr}-Dateien zugreifen kann, da sonst eine Fehlermeldung 
+  \File{.adr}-Dateien zugreifen kann, da sonst eine Fehlermeldung
   von \Macro{input} verursacht wird. Entweder Sie legen die Brief-
   und Adressdateien im selben Verzeichnis an, oder Sie binden ein
   Adressverzeichnis fest in Ihr \TeX-System ein.
@@ -5036,19 +5063,19 @@ Datenbanksysteme möglich, solche Massenpostsendungen zu erstellen.
   \renewcommand*{\adrentry}[8]{%
     \begin{letter}{#2 #1\\#3}
       \opening{Liebe Vereinsmitglieder,}
-      unsere nächste Mitgliederversammlung findet am 
+      unsere nächste Mitgliederversammlung findet am
       Montag, dem 12.~August 2002, statt.
-      
+
       Folgende Punkte müssen besprochen werden...
       \closing{Petri Heil,}
     \end{letter}
   }
-  
+
   \input{mitglieder.adr}
   \end{document}
 \end{lstcode}
   Sind in Ihrer \File{adr}-Datei auch
-  \DescRef{\LabelBase.cmd.addrentry}-Anweisungen 
+  \DescRef{\LabelBase.cmd.addrentry}-Anweisungen
   enthalten, müssen Sie dafür eine entsprechende Definition vor dem
   Einladen der Adressdatei ergänzen:
 \begin{lstcode}
@@ -5082,11 +5109,11 @@ genutzt werden.
         \if #5m \opening{Lieber #2,} \fi
         \if #5w \opening{Liebe #2,} \fi
 
-        Leider mussten wir feststellen, dass du mit 
-        der Zahlung deiner Mitgliedsbeiträge im 
+        Leider mussten wir feststellen, dass du mit
+        der Zahlung deiner Mitgliedsbeiträge im
         Rückstand bist.
 
-        Wir möchten Dich bitten, den offenen Betrag 
+        Wir möchten Dich bitten, den offenen Betrag
         von #6~EUR auf das Vereinskonto einzuzahlen.
         \closing{Petri Heil,}
       \end{letter}
@@ -5213,13 +5240,13 @@ zugehörigen Anleitung zu entnehmen.%
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:
 
 %  LocalWords:  Paketoption Satzspiegels Briefklasse Seitenkopf Seitenfuß
 %  LocalWords:  Versandart Zentrierung Dokumenttitel Serienbriefen Seitenstil

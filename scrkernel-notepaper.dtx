@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-notepaper.dtx
-% Copyright (c) Markus Kohm, 2006-2023
+% Copyright (c) Markus Kohm, 2006-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-notepaper.dtx 4113 2024-06-07 08:20:20Z kohm $
+%%% From File: $Id: scrkernel-notepaper.dtx 4220 2025-09-05 12:10:03Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-06-07 10:20:20 +0200 (Fri, 07 Jun 2024) $
+  \filedate$Date: 2025-09-05 14:10:03 +0200 (Fri, 05 Sep 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4113 $
+  \filerevision$Revision: 4220 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-notepaper.dtx}
@@ -993,19 +993,27 @@
 % \subsection{Options of the typing area}
 %
 % \begin{option}{enlargefirstpage}
-% \changes{v2.8o}{2001/09/18}{added}
+%   \changes{v2.8o}{2001/09/18}{added}
 % \begin{macro}{\@enlargefpfalse,\@enlargefptrue,\if@enlargefp}
-% \changes{v2.8o}{2001/09/18}{added}
-% Usually the text at the notepaper is placed regarding the general typing
-% area. But if the position of the foot of the note paper is to high, the text
-% area is automatically shorten. Option \opt{firstpageenlarge} also provides
-% the opposite: enlarge the text area of the first page, if the foot of the
-% note paper is placed very low.
+%   \changes{v2.8o}{2001/09/18}{added}
+% \begin{option}{shrinkfirstpage}
+%   \changes{v3.48}{2025/09/05}{added}
+% \begin{macro}{\@shrinkfpfalse,\@shrinkfptrue,\if@shrinkp}
+%   Usually the text at the notepaper is placed regarding the general typing
+%   area. But if the position of the foot of the note paper is to high, with
+%   option \opt{shrinkfirstpage} the text area is automatically
+%   shorten. Option \opt{firstpageenlarge} also provides the opposite: enlarge
+%   the text area of the first page, if the foot of the note paper is placed
+%   very low.
 %    \begin{macrocode}
 %<*option>
 \KOMA@ifkey{enlargefirstpage}{@enlargefp}
+\KOMA@ifkey{shrinkfirstpage}{@shrinkfp}
+\@shrinkfptrue
 %</option>
 %    \end{macrocode}
+% \end{macro}^^A \if@shrinkfp
+% \end{option}^^A shrinkfirstpage
 % \end{macro}^^A \if@enlargefp
 % \end{option}^^A enlargefirstpage
 %
@@ -1796,7 +1804,7 @@
 %    \end{macrocode}
 % \end{pseudolength}
 % \begin{pseudolength}{refheight}
-% \changes{v3.27}{2019/05/03}{new}
+% \changes{v3.27}{2019/05/03}{added}
 % The height of the reference line, if it is used.
 %    \begin{macrocode}
 %<*package&willbe>
@@ -3187,7 +3195,22 @@
     \else
       \addtolength{\@tempdima}{-\paperheight}%
     \fi
-    \ifdim\@tempdima>\z@\enlargethispage{-\@tempdima}%
+%    \end{macrocode}
+% \changes{v3.48}{2025/09/05}{fix distance}
+% From \KOMAScript{} 3.48 we add some tolerance and also take the height of
+% the first footer line into account. Note, the footer of the first page does
+% not use any font element, so we can use \cs{ht}\cs{strutbox} here.
+%    \begin{macrocode}
+%<trace>   \typeout{TRACE enlargement \dimeval{-\@tempdima}}%
+%<class&!v4>    \expandafter\ifnum\scr@v@is@ge{3.48}%
+    \addtolength{\@tempdima}{-\ht\strutbox}%
+    \ifdim \@tempdima > -\maxdepth
+      \ifdim \@tempdima < \maxdepth
+        \@shrinkfpfalse\@enlargefpfalse
+      \fi
+    \fi
+%<class&!v4>    \fi
+    \ifdim\@tempdima>\z@\if@shrinkfp\enlargethispage{-\@tempdima}\fi%
     \else\if@enlargefp\enlargethispage{-\@tempdima}\fi\fi
   }%
 }
@@ -3863,16 +3886,17 @@
           \if@tempswa
             \ifnum \@datepos=1 \@set@reffield{date}\fi%
 %    \end{macrocode}
-% From version~2.97c also test, of the font of the reference line is too big.
+%   From version~2.97c also test, of the font of the reference line is too big.
+%   \changes{v3.46}{2025/07/28}{\cs{strutbox} replaced by \cs{strut}}
 %    \begin{macrocode}
-            \sbox\z@{\usekomafont{refname}\strutbox}%
+            \sbox\z@{\usekomafont{refname}\strut}%
             \ifdim\ht\z@>\ht\strutbox
 %<class>              \ClassWarningNoLine{scrlttr2}{%
 %<package>              \PackageWarningNoLine{scrletter}{%
                 Font element `refname' should not be larger than
                 \string\normalsize!}%
             \fi
-            \sbox\z@{\usekomafont{refvalue}\strutbox}%
+            \sbox\z@{\usekomafont{refvalue}\strut}%
             \ifdim\ht\z@>\ht\strutbox
 %<class>              \ClassWarningNoLine{scrlttr2}{%
 %<package>              \PackageWarningNoLine{scrletter}{%
@@ -4573,6 +4597,10 @@
 % \changes{v3.25}{2017/11/15}{\cs{unskip}\cs{strut} replaced by
 % \cs{scr@endstrut}}
 % \changes{v3.37}{2022/06/09}{spurious space removed}
+% \changes{v3.44}{2025/05/28}{support for multiple signatures added}
+% \changes{v3.45}{2025/06/04}{issue with \pkg{array} not expanding the column
+%   definition fixed}
+% \changes{v3.45}{2025/06/04}{test adapted for \pkg{ragged2e}}
 % Sets not only the closing text, that is given as argument, but also the
 % signature.
 % \begin{macro}{\presig@skip}
@@ -4600,28 +4628,109 @@
 % \changes{v3.17}{2014/02/19}{removed}
 % \end{macro}^^A \@@xtrimtempa,\@xtrimtempa,\@tempdimaismaxwidthof
 %    \begin{macrocode}
-\newcommand*{\closing}[1]{{%
-    \setparsizes{\z@}{\z@}{\z@ plus 1fil}\par@updaterelative\nobreak\par
-    \nobreak\vskip\baselineskip
-    \stopbreaks\noindent
-    \settowidth{\@tempdima}{%
-      \begin{tabular}{@{}l@{}}
-        #1\tabularnewline
-        \usekomavar{signature}\tabularnewline
-      \end{tabular}%
-    }%
-    \setlength{\@tempdimb}{\hsize}%
-    \addtolength{\@tempdimb}{-\useplength{sigindent}}%
-    \ifdim\@tempdima>\@tempdimb\setlength{\@tempdima}{\@tempdimb}\fi
-    \hspace{\useplength{sigindent}}%
-    \parbox{\@tempdima}{\raggedsignature\strut\ignorespaces
-      #1\ifhmode\scr@endstrut\\[\useplength{sigbeforevskip}]
-        \else\vskip \useplength{sigbeforevskip}\fi
-      \strut\ignorespaces
-      \usekomavar{signature}\ifhmode\scr@endstrut\fi}}\par
-  \nobreak\vskip\baselineskip
+\ExplSyntaxOn
+\newcommand*{\closing}[1]{%
+  {%
+    \ifx\sigalign\@empty
+      \tl_if_in:nVTF { \raggedright\LaTeXraggedright } \raggedsignature
+        { \tl_set:Nn \sigalign l }
+        {
+          \tl_if_in:nVTF { \raggedleft\LaTeXraggedleft } \raggedsignature
+            { \tl_set:Nn \sigalign r }
+            {
+              \tl_if_in:nVTF { \centering\LaTeXcentering } \raggedsignature
+                { \tl_set:Nn \sigalign c }
+                {
+                  \tl_if_eq:NNTF \raggedsignature \raggedright
+                    { \tl_set:Nn \sigalign l }
+                    {
+                      \tl_if_eq:NNTF \raggedsignature \raggedleft
+                        { \tl_set:Nn \sigalign r }
+                        {
+                          \tl_if_eq:NNTF \raggedsignature \centering
+                            { \tl_set:Nn \sigalign c }
+                            {
+                              \tl_if_eq:NNTF \raggedsignature \LaTeXraggedright
+                                { \tl_set:Nn \sigalign l }
+                                {
+                                  \tl_if_eq:NNTF \raggedsignature \LaTeXraggedleft
+                                    { \tl_set:Nn \sigalign r }
+                                    {
+                                      \tl_if_eq:NNTF \raggedsignature \LaTeXcentering
+                                        { \tl_set:Nn \sigalign c }
+                                        {
+%<class>                                          \ClassWarning{scrlttr2}{
+%<package>                                          \PackageWarning{scrletter}{
+                                            unexpected~definition~of~
+                                            \string\raggedsignature.
+                                            \MessageBreak
+                                            Using~\string\sigalign=l
+                                          }
+                                          \tl_set:Nn \sigalign l
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    \fi
+    \cs_set:Npn \and
+      {
+        \end{tabular}\sigspace
+        \rule[-\dp\strutbox]
+          {0pt}{\dimeval{\baselineskip+\useplength{sigbeforevskip}}}
+        \exp_last_unbraced:Ne\begin{{tabular}[t]{@{}\sigalign @{}}}%\end
+      }%
+    \setparsizes{\z@}{\z@}{\z@ plus 1fil}\par@updaterelative
+    \par\nobreak\vskip\baselineskip
+    \dim_set:Nn \l_tmpa_dim {\linewidth-\useplength{sigindent}}
+    \sbox \l_tmpa_box { #1 }
+    \sbox \l_tmpb_box
+      {
+        \exp_last_unbraced:Ne\begin{{tabular}[t]{@{}\sigalign @{}}}
+          \usekomavar{signature}\ifhmode \scr@endstrut\fi
+        \end{tabular}
+      }
+    \dim_compare:nNnT { \l_tmpa_dim } > { \box_wd:N \l_tmpa_box }
+      {
+        \dim_compare:nNnT { \l_tmpa_dim } > { \box_wd:N \l_tmpb_box }
+          {
+            \dim_compare:nNnTF
+              { \box_wd:N \l_tmpa_box } > { \box_wd:N \l_tmpb_box }
+              { \dim_set:Nn \l_tmpa_dim { \box_wd:N \l_tmpa_box } }
+              { \dim_set:Nn \l_tmpa_dim { \box_wd:N \l_tmpb_box } }
+          }
+      }
+    \hskip\useplength{sigindent}
+    \parbox[t]{\l_tmpa_dim}{
+      \raggedsignature
+      \ignorespaces #1\par
+      \rule[-\dp\strutbox]
+        {0pt}{\dimeval{\baselineskip+\useplength{sigbeforevskip}}}
+      \exp_last_unbraced:Ne\begin{{tabular}[t]{@{}\sigalign @{}}}
+        \usekomavar{signature}%
+      \end{tabular}
+    }
+  }
+  \par\nobreak\vskip\baselineskip
 }
+\ExplSyntaxOff
 %    \end{macrocode}
+% \begin{command}{\sigalign,\sigspace}
+%   \changes{v3.44}{2025/05/28}{added}
+%   These are relevant for multiple signatures. \cs{sigalign} is the alignment
+%   character for the tabular. By default it is empty, which means it is
+%   defined by \cs{raggedsignature}. But users are allowed to explicitly set
+%   it to ``l'', ``r'' or ``c''. \cs{sigspace} is the space added between the
+%   tabulars/signatures. The default is 1 quad.
+%    \begin{macrocode}
+\newcommand*{\sigalign}{}
+\newcommand*{\sigspace}{\quad}
+%    \end{macrocode}
+% \end{command}
 % \end{command}
 %
 % \begin{command}{\ps}

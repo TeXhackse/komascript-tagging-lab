@@ -1,6 +1,6 @@
 % ======================================================================
 % tocbasic-de.tex
-% Copyright (c) Markus Kohm, 2002-2024
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{tocbasic-de.tex}
-                 [$Date: 2024-06-30 20:35:47 +0200 (Sun, 30 Jun 2024) $
+                 [$Date: 2025-10-07 12:36:27 +0200 (Tue, 07 Oct 2025) $
                   KOMA-Script guide (package tocbasic)]
 
 \chapter{Verzeichnisse verwalten mit Hilfe von \Package{tocbasic}}
@@ -128,7 +128,7 @@ und als \PName{Besitzer} zu speichern. Dies\textnote{Achtung!} funktioniert
 nur, wenn \Macro{addtotoclist} während des Ladens der Klasse oder des Pakets
 aufgerufen wird. Es funktioniert nicht, wenn \Macro{addtotoclist} erst später
 aufgrund der Verwendung einer Anweisung durch den Benutzer aufgerufen wird. In
-diesem Fall wird ein leerer \PName{Besitzer} eingetragen. 
+diesem Fall wird ein leerer \PName{Besitzer} eingetragen.
 
 Beachten\textnote{Achtung!} Sie, dass ein leeres Argument \PName{Besitzer}
 nicht immer das Gleiche ist wie das Weglassen des kompletten optionalen
@@ -168,7 +168,7 @@ einen leeren \PName{Besitzer} ergeben.
 \begin{lstcode}
   \newcommand*{\createnewlistofsomething}[1]{%
     \addtotoclist[bar.sty]{#1}%
-    % Weitere Aktionen, um dieses Verzeichnis 
+    % Weitere Aktionen, um dieses Verzeichnis
     % verfügbar zu machen
   }
 \end{lstcode}
@@ -179,7 +179,7 @@ einen leeren \PName{Besitzer} ergeben.
   dann wird die Dateierweiterung »\PValue{foo}« ebenfalls mit dem Besitzer
   »\PValue{bar.sty}« zur Liste der bekannten Dateierweiterungen hinzugefügt
   oder aber ein Fehler gemeldet, wenn diese Dateierweiterung bereits verwendet
-  wird. 
+  wird.
 \end{Example}
 
 Sie können als \PName{Besitzer} angeben, was immer Sie wollen, aber es sollte
@@ -234,7 +234,7 @@ Dateierweiterung, die gerade hinzugefügt wird.
     \expandafter{\@currext}}
 \end{lstcode}
   um jede Dateierweiterung zu der in \Package{tocbasic} vorhandenen
-  Erweiterung für das Paket \Package{babel} hinzuzufügen. 
+  Erweiterung für das Paket \Package{babel} hinzuzufügen.
 \end{Example}
 
 Die\textnote{Achtung!} zweimalige Verwendung von \Macro{expandafter} ist im
@@ -534,7 +534,7 @@ dieser Anweisungen zu einer Fehlermeldung der Art
 \begin{lstoutput}
   ! No room for a new \write .
   \ch@ck ...\else \errmessage {No room for a new #3}
-                                                    \fi   
+                                                    \fi
 \end{lstoutput}
 führen, wenn keine Schreibdateien mehr zur Verfügung stehen. Abhilfe kann in
 diesem Fall das Laden von Paket
@@ -731,7 +731,7 @@ Komma getrennte Folge von \PName{Eigenschaften}. Das Paket
   \KOMAScript-Klassen setzen diese Eigenschaft bei Verwendung der Option
   \OptionValueRef{maincls}{listof}{numbered}%
   \important{\OptionValueRef{maincls}{listof}{numbered}}%
-  \IndexOption{listof~=\textKValue{numbered}} für alle Dateierweiterungen mit 
+  \IndexOption{listof~=\textKValue{numbered}} für alle Dateierweiterungen mit
   dem Besitzer \Package{float}.
 \item[\PValue{numberline}] \ChangedAt{v3.12}{\Package{tocbasic}}%
   bedeutet, dass all diejenigen Einträge, die mit Hilfe der Anweisung
@@ -888,7 +888,7 @@ Eintragsebene ein numerischer Wert zugeordnet. Je höher dieser Wert, desto
 tiefer in der Hierarchie liegt die Ebene. Bei den Standardklassen hat die
 Ebene für Teile beispielsweise den Wert -1 und die Ebene für Kapitel den Wert
 0. Über den \LaTeX-Zähler \Counter{tocdepth} wird bestimmt, bis zu welcher
-Ebene Einträge im Verzeichnis ausgegeben werden. 
+Ebene Einträge im Verzeichnis ausgegeben werden.
 
 Bei \Class{book} ist \Counter{tocdepth} beispielsweise mit 2 voreingestellt,
 es werden also die Einträge der Ebenen \PValue{part}, \PValue{chapter},
@@ -998,20 +998,20 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
                                 \PValue{indent}
                               }
                               (3.8em,0);
-        \draw[|-|,color=gray,overlay] (3.8em,\baselineskip) -- 
+        \draw[|-|,color=gray,overlay] (3.8em,\baselineskip) --
                               node [anchor=south,font=\small] {
                                 \PValue{numwidth}
                               }
                               (7em,\baselineskip);
-        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) -- 
-                              node [anchor=south,font=\small] { 
-                                \Macro{@tocrmarg} 
+        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) --
+                              node [anchor=south,font=\small] {
+                                \Macro{@tocrmarg}
                               }
                               (\linewidth-2.55em,\ht\strutbox);
-        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) -- 
-                              node [anchor=north,font=\small] { 
-                                \Macro{@pnumwidth} 
-                              } 
+        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) --
+                              node [anchor=north,font=\small] {
+                                \Macro{@pnumwidth}
+                              }
                               (\linewidth-1.55em,-\baselineskip);
       \end{tikzpicture}%
     }
@@ -1066,21 +1066,21 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
             \makebox[3em][l]{\large\bfseries I}%
             \large\bfseries
             Überschrift im Verzeichniseintragsstil \PValue{largetocline} mit
-            mehr als einer Zeile\hfill 
+            mehr als einer Zeile\hfill
             \makebox[0pt][l]{\normalsize\normalfont
               \makebox[1.55em][r]{\large\bfseries 1}}%
           }%
         };
-        \draw[|-|,color=gray] (0,\baselineskip) -- 
-                              node [anchor=south] { 3\,em } 
+        \draw[|-|,color=gray] (0,\baselineskip) --
+                              node [anchor=south] { 3\,em }
                               (3em,\baselineskip);
-        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) -- 
+        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) --
                               node [anchor=south] { \Macro{@pnumwidth} }
                               (\linewidth-1.55em,\ht\strutbox);
         \large\bfseries
-        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) -- 
-                              node [anchor=north,font=\normalfont\normalsize] { 
-                                \Macro{large}\Macro{@pnumwidth} 
+        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) --
+                              node [anchor=north,font=\normalfont\normalsize] {
+                                \Macro{large}\Macro{@pnumwidth}
                               }
                               (\linewidth-1.55em,-\baselineskip);
       \end{tikzpicture}%
@@ -1120,7 +1120,7 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
   Aufgrund der hohen Flexibilität kann dieser Stil prinzipiell die Stile
   \PValue{dottedtocline}, \PValue{undottedtocline} und \PValue{largetocline}
   ersetzen, bedarf dann jedoch teilweise eines höheren Aufwands bei der
-  Konfiguration. 
+  Konfiguration.
 
   \autoref{fig:\LabelBase.tocline} illustriert einige Längen-Eigenschaften des
   Stils. Die weiteren sind in \autoref{tab:\LabelBase.tocstyle.attributes}, ab
@@ -1134,10 +1134,10 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
         \coordinate (chapter) at ($(section)+(0,2\baselineskip)$);
         \coordinate (part)    at ($(chapter)+(0,2.4\baselineskip+1em)$);
 
-        \draw[color=lightgray] 
-          ($(part)+(0,2\baselineskip)$) -- 
+        \draw[color=lightgray]
+          ($(part)+(0,2\baselineskip)$) --
           (0,-2.5\baselineskip);
-        \draw[color=lightgray] 
+        \draw[color=lightgray]
           ($(part)+(\linewidth,2\baselineskip)$) --
           (\linewidth,-2.5\baselineskip);
 
@@ -1156,23 +1156,23 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
             \makebox[1.55em][r]{\bfseries 12}\large
           }%
         };
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           (part) --
           ($(part)+(3em,0)$)
           node [anchor=north east,font=\small] {
             \PValue{numwidth}
           };
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(part)+(\linewidth,\ht\strutbox)$)
-          node [anchor=north,font=\small] { 
-            ~\PValue{rightindent} 
+          node [anchor=north,font=\small] {
+            ~\PValue{rightindent}
           } --
           ($(part)+(\linewidth-2.55em,\ht\strutbox)$);
-        \draw[|-|,color=gray,overlay] 
-          ($(part)+(\linewidth,-\baselineskip)$) -- 
-          node [anchor=north,font=\small] { 
+        \draw[|-|,color=gray,overlay]
+          ($(part)+(\linewidth,-\baselineskip)$) --
+          node [anchor=north,font=\small] {
             \PValue{pagenumberwidth}
-          } 
+          }
           ($(part)+(\linewidth-1.55em,-\baselineskip)$);
         \node at (chapter) [anchor=west,inner sep=0,outer sep=0]
         {%
@@ -1193,19 +1193,19 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
             \PValue{beforeskip}
           }
           ($(part)+(3em,-\baselineskip)$);
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           (chapter) --
           ($(chapter)+(1.5em,0)$)
           node [anchor=north east,font=\small] {
             \PValue{numwidth}
           };
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(chapter)+(\linewidth,\ht\strutbox)$)
-          node [anchor=north,font=\small] { 
+          node [anchor=north,font=\small] {
             ~\PValue{rightindent}
           } --
           ($(chapter)+(\linewidth-2.55em,\ht\strutbox)$);
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(chapter)+(\linewidth,-\baselineskip)$)
           node [anchor=north west,font=\small] {
             \hspace*{-3.1em}\PValue{pagenumberwidth}
@@ -1239,29 +1239,29 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
             \makebox[1.55em][r]{12}%
           }%
         };
-        \draw[|-|,color=gray,overlay] 
-          ($(subsection)+(0,\ht\strutbox)$) -- 
+        \draw[|-|,color=gray,overlay]
+          ($(subsection)+(0,\ht\strutbox)$) --
           node [anchor=north,font=\small] {
             \PValue{indent}
           }
           ($(subsection)+(3.8em,\ht\strutbox)$);
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(subsection)+(3.8em,0)$) --
           ($(subsection)+(7em,0)$)
           node [anchor=north east,font=\small] {
             \PValue{numwidth}
           };
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(subsection)+(\linewidth,\ht\strutbox)$)
-          node [anchor=north,font=\small] { 
+          node [anchor=north,font=\small] {
             ~\PValue{rightindent}
           } --
           ($(subsection)+(\linewidth-2.55em,\ht\strutbox)$);
-        \draw[|-|,color=gray,overlay] 
-          ($(subsection)+(\linewidth,-\baselineskip)$) -- 
-          node [anchor=north,font=\small] { 
+        \draw[|-|,color=gray,overlay]
+          ($(subsection)+(\linewidth,-\baselineskip)$) --
+          node [anchor=north,font=\small] {
             \PValue{pagenumberwidth}
-          } 
+          }
           ($(subsection)+(\linewidth-1.55em,-\baselineskip)$);
       \end{tikzpicture}%
     }
@@ -1272,14 +1272,14 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
 \item[\PValue{toctext}]\ChangedAt{v3.27}{\Package{tocbasic}}%
   stellt eine Besonderheit dar. Während alle anderen Stile je Eintrag einen
   Absatz\important{\PValue{level}, \PValue{afterpar}, \PValue{beforeskip},
-    \PValue{entryformat},
-    \PValue{entrynumberformat}, \PValue{indent}, \PValue{numsep},
+    \PValaue{dynindent}, \PValue{entryformat}, \PValue{entrynumberformat},
+    \PValue{indent}, \PValue{indentfollows}, \PValue{numsep},
     \PValue{onendentry}, \PValue{onendlastentry}, \PValue{onstartentry},
     \PValue{onstartfirstentry}, \PValue{pagenumberformat},
     \PValue{prepagenumber}, \PValue{raggedright}, \PValue{rightindent}}
   erzeugen, wird hier für alle aufeinanderfolgenden Einträge dieses Stils nur
   ein einziger Absatz erzeugt.  Für die Konfigurierung stehen neben der
-  Standardeigenschaft \PValue{level} mit 14 weiteren Eigenschaften fast so
+  Standardeigenschaft \PValue{level} mit 16 weiteren Eigenschaften fast so
   viele Möglichkeiten wie bei \PValue{tocline} zur Verfügung. Dieser Stil ist
   aber zwingend darauf angewiesen, dass am Anfang aller anderen Stile und auch
   am Ende des Verzeichnisses ein noch nicht beendeter Absatz tasächlich
@@ -1317,20 +1317,20 @@ Derzeit werden von \Package{tocbasic} die folgenden Eintragsstile definiert:
           }%
           \raisebox{-\baselineskip}{\makebox[2.55em][r]{\bfseries 3}}%
         };
-        \draw[|-|,color=gray,overlay] (0,\baselineskip) -- 
+        \draw[|-|,color=gray,overlay] (0,\baselineskip) --
                               node [anchor=south,font=\small] {
                                 \PValue{numwidth}
                               }
                               (1.5em,\baselineskip);
-        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) -- 
-                              node [anchor=south,font=\small] { 
-                                \Macro{@tocrmarg} 
+        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) --
+                              node [anchor=south,font=\small] {
+                                \Macro{@tocrmarg}
                               }
                               (\linewidth-2.55em,\ht\strutbox);
-        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) -- 
-                              node [anchor=north,font=\small] { 
-                                \Macro{@pnumwidth} 
-                              } 
+        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) --
+                              node [anchor=north,font=\small] {
+                                \Macro{@pnumwidth}
+                              }
                               (\linewidth-1.55em,-\baselineskip);
       \end{tikzpicture}%
     }
@@ -1418,7 +1418,7 @@ angegebenen Einstellungen definiert.%
     \texttt{1em plus 1pt} verwendet. Ansonsten wird es für \PValue{section}
     wie für alle
     anderen Ebenen mit \texttt{0pt plus .2pt} initialisiert.
-    
+
     Im\ChangedAt{v3.31}{\Package{tocbasic}} Stil \PValue{toctext} wird der
     vertikale Abstand vor dem Absatz eingefügt, wenn es sich um den ersten
     Eintrag im Absatz handelt. Bei allen weiteren Einträgen des Absatzes wird
@@ -1450,9 +1450,10 @@ angegebenen Einstellungen definiert.%
     \ChangedAt{v3.31}{\Package{tocbasic}}%
     \PName{Schalter} ist einer der Werte für einfache Schalter aus
     \autoref{tab:truefalseswitch}, \autopageref{tab:truefalseswitch}. Ist der
-    Schalter beim Stil \PValue{tocline} aktiviert, gibt die Eigenschaft
-    \PValue{indent} nur noch einen Minimalwert an. Der Maximalwert wird durch
-    die Nummernbreite und den Einzug der via \Option{indentfollows}
+    Schalter beim Stil \PValue{tocline} oder
+    \PValue{toctext}\ChangedAt{v3.49}{\Package{tocbasic}} aktiviert, gibt die
+    Eigenschaft \PValue{indent} nur noch einen Minimalwert an. Der Maximalwert
+    wird durch die Nummernbreite und den Einzug der via \Option{indentfollows}
     vorgegebenen Ebenen bestimmt.%
   }%
   \entry{\OptionVName{dynnumwidth}{Schalter}}{%
@@ -1537,8 +1538,9 @@ angegebenen Einstellungen definiert.%
   }%
   \entry{\OptionVName{indentfollows}{Ebenenliste}}{%
     \ChangedAt{v3.31}{\Package{tocbasic}}%
-    Ist \Option{dynindent} beim Stil \PValue{tocline} gesetzt, so dient die
-    hier angegebene durch Komma separierte Liste an Ebenennamen dazu, den
+    Ist \Option{dynindent} beim Stil \PValue{tocline} oder
+    \PValue{toctext}\ChangedAt{v3.49}{\Package{tocbasic}} gesetzt, so dient
+    die hier angegebene durch Komma separierte Liste an Ebenennamen dazu, den
     tatsächlichen Einzug zu ermitteln. Dabei findet bei Ebenen, deren Name mit
     »\texttt{sub}« beginnt, eine Initialisierung mit dem Namen ohne diesen
     Präfix statt. Die \KOMAScript-Klassen setzen außerdem automatisch passende
@@ -1554,7 +1556,7 @@ angegebenen Einstellungen definiert.%
 
     Diese Eigenschaft ist für alle Stile zwingend und wird bei der
     Definition eines Stils automatisch definiert.
-    
+
     Bei den Stilen \PValue{tocline} und \PValue{toctext} findet für alle
     Eintragsebenen, deren Name mit »\texttt{sub}« beginnt, eine
     Initialisierung entsprechend dem um eins erhöhten Wert einer gleichnamigen
@@ -1714,9 +1716,8 @@ angegebenen Einstellungen definiert.%
   \entry{\OptionVName{pagenumberformat}{Befehl}}{%
     Über diese Eigenschaft kann die Formatierung der Seitenzahl des Eintrags
     verändert werden. Der dabei als Wert angegebene \PName{Befehl} hat genau
-    ein Argument zu erwarten. Font-Änderungen über \Option{entryformat}
-    erfolgen ausgehend von \Option{entryformat}, gefolgt von
-    \Macro{normalfont}\Macro{normalsize}.
+    ein Argument zu erwarten. Font-Änderungen erfolgen ausgehend von
+    \Option{entryformat}, gefolgt von \Macro{normalfont}\Macro{normalsize}.
 
     Initialisiert wird die Eigenschaft für die \PName{Eintragsebene}
     \PValue{part} mit der Ausgabe des übergebenen Arguments in
@@ -2139,7 +2140,7 @@ Anweisung zu einer Fehlermeldung der Art
 \begin{lstoutput}
   ! No room for a new \write .
   \ch@ck ...\else \errmessage {No room for a new #3}
-                                                    \fi   
+                                                    \fi
 \end{lstoutput}
 führen, wenn keine Schreibdateien mehr zur Verfügung stehen. Abhilfe kann in
 diesem Fall das Laden des Pakets
@@ -2350,7 +2351,7 @@ oder sonstigen Gliederungszählern ist. Dabei definiert \LaTeX{} auch gleich
 \Macro{theremarkbox} mit der Standardausgabe als arabische Zahl. Diese wird
 dann in der Definition der formatierten Ausgabe verwendet. Die formatierte
 Ausgabe wird wiederum als Gleitumgebungsnummer für die Verwendung in
-\DescRef{maincls.cmd.caption} definiert.
+\DescRef{\LabelBase.cmd.caption} definiert.
 
 Gleitumgebungen\textnote{Dateierweiterung} haben Verzeichnisse und diese haben
 eine Datei mit dem Namen \Macro{jobname} und einer Dateierweiterung.
@@ -2484,14 +2485,14 @@ Mit\ChangedAt{v3.06}{\Package{tocbasic}} dieser Anweisung wird in einem
 einzigen Schritt ein neues Verzeichnis, dessen Überschrift und die Bezeichnung
 für die Einträge unter Kontrolle von \Package{tocbasic} definiert. Optional
 können dabei gleichzeitig gleitende oder nicht gleitende Umgebungen definiert
-werden, innerhalb derer \DescRef{maincls.cmd.caption}%
-\important{\DescRef{maincls.cmd.caption}}\IndexCmd{caption} Einträge für
+werden, innerhalb derer \DescRef{\LabelBase.cmd.caption}%
+\important{\DescRef{\LabelBase.cmd.caption}}\IndexCmd{caption} Einträge für
 dieses neue Verzeichnis erzeugt. Auch die Erweiterungen
-\DescRef{maincls.cmd.captionabove}\important[i]{%
-  \DescRef{maincls.cmd.captionabove}\\
-  \DescRef{maincls.cmd.captionbelow}}, \DescRef{maincls.cmd.captionbelow} und
+\DescRef{\LabelBase.cmd.captionabove}\important[i]{%
+  \DescRef{\LabelBase.cmd.captionabove}\\
+  \DescRef{\LabelBase.cmd.captionbelow}}, \DescRef{\LabelBase.cmd.captionbelow} und
 \DescRef{maincls.env.captionbeside} aus den \KOMAScript-Klassen (siehe
-\autoref{sec:maincls.floats}, ab \DescPageRef{maincls.cmd.captionabove})
+\autoref{sec:maincls.floats}, ab \DescPageRef{\LabelBase.cmd.captionabove})
 können dann verwendet werden.
 
 \PName{Dateierweiterung} definiert dabei die Dateiendung der Hilfsdatei, die
@@ -2753,7 +2754,7 @@ möglich. Siehe dazu \autoref{sec:\LabelBase.tocstyle},
   überlassen werden, so kann Option \Option{floattype} \iffalse im Beispiel \fi
   entfallen. Wird zusätzlich die Option \Option{nonfloat} angegeben, wird
   außerdem eine nicht gleitende Umgebung \Environment{remarkbox-} definiert,
-  in der ebenfalls \DescRef{maincls.cmd.caption}\IndexCmd{caption} verwendet
+  in der ebenfalls \DescRef{\LabelBase.cmd.caption}\IndexCmd{caption} verwendet
   werden kann.
 
   Zum besseren Verständnis zeigt \autoref{tab:\LabelBase.comparison} eine
@@ -2777,25 +2778,25 @@ möglich. Siehe dazu \autoref{sec:\LabelBase.tocstyle},
         \end{tabular}
       & Optionen von \Macro{DeclareNewTOC} & Kurzbeschreibung \\[1ex]
       \midrule
-      \Environment{remarkbox} & \Environment{figure} 
-      & \Option{type}, \Option{float} 
+      \Environment{remarkbox} & \Environment{figure}
+      & \Option{type}, \Option{float}
       & Gleitumgebung des jeweiligen Typs.\\[1ex]
-      \Environment{remarkbox*} & \Environment{figure*} 
-      & \Option{type}, \Option{float} 
+      \Environment{remarkbox*} & \Environment{figure*}
+      & \Option{type}, \Option{float}
       & spaltenübergreifende Gleitumgebung des jeweiligen Typs \\[1ex]
-      \Counter{remarkbox} & \Counter{figure} 
-      & \Option{type}, \Option{float} 
-      & Zähler, der von \DescRef{maincls.cmd.caption} verwendet wird \\[1ex]
-      \Macro{theremarkbox} & \Macro{thefigure} 
-      & \Option{type}, \Option{float} 
+      \Counter{remarkbox} & \Counter{figure}
+      & \Option{type}, \Option{float}
+      & Zähler, der von \DescRef{\LabelBase.cmd.caption} verwendet wird \\[1ex]
+      \Macro{theremarkbox} & \Macro{thefigure}
+      & \Option{type}, \Option{float}
       & Anweisung zur Ausgabe des jeweiligen Zählers \\[1ex]
       \Macro{remarkboxformat} & \DescRef{maincls.cmd.figureformat}
       & \Option{type}, \Option{float}
       & Anweisung zur Formatierung des jeweiligen Zählers in der Ausgabe von
-        \DescRef{maincls.cmd.caption}\\[1ex]
+        \DescRef{\LabelBase.cmd.caption}\\[1ex]
       \Macro{remarkboxname} & \Macro{figurename}
       & \Option{type}, \Option{float}, \Option{name}
-      & Name, der im Label von \DescRef{maincls.cmd.caption} verwendet
+      & Name, der im Label von \DescRef{\LabelBase.cmd.caption} verwendet
         wird\\[1ex]
       \Macro{listofremarkboxes} & \DescRef{maincls.cmd.listoffigures}
       & \Option{types}, \Option{float}
@@ -2854,6 +2855,335 @@ zurecht kommt, das benötigt wird, um den ersten Buchstaben des Wertes von
 \Option{types} in Großbuchstaben zu wandeln. Besser ist natürlich die
 Verwendung eines aktuellen \Package{hyperref} mit einem aktuellen \LaTeX.%
 \EndIndexGroup%
+
+\section{Titel von (Gleit-)Umgebungen}
+\seclabel{caption}
+
+Wie\ChangedAt{v3.46}{\Package{tocbasic}} im vorherigen Abschnitt erklärt
+wurde, können mit der Anweisung \DescRef{\LabelBase.cmd.DeclareNewTOC} auch
+neue gleitende und nicht gleitende Umgebungen definiert werden, deren mit
+\DescRef{\LabelBase.cmd.caption} gesetzte Titel automatisch in das jeweils
+zugehörige Verzeichnisse eingetragen werden. Auch dafür bietet
+\Package{tocbasic} einige Erweiterungen.
+
+\textnote{Achtung!}Es wird darauf hingewiesen, dass alle in diesem Abschnitt
+beschriebenen Möglichkeiten zwingen eine \LaTeX-Version\textnote{\LaTeX{}
+  2022/06/01} ab 2022/06/01 benötigen. Mit älteren \LaTeX-Versionen sind diese
+Möglichkeiten daher \emph{nicht} verfügbar!
+
+\textnote{\Package{caption}}\IndexPackage{caption}%
+An dieser Stelle sei darauf hingewiesen, dass die in diesem Abschnitt
+dokumentierten Möglichkeiten derzeit auch bei Verwendung des
+\Package{caption}-Pakets funktionieren. Getestet wurde dies mit Version
+2023/08/05 v3.6o des \Package{caption}-Pakets. Generell wird jedoch nicht
+empfohlen, sich bei Verwendung irgend eines Pakets, das
+\DescRef{\LabelBase.cmd.caption} oder \DescRef{\LabelBase.cmd.captionof}
+bereitstellt oder verändert, oder bei Verwendung von Klassen, die
+\DescRef{\LabelBase.cmd.caption} in zu den Standardklassen oder den
+\KOMAScript-Klassen inkompatibler Weise bereitstellen, auf irgendeine der in
+diesem Abschnitt beschriebenen Möglichkeiten zu verlassen. Bei Verwendung des
+vorgenannten \Package{caption}-Pakets sollten beispielsweise stattdessen die in
+dessen Anleitung dokumentierten Möglichkeiten genutzt werden. Siehe dazu
+\cite{package:caption}.
+
+\begin{Declaration}
+  \OptionValue{captionposition}{top}
+  \OptionValue{captionposition}{bottom}
+  \OptionVName{captionabove}{Ein-Aus-Wert}
+  \OptionVName{captionbelow}{Ein-Aus-Wert}
+\end{Declaration}
+In der Voreinstellung werden die Abstände über und unter den Titeln so
+gewählt, dass sie für Titel unter dem jeweiligen
+Objekt, beispielsweise unter eine Abbildung oder einer Tabelle passen. Dies
+entspricht der Einstellung \OptionValue{captionposition}{bottom} oder den
+synonymen Einstellungen \OptionValue{captionabove}{false}
+oder \OptionValue{captionbelow}{true}. Mit den Einstellungen
+\OptionValue{captionposition}{top}, \OptionValue{captionabove}{true} oder
+\OptionValue{captionbelow}{false} kann man die Abstände aber auch automatisch
+vertauschen, so dass sie für Titel über dem Objekt passen. Die Wahl erfolgt
+innerhalb des Aufrufs von \DescRef{\LabelBase.cmd.caption} beziehungsweise
+\DescRef{\LabelBase.cmd.captionof} unter der Voraussetzung, dass der
+\Macro{caption}-Patch aktiviert wurde. Siehe dazu Option
+\DescRef{\LabelBase.option.enablepatch}%
+\important{\OptionValue{enabelpatch=caption}}%
+\IndexOption{enablepatch~caption} in
+\autoref{sec:\LabelBase.standardclasses} ab
+\autopageref{sec:\LabelBase.standardclasses}.
+
+Es ist zu beachten, dass es sich bei diesen Optionen nicht um
+\KOMAScript-Optionen handelt. Sie können also \emph{nicht} mit
+\DescRef{maincls.cmd.KOMAoptions} oder \DescRef{maincls.cmd.KOMAoption}
+gesetzt werden. Stattdessen sind sie beim Laden von \Package{tocbasic} als
+optionales Argument von \Macro{usepackage} -- bzw. \Macro{RequirePackage} für
+Klassen- und Paketautoren -- anzugeben. Zum Ausgleich ist es möglich, das
+Paket mehrfach mit unterschiedlichen Optionen zu laden. Darüber hinaus kann
+man sie innerhalb des Dokuments jederzeit per
+\verb|\SetKeys[tocbasic]|\Parameter{Optionen} setzen.
+
+Als \PName{Ein-Aus-Wert} sind nur \PValue{true}%
+\IndexOption[indexmain]{captionabove~=\KValue{true}}%
+\IndexOption[indexmain]{captionbelow~=\KValue{true}}
+oder \PValue{false}%
+\IndexOption[indexmain]{captionabove~=\KValue{false}}%
+\IndexOption[indexmain]{captionbelow~=\KValue{false}}
+erlaubt. Die Verwendung von \Option{captionabove} oder \Option{captionbelow}
+ohne Wert entspricht \OptionValue{captionabove}{true} beziehungsweise
+\OptionValue{captionbelow}{true}.
+
+Als Besonderheit definiert \Package{tocbasic} darüber hinaus für alle mit
+Hilfe von \DescRef{\LabelBase.cmd.DeclareNewTOC} definierten Umgebungen
+zusätzlich entsprechende Optionen mit dem Präfix des Namens der Umgebung, also
+beispielsweise für die bei den \KOMAScript-Klassen definierten Umgebungen
+\DescRef{maincls.env.figure} und \DescRef{maincls.env.table} die Optionen
+\OptionValue{figurecaptionposition}{Wert}%
+\IndexOption[indexmain]{figurecaptionposition~=\KValue{top}}%
+\LabelOptionValue{figurecaptionposition}{top}%
+\IndexOption[indexmain]{figurecaptionposition~=\KValue{bottom}}%
+\LabelOptionValue{figurecaptionposition}{bottom},
+\OptionVName{figurecaptionabove}{Ein-Aus-Wert}%
+\IndexOption[indexmain]{figurecaptionabove~=\PName{Ein-Aus-Wert}},
+\OptionVName{figurecaptionbelow}{Ein-Aus-Wert}%
+\IndexOption[indexmain]{figurecaptionbelow~=\PName{Ein-Aus-Wert}},
+\OptionValue{tablecaptionposition}{Wert}%
+\IndexOption[indexmain]{tablecaptionposition~=\KValue{top}}%
+\LabelOptionValue{tablecaptionposition}{top}%
+\IndexOption[indexmain]{tablecaptionposition~=\KValue{bottom}}%
+\LabelOptionValue{tablecaptionposition}{bottom},
+\OptionVName{tablecaptionabove}{Wert}%
+\LabelOption{tablecaptionabove}%
+\IndexOption[indexmain]{tablecaptionabove~=\PName{Ein-Aus-Wert}} und
+\OptionVName{tablecaptionbelow}{Wert}%
+\IndexOption[indexmain]{tablecaptionbelow~=\PName{Ein-Aus-Wert}}. Dabei ist
+neben den oben für \Option{captionposition}, \Option{captionabove} und
+\Option{captionbelow} angegebenen Werten zusätzlich jeweils der \PName{Wert}
+\PValue{default}%
+\IndexOption[indexmain]{figurecaptionposition~=\KValue{default}}%
+\IndexOption[indexmain]{figurecaptionabove~=\KValue{default}}%
+\IndexOption[indexmain]{figurecaptionbelow~=\KValue{default}}%
+\IndexOption[indexmain]{tablecaptionposition~=\KValue{default}}%
+\IndexOption[indexmain]{tablecaptionabove~=\KValue{default}}%
+\IndexOption[indexmain]{tablecaptionbelow~=\KValue{default}}
+erlaubt. Dieser deaktiviert die expliziten Einstellungen für
+die jeweilige Umgebung, so dass wieder die Einstellungen der allgemeinen
+Option \Option{captionposition}, \Option{captionabove} beziehungsweise
+\Option{captionbelow} verwendet werden.%
+\EndIndexGroup
+
+
+\begin{Declaration}
+  \Macro{caption}\OParameter{Verzeichniseintrag}\Parameter{Titel}
+  \Macro{captionbelow}\OParameter{Verzeichniseintrag}\Parameter{Titel}
+  \Macro{captionabove}\OParameter{Verzeichniseintrag}\Parameter{Titel}
+\end{Declaration}%
+Wie bei den Optionen \DescRef{\LabelBase.option.captionposition} erklärt,
+werden Gleitumgebungen und auch die nicht gleitenden Umgebungen, die mit
+\DescRef{\LabelBase.cmd.DeclareNewTOC} definiert werden können, normalerweise
+per \Macro{caption} mit einem Titel versehen. Dabei kann mit Hilfe von
+\Package{tocbasic} und der genannten Option eingestellt werde, ob die Abstände
+für Titel über oder unter dem Objekt gewählt werden sollen. Da dies aber nur
+funktioniert, wenn \Macro{caption} von \Package{tocbasic} passend umdefiniert
+wird, gibt es zusätzlich die Anweisungen \Macro{captionbelow} und
+\Macro{captionabove}. Diese funktionieren in der Regel auch dann, wenn der
+entsprechende Patch nicht aktiviert wurde, also \Macro{caption} nicht auf die
+Optionen \DescRef{\LabelBase.option.captionposition},
+\DescRef{\LabelBase.option.captionabove} und
+\DescRef{\LabelBase.option.captionbelow} reagiert.
+%
+\begin{Example}
+  Sie wollen mit
+  Tabellenüberschriften\Index{Tabellen>Ueberschrift=Überschrift} statt mit
+  Tabellenunterschriften arbeiten, weil Sie teilweise Tabellen haben, die über
+  mehr als eine Seite gehen. Mit den Standardklassen bliebe Ihnen nur die
+  Möglichkeit:
+\begin{lstcode}
+  \begin{table}
+    \caption{Dies ist nur eine Beispieltabelle}
+    \begin{tabular}{llll}
+      Dies & ist & ein & Beispiel.\\\hline
+      Bitte & lassen & Sie & den \\
+      Inhalt & dieser & Tabelle & unbeachtet.
+    \end{tabular}
+  \end{table}
+\end{lstcode}
+  Damit hätten Sie das unschöne Ergebnis:
+  \begin{ShowOutput}\centering
+    {\usekomafont{caption}{\usekomafont{captionlabel}\tablename~30.2:}
+      Dies ist nur eine
+      Beispieltabelle}\\
+    \begin{tabular}{llll}
+      Dies & ist & ein & Beispiel.\\\hline
+      Bitte & lassen & Sie & den \\
+      Inhalt & dieser & Tabelle & unbeachtet.
+    \end{tabular}
+  \end{ShowOutput}
+  Bei \KOMAScript{} schreiben Sie hingegen:
+\begin{lstcode}
+  \begin{table}
+    \captionabove{Dies ist nur eine Beispieltabelle}
+    \begin{tabular}{llll}
+      Dies & ist & ein & Beispiel.\\\hline
+      Bitte & lassen & Sie & den \\
+      Inhalt & dieser & Tabelle & unbeachtet.
+    \end{tabular}
+  \end{table}
+\end{lstcode}
+  Sie erhalten dann das gewünschte Ergebnis:
+  \begin{ShowOutput}\centering
+    {\usekomafont{caption}{\usekomafont{captionlabel}\tablename~30.2:}
+      Dies ist nur eine
+      Beispieltabelle}\\\vskip\abovecaptionskip
+    \begin{tabular}{llll}
+      Dies & ist & ein & Beispiel.\\\hline
+      Bitte & lassen & Sie & den \\
+      Inhalt & dieser & Tabelle & unbeachtet.
+    \end{tabular}
+  \end{ShowOutput}
+  Da Sie konsequent nicht nur eine, sondern alle Tabellen mit Überschriften
+  versehen, können Sie stattdessen auch
+\begin{lstcode}
+  \usepackage[enablepatch=caption,tablecaptionabove]{tocbasic}
+\end{lstcode}
+  verwenden. Dann genügt es, wenn Sie innerhalb der
+  \Environment{table}-Umgebung \Macro{caption} verwenden.  Sie erhalten
+  trotzdem das Ergebnis von \Macro{captionabove}. Die Verwendung von
+  \OptionValueRef{\LabelBase}{enablepatch}{caption} ist wichtig für die
+  Funktion der zweiten Option
+  \DescRef{\LabelBase.option.tablecaptionabove}. Die \KOMAScript-Klassen laden
+  \Package{tocbasic} daher bereits in der Voreinstellung mit dieser Option.
+\end{Example}
+\EndIndexGroup
+\ExampleEndFix
+
+\begin{Declaration}
+  \Macro{captionof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
+                   \Parameter{Titel}
+  \Macro{captionaboveof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
+                        \Parameter{Titel}
+  \Macro{captionbelowof}\Parameter{Objekttyp}\OParameter{Verzeichniseintrag}
+                        \Parameter{Titel}
+\end{Declaration}
+Ähnlich wie die Pakete \Package{caption}\IndexPackage{caption} und
+\Package{capt-of}\IndexPackage{capt-of} bietet auch \Package{tocbasic} die
+Anweisung \Macro{captionof} mit der man auch außerhalb einer
+Gleitumgebung oder in einer fremden Gleitumgebung einen entsprechenden Titel
+mit Eintrag in das jeweilige Verzeichnis setzen kann. Dabei muss im Gegensatz
+zu \DescRef{\LabelBase.cmd.caption} die Art des Gleitobjekts als zusätzliches
+erstes Argument angegeben werden.
+
+Darüber hinaus bietet \Package{tocbasic} zusätzlich auch die Anweisungen
+\Macro{captionaboveof}. Diese dienen als Gegenstücke zu
+\DescRef{\LabelBase.cmd.captionabove} und
+\DescRef{\LabelBase.cmd.captionbelow}.
+
+Selbstverständlich berücksichtigt \Macro{captionof} auch die
+Einstellungen von Option \DescRef{\LabelBase.option.captionposition},
+\DescRef{\LabelBase.option.captionabove} oder
+\DescRef{\LabelBase.option.captionbelow} und der individuellen Optionen für
+die mit \DescRef{\LabelBase.cmd.DeclareNewTOC} definierten Umgebungen
+bezüglich der Formatierung des Titels als Über- oder Unterschrift.
+\begin{Example}
+  Angenommen, Sie wollen ein Gleitobjekt erstellen, bei dem eine Tabelle und
+  eine Abbildung nebeneinander stehen. Da es keine gemischten Gleitobjekte gibt,
+  verwenden Sie primär eine \Environment{figure}-Umgebung:
+\begin{lstcode}
+  \begin{figure}
+    \begin{minipage}{.5\linewidth}
+      \centering
+      \rule{4cm}{5cm}
+      \caption{Ein Rechteck}\label{fig:rechteck}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+      \captionaboveof{table}
+      [Maße des Rechtecks aus
+        Abbildung~\ref{fig:rechteck}]%
+      {Rechtecksmaße}
+      \label{tab:rechteck}
+      \begin{tabular}{ll}
+        Breite: & 4\,cm\\
+        Höhe:   & 5\,cm
+      \end{tabular}
+    \end{minipage}
+  \end{figure}
+\end{lstcode}
+  Um Abbildung und Tabelle nebeneinander zu setzen, wurden zwei
+  \Environment{minipage}-Umgebungen verwendet. %
+  \iffalse % Umbruchkorrektur
+    Wichtig\textnote{Achtung!} ist hier das Prozentzeichen nach der ersten
+    \Environment{minipage}, ohne das ein zusätzlicher Wortabstand zwischen die
+    beiden \Environment{minipage}-Umgebungen gesetzt würde.%
+  \else %
+    Wichtig\textnote{Achtung!} ist das Prozentzeichen nach der ersten
+    \Environment{minipage} zur Unterdrückung des Wortabstands zwischen den
+    Umgebungen.%
+  \fi %
+
+  \iffalse % Umbruchkorrektur
+    Die Abbildungsunterschrift wurde mit \DescRef{\LabelBase.cmd.caption}
+    gesetzt. %
+  \fi %
+  Für die Tabellenüberschrift wurde \Macro{captionaboveof} verwendet. Als
+  erstes Argument wurde \PValue{table} angegeben. Dadurch weiß
+  \Package{tocbasic}, dass es sich trotz \Environment{figure}-Umgebung um eine
+  Tabellenüberschrift handelt.
+
+  Das optionale Argument von \Macro{captionaboveof} setzt den Eintrag in das
+  Tabellenverzeichnis. Ohne das optionale Argument würde der als letztes
+  Argument angegebene Titel ebenfalls in das Tabellenverzeichnis
+  geschrieben. Während dieser Titel im Gleitobjekt selbst völlig ausreichend
+  ist, wäre er jedoch im Tabellenverzeichnis wenig aussagekräftig. Daher wird
+  hier für das Verzeichnis ein abweichender Titel über das optionale Argument
+  verwendet. Das Ergebnis der Bemühungen zeigt
+  \autoref{fig:\LabelBase.captionaboveof}.%
+%
+\begin{figure}
+%  \centering
+%  \caption
+  \KOMAoptions{captions=bottombeside}%
+  \setcapindent{0pt}%
+  \begin{captionbeside}
+    [{Beispiel: Verwendung von \Macro{captionaboveof} innerhalb einer
+      fremden Gleitumgebung}]
+    {\hspace{0pt plus 1ex}Verwendung von \Macro{captionaboveof} innerhalb einer
+      fremden Gleitumgebung\label{fig:\LabelBase.captionaboveof}}
+    [l]
+  \begin{minipage}[b]{.66\linewidth}%
+  \raisebox{\depth}{\fbox{\KOMAoptions{captions=oneline}%
+    \begin{minipage}{.5\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+      \centering
+      \rule{4cm}{5cm}
+      \caption[Beispiel: Ein Rechteck]{Ein Rechteck}
+      \label{fig:\LabelBase.rechteck}
+    \end{minipage}%
+    \begin{minipage}{.5\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+      \centering
+      \captionaboveof{table}[Beispiel: Maße des Rechtecks aus
+      Abbildung~\ref{fig:\LabelBase.rechteck}]{Rechteckmaße}
+      \label{tab:\LabelBase.rechteck}
+      \begin{tabular}{ll}
+        Breite: & 4\,cm\\
+        Höhe:   & 5\,cm
+      \end{tabular}
+    \end{minipage}}}%
+  \end{minipage}%
+  \end{captionbeside}%
+\end{figure}%
+\end{Example}%
+In gleicher Weise, wie in obigem Beispiel eine Tabelle innerhalb einer
+Abbildungsumgebung gesetzt und mit einem Titel versehen wird, könnte man auch
+eine nicht gleitende Tabelle außerhalb jeder Gleitumgebung
+setzen. Dabei versucht \Package{tocbasic} auch einen Seitenumbruch zwischen
+der Überschrift und der Tabelle zu verhindern. Das kann allerdings nicht in
+allen Fällen sichergestellt werden. Daher sollte in der Regel eine
+\Environment{minipage} verwendet werden, um zu verhindern, dass zwischen
+Überschrift und Tabelle ein Seitenumbruch erfolgen kann. Zusätzlich sollte man
+die \Environment{minipage} dann noch in eine \Environment{flushleft}-Umgebung
+einbetten, um einerseits einen gefälligen Abstand zum Text davor und dahinter
+zu erreichen und andererseits den Absatzeinzug vor der \Environment{minipage}
+zu verhindern. Einfacher ist natürlich direkt die Umgebung
+\DescRef{maincls.env.table-}\IndexEnv{table-} zu verwenden.%
+\EndIndexGroup
+
 
 \section{Nutzung von \Package{tocbasic} mit Fremdklassen}
 \seclabel{standardclasses}
@@ -2921,6 +3251,18 @@ möglich und würde zu demselben Ergebnis führen.
       individuellen Einstellung ausgeführt. Falls eine \KOMAScript-Klasse
       geladen ist, gilt dies nicht für \PValue{chapter}.%
     }%
+    \pventry{caption}{%
+      \ChangedAt{v3.46}{\Package{tocbasic}}%
+      \IndexOption{enablepatch~=caption}\IndexOption{disablepatch~=caption}%
+      \IndexCmd{caption}\IndexCmd{captionof}%
+      Die Anweisungen \DescRef{\LabelBase.cmd.caption} und
+      \DescRef{\LabelBase.cmd.captionof} werden so umdefiniert, dass sie die
+      Optionen \DescRef{\LabelBase.option.captionposition},
+      \DescRef{\LabelBase.option.captionabove},
+      \DescRef{\LabelBase.option.captionbelow} beziehungsweise die
+      entsprechenden vom Type oder der Umgebung abhängenden Optionen
+      beachten.%
+    }%
     \pventry{chapter}{%
       \IndexOption{enablepatch~=chapter}\IndexOption{disablepatch~=chapter}%
       \IndexCmd{chapter}%
@@ -2975,7 +3317,22 @@ werden. \textnote{Achtung!}Mit \OptionValue{disablepatch}{all} werden also
 nicht sämtliche Patches deaktiviert, sondern es werden wieder die
 Einstellungen für die einzelnen Patches beachtet.
 
-Eine zweite Besonderheit stellt \OptionValue{enablepatch}{chapter}%
+Eine zweite Besonderheit stellt \OptionValue{enablepatch}{caption}%
+\important{\OptionValue{enabelpatch=caption}}%
+\IndexOption{enablepatch~caption} dar. Da dieser Patch für die korrekte
+Funktion der Optionen aus \autoref{sec:\LabelBase.caption},
+\DescPageRef{\LabelBase.option.captionposition} und den darauf basierenden
+\KOMAScript-Optionen \OptionValueRef{maincls}{captions}{heading},
+\OptionValueRef{maincls}{captions}{signature},
+\OptionValueRef{maincls}{captions}{figureheading},
+\OptionValueRef{maincls}{captions}{figuresignature},
+\OptionValueRef{maincls}{captions}{tableheading} und
+\OptionValueRef{maincls}{captions}{tablesignature} zwingend notwendig ist,
+wird er von den \KOMAScript-Klassen automatisch aktiviert. Ohne die
+Aktivierung\textnote{Achtung!} haben die genannten Optionen keine definierte
+Wirkung.
+
+Eine dritte Besonderheit stellt \OptionValue{enablepatch}{chapter}%
 \important{\OptionValue{enablepatch}{chapter}}%
 \IndexOption{enablepatch~=chapter} dar. Da dieser Patch auch Schaden
 anrichten kann, wird seine Verwendung immer in der Terminalausgabe und der
@@ -3021,7 +3378,7 @@ diesem Fall davon abzusehen.
       und mit (unten) Patch bei Verwendung von Klasse \Class{book}}
     \label{fig:remarkbox}
   \end{figure}
-  
+
   Die zweite Reihe von \autoref{fig:remarkbox} zeigt dagegen wie es sein soll,
   nämlich mit einem Eintrag sowohl für das Abbildungsverzeichnis als auch das
   Verzeichnis der Merksätze im Inhaltsverzeichhnis und außerdem mit einem
@@ -3035,7 +3392,7 @@ diesem Fall davon abzusehen.
   Ja, in der Tat, der einzige Unterschied zwischen den beiden Beispielen ist
   das Laden von Paket \Package{tocbasic} ohne oder mit Option
   \OptionValue{enablepatch}{\{chapter,listoffigures\}}.%
-\end{Example}% 
+\end{Example}%
 \EndIndexGroup
 \ExampleEndFix
 
@@ -3047,12 +3404,12 @@ die aufgrund von Äußerungen von Mitgliedern des \LaTeX-Project-Teams umbenannt
 wurden. Diese veralteten Befehle sollten nicht mehr verwendet werden.
 
 \LoadNonFree{tocbasic}{0}%
-% 
+%
 \EndIndexGroup
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8

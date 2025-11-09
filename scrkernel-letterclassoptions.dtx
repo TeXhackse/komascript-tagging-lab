@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-letterclassoptions.dtx
-% Copyright (c) Markus Kohm, 2006-2023
+% Copyright (c) Markus Kohm, 2006-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-letterclassoptions.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrkernel-letterclassoptions.dtx 4197 2025-08-15 09:13:30Z kohm $
 %<option>%%%            (run: option)
 %<head>%%%            (run: head)
 %<body>%%%            (run: body)
@@ -26,9 +26,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2025-08-15 11:13:30 +0200 (Fri, 15 Aug 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4197 $
 \endgroup
 \ProvidesFile{scrkernel-letterclassoptions.dtx}
              [\filedate\space \filerevision\space
@@ -260,6 +260,7 @@
 % \changes{v3.18}{2015/06/03}{added}
 % \changes{v3.26}{2018/08/29}{\cs{KV@@sp@def} replaced by
 %   \cs{scr@trim@spaces}}
+% \changes{v3.46}{2025/08/15}{\cs{scr@gobbleopt} replaced by \cs{@gobble@o}}
 % \begin{description}
 % \item[ToDo:] See the note above.
 % \end{description}
@@ -282,7 +283,7 @@
       }{}%
     }%
   \endgroup
-  \scr@gobbleopt
+  \@gobble@o
 }
 %    \end{macrocode}
 % \end{macro}^^A \lco@RequirePackage

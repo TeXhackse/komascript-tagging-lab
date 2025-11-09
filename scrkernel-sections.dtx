@@ -14,7 +14,7 @@
 % ======================================================================
 % ======================================================================
 % scrkernel-sections.dtx
-% Copyright (c) Markus Kohm, 2002-2024
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4130 2024-10-24 08:14:37Z kohm $
+%%% From File: $Id: scrkernel-sections.dtx 4231 2025-10-28 12:57:25Z kohm $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-10-24 10:14:37 +0200 (Thu, 24 Oct 2024) $
+  \filedate$Date: 2025-10-28 13:57:25 +0100 (Tue, 28 Oct 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4130 $
+  \filerevision$Revision: 4231 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -519,16 +519,78 @@
 %
 %
 % \begin{macro}{\@startsection}
-% \changes{v3.13a}{2014/09/11}{re-definition for extended optional argument}
+%   \changes{v3.13a}{2014/09/11}{re-definition for extended optional argument}
+%   \changes{v3.49}{2025/09/11}{no longer redefined or used}
+%   \changes{v3.49}{2025/09/11}{warning message added if used}
+%   We add a warning message to the very beginning of \cs{@startsection}. So
+%   if a package or any other preamble code or the user himself uses
+%   \cs{@startsection} there will be an information about the caveats.
+%    \begin{macrocode}
+%<*body>
+\ExplSyntaxOn
+\msg_new:nnnn { \KOMAClassName } { sectioning-features-not-available }
+  {
+    Usage~of~\token_to_str:N #1 detected.\\
+    Note,~the~sectioning~of~\KOMAClassName\ does~neither~use~nor~
+    support~the~usage~of~\token_to_str:N #1 command.\\
+    This~means,~that~none~of~the~KOMA-Script~features~
+    for~headings~is~available~for~the~heading~\msg_line_context:.\\
+    If~you~need~additional~sectioning~commands,~
+    you~should~define~them~using~\token_to_str:N \DeclareNewSectionCommand\
+    instead.
+  }
+  { See~the~KOMA-Script~user~manual~for~more~information. }
+\hook_gput_code:nnn { begindocument / end } { \KOMAClassName }
+  {
+    \hook_gput_code:nnn { cmd / @startsection / before } { \KOMAClassName }
+      {
+        \msg_warning:nnn { \KOMAClassName }
+                         { sectioning-features-not-available }
+                         { \@startsection }
+      }
+  }
+\ExplSyntaxOff
+%</body>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\scr@saved@startsection}
+% \changes{v3.13a}{2014/09/11}{added}
+% \changes{v3.20}{2016/04/12}{supporting \pkg{amsgen}}
+% \changes{v3.49}{2025/09/11}{removed}
+% \end{macro}
+%
+% \begin{macro}{\@sect}
+% \changes{v3.49}{2025/09/11}{\cs{@sect} replaced by \cs{scr@sect}}
+% \end{macro}^^A \@sect
+% \begin{macro}{\scr@latex@sect}
+%   \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack}}
+%   \changes{v3.49}{2025/09/11}{removed}
+% \end{macro}^^A \@scr@latex@sect
+%
+% \begin{macro}{\@ssect}
+%   \changes{v3.49}{2025/09/11}{\cs{@ssect} replaced by \cs{scr@ssect}}
+% \end{macro}
+% \begin{macro}{\scr@latex@ssect}
+%   \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack})}
+%   \changes{v3.30}{2020/02/25}{orphan space removed}
+%   \changes{v3.49}{2025/09/11}{removed}
+% \end{macro}
+%
+% \begin{macro}{\@xsect}
+%   \changes{v3.49}{2025/09/11}{\cs{@xsect} replaced by \cs{scr@xsect}}
+% \end{macro}
+% \begin{macro}{\scr@latex@xsect}
+%   \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack}}
+%   \changes{v3.49}{2025/09/11}{removed}
+% \end{macro}
+%
 % \begin{macro}{\scr@startsection}
 % \changes{v3.13a}{2014/09/11}{added}
 % \changes{v3.18}{2015/05/22}{using \cs{numexpr} for argument 2}
 % \changes{v3.18}{2015/05/22}{using \cs{glueexpr} for arguments 3--5}
 % \changes{v3.20}{2016/04/12}{\cs{@ifstar} replaced by \cs{kernel@ifstar}}
 % \changes{v3.26}{2018/09/18}{supporting \opt{afterindent}}
-% \begin{macro}{\scr@saved@startsection}
-% \changes{v3.13a}{2014/09/11}{added}
-% \changes{v3.20}{2016/04/12}{supporting \pkg{amsgen}}
 % \begin{macro}{\startsection@sectionname,\startsection@secnumdepth,
 %               \startsection@indent,\startsection@beforeskip,
 %               \startsection@afterskip,\startsection@afterindent,
@@ -539,8 +601,7 @@
 % features we need for \KOMAScript. And the generic hooks of \LaTeX{} do not
 % allow to change it wide enough. So we either have to use \pkg{xparse} to
 % patch it very much or we have to define our own version. In this case
-% patching is too fragile, so we define \cs{scr@startsection} and store the
-% original definition in \cs{scr@saved@startsection}.
+% patching is too fragile, so we define and use \cs{scr@startsection}.
 % \begin{description}
 % \item[Note:] Package \pkg{amsgen} redefines \cs{@ifstar}. The new version
 %   does not ignore white spaces. So testing the original definition using
@@ -549,6 +610,11 @@
 %   inside a class and packages like \pkg{amsgen} should not yet have been
 %   loaded. So the test only needs to test, if the \LaTeX{} kernel has been
 %   changed.
+% \item[ToDo:] Because we now use our own command, we do not need to use
+%   argument \#2-\#6. Instead of these we can just use the properties
+%   depending on argument \#1 and the style of the sectioning
+%   command. Changing this would simplify the code a lot! So this should be
+%   the next step in development of the sectioning commands.
 % \item[Note:] In our own \cs{scr@startsection} the macros
 %   \cs{startsection@sectionname}, \cs{startsection@secnumdepth},
 %   \cs{startsection@indent}, \cs{startsection@beforeskip},
@@ -577,150 +643,74 @@
 %</class&!letter>
 %<*class&!letter|workarounds>
 %<*body|workarounds>
-\newcommand*{\scr@saved@startsection}[6]{%
+\newcommand*{\scr@startsection}[6]{%
+  \ExecuteDoHook{heading/preinit/#1}%
   \if@noskipsec \leavevmode \fi
   \par
-  \@tempskipa #4\relax
-  \@afterindenttrue
-  \ifdim \@tempskipa <\z@
-    \@tempskipa -\@tempskipa \@afterindentfalse
-  \fi
-  \if@nobreak
-    \everypar{}%
-  \else
-    \addpenalty\@secpenalty\addvspace\@tempskipa
-  \fi
-  \kernel@ifstar
-    {\@ssect{#3}{#4}{#5}{#6}}%
-    {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}%
-}
-%</body|workarounds>
-%<*body>
-\def\reserved@a#1#2#3#4#5#6{%
-  \if@noskipsec \leavevmode \fi
-  \par
-  \@tempskipa #4\relax
-  \@afterindenttrue
-  \ifdim \@tempskipa <\z@
-    \@tempskipa -\@tempskipa \@afterindentfalse
-  \fi
-  \if@nobreak
-    \everypar{}%
-  \else
-    \addpenalty\@secpenalty\addvspace\@tempskipa
-  \fi
-  \@ifstar
-    {\@ssect{#3}{#4}{#5}{#6}}%
-    {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}%
-}
-\ifcase \ifx\@startsection\scr@saved@startsection 0
-        \else
-          \ifx\@startsection\reserved@a 0
-          \else 1
-          \fi
-        \fi
-  \newcommand*{\scr@startsection}[6]{%
-    \ExecuteDoHook{heading/preinit/#1}%
-    \if@noskipsec \leavevmode \fi
-    \par
-    \@tempskipa \glueexpr #4\relax
-    \@ifundefined{scr@#1@afterindent}{%
-      \def\startsection@afterindent##1##2##3{##3}%
-    }{%
-      \expandafter\let\expandafter\startsection@afterindent
-      \csname scr@#1@afterindent\endcsname
-    }%
-    \startsection@afterindent{\@afterindenttrue}{\@afterindentfalse}{%
-      \@afterindenttrue
-      \ifdim \@tempskipa <\z@
-        \@tempskipa -\@tempskipa \@afterindentfalse
-      \fi
-    }%
-    \def\startsection@sectionname{#1}%
-    \def\startsection@secnumdepth{\numexpr #2\relax}%
-    \def\startsection@indent{\glueexpr #3\relax}%
-    \let\startsection@beforeskip\@tempskipa
-    \@ifundefined{scr@#1@runin}{%
-      \def\scr@sect@runin##1##2##3{##3}%
-    }{%
-      \expandafter\let\expandafter\scr@sect@runin
-      \csname scr@#1@runin\endcsname
-    }%
-    \scr@sect@runin{%
-      \def\startsection@afterskip{\glueexpr #3\relax}%
+  \@tempskipa \glueexpr #4\relax
+  \@ifundefined{scr@#1@afterindent}{%
+    \def\startsection@afterindent##1##2##3{##3}%
+  }{%
+    \expandafter\let\expandafter\startsection@afterindent
+    \csname scr@#1@afterindent\endcsname
+  }%
+  \startsection@afterindent{\@afterindenttrue}{\@afterindentfalse}{%
+    \@afterindenttrue
+    \ifdim \@tempskipa <\z@
+      \@tempskipa -\@tempskipa \@afterindentfalse
+    \fi
+  }%
+  \def\startsection@sectionname{#1}%
+  \def\startsection@secnumdepth{\numexpr #2\relax}%
+  \def\startsection@indent{\glueexpr #3\relax}%
+  \let\startsection@beforeskip\@tempskipa
+  \@ifundefined{scr@#1@runin}{%
+    \def\scr@sect@runin##1##2##3{##3}%
+  }{%
+    \expandafter\let\expandafter\scr@sect@runin
+    \csname scr@#1@runin\endcsname
+  }%
+  \scr@sect@runin{%
+    \def\startsection@afterskip{\glueexpr #3\relax}%
+    \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+    \csname iftrue\endcsname
+  }{%
+    \def\startsection@afterskip{\glueexpr #3\relax}%
+    \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+    \csname iffalse\endcsname
+  }{%
+    \ifdim \glueexpr #5\relax <\z@
+      \def\startsection@afterskip{\glueexpr (#3)*\m@ne\relax}%
       \expandafter\let\csname if@startsection@runin\expandafter\endcsname
       \csname iftrue\endcsname
-    }{%
+    \else
       \def\startsection@afterskip{\glueexpr #3\relax}%
       \expandafter\let\csname if@startsection@runin\expandafter\endcsname
       \csname iffalse\endcsname
-    }{%
-      \ifdim \glueexpr #5\relax <\z@
-        \def\startsection@afterskip{\glueexpr (#3)*\m@ne\relax}%
-        \expandafter\let\csname if@startsection@runin\expandafter\endcsname
-        \csname iftrue\endcsname
-      \else
-        \def\startsection@afterskip{\glueexpr #3\relax}%
-        \expandafter\let\csname if@startsection@runin\expandafter\endcsname
-        \csname iffalse\endcsname
-      \fi
-    }%
-    \ExecuteDoHook{heading/postinit/#1}%
-    \if@nobreak
-      \everypar{}%
-    \else
-      \addpenalty\@secpenalty\addvspace\@tempskipa
     \fi
+  }%
+  \ExecuteDoHook{heading/postinit/#1}%
+  \if@nobreak
+    \everypar{}%
+  \else
+    \addpenalty\@secpenalty\addvspace\@tempskipa
+  \fi
 %    \end{macrocode}
 % tagging: latex-lab is starting the section here.
 % As we have the hook directly after the test scr-tagging-lab is using the hook instead.
 %    \begin{macrocode}
-    \kernel@ifstar {%
-      \ExecuteDoHook{heading/branch/star/#1}%
-      \def\scr@s@ct@@nn@m@{#1}%
-      \@ssect{\glueexpr #3\relax}{\glueexpr #4\relax}{\glueexpr #5\relax}{#6}%
-    }{%
-      \ExecuteDoHook{heading/branch/nostar/#1}%
-      \scr@section@dblarg{%
-        \@sect{#1}{\numexpr #2\relax}{\glueexpr #3\relax}{\glueexpr #4\relax}%
-        {\glueexpr #5\relax}{#6}%
-      }%
+  \kernel@ifstar {%
+    \ExecuteDoHook{heading/branch/star/#1}%
+    \def\scr@s@ct@@nn@m@{#1}%
+    \scr@ssect{\glueexpr #3\relax}{\glueexpr #4\relax}{\glueexpr #5\relax}{#6}%
+  }{%
+    \ExecuteDoHook{heading/branch/nostar/#1}%
+    \scr@section@dblarg{%
+      \scr@sect{#1}{\numexpr #2\relax}{\glueexpr #3\relax}{\glueexpr #4\relax}%
+      {\glueexpr #5\relax}{#6}%
     }%
-  }
-\else
-  \ClassWarningNoLine{\KOMAClassName}{`\string\@startsection' has been
-    changed.\MessageBreak
-    \KOMAClassName\space needs it's own definition of
-    `\string\@startsection'\MessageBreak
-    to provide extended features for the optional argument\MessageBreak
-    of `\string\section' etc.\MessageBreak
-    Generally it defines `\string\@startsection' completely new\MessageBreak
-    to achieve this. Because of the unexpected definition\MessageBreak
-    an alternative approach will be used.\MessageBreak
-    If this fails and if there isn't a new release of\MessageBreak
-    KOMA-Script that fixes the problem, please\MessageBreak
-    send a report to the KOMA-Script author.\MessageBreak
-    Note, that this alternative approach does not\MessageBreak
-    execute the elements of do-hooks:\MessageBreak
-    \space\space- `heading/postinit',\MessageBreak
-    \space\space- `heading/branch/star',\MessageBreak
-    \space\space- `heading/branch/nostar',\MessageBreak
-    and does always use `runin=bysign' and\MessageBreak
-    `afterindent=bysign'%
   }%
-  \let\scr@saved@startsection\@startsection
-  \newcommand*{\scr@startsection}[6]{%
-    \ExecuteDoHook{heading/preinit/#1}%
-    \kernel@ifstar {%
-      \scr@saved@startsection{#1}{\numexpr #2\relax}{\glueexpr #3\relax}%
-      {\glueexpr #4\relax}{\glueexpr #5\relax}{#6}*%
-    }{%
-      \scr@section@dblarg{%
-        \scr@saved@startsection{#1}{\numexpr #2\relax}{\glueexpr #3\relax}%
-        {\glueexpr #4\relax}{\glueexpr #5\relax}{#6}}%
-    }%
-  }
-\fi
+}
 %    \end{macrocode}
 % \begin{macro}{\scr@sect@runin}
 % \changes{v3.26}{2018/09/18}{added}
@@ -860,28 +850,10 @@
       {\scr@osectarg}}%
   \reserved@a
 }
-%    \end{macrocode}
-% \end{macro}^^A \scr@section@dblarg,\scr@section@xdblarg
-% \end{macro}^^A \scr@saved@startsection
-% \end{macro}^^A \scr@startsection
-% \begin{description}
-% \item[ToDo:] Currently we still redefine \cs{@startsection} to use either
-%   \cs{scr@saced@startsection} or \cs{scr@startsection}. But it would be
-%   better to not redefine a \LaTeX{} kernel macro. However, if not doing so,
-%   packages, that use \cs{@startsection} would not support \KOMAScript{}
-%   features without detecting \KOMAScript{} and using \cs{scr@startsection}.
-% \end{description}
-%    \begin{macrocode}
-\renewcommand*{\@startsection}{%
-  \ifnum \scr@osectarg=\z@
-    \expandafter\scr@saved@startsection
-  \else
-    \expandafter\scr@startsection
-  \fi
-}
 %</body>
 %    \end{macrocode}
-% \end{macro}^^A \@startsection
+% \end{macro}^^A \scr@section@dblarg,\scr@section@xdblarg
+% \end{macro}^^A \scr@startsection
 %
 % \begin{command}{\UseNumberUsageError}
 % \changes{v3.27}{2019/02/02}{added}
@@ -924,10 +896,8 @@
 %    \end{macrocode}
 % \end{command}^^A \secdef
 % \end{command}^^A \SecDef
+%
 % \begin{macro}{\scr@sect}
-% \changes{v3.10}{2011/08/30}{removed}
-% \end{macro}^^A \scr@sect
-% \begin{macro}{\@sect}
 % \changes{v3.10}{2011/08/30}{re-definition because of extended optional argument}
 % \changes{v3.10}{2011/08/30}{using
 %   \cs{csname}\texttt{add\#1tocentry}\cs{endcsname}
@@ -939,8 +909,7 @@
 %   \cs{sectioncatchphraseformat}}
 % \changes{v3.27}{2019/07/08}{new optional \opt{nonumber}}
 % \changes{v3.30}{2020/02/25}{orphan spaces removed}
-% \begin{macro}{\scr@latex@sect}
-% \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack}}
+% \changes{v3.49}{2025/09/11}{\cs{@sect} replaced by \cs{scr@sect}}
 % Because we want to support the extended optional argument for all commands
 % defined using \cs{@startsection} we also have to redefine \cs{@sect}. Once
 % again several security tests are done, before redefining an internal
@@ -955,55 +924,7 @@
 % \end{description}
 % tagging: We need this definition to be able to remove the warning when the testphase key is used.
 %    \begin{macrocode}
-%<*body|workarounds>
-\def\scr@latex@sect#1#2#3#4#5#6[#7]#8{%
-  \ifnum #2>\c@secnumdepth
-    \let\@svsec\@empty
-  \else
-    \refstepcounter{#1}%
-    \protected@edef\@svsec{\@seccntformat{#1}\relax}%
-  \fi
-  \@tempskipa #5\relax
-  \ifdim \@tempskipa>\z@
-    \begingroup
-      #6{%
-        \@hangfrom{\hskip #3\relax\@svsec}%
-          \interlinepenalty \@M #8\@@par}%
-    \endgroup
-    \csname #1mark\endcsname{#7}%
-    \addcontentsline{toc}{#1}{%
-      \ifnum #2>\c@secnumdepth \else
-        \protect\numberline{\csname the#1\endcsname}%
-      \fi
-      #7}%
-  \else
-    \def\@svsechd{%
-      #6{\hskip #3\relax
-      \@svsec #8}%
-      \csname #1mark\endcsname{#7}%
-      \addcontentsline{toc}{#1}{%
-        \ifnum #2>\c@secnumdepth \else
-          \protect\numberline{\csname the#1\endcsname}%
-        \fi
-        #7}}%
-  \fi
-  \@xsect{#5}}
-%</body|workarounds>
-%<workarounds>\let\@sect\scr@latex@sect
 %<*body>
-\ifx\@sect\scr@latex@sect\else
-  \let\scr@latex@sect\@sect
-  \ClassWarning{\KOMAClassName}{%
-    Unexpected definition of \string\@sect!\MessageBreak
-    Please send information about this to\MessageBreak
-    the KOMA-Script maintainer!\MessageBreak
-    Maybe LaTeX will be broken by the redefinition\MessageBreak
-    of \string\@sect}%
-\fi
-%</body>
-%    \end{macrocode}
-% \end{macro}^^A \scr@latex@sect
-%    \begin{macrocode}
 %</class&!letter|workarounds>
 %<*(class&!letter)|tagging-lab|workarounds>
 %<*body|tagging-lab>
@@ -1213,7 +1134,7 @@
     }%
   \fi
   \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
-  \@xsect{\glueexpr #5\relax}%
+  \scr@xsect{\glueexpr #5\relax}%
 }
 %</body|tagging-lab>
 %<*body>
@@ -1246,16 +1167,18 @@
 \providecommand*\@currentlabelname{}
 \FamilyStringKey[.section]{KOMAarg}{tocentry}{\@currenttocentry}
 \FamilyStringKey[.section]{KOMAarg}{head}{\@currentheadentry}
-\IfLTXAtLeastTF{2020/10/01}{%
-  \NewHook{\KOMAClassName/option/section/reference/fallback}%
-}{}%
+\NewHook{\KOMAClassName/option/section/reference/fallback}%
 \DefineFamilyKey[.section]{KOMAarg}{reference}{%
   \scr@ifundefinedorrelax{NR@gettitle}{%
     \scr@ifundefinedorrelax{GetTitleString}{%
 %    \end{macrocode}
 % \changes{v3.41}{2023/06/29}{substitute definition of \cs{@currentlabelname}
 %   changed}
-% This case is complicated. Up to \LaTeX{} 2022/11/01 it was good enough to
+% \changes{v3.46}{2025/06/10}{substitute definition of \cs{@currentlabelname}
+%   changed}
+% \changes{v3.46}{2025/06/10}{allow star and optional argument for \cs{label},
+%   \cs{index}, \cs{glossary} and \cs{zlabel} when disabling}
+%   This case is complicated. Up to \LaTeX{} 2022/11/01 it was good enough to
 % use:
 % \begin{verbatim}
 % \def\@currentlabelname{#1}
@@ -1273,13 +1196,15 @@
 % \end{description}
 %    \begin{macrocode}
       \begingroup
-        \let\label\@gobble
-        \let\index\@gobble
-        \let\glossary\@gobble
+        \DeclareExpandableDocumentCommand{\label}{som}{}%
+        \DeclareExpandableDocumentCommand{\index}{som}{}%
+        \DeclareExpandableDocumentCommand{\glossary}{som}{}%
+        \DeclareExpandableDocumentCommand{\zlabel}{som}{}%
         \scr@ifundefinedorrelax{UseHook}{}{%
           \UseHook{\KOMAClassName/option/section/reference/fallback}%
         }%
-        \protected@edef\@currentlabelname{#1}%
+        \let\protect\noexpand
+        \edef\@currentlabelname{\expandafter\detokenize{#1}}%
       \expandafter\expandafter\expandafter\endgroup
       \expandafter\def\expandafter\@currentlabelname\expandafter{%
         \@currentlabelname}%
@@ -1338,6 +1263,7 @@
 %   the command.
 % \end{description}
 %    \begin{macrocode}
+
 %</body>
 %<*body|tagging-lab>
 %<!tagging-lab>\newcommand{\sectionlinesformat}[4]{%
@@ -1352,68 +1278,29 @@
 }
 %    \end{macrocode}
 % \end{command}^^A \sectionlinesformat,\sectioncatchphraseformat
-% \end{macro}^^A \@sect
+% \end{macro}^^A \scr@sect
 %
-% \begin{macro}{\@ssect}
-% \changes{v3.19}{2015/07/17}{re-definition because of several new features}
-% \begin{macro}{\scr@latex@ssect}
-% \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack})}
-% \changes{v3.30}{2020/02/25}{orphan space removed}
+% \begin{macro}{\scr@ssect}
+%   \changes{v3.19}{2015/07/17}{re-definition because of several new features}
+%   \changes{v3.49}{2025/09/11}{\cs{@ssect} renamed to \cs{scr@ssect}}
 % The star variant of section commands do not use \cs{@sect} but
 % \cs{@ssect}. Here we have the problem, that the command name argument is
 % missing. The whole definition is very similar to \cs{@sect} but without a
 % number, ToC entry or running head.
 % \begin{description}
-% \item[Note:] we do not have to support an extended optional argument,
+% \item[Note:] We do not have to support an extended optional argument,
 %   because there isn't an optional argument.
-% \item[ToDo:] It would be better not to redefine an internal \LaTeX{} kernel
-%   macro, but use a own definition in our own \cs{scr@startsection}. But in
-%   this case packages, that use \cs{@ssect} would not automatically support
-%   several \KOMAScript{} features.
 % \item[Note:] \cs{chapter} and \cs{part} do not use \cs{@ssect} but
 %   \cs{SecDef}.
 % \end{description}
 %    \begin{macrocode}
-%</body>
-%<*body|workarounds>
-\def\scr@latex@ssect#1#2#3#4#5{%
-  \@tempskipa #3\relax
-  \ifdim \@tempskipa>\z@
-    \begingroup
-      #4{%
-        \@hangfrom{\hskip #1}%
-          \interlinepenalty \@M #5\@@par}%
-    \endgroup
-  \else
-    \def\@svsechd{#4{\hskip #1\relax #5}}%
-  \fi
-  \@xsect{#3}}
-%</body|workarounds>
-%<workarounds>\let\@ssect\scr@latex@ssect
-%<*body>
-\ifx\@ssect\scr@latex@ssect
-\else
-  \let\scr@latex@ssect\@ssect
-  \ClassWarning{\KOMAClassName}{%
-    Unexpected definition of \string\@ssect!\MessageBreak
-    Please send information about this to\MessageBreak
-    the KOMA-Script maintainer!\MessageBreak
-    Maybe LaTeX will be broken by the redefinition\MessageBreak
-    of \string\@ssect}%
-\fi
-%</body>
-%    \end{macrocode}
-% \end{macro}^^A \scr@latex@ssect
-%    \begin{macrocode}
 %<*body|tagging-lab>
-%<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
-%<trace>  \string\@ssect}
-\def\@ssect#1#2#3#4#5{%
+\def\scr@ssect#1#2#3#4#5{%
   \scr@ifundefinedorrelax{scr@s@ct@@nn@m@}{%
     \ClassWarning{\KOMAClassName}{Incompatible usage of
-      \string\@ssect\space detected.\MessageBreak
+      \string\scr@ssect\space detected.\MessageBreak
       You've used the KOMA-Script implementation of
-      \string\@ssect\MessageBreak
+      \string\scr@ssect\MessageBreak
       from within a non compatible caller, that does not\MessageBreak
       \string\scr@s@ct@@nn@m@\space locally.\MessageBreak
       This could result in several error messages}%
@@ -1484,69 +1371,17 @@
     }%
   \fi
   \let\scr@s@ct@@nn@m@\relax
-  \@xsect{\glueexpr #3\relax}%
+  \scr@xsect{\glueexpr #3\relax}%
 }
 %</body|tagging-lab>
-%    \end{macrocode}
-% \end{macro}^^A \@ssect
-% \begin{macro}{\@xsect}
-% \changes{v3.26}{2018/09/18}{re-definition}
-% \changes{v3.30}{2020/02/25}{orphan space removed}
-% \begin{macro}{\scr@latex@xsect}
-% \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack}}
-% We need a differentiation with \cs{scr@sect@runin} to be initialized in
-% \cs{@xsect} and also need to reset this internal macro at the end.
-% \begin{description}
-% \item[ToDo:] It would be better not to redefine the internal \LaTeX{} kernel
-%   macro, but to define and use our own one.
-% \end{description}
-%    \begin{macrocode}
-%<*body|workarounds>
-%<body>\def\scr@latex@xsect#1{%
-%<workarounds>\def\@xsect#1{%
-  \@tempskipa #1\relax
-  \ifdim \@tempskipa>\z@
-    \par \nobreak
-    \vskip \@tempskipa
-    \@afterheading
-  \else
-    \@nobreakfalse
-    \global\@noskipsectrue
-    \everypar{%
-      \if@noskipsec
-        \global\@noskipsecfalse
-       {\setbox\z@\lastbox}%
-        \clubpenalty\@M
-        \begingroup \@svsechd \endgroup
-        \unskip
-        \@tempskipa #1\relax
-        \hskip -\@tempskipa
-      \else
-        \clubpenalty \@clubpenalty
-        \everypar{}%
-      \fi}%
-  \fi
-  \ignorespaces
-}
-%</body|workarounds>
-%<*body>
-\ifx\@xsect\scr@latex@xsect\else
-  \let\scr@latex@xsect\@xsect
-  \ClassWarning{\KOMAClassName}{%
-    Unexpected definition of \string\@xsect!\MessageBreak
-    Please send information about this to\MessageBreak
-    the KOMA-Script maintainer!\MessageBreak
-    Maybe LaTeX will be broken by the redefinition\MessageBreak
-    of \string\@xsect}%
-\fi
 %</body>
 %    \end{macrocode}
-% \end{macro}^^A \scr@latex@xsect
+% \end{macro}^^A \scr@ssect
+%
+% \begin{macro}{\scr@xsect}
 %    \begin{macrocode}
 %<*body|tagging-lab>
-%<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro
-%<trace> \string\@xsect}
-%<body>\def\@xsect#1{%
+%<body>\def\scr@xsect#1{%
 %<tagging-lab>\def\scrlab@xsect#1{%
   \@ifundefined{scr@sect@runin}{%
     \def\scr@sect@runin##1##2##3{##3}%
@@ -1592,7 +1427,7 @@
 %</(class&!letter)|tagging-lab|workarounds>
 %<*class&!letter>
 %    \end{macrocode}
-% \end{macro}^^A \@xsect
+% \end{macro}^^A \scr@xsect
 %
 % \begin{command}{\IfUsePrefixLine}
 % \changes{v3.18}{2015/06/09}{added}
@@ -2838,6 +2673,7 @@
         \@namedef{#2format}{\csname the#2\endcsname\autodot\enskip}%
       }{}%
 %    \end{macrocode}
+% \changes{v3.44}{2025/05/14}{add the section command to the internal l3seq}
 % Then the command itself (but only, if the \opt{style} was not empty):
 %    \begin{macrocode}
       \ifscr@dsc@parametersonly
@@ -2858,6 +2694,7 @@
           }%
         }{%
           \@nameuse{scr@dsc@def@style@\@nameuse{scr@#2@style}@command}{#2}%
+          \UseName{__scrkernel_put_section_command:n}{#2}%
         }%
       \fi
 %    \end{macrocode}
@@ -2901,82 +2738,192 @@
 % \changes{v3.26}{2018/06/27}{overwrite ToC levels of \pkg{hyperref}}
 % \changes{v3.26}{2018/06/27}{fallback handling of gaps in the bookmark
 %   levels}
+% \changes{v3.44}{2025/05/14}{new code giving up compatibility with LaTeX
+%   before 2022-06-01}
 % And we need extra code for \pkg{hyperref} and the bookmarks.
 %    \begin{macrocode}
-      \if@atdocument
-        \let\reserved@a\@firstofone
-      \else
-        \@ifpackageloaded{hyperref}{%
-          \let\reserved@a\@firstofone
-        }{%
-          \def\reserved@a##1{%
-            \AfterAtEndOfPackage{hyperref}{\AtBeginDocument{##1}}%
-          }%
-        }%
-      \fi
-      \reserved@a{%
-        \expandafter\let\csname toclevel@#2\expandafter\endcsname
-        \csname #2tocdepth\endcsname
-        \scr@ifundefinedorrelax{bookmarksetup}{%
-          \scr@ifundefinedorrelax{scr@min@toclevel}{%
-            \expandafter\let\expandafter\scr@min@toclevel
-            \csname toclevel@#2\endcsname
-          }{%
-            \expandafter\ifnum \csname toclevel@#2\endcsname
-            < \numexpr \scr@min@toclevel-1\relax
-              \ClassWarning{\KOMAClassName}{%
-                Trying emergency fix for bookmark level gap,\MessageBreak
-                because toclevel of `#2'
-                (\csname toclevel@#2\endcsname)\MessageBreak
-                is more than 1 lower than currently lowest\MessageBreak
-                known level (\scr@min@toclevel).\MessageBreak
-                Note: This fix can fail and you should load\MessageBreak
-                package `bookmark' to avoid usage of this\MessageBreak
-                fix%
-              }%
-              \expandafter\edef\csname toclevel@#2\endcsname{%
-                \the\numexpr \scr@min@toclevel-1\relax
-              }%
-            \fi
-            \expandafter\ifnum \csname toclevel@#2\endcsname
-            < \scr@min@toclevel\relax
-              \expandafter\let\expandafter\scr@min@toclevel
-              \csname toclevel@#2\endcsname
-            \fi
-          }%
-          \scr@ifundefinedorrelax{scr@max@toclevel}{%
-            \expandafter\let\expandafter\scr@max@toclevel
-            \csname toclevel@#2\endcsname
-          }{%
-            \expandafter\ifnum \csname toclevel@#2\endcsname
-            > \numexpr \scr@max@toclevel+1\relax
-              \ClassWarning{\KOMAClassName}{%
-                Trying emergency fix for bookmark level gap,\MessageBreak
-                because toclevel of `#2'
-                (\csname toclevel@#2\endcsname)\MessageBreak
-                is more than 1 greater than currently highest\MessageBreak
-                known level (\scr@max@toclevel).\MessageBreak
-                Note: This fix can fail and you should load\MessageBreak
-                package `bookmark' to avoid usage of this\MessageBreak
-                fix%
-              }%
-              \expandafter\edef\csname toclevel@#2\endcsname{%
-                \the\numexpr \scr@max@toclevel+1\relax
-              }%
-            \fi
-            \expandafter\ifnum \csname toclevel@#2\endcsname
-            > \scr@max@toclevel\relax
-              \expandafter\let\expandafter\scr@max@toclevel
-              \csname toclevel@#2\endcsname
-            \fi
-          }%
-        }{}%
-      }%
+      \expandafter\let\csname toclevel@#2\expandafter\endcsname
+      \csname #2tocdepth\endcsname
     }%
   }%
   \let\scr@dsc@current\relax
 }
 %    \end{macrocode}
+% \begin{macro}{\cs{\_\_scrkernel\_seq\_put\_unique:Nn}}
+%   \changes{v3.44}{2025/05/14}{added}
+%   A variant of \cs{seq\_put\_left:NN} that puts the new item only to the left,
+%   if it does not yet exist in the sequence.
+%    \begin{macrocode}
+\ExplSyntaxOn
+\cs_new:Nn \__scrkernel_seq_put_unique:Nn
+  {
+    \seq_if_in:NnF #1 { #2 }
+      { \seq_put_left:Nn #1 { #2 } }
+  }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\cs{g\_\_scrkernel\_section\_command\_seq},
+%   \cs{\_\_scrkernel\_put\_section\_command:n},
+%   \cs{\_\_scrkernel\_sort\_section\_commands\_by\_numdepth:},
+%   \cs{\_\_scrkernel\_sort\_section\_commands\_by\_tocdepth:},
+%   \cs{\_\_scrkernel\_sort\_section\_commands\_by\_toclevel:}}
+%   We store the names of all sectioning commands in an l3seq and also
+%   provide sorting of the sequence either by the numbering depth or the depth
+%   of the corresponding ToC entries. Sorting by \pkg{hyperref}'s toclevel is
+%   also supported, but usually should be the same.
+%    \begin{macrocode}
+\seq_new:N \g__scrkernel_section_command_seq
+
+\cs_new:Nn \__scrkernel_put_section_command:n
+  {
+    \__scrkernel_seq_put_unique:Nn \g__scrkernel_section_command_seq { #1 }
+  }
+
+\cs_new:Npn \__scrkernel_sort_section_commands_by_numdepth:
+  {
+    \seq_sort:Nn \g__scrkernel_section_command_seq
+      {
+        \int_compare:nNnTF
+          { \use:c { ##2numdepth } } < { \use:c { ##1numdepth } }
+          { \sort_return_swapped: }
+          { \sort_return_same: }
+      }
+  }
+
+\cs_new:Npn \__scrkernel_sort_section_commands_by_tocdepth:
+  {
+    \seq_sort:Nn \g__scrkernel_section_command_seq
+      {
+        \int_compare:nNnTF
+          { \use:c { ##2tocdepth } } < { \use:c { ##1tocdepth } }
+          { \sort_return_swapped: }
+          { \sort_return_same: }
+      }
+  }
+
+\cs_new:Npn \__scrkernel_sort_section_commands_by_toclevel:
+  {
+    \seq_sort:Nn \g__scrkernel_section_command_seq
+      {
+        \cs_if_exist:cF { toclevel@##1 }
+          { \cs_set_eq:cc { toclevel@##1 } { ##1tocdepth } }
+        \cs_if_exist:cF { toclevel@##2 }
+          { \cs_set_eq:cc { toclevel@##2 } { ##2tocdepth } }
+        \int_compare:nNnTF
+          { \use:c { ##2tocdepth } } < { \use:c { ##1tocdepth } }
+          { \sort_return_swapped: }
+          { \sort_return_same: }
+      }
+  }
+%    \end{macrocode}
+% \end{macro}
+% \changes{v3.44}{2025/05/14}{new generation/fix of \pkg{hyperref}'s toclevel}
+% \changes{v3.45}{2025/06/04}{run the toclevel fix only if \pkg{hyperref} is
+%   loaded but not \pkg{bookmark}}
+% From version 3.44 we define \pkg{hyperref}'s toclevels at several times:
+% \begin{itemize}
+% \item when defining a new sectioning command,
+% \item for the usual sectioning commands after loading \pkg{hyperref},
+% \end{itemize}
+% Additionally we test inside \cs{begin{document}} if the levels are different
+% from the depth. If package \pkg{bookmark} has not been loaded until the end
+% of \cs{begin{document}} we also renumber the levels if needed.
+%    \begin{macrocode}
+\hook_gput_code:nnn { package / hyperref / after } { \KOMAClassName }
+  {
+    \clist_map_inline:nn
+      { part, chapter,
+        section, subsection, subsubsection,
+        paragraph, subparagraph }
+      {
+        \cs_if_exist:cT { #1tocdepth }
+          {
+            \int_compare:nNnF
+              { \use:c { toclevel@#1 } } = { \use:c { #1tocdepth } }
+              {
+                \ClassWarningNoLine{ \KOMAClassName }
+                  {
+                    It~seems~hyperref~or~another~package~before~changed
+                    \MessageBreak
+                    \exp_args:NNc \string\use:c{toclevel@#1}~from~
+                    \use:c{#1tocdepth}~to\use:c{toclevel@#1}.
+                    \MessageBreak
+                    Reverting%
+                  }
+                  \cs_set_eq:cc { toclevel@#1 } { #1tocdepth }
+              }
+          }
+      }
+  }
+\hook_gput_code:nnn { begindocument }  { \KOMAClassName }
+  {
+    \seq_map_inline:Nn \g__scrkernel_section_command_seq
+      {
+        \int_compare:nNnF
+          { \use:c{ toclevel@#1 } } = { \use:c { #1tocdepth } }
+          {
+            \ClassWarningNoLine { \KOMAClassName }
+              {
+                Unexpected~change~of~hyperref~toclevel~of~#1.\MessageBreak
+                \exp_args:NNc \string\use:c{toclevel@#1}=\use:c{toclevel@#1}
+                !=
+                \use:c{#1tocdepth}=\exp_args:NNc \string\use:c{#1tocdepth}.
+                \MessageBreak
+                Cross~your~fingers!
+              }
+          }
+      }
+  }
+\hook_gput_code:nnn { begindocument / end } { \KOMAClassName }
+  {
+    \IfPackageLoadedT { hyperref }
+      {
+        \IfPackageLoadedF { bookmark }
+          {
+            \__scrkernel_emergency_toclevel_cleanup:
+            \BeforeStartingTOC[\ext@toc]{\__scrkernel_emergency_toclevel_cleanup:}
+          }
+      }
+  }
+
+\cs_new:Npn \__scrkernel_emergency_toclevel_cleanup:
+  {
+    \ClassInfo{\KOMAClassName}{running~emergency~toclevel~cleanup}
+    \group_begin:
+      \tl_clear:N \l_tmpa_tl
+      \__scrkernel_sort_section_commands_by_toclevel:
+      \seq_map_inline:Nn \g__scrkernel_section_command_seq
+        {
+          \tl_if_empty:NF \l_tmpa_tl
+            {
+              \int_compare:nNnT
+                { \use:c { toclevel@##1 } } > { \l_tmpa_int + 1 }
+                {
+                  \ClassWarningNoLine { \KOMAClassName }
+                    {
+                      Trying~emergency~fix~for~bookmark~level~gap,
+                      \MessageBreak
+                      because~toclevel~of~##1~(\use:c{toclevel@##1})~
+                      is~more~than~1
+                      \MessageBreak
+                      greater~than~toclevel~of~\l_tmpa_tl\space
+                      (\int_use:N\l_tmpa_int).\MessageBreak
+                      Note:~This~fix~can~fail~and~you~should~load
+                      \MessageBreak
+                      package~bookmark~to~avoid~issues~with~such~gaps%
+                    }
+                  \cs_gset:cpe { toclevel@##1 }
+                    { \int_eval:n { \l_tmpa_int + 1 } }
+                }
+            }
+          \tl_set:Nn \l_tmpa_tl { ##1 }
+          \int_set:Nn \l_tmpa_int { \use:c { toclevel@##1 } }
+        }
+    \group_end:
+  }
+\ExplSyntaxOff
+%    \end{macrocode}
+%
 % \begin{macro}{\scr@declaresectioncommanderror}
 % \changes{v3.15}{2014/11/21}{added}
 % It there were not enough options to \cs{DeclareSectionCommand} to define the
@@ -3384,6 +3331,7 @@
 % \changes{v3.26}{2018/06/27}{added}
 % \changes{v3.39}{2022/11/11}{initial dot removed from member argument of
 %   option storage commands}
+% \changes{v3.44}{2025/05/14}{using generic hooks}
 % Package \pkg{hyperref} has problems with bookmark level gaps. So if
 % either the users omits a heading level or defines a heading with a level
 % that distinguish more than one from the previous or following level, there
@@ -3398,9 +3346,9 @@
 \KOMA@ifkey{bookmarkpackage}{@scr@autoloadbookmarkpackage}
 \@scr@autoloadbookmarkpackagetrue
 \KOMA@kav@add{\KOMAClassFileName}{bookmarkpackage}{true}
-\AfterAtEndOfPackage{hyperref}{%
-  \AtBeginDocument{%
-    \@ifpackageloaded{bookmark}{}{%
+\AddToHook{package/hyperref/after}{%
+  \AddToHook{begindocument/before}[\KOMAClassName]{%
+    \IfPackageLoadedF{bookmark}{%
       \if@scr@autoloadbookmarkpackage
 %    \end{macrocode}
 % \changes{v3.42}{2024/06/04}{load \pkg{bookmark} only if available}
@@ -3432,7 +3380,7 @@
 %   \pkg{bookmark} driver option}
 % The name of the \pkg{hyperref} driver is in \cs{Hy@driver}. But
 % \pkg{bookmark} does not provide the same drivers, so we try to translate
-% the curreny known \pkg{hyperref} drivers to \pkg{bookmark}
+% the currently known \pkg{hyperref} drivers to \pkg{bookmark}
 % drivers. Also we do not load \pkg{bookmark} with a driver option but
 % define \pkg{bookmark}'s \cs{BookmarkDriverDefault}.
 %    \begin{macrocode}
@@ -3786,36 +3734,60 @@
 % \end{macro}^^A \@mainmattertrue,\if@mainmatter
 %
 % \begin{command}{\frontmatter}
-% \changes{v2.4e}{1996/07/02}{support for \opt{open\quotechar=any}}
-% \changes{v2.5h}{1999/12/29}{support for \opt{twoside}}
-% \changes{v3.00}{2008/09/27}{\cs{cleardoublepage} replaced by
-%   \cs{cleardoubleoddpage}}
-% Switching to the front matter always needs a new odd page, because we change
-% the page numbering to lowercase Roman numbers.
+%   \changes{v2.4e}{1996/07/02}{support for \opt{open\quotechar=any}}
+%   \changes{v2.5h}{1999/12/29}{support for \opt{twoside}}
+%   \changes{v3.00}{2008/09/27}{\cs{cleardoublepage} replaced by
+%     \cs{cleardoubleoddpage}}
+%   \changes{v3.49}{2025/10/28}{star variant added}
+%   \changes{v3.49}{2025/10/28}{optional argument added}
+%   Switching to the front matter always needs a new odd page, because we
+%   change the page numbering to lowercase Roman numbers. From \KOMAScript{}
+%   v3.49 there is also a star form without changing the page numbering style.
+%   \begin{description}
+%   \item[Note:] Because of using \cs{tl\_if\_blank:TF} instead of
+%   \cs{IfValueTF} we have the correct order to make patches replacing
+%   \cs{pagenumbering} by \cs{@gobble} still work.
+%   \end{description}
 %    \begin{macrocode}
-\newcommand*\frontmatter{%
+\ExplSyntaxOn
+\NewDocumentCommand\frontmatter{so}{
   \if@twoside\cleardoubleoddpage\else\clearpage\fi
-  \@mainmatterfalse\pagenumbering{roman}%
+  \@mainmatterfalse
+  \IfBooleanF{#1}{
+    \tl_if_novalue:nTF {#2}
+      {\pagenumbering{roman}}
+      {\tl_if_blank:nF {#2}{\pagenumbering{#2}}}
+  }
 }
 %    \end{macrocode}
 % \end{command}^^A \frontmatter
 % \begin{command}{\mainmatter}
-% \changes{v2.4e}{1996/07/02}{support for \opt{open\quotechar=any}}
-% \changes{v2.5h}{1999/12/29}{support for \opt{twoside}}
-% \changes{v3.00}{2008/09/27}{\cs{cleardoublepage} replaced by
-%   \cs{cleardoubleoddpage}}
-% Switching back to main matter always needs a new odd page, because we change
-% the page numbering to Arabic numbers.
+%   \changes{v2.4e}{1996/07/02}{support for \opt{open\quotechar=any}}
+%   \changes{v2.5h}{1999/12/29}{support for \opt{twoside}}
+%   \changes{v3.00}{2008/09/27}{\cs{cleardoublepage} replaced by
+%     \cs{cleardoubleoddpage}}
+%   \changes{v3.49}{2025/10/28}{star variant added}
+%   \changes{v3.49}{2025/10/28}{optional argument added}
+%   Switching back to main matter always needs a new odd page, because we
+%   change the page numbering to Arabic numbers. From \KOMAScript{} v3.49
+%   there is also a star form without changing the page numbering style.
 %    \begin{macrocode}
-\newcommand*\mainmatter{%
+\NewDocumentCommand\mainmatter{so}{%
   \if@twoside\cleardoubleoddpage\else\clearpage\fi
-  \@mainmattertrue\pagenumbering{arabic}%
+  \@mainmattertrue
+  \IfBooleanF{#1}{
+    \tl_if_novalue:nTF {#2}
+      {\pagenumbering{arabic}}%
+      {\tl_if_blank:nF {#2}{\pagenumbering{#2}}}
+  }
 }
 %    \end{macrocode}
 % \end{command}^^A \mainmatter
 % \begin{command}{\backmatter}
 % \changes{v3.00}{2008/09/27}{\cs{cleardoublepage} replaced by
 %     \cs{cleardoubleoddpage}}
+%   \changes{v3.49}{2025/10/28}{star variant added}
+%   \changes{v3.49}{2025/10/28}{optional argument added}
 % Only with \opt{open=right} we start a new odd page when starting the back
 % matter.
 % \begin{description}
@@ -3824,9 +3796,13 @@
 %   \cls*{book} use this and why shall we do so too?
 % \end{description}
 %    \begin{macrocode}
-\newcommand*\backmatter{%
+\NewDocumentCommand\backmatter{sO{}}{%
   \if@openright\cleardoubleoddpage\else\clearpage\fi\@mainmatterfalse
+  \IfBooleanF{#1}{
+    \tl_if_blank:nF {#2}{\pagenumbering{#2}}
+  }
 }
+\ExplSyntaxOff
 %</body>
 %</book>
 %    \end{macrocode}
@@ -3852,6 +3828,8 @@
 % \changes{v3.20}{2016/12/05}{improved warning}
 % \changes{v3.28}{2019/11/18}{\cs{ifstr} renamed to \cs{Ifstr}}
 % \changes{v3.34}{2021/04/30}{\LaTeX{} hook added}
+% \changes{v3.46}{2025/08/13}{local redefinition of \cs{@chapapp} inside ToCs
+%   added}
 % \begin{command}{\appendixmore}
 % \changes{v2.8}{2001/06/15}{added}
 % \cs{appendixmore} is deprecated with \LaTeX{} 2020/10/01 (or newer) but
@@ -3887,16 +3865,18 @@
   \setcounter{chapter}{0}%
   \setcounter{section}{0}%
   \gdef\@chapapp{\appendixname}%
+  \addtocontents{\ext@toc}{\def\protect\@chapapp{\protect\appendixname}}%
+  \doforeachtocfile[float]{%
+    \addtocontents{\@currext}{\def\protect\@chapapp{\protect\appendixname}}%
+  }%
   \gdef\thechapter{\@Alph\c@chapter}%
 %</report|book>
+  \UseOneTimeHook{\KOMAClassName/appendix}%
+  \csname appendixmore\endcsname
 }
-\IfLTXAtLeastTF{2020/10/01}{%
-  \g@addto@macro{\appendix}{\UseOneTimeHook{\KOMAClassName/appendix}}%
-}{}
-\g@addto@macro{\appendix}{\csname appendixmore\endcsname}
 %</body>
 %<*prepare>
-\IfLTXAtLeastTF{2020/10/01}{\NewHook{\KOMAClassName/appendix}}{}
+\NewHook{\KOMAClassName/appendix}
 %</prepare>
 %    \end{macrocode}
 % \end{command}
@@ -4430,7 +4410,23 @@
 % \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack}}
 % \changes{v3.32}{2020/09/11}{\cs{AfterPackage!} replaced by
 %   \cs{AfterAtEndOfPackage}}
+% Usually \pkg{hyperref} uses \cs{refstepcounter} to process extra codes for
+% anchors and bookmarks. However, if a not numbered heading is used,
+% \pkg{hyperref} cannot use \cs{refstepcounter} but still has to add
+% code. Usually \pkg{hyperref} patchs several commands like \cs{@chapter},
+% \cs{@schapter}, \cs{@part}, \cs{@spart} etc. to do so. But I think, it would
+% be better to provide a hook for this, \pkg*{hyperref} can change. So we've
+% designed \cs{hy@insteadofrefstepcounter}. Unfortunately \pkg{hyperref}
+% currently does not care for this, but still does its patches. So we need to
+% prevent \pkg{hyperref} from doing so and additionally define
+% \cs{hy@insteadofrefstepcounter} ourselves. But because \cs{autoref} is
+% nonsense for not numbered headings, I do not use \cs{Hy@chapapp} for
+% \cs{Hy@MakeCurrentHrefAuto}.
+% \begin{description}
+% \item[ToDo:] Explain the Oberdiek support team, what we are doing here and
+%   what they should do.
 % tagging: Hyperref has \cs{\MakeLinkTarget} for this.
+% \end{description}
 %    \begin{macrocode}
 \newcommand*{\hy@insteadofrefstepcounter}[1]{}
 \let\hy@insteadofrefstepcounter\@gobble
@@ -4757,6 +4753,7 @@
 %   hooks}
 % \changes{v3.39}{2022/11/11}{initial dot removed from member argument of
 %   option storage commands}
+% \changes{v3.44}{2025/05/13}{code for \LaTeX{} before 2020-10-01 removed}
 % If the appendix chapters should be with or without prefix line independent
 % from the chapters of the main part, option \opt{appendixprefix} can be
 % used. This does not set up a new boolean but just activates or deactivates
@@ -4765,62 +4762,36 @@
 % \cs{appendixmore} is used. Default is, using the settings for chapters.
 %    \begin{macrocode}
 %<*option>
-\IfLTXAtLeastTF{2020/10/01}{%
-  \KOMA@key{appendixprefix}[true]{%
-    \Ifstr{#1}{default}{%
-      \KOMA@kav@removekey{\KOMAClassFileName}{appendixprefix}%
-      \KOMA@kav@remove{\KOMAClassFileName}{headings}{twolineappendix}%
-      \KOMA@kav@remove{\KOMAClassFileName}{headings}{onelineappendix}%
-      \IfHookEmptyTF{\KOMAClassName/appendix}{}{%
-        \RemoveFromHook{\KOMAClassName/appendix}[appendixprefix]%
-      }%
-      \FamilyKeyStateProcessed
-    }{%
-      \KOMA@set@ifkey{appendixprefix}{@tempswa}{#1}%
-      \ifx\FamilyKeyState\FamilyKeyStateProcessed
-        \KOMA@kav@xreplacevalue{\KOMAClassFileName}{appendixprefix}{#1}%
-        \KOMA@kav@remove{\KOMAClassFileName}{headings}{twolineappendix}%
-        \KOMA@kav@remove{\KOMAClassFileName}{headings}{onelineappendix}%
-        \IfHookEmptyTF{\KOMAClassName/appendix}{}{%
-          \RemoveFromHook{\KOMAClassName/appendix}[appendixprefix]%
-        }%
-        \if@tempswa
-          \KOMA@kav@add{\KOMAClassFileName}{headings}{twolineappendix}%
-          \AddToHook{\KOMAClassName/appendix}[appendixprefix]%
-                    {\@chapterprefixtrue}%
-        \else
-          \KOMA@kav@add{\KOMAClassFileName}{headings}{onelineappendix}%
-          \AddToHook{\KOMAClassName/appendix}[appendixprefix]%
-                    {\@chapterprefixfalse}%
-        \fi
-      \fi
+\KOMA@key{appendixprefix}[true]{%
+  \Ifstr{#1}{default}{%
+    \KOMA@kav@removekey{\KOMAClassFileName}{appendixprefix}%
+    \KOMA@kav@remove{\KOMAClassFileName}{headings}{twolineappendix}%
+    \KOMA@kav@remove{\KOMAClassFileName}{headings}{onelineappendix}%
+    \IfHookEmptyTF{\KOMAClassName/appendix}{}{%
+      \RemoveFromHook{\KOMAClassName/appendix}[appendixprefix]%
     }%
-  }%
-}{%
-  \KOMA@key{appendixprefix}[true]{%
+    \FamilyKeyStateProcessed
+  }{%
     \KOMA@set@ifkey{appendixprefix}{@tempswa}{#1}%
     \ifx\FamilyKeyState\FamilyKeyStateProcessed
       \KOMA@kav@xreplacevalue{\KOMAClassFileName}{appendixprefix}{#1}%
       \KOMA@kav@remove{\KOMAClassFileName}{headings}{twolineappendix}%
       \KOMA@kav@remove{\KOMAClassFileName}{headings}{onelineappendix}%
+      \IfHookEmptyTF{\KOMAClassName/appendix}{}{%
+        \RemoveFromHook{\KOMAClassName/appendix}[appendixprefix]%
+      }%
       \if@tempswa
         \KOMA@kav@add{\KOMAClassFileName}{headings}{twolineappendix}%
-        \@ifundefined{appendixmore}{%
-          \def\appendixmore{\@chapterprefixtrue}%
-        }{%
-          \l@addto@macro\appendixmore{\@chapterprefixtrue}%
-        }%
+        \AddToHook{\KOMAClassName/appendix}[appendixprefix]%
+                  {\@chapterprefixtrue}%
       \else
         \KOMA@kav@add{\KOMAClassFileName}{headings}{onelineappendix}%
-        \@ifundefined{appendixmore}{%
-          \def\appendixmore{\@chapterprefixfalse}%
-        }{%
-          \l@addto@macro\appendixmore{\@chapterprefixfalse}%
-        }%
+        \AddToHook{\KOMAClassName/appendix}[appendixprefix]%
+                  {\@chapterprefixfalse}%
       \fi
     \fi
   }%
-}
+}%
 %    \end{macrocode}
 % \begin{option}{noappendixprefix}
 % \changes{v2.8}{2001/06/15}{added}
@@ -5108,9 +5079,9 @@
     \fi
   \fi
 %    \end{macrocode}
-% \changes{v3.18}{2015/05/22}{\cs{@makechapterhead} replaced by
-%   \cs{@make\meta{Name}head}}
-% \changes{v3.36}{2022/03/16}{warning about deprecated \cs{@makechapterhead}}
+%   \changes{v3.18}{2015/05/22}{\cs{@makechapterhead} replaced by
+%     \cs{@make\meta{Name}head}}
+%   \changes{v3.36}{2022/03/16}{warning about deprecated \cs{@makechapterhead}}
 % Setting the heading itself is more or less a call of \cs{@make\meta{command
 % name}head}.
 % \begin{description}
@@ -5126,7 +5097,32 @@
     \if@at@twocolumn
       \@nameuse{@make#1head}{#3}%
     \else
-      \@topnewpage[\@nameuse{@make#1head}{#3}]%
+%    \end{macrocode}
+%   \changes{v3.46}{2025/08/19}{vertical alignment of chapters in twocolumn
+%     mode improved}
+% Here we have a problem or even two. First: Inside \cs{@topnewpage} the
+% paragraph settings are reset like with \cs{parboxrestore}. So we need to
+% store the settings outside and restore them inside. Restoring \cs{parskip}
+% usually would be enough, but we do the whole thing. Second: \cs{@topnewpage}
+% is output before \cs{topskip} us used. But here we need \cs{topskip} be used
+% first. So we need to compensate this by extra \cs{vskip} before and the
+% content.
+%    \begin{macrocode}
+      \edef\scr@restoreparsetup{%
+        \parskip\the\parskip
+        \parfillskip\the\parfillskip
+        \parindent\the\parindent
+      }%
+      \@topnewpage[%
+%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
+        \scr@restoreparsetup
+        \vskip\topskip
+%<!v4>        \fi
+        \@nameuse{@make#1head}{#3\ifhmode\strut\fi}%
+%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
+        \vskip\dimeval{\ht\strutbox-\dp\strutbox-\topskip+\parskip}%
+%<!v4>        \fi
+      ]%
     \fi
   \else
     \@nameuse{@make#1head}{#3}%
@@ -5214,7 +5210,32 @@
     \if@at@twocolumn
       \@nameuse{@makes#1head}{#2}%
     \else
-      \@topnewpage[\@nameuse{@makes#1head}{#2}]%
+%    \end{macrocode}
+%   \changes{v3.46}{2025/08/19}{vertical alignment of chapters in twocolumn
+%     mode improved}
+% Here we have a problem or even two. First: Inside \cs{@topnewpage} the
+% paragraph settings are reset like with \cs{parboxrestore}. So we need to
+% store the settings outside and restore them inside. Restoring \cs{parskip}
+% usually would be enough, but we do the whole thing. Second: \cs{@topnewpage}
+% is output before \cs{topskip} us used. But here we need \cs{topskip} be used
+% first. So we need to compensate this by extra \cs{vskip} before and the
+% content.
+%    \begin{macrocode}
+      \edef\scr@restoreparsetup{%
+        \parskip\the\parskip
+        \parfillskip\the\parfillskip
+        \parindent\the\parindent
+      }%
+      \@topnewpage[%
+%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
+        \scr@restoreparsetup
+        \vskip\topskip
+%<!v4>        \fi
+        \@nameuse{@makes#1head}{#2\ifhmode\strut\fi}%
+%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
+        \vskip\dimeval{\ht\strutbox-\dp\strutbox-\topskip+\parskip}%
+%<!v4>        \fi
+      ]%
     \fi
   \else
     \@nameuse{@makes#1head}{#2}%

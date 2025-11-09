@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlayer-scrpage-experts-en.tex
-% Copyright (c) Markus Kohm, 2013-2022
+% Copyright (c) Markus Kohm, 2013-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -23,7 +23,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlayer-scrpage-experts-en.tex}%
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2025-07-16 10:53:10 +0200 (Wed, 16 Jul 2025) $
                   KOMA-Script guide (chapter: scrlayer-scrpage-experts)]
 \translator{Markus Kohm\and Karl Hagen}
 
@@ -167,6 +167,12 @@ users should try to use it directly. Less experienced users can already
 achieve almost everything possible with this low-level interface by using the
 possibilities described previously.
 
+We expressly advise against using the commands presented here to redefine
+individual parts of already defined page style pairs. Among other things, this
+would damage the link to a pair. For the redefinition of page style pairs,
+please refer to \autoref{sec:\LabelBase.pagestyle.pairs} from
+\autopageref{sec:\LabelBase.pagestyle.pairs}.
+
 \begin{Declaration}
   \Macro{defpagestyle}%
   \Parameter{name}\Parameter{header specification}\Parameter{footer specification}%
@@ -242,23 +248,23 @@ about layers and layer-page in \autoref{cha:scrlayer}, starting on
       \toprule
       Name of the layer & Meaning of the layer \\
       \midrule
-      \PName{name}\PValue{.head.above.line} 
+      \PName{name}\PValue{.head.above.line}
         & horizontal line above the header\\
-      \PName{name}\PValue{.head.odd} 
+      \PName{name}\PValue{.head.odd}
         & header of odd pages in two-sided printing\\
       \PName{name}\PValue{.head.even}
         & header of even pages in two-sided printing\\
-      \PName{name}\PValue{.head.oneside} 
+      \PName{name}\PValue{.head.oneside}
         & header in one-sided printing\\
-      \PName{name}\PValue{.head.below.line} 
+      \PName{name}\PValue{.head.below.line}
         & horizontal line below the header\\
-      \PName{name}\PValue{.foot.above.line} 
+      \PName{name}\PValue{.foot.above.line}
         & horizontal line above the footer\\
-      \PName{name}\PValue{.foot.odd} 
+      \PName{name}\PValue{.foot.odd}
         & footer of odd pages in two-sided printing\\
-      \PName{name}\PValue{.foot.even} 
+      \PName{name}\PValue{.foot.even}
         & footer of even pages in two-sided printing\\
-     \PName{name}\PValue{.foot.oneside} 
+     \PName{name}\PValue{.foot.oneside}
         & footer in one-sided printing\\
       \PName{name}\PValue{.foot.below.line}
         & horizontal line below the footer\\
@@ -361,7 +367,7 @@ is deactivated by default.%
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8

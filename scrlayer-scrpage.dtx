@@ -1,7 +1,7 @@
 % \iffalse^^A meta-comment
 % ======================================================================
 % scrlayer-scrpage.dtx
-% Copyright (c) Markus Kohm, 2012-2023
+% Copyright (c) Markus Kohm, 2012-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrlayer-scrpage.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrlayer-scrpage.dtx 4160 2025-06-04 11:53:33Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -27,9 +27,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2025-06-04 13:53:33 +0200 (Wed, 04 Jun 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4160 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrlayer-scrpage.dtx}%
@@ -39,7 +39,7 @@
 \reserved@a
 %</dtx>
 %<*identify>
-%<interface>\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+%<interface>\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 %<interface>\ProvidesPackage{scrlayer-scrpage}[%
 %!KOMAScriptVersion
 %<interface>  package
@@ -887,11 +887,11 @@
       But head height is currently
       \the\headheight\space only.\MessageBreak
       You may use\MessageBreak
-      \@ifpackageloaded{geometry}{%
+      \IfPackageLoadedTF{geometry}{%
         geometry option
         `head=\if@ps@singlespacing\f@baselineskip\else\the\baselineskip\fi'%
       }{%
-        \@ifpackageloaded{typearea}{%
+        \IfPackageLoadedTF{typearea}{%
           typearea option `headheight=%
           \if@ps@singlespacing\f@baselineskip\else\the\baselineskip\fi'%
         }{%
@@ -917,7 +917,7 @@
         But foot height is currently
         \the\footheight\space only.\MessageBreak
         You may use\MessageBreak
-        \@ifpackageloaded{typearea}{%
+        \IfPackageLoadedTF{typearea}{%
           typearea option `footheight=%
           \if@ps@singlespacing\f@baselineskip\else\the\baselineskip\fi'%
         }{%
@@ -1627,9 +1627,9 @@
 % the order would be changed, everything would be OK.
 %    \begin{macrocode}
 %<*body>
-\@ifpackageloaded{titlesec}{%
+\IfPackageLoadedT{titlesec}{%
   \@ifundefined{newpagestyle}{}{%
-    \@ifpackageloaded{titleps}{}{%
+    \IfPackageLoadedF{titleps}{%
       \PackageWarningNoLine{scrlayer-scrpage}{%
         it seems that package `titlesec' is used\MessageBreak
         and has already defined `\string\newpagestyle'.\MessageBreak
@@ -1644,7 +1644,7 @@
       \let\newpagestyle\relax
     }%
   }%
-}{}
+}
 \newcommand*\newpagestyle[3]{%
   \@ifundefined{ps@#1}{\defpagestyle{#1}{#2}{#3}}{%
     \PackageError{scrlayer-scrpage}{Page style `#1' already defined}{%
@@ -1669,9 +1669,9 @@
 % \cs{providecommand} so if the order would be changed, everything would be OK.
 %    \begin{macrocode}
 %<*body>
-\@ifpackageloaded{titlesec}{%
+\IfPackageLoadedT{titlesec}{%
   \@ifundefined{renewpagestyle}{}{%
-    \@ifpackageloaded{titleps}{}{%
+    \IfPackageLoadedF{titleps}{%
       \PackageWarningNoLine{scrlayer-scrpage}{%
         It seems that package `titlesec' is used\MessageBreak
         and has already defined `\string\renewpagestyle'.\MessageBreak
@@ -1686,7 +1686,7 @@
       \let\renewpagestyle\relax
     }%
   }%
-}{}
+}
 \newcommand*\renewpagestyle[3]{%
   \@ifundefined{ps@#1}{%
     \PackageError{scrlayer-scrpage}{Undefined page style `#1'}{%

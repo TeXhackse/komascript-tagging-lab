@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlfile-de.tex
-% Copyright (c) Markus Kohm, 2001-2022
+% Copyright (c) Markus Kohm, 2001-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,10 +24,10 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlfile-de.tex}%
-                 [$Date: 2022-07-17 12:36:46 +0200 (Sun, 17 Jul 2022) $
+                 [$Date: 2025-07-01 20:35:29 +0200 (Tue, 01 Jul 2025) $
                   KOMA-Script guide (chapter: scrlfile)]
 
-\chapter{Paketabhängigkeiten mit \Package{scrlfile} 
+\chapter{Paketabhängigkeiten mit \Package{scrlfile}
   beherrschen}
 \labelbase{scrlfile}
 
@@ -171,7 +171,7 @@ verwendet. Näheres zur Bedeutung des optionalen Arguments \PName{Label} ist
 der zugehörigen Anleitung zur \LaTeX-Kern-Anweisung \Macro{AddToHook} zu
 entnehmen. Empfohlen wird in der Regel der Verzicht auf das optionale
 Argument. Bei älteren \LaTeX-Versionen wird dieses ohnehin ignoriert.
-  
+
 Die Anweisung \Macro{InputIfFileExists} wird von \LaTeX{} immer verwendet,
 wenn eine Datei geladen werden soll. Dies geschieht unabhängig davon, ob die
 Datei mit \Macro{LoadClass}, \Macro{documentclass}, \Macro{usepackage},
@@ -272,11 +272,11 @@ Argument. Bei älteren \LaTeX-Versionen wird dieses ohnehin ignoriert.
   \AfterPackage{hyperref}{%
     \@ifpackagelater{hyperref}{2001/02/19}{}{%
       \ClassWarningNoLine{scrbook}{%
-        You are using an old version of the hyperref 
+        You are using an old version of the hyperref
         package!\MessageBreak%
-        This version has a buggy hack in many 
+        This version has a buggy hack in many
         drivers,\MessageBreak%
-        causing \string\addchap\space to behave 
+        causing \string\addchap\space to behave
         strangely.\MessageBreak%
         Please update hyperref to at least version
         6.71b}%
@@ -292,21 +292,6 @@ Argument. Bei älteren \LaTeX-Versionen wird dieses ohnehin ignoriert.
   dafür, dass unmittelbar nach dem Laden des Pakets überprüft wird, ob
   es sich um eine verträgliche Version handelt. Falls dies nicht der
   Fall ist, wird eine Warnung ausgegeben.
-
-  An anderer Stelle findet sich in drei der \KOMAScript-Klassen folgendes:
-\begin{lstcode}
-  \AfterPackage{caption2}{%
-    \renewcommand*{\setcapindent}{%
-\end{lstcode}% }}
-  Nach dem Laden von \Package{caption2} und nur falls das Paket
-  geladen wird, wird hier die \KOMAScript{} eigene Anweisung
-  \DescRef{maincls.cmd.setcapindent} umdefiniert. Der Inhalt der Umdefinierung
-  ist für dieses Beispiel unerheblich. Es sei nur erwähnt, dass
-  \Package{caption2} die Kontrolle über die
-  \DescRef{maincls.cmd.caption}-Anweisung übernimmt und daher die normale
-  Definition von \DescRef{maincls.cmd.setcapindent} keinerlei Wirkung mehr
-  hätte. Die Umdefinierung verbessert dann die Zusammenarbeit mit dem
-  veralteten \Package{caption2}.
 
   Es gibt aber auch Beispiele für den sinnvollen Einsatz der neuen
   Anweisungen durch normale Anwender. Angenommen, Sie erstellen ein
@@ -387,7 +372,7 @@ ausgegeben wurde. Dazu wird -- in Unkenntnis der dadurch verursachten Probleme
     \if@filesw
       \write\@auxout{\protect\writethistoaux}%
     \fi
-  } 
+  }
 \end{lstcode}
 Dies ist jedoch keine wirkliche Lösung. Wurde die letzte
 Seite vor \Macro{end}\PParameter{document} bereits ausgegeben, so führt obiges
@@ -403,7 +388,7 @@ daher häufig auch Lösungsversuche wie:
       \clearpage
       \immediate\write\@auxout{\protect\writethistoaux}%
     \fi
-  } 
+  }
 \end{lstcode}
 Diese Lösung hat jedoch den Nachteil, dass damit die Ausgabe der letzten Seite
 erzwungen wird. Eine Anweisung wie
@@ -677,7 +662,7 @@ können wieder alle Pakete geladen werden.
   \RequirePackage{foo}
   \PreventPackageFromLoading{\Users@PreventList}
 \end{lstcode}
-  Es ist zu beachten, dass\textnote{Achtung!} \Macro{Users@PreventList} durch 
+  Es ist zu beachten, dass\textnote{Achtung!} \Macro{Users@PreventList} durch
   die Anweisung \Macro{StorePreventPackageFromLoading} auch definiert
   werden würde, wenn diese bereits anderweitig definiert wäre. Eine vorhandene
   Definition würde also ohne Rücksicht überschrieben werden. In diesem
@@ -740,7 +725,7 @@ einer gespeicherten Liste wiederhergestellt wird, wird dann der
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8

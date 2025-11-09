@@ -1,6 +1,6 @@
 % ======================================================================
 % common-textmarkup-en.tex
-% Copyright (c) Markus Kohm, 2001-2023
+% Copyright (c) Markus Kohm, 2001-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-textmarkup-en.tex}
-                 [$Date: 2023-09-18 09:02:03 +0200 (Mon, 18 Sep 2023) $
+                 [$Date: 2025-02-12 11:47:33 +0100 (Wed, 12 Feb 2025) $
                   KOMA-Script guide (common paragraphs)]
 \translator{Gernot Hassenpflug\and Markus Kohm\and Krickette Murabayashi\and
 	Karl Hagen}
@@ -129,7 +129,7 @@
     \end{Example}
     \iftrue
       \begin{Explain}
-        The example above uses the notation ``\verb|\molec C6|''. 
+        The example above uses the notation ``\verb|\molec C6|''.
         This makes use of the fact that arguments consisting of only one
         character do not have to be enclosed in parentheses. That is why
         ``\verb|\molec C6|'' is similar to ``\verb|\molec{C}{6}|''. You
@@ -200,7 +200,7 @@
   \DescRef{\LabelBase.cmd.addtokomafont} statements explained below.%
   \EndIndexGroup%
   \fi
-  
+
 
 \begin{Declaration}
   \Macro{setkomafont}\Parameter{element}\Parameter{commands}%
@@ -300,7 +300,7 @@ refer to the sections for the respective element.%
       \Class{scrreprt} or \Class{scrartcl} with \Macro{setkomafont} and
       \Macro{addtokomafont}%
       \label{tab:maincls.fontelements}%
-      \label{tab:scrextend.fontelements}%     
+      \label{tab:scrextend.fontelements}%
     }{%
       Elements whose font style can be changed (\emph{continued})%
     }%
@@ -310,61 +310,61 @@ refer to the sections for the respective element.%
       author of the document in the title, i.\,e., the argument of
       \DescRef{\ThisCommonLabelBase.cmd.author} when
       \DescRef{\ThisCommonLabelBase.cmd.maketitle} is used (see
-      \autoref{sec:maincls.titlepage}, \DescPageRef{maincls.cmd.author})}%
+      \autoref{sec:maincls.titlepage}, \DescPageRef{\ThisCommonLabelBase.cmd.author})}%
     \feentry{caption}{text of a figure or table caption (see
-      \autoref{sec:maincls.floats}, \DescPageRef{maincls.cmd.caption})}%
+      \autoref{sec:maincls.floats}, \DescPageRef{\ThisCommonLabelBase.cmd.caption})}%
     \feentry{captionlabel}{label of a figure or table caption; applied in
       addition to the \DescRef{\ThisCommonLabelBase.fontelement.caption}
       element (see \autoref{sec:maincls.floats},
-      \DescPageRef{maincls.cmd.caption})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.caption})}%
     \feentry{chapter}{title of the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.chapter} (see
-      \autoref{sec:maincls.structure}, \DescPageRef{maincls.cmd.chapter})}%
+      \autoref{sec:maincls.structure}, \DescPageRef{\ThisCommonLabelBase.cmd.chapter})}%
     \feentry{chapterentry}{%
       table of contents entry for the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.chapter} (see
-      \autoref{sec:maincls.toc}, \DescPageRef{maincls.cmd.tableofcontents})}%
+      \autoref{sec:maincls.toc}, \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
     \feentry{chapterentrydots}{%
       \ChangedAt{v3.15}{\Class{scrbook}\and \Class{scrreprt}}%
       optional points connecting table-of-content entries for the
       \DescRef{\ThisCommonLabelBase.cmd.chapter} level, differing from the
       \DescRef{\ThisCommonLabelBase.fontelement.chapterentry} element,
       \Macro{normalfont} and \Macro{normalsize} (see
-      \autoref{sec:maincls.toc}, \DescPageRef{maincls.cmd.tableofcontents})}%
+      \autoref{sec:maincls.toc}, \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
     \feentry{chapterentrypagenumber}{%
       page number of the table of contents entry for the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.chapter}, differing from the element
       \DescRef{\ThisCommonLabelBase.fontelement.chapterentry} (see
-      \autoref{sec:maincls.toc}, \DescPageRef{maincls.cmd.tableofcontents})}%
+      \autoref{sec:maincls.toc}, \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
     \feentry{chapterprefix}{%
       label, e.\,g., ``Chapter'', appearing before the chapter number in both
       \OptionValueRef{maincls}{chapterprefix}{true} and
       \OptionValueRef{maincls}{appendixprefix}{true} (see
       \autoref{sec:maincls.structure},
-      \DescPageRef{maincls.option.chapterprefix})}%
+      \DescPageRef{\ThisCommonLabelBase.option.chapterprefix})}%
     \feentry{date}{%
       \ChangedAt{v3.12}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}\and \Package{scrextend}}%
       date of the document in the main title, i.\,e., the argument of
       \DescRef{\ThisCommonLabelBase.cmd.date} when
       \DescRef{\ThisCommonLabelBase.cmd.maketitle} is used (see
-      \autoref{sec:maincls.titlepage}, \DescPageRef{maincls.cmd.date})}%
+      \autoref{sec:maincls.titlepage}, \DescPageRef{\ThisCommonLabelBase.cmd.date})}%
     \feentry{dedication}{%
       \ChangedAt{v3.12}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}\and \Package{scrextend}}%
       dedication page after the main title, i.\,e., the argument of
       \DescRef{\ThisCommonLabelBase.cmd.dedication} when
       \DescRef{\ThisCommonLabelBase.cmd.maketitle} is used (see
-      \autoref{sec:maincls.titlepage}, \DescPageRef{maincls.cmd.dedication})}%
+      \autoref{sec:maincls.titlepage}, \DescPageRef{\ThisCommonLabelBase.cmd.dedication})}%
     \feentry{descriptionlabel}{labels, i.\,e., the optional argument of
       \DescRef{\ThisCommonLabelBase.cmd.item.description} in the
       \DescRef{\ThisCommonLabelBase.env.description} environment (see
-      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.description})}%
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.description})}%
     \feentry{dictum}{dictum or epigraph (see \autoref{sec:maincls.dictum},
-      \DescPageRef{maincls.cmd.dictum})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.dictum})}%
     \feentry{dictumauthor}{author of a dictum or epigraph; applied in addition
       to the element \DescRef{\ThisCommonLabelBase.fontelement.dictum} (see
-      \autoref{sec:maincls.dictum}, \DescPageRef{maincls.cmd.dictum})}%
+      \autoref{sec:maincls.dictum}, \DescPageRef{\ThisCommonLabelBase.cmd.dictum})}%
     \feentry{dictumtext}{alternative name for
       \DescRef{\ThisCommonLabelBase.fontelement.dictum}}%
     \feentry{disposition}{all sectioning command titles, i.\,e., the arguments
@@ -373,59 +373,89 @@ refer to the sections for the respective element.%
       \DescRef{\ThisCommonLabelBase.cmd.minisec}, including the title of the
       abstract; applied before the element of the respective unit (see
       \autoref{sec:maincls.structure}, \autopageref{sec:maincls.structure})}%
+    \feentry{enumeratelabel}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Default for the preset numbers of the environment
+      \DescRef{\ThisCommonLabelBase.env.enumerate} (see
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
     \feentry{footnote}{footnote text and marker (see
-      \autoref{sec:maincls.footnotes}, \DescPageRef{maincls.cmd.footnote})}%
+      \autoref{sec:maincls.footnotes}, \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
     \feentry{footnotelabel}{marker for a footnote; applied in addition to the
       element \DescRef{\ThisCommonLabelBase.fontelement.footnote} (see
-      \autoref{sec:maincls.footnotes}, \DescPageRef{maincls.cmd.footnote})}%
+      \autoref{sec:maincls.footnotes}, \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
     \feentry{footnotereference}{footnote reference in the text (see
-      \autoref{sec:maincls.footnotes}, \DescPageRef{maincls.cmd.footnote})}%
+      \autoref{sec:maincls.footnotes}, \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
     \feentry{footnoterule}{%
       horizontal rule\ChangedAt{v3.07}{\Class{scrbook}\and
         \Class{scrreprt}\and \Class{scrartcl}} above the footnotes at the end
       of the text area (see \autoref{sec:maincls.footnotes},
-      \DescPageRef{maincls.cmd.setfootnoterule})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.setfootnoterule})}%
     \feentry{itemizelabel}{%
       \ChangedAt{v3.33}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}}%
       Default for the preset symbols of the environment
       \DescRef{\ThisCommonLabelBase.env.itemize} (see
-      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.itemize})}%
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
+    \feentry{labelenumi}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Font to be used in the item number definition
+      \DescRef{\ThisCommonLabelBase.cmd.labelenumi} (see
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+    \feentry{labelenumii}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Font to be used in the item number definition
+      \DescRef{\ThisCommonLabelBase.cmd.labelenumii} (see
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+    \feentry{labelenumiii}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Font to be used in the item number definition
+      \DescRef{\ThisCommonLabelBase.cmd.labelenumiii} (see
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+    \feentry{labelenumiv}{%
+      \ChangedAt{v3.44}{\Class{scrbook}\and \Class{scrreprt}\and
+        \Class{scrartcl}}%
+      Font to be used in the item number definition
+      \DescRef{\ThisCommonLabelBase.cmd.labelenumiv} (see
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
     \feentry{labelinglabel}{labels, i.\,e., the optional argument of
       \DescRef{\ThisCommonLabelBase.cmd.item.labeling} in the
       \DescRef{\ThisCommonLabelBase.env.labeling} environment (see
-      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.labeling})}%
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.labeling})}%
     \feentry{labelingseparator}{separator, i.\,e., the optional argument of
       the \DescRef{\ThisCommonLabelBase.env.labeling} environment; applied in
       addition to the element
       \DescRef{\ThisCommonLabelBase.fontelement.labelinglabel} (see
-      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.labeling})}%
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.labeling})}%
     \feentry{labelitemi}{%
       \ChangedAt{v3.33}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}}%
       Font to be used in the item symbol definition
       \DescRef{\ThisCommonLabelBase.cmd.labelitemi} (see
-      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.itemize})}%
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
     \feentry{labelitemii}{%
       \ChangedAt{v3.33}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}}%
       Font to be used in the item symbol definition
       \DescRef{\ThisCommonLabelBase.cmd.labelitemii} (see
-      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.itemize})}%
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
     \feentry{labelitemiii}{%
       \ChangedAt{v3.33}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}}%
       Font to be used in the item symbol definition
       \DescRef{\ThisCommonLabelBase.cmd.labelitemiii} (see
-      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.itemize})}%
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
     \feentry{labelitemiv}{%
       \ChangedAt{v3.33}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}}%
       Font to be used in the item symbol definition
       \DescRef{\ThisCommonLabelBase.cmd.labelitemiv} (see
-      \autoref{sec:maincls.lists}, \DescPageRef{maincls.env.itemize})}%
+      \autoref{sec:maincls.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
     \feentry{minisec}{title of \DescRef{\ThisCommonLabelBase.cmd.minisec} (see
-      \autoref{sec:maincls.structure} ab \DescPageRef{maincls.cmd.minisec})}%
+      \autoref{sec:maincls.structure} ab \DescPageRef{\ThisCommonLabelBase.cmd.minisec})}%
     \feentry{pagefoot}{only used if package \Package{scrlayer-scrpage} has
       been loaded (see \autoref{cha:scrlayer-scrpage},
       \DescPageRef{scrlayer-scrpage.fontelement.pagefoot})}%
@@ -440,37 +470,37 @@ refer to the sections for the respective element.%
       \DescRef{\ThisCommonLabelBase.fontelement.pagenumber}}%
     \feentry{paragraph}{title of the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.paragraph} (see
-      \autoref{sec:maincls.structure}, \DescPageRef{maincls.cmd.paragraph})}%
+      \autoref{sec:maincls.structure}, \DescPageRef{\ThisCommonLabelBase.cmd.paragraph})}%
     \feentry{part}{title of the \DescRef{\ThisCommonLabelBase.cmd.part}
       sectioning command, without the line containing the part number (see
-      \autoref{sec:maincls.structure}, \DescPageRef{maincls.cmd.part})}%
+      \autoref{sec:maincls.structure}, \DescPageRef{\ThisCommonLabelBase.cmd.part})}%
     \feentry{partentry}{%
       table of contents entry for the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.part} (see \autoref{sec:maincls.toc},
-      \DescPageRef{maincls.cmd.tableofcontents})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
     \feentry{partentrypagenumber}{%
       page number of the table of contents entry for the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.part}; applied in addition to the
       element \DescRef{\ThisCommonLabelBase.fontelement.partentry} (see
-      \autoref{sec:maincls.toc}, \DescPageRef{maincls.cmd.tableofcontents})}%
+      \autoref{sec:maincls.toc}, \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
     \feentry{partnumber}{line containing the part number in a title of the
       sectioning command \DescRef{\ThisCommonLabelBase.cmd.part} (see
-      \autoref{sec:maincls.structure}, \DescPageRef{maincls.cmd.part})}%
+      \autoref{sec:maincls.structure}, \DescPageRef{\ThisCommonLabelBase.cmd.part})}%
     \feentry{publishers}{%
       \ChangedAt{v3.12}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}\and \Package{scrextend}}%
       publishers of the document in the main title, i.\,e., the argument of
       \DescRef{\ThisCommonLabelBase.cmd.publishers} when
       \DescRef{\ThisCommonLabelBase.cmd.maketitle} is used (see
-      \autoref{sec:maincls.titlepage}, \DescPageRef{maincls.cmd.publishers})}%
+      \autoref{sec:maincls.titlepage}, \DescPageRef{\ThisCommonLabelBase.cmd.publishers})}%
     \feentry{section}{title of the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.section} (see
-      \autoref{sec:maincls.structure}, \DescPageRef{maincls.cmd.section})}%
+      \autoref{sec:maincls.structure}, \DescPageRef{\ThisCommonLabelBase.cmd.section})}%
     \feentry{sectionentry}{%
       table of contents entry for sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.section} (only available in
       \Class{scrartcl}, see \autoref{sec:maincls.toc},
-      \DescPageRef{maincls.cmd.tableofcontents})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
     \feentry{sectionentrydots}{%
       \ChangedAt{v3.15}{\Class{scrartcl}}%
       optional points connecting table-of-content entries for the
@@ -478,45 +508,45 @@ refer to the sections for the respective element.%
       \DescRef{\ThisCommonLabelBase.fontelement.sectionentry} element,
       \Macro{normalfont} and \Macro{normalsize} (only available in
       \Class{scrartcl}, see \autoref{sec:maincls.toc},
-      \DescPageRef{maincls.cmd.tableofcontents})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
     \feentry{sectionentrypagenumber}{%
       page number of the table of contents entry for the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.section}; applied in addition to
       element \DescRef{\ThisCommonLabelBase.fontelement.sectionentry} (only
       available in \Class{scrartcl}, see \autoref{sec:maincls.toc},
-      \DescPageRef{maincls.cmd.tableofcontents})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
     \feentry{sectioning}{alternative name for
       \DescRef{\ThisCommonLabelBase.fontelement.disposition}}%
     \feentry{subject}{%
       topic of the document, i.\,e., the argument of
       \DescRef{\ThisCommonLabelBase.cmd.subject} on the main title page (see
-      \autoref{sec:maincls.titlepage}, \DescPageRef{maincls.cmd.subject})}%
+      \autoref{sec:maincls.titlepage}, \DescPageRef{\ThisCommonLabelBase.cmd.subject})}%
     \feentry{subparagraph}{title of the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.subparagraph} (see
       \autoref{sec:maincls.structure},
-      \DescPageRef{maincls.cmd.subparagraph})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.subparagraph})}%
     \feentry{subsection}{title of the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.subsection} (see
-      \autoref{sec:maincls.structure}, \DescPageRef{maincls.cmd.subsection})}%
+      \autoref{sec:maincls.structure}, \DescPageRef{\ThisCommonLabelBase.cmd.subsection})}%
     \feentry{subsubsection}{title of the sectioning command
       \DescRef{\ThisCommonLabelBase.cmd.subsubsection} (see
       \autoref{sec:maincls.structure},
-      \DescPageRef{maincls.cmd.subsubsection})}%
+      \DescPageRef{\ThisCommonLabelBase.cmd.subsubsection})}%
     \feentry{subtitle}{%
       subtitle of the document, i.\,e., the argument of
       \DescRef{\ThisCommonLabelBase.cmd.subtitle} on the main title page (see
-      \autoref{sec:maincls.titlepage}, \DescPageRef{maincls.cmd.title})}%
+      \autoref{sec:maincls.titlepage}, \DescPageRef{\ThisCommonLabelBase.cmd.title})}%
     \feentry{title}{main title of the document, i.\,e., the argument of
       \DescRef{\ThisCommonLabelBase.cmd.title} (for details about the title
       size see the additional note in the text of
-      \autoref{sec:maincls.titlepage} from \DescPageRef{maincls.cmd.title})}%
+      \autoref{sec:maincls.titlepage} from \DescPageRef{\ThisCommonLabelBase.cmd.title})}%
     \feentry{titlehead}{%
       \ChangedAt{v3.12}{\Class{scrbook}\and \Class{scrreprt}\and
         \Class{scrartcl}\and \Package{scrextend}}%
       heading above the main title of the document, i.\,e., the argument of
       \DescRef{\ThisCommonLabelBase.cmd.titlehead} when
       \DescRef{\ThisCommonLabelBase.cmd.maketitle} is used (see
-      \autoref{sec:maincls.titlepage}, \DescPageRef{maincls.cmd.titlehead})}%
+      \autoref{sec:maincls.titlepage}, \DescPageRef{\ThisCommonLabelBase.cmd.titlehead})}%
   \end{desclist}
 \else
   \IfThisCommonLabelBase{scrextend}{\iftrue}{\csname iffalse\endcsname}
@@ -531,7 +561,7 @@ refer to the sections for the respective element.%
       unnecessary in this case because it is already part of the definition of
       the title itself. This\textnote{Attention!} example also needs the
       \OptionValueRef{scrextend}{extendedfeature}{title} option (see
-      \autoref{sec:scrextend.optionalFeatures}, 
+      \autoref{sec:scrextend.optionalFeatures},
       \DescPageRef{scrextend.option.extendedfeature}).
     \end{Example}
   \else
@@ -551,87 +581,112 @@ refer to the sections for the respective element.%
         }%
         \feentry{addressee}{recipient's name and address in the address field
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.option.addrfield})}%
+          \DescPageRef{\ThisCommonLabelBase.option.addrfield})}%
         \feentry{backaddress}{%
           return address for a window envelope
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.option.backaddress})}%
+          \DescPageRef{\ThisCommonLabelBase.option.backaddress})}%
         \feentry{descriptionlabel}{%
           label, i.\,e. the optional argument of
           \DescRef{\ThisCommonLabelBase.cmd.item.description}, in a
           \DescRef{\ThisCommonLabelBase.env.description} environment
           (\autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.description})}%
+          \DescPageRef{\ThisCommonLabelBase.env.description})}%
+        \feentry{enumeratelabel}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Default for the preset numbers of the environment
+          \DescRef{\ThisCommonLabelBase.env.enumerate} (see
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
         \feentry{foldmark}{%
           fold mark on the letterhead page; allows change of line colour
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.option.foldmarks})}%
+          \DescPageRef{\ThisCommonLabelBase.option.foldmarks})}%
         \feentry{footnote}{%
           footnote text and marker (\autoref{sec:scrlttr2.footnotes},
-          \DescPageRef{scrlttr2.cmd.footnote})}%
+          \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
         \feentry{footnotelabel}{%
           footnote marker; applied in addition to the
           \DescRef{\ThisCommonLabelBase.fontelement.footnote} element
           (\autoref{sec:scrlttr2.footnotes},
-          \DescPageRef{scrlttr2.cmd.footnote})}%
+          \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
         \feentry{footnotereference}{%
           footnote reference in the text (\autoref{sec:scrlttr2.footnotes},
-          \DescPageRef{scrlttr2.cmd.footnote})}%
+          \DescPageRef{\ThisCommonLabelBase.cmd.footnote})}%
         \feentry{footnoterule}{%
           horizontal rule\ChangedAt{v3.07}{\Class{scrlttr2}} above the
           footnotes at the end of the text area
           (\autoref{sec:maincls.footnotes},
-          \DescPageRef{maincls.cmd.setfootnoterule})}%
+          \DescPageRef{\ThisCommonLabelBase.cmd.setfootnoterule})}%
         \feentry{fromaddress}{%
           sender's address in the letterhead
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.fromaddress})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.fromaddress})}%
         \feentry{fromname}{%
           sender's name in the letterhead, not including \PValue{fromaddress}
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.fromname})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.fromname})}%
         \feentry{fromrule}{%
           horizontal rule in the letterhead; intended for colour changes
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.option.fromrule})}%
+          \DescPageRef{\ThisCommonLabelBase.option.fromrule})}%
         \feentry{itemizelabel}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Default for the preset symbols of the environment
           \DescRef{\ThisCommonLabelBase.env.itemize} (see
-          \autoref{sec:scrlttr2.lists}, \DescPageRef{scrlttr2.env.itemize})}%
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
+        \feentry{labelenumi}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Font to be used in the item number definition
+          \DescRef{\ThisCommonLabelBase.cmd.labelenumi} (see
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+        \feentry{labelenumii}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Font to be used in the item number definition
+          \DescRef{\ThisCommonLabelBase.cmd.labelenumii} (see
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+        \feentry{labelenumiii}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Font to be used in the item number definition
+          \DescRef{\ThisCommonLabelBase.cmd.labelenumiii} (see
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
+        \feentry{labelenumiv}{%
+          \ChangedAt{v3.44}{\Class{scrlttr2}}%
+          Font to be used in the item number definition
+          \DescRef{\ThisCommonLabelBase.cmd.labelenumiv} (see
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.enumerate})}%
         \feentry{labelinglabel}{%
           labels, i.\,e. the optional argument of
           \DescRef{\ThisCommonLabelBase.cmd.item.labeling} in the
           \DescRef{\ThisCommonLabelBase.env.labeling} environment %
           (see \autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.labeling})}%
+          \DescPageRef{\ThisCommonLabelBase.env.labeling})}%
         \feentry{labelingseparator}{%
           separator, i.\,e. the optional argument of the
           \DescRef{\ThisCommonLabelBase.env.labeling} environment; applied in
           addition to the
           \DescRef{\ThisCommonLabelBase.fontelement.labelinglabel} element
           (see \autoref{sec:scrlttr2.lists},
-          \DescPageRef{scrlttr2.env.labeling})}%
+          \DescPageRef{\ThisCommonLabelBase.env.labeling})}%
         \feentry{labelitemi}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Font to be used in the item symbol definition
           \DescRef{\ThisCommonLabelBase.cmd.labelitemi} (see
-          \autoref{sec:scrlttr2.lists}, \DescPageRef{scrlttr2.env.itemize})}%
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
         \feentry{labelitemii}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Font to be used in the item symbol definition
           \DescRef{\ThisCommonLabelBase.cmd.labelitemii} (see
-          \autoref{sec:scrlttr2.lists}, \DescPageRef{scrlttr2.env.itemize})}%
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
         \feentry{labelitemiii}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Font to be used in the item symbol definition
           \DescRef{\ThisCommonLabelBase.cmd.labelitemiii} (see
-          \autoref{sec:scrlttr2.lists}, \DescPageRef{scrlttr2.env.itemize})}%
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
         \feentry{labelitemiv}{%
           \ChangedAt{v3.33}{\Class{scrlttr2}}%
           Font to be used in the item symbol definition
           \DescRef{\ThisCommonLabelBase.cmd.labelitemiv} (see
-          \autoref{sec:scrlttr2.lists}, \DescPageRef{scrlttr2.env.itemize})}%
+          \autoref{sec:scrlttr2.lists}, \DescPageRef{\ThisCommonLabelBase.env.itemize})}%
         \feentry{pagefoot}{%
           depending on the page style used after the
           \DescRef{\ThisCommonLabelBase.fontelement.pageheadfoot} element for
@@ -657,41 +712,41 @@ refer to the sections for the respective element.%
           \ChangedAt{v3.12}{\Class{scrlttr2}}%
           place and date, if a date line will be used instead of a normal
           reference line (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.placeseparator})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.placeseparator})}%
         \feentry{refname}{%
           description or title of the fields in the reference line %
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.yourref})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.yourref})}%
         \feentry{refvalue}{%
           content of the fields in the reference line %
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.yourref})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.yourref})}%
         \feentry{specialmail}{%
           delivery type in the address field %
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.specialmail})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.specialmail})}%
         \feentry{lettersubject}{%
           \ChangedAt{v3.17}{\Class{scrlttr2}\and \Package{scrletter}}%
           subject in the opening of the letter %
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.subject})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.subject})}%
         \feentry{lettertitle}{%
           \ChangedAt{v3.17}{\Class{scrlttr2}\and \Package{scrletter}}%
           title in the opening of the letter %
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.title})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.title})}%
         \feentry{toaddress}{%
           variation of the
           \DescRef{\ThisCommonLabelBase.fontelement.addressee} element to
           format the recipient's address, not including the name, in the
           address field (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.toaddress})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.toaddress})}%
         \feentry{toname}{%
           variation of the
           \DescRef{\ThisCommonLabelBase.fontelement.addressee} element to
           format the recipient's name in the address field
           (\autoref{sec:scrlttr2.firstpage},
-          \DescPageRef{scrlttr2.variable.toname})}%
+          \DescPageRef{\ThisCommonLabelBase.variable.toname})}%
       \end{desclist}
     }{%
       \IfThisCommonLabelBase{scrlayer-scrpage}{%
@@ -886,10 +941,10 @@ size and the baseline skip.%
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

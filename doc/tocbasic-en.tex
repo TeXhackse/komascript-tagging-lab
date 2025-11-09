@@ -1,6 +1,6 @@
 % ======================================================================
 % tocbasic-en.tex
-% Copyright (c) Markus Kohm, 2002-2024
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{tocbasic-en.tex}
-                 [$Date: 2024-06-30 20:35:47 +0200 (Sun, 30 Jun 2024) $
+                 [$Date: 2025-10-07 12:36:27 +0200 (Tue, 07 Oct 2025) $
                   KOMA-Script guide (package tocbasic)]
 
 \translator{Markus Kohm\and Arndt Schubert\and Karl Hagen}
@@ -218,7 +218,7 @@ extension of the extension currently being added.
     \expandafter{\@currext}%
   }
 \end{lstcode}
-  to add every file extension to the existing \Package{tocbasic} integration 
+  to add every file extension to the existing \Package{tocbasic} integration
   with the \Package{babel} package.
 \end{Example}
 
@@ -912,20 +912,20 @@ Currently, \Package{tocbasic} defines the following entry styles:
                                 \PValue{indent}
                               }
                               (3.8em,0);
-        \draw[|-|,color=gray,overlay] (3.8em,\baselineskip) -- 
+        \draw[|-|,color=gray,overlay] (3.8em,\baselineskip) --
                               node [anchor=south,font=\small] {
                                 \PValue{numwidth}
                               }
                               (7em,\baselineskip);
-        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) -- 
-                              node [anchor=south,font=\small] { 
-                                \Macro{@tocrmarg} 
+        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) --
+                              node [anchor=south,font=\small] {
+                                \Macro{@tocrmarg}
                               }
                               (\linewidth-2.55em,\ht\strutbox);
-        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) -- 
-                              node [anchor=north,font=\small] { 
-                                \Macro{@pnumwidth} 
-                              } 
+        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) --
+                              node [anchor=north,font=\small] {
+                                \Macro{@pnumwidth}
+                              }
                               (\linewidth-1.55em,-\baselineskip);
       \end{tikzpicture}%
     }
@@ -981,21 +981,21 @@ Currently, \Package{tocbasic} defines the following entry styles:
               \makebox[1.55em][r]{\large\bfseries 1}}%
           }%
         };
-        \draw[|-|,color=gray] (0,\baselineskip) -- 
-                              node [anchor=south] { 3\,em } 
+        \draw[|-|,color=gray] (0,\baselineskip) --
+                              node [anchor=south] { 3\,em }
                               (3em,\baselineskip);
-        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) -- 
+        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) --
                               node [anchor=south] { \Macro{@pnumwidth} }
                               (\linewidth-1.55em,\ht\strutbox);
         \large\bfseries
-        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) -- 
-                              node [anchor=north,font=\normalfont\normalsize] { 
-                                \Macro{large}\Macro{@pnumwidth} 
+        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) --
+                              node [anchor=north,font=\normalfont\normalsize] {
+                                \Macro{large}\Macro{@pnumwidth}
                               }
                               (\linewidth-1.55em,-\baselineskip);
       \end{tikzpicture}%
     }
-    \caption{Illustrations of some attributes of a TOC entry with style 
+    \caption{Illustrations of some attributes of a TOC entry with style
       \PValue{largetocline}}
     \labelofbase[fig]{largetocline}
   \end{figure}
@@ -1043,10 +1043,10 @@ Currently, \Package{tocbasic} defines the following entry styles:
         \coordinate (chapter) at ($(section)+(0,2\baselineskip)$);
         \coordinate (part)    at ($(chapter)+(0,2.4\baselineskip+1em)$);
 
-        \draw[color=lightgray] 
-          ($(part)+(0,2\baselineskip)$) -- 
+        \draw[color=lightgray]
+          ($(part)+(0,2\baselineskip)$) --
           (0,-2.5\baselineskip);
-        \draw[color=lightgray] 
+        \draw[color=lightgray]
           ($(part)+(\linewidth,2\baselineskip)$) --
           (\linewidth,-2.5\baselineskip);
 
@@ -1065,23 +1065,23 @@ Currently, \Package{tocbasic} defines the following entry styles:
             \makebox[1.55em][r]{\bfseries 12}\large
           }%
         };
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           (part) --
           ($(part)+(3em,0)$)
           node [anchor=north east,font=\small] {
             \PValue{numwidth}
           };
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(part)+(\linewidth,\ht\strutbox)$)
-          node [anchor=north,font=\small] { 
-            \Macro{@tocrmarg} 
+          node [anchor=north,font=\small] {
+            \Macro{@tocrmarg}
           } --
           ($(part)+(\linewidth-2.55em,\ht\strutbox)$);
-        \draw[|-|,color=gray,overlay] 
-          ($(part)+(\linewidth,-\baselineskip)$) -- 
-          node [anchor=north,font=\small] { 
-            \Macro{@pnumwidth} 
-          } 
+        \draw[|-|,color=gray,overlay]
+          ($(part)+(\linewidth,-\baselineskip)$) --
+          node [anchor=north,font=\small] {
+            \Macro{@pnumwidth}
+          }
           ($(part)+(\linewidth-1.55em,-\baselineskip)$);
         \node at (chapter) [anchor=west,inner sep=0,outer sep=0]
         {%
@@ -1103,22 +1103,22 @@ Currently, \Package{tocbasic} defines the following entry styles:
             \PValue{beforeskip}
           }
           ($(part)+(3em,-\baselineskip)$);
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           (chapter) --
           ($(chapter)+(1.5em,0)$)
           node [anchor=north east,font=\small] {
             \PValue{numwidth}
           };
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(chapter)+(\linewidth,\ht\strutbox)$)
-          node [anchor=north,font=\small] { 
-            \Macro{@tocrmarg} 
+          node [anchor=north,font=\small] {
+            \Macro{@tocrmarg}
           } --
           ($(chapter)+(\linewidth-2.55em,\ht\strutbox)$);
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(chapter)+(\linewidth,-\baselineskip)$)
-          node [anchor=north,font=\small] { 
-            \Macro{@pnumwidth} 
+          node [anchor=north,font=\small] {
+            \Macro{@pnumwidth}
           } --
           ($(chapter)+(\linewidth-1.55em,-\baselineskip)$);
         \node at (section) [anchor=west,inner sep=0,outer sep=0]
@@ -1151,29 +1151,29 @@ Currently, \Package{tocbasic} defines the following entry styles:
             \makebox[1.55em][r]{12}%
           }%
         };
-        \draw[|-|,color=gray,overlay] 
-          ($(subsection)+(0,\ht\strutbox)$) -- 
+        \draw[|-|,color=gray,overlay]
+          ($(subsection)+(0,\ht\strutbox)$) --
           node [anchor=north,font=\small] {
             \PValue{indent}
           }
           ($(subsection)+(3.8em,\ht\strutbox)$);
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(subsection)+(3.8em,0)$) --
           ($(subsection)+(7em,0)$)
           node [anchor=north east,font=\small] {
             \PValue{numwidth}
           };
-        \draw[|-|,color=gray,overlay] 
+        \draw[|-|,color=gray,overlay]
           ($(subsection)+(\linewidth,\ht\strutbox)$)
-          node [anchor=north,font=\small] { 
-            \Macro{@tocrmarg} 
+          node [anchor=north,font=\small] {
+            \Macro{@tocrmarg}
           } --
           ($(subsection)+(\linewidth-2.55em,\ht\strutbox)$);
-        \draw[|-|,color=gray,overlay] 
-          ($(subsection)+(\linewidth,-\baselineskip)$) -- 
-          node [anchor=north,font=\small] { 
-            \Macro{@pnumwidth} 
-          } 
+        \draw[|-|,color=gray,overlay]
+          ($(subsection)+(\linewidth,-\baselineskip)$) --
+          node [anchor=north,font=\small] {
+            \Macro{@pnumwidth}
+          }
           ($(subsection)+(\linewidth-1.55em,-\baselineskip)$);
       \end{tikzpicture}%
     }
@@ -1184,18 +1184,20 @@ Currently, \Package{tocbasic} defines the following entry styles:
 \item[\PValue{toctext}]\ChangedAt{v3.27}{\Package{tocbasic}}%
   is a special feature. While all other styles produce one paragraph per
   entry, this one produces one paragraph for all successive entries of this
-  style. With 14\important{\PValue{afterpar}, \PValue{beforeskip},
-    \PValue{entryformat},
-    \PValue{entrynumberformat}, \PValue{indent}, \PValue{numsep},
-    \PValue{onendentry}, \PValue{onendlastentry}, \PValue{onstartentry},
-    \PValue{onstartfirstentry}, \PValue{pagenumberformat},
-    \PValue{prepagenumber}, \PValue{raggedright}, \PValue{rightindent}}
-  attributes in addition to the default \PValue{level} attribute, there are
-  almost as many options as for \PValue{tocline}. However, this style
-  depends on the fact that an unfinished paragraph will be concluded at the
-  beginning of the entry for all other styles, as well as at the end of the
-  current content list. So it should never be combined with entries or content
-  lists that are generated outside of \Package{tocbasic}.
+  style. With
+  16\ChangedAt{v3.49}{\Package{tocbasic}}\important{\PValue{afterpar},
+    \PValue{beforeskip}, \PValue{dynindent}, \PValue{entryformat},
+    \PValue{entrynumberformat}, \PValue{indent}, \PValue{indentfollows},
+    \PValue{numsep}, \PValue{onendentry}, \PValue{onendlastentry},
+    \PValue{onstartentry}, \PValue{onstartfirstentry},
+    \PValue{pagenumberformat}, \PValue{prepagenumber}, \PValue{raggedright},
+    \PValue{rightindent}} attributes in addition to the default \PValue{level}
+  attribute, there are almost as many options as for
+  \PValue{tocline}. However, this style depends on the fact that an unfinished
+  paragraph will be concluded at the beginning of the entry for all other
+  styles, as well as at the end of the current content list. So it should
+  never be combined with entries or content lists that are generated outside
+  of \Package{tocbasic}.
 \item[\PValue{undottedtocline}] is similar to the style used by the standard
   \Class{book} and \Class{report} classes for the \PValue{chapter} entry
   level, or by \Class{article} for the \PValue{section} entry level in the
@@ -1228,20 +1230,20 @@ Currently, \Package{tocbasic} defines the following entry styles:
           }%
           \raisebox{-\baselineskip}{\makebox[2.55em][r]{\bfseries 3}}%
         };
-        \draw[|-|,color=gray,overlay] (0,\baselineskip) -- 
+        \draw[|-|,color=gray,overlay] (0,\baselineskip) --
                               node [anchor=south,font=\small] {
                                 \PValue{numwidth}
                               }
                               (1.5em,\baselineskip);
-        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) -- 
-                              node [anchor=south,font=\small] { 
-                                \Macro{@tocrmarg} 
+        \draw[|-|,color=gray,overlay] (\linewidth,\ht\strutbox) --
+                              node [anchor=south,font=\small] {
+                                \Macro{@tocrmarg}
                               }
                               (\linewidth-2.55em,\ht\strutbox);
-        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) -- 
-                              node [anchor=north,font=\small] { 
-                                \Macro{@pnumwidth} 
-                              } 
+        \draw[|-|,color=gray,overlay] (\linewidth,-\baselineskip) --
+                              node [anchor=north,font=\small] {
+                                \Macro{@pnumwidth}
+                              }
                               (\linewidth-1.55em,-\baselineskip);
       \end{tikzpicture}%
     }
@@ -1253,7 +1255,7 @@ Currently, \Package{tocbasic} defines the following entry styles:
 You can find an explanation of the attributes of all styles that
 \Package{tocbasic} defines in \autoref{tab:\LabelBase.tocstyle.attributes}.
 In\ChangedAt{v3.27}{\Package{tocbasic}} addition to the usual assignment with
-\Option{\PName{key}=\PName{value}}, both commands understand an assignment in 
+\Option{\PName{key}=\PName{value}}, both commands understand an assignment in
 the form \Option{\PName{key}:=\PName{entry level}} for all options of the
 \KOMAScript{} styles. In this case, the current setting of \PName{key} for the
 \PName{entry level} will be copied. For example, you can copy the current
@@ -1333,8 +1335,8 @@ Finally, using \Macro{DeclareTOCStyleEntry} will define the internal command
 
     If\textnote{Attention!} the \Option{numberline} feature has been activated
     for a content list (see \DescRef{\LabelBase.cmd.setuptoc},
-    \autoref{sec:\LabelBase.toc}, \DescPageRef{\LabelBase.cmd.setuptoc}), as is
-    the case with the \KOMAScript{} classes when the
+    \autoref{sec:\LabelBase.toc}, \DescPageRef{\LabelBase.cmd.setuptoc}), as
+    is the case with the \KOMAScript{} classes when the
     \OptionValueRef{maincls}{toc}{numberline}%
     \IndexOption{toc~=\textKValue{numberline}} option is used, then the
     unnumbered entries will nevertheless have a (by default empty) number line
@@ -1344,10 +1346,11 @@ Finally, using \Macro{DeclareTOCStyleEntry} will define the internal command
     \ChangedAt{v3.31}{\Package{tocbasic}}%
     \PName{switch} is one of the values for simple switches from
     \autoref{tab:truefalseswitch}, \autopageref{tab:truefalseswitch}. If the
-    switch is active with the \PValue{tocline} style, the \PValue{indent}
-    attribute only specifies a minimum value. The maximum value is determined
-    by the number width and the indentation of the levels specified via
-    \PValue{indentfollows}.%
+    switch is active with the \PValue{tocline} or
+    \PValue{toctext}\ChangedAt{v3.49}{\Package{tocbasic}} styles, the
+    \PValue{indent} attribute only specifies a minimum value. The maximum
+    value is determined by the number width and the indentation of the levels
+    specified via \PValue{indentfollows}.%
   }%
   \entry{\OptionVName{dynnumwidth}{switch}}{%
     \PName{switch} is one of the values for simple switches from
@@ -1400,7 +1403,7 @@ Finally, using \Macro{DeclareTOCStyleEntry} will define the internal command
     the last one is used. For the remaining styles, the \PName{length} is the
     horizontal distance of the entry from the left margin (see
     \autoref{fig:\LabelBase.dottedtocline} and \autoref{fig:\LabelBase.tocline}).
-    
+
     For the styles \PValue{tocline} and \PValue{toctext}, all entry levels
     whose names start with ``\texttt{sub}'' are initialised with the
     \PValue{indent}+\PValue{numwidth} of the entry level of the same name
@@ -1443,12 +1446,13 @@ Finally, using \Macro{DeclareTOCStyleEntry} will define the internal command
   }%
   \entry{\OptionVName{indentfollows}{list of levels}}{%
     \ChangedAt{v3.31}{\Package{tocbasic}}%
-    If \Option{dynindent} is set with style \PValue{tocline}, the
-    comma-separated list of level names specified here is used to determine
-    the actual indentation. Levels whose names begin with ``\texttt{sub}''
-    will be initialized with the name without this prefix. The \KOMAScript{}
-    classes also automatically set appropriate values for the levels
-    \PValue{section} and \PValue{paragraph}.%
+    If \Option{dynindent} is set with styles \PValue{tocline} or
+    \PValue{toctext}\ChangedAt{v3.49}{\Package{tocbasic}}, the comma-separated
+    list of level names specified here is used to determine the actual
+    indentation. Levels whose names begin with ``\texttt{sub}'' will be
+    initialized with the name without this prefix. The \KOMAScript{} classes
+    also automatically set appropriate values for the levels \PValue{section}
+    and \PValue{paragraph}.%
   }%
   \entry{\OptionVName{linefill}{code}}{%
     With the \PValue{tocline} style, you can change what is used to fill the
@@ -1462,7 +1466,7 @@ Finally, using \Macro{DeclareTOCStyleEntry} will define the internal command
     \DescPageRef{\LabelBase.cmd.TOCLineLeaderFill}).
 
     Incidentally, if the \PName{code} specified does not automatically fill
-    the gap, you should also activate the \PValue{raggedpagenumber} attribute 
+    the gap, you should also activate the \PValue{raggedpagenumber} attribute
     to avoid ``\texttt{underfull \Macro{hbox}}'' messages.%
   }%
   \entry{\OptionVName{numsep}{length}}{%
@@ -1475,7 +1479,7 @@ Finally, using \Macro{DeclareTOCStyleEntry} will define the internal command
     The\ChangedAt{v3.27}{\Package{tocbasic}} \PValue{toctext} style, on the
     other hand, always adds a horizontal space of width \PName{length} after
     the number of the entry.
-    
+
     The initial \PName{length} is 0.4\Unit{em}.%
   }%
   \entry{\OptionVName{numwidth}{length}}{%
@@ -1579,7 +1583,7 @@ Finally, using \Macro{DeclareTOCStyleEntry} will define the internal command
     of width \Macro{@pnumwidth}. In the \PValue{tocline} style, you can
     change the \PName{command} to print the number using this attribute. The
     \PName{command} should expect exactly one argument, the page number.
-    
+
     This attribute is initialised with the box already mentioned.%
   }%
   \entry{\OptionVName{pagenumberformat}{command}}{%
@@ -1785,7 +1789,7 @@ For example, within the \PValue{tocline} style,
   \DefineTOCEntryCommandOption{linefill}[\TOCLineLeaderFill]%
   {scr@tso@}{@linefill}{filling between text and page number}%
 \end{lstcode}
-is used to define the \Option{linefill} option. By specifying 
+is used to define the \Option{linefill} option. By specifying
 \DescRef{\LabelBase.cmd.TOCLineLeaderFill} as the \PName{default value},
 a call such as
 \begin{lstcode}
@@ -2151,17 +2155,17 @@ or the counters of other structural levels. \LaTeX{} itself also defines
 \Macro{theremarkbox} with the default output as an Arabic number.
 This is then used to define the formatted output of the
 counter. The formatted output is again defined as a floating-point
-number for use in the \DescRef{maincls.cmd.caption} command.
+number for use in the \DescRef{\LabelBase.cmd.caption} command.
 
 Floating\textnote{file name extension} environments have their own content lists
-and those need an auxiliary file named \Macro{jobname} and a file 
+and those need an auxiliary file named \Macro{jobname} and a file
 extension:
 \begin{lstcode}
   \newcommand*{\ext@remarkbox}{lor}
 \end{lstcode}
 As the file extension, we use ``\File{lor}''.
 
-With this, the floating environment works. But the content list of 
+With this, the floating environment works. But the content list of
 is still missing. So that we do not have to implement it ourselves, we
 use the \Package{tocbasic} package. This is loaded with
 \begin{lstcode}
@@ -2213,7 +2217,7 @@ list.
 Setting this property allows this when you use a \KOMAScript{} class, and other class
 that supports this property. Unfortunately, the standard classes do not.
 
-This\textnote{list of remarks} should be enough. Users can now 
+This\textnote{list of remarks} should be enough. Users can now
 select different kinds of headings using the corresponding options of
 the \KOMAScript{} classes or \DescRef{\LabelBase.cmd.setuptoc}, (e.\,g. with
 or without an entry in the table of contents, with or without numbering). But
@@ -2262,12 +2266,12 @@ This command declares\ChangedAt{v3.06}{\Package{tocbasic}} a new content list,
 its heading, and the description of the entries controlled by
 \Package{tocbasic} all in a single step. Optionally, you can also define
 floating and non-floating environments at the same time. Inside of both such
-environments, \DescRef{maincls.cmd.caption}%
-\important{\DescRef{maincls.cmd.caption}}\IndexCmd{caption} creates entries
+environments, \DescRef{\LabelBase.cmd.caption}%
+\important{\DescRef{\LabelBase.cmd.caption}}\IndexCmd{caption} creates entries
 for this new content list. You can also use the \KOMAScript{} extensions
-\DescRef{maincls.cmd.captionabove}\important[i]{%
-  \DescRef{maincls.cmd.captionabove}\\
-  \DescRef{maincls.cmd.captionbelow}}, \DescRef{maincls.cmd.captionbelow}, and
+\DescRef{\LabelBase.cmd.captionabove}\important[i]{%
+  \DescRef{\LabelBase.cmd.captionabove}\\
+  \DescRef{\LabelBase.cmd.captionbelow}}, \DescRef{\LabelBase.cmd.captionbelow}, and
 \DescRef{maincls.env.captionbeside} (see \autoref{sec:maincls.floats}).
 
 The \PName{extension} argument is the file extension of the TOC file that
@@ -2513,7 +2517,7 @@ the styles.%
   type, the \Option{floattype} option can be omitted. If the \Option{nonfloat}
   option is specified, a non-floating environment, \Environment{remarkbox-},
   will also be defined, inside which you can use
-  \DescRef{maincls.cmd.caption}\IndexCmd{caption}.
+  \DescRef{\LabelBase.cmd.caption}\IndexCmd{caption}.
   \hyperref[tab:\LabelBase.comparison]{Figure~\ref*{tab:\LabelBase.comparison}}
   compares the commands, counters, and environments of the example
   \Environment{remarkbox} environment to the commands, counters, and
@@ -2536,17 +2540,17 @@ the styles.%
       & columns spanning floating environments of the respective types\\[1ex]
       \Counter{remarkbox} & \Counter{figure}
       & \Option{type}, \Option{float}
-      & counter used by \DescRef{maincls.cmd.caption}\\[1ex]
+      & counter used by \DescRef{\LabelBase.cmd.caption}\\[1ex]
       \Macro{theremarkbox} & \Macro{thefigure}
       & \Option{type}, \Option{float}
       & output command to the respective counters\\[1ex]
       \Macro{remarkboxformat} & \DescRef{maincls.cmd.figureformat}
       & \Option{type}, \Option{float}
       & formatting command to the respective counters used by
-        \DescRef{maincls.cmd.caption}\\[1ex]
+        \DescRef{\LabelBase.cmd.caption}\\[1ex]
       \Macro{remarkboxname} & \Macro{figurename}
       & \Option{type}, \Option{float}, \Option{name}
-      & names used in the label of \DescRef{maincls.cmd.caption}\\[1ex]
+      & names used in the label of \DescRef{\LabelBase.cmd.caption}\\[1ex]
       \Macro{listofremarkboxes} & \DescRef{maincls.cmd.listoffigures}
       & \Option{types}, \Option{float}
       & command to show the list of the respective environments\\[1ex]
@@ -2595,6 +2599,294 @@ Users of old versions of package \Package{hyperref} should always use the
 \Macro{MakeUppercase}\IndexCmd{MakeUppercase} command that is needed to
 convert the first letter of \Option{types} to upper case. Better is of course
 to use an up-to-date \Package{hyperref} with an up-to-date \LaTeX.%
+\EndIndexGroup
+
+\section{Captions of (Float) Environments}
+\seclabel{caption}
+
+As\ChangedAt{v3.46}{\Package{tocbasic}} explained in the previous section, the
+\DescRef{\LabelBase.cmd.DeclareNewTOC} command can also be used to define new
+floating and non-floating environments, whose titles set with
+\DescRef{\LabelBase.cmd.caption} are automatically entered in the
+corresponding directories. tocbasic also offers some extensions for this.
+
+Please note that all the features described in this section require a
+\LaTeX{}\textnote{\LaTeX{} 2022/06/01} version from 2022/06/01. These features
+are therefore not available with older LaTeX versions!
+
+\textnote{\Package{caption}}\IndexPackage{caption}%
+At this point it should be noted that the features documented in this section
+currently also work when using the caption package. This was tested with
+version 2023/08/05 v3.6o of the caption package. In general, however, it is
+not recommended to rely on any of the features described in this section when
+using any package that provides or modifies \DescRef{\LabelBase.cmd.caption}
+or \DescRef{\LabelBase.cmd.captionof}, or when using classes that provide
+\DescRef{\LabelBase.cmd.caption} in a way that is incompatible with the
+standard classes or the KOMA script classes. When using the aforementioned
+caption package, for example, the features documented in its manual should be
+used instead. See \cite{package:caption.engl}.
+
+\begin{Declaration}
+  \OptionValue{captionposition}{top}
+  \OptionValue{captionposition}{bottom}
+  \OptionVName{captionabove}{Boolean value}
+  \OptionVName{captionbelow}{Boolean value}
+\end{Declaration}
+By default, the distances above and below the captions are selected so that
+they fit for captions below the respective object, for example below an image
+or a table. This corresponds to the setting
+\OptionValue{captionposition}{bottom} or the synonymous settings
+\OptionValue{captionabove}{false} or \OptionValue{captionbelow}{true}. The
+settings \OptionValue{captionposition}{top}, \OptionValue{captionabove}{true}
+or \OptionValue{captionbelow}{false} can also be used to automatically swap
+the spacing so that it fits for titles above the object. The selection is made
+within the call to \DescRef{\LabelBase.cmd.caption} or
+\DescRef{\LabelBase.cmd.captionof} provided that the
+\DescRef{\LabelBase.cmd.caption} patch has been activated. See option
+enablepatch in \autoref{sec:\LabelBase.standardclasses} from
+\autopageref{sec:\LabelBase.standardclasses}.
+
+Please note that these options are not \KOMAScript{} options. They can
+therefore not be set with \DescRef{maincls.cmd.KOMAoptions} or
+\DescRef{maincls.cmd.KOMAoption}. Instead, when loading \Package{tocbasic},
+they are available as an optional argument of \Macro{usepackage} - or
+\Macro{RequirePackage} for class and package authors. To compensate for this,
+it is possible to load the package multiple times with different options. They
+can also be set at any time within the document using
+\verb|\SetKeys[tocbasic]|\Parameter{options}.
+
+Only \PValue{true}%
+\IndexOption[indexmain]{captionabove~=\KValue{true}}%
+\IndexOption[indexmain]{captionbelow~=\KValue{true}} or \PValue{false}%
+\IndexOption[indexmain]{captionabove~=\KValue{false}}%
+\IndexOption[indexmain]{captionbelow~=\KValue{false}} are permitted as
+\PName{Boolean value}s. The use of \Option{captionabove} or
+\Option{captionbelow} without a value corresponds to
+\OptionValue{captionabove}{true} or \OptionValue{captionbelow}{true}.
+
+As a special feature, \Package{tocbasic} also defines corresponding options
+with the prefix of the name of the environment for all environments defined
+with the help of \DescRef{\LabelBase.cmd.DeclareNewTOC}, for example the
+options \OptionValue{figurecaptionposition}{value}%
+\IndexOption[indexmain]{figurecaptionposition~=\KValue{top}}%
+\LabelOptionValue{figurecaptionposition}{top}%
+\IndexOption[indexmain]{figurecaptionposition~=\KValue{bottom}}%
+\LabelOptionValue{figurecaptionposition}{bottom},
+\OptionVName{figurecaptionabove}{Boolean value}%
+\IndexOption[indexmain]{figurecaptionabove~=\PName{Boolean value}},
+\OptionVName{figurecaptionbelow}{Boolean value}%
+\IndexOption[indexmain]{figurecaptionbelow~=\PName{Boolean value}},
+\OptionValue{tablecaptionposition}{value}%
+\IndexOption[indexmain]{tablecaptionposition~=\KValue{top}}%
+\LabelOptionValue{tablecaptionposition}{top}%
+\IndexOption[indexmain]{tablecaptionposition~=\KValue{bottom}}%
+\LabelOptionValue{tablecaptionposition}{bottom},
+\OptionVName{tablecaptionabove}{value}%
+\LabelOption{tablecaptionabove}%
+\IndexOption[indexmain]{tablecaptionabove~=\PName{Boolean value}}, and
+\OptionVName{tablecaptionbelow}{value}%
+\IndexOption[indexmain]{tablecaptionbelow~=\PName{Boolean value}} for the
+environments \Environment{figure} and \Environment{table} defined in the
+\KOMAScript{} classes. In addition to the values specified above for
+\Option{captionposition}, \Option{captionabove} and \Option{captionbelow}, the
+\PName{value} \PValue{default} is also permitted. This deactivates the
+explicit settings for the respective environment so that the settings of the
+general option \Option{captionposition}, \Option{captionabove} or
+\Option{captionbelow} are used again.
+\EndIndexGroup
+
+\begin{Declaration}
+  \Macro{caption}\OParameter{entry}\Parameter{title}
+  \Macro{captionbelow}\OParameter{entry}\Parameter{title}
+  \Macro{captionabove}\OParameter{entry}\Parameter{title}
+\end{Declaration}%
+As explained in the \DescRef{\LabelBase.option.captionposition} options,
+floating environments and also the non-floating environments that can be
+defined with \DescRef{\LabelBase.cmd.DeclareNewTOC} are normally provided with
+a caption using \Macro{caption}. Using \Package{tocbasic} and the option
+mentioned, you can set whether the spacing for captions should be selected
+above or below the object. However, as this only works if \Macro{caption} is
+redefined appropriately by \Package{tocbasic}, there are also the commands
+\Macro{captionbelow} and \Macro{captionabove}. These usually also work if the
+corresponding patch has not been activated, i.e. \Macro{caption} does not
+react to the options \Option{captionposition}, \Option{captionabove} and
+\Option{captionbelow}.
+%
+\begin{Example}
+  Instead of using captions below a table, you want to place your
+  captions above it\Index{table>caption}, because you have tables
+  which span more then one page. In the standard classes you could
+  only write:
+\begin{lstcode}
+  \begin{table}
+    \caption{This is an example table}
+    \begin{tabular}{llll}
+      This & is & an & example.\\\hline
+      This & is & an & example.\\
+      This & is & an & example.
+    \end{tabular}
+  \end{table}
+\end{lstcode}
+  Then you would get this unsatisfying result:
+  \begin{ShowOutput}\centering
+    {\usekomafont{caption}{\usekomafont{captionlabel}\tablename~30.2:}
+      This is an example table.}\\
+        \begin{tabular}{llll}
+      This & is & an & example.\\\hline
+      This & is & an & example.\\
+      This & is & an & example.
+        \end{tabular}
+\end{ShowOutput}
+  Using {\KOMAScript} you write instead:
+\begin{lstcode}
+  \begin{table}
+    \captionabove{This is just an example table}
+    \begin{tabular}{llll}
+      This & is & an & example.\\\hline
+      This & is & an & example.\\
+      This & is & an & example.
+    \end{tabular}
+  \end{table}
+\end{lstcode}
+  Then you get:
+  \begin{ShowOutput}\centering
+    {\usekomafont{caption}{\usekomafont{captionlabel}\tablename~30.2:}
+      This is just an example table}\\\vskip\abovecaptionskip
+    \begin{tabular}{llll}
+      This & is & an & example.\\\hline
+      This & is & an & example.\\
+      This & is & an & example.
+    \end{tabular}
+  \end{ShowOutput}
+  Since you want all your tables typeset with captions above, you could of
+  course use:
+\begin{lstcode}
+  \usepackage[enablepatch=caption,tablecaptionabove]{tocbasic}
+\end{lstcode}
+  Then you can use \Macro{caption} inside the \Environment{table} environment
+  to get the same result as with \Macro{captionabove}. The use of
+  \OptionValueRef{\LabelBase}{enablepatch}{caption} is important for the
+  correct functioning of the second option
+  \DescRef{\LabelBase.option.tablecaptionabove}. The \KOMAScript{} classes
+  therefore already load \Package{tocbasic} with this option by default.%
+\end{Example}
+\EndIndexGroup
+\ExampleEndFix
+
+\begin{Declaration}
+  \Macro{captionof}\Parameter{float type}\OParameter{entry}%
+  \Parameter{title}%
+  \Macro{captionbelowof}\Parameter{float type}\OParameter{entry}%
+  \Parameter{title}%
+  \Macro{captionaboveof}\Parameter{float type}\OParameter{entry}%
+  \Parameter{title}
+\end{Declaration}%
+Like the \Package{caption}\IndexPackage{caption} and
+\Package{capt-of}\IndexPackage{capt-of} packages, the \Package{tocbasic}
+package offers the \Macro{captionof} command, with which you can put a caption
+for a floating environment, together with an entry in the corresponding
+environment list, outside of the floating environment or even in a different
+floating environment. Unlike \DescRef{\LabelBase.cmd.caption}, the type of
+floating environment must be specified as the first parameter.
+
+In addition, \Package{tocbasic} also provides the commands
+\Macro{captionaboveof}. These are like \DescRef{\LabelBase.cmd.captionabove}
+and \DescRef{\LabelBase.cmd.captionbelow} but with the additional features and
+parameter of \Macro{captionof}.
+
+Of course takes into account the \PValue{heading} and \PValue{signature}
+settings of options \DescRef{\LabelBase.option.captionposition},
+\DescRef{\LabelBase.option.captionabove} or
+\DescRef{\LabelBase.option.captionbelow} and also the corresponding individual
+options of the environments defined using
+\DescRef{\LabelBase.cmd.DeclareNewTOC} to setup the distance for captions
+above or below the object.
+\begin{Example}
+  Suppose you want to create a floating object with a table and a figure next
+  to each other. Since there are no mixed floating environments, you primarily
+  use a \Environment{figure} environment:
+\begin{lstcode}
+  \begin{figure}
+    \begin{minipage}{.5\linewidth}
+      \centering
+      \rule{4cm}{5cm}
+      \caption{A rectangle}\label{fig:rechteck}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+      \captionaboveof{table}
+      [Measure of the rectangle in
+        figure~\ref{fig:rechteck}]%
+      {Rectangle measure}
+      \label{tab:rechteck}
+      \begin{tabular}{ll}
+        Width:  & 4\,cm\\
+        Height: & 5\,cm
+      \end{tabular}
+    \end{minipage}
+  \end{figure}
+\end{lstcode}
+  Two \Environment{minipage} environments were used to place the figure
+  and the table side by side. The\textnote{Attention!} percent sign after the
+  end of the first \Environment{minipage} is important. Without it, an
+  additional space would appear between the \Environment{minipage}
+  environments.
+
+  The figure caption was created with \DescRef{\LabelBase.cmd.caption}. The
+  table caption was created with \Macro{captionaboveof} with \PValue{table} as
+  the first argument. Because of this, \Package{tocbasic} knows that this is a
+  table caption even though it is inside the \Environment{figure} environment.
+
+  The optional argument of \Macro{captionaboveof} creates an entry in the
+  list of tables. Without the optional argument, the caption specified in the
+  final mandatory argument would have been used for the list of tables too.
+  Although this caption text is sufficient for the environment itself, it
+  would not be very meaningful in the list of tables. Therefore, a different
+  title is used for the list of tables using the optional argument.
+  \autoref{fig:\LabelBase.captionaboveof} shows the result of the example code.%
+\begin{figure}
+%  \centering
+%  \caption
+  \KOMAoptions{captions=bottombeside}%
+  \setcapindent{0pt}%
+  \begin{captionbeside}
+    [{Example: Using \Macro{captionaboveof} inside another floating
+      environment}]
+    {Example: Using \Macro{captionaboveof} inside another floating
+      environment\label{fig:\LabelBase.captionaboveof}}
+    [l]
+  \begin{minipage}[b]{.66\linewidth}%
+  \raisebox{\depth}{\fbox{\KOMAoptions{captions=oneline}%
+    \begin{minipage}{.5\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+      \centering
+      \rule{4cm}{5cm}
+      \caption[Example: A rectangle]{A rectangle}\label{fig:\LabelBase.rechteck}
+    \end{minipage}%
+    \begin{minipage}{.5\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+      \centering
+      \captionaboveof{table}[Example: Measure of the rectangle in
+        figure~\ref{fig:\LabelBase.rechteck}]{Rectangle measure}
+      \label{tab:\LabelBase.rechteck}
+      \begin{tabular}{ll}
+        Width:  & 4\,cm\\
+        Height: & 5\,cm
+      \end{tabular}
+    \end{minipage}}}%
+  \end{minipage}%
+  \end{captionbeside}%
+\end{figure}%
+\end{Example}%
+You can produce a non-floating table with a caption in the same way as the
+table inside a figure environment in the example
+above. Thereby \Package{tocbasic} also tries to prevent a page break between
+the heading and the table. However, this cannot be ensured in all
+cases. Therefore, a \Environment{minipage} environment should also be used to
+avoid page breaks between the caption and the table. In addition, you should
+embed the \Environment{minipage} environment in a \Environment{flushleft}
+environment both to achieve a pleasing separation between the surrounding text
+and to avoid the paragraph indentation of the \Environment{minipage}
+environment. Of course, it is easier to use the environment
+\DescRef{maincls.env.table-}\IndexEnv{table-} directly.%
 \EndIndexGroup
 
 
@@ -2658,6 +2950,17 @@ is also possible and would lead to the same result.
       individual setting. If a \KOMAScript{} class is loaded, this does not
       apply to \PValue{chapter}.%
     }%
+    \pventry{caption}{%
+      \ChangedAt{v3.46}{\Package{tocbasic}}%
+      \IndexOption{enablepatch~=caption}\IndexOption{disablepatch~=caption}%
+      \IndexCmd{caption}\IndexCmd{captionof}%
+      The commands \DescRef{\LabelBase.cmd.caption} and
+      \DescRef{\LabelBase.cmd.captionof} are redefined so that they respect
+      the options \DescRef{\LabelBase.option.captionposition},
+      \DescRef{\LabelBase.option.captionabove},
+      \DescRef{\LabelBase.option.captionbelow} or the corresponding options
+      depending on the type or environment.%
+    }%
     \pventry{chapter}{%
       \IndexOption{enablepatch~=chapter}\IndexOption{disablepatch~=chapter}%
       \IndexCmd{chapter}%
@@ -2707,8 +3010,23 @@ settings. However, this can be overridden by
 \OptionValue{disablepatch}{all} not all patches are deactivated, but rather
 the individual settings for each patch are respected.
 
-A second noteworthy feature is
-\OptionValue{enablepatch}{chapter}\important{\OptionValue{enablepatch}{chapter}}%
+A second noteworthy feature is \OptionValue{enablepatch}{caption}%
+\important{\OptionValue{enabelpatch=caption}}%
+\IndexOption{enablepatch~caption}. As this patch is absolutely necessary for
+the correct function of the options from \autoref{sec:\LabelBase.caption},
+\DescPageRef{\LabelBase.option.captionposition} and the \KOMAScript{} options
+\OptionValueRef{maincls}{captions}{heading},
+\OptionValueRef{maincls}{captions}{signature},
+\OptionValueRef{maincls}{captions}{figureheading},
+\OptionValueRef{maincls}{captions}{figuresignature},
+\OptionValueRef{maincls}{captions}{tableheading} and
+\OptionValueRef{maincls}{captions}{tablesignature} based on them, it is
+automatically activated by the \KOMAScript{} classes. Without activation, the
+options mentioned have no defined effect.
+
+A third noteworthy feature is
+\OptionValue{enablepatch}{chapter}%
+\important{\OptionValue{enablepatch}{chapter}}%
 \IndexOption{enablepatch~=chapter}. Its usage may result in damage, hence a
 notification is displayed in the terminal output and add to the \File{log}
 file. Utilizing the patch with a \KOMAScript{} class can lead to actual
@@ -2758,7 +3076,7 @@ patch. But you usually should not enable it in this case.
   \PValue{listoffigures} patch, replacing the entry for the list of
   figures. This guarantees that \verb|\setuptoc{lof}{totoc}| will be correctly
   applied. At the same time, the \PValue{chapter} patch ensures that the
-  offset is inserted into the list of remarks as intended.% 
+  offset is inserted into the list of remarks as intended.%
   \lstinputcode[xleftmargin=2em]{book-remarkbox-patch-en.tex}%
   Yes, indeed, the only difference of both examples is loading
   the package \Package{tocbasic} without or with option
@@ -2775,12 +3093,12 @@ response to feedback from members of the \LaTeX{} Project Team. These deprecated
 commands should not be used anymore.
 
 \LoadNonFree{tocbasic}{0}%
-% 
+%
 \EndIndexGroup
 %
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8

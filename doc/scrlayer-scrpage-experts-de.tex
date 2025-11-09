@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlayer-scrpage-experts-de.tex
-% Copyright (c) Markus Kohm, 2013-2022
+% Copyright (c) Markus Kohm, 2013-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -23,7 +23,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlayer-scrpage-experts-de.tex}%
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2025-07-16 10:53:10 +0200 (Wed, 16 Jul 2025) $
                   KOMA-Script guide (chapter: scrlayer-scrpage for experts)]
 
 \chapter[{Zusätzliche Möglichkeiten von \Package{scrlayer-scrpage}}]
@@ -99,7 +99,7 @@ Während in \autoref{sec:scrlayer-scrpage.predefined.pagestyles} der Eindruck
 entstanden sein mag, dass sich die dort erläuterten Anweisungen nur auf
 \PageStyle{scrheadings} und \PageStyle{plain.scrheadings} beziehen, gilt das
 tatsächlich nur, solange diese beiden Seitenstile das einzige Seitenstil-Paar
-darstellen. Sobald es mehrere Seitenstil-Paare gibt, beziehen sich 
+darstellen. Sobald es mehrere Seitenstil-Paare gibt, beziehen sich
 \DescRef{scrlayer-scrpage.cmd.lehead}, \DescRef{scrlayer-scrpage.cmd.cehead},
 \DescRef{scrlayer-scrpage.cmd.rehead}, \DescRef{scrlayer-scrpage.cmd.lohead},
 \DescRef{scrlayer-scrpage.cmd.cohead}, \DescRef{scrlayer-scrpage.cmd.rohead},
@@ -196,6 +196,13 @@ grundlegenden Schnittstelle möglich ist. %
 \else %
 Sie ist jedoch hoch komplex und wird von Anwender nur sehr selten benötigt.
 \fi
+
+Ausdrücklich wird davon abgeraten, die hier vorgestellten Anweisungen dazu zu
+verwenden, um einzelne Teile bereits definierte Seitenstil-Paare
+umzudefinieren. Unter anderem würde dabei die Verknüpfung zu einem Paar
+beschädigt. Für die Umdefinierung von Seitenstil-Paaren sei auf
+\autoref{sec:\LabelBase.pagestyle.pairs} ab
+\autopageref{sec:\LabelBase.pagestyle.pairs} verwiesen.
 
 \begin{Declaration}
   \Macro{defpagestyle}\Parameter{Name}
@@ -416,11 +423,11 @@ sind. In der Voreinstellung ist der Schalter deaktiviert.%
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "scrguide-en.tex"
+%%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
-%%% ispell-local-dictionary: "en_GB"
+%%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
 %%% End:
 

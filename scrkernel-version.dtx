@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-version.dtx
-% Copyright (c) Markus Kohm, 2002-2024
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-version.dtx 4133 2024-10-24 09:54:28Z kohm $
+%%% From File: $Id: scrkernel-version.dtx 4224 2025-09-11 12:26:42Z kohm $
 %
 % ATTENTION: In this file parts of the code and documentation are before the
 % driver. This must be, because this part of the code is needed by the driver
@@ -119,6 +119,20 @@
       \expandafter\csname ifbeta\expandafter\endcsname
       \csname iffalse\endcsname
     \fi
+    \KOMAifVariable{COPYRIGHTTILL}{}{%
+      \def\@defCOPYRIGHTTILL##1/##2/##3 ##4\@nil{%
+        \def\@tempa{##1}\def\@tempb{}\ifx\@tempa\@tempb
+          \def\@defCOPYRIGHTTILL##1-##2-##3 ##4\@nil{%
+            \def\@tempa{##1}\def\@tempb{}\ifx\@tempa\@tempb
+            \else
+              \global\KOMAdefVariable{COPYRIGHTTILL}{##1}%
+            \fi
+          }%
+        \else
+          \global\KOMAdefVariable{COPYRIGHTTILL}{##1}%
+        \fi
+      }%
+    }\@defCOPYRIGHTTILL#1// \@nil
     \let\@CheckKOMAScriptVersion\undefined
     \endinput
   }%
@@ -159,7 +173,7 @@
 % therefore the syntax or general structure of the line must not be changed!
 %    \begin{macrocode}
 %<*!v4>
-\@CheckKOMAScriptVersion{2024/10/24 v3.43 KOMA-Script}%
+\@CheckKOMAScriptVersion{2025/09/11 v3.49 BETA KOMA-Script}%
 %</!v4>
 %<v4>  \@nameuse{@CheckKOMAScriptVersion}{2022/10/25 v3.99 ALPHA KOMA-Script}%
 %    \end{macrocode}

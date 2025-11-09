@@ -1,6 +1,6 @@
 % ======================================================================
 % scrdocstrip.tex
-% Copyright (c) Markus Kohm, 2013-2022
+% Copyright (c) Markus Kohm, 2013-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -17,7 +17,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-% $Id: scrdocstrip.tex 3915 2022-06-29 07:09:48Z kohm $
+% $Id: scrdocstrip.tex 4215 2025-08-29 07:10:23Z kohm $
 
 \expandafter\ifx\csname scrdocstripversion\endcsname\relax
   \let\KOMAbatchfile\batchfile
@@ -60,9 +60,9 @@
 }
 \KOMAdefVariable{AUTHOR}{Markus Kohm}
 \KOMAdefVariable{COPYRIGHT}{%
-  Copyright (c) 
+  Copyright (c)
   \KOMAifVariable{COPYRIGHTFROM}{\KOMAuseVariable{COPYRIGHTFROM}-}{}%
-  \KOMAifVariable{COPYRIGHTTILL}{\KOMAuseVariable{COPYRIGHTTILL}}{}
+  \KOMAifVariable{COPYRIGHTTILL}{\KOMAuseVariable{COPYRIGHTTILL}}{\the\year}
   \KOMAuseVariable{AUTHOR}%
   \KOMAifVariable{EMAIL}{ \KOMAuseVariable{EMAIL}}{}%
 }
@@ -122,10 +122,10 @@
   scrdocstrip.^^J%
 }
 \def\commentWarning#1#2{%
-  \MetaPrefix\space 
+  \MetaPrefix\space
   -------------------------------------------------------------------------^^J%
   \@commentWarning#2^^J\@nil
-  \MetaPrefix\space 
+  \MetaPrefix\space
   -------------------------------------------------------------------------^^J%
 }
 \def\@commentWarning#1^^J#2\@nil{%
@@ -154,7 +154,7 @@
 \useWarning\genericWarning
 
 % Now, we need some code from docstrip to start old docstrip-processing
-\ifx\undefined\KOMAbatchfile\else 
+\ifx\undefined\KOMAbatchfile\else
   \Defaultfalse
   \let\batchfile\KOMAbatchfile
   \def\process@first@batchfile{%

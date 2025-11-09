@@ -1,6 +1,6 @@
 % ======================================================================
 % scrmain.ins
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
 
-% $Id: scrmain.ins 4076 2023-07-31 13:38:10Z kohm $
+% $Id: scrmain.ins 4173 2025-06-13 20:46:20Z kohm $
 
 % ---------- KOMA-Script default docstrip declarations -----------------
 
@@ -91,6 +91,7 @@
   \file{scrbook.cls}{%
     \from{scrkernel-version.dtx}{class,book}%
     \from{scrkernel-basics.dtx}{class,load}%
+    \from{tocbasic.dtx}{class,load}%
     \from{scrkernel-listsof.dtx}{class,book,prepare}%
     \from{scrkernel-tocstyle.dtx}{class,book,prepare}%
     \from{scrkernel-sections.dtx}{class,book,prepare}%
@@ -140,6 +141,7 @@
   \file{scrreprt.cls}{%
     \from{scrkernel-version.dtx}{class,report}%
     \from{scrkernel-basics.dtx}{class,load}%
+    \from{tocbasic.dtx}{class,load}%
     \from{scrkernel-listsof.dtx}{class,report,prepare}%
     \from{scrkernel-tocstyle.dtx}{class,report,prepare}%
     \from{scrkernel-sections.dtx}{class,report,prepare}%
@@ -189,6 +191,7 @@
   \file{scrartcl.cls}{%
     \from{scrkernel-version.dtx}{class,article}%
     \from{scrkernel-basics.dtx}{class,load}%
+    \from{tocbasic.dtx}{class,load}%
     \from{scrkernel-listsof.dtx}{class,article,prepare}%
     \from{scrkernel-tocstyle.dtx}{class,article,prepare}%
     \from{scrkernel-sections.dtx}{class,article,prepare}%

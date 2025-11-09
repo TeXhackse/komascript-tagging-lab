@@ -1,6 +1,6 @@
 % ======================================================================
 % scrbookreportarticle-en.tex
-% Copyright (c) Markus Kohm, 2001-2023
+% Copyright (c) Markus Kohm, 2001-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrbookreportarticle-en.tex}
-                 [$Date: 2023-09-06 10:22:04 +0200 (Wed, 06 Sep 2023) $
+                 [$Date: 2025-10-28 12:58:48 +0100 (Tue, 28 Oct 2025) $
                   KOMA-Script guide (chapter: scrbook, scrreprt, scrartcl)]
 
 \translator{Jens-Uwe Morawski\and Gernot Hassenpflug\and Markus Kohm\and
@@ -536,7 +536,7 @@ The\ChangedAt{v2.97c}{\Class{scrbook}\and \Class{scrreprt}\and
 contents is also affected by the settings for the \FontElement{partentry}
 element, as well as by the \FontElement{chapterentry} element for the
 \Class{scrbook} and \Class{scrreprt} classes, and by the
-\FontElement{sectionentry} element for the \Class{scrartcl} class. 
+\FontElement{sectionentry} element for the \Class{scrartcl} class.
 \BeginIndex{FontElement}{partentrypagenumber}%
 \LabelFontElement{partentrypagenumber}%
 \LabelFontElement{pagination}%
@@ -641,8 +641,8 @@ the standard \Class{article} class for compatibility. Thus, for example, you
 should not use \DescRef{\LabelBase.cmd.partnumdepth}\IndexCmd{partnumdepth} to
 set the value of \Counter{tocdepth}.%
 \begin{Example}
-  Suppose you are preparing an article that uses the sectioning level 
-  \DescRef{\LabelBase.cmd.subsubsection}. However, you do not want this 
+  Suppose you are preparing an article that uses the sectioning level
+  \DescRef{\LabelBase.cmd.subsubsection}. However, you do not want this
   sectioning level to appear in the table of contents. The preamble of your
   document might contain the following:
 \begin{lstcode}
@@ -652,7 +652,7 @@ set the value of \Counter{tocdepth}.%
   Thus you set the \Counter{tocdepth} counter to the value of the
   \Macro{subsectiontocdepth} command. That value is normally 2, but this way,
   you do not have to remember it.
-  
+
   If instead you simply want to include one less level in the table of
   contents than you normally would, you can simply subtract one from the
   default value of \Counter{tocdepth}:
@@ -995,7 +995,7 @@ You can redefine the page styles with the \Macro{renewcommand} macro.
   As mentioned previously on \DescPageRef{\LabelBase.pagestyle.empty},
   the \PValue{empty} page style is exactly what is required in this
   example. Of course, you can also use a user-defined page style.
-	
+
   Suppose you have defined your own page style for initial chapter pages with
   the \hyperref[cha:scrlayer]{\Package{scrlayer}} (see
   \autoref{sec:scrlayer.pagestyles}) or the
@@ -1006,7 +1006,7 @@ You can redefine the page styles with the \Macro{renewcommand} macro.
 \begin{lstcode}
   \renewcommand*{\chapterpagestyle}{chapter}
 \end{lstcode}
-	
+
   Suppose you do not want the table of contents\Index{table of contents}%
   \textnote{table of contents} of a book to have page numbers. Everything
   after the table of contents, however, should use the \PValue{headings}
@@ -1021,8 +1021,8 @@ You can redefine the page styles with the \Macro{renewcommand} macro.
   \pagestyle{headings}
   \renewcommand*{\chapterpagestyle}{plain}
 \end{lstcode}
-  You can also keep the redefinition local by using a group. This method has 
-  the advantage that you do not need to make any assumptions about the what 
+  You can also keep the redefinition local by using a group. This method has
+  the advantage that you do not need to make any assumptions about the what
   the previous page style was in order to restore it after your local change:
 \begin{lstcode}
   \clearpage
@@ -1033,8 +1033,8 @@ You can redefine the page styles with the \Macro{renewcommand} macro.
   \clearpage
   \endgroup
 \end{lstcode}
-  Note,\important{Attention!} however, that you never should put a numbered 
-  sectioning command into a group. Otherwise you may get unpredictable results 
+  Note,\important{Attention!} however, that you never should put a numbered
+  sectioning command into a group. Otherwise you may get unpredictable results
   with commands like \Macro{label}.
 
   On \DescPageRef{tocbasic.cmd.AfterTOCHead} in \autoref{sec:tocbasic.toc},
@@ -1162,7 +1162,7 @@ provides more information about potentially inserted blank pages.
   document. For example, if the last page of the table of contents had the
   Roman numeral vii, the Arabic numbered right-side page 1 would immediately
   follow the Roman numeral right-side page. A left-side page between the two
-  would be missing, which could cause serious problems with later printing. 
+  would be missing, which could cause serious problems with later printing.
 
   My advice: Avoid using templates that contain errors with respect to such
   simple things. Incidentally, the correct way would be:
@@ -1185,7 +1185,7 @@ provides more information about potentially inserted blank pages.
   commands, \DescRef{\LabelBase.cmd.frontmatter}%
   \important{\DescRef{\LabelBase.cmd.frontmatter}\\
     \DescRef{\LabelBase.cmd.mainmatter}}%
-  \IndexCmd{fontmatter} and \DescRef{\LabelBase.cmd.mainmatter}%
+  \IndexCmd{frontmatter} and \DescRef{\LabelBase.cmd.mainmatter}%
   \IndexCmd{mainmatter}, for the most commonly used switching. For more
   information, please see
   \autoref{sec:maincls.separation},
@@ -1209,21 +1209,33 @@ capability for \Class{scrbook}.
 
 
 \begin{Declaration}
-  \Macro{frontmatter}
-  \Macro{mainmatter}
-  \Macro{backmatter}
+  \Macro{frontmatter}\OParameter{numbering style}
+  \Macro{frontmatter*}
+  \Macro{mainmatter}\OParameter{numbering style}
+  \Macro{mainmatter*}
+  \Macro{backmatter}\OParameter{numbering style}
+  \Macro{backmatter*}
 \end{Declaration}%
-The front matter includes all the material which appears before the main
-text begins, including title pages, preface, and table of contents. It is
-initiated with
-\Macro{frontmatter}\important{\Macro{frontmatter}}. In the front matter,
-Roman numerals are used for the page numbers, and chapter headings in 
-the header are not numbered. However, section headings are numbered
-consecutively, starting from chapter 0. This typically does not matter, as the 
-front matter is used only for the title pages, table of contents%
+The front matter includes all the material which appears before the main text
+begins, including title pages, preface, and table of contents. It is initiated
+with \Macro{frontmatter}\important{\Macro{frontmatter}}. In the front matter,
+Roman numerals are used for the page
+numbers. If\ChangedAt{v3.49}{\Class{scrbook}} a different numbering style is
+to be used, this can be set using an optional argument. All specifications
+that are also possible for \DescRef{\LabelBase.cmd.pagenumbering}%
+\important{\DescRef{\LabelBase.cmd.pagenumbering}} from
+\autoref{sec:\LabelBase.pagestyle}, \DescPageRef{\LabelBase.cmd.pagenumbering}
+are permitted here. If the page numbering is to be continuous, i.\,e., not
+changed by \Macro{frontmatter}, either an empty optional argument or the star
+form \Macro{frontmatter*} can be used.
+
+Chapter headings in the front matter are not numbered. However, section
+headings are numbered consecutively, starting from chapter 0. This typically
+does not matter, as the front matter is used only for the title pages, table
+of contents%
 \Index{table of contents}, lists of figures\Index{list of>figures}%
-\Index{figures>list of} and tables\Index{tables>list of}, and a 
-preface\Index{preface} or foreword\Index{foreword}. The preface can thus be 
+\Index{figures>list of} and tables\Index{tables>list of}, and a
+preface\Index{preface} or foreword\Index{foreword}. The preface can thus be
 created as a normal chapter. A preface should be as short as possible and
 never divided into sections. The preface thus does not require a deeper level
 of structure than the chapter.
@@ -1252,11 +1264,18 @@ too requires the corresponding compatibility setting (see the
 \autoref{sec:\LabelBase.compatibilityOptions},
 \DescPageRef{\LabelBase.option.version}).
 
-The part of the book with the main text is introduced
-with \Macro{mainmatter}\important{\Macro{mainmatter}}. If there is no front
-matter, you can omit this command. The default page numbering in the main
-matter uses Arabic numerals and (re)starts the page count at 1 at the start of
-the main matter.
+The part of the book with the main text is introduced with
+\Macro{mainmatter}\important{\Macro{mainmatter}}. If there is no front matter,
+you can omit this command. The default page numbering in the main matter uses
+Arabic numerals and (re)starts the page count at 1 at the start of the main
+matter. If\ChangedAt{v3.49}{\Class{scrbook}} a different numbering style is to
+be used, this can be set using an optional argument. All specifications that
+are also possible for \DescRef{\LabelBase.cmd.pagenumbering}%
+\important{\DescRef{\LabelBase.cmd.pagenumbering}} from
+\autoref{sec:\LabelBase.pagestyle}, \DescPageRef{\LabelBase.cmd.pagenumbering}
+are permitted here. If the page numbering is to be continuous, i.\,e., not
+changed by \Macro{mainmatter}, either an empty optional argument or the star
+form \Macro{mainmatter*} can be used.
 
 The back matter is introduced with
 \Macro{backmatter}\important{\Macro{backmatter}}. Opinions differ as to what
@@ -1264,11 +1283,15 @@ belongs in the back matter. So in some cases you will find only the
 bibliography\Index{bibliography}, in some cases only the index\Index{index},
 and in other cases both of these as well as the appendices. The chapters in
 the back matter are similar to the chapters in the front matter, but page
-numbering is not reset. If you do require separate page numbering, you can use
-the \DescRef{\LabelBase.cmd.pagenumbering}%
-\important{\DescRef{\LabelBase.cmd.pagenumbering}} command in
-\autoref{sec:\LabelBase.pagestyle},
-\DescPageRef{\LabelBase.cmd.pagenumbering}.%
+numbering is not reset by default. If\ChangedAt{v3.49}{\Class{scrbook}} a
+different page numbering style is
+to be used, this can be set using an optional argument. All specifications
+that are also possible for \DescRef{\LabelBase.cmd.pagenumbering}%
+\important{\DescRef{\LabelBase.cmd.pagenumbering}} from
+\autoref{sec:\LabelBase.pagestyle}, \DescPageRef{\LabelBase.cmd.pagenumbering}
+are permitted here. The star variant \Macro{backmatter*} has the same
+result as the normal variant \Macro{backmatter} without optional argument or
+with an empty optional argument.%
 %
 \EndIndexGroup
 
@@ -1312,7 +1335,7 @@ left-hand page of a two-page spread. You can accomplish this with the
     \pventry{any}{%
       Parts, chapter, index, and back matter use
       \DescRef{\LabelBase.cmd.clearpage}, not
-      \DescRef{\LabelBase.cmd.cleardoublepage}; 
+      \DescRef{\LabelBase.cmd.cleardoublepage};
       \DescRef{\LabelBase.cmd.cleardoublepageusingstyle},
       \DescRef{\LabelBase.cmd.cleardoublestandardpage},
       \DescRef{\LabelBase.cmd.cleardoubleplainpage},
@@ -1377,7 +1400,7 @@ also affect the automatic running heads in the headers (see
 \autoref{sec:\LabelBase.pagestyle},
 \DescPageRef{\LabelBase.pagestyle.headings}).
 
-Sometimes you may want to use the simplified chapter headings produced by 
+Sometimes you may want to use the simplified chapter headings produced by
 \OptionValue{chapterprefix}{false} but at the same time to have the heading of
 an appendix\Index{appendix} preceded by a line with ``Appendix'' followed by
 the appendix letter. This is achieved by using the \Option{appendixprefix}
@@ -1406,7 +1429,7 @@ by using the
 \autoref{tab:\LabelBase.structureElementsFont},
 \autopageref{tab:\LabelBase.structureElementsFont}).
 
-You can find additional settings for chapter headings in the explanation for 
+You can find additional settings for chapter headings in the explanation for
 \DescRef{maincls-experts.cmd.RedeclareSectionCommand} and the commands
 \DescRef{maincls-experts.cmd.chapterlineswithprefixformat} and
 \DescRef{maincls-experts.cmd.chapterlinesformat} in
@@ -1659,7 +1682,7 @@ use of the final point with the option
 
 Note\textnote{Attention!} that this mechanism only takes effect on the
 next {\LaTeX} run.  Therefore, before you try to use these options to force
-the correct numbering format, you should always perform another \LaTeX{} run 
+the correct numbering format, you should always perform another \LaTeX{} run
 without modifying the document.
 
 When using the language setting \PValue{russian} of the package
@@ -1692,7 +1715,7 @@ settings, this option can only be set in the document preamble, i.\,e. before
       \PValue{enddot}, \PValue{withenddot}, \PValue{dotatend}}{%
       All numbers of sectioning commands and their subordinate numbers are set
       with a final point. Only references will be set without the final
-      point.% 
+      point.%
       \IndexOption{numbers~=\textKValue{endperiod}}}%
     \entry{\PValue{noendperiod}, \PValue{noperiodatend},
       \PValue{noenddot}, \PValue{nodotatend}}{%
@@ -1816,8 +1839,8 @@ you can use an invisible entry like \lstinline|\mbox{}|.
   argument of \Macro{chapter}.
 \begin{lstcode}
   \chapter[short version of chapter heading]
-          {The Sectioning Command for Chapters 
-            Supports not only the Heading Text 
+          {The Sectioning Command for Chapters
+            Supports not only the Heading Text
             Itself but also a Short Version Whose
             Use can be Controlled}
 \end{lstcode}
@@ -1831,7 +1854,7 @@ you can use an invisible entry like \lstinline|\mbox{}|.
            tocentry={The Sectioning
              Command for Chapters Supports not
              only the Heading Text Itself but
-             also a Short Version Whose Use 
+             also a Short Version Whose Use
              can be Controlled}]
           {The Sectioning\\
           	Command for Chapters\\
@@ -1847,7 +1870,7 @@ you can use an invisible entry like \lstinline|\mbox{}|.
   can be arbitrary.
 
   The need for braces in the example above is best illustrated by another
-  example. Suppose you chose the 
+  example. Suppose you chose the
   \OptionValueRef{\LabelBase}{headings}{optiontotoc} option and set the title
   this way:
 \begin{lstcode}
@@ -2052,7 +2075,7 @@ The default font sizes for the specific elements depends on the options
 %
 \begin{Example}
   Suppose you use the \OptionValueRef{\LabelBase}{headings}{big} class option
-  and notice that the very large headings of the document parts are too bold. 
+  and notice that the very large headings of the document parts are too bold.
   You could change this as follows:
 \begin{lstcode}
   \setkomafont{disposition}{\normalcolor\maybesffamily}
@@ -2185,7 +2208,7 @@ unnumbered. They thus produce both a running head and an entry in the table of
 contents which take into account the \DescRef{\LabelBase.option.headings}%
 \important{\DescRef{\LabelBase.option.headings}} option settings, especially
 the handling of the optional argument. However, enabling or disabling the
-\Option{nonumber} switch will have no effect. 
+\Option{nonumber} switch will have no effect.
 
 The starred variants \Macro{addchap*} and \Macro{addsec*} are similar to the
 standard commands \DescRef{\LabelBase.cmd.chapter*} and
@@ -2316,17 +2339,17 @@ the \DescRef{\LabelBase.fontelement.disposition} element is used.%
   \documentclass{scrartcl}
 
   \begin{document}
-	
+
 	\title{DIY Projects}
 	\author{Two Left Thumbs}
 	\date{\today}
 	\maketitle
-	
+
 	\section{Mousetrap}
-	
+
 	The first project is suitable for beginners and only requires
 	a few components that should be found in every household.
-	
+
     \minisec{Material Required}
 
     \begin{flushleft}
@@ -2368,13 +2391,13 @@ the \DescRef{\LabelBase.fontelement.disposition} element is used.%
     \end{flushleft}
 
     \minisec{Assembly}
-    First, find the mouse hole and put the push pin directly behind the hole 
+    First, find the mouse hole and put the push pin directly behind the hole
     so that the mouse cannot escape during the following actions.
 
     Next tap the swing-top cap into the mouse hole with the hammer. If the cap
-    is not big enough to block the hole completely and permanently, take the 
+    is not big enough to block the hole completely and permanently, take the
     board instead and screw it to the front of the mouse hole using the two
-    screws and the knife. Of course, you can use a screwdriver instead of a 
+    screws and the knife. Of course, you can use a screwdriver instead of a
     knife. The ballpoint pen has fallen victim to animal welfare.
   \end{ShowOutput}
 \end{Example}
@@ -2408,7 +2431,7 @@ You can redefine this command with \Macro{renewcommand}.
 \end{lstcode}
   You will get heading formatting which is very close to that of the standard
   classes. It will become even closer when you combine this change with the
-  change to the 
+  change to the
   \DescRef{\LabelBase.fontelement.disposition}\IndexFontElement{disposition}
   element mentioned above.
 \end{Example}
@@ -2429,7 +2452,7 @@ centred rather than ragged right. This formatting is performed by the
 \end{lstcode}
 You can also redefine this command using \Macro{renewcommand}.
 \begin{Example}
-  You want the headings for \DescRef{\LabelBase.cmd.part} to be formatted the 
+  You want the headings for \DescRef{\LabelBase.cmd.part} to be formatted the
   same as any other sectioning command. To do so, put
 \begin{lstcode}
   \renewcommand*{\raggedpart}{\raggedsection}
@@ -2523,7 +2546,7 @@ Please also remember\textnote{Attention!} to replace \Macro{newcommand} with
 \Macro{renewcommand} if you want to redefine one of the commands above.
 
 \begin{Example}
-  Suppose you do not want the word ``Part'' written in front of the part 
+  Suppose you do not want the word ``Part'' written in front of the part
   number when you use \DescRef{\LabelBase.cmd.part}. You can put the
   following command in the preamble of your document:
 \begin{lstcode}
@@ -2538,7 +2561,7 @@ Please also remember\textnote{Attention!} to replace \Macro{newcommand} with
   \OptionValueRef{\LabelBase}{numbers}{endperiod} and thus deviate from
   the rule. You can find more details concerning class options on
   \DescPageRef{\LabelBase.option.numbers}.
-  
+
   Another possibility is to place the section numbers in the left margin in
   such a way that the heading text is left aligned with the surrounding text.
   You can accomplish this with:
@@ -2629,7 +2652,7 @@ these commands only exist in these classes.%
   \Macro{subsectionmarkformat}
 \end{Declaration}%
 \begin{Explain}%
-  As mentioned in \autoref{sec:\LabelBase.pagestyle}, the 
+  As mentioned in \autoref{sec:\LabelBase.pagestyle}, the
   \DescRef{\LabelBase.pagestyle.headings}\IndexPagestyle{headings}%
   \important{\DescRef{\LabelBase.pagestyle.headings}} page style works with
   automatic running  heads\Index{running heads>automatic}. For this, the
@@ -2639,8 +2662,8 @@ these commands only exist in these classes.%
   etc.) automatically executes the corresponding \Macro{\dots mark} command.
   The parameter passed contains the text of the section heading%
   \Index{heading}. The corresponding section number is added automatically in
-  the \Macro{\dots mark} command. The formatting is done according to the 
-  sectioning level with one of the three commands \Macro{chaptermarkformat}, 
+  the \Macro{\dots mark} command. The formatting is done according to the
+  sectioning level with one of the three commands \Macro{chaptermarkformat},
   \Macro{sectionmarkformat}, or \Macro{subsectionmarkformat}.
 
   Note\textnote{Attention!} that the running heads of
@@ -2681,8 +2704,8 @@ definitions for the {\KOMAScript} classes are:
     \thesubsection\autodot\enskip}
 \end{lstcode}
 \begin{Example}
-  Suppose you want the word ``Chapter'' to precede the chapter number in the 
-  running head. You could put the following definition in the preamble of your 
+  Suppose you want the word ``Chapter'' to precede the chapter number in the
+  running head. You could put the following definition in the preamble of your
   document:
 \begin{lstcode}
   \renewcommand*{\chaptermarkformat}{%
@@ -2718,8 +2741,8 @@ depth to which headings are numbered is controlled by the \LaTeX{} counter
 \Counter{secnumdepth}.
 
 To\ChangedAt{v3.12}{\Class{scrbook}\and \Class{scrreprt}\and \Class{scrartcl}}
-save users the trouble of having to remember abstract numbers, the commands 
-\Macro{partnumdepth} to \Macro{subparagraphnumdepth} return the appropriate 
+save users the trouble of having to remember abstract numbers, the commands
+\Macro{partnumdepth} to \Macro{subparagraphnumdepth} return the appropriate
 number for the section level in their name.
 
 \begin{Example}
@@ -2731,8 +2754,8 @@ number for the section level in their name.
   \setcounter{secnumdepth}{\sectionnumdepth}
 \end{lstcode}
 \end{Example}
-No provision is made for redefining these commands. Doing so could lead to 
-unexpected results, not only with \KOMAScript{} but also with third party 
+No provision is made for redefining these commands. Doing so could lead to
+unexpected results, not only with \KOMAScript{} but also with third party
 packages. Thus, you should never redefine them.
 
 Do\textnote{Attention!} not confuse the \Counter{secnumdepth} and
@@ -2792,9 +2815,9 @@ must come before the respective \DescRef{\LabelBase.cmd.part},
 \DescRef{\LabelBase.cmd.addpart}, \DescRef{\LabelBase.cmd.chapter}, or
 \DescRef{\LabelBase.cmd.addchap} command.
 \begin{Example}
-  You are writing a report about the condition of a company. You organize the 
-  report in such a way that every department gets its own partial report.  
-  Each of these parts should be introduced by an abstract on the corresponding 
+  You are writing a report about the condition of a company. You organize the
+  report in such a way that every department gets its own partial report.
+  Each of these parts should be introduced by an abstract on the corresponding
   title page. You could write the following:
 \begin{lstcode}
   \setpartpreamble{%
@@ -2810,7 +2833,7 @@ must come before the respective \DescRef{\LabelBase.cmd.part},
   (see \DescPageRef{\LabelBase.option.headings}) and the options for
   the \DescRef{\LabelBase.env.abstract} environment\IndexEnv{abstract} (see
   \autoref{sec:\LabelBase.abstract},
-  \DescPageRef{\LabelBase.option.abstract}), the result will look something 
+  \DescPageRef{\LabelBase.option.abstract}), the result will look something
   like this:
   \begin{ShowOutput}\centering
     {\LARGE\usekomafont{disposition} Part III.\par\vspace{14pt}}
@@ -2820,7 +2843,7 @@ must come before the respective \DescRef{\LabelBase.cmd.part},
       \begin{center}
         \usekomafont{disposition}\abstractname
       \end{center}
-      \vspace{2ex}       
+      \vspace{2ex}
       This is a filler text. It serves merely to demonstrate the
       capabilities of {\KOMAScript}. If you read this text, you will
       get no information.
@@ -2833,9 +2856,9 @@ there is no \DescRef{\LabelBase.env.abstract} environment in the
 \Class{scrbook} class (see \autoref{sec:\LabelBase.abstract},
 \DescPageRef{\LabelBase.env.abstract}).
 
-The\ChangedAt{v2.8p}{\Class{scrbook}\and\Class{scrreprt}} first optional 
-argument, \PName{position}, determines the position at which the preamble 
-is placed with the help of one or two letters. For vertical placement 
+The\ChangedAt{v2.8p}{\Class{scrbook}\and\Class{scrreprt}} first optional
+argument, \PName{position}, determines the position at which the preamble
+is placed with the help of one or two letters. For vertical placement
 there are two possibilities at present:
 \begin{labeling}[~--]{\quad\PValue{o}}\itemsep=0pt
 \item [\quad\texttt{o}] above the heading
@@ -2946,7 +2969,7 @@ does not react to run-time changes of the option.
 \BeginIndex{}{figures}%
 
 With the floating environments, {\LaTeX} offers a powerful and convenient
-mechanism to arrange figures\Index{figure} and tables\Index{table} 
+mechanism to arrange figures\Index{figure} and tables\Index{table}
 automatically.
 % Im Deutschen ist hier ein Absatz, den wir nicht uebernehmen!
 Frequently,\textnote{Attention!} beginners do not properly understand these
@@ -3020,7 +3043,11 @@ Furthermore, tables are usually read row by row, from top to bottom. So there
 are normally at least two good reasons to provide all tables with headings.
 \KOMAScript{} therefore offers the \OptionValue{captions}{tableheading}%
 \IndexOption{captions~=\textKValue{tableheading}} option, which changes the
-formatting of table captions for use above the table.
+formatting of table captions for use above the
+table. Internally\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+  \Class{scrartcl}}, this is achieved by using the \Package{tocbasic} option
+\OptionValueRef{tocbasic}{tablecaptionposition}{top}%
+\IndexOption{tablecaptionposition~=top}.
 
 Note\textnote{Attention!} that multi-page tabulars cannot use a floating
 environment. To have an automatic page break in a tabular you need an
@@ -3030,7 +3057,13 @@ additional package like \Package{longtable}\IndexPackage{longtable} (see
 
 You\important{\OptionValue{captions}{tablesignature}} can switch back to the
 default caption formatting using \OptionValue{captions}{tablesignature}%
-\IndexOption{captions~=\textKValue{tablesignature}}. Note\textnote{Attention!}
+\IndexOption{captions~=\textKValue{tablesignature}}. Internally\ChangedAt{v3.46}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}}, this is achieved by using the
+\Package{tocbasic} option
+\OptionValueRef{tocbasic}{tablecaptionposition}{bottom}%
+\IndexOption{tablecaptionposition~=bottom}.
+
+Note\textnote{Attention!}
 that these options change only the formatting, not the actual position of the
 caption. Whether the caption is placed above or below a float depends solely
 upon where you use the \DescRef{\LabelBase.cmd.caption} command inside float
@@ -3045,21 +3078,31 @@ exist\ChangedAt{v3.09}{\Class{scrbook}\and \Class{scrreprt}\and
 \OptionValue{captions}{figureheading}%
 \IndexOption{captions~=\textKValue{figureheading}} and
 \OptionValue{captions}{figuresignature}%
-\IndexOption{captions~=\textKValue{figuresignature}}. However, figures such as
-photos tend to be viewed as a whole, and a diagram or graph will mostly be
-examined starting from the lower left. Therefore, it only rarely makes sense
-to change the caption format for figures alone from signatures to headings.
+\IndexOption{captions~=\textKValue{figuresignature}}.
+Internally\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+  \Class{scrartcl}}, this is achieved by using the \Package{tocbasic} option
+\OptionValueRef{tocbasic}{figurecaptionposition}{top}%
+\IndexOption{figurecaptionposition~=top}
+resp. \OptionValueRef{tocbasic}{figurecaptionposition}{bottom}%
+\IndexOption{figurecaptionposition~=bottom}. However, figures such as photos
+tend to be viewed as a whole, and a diagram or graph will mostly be examined
+starting from the lower left. Therefore, it only rarely makes sense to change
+the caption format for figures alone from signatures to headings.
 
 Sometimes, however, all floating environments should use headings. Therefore
 \KOMAScript{} provides\ChangedAt{v3.09}{\Class{scrbook}\and
   \Class{scrreprt}\and \Class{scrartcl}}
 options\important{\OptionValue{captions}{heading}\\
-	\OptionValue{captions}{signature}}
+  \OptionValue{captions}{signature}}
 \OptionValue{captions}{heading}\IndexOption{captions~=\textKValue{heading}}
 and \OptionValue{captions}{signature}%
 \IndexOption{captions~=\textKValue{signature}} to switch the format of every
-floating environment. These options can also be used inside a floating
-environment.
+floating environment. Internally\ChangedAt{v3.46}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}}, this is achieved by using the
+\Package{tocbasic} option \OptionValueRef{tocbasic}{captionposition}{top}%
+\IndexOption{captionposition~=top}
+resp. \OptionValueRef{tocbasic}{captionposition}{bottom}%
+\IndexOption{figurecaptionposition~=bottom}.
 
 Please note\textnote{Achtung!}\OnlyAt{\Package{float}}\IndexPackage{float}
 when using the \Package{float} package that the settings for signatures or
@@ -3089,9 +3132,9 @@ Furthermore\important{\OptionValue{captions}{nooneline}}, \KOMAScript{} offers
 the option to disable the distinction between one-line and multi-line captions
 using the \OptionValue{captions}{nooneline}%
 \IndexOption{captions~=\textKValue{nooneline}}%
-\important{\OptionValue{captions}{nooneline}} option. This can be useful, for 
-example, if you do not want one-line captions to be centred. The default, 
-where one-line captions are centred, corresponds to 
+\important{\OptionValue{captions}{nooneline}} option. This can be useful, for
+example, if you do not want one-line captions to be centred. The default,
+where one-line captions are centred, corresponds to
 \OptionValue{captions}{oneline}.
 
 Another special feature of \KOMAScript{} is the ability to put the caption
@@ -3112,14 +3155,14 @@ can find the available values for the corresponding \PName{settings} in
     Available values for the \Option{captions} option (\emph{continued})%
   }%
   \entry{\PValue{bottombeside}, \PValue{besidebottom}}{%
-    Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see 
-    \autoref{sec:\LabelBase.floats}, 
-    \DescPageRef{\LabelBase.env.captionbeside}) are vertically aligned with 
+    Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see
+    \autoref{sec:\LabelBase.floats},
+    \DescPageRef{\LabelBase.env.captionbeside}) are vertically aligned with
     the bottommost baseline of the contents of the floating environment.%
     \IndexOption{captions~=\textKValue{bottombeside}}}%
   \entry{\PValue{centeredbeside}, \PValue{besidecentered},
     \PValue{middlebeside}, \PValue{besidemiddle}}{%
-    Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see 
+    Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see
     \autoref{sec:\LabelBase.floats},
     \DescPageRef{\LabelBase.env.captionbeside}) are vertically aligned with
     the center of the contents of the floating environment.%
@@ -3130,39 +3173,55 @@ can find the available values for the corresponding \PName{settings} in
     \ChangedAt{v3.09}{\Class{scrbook}\and \Class{scrreprt}\and
       \Class{scrartcl}}%
     Captions for figures use heading format\,---\,possibly deviating from
-    \OptionValue{captions}{signature}.%
+    \OptionValue{captions}{signature}. This\ChangedAt{v3.46}{\Class{scrbook}\and
+      \Class{scrreprt}\and \Class{scrartcl}} option is based on option
+    \OptionValueRef{tocbasic}{figurecaptionposition}{top}%
+    \IndexOption{figurecaptionposition~=\KValue{top}} from package
+    \Package{tocbasic}. See \autoref{sec:tocbasic.caption}, from
+    \autopageref{sec:tocbasic.caption}.%
   }%
   \entry{\PValue{figuresignature}, \PValue{belowfigure},
     \PValue{bottomatfiggure}%
     \IndexOption{captions~=\textKValue{figuresignature}}}{%
     \ChangedAt{v3.09}{\Class{scrbook}\and \Class{scrreprt}\and
       \Class{scrartcl}}%
-    Captions for figures use signature format\,---\,possibly deviating 
-    from \OptionValue{captions}{headings}.%
+    Captions for figures use signature format\,---\,possibly deviating from
+    \OptionValue{captions}{headings}. This\ChangedAt{v3.46}{\Class{scrbook}\and
+      \Class{scrreprt}\and \Class{scrartcl}} option is based on option
+    \OptionValueRef{tocbasic}{figurecaptionposition}{bottom}%
+    \IndexOption{figurecaptionposition~=\KValue{bottom}} from package
+    \Package{tocbasic}. See \autoref{sec:tocbasic.caption}, from
+    \autopageref{sec:tocbasic.caption}.%
   }%
   \entry{\PValue{heading}, \PValue{above}, \PValue{top}%
     \IndexOption{captions~=\textKValue{heading}}}{%
     \ChangedAt{v3.09}{\Class{scrbook}\and \Class{scrreprt}\and
       \Class{scrartcl}} Captions for floating environments use formatting
-    suitable for use in a heading. This setting does not control whether they 
-    are placed at the top or the bottom of the object. This option also 
-    implies \OptionValue{captions}{tableheading} and
-    \OptionValue{captions}{figureheading}.%
+    suitable for use in a heading. This setting does not control whether they
+    are placed at the top or the bottom of the
+    object. This\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} option also implies
+    \OptionValue{captions}{tableheading} and
+    \OptionValue{captions}{figureheading}.  This option is based on option
+    \OptionValueRef{tocbasic}{captionposition}{top}%
+    \IndexOption{captionposition~=\KValue{top}} from package
+    \Package{tocbasic}. See \autoref{sec:tocbasic.caption}, from
+    \autopageref{sec:tocbasic.caption}.%
   }%
   \entry{\PValue{innerbeside},
     \PValue{besideinner}\IndexOption{captions~=\textKValue{innerbeside}}}{%
     Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see
     \autoref{sec:\LabelBase.floats},
-    \DescPageRef{\LabelBase.env.captionbeside}) are placed inside of and next 
-    to the contents of the environment in two-sided printing. In one-sided 
+    \DescPageRef{\LabelBase.env.captionbeside}) are placed inside of and next
+    to the contents of the environment in two-sided printing. In one-sided
     printing, \OptionValue{captions}{leftbeside} is used.%
   }%
   \entry{\PValue{leftbeside},
     \PValue{besideleft}\IndexOption{captions~=\textKValue{leftbeside}}}{%
     Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see
     \autoref{sec:\LabelBase.floats},
-    \DescPageRef{\LabelBase.env.captionbeside}) are placed to the left of
-    the contents of the floating environment.%
+    \DescPageRef{\LabelBase.env.captionbeside}) are placed to the left of the
+    contents of the floating environment.%
   }%
   \pventry{nooneline}{%
     Single-line captions are handled the same as multi-line captions.%
@@ -3174,9 +3233,9 @@ can find the available values for the corresponding \PName{settings} in
     \IndexOption{captions~=\textKValue{outerbeside}}}{%
     Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see
     \autoref{sec:\LabelBase.floats},
-    \DescPageRef{\LabelBase.env.captionbeside}) are placed outside of and
-    next to the contents of the environment in two-sided printing. In
-    one-sided printing, \OptionValue{captions}{rightbeside} is used.%
+    \DescPageRef{\LabelBase.env.captionbeside}) are placed outside of and next
+    to the contents of the environment in two-sided printing. In one-sided
+    printing, \OptionValue{captions}{rightbeside} is used.%
   }%
   \entry{\PValue{rightbeside}, \PValue{besideright}%
     \IndexOption{captions~=\textKValue{rightbeside}}}{%
@@ -3189,25 +3248,43 @@ can find the available values for the corresponding \PName{settings} in
     \IndexOption{captions~=\textKValue{signature}}}{%
     \ChangedAt{v3.09}{\Class{scrbook}\and \Class{scrreprt}\and
       \Class{scrartcl}}%
-    Captions for floating environments use signature format. This setting 
-    does not control whether they are placed at the top or the bottom of the 
-    object. This options also implies \OptionValue{captions}{tablesignature} 
-    and \OptionValue{captions}{figuresignature}.%
+    Captions for floating environments use signature format. This setting does
+    not control whether they are placed at the top or the bottom of the
+    object. This options also implies \OptionValue{captions}{tablesignature}
+    and \OptionValue{captions}{figuresignature}.
+    This\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} option is based on option
+    \OptionValueRef{tocbasic}{captionposition}{bottom}%
+    \IndexOption{captionposition~=\KValue{bottom}} from package
+    \Package{tocbasic}. See \autoref{sec:tocbasic.caption}, from
+    \autopageref{sec:tocbasic.caption}.%
   }%
   \entry{\PValue{tableheading}, \PValue{tableabove}, \PValue{abovetable},
     \PValue{abovetabular}, \PValue{topattable}%
     \IndexOption{captions~=\textKValue{tableheading}}}{%
     Captions for tables use heading format\,---\,possibly deviating from
-    \OptionValue{captions}{signature}.%
+    \OptionValue{captions}{signature}.
+    This\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} option is based on option
+    \OptionValueRef{tocbasic}{tablecaptionposition}{top}%
+    \IndexOption{tablecaptionposition~=\KValue{top}} from package
+    \Package{tocbasic}. See \autoref{sec:tocbasic.caption}, from
+    \autopageref{sec:tocbasic.caption}.%
   }%
   \entry{\PValue{tablesignature}, \PValue{belowtable}, \PValue{belowtabular},
     \PValue{bottomattable}%
     \IndexOption{captions~=\textKValue{tablesignature}}}{%
-    Captions for tables use signature format\,---\,possibly deviating
-    from \OptionValue{captions}{heading}.%
+    Captions for tables use signature format\,---\,possibly deviating from
+    \OptionValue{captions}{heading}.
+    This\ChangedAt{v3.46}{\Class{scrbook}\and \Class{scrreprt}\and
+      \Class{scrartcl}} option is based on option
+    \OptionValueRef{tocbasic}{tablecaptionposition}{bottom}%
+    \IndexOption{tablecaptionposition~=\KValue{bottom}} from package
+    \Package{tocbasic}. See \autoref{sec:tocbasic.caption}, from
+    \autopageref{sec:tocbasic.caption}.%
   }%
   \entry{\PValue{topbeside}, \PValue{besidetop}}{%
-    Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see 
+    Captions for the \DescRef{\LabelBase.env.captionbeside} environment (see
     \autoref{sec:\LabelBase.floats},
     \DescPageRef{\LabelBase.env.captionbeside}) are vertically aligned to the
     baseline at the top of the floating environment.%
@@ -3221,80 +3298,16 @@ can find the available values for the corresponding \PName{settings} in
   \Macro{caption}\OParameter{entry}\Parameter{title}
   \Macro{captionbelow}\OParameter{entry}\Parameter{title}
   \Macro{captionabove}\OParameter{entry}\Parameter{title}
+  \Macro{captionof}\Parameter{float type}\OParameter{entry}%
+  \Parameter{title}%
+  \Macro{captionbelowof}\Parameter{float type}\OParameter{entry}%
+  \Parameter{title}%
+  \Macro{captionaboveof}\Parameter{float type}\OParameter{entry}%
+  \Parameter{title}
 \end{Declaration}%
-In the standard classes, tables and figures are given captions with the 
-\Macro{caption} command placed below the table or figure. For figures, this is 
-generally correct. For tables, opinions differ as to whether captions should 
-be placed above the table or, consistent with captions of 
-figures\Index{caption>of figure}, below it\Index{caption>of table}. Therefore
-{\KOMAScript}\textnote{\KOMAScript{} vs. standard classes},
-unlike the standard classes, offers \Macro{captionbelow} for captions
-below and \Macro{captionabove} for captions above tables or
-figures.
-
-For tables and figures, or in general for all floating environments, you can
-control the behaviour of \Macro{caption} with the
-\DescRef{\LabelBase.option.captions}\IndexOption{captions} option described at
-the beginning of this section. For compatibility reasons, the default
-behaviour of \Macro{caption} for all floating environments is like
-\Macro{captionbelow}. However, you\textnote{Hint!} should use the
-\OptionValueRef{\LabelBase}{captions}{tableheading} option, which switches the
-behaviour of \Macro{caption} inside table environments to
-\Macro{captionabove}. Alternatively, you can use \Macro{captionabove} instead
-of \Macro{caption} inside every \Environment{table} environment.
-%
-\begin{Example}
-  Instead of using captions below a table, you want to place your
-  captions above it\Index{table>caption}, because you have tables
-  which span more then one page. In the standard classes you could
-  only write:
-\begin{lstcode}
-  \begin{table}
-    \caption{This is an example table}
-    \begin{tabular}{llll}
-      This & is & an & example.\\\hline
-      This & is & an & example.\\
-      This & is & an & example.
-    \end{tabular}
-  \end{table}
-\end{lstcode}
-  Then you would get this unsatisfying result:
-  \begin{ShowOutput}\centering
-    {\usekomafont{caption}{\usekomafont{captionlabel}\tablename~30.2:}
-      This is an example table.}\\
-        \begin{tabular}{llll}
-      This & is & an & example.\\\hline
-      This & is & an & example.\\
-      This & is & an & example.
-        \end{tabular}
-\end{ShowOutput}
-  Using {\KOMAScript} you write instead:
-\begin{lstcode}
-  \begin{table}
-    \captionabove{This is just an example table}
-    \begin{tabular}{llll}
-      This & is & an & example.\\\hline
-      This & is & an & example.\\
-      This & is & an & example.
-    \end{tabular}
-  \end{table}
-\end{lstcode}
-  Then you get:
-  \begin{ShowOutput}\centering
-    {\usekomafont{caption}{\usekomafont{captionlabel}\tablename~30.2:}
-      This is just an example table}\\\vskip\abovecaptionskip
-    \begin{tabular}{llll}
-      This & is & an & example.\\\hline
-      This & is & an & example.\\
-      This & is & an & example.
-    \end{tabular}
-  \end{ShowOutput}
-  Since you want all your tables typeset with captions above, you could
-  of course use the \OptionValueRef{\LabelBase}{captions}{tableheading} option
-  instead (see \DescPageRef{\LabelBase.option.captions.tableheading}). Then
-  you can use \Macro{caption} as you would in the standard classes. You will
-  get the same result as with \Macro{captionabove}.
-\end{Example}
+With regard to the general function of these commands for setting a caption
+for tables and figures, please refer to \autoref{sec:tocbasic.caption}, from
+\autopageref{sec:tocbasic.caption}.
 
 \BeginIndex[indexother]{}{font>style}%
 \BeginIndex{FontElement}{caption}\LabelFontElement{caption}%
@@ -3349,129 +3362,7 @@ default settings are listed in \autoref{tab:\LabelBase.captionFont}.
   possible.
 \end{Example}%
 \EndIndexGroup
-
-
-\begin{Declaration}
-  \Macro{captionof}\Parameter{float type}\OParameter{entry}%
-  \Parameter{title}%
-  \Macro{captionbelowof}\Parameter{float type}\OParameter{entry}%
-  \Parameter{title}%
-  \Macro{captionaboveof}\Parameter{float type}\OParameter{entry}%
-  \Parameter{title}
-\end{Declaration}%
-Like\ChangedAt{v3.05}{\Class{scrbook}\and \Class{scrreprt}\and
-	\Class{scrartcl}} the \Package{caption}\IndexPackage{caption} and
-\Package{capt-of}\IndexPackage{capt-of} packages, \KOMAScript{} offers the
-\Macro{captionof} command, with which you can put a caption for a floating
-environment, together with an entry in the corresponding environment list,
-outside of the floating environment or even in a different floating
-environment. Unlike \DescRef{\LabelBase.cmd.caption}, the type of floating
-environment must be specified as the first parameter.
-
-In addition, \KOMAScript{} also provides the commands
-\Macro{captionaboveof}\ChangedAt{v3.09}{\Class{scrbook}\and
-  \Class{scrreprt}\and \Class{scrartcl}} and \Macro{captionbelowof}. These are
-like \DescRef{\LabelBase.cmd.captionabove} and
-\DescRef{\LabelBase.cmd.captionbelow} but with the additional features and
-parameter of \Macro{captionof}.
-
-Of course\ChangedAt{v3.09a}{\Class{scrbook}\and \Class{scrreprt}\and 
-  \Class{scrartcl}} \Macro{captionof} takes into account the \PValue{heading}
-and \PValue{signature} settings of the \DescRef{\LabelBase.option.captions}
-option. But this feature may be lost if you load the
-\Package{capt-of}\IndexPackage{capt-of} or
-\Package{caption}\IndexPackage{caption} packages. When using
-\Package{caption}, you must follow the instructions for that package (see
-\cite{package:caption})!
-\begin{Example}
-  Suppose you want to create a floating object with a table and a figure next 
-  to each other. Since there are no mixed floating environments, you primarily
-  use a \Environment{figure} environment:
-\begin{lstcode}
-  \begin{figure}
-    \begin{minipage}{.5\linewidth}
-      \centering
-      \rule{4cm}{5cm}
-      \caption{A rectangle}\label{fig:rechteck}
-    \end{minipage}%
-    \begin{minipage}{.5\linewidth}
-      \centering
-      \captionaboveof{table}
-      [Measure of the rectangle in
-        figure~\ref{fig:rechteck}]%
-      {Rectangle measure}
-      \label{tab:rechteck}
-      \begin{tabular}{ll}
-        Width:  & 4\,cm\\
-        Height: & 5\,cm
-      \end{tabular}
-    \end{minipage}
-  \end{figure}
-\end{lstcode}
-  Two \Environment{minipage} environments were used to place the figure 
-  and the table side by side. The\textnote{Attention!} percent sign after the 
-  end of the first \Environment{minipage} is important. Without it, an 
-  additional space would appear between the \Environment{minipage}
-  environments.
-
-  The figure caption was created with \DescRef{\LabelBase.cmd.caption}. The 
-  table caption was created with \Macro{captionaboveof} with \PValue{table}
-  as the first argument. Because of this, \KOMAScript{} knows that this is a 
-  table caption even though it is inside the \Environment{figure} environment.
-
-  The optional argument of \Macro{captionaboveof} creates an entry in the
-  list of tables. Without the optional argument, the caption specified in the 
-  final mandatory argument would have been used for the list of tables too. 
-  Although this caption text is sufficient for the environment itself, it 
-  would not be very meaningful in the list of tables. Therefore, a different 
-  title is used for the list of tables using the optional argument.
-  \autoref{fig:\LabelBase.captionaboveof} shows the result of the example code.%
-\begin{figure}
-%  \centering
-%  \caption
-  \KOMAoptions{captions=bottombeside}%
-  \setcapindent{0pt}%
-  \begin{captionbeside}
-    [{Example: Using \Macro{captionaboveof} inside another floating
-      environment}]
-    {Example: Using \Macro{captionaboveof} inside another floating
-      environment\label{fig:\LabelBase.captionaboveof}}
-    [l]
-  \begin{minipage}[b]{.66\linewidth}%
-  \raisebox{\depth}{\fbox{\KOMAoptions{captions=oneline}%
-    \begin{minipage}{.5\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-      \centering
-      \rule{4cm}{5cm}
-      \caption[Example: A rectangle]{A rectangle}\label{fig:\LabelBase.rechteck}
-    \end{minipage}%
-    \begin{minipage}{.5\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-      \centering
-      \captionaboveof{table}[Example: Measure of the rectangle in
-        figure~\ref{fig:\LabelBase.rechteck}]{Rectangle measure}
-      \label{tab:\LabelBase.rechteck}
-      \begin{tabular}{ll}
-        Width:  & 4\,cm\\
-        Height: & 5\,cm
-      \end{tabular}
-    \end{minipage}}}%
-  \end{minipage}%
-  \end{captionbeside}%
-\end{figure}%
-\end{Example}%
-You can produce a non-floating table with a caption in the same way as the
-table inside a figure environment in the example
-above. Thereby\ChangedAt{v3.41}{\Class{scrbook}\and \Class{scrreprt}\and
-  \Class{scrartcl}} \KOMAScript{} also tries to prevent a page break between
-the heading and the table. However, this cannot be ensured in all
-cases. Therefore, a \Environment{minipage} environment should also be used to
-avoid page breaks between the caption and the table. In addition, you should
-embed the \Environment{minipage} environment in a \Environment{flushleft}
-environment both to achieve a pleasing separation between the surrounding text
-and to avoid the paragraph indentation of the \Environment{minipage}
-environment. Of course, it is easier to use the environment
-\DescRef{\LabelBase.env.table-}\IndexEnv{table-} directly.%
-\EndIndexGroup
-
+\ExampleEndFix
 
 \begin{Declaration}
   \begin{Environment}{captionbeside}
@@ -3509,9 +3400,9 @@ The \PName{placement}\important{\PName{placement}} parameter can determine
 whether the \PName{caption text} is placed on the left or the right. Exactly
 one of the following letters is allowed:
 \begin{labeling}[~--]{\quad\PValue{o}}\setlength{\itemsep}{-1\parsep plus 1ex}%
-	\item[\PValue{l}] left 
-	\item[\PValue{r}] right 
-	\item[\PValue{i}] inner margin in two-sided printing 
+	\item[\PValue{l}] left
+	\item[\PValue{r}] right
+	\item[\PValue{i}] inner margin in two-sided printing
 	\item[\PValue{o}] outer margin in two-sided printing
 \end{labeling}
 The default placement is to the right of the content of the environment. You
@@ -3589,7 +3480,7 @@ usually the bottom of the figure. You can change this using, for example,
 \end{lstcode}
   \begin{figure}
     \begin{captionbeside}[Example: Figure beside description]%
-      {A figure description which is neither above nor 
+      {A figure description which is neither above nor
        below, but beside the figure}[i][\linewidth][2em]*
       \fbox{%
         \parbox[b][5\baselineskip][c]{.25\textwidth}{%
@@ -3624,7 +3515,7 @@ usually the bottom of the figure. You can change this using, for example,
 
   \begin{figure}
     \begin{captionbeside}[Example: Description centered beside figure]%
-      {A figure description which is neither above nor 
+      {A figure description which is neither above nor
        below, but centred beside the figure}[i][\linewidth][2em]*
       \fbox{%
         \parbox[b][5\baselineskip][c]{.25\textwidth}{%
@@ -3647,7 +3538,7 @@ usually the bottom of the figure. You can change this using, for example,
   \begin{figure}
     \begin{captionbeside}%
       [Example: Figure title top beside]%
-      {A figure description which is neither above nor 
+      {A figure description which is neither above nor
        below, but top beside the figure}%
       [i][\linewidth][%
         \dimexpr\marginparwidth+\marginparsep\relax
@@ -3665,7 +3556,7 @@ usually the bottom of the figure. You can change this using, for example,
   \begin{figure}
     \KOMAoption{captions}{topbeside}
     \begin{captionbeside}[Example: Figure title top beside]%
-      {A figure description which is neither above nor 
+      {A figure description which is neither above nor
         below, but top beside the figure}%
       [i][\linewidth]
       \raisebox{\dimexpr\baselineskip-\totalheight}{%
@@ -4003,7 +3894,7 @@ receive an error message.
   \end{captionbeside}
 \end{table}
 
-The four possibilities with the 
+The four possibilities with the
 \Package{ragged2e}\important{\Package{ragged2e}}\IndexPackage{ragged2e}
 package are only available if that package was loaded before you use
 \Macro{setcaptionalignment}. Otherwise, they are converted to the
@@ -4022,7 +3913,7 @@ parameter, sets the general alignment. This is used whenever the current
 floating environment type does not define an alignment.
 
 If you only want to set the alignment of a particular type of floating
-environment\textnote{with \PName{float type}} without changing the 
+environment\textnote{with \PName{float type}} without changing the
 \PName{alignment} for other types of floating environments, then the type of
 floating environment, e.\,g., \PValue{figure} or \PValue{table}, is given as
 the optional parameter \PName{float type}.
@@ -4121,7 +4012,7 @@ level below \DescRef{\LabelBase.cmd.part}. This is the chapter level in
 uses the next lower level to be used instead.
 \important{\OptionValue{listof}{standardlevel}}%
 \ChangedAt{v3.15}{\Class{scrbook}\and \Class{scrreprt}\and \Class{scrartcl}}%
-\OptionValue{listof}{standardlevel} switches back to the default sectioning 
+\OptionValue{listof}{standardlevel} switches back to the default sectioning
 level, if necessary.
 \begin{Example}
   In a book, you want to put the list of figures and the list of tables as
@@ -4145,8 +4036,8 @@ Normally\ChangedAt{v2.8q}{%
   \Class{scrbook}\and \Class{scrreprt}\and \Class{scrartcl}} the lists of
 floating environments use a fixed-width space for the caption number of the
 entries. At the same time, all entries are somewhat indented. This behaviour
-corresponds to the 
-\OptionValue{listof}{graduated}\IndexOption{listof~=\textKValue{graduated}} 
+corresponds to the
+\OptionValue{listof}{graduated}\IndexOption{listof~=\textKValue{graduated}}
 setting.
 
 If the numbers become very wide, for example because you have many tables or
@@ -4399,7 +4290,7 @@ bibliographies in \cite{lshort}.
 \begin{Declaration}
   \OptionVName{bibliography}{setting}
 \end{Declaration}
-For a start,\ChangedAt{v3.00}{\Class{scrbook}\and \Class{scrreprt}\and 
+For a start,\ChangedAt{v3.00}{\Class{scrbook}\and \Class{scrreprt}\and
   \Class{scrartcl}} you can select any predefined bibliography style in
 \PName{setting}. There are two such bibliography styles predefined in
 \KOMAScript{}. You should not confuse them with the styles used by
@@ -4516,14 +4407,14 @@ define new values with
 \end{Declaration}%
 You can use the \Macro{setbibpreamble} command to set a preamble for the
 bibliography\Index{bibliography}. This preamble must be placed before the
-command for issuing the bibliography. However, it need not be directly 
+command for issuing the bibliography. However, it need not be directly
 in front of it. For example, it could be placed at the beginning of
-the document. Like\textnote{Attention!} the 
+the document. Like\textnote{Attention!} the
 \OptionValueRef{\LabelBase}{bibliography}{totoc} and
 \OptionValueRef{\LabelBase}{bibliography}{totocnumbered} options, this command
 only works if you have not loaded a package which prevents this from happening
 by redefining the \Environment{thebibliography} environment. Although the
-\Package{natbib} package\IndexPackage{natbib} uses undocumented, internal 
+\Package{natbib} package\IndexPackage{natbib} uses undocumented, internal
 {\KOMAScript} macros, \Macro{setbibpreamble} could still work with the current
 version of \Package{natbib} (see \cite{package:natbib}).
 \begin{Example}
@@ -4632,8 +4523,8 @@ one sectioning level deeper than usual. In \Class{scrbook} and
 \Class{scrreprt}, it is no longer a chapter but a section; with
 \Class{scrartcl}, a subsection. The \OptionValue{index}{standardlevel}%
 \ChangedAt{v3.18}{\Class{scrbook}\and \Class{scrreprt}\and
-  \Class{scrartcl}}\important{\OptionValue{index}{standardlevel}} option is 
-the counterpart to this and cancels any instance of 
+  \Class{scrartcl}}\important{\OptionValue{index}{standardlevel}} option is
+the counterpart to this and cancels any instance of
 \OptionValue{index}{leveldown} used previously.
 
 You can find a summary of the available values for the \PName{setting} of
@@ -4721,10 +4612,10 @@ creating, sorting, and outputting the index.%
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

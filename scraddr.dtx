@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scraddr.dtx
-% Copyright (c) Markus Kohm, 2006-2023
+% Copyright (c) Markus Kohm, 2006-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scraddr.dtx 4104 2024-02-01 09:52:39Z kohm $
+%%% From File: $Id: scraddr.dtx 4181 2025-06-14 09:11:13Z kohm $
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \ProvidesFile{scraddr.dtx}
@@ -119,15 +119,15 @@
 % as other \KOMAScript{} packages do.
 %
 % \begin{option}{adrFreeIVempty}
-% \changes{v1.1a}{2002/05/19}{new}
+% \changes{v1.1a}{2002/05/19}{added}
 % \begin{option}{adrFreeIVshow}
-% \changes{v1.1a}{2002/05/19}{new}
+% \changes{v1.1a}{2002/05/19}{added}
 % \begin{option}{adrFreeIVwarn}
-% \changes{v1.1a}{2002/05/19}{new}
+% \changes{v1.1a}{2002/05/19}{added}
 % \begin{option}{adrFreeIVstop}
-% \changes{v1.1a}{2002/05/19}{new}
+% \changes{v1.1a}{2002/05/19}{added}
 % \begin{macro}{\@adrFIVerror}
-% \changes{v1.1a}{2002/05/19}{new}
+% \changes{v1.1a}{2002/05/19}{added}
 % The options allow the choice whether \cs{FreeIV}, defined by \cs{adrentry},
 % should be ignored, output, result in a warning or an error message. Default
 % is \opt{adrFreeIVshow}. The selected choice is stored as a number in
@@ -301,3 +301,4 @@
 % TeX-engine: luatex-dev
 % eval: (setcar (or (cl-member "Index" (setq-local TeX-command-list (copy-alist TeX-command-list)) :key #'car :test #'string-equal) (setq-local TeX-command-list (cons nil TeX-command-list))) '("Index" "mkindex %s" TeX-run-index nil t :help "makeindex for dtx"))
 % End:
+

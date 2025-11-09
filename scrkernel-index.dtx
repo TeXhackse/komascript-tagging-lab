@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-index.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-index.dtx 4052 2023-05-05 11:41:51Z kohm $
+%%% From File: $Id: scrkernel-index.dtx 4181 2025-06-14 09:11:13Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-05-05 13:41:51 +0200 (Fri, 05 May 2023) $
+  \filedate$Date: 2025-06-14 11:11:13 +0200 (Sat, 14 Jun 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4052 $
+  \filerevision$Revision: 4181 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-index.dtx}%
@@ -138,7 +138,7 @@
 }
 %    \end{macrocode}
 % \begin{macro}{\idx@@mark,\idx@@forcemark,\idx@@forcemarknumbered}
-% \changes{v3.41}{2023/05/05}{new}
+% \changes{v3.41}{2023/05/05}{added}
 % We also need a command to do the mark for the running head to be used if a
 % sectioning command without automatic usage of \cs{chaptermark},
 % \cs{sectionmark} or \cs{subsectionmark} is used. For headings with automatic
@@ -268,7 +268,7 @@
 % \end{option}^^A index
 %
 % \begin{option}{idxtotoc}
-% \changes{v2.3h}{1995/01/21}{new}
+% \changes{v2.3h}{1995/01/21}{added}
 % \changes{v2.98c}{2008/03/04}{obsolete}
 % \changes{v3.01a}{2008/11/20}{deprecated}
 % \changes{v3.99}{2022/11/16}{not with \KOMAScript~4}
@@ -412,3 +412,4 @@
 % TeX-engine: luatex-dev
 % eval: (setcar (or (cl-member "Index" (setq-local TeX-command-list (copy-alist TeX-command-list)) :key #'car :test #'string-equal) (setq-local TeX-command-list (cons nil TeX-command-list))) '("Index" "mkindex %s" TeX-run-index nil t :help "makeindex for dtx"))
 % End:
+

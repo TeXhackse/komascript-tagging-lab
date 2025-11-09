@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-paragraphs.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-paragraphs.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrkernel-paragraphs.dtx 4145 2025-05-13 16:54:14Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2025-05-13 18:54:14 +0200 (Tue, 13 May 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4145 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-paragraphs.dtx}%
@@ -443,95 +443,53 @@
 % \changes{v2.95}{2004/11/05}{added}
 % \changes{v3.33}{2021/01/21}{from \LaTeX{} 2021/06/01 use hook instead of
 %   patch}
+% \changes{v3.44}{2025/05/13}{code for \LaTeX{} before 2021/06/01 removed}
+% Because of \opt{parskip=relative} we need a hook to activate the changes of
+% the paragraph values. A good place to do so is \cs{selectfont}. With
+% \KOMAScript{} 3.00 we needed to patch this command. But from \LaTeX{}
+% 2021/06/01 we can use a new generic hook.
+%    \begin{macrocode}
+\AddToHook{selectfont}{\par@update}%
+\AfterPackage{everysel}{%
+  \IfPackageAtLeastTF{everysel}{2021/01/18}{}{%
+    \ClassError{\KOMAClassName}{%
+      incompatible `everysel' detected
+    }{%
+      You are using an old version of `everysel' in combination with a
+      LaTeX\MessageBreak
+      version >= 2021/06/01 and KOMA-Script >= 3.33. This combination
+      is\MessageBreak
+      not supported.\MessageBreak
+      You could switch back to an older LaTeX using package
+      `latexrelease'.\MessageBreak
+      But I recommend to update `everysel'%
+    }%
+  }%
+}%
+\AfterPackage{tracefnt}{%
+  \IfPackageAtLeastTF{tracefnt}{2020/12/22}{}{%
+    \ClassError{\KOMAClassName}{%
+      incompatible `tracefnt' detected
+    }{%
+      `tracefnt' is a LaTeX base package and therefore should be updated
+      together\MessageBreak
+      with LaTeX kernel. So this should never happen! Please check
+      your\MessageBreak
+      LaTeX installation%
+    }%
+  }%
+}%
+%    \end{macrocode}
+% \end{command}^^A \selectfont
+%
 % \begin{macro}{\scr@selectfont,\scr@new@selectfont}
 % \changes{v2.95}{2006/04/14}{added}
 % \changes{v3.10}{2010/09/28}{\pkg{everysel} support fixed}
 % \changes{v3.10}{2010/09/28}{\pkg{tracefnt} supported}
 % \changes{v3.10b}{2011/03/13}{\pkg{everysel} can be loaded inside
 %   \cs{begin\{document\}}}
-% Because of \opt{parskip=relative} we need a hook to activate the changes of
-% the paragraph values. A good place to do so is \cs{selectfont}. With
-% \KOMAScript{} 3.00 we needed to patch this command. But from \LaTeX{}
-% 2021/06/01 we can use a new generic hook.
-% \begin{description}
-% \item[Note:] We use 2021/05/01 instead of the official \LaTeX{} release date,
-%   because there were relevant earlier \LaTeX{} developer releases with that
-%   date.
-% \end{description}
-%    \begin{macrocode}
-\IfLTXAtLeastTF{2021/05/01}{%
-  \AddToHook{selectfont}{\par@update}%
-  \AfterPackage{everysel}{%
-    \IfPackageAtLeastTF{everysel}{2021/01/18}{}{%
-      \ClassError{\KOMAClassName}{%
-        incompatible `everysel' detected
-      }{%
-        You are using an old version of `everysel' in combination with a
-        LaTeX\MessageBreak
-        version >= 2021/06/01 and KOMA-Script >= 3.33. This combination
-        is\MessageBreak
-        not supported.\MessageBreak
-        You could switch back to an older LaTeX using package
-        `latexrelease'.\MessageBreak
-        But I recommend to update `everysel'%
-      }%
-    }%
-  }%
-  \AfterPackage{tracefnt}{%
-    \IfPackageAtLeastTF{tracefnt}{2020/12/22}{}{%
-      \ClassError{\KOMAClassName}{%
-        incompatible `tracefnt' detected
-      }{%
-        `tracefnt' is a LaTeX base package and therefore should be updated
-        together\MessageBreak
-        with LaTeX kernel. So this should never happen! Please check
-        your\MessageBreak
-        LaTeX installation%
-      }%
-    }%
-  }%
-}{%
-  \newcommand*{\scr@selectfont}{}
-  \expandafter\let\expandafter\scr@selectfont\csname selectfont \endcsname
-  \BeforePackage{everysel}{%
-    \AtBeginDocument{%
-      \expandafter\ifx\csname selectfont \endcsname\scr@new@selectfont\else
-        \ClassWarningNoLine{\KOMAClassName}{%
-          discard change of \string\selectfont}%
-      \fi
-      \expandafter\let\csname selectfont \endcsname\scr@selectfont
-    }%
-  }%
-  \AfterPackage{everysel}{%
-    \scr@ifundefinedorrelax{@EverySelectfont@Init}{%
-      \expandafter\ifx\csname selectfont \endcsname\scr@new@selectfont
-        \ClassWarningNoLine{\KOMAClassName}{%
-          \string\selectfont\space already changed}%
-      \else
-        \expandafter\g@addto@macro\csname selectfont \endcsname{\par@update}%
-        \expandafter\let\expandafter\scr@new@selectfont
-          \csname selectfont \endcsname
-      \fi
-    }{%
-      \g@addto@macro\@EverySelectfont@Init{%
-        \expandafter\g@addto@macro\csname selectfont \endcsname{\par@update}%
-        \expandafter\let\expandafter\scr@new@selectfont
-          \csname selectfont \endcsname
-      }%
-    }%
-  }%
-  \AfterPackage{tracefnt}{%
-    \expandafter\let\expandafter\scr@selectfont\csname selectfont \endcsname
-    \expandafter\g@addto@macro\csname selectfont \endcsname{\par@update}%
-    \expandafter\let\expandafter\scr@new@selectfont\csname selectfont \endcsname
-  }%
-  \expandafter\g@addto@macro\csname selectfont \endcsname{\par@update}
-  \newcommand*{\scr@new@selectfont}{}
-  \expandafter\let\expandafter\scr@new@selectfont\csname selectfont \endcsname
-}
-%    \end{macrocode}
+% \changes{v3.44}{2025/05/13}{removed}
 % \end{macro}^^A \scr@selectfont,\scr@new@selectfont
-% \end{command}^^A \selectfont
 %
 % \begin{macro}{\scr@defaultunits}
 % \changes{v2.95}{2004/11/05}{added}
@@ -733,3 +691,4 @@
 % TeX-engine: luatex-dev
 % eval: (setcar (or (cl-member "Index" (setq-local TeX-command-list (copy-alist TeX-command-list)) :key #'car :test #'string-equal) (setq-local TeX-command-list (cons nil TeX-command-list))) '("Index" "mkindex %s" TeX-run-index nil t :help "makeindex for dtx"))
 % End:
+

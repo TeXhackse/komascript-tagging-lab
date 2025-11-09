@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-listsandtabulars.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-listsandtabulars.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrkernel-listsandtabulars.dtx 4138 2025-02-10 13:55:51Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2025-02-10 14:55:51 +0100 (Mon, 10 Feb 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4138 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-listsandtabulars.dtx}%
@@ -157,14 +157,16 @@
 % \begin{command}{\labelenumi}
 % \begin{command}{\labelenumii}
 % \changes{v2.4m}{1997/02/28}{opening brace removed}
+% \changes{v3.44}{2025/02/10}{usage of font element}
 % \begin{command}{\labelenumiii,\labelenumiv}
+% \changes{v3.44}{2025/02/10}{usage of font element}
 % The printed labels consist of the previously defined numbers followed by a
 % dot or brace.
 %    \begin{macrocode}
-\newcommand*\labelenumi{\theenumi.}
-\newcommand*\labelenumii{\theenumii)}
-\newcommand*\labelenumiii{\theenumiii.}
-\newcommand*\labelenumiv{\theenumiv.}
+\newcommand*\labelenumi{\usekomafont{labelenumi}{\theenumi.}}
+\newcommand*\labelenumii{\usekomafont{labelenumii}{\theenumii)}}
+\newcommand*\labelenumiii{\usekomafont{labelenumiii}{\theenumiii.}}
+\newcommand*\labelenumiv{\usekomafont{labelenumiv}{\theenumiv.}}
 %    \end{macrocode}
 % \end{command}
 % \end{command}
@@ -438,6 +440,19 @@
 %</class>
 %    \end{macrocode}
 % \end{command}
+% \end{fontelement}
+%
+% \begin{fontelement}{labelenumi,labelenumii,labelenumiii,labelenumiv,enumeratelabel}
+% \changes{v3.44}{2025/02/10}{added}
+% There has been a user request to add a font for \env{enumerate} items similar
+% to the fonts for \env{itemize} items.
+%    \begin{macrocode}
+\newkomafont{enumeratelabel}{}
+\newkomafont{labelenumi}{\usekomafont{enumeratelabel}}
+\newkomafont{labelenumii}{\usekomafont{enumeratelabel}}
+\newkomafont{labelenumiii}{\usekomafont{enumeratelabel}}
+\newkomafont{labelenumiv}{\usekomafont{enumeratelabel}}
+%    \end{macrocode}
 % \end{fontelement}
 %
 % \begin{fontelement}{labelinglabel,labelingseparator}

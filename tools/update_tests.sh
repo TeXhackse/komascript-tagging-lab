@@ -6,6 +6,8 @@
 #enable extglob
 shopt -s extglob
 
+reference_testdir="testfiles"
+
 for testdir in "testfiles" "testfiles-compare";
 	do
 	testconfig=${testdir/!(*-*)?(-)}
@@ -20,7 +22,7 @@ for testdir in "testfiles" "testfiles-compare";
 		# check for specific test configs
 		for engine in luatex pdftexmain; do
 			file_name="$file_base.$engine.tlg"
-			if [ -f "$testdir/$file_name" ]; then
+			if [ -f "$reference_testdir/$file_name" ]; then
 			echo "Updating $file_name"
 			l3build save  ${testconfig:+-c "$testconfig"} -e $engine "$file_base" >> /dev/null
 		fi

@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-basics.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,19 +18,19 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-basics.dtx 4074 2023-07-14 15:56:59Z kohm $
+%%% From File: $Id: scrkernel-basics.dtx 4198 2025-08-15 09:19:27Z kohm $
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<load>%%%            (run: load)
-%<package&prepare>\NeedsTeXFormat{LaTeX2e}[1995/06/01]
+%<package&prepare>\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\def\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-07-14 17:56:59 +0200 (Fri, 14 Jul 2023) $
+  \filedate$Date: 2025-08-15 11:19:27 +0200 (Fri, 15 Aug 2025) $
   \def\filerevision$#1: #2 ${\def\filerevision{r#2}}
-  \filerevision$Revision: 4074 $
+  \filerevision$Revision: 4198 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-basics.dtx}%
@@ -211,6 +211,57 @@
 %<koma>\RequirePackage{scrbase}[\KOMAScriptVersion]
 %    \end{macrocode}
 %
+% \changes{v3.44}{2025/05/13}{at least \LaTeX{} 2022-06-01 required}
+%    \begin{macrocode}
+%<*koma>
+\IfLTXAtLeastTF{2022/06/01}{}{%
+  \@ifundefined{KOMAClassName}
+    {\PackageError{scrkbase}}
+    {\ClassError{\KOMAClassName}}
+    {%
+      LaTeX kernel too old!\MessageBreak
+      This version of KOMA-Script requires at least\MessageBreak
+      LaTeX 2022-06-01.\MessageBreak
+      You need to either use an older version of\MessageBreak
+      KOMA-Script or update your LaTeX kernel.\MessageBreak
+      Sorry, but this error is fatal.\MessageBreak
+      You cannot continue. Aborting LaTeX run%
+    }
+    {No further help available!}%
+    \batchmode \immediate\read -1 to \@tempa
+}
+%</koma>
+%    \end{macrocode}
+%
+%
+% \subsection{Define used commands missing with old \LaTeX{} kernel}
+%
+% There are some easy commands, we want to use, but don't want to need a very
+% new \LaTeX{} kernel. So we define them here.
+%
+% \begin{command}{\IfPackageLoadedT,\IfPackageLoadedF}
+%   \changes{v3.46}{2025/06/16}{added}
+%   These are only variants of \cs{IfPackageLoadedTF}, which is already
+%   available since \LaTeX{} 2021-11-15.
+%    \begin{macrocode}
+%<*koma>
+\providecommand*\IfPackageLoadedT[1]{\IfPackageLoadedTF{#1}\@firstofone\@gobble}
+\providecommand*\IfPackageLoadedF[1]{\IfPackageLoadedTF{#1}{}}
+%</koma>
+%    \end{macrocode}
+% \end{command}
+%
+% \begin{macro}{\@gobble@o,\@gobble@om,\@gobble@som}
+%   \changes{v3.46}{2025/08/15}{added}
+%    \begin{macrocode}
+%<*koma>
+\ProvideDocumentCommand\@gobble@o{+o}{}
+\ProvideExpandableDocumentCommand\@gobble@om{+o+m}{}
+\ProvideExpandableDocumentCommand\@gobble@som{s+o+m}{}
+%</koma>
+%    \end{macrocode}
+% \end{macro}
+%
 % \subsection{Package  \pkg*{scrlfile}}
 %
 % We need to react on the loading other packages like \pkg{polyglossia}. For
@@ -277,7 +328,7 @@
 % \end{command}
 %
 % \begin{command}{\IfLTXAtLeastTF}
-% \changes{v3.33}{2021/01/21}{new}
+% \changes{v3.33}{2021/01/21}{added}
 % This is the same like \cs{IfFormatAtLeastTF} of the current \LaTeX{} kernel,
 % but does also work, if \cs{IfFormatAtLeastTF} is not defined because of
 % very old \LaTeX{} kernel.
@@ -3231,7 +3282,7 @@
 % \changes{v3.12}{2013/03/04}{can be used after document preamble}
 % \changes{v3.14}{2014/10/17}{third argument is \cs{long}}
 % \begin{macro}{\@FamilyExecuteOptions}
-% \changes{v3.14}{2014/10/17}{new}
+% \changes{v3.14}{2014/10/17}{added}
 % \changes{v3.23}{2017/02/16}{fix: hook after uses family instead of member}
 % \changes{v3.27}{2019/10/02}{improved error message}
 % \changes{v3.28}{2019/11/18}{\cs{ifstr} renamed to \cs{Ifstr}}

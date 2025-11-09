@@ -1,6 +1,6 @@
 % ======================================================================
 % common-lists-en.tex
-% Copyright (c) Markus Kohm, 2001-2023
+% Copyright (c) Markus Kohm, 2001-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-lists-en.tex}
-                 [$Date: 2023-04-20 10:04:17 +0200 (Thu, 20 Apr 2023) $
+                 [$Date: 2025-06-04 18:44:23 +0200 (Wed, 04 Jun 2025) $
                   KOMA-Script guide (common paragraphs)]
 \translator{Gernot Hassenpflug\and Markus Kohm\and Krickette Murabayashi\and
   Karl Hagen}
@@ -123,8 +123,13 @@
   these all use the font setting for element
   \FontElement{itemizelabel}\important{\FontElement{itemizelabel}}. Only
   element \FontElement{labelitemii} additionally uses \Macro{bfseries}. The
-  default of \FontElement{itemizelabel} itself is \Macro{normalfont}.  Every
-  item is introduced with \Macro{item}.%
+  default of \FontElement{itemizelabel} itself is \Macro{normalfont}.%
+  \EndIndex{FontElement}{labelitemiv}%
+  \EndIndex{FontElement}{labelitemiii}%
+  \EndIndex{FontElement}{labelitemii}%
+  \EndIndex{FontElement}{labelitemi}%
+  \EndIndex{FontElement}{itemizelabel}
+  Every item is introduced with \Macro{item}.%
   \IfThisCommonFirstRun{\iftrue}{\csname iffalse\endcsname}
     \begin{Example}
       \phantomsection\xmpllabel{env.itemize}%
@@ -199,7 +204,7 @@
       \end{ShowOutput}
     \end{Example}
   \fi
-  % 
+  %
   \EndIndexGroup
 
 
@@ -227,13 +232,40 @@
   \Macro{theenumi} down to \Macro{theenumiv}. The output format is determined
   by the macros \Macro{labelenumi} to \Macro{labelenumiv}. While the small
   letter of the second level is followed by a right parenthesis, the values of
-  all other levels are followed by a dot. Every item is introduced with
+  all other levels are followed by a dot.
+  \BeginIndex{FontElement}{enumeratelabel}\LabelFontElement{enumeratelabel}%
+  \BeginIndex{FontElement}{labelenumi}\LabelFontElement{labelenumi}%
+  \BeginIndex{FontElement}{labelenumii}\LabelFontElement{labelenumii}%
+  \BeginIndex{FontElement}{labelenumiii}\LabelFontElement{labelenumiii}%
+  \BeginIndex{FontElement}{labelenumiv}\LabelFontElement{labelenumiv}%
+  With the \KOMAScript{} classes the
+  fonts\Index{font>style}\IfThisCommonLabelBase{scrlttr2}{\ChangedAt{v3.44}{\Class{scrlttr2}\and
+      \Package{scrletter}}}{\ChangedAt{v3.44}{\Class{scrbook}\and
+      \Class{scrreprt}\and \Class{scrartcl}}} used to format the numbers
+  respective labels for the different levels can be changed using
+  \DescRef{\ThisCommonLabelBase.cmd.setkomafont} and
+  \DescRef{\ThisCommonLabelBase.cmd.addtokomafont} (see
+  \autoref{sec:\ThisCommonLabelBase.textmarkup},
+  \DescPageRef{\ThisCommonLabelBase.cmd.setkomafont}) for the elements
+  \FontElement{labelenumi}\important{\FontElement{labelenumi}},
+  \FontElement{labelenumii}\important{\FontElement{labelenumii}} and
+  \FontElement{labelenumiii}\important{\FontElement{labelenumiii}} and
+  \FontElement{labelenumiv}\important{\FontElement{labelenumiv}}. By default
+  these all use the font setting for element
+  \FontElement{enumeratelabel}\important{\FontElement{enumeratelabel}}. The
+  default of \FontElement{enumeratelabel} itself is empty, which means no
+  change of the current font.%
+  \EndIndex{FontElement}{labelenumiv}%
+  \EndIndex{FontElement}{labelenumiii}%
+  \EndIndex{FontElement}{labelenumii}%
+  \EndIndex{FontElement}{labelenumi}%
+  \EndIndex{FontElement}{enumeratelabel} Every item is introduced with
   \Macro{item}.%
   \IfThisCommonFirstRun{\iftrue}{\csname iffalse\endcsname}
     \begin{Example}
       \phantomsection\xmpllabel{env.enumerate}%
-      Let's shorten the previous example, using an 
-      \DescRef{\ThisCommonLabelBase.env.itemize} environment instead of the
+      Let's shorten the previous example and replace the
+      \DescRef{\ThisCommonLabelBase.env.itemize} environment by an
       \Environment{enumerate} environment:
       \begin{ShowOutput}[\baselineskip]
         \minisec{Vehicles in the game}
@@ -266,7 +298,7 @@
         %\item bicycles
         \end{enumerate}
       \end{ShowOutput}
-      Within the list, you can set labels in the normal way with 
+      Within the list, you can set labels in the normal way with
       \Macro{label} and then reference then with \Macro{ref}.
       In the example above, a label was set after the jet-propelled,
       single-engine transport planes with
@@ -274,7 +306,7 @@
       ``\ref{xmp:maincls.jets}''.
     \end{Example}
   \fi%
-  % 
+  %
   \EndIndexGroup
 
 
@@ -298,7 +330,7 @@
   \DescRef{\ThisCommonLabelBase.cmd.setkomafont} and
   \DescRef{\ThisCommonLabelBase.cmd.addtokomafont} commands (see
   \autoref{sec:\ThisCommonLabelBase.textmarkup},
-  \DescPageRef{\ThisCommonLabelBase.cmd.setkomafont}) for the 
+  \DescPageRef{\ThisCommonLabelBase.cmd.setkomafont}) for the
   \FontElement{descriptionlabel}\important{\FontElement{descriptionlabel}}
   element (see \autoref{tab:\ThisCommonLabelBase.fontelements},
   \autopageref{tab:\ThisCommonLabelBase.fontelements}). The default is
@@ -319,7 +351,7 @@
   \IfThisCommonFirstRun{\iftrue}{\csname iffalse\endcsname}
     \begin{Example}
       \phantomsection\xmpllabel{env.description}%
-      You want the keywords to be printed bold and in the normal font instead 
+      You want the keywords to be printed bold and in the normal font instead
       of bold and sans serif. Using
 \begin{lstcode}
   \setkomafont{descriptionlabel}{\normalfont\bfseries}
@@ -347,7 +379,7 @@
       \end{ShowOutput}
     \end{Example}
   \fi%
-  % 
+  %
   \EndIndexGroup%
 \fi
 
@@ -391,7 +423,7 @@ The font\Index{font>style}%
       \ChangedAt{v3.02}{\Package{scrextend}}%
     }{\InternalCommonFileUsageError}%
   }%
-} used to format the item and the separator can be changed with the 
+} used to format the item and the separator can be changed with the
 \DescRef{\ThisCommonLabelBase.cmd.setkomafont} and
 \DescRef{\ThisCommonLabelBase.cmd.addtokomafont} commands (see
 \autoref{sec:\ThisCommonLabelBase.textmarkup},
@@ -544,7 +576,7 @@ defined with the \Environment{labeling} environment.%
           \end{verse}
         \end{ShowOutput}
       \fi
-      However, if you have very long lines of verse where a line 
+      However, if you have very long lines of verse where a line
       break occurs within a line of verse:
 \begin{lstcode}
   \begin{verse}
@@ -604,7 +636,7 @@ defined with the \Environment{labeling} environment.%
       sayings.
     \end{Example}
   \fi
-  % 
+  %
   \EndIndexGroup
 
   \iffalse% Umbruchkorrekturvarianten
@@ -618,7 +650,7 @@ defined with the \Environment{labeling} environment.%
     The environment is often used to format longer quotes\Index{quotes}.
     Paragraphs within the environment are distinguished with vertical space.%
     \EndIndexGroup
-  
+
     \begin{Declaration}
       \begin{Environment}{quotation}\end{Environment}
     \end{Declaration}%
@@ -660,19 +692,19 @@ defined with the \Environment{labeling} environment.%
     \begin{Example}
       \phantomsection\xmpllabel{env.quote}%
       You want to highlight a short anecdote. You write the following
-      \Environment{quotation} environment for this:% 
+      \Environment{quotation} environment for this:%
 \begin{lstcode}
   A small example for a short anecdote:
   \begin{quotation}
     The old year was turning brown; the West Wind was
     calling;
-        
+
     Tom caught the beechen leaf in the forest falling.
     ``I've caught the happy day blown me by the breezes!
     Why wait till morrow-year? I'll take it when me pleases.
     This I'll mend my boat and journey as it chances
     west down the withy-stream, following my fancies!''
-    
+
     Little Bird sat on twig. ``Whillo, Tom! I heed you.
     I've a guess, I've a guess where your fancies lead you.
     Shall I go, shall I go, bring him word to meet you?''
@@ -696,9 +728,9 @@ defined with the \Environment{labeling} environment.%
           Shall I go, shall I go, bring him word to meet you?''
         \end{quotation}
       \end{ShowOutput}
-      % 
+      %
       Using a \Environment{quote} environment instead you get:
-      % 
+      %
       \begin{ShowOutput}
         A small example for a short anecdote:
         \begin{quote}\setlength{\parskip}{4pt plus 2pt minus 2pt}
@@ -716,10 +748,10 @@ defined with the \Environment{labeling} environment.%
           Shall I go, shall I go, bring him word to meet you?''
         \end{quote}
       \end{ShowOutput}
-      % 
+      %
     \end{Example}
   \fi
-  % 
+  %
   \EndIndexGroup
 \fi
 
@@ -840,10 +872,10 @@ the explanation of the commands
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

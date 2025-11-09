@@ -19,83 +19,57 @@
 % ======================================================================
 
 \KOMAProvidesFile{preface-en.tex}
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2025-08-19 15:21:00 +0200 (Tue, 19 Aug 2025) $
                   preface to dedicated version]
-\translator{Markus Kohm\and Karl Hagen\and DeepL}
+\translator{Markus Kohm\and DeepL}
 
-\addchap{Preface to \KOMAScript~3.36 and 3.37}
+\addchap{Preface to \KOMAScript~3.46}
 
-With \KOMAScript~3.36 a phase of major rebuilds of the sources of
-\KOMAScript{} was initiated. It started with the sources of the classes and
-packages. Not only a conversion to version~3 of the package \Package{doc} was
-done. The original source code documentation class \Class{scrdoc} was also
-made obsolete and replaced by \Class{koma-script-source-doc}. The complete
-source code documentation was also transferred to English or recreated in
-English. In the course of this change, some of the sources were also
-reorganized within the files or moved to new files. In the process, many
-dozens of new notes about undone tasks were added. Whether I will ever be able
-to work through all of them myself remains to be seen.
+While working on \KOMAScript{} 3.46, I received the bad news that Axel
+Sommerfeldt intends to discontinue maintenance of the \Package{caption}
+package and will therefore no longer accept suggestions for changes and
+improvements. This is relevant for \KOMAScript{} insofar as, after some
+improvements to \Macro{caption} processing, it became apparent that
+\Package{caption} also needs some minor changes to maintain and improve
+compatibility with \KOMAScript{}. Under no circumstances should improvements
+to \Macro{caption} processing within \KOMAScript{} have a negative impact on
+the compatibility of the \Package{caption} package. The consequence is that
+the \Package{caption} package itself no longer ensures compatibility, but
+rather \KOMAScript{} reacts to the loading of \Package{caption} in order to
+then establish compatibility itself.
 
-Due to the massive modifications to the sources, it could not be ruled out
-from the outset that new errors could creep in. Due to the acute shortage of
-beta testers, this fear has unfortunately come true. Whether all these bugs
-have been fixed in the meantime is hard to say.
+As in many other cases, this naturally means more work for me in terms of both
+development and testing. Together with the countless changes that have
+recently become necessary due to the rapid development of \LaTeX{} itself,
+this unfortunately means that some urgent work on \KOMAScript{} is constantly
+being put on hold. Several other projects, which are ultimately becoming
+increasingly important for the continued existence of \KOMAScript{}, could not
+be worked on again. Unfortunately, this also includes tagging support.
 
-More or less in parallel, a new test structure based on \Package{l3build} was
-built. This should ensure in the future that once reported errors do not occur
-again in the future.
+Nevertheless, this version of \KOMAScript{} has succeeded in further advancing
+the urgently needed revision of the distribution of tasks between classes and
+packages. A few other problems have also been addressed, but these may lead to
+changed page breaks in two-column documents with chapter headings. See the
+website »\href{https://sourceforge.net/p/koma-script/wiki-en/Releases/}
+{Important notes and changes}« and, in particular,
+»\href{https://sourceforge.net/p/koma-script/wiki-en/Release%203.46/}
+{Known issues and important changes in \KOMAScript{} 3.46}«.
 
-With \KOMAScript~3.37 I started to restructure the sources of the manual. For
-the generation of the German and English user manual including the complete
-examples with PDF now also \Package{l3build} is used. In addition, a flat
-hierarchy is used for the user guides in all languages. Thus there are no
-different files with the same filename in the sources anymore. This is not
-only to satisfy CTAN requirements. With this it is also possible for the first
-time in a long time to generate the manuals from the CTAN sources of
-\KOMAScript.
-
-Due to the problems with the finiteness of a single developer's time already
-explained in the preface to \KOMAScript~3.28, I will therefore continue to
-concentrate on bug fixing, the necessary reorganisation of the sources and
-compatibility with new \LaTeX{} kernel versions in the future. Especially with
-the latter, I now have the support of Marei Peischl, who is already very busy
-with her own projects. She also wrote the original code for the illustrations
-of pseudo-lengths and variables, for which I thank her very much. This finally
-made it possible for me to fulfil a long-cherished wish of many users. With a
-few changes, the pseudo lengths in the illustration are now linked to the
-corresponding explanations in the text.
-
-
-By largely abstaining from new functions, the effort for documenting them
-naturally also dwindles. Readers of this free, screen version, however, still
-have to live with some restrictions. So some information\,---\,mainly intended
-for advanced users or capable of turning an ordinary user into an advanced
-one\,---\,is reserved for the printed book, which currently exists only in
-German. As a result, some links in this manual lead to a page that simply
-mentions this fact. In addition, the free version is scarcely suitable for
-making a hard-copy. The focus, instead, is on using it on screen, in parallel
-with the document you are working on. It still has no optimized wrapping but
-is almost a first draft, in which both the paragraph and page breaks are in
-some cases quite poor. Corresponding optimizations are reserved for the German
-book editions.
-
-
-The biggest thanks go to my family and above all to my wife. They absorb all
-my unpleasant experiences on the Internet. They have also tolerated it for
-more than 25~years, when I am again not approachable, because I am completely
-lost in \KOMAScript{} or some \LaTeX{} problems. The fact that I can afford to
-invest an incredible amount of time in such a project is entirely thanks to my
-wife.
+My thanks go mainly to my wife. She cushions all my unpleasant experiences on
+the Internet. She has also put up with me for more than 30~years when I am
+once again unresponsive because I am completely immersed in \KOMAScript{} or
+some \LaTeX{} problems. The fact that I can afford to invest such an insane
+amount of time in a project like this is also thanks to my wife alone.
 
 \bigskip\noindent
-Markus Kohm, Neckarhausen in May 2022.
+Markus Kohm, Neckarhausen in August 2025.
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

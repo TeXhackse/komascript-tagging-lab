@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-language.dtx 4107 2024-04-10 17:24:53Z kohm $
+%%% From File: $Id: scrkernel-language.dtx 4140 2025-02-22 12:39:23Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-04-10 19:24:53 +0200 (Wed, 10 Apr 2024) $
+  \filedate$Date: 2025-02-22 13:39:23 +0100 (Sat, 22 Feb 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4107 $
+  \filerevision$Revision: 4140 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-language.dtx}
@@ -360,36 +360,48 @@
 % \end{macro}^^A \scr@def@captionname
 % \end{command}^^A \defcaptionname
 %
-% \changes{v3.20}{2016/01/05}{new special treatment of \pkg{polyglossia}}%
-% With \pkg{polyglossia} the languages \texttt{austrian}, \texttt{swiss},
-% \texttt{ngerman}, \texttt{naustrian}, and \texttt{nswiss} are all mixed up
-% to \cs{captionsgerman}. To avoid activation of the language term of the
-% wrong dialect, \cs{init@extra@german} can be changed. Surely this is more or
-% less a hack. But \pkg{polyglossia} seems to not provide a better interface
-% for class and package authors.
+% \changes{v3.20}{2016/01/05}{special treatment of \pkg{polyglossia}}%
+% \changes{v3.44}{2025/02/22}{new special treatment of \pkg{polyglossia}}%
+% With \pkg{polyglossia} the languages \texttt{austrian},
+% \texttt{swissgerman}, \texttt{ngerman}, \texttt{naustrian}, and
+% \texttt{nswissgerman} are all mixed up to \cs{captionsgerman}. To avoid
+% activation of the language term of the wrong dialect, we add the selection
+% of the correct language terms to \cs{init@extras@german}. Note: Originally
+% we used a \cs{AfterFile} hook to add the change after loading file
+% \file{gloss-german.ldf}. But because newer version of \pkg{polyglossia} do
+% not use \cs{input} but \cs{file\_input:n}, we cannot use a file hook any
+% longer. So we use two other hooks instead.
+% \begin{description}
+% \item[Note:] This is a hack only and it means, that the language terms of
+%   languages \texttt{austrian}, \texttt{naustrian}, \texttt{swiss},
+%   \texttt{nswiss} or \texttt{ngerman} always overwrites terms of
+%   \texttt{german} if these language variants resp. \verb|spelling=old| is
+%   used.
+% \end{description}
 %    \begin{macrocode}
 \AfterPackage*{polyglossia}{%
-  \scr@ifundefinedorrelax{init@extras@german}{%
-    \AfterFile{gloss-german.ldf}%
-  }{%
-    \@firstofone
+  \AddToHook{begindocument/before}{%
+    \@ifundefined{captionsgerman}{}{%
+      \providecommand*\captionsngerman{}%
+      \providecommand*\captionsaustrian{}%
+      \providecommand*\captionsnaustrian{}%
+      \providecommand*\captionsswissgerman{}%
+      \providecommand*\captionsnswissgerman{}%
+    }%
   }%
-  {%
-    \providecommand*\captionsngerman{}%
-    \providecommand*\captionsaustrian{}%
-    \providecommand*\captionsnaustrian{}%
-    \providecommand*\captionsswiss{}%
-    \providecommand*\captionsnswiss{}%
-    \csgappto{init@extras@german}{%
-      \if@austrian@locale
-        \csuse{captions\if@german@oldspelling\else n\fi austrian}%
-      \else
-        \if@swiss@locale
-          \csuse{captions\if@german@oldspelling\else n\fi swiss}%
+  \AddToHook{begindocument}{%
+    \@ifundefined{init@extras@german}{}{%
+      \csgappto{init@extras@german}{%
+        \if@austrian@locale
+          \csuse{captions\if@german@oldspelling\else n\fi austrian}%
         \else
-          \if@german@oldspelling\else \csuse{captionsngerman}\fi
+          \if@swiss@locale
+            \csuse{captions\if@german@oldspelling\else n\fi swissgerman}%
+          \else
+            \if@german@oldspelling\else \csuse{captionsngerman}\fi
+          \fi
         \fi
-      \fi
+      }%
     }%
   }%
 }

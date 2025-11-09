@@ -1,5 +1,3 @@
-#!/usr/bin/env texlua
-
 --[[
   Build script for the KOMA-Script project
   Copyright (C) 2022–2023 Markus Kohm
@@ -822,116 +820,9 @@ local function getstyversion(filename)
 end
 
 --[[
-   generate README.txt resp. README.md from README.in/README.* and
+   generate README.md from README.in/README.* and
    unpacked source files
 ]]
-function generate_readme_txt(tagname,tagdate)
-   local versionnames = {}
-   local mainversion
-   local year
-
-   unpack({sourcefiles},{sourcefiledir})
-
-   for _,p in ipairs(tree("README.in","README.*")) do
-      local readmename = basename(p.src)
-      local filename = string.sub(readmename,8,-1)
-      if fileexists(unpackdir.."/"..filename) then
-	 if string.match( filename, "%.cls$" ) then
-	    versionnames[readmename] = getclsversion( filename )
-	 elseif string.match( filename, "%.sty$" ) then
-	    versionnames[readmename] = getstyversion( filename )
-	 end
-      else
-	 error("File " .. filename .. " is missing in unpacked!")
-	 return 1
-      end
-   end
-
-   if tagname == nil then
-      mainversion = versionnames["README.scrartcl.cls"] or ( tagdate .. " v?.??" )
-      year = string.sub(mainversion,1,4)
-   else
-      mainversion = tagdate .. " " .. tagname
-      year = string.sub(tagdate,1,4)
-   end
-
-   local readme_out = assert(io.open("README.txt","w"))
-   readme_out:write("KOMA-Script " .. mainversion .. "\n")
-   readme_out:write("Copyright Markus Kohm <komascript@gmx.info> 1994–" .. year .. "\n\n")
-   readme_out:write([[
-This material is subject to the LaTeX Project Public License Version 1.3c.
-See lppl.txt (English) or lppl-de.txt (German) for the details of that
-license.
-------------------------------------------------------------------------------
-KOMA-Script is a versatile bundle of LaTeX2e document classes and packages.
-The classes are designed as replacements to the standard LaTeX2e classes.
-Several features have been added to make them more configurable.
-------------------------------------------------------------------------------
-Installation:
-
-We highly recommend installing the latest official release via the package
-manager of the TeX distribution you are using. For example, for Vanilla TeX
-Live this would be `tlmgr` or `tlshell` or `tlcockpit`. For MiKTeX it would be
-`MiKTeX Console`. Linux users who use the TeX Live of their Linux distribution
-will often find KOMA script in one of the many TeX Live supplementary
-packages. In Debian, for example, it is in `texlive-latex-recommended`.
-
-If the package manager does not offer the desired KOMA-Script version, you can
-find various versions via https://komascript.de/current in the KOMA-Script
-project. There is also the installation from a TDS archive explained.
-
-From KOMA-Script sources of a release on SourceForge
-→ <https://sourceforge.net/p/koma-script/code/HEAD/tree/tags/> one can build
-and even install KOMA-Script with the help of `l3build`. More details can be
-found in the instructions for `l3build`.
-
-If you want to generate KOMA-Script step by step from the sources, first run
-`tex scrmain.ins`. This will generate a larger number of files with the
-extensions `.cls`, `.sty`, `.lco`, `.clo` and `.hak`. All these files are
-needed for KOMA-Script to work properly. They have to be copied either into
-the document directory of your LaTeX project or into a directory of one of
-your TEXMF search trees. In the TEXMF search tree further actions may be
-necessary. Consult the instructions of your TeX distribution. After the
-correct installation of these files, the manual is to be generated. To do
-this, change to the subdirectory `/doc` and first run `pdflatex
-scrguide-en.tex` there. Then repeat the runs of `bibtex scrguide-en`,
-`makeindex scrguide-en`, `pdflatex scrguide-en.tex` min. four times. This
-way you get a form of the English user manual with a simplified index. The
-German user manual can be generated in the same way by substituting
-`scrguide-en` for `scrguide-de`.
-
-If you like to have the implementation documentation of KOMA-Script as a PDF,
-first create the required class `koma-script-source-doc.cls` with
-`tex koma-script-source-doc.dx`. This class can then be used to generate the
-implementation documentation of this class with repeated calls to
-`lualatex-dev koma-script-source-doc.dtx` and
-`mkindex koma-script-source-doc`. Correspondingly, the documentation of the
-other KOMA-Script components can be generated.
-------------------------------------------------------------------------------
-Classes and packages in this release:
-]]
-   )
-
-   for _,p in ipairs(tree("README.in","README.*")) do
-      local readmename = basename(p.src)
-      local f = assert(io.open("README.in".."/"..readmename,"rb"))
-      local content = f:read("*all")
-      f:close()
-      if versionnames[readmename] ~= nil then
-	 content = string.gsub(content,
-			       "!!!THIS WILL BE SET BY THE RELEASE PROCESS!!!",
-			       versionnames[readmename])
-      end
-      readme_out:write("==============================================================================\n")
-      readme_out:write(content)
-   end
-
-   readme_out:write("==============================================================================\n")
-   readme_out:close()
-
-   return 0
-end
-
 function generate_readme_md(tagname,tagdate)
    local versionnames = {}
    local mainversion
@@ -977,6 +868,15 @@ This material is subject to the LaTeX Project Public License Version 1.3c. See [
 KOMA-Script is a versatile bundle of LaTeX2e document classes and packages. The classes are designed as replacements to the standard LaTeX2e classes. Several features have been added to make them more configurable.
 
 ------------------------------------------------------------------------------
+
+## Seeking assistance!
+
+For over 30 years, KOMA-Script has largely been a one-man show. At times, there has been assistance with documentation. The first version of a letter class was also originally contributed by another developer. Currently, however, maintenance, development, documentation, and testing are once again largely in the hands of a single developer. Given the pace at which the LaTeX team is working on the LaTeX kernel and the core packages, this is hardly feasible for a huge project like KOMA-Script. The problem is exacerbated by the fact that other projects are also increasingly becoming orphaned. This means, for example, that cooperation with the authors of other previously well-maintained packages is now being interrupted, and compatibility with these packages can only be maintained unilaterally and thus in a limited way by KOMA-Script, requiring additional effort.
+
+Therefore, assistance is urgently needed. The simplest form of assistance, namely testing, can be provided by almost every user. Unfortunately, due to the constant and sometimes quite short-term adjustments necessary for LaTeX developments, testing often falls by the wayside.
+
+More information about how to contribute can be found in [`CONTRIBUTING.md`](https://sf.net/p/koma-script/code/HEAD/tree/trunk/CONTRIBUTING.md).
+
 
 ## Classes and packages in this release:
 

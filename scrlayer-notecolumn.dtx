@@ -1,7 +1,7 @@
 % \iffalse^^A meta-comment
 % ======================================================================
 % scrlayer-notecolumn.dtx
-% Copyright (c) Markus Kohm, 2013-2023
+% Copyright (c) Markus Kohm, 2013-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -19,7 +19,7 @@
 % This work consists of all files listed in MANIFEST.md.
 % ----------------------------------------------------------------------
 % ======================================================================
-%%% From File: $Id: scrlayer-notecolumn.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrlayer-notecolumn.dtx 4235 2025-10-31 14:00:36Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -29,9 +29,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
-  \def\filerevision$#1: #2 ${\gdef\filerevision{v0.3.#2}}
-  \filerevision$Revision: 4032 $
+  \filedate$Date: 2025-10-31 15:00:36 +0100 (Fri, 31 Oct 2025) $
+  \def\filerevision$#1: #2 ${\gdef\filerevision{v0.4.#2}}
+  \filerevision$Revision: 4235 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrlayer-notecolumn.dtx}%
@@ -41,7 +41,7 @@
 \reserved@a
 %</dtx>
 %<*identify|doc>
-%<interface>\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+%<interface>\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 %<interface>\ProvidesPackage{scrlayer-notecolumn}[%
 %<doc>\ProvidesFile{scrlayer-notecolumn.tex}[%
 % Sometimes following will be replaced by !KOMASCRIPTVERSION:
@@ -64,6 +64,11 @@
   \KOMAdefVariable{SCRLAYERVERSION}{%
     \space\space\filedate\space\filerevision\space KOMA-Script
   }%
+  \def\@defCOPYRIGHTTILL#1/#2/#3\@nil{%
+    \def\@tempa{#1}\def\@tempb{}\ifx\@tempa\@tempb\else
+      \KOMAdefVariable{COPYRIGHTTILL}{#1}%
+    \fi
+  }\expandafter\@defCOPYRIGHTTILL\filedate\@nil
   \generate{\usepreamble\defaultpreamble
     \file{scrlayer-notecolumn.sty}{%
       \from{scrlayer-notecolumn.dtx}{interface,notecolumn,identify}%
@@ -335,7 +340,9 @@
   \IfLayerPageStyleExists{\currentpagestyle}{}{%
     \PackageWarning{scrlayer-notecolumn}{%
       output of note columns delayed,\MessageBreak
-      because with `\currentpagestyle'\MessageBreak
+      because\expandafter\IfArgIsEmpty\expandafter{\currentpagestyle}{}{%
+        with
+        \IfArgIsEmpty{\currentpagestyle}`\currentpagestyle'\MessageBreak}%
       a page style has been selected, that\MessageBreak
       isn't a layer page style,%
     }%
@@ -689,6 +696,22 @@
                      {\noexpand\number\value{slncpage}}%
                      {\noexpand\number\scr@lastypos}%
                      {\slnc@unexpanded{#2}}%
+  }%
+  \IfLayerPageStyleExists{\currentpagestyle}{}{%
+    \PackageWarning{scrlayer-scrpage}{%
+      Detected \string\makenote\space at page with non-layer\MessageBreak
+      page style%
+      \expandafter\IfArgIsEmpty\expandafter{\currentpagestyle}{}{
+      \currentpagestyle}.\MessageBreak
+      Delayed or too early output of the note is\MessageBreak
+      expected and not a bug in such cases. Even\MessageBreak
+      flipping notes without terminating states\MessageBreak
+      would be possible and not a bug.\MessageBreak
+      Redefinition of all used page styles to\MessageBreak
+      layer page styles would be recommended at\MessageBreak
+      least the page style used for the\MessageBreak
+      note%
+    }
   }%
   \@esphack
 }%
@@ -1275,8 +1298,8 @@
 %    \begin{macrocode}
       \IfLayerPageStyleExists{\currentpagestyle}{}{%
         \PackageWarning{scrlayer-notecolumn}{%
-          \string\clearnotecolumn\space while active non-layer page
-          style.\MessageBreak
+          \string\clearnotecolumn\space while active non-layer\MessageBreak
+          page style.\MessageBreak
           Activate empty page style until note column\MessageBreak
           has been cleared%
         }%
@@ -1449,10 +1472,10 @@
 %    \begin{macrocode}
       \IfLayerPageStyleExists{\currentpagestyle}{}{%
         \PackageWarning{scrlayer-notecolumn}{%
-          \string\clearnotecolumns\space while active non-layer page
-          style.\MessageBreak
-          Activate empty page style until note column\MessageBreak
-          has been cleared%
+          \string\clearnotecolumns\space while active non-layer\MessageBreak
+          page style.\MessageBreak
+          Activating empty page style until note\MessageBreak
+          column has been cleared%
         }%
         \pagestyle{empty}%
       }%
@@ -1686,6 +1709,115 @@
 % \end{macro}^^A \slnc@vadjust
 % \end{command}^^A \syncwithnotecolumn,\syncwithnotecolumns
 %
+%
+% \section{Automatic Conversion of Page Styles}
+% \label{sec:autoconv}
+%
+% As explained in the user guide \pkg*{scrlayer-notecolumn} depends on using
+% page styles, which have been defined using package \pkg{scrlayer}. Because
+% of this, the package also provides automatic conversion of page styles into
+% layer page styles. But this can fail and also is optional.
+%
+% \begin{option}{autoconvertpagestyles}
+%   \changes{v0.4.4233}{2025/10/31}{added}
+%    \begin{macrocode}
+%<*options>
+\KOMA@ifkey{autoconvertpagestyles}{slnc@autoconvertps}
+\slnc@autoconvertpstrue
+%</options>
+%    \end{macrocode}
+% \end{option}
+%
+% \begin{macro}{\slnc@LayerizePageStyle}
+%   \changes{v0.4.4233}{2025/10/31}{added}
+%   This macro does the \emph{layerization} of the active page style. Note,
+%   that the new layer page style still needs to be activated.
+%    \begin{macrocode}
+%<*body>
+\newcommand*{\slnc@LayerizePageStyle}[1]{%
+  \PackageWarningNoLine{scrlayer-notecolumns}{%
+    Automatic conversion of active page\MessageBreak
+    style into layer page style\MessageBreak
+    #1.\MessageBreak
+    Please note: Automatic conversion can fail\MessageBreak
+    and therefore you should redefine all used\MessageBreak
+    page styles yourself using either scrlayer\MessageBreak
+    command \string\DeclarePageStyleByLayers\space or\MessageBreak
+    \string\RedeclarePageStyleByLayers, or\MessageBreak
+    the commands of package\MessageBreak
+    scrlayer-fancyhdr of scrlayer-scrheading%
+  }%
+  \ExpandArgs{c}\DeclareCommandCopy{slnc@ps@#1@mkboth}\@mkboth
+  \ExpandArgs{c}\DeclareCommandCopy{slnc@ps@#1@mkright}\@mkright
+  \ExpandArgs{c}\DeclareCommandCopy{slnc@ps@#1@mkdouble}\@mkdouble
+  \ExpandArgs{c}\DeclareCommandCopy{slnc@ps@#1@oddhead}\@oddhead
+  \ExpandArgs{c}\DeclareCommandCopy{slnc@ps@#1@evenhead}\@evenhead
+  \ExpandArgs{c}\DeclareCommandCopy{slnc@ps@#1@oddfoot}\@oddfoot
+  \ExpandArgs{c}\DeclareCommandCopy{slnc@ps@#1@evenfoot}\@evenfoot
+  \DeclareNewLayer[%
+    background,oddpage,%
+    head,%
+    contents=\hb@xt@ \linewidth {\UseName{slnc@ps@#1@oddhead}}%
+  ]{#1.oddhead}%
+  \DeclareNewLayer[%
+    background,evenpage,%
+    head,%
+    contents=\hb@xt@ \linewidth {\UseName{slnc@ps@#1@evenhead}}%
+  ]{#1.evenhead}%
+  \DeclareNewLayer[%
+    foreground,oddpage,%
+    foot,%
+    contents=\hb@xt@ \linewidth {\UseName{slnc@ps@#1@oddfoot}}%
+  ]{#1.oddfoot}%
+  \DeclareNewLayer[%
+    foreground,evenpage,%
+    foot,%
+    contents=\hb@xt@ \linewidth {\UseName{slnc@ps@#1@evenfoot}}%
+  ]{#1.evenfoot}%
+  \DeclarePageStyleByLayers[%
+  onselect=\ExpandArgs{Nc}\RenewCommandCopy\@mkboth{slnc@ps@#1@mkboth}%
+  \ExpandArgs{Nc}\RenewCommandCopy\@mkright{slnc@ps@#1@mkright}%
+  \ExpandArgs{Nc}\RenewCommandCopy\@mkdouble{slnc@ps@#1@mkdouble}%
+  ]{#1}{#1.oddhead,#1.evenhead,#1.oddfoot,#1.evenfoot}%
+}
+\AddToHook{begindocument/end}{%
+  \ifslnc@autoconvertps
+    \ifx\currentpagestyle\@empty
+      \slnc@LayerizePageStyle{slnc@default}%
+      \pagestyle{slnc@default}%
+    \else
+      \IfLayerPageStyleExists{\currentpagestyle}{}{%
+        \expandafter\slnc@LayerizePageStyle\expandafter{\currentpagestyle}%
+        \expandafter\pagestyle\expandafter{\currentpagestyle}%
+      }%
+    \fi
+  \fi
+}
+\AfterSelectAnyPageStyle{%
+  \ifslnc@autoconvertps
+    \IfLayerPageStyleExists{\currentpagestyle}%
+      {}%
+      {%
+        \expandafter\slnc@LayerizePageStyle\expandafter{\currentpagestyle}%
+        \expandafter\pagestyle\expandafter{\currentpagestyle}%
+      }%
+  \fi
+}
+\AddToHook{cmd/thispagestyle/after}{%
+  \ifslnc@autoconvertps
+    \if@specialpage
+      \IfLayerPageStyleExists{\@specialstyle}{}{%
+        \AddToHook{cmd/ps@\@specialstyle/after}{%
+          \slnc@LayerizePageStyle{\@specialstyle}%
+          \@nameuse{ps@\@specialstyle}%
+        }%
+      }%
+    \fi
+  \fi
+}
+%</body>
+%    \end{macrocode}
+% \end{macro}
 %
 %    \begin{macrocode}
 %</interface>

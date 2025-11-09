@@ -1,6 +1,6 @@
 % ======================================================================
 % scrstrip.inc
-% Copyright (c) Markus Kohm, 2002-2022
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -21,17 +21,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-% This file will be included at startup of every KOMA-Script 
+% This file will be included at startup of every KOMA-Script
 % docstrip batch file.
 % ======================================================================
-% $Id: scrstrip.inc 3965 2022-10-12 08:28:57Z kohm $
+% $Id: scrstrip.inc 4215 2025-08-29 07:10:23Z kohm $
 
 % ---------- start of docstrip -----------------------------------------
 
 \KOMAdefVariable{AUTHOR}{Markus Kohm}
 \KOMAdefVariable{EMAIL}{[komascript at gmx info]}
 \KOMAdefVariable{COPYRIGHTFROM}{1994}
-\KOMAdefVariable{COPYRIGHTTILL}{2022}
 
 \ifToplevel{%
   \Msg{+======================================================================}
@@ -56,23 +55,23 @@
 This file was generated from file(s) of the KOMA-Script bundle.
 ---------------------------------------------------------------
 
-It may be distributed under the conditions of the 
+It may be distributed under the conditions of the
 LaTeX Project Public License in the version distributed together
 with KOMA-Script, see file `lppl.txt' or `lppl-de.txt'.
 
 This file may only be distributed together with a copy of the
-KOMA-Script bundle.  You may however distribute the 
+KOMA-Script bundle.  You may however distribute the
 KOMA-Script bundle without all such generated files.  See also
 `lppl.txt' or `lppl-de.txt' for additional information.
 
 The list of files belonging to KOMA-Script distribution is given in
-the file `MANIFEST.md'.  See also `lppl.txt' or `lppl-de.txt' for 
+the file `MANIFEST.md'.  See also `lppl.txt' or `lppl-de.txt' for
 additional information.
 
-If this file is a beta version, you may not be allowed to distribute 
+If this file is a beta version, you may not be allowed to distribute
 it.  Look at the comments below to see if this is the case.
 
-English and German manuals are part of KOMA-Script bundle. 
+English and German manuals are part of KOMA-Script bundle.
 ----------------------------------------------------------
 
 See `README'.
@@ -80,7 +79,7 @@ See `README'.
 The KOMA-Script bundle (but maybe not this file) was based upon the
 LaTeX 2.09 Script family created by Frank Neukam 1993 and the LaTeX2e
 standard classes created by The LaTeX3 Project 1994-1996.  You can
-find a complete unmodified copy of LaTeX2e at 
+find a complete unmodified copy of LaTeX2e at
 <http://mirror.ctan.org/tex-archive/macros/latex/base/>.
 
 \endpreamble

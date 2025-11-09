@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-listsof.dtx
-% Copyright (c) Markus Kohm, 2002-2024
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-listsof.dtx 4130 2024-10-24 08:14:37Z kohm $
+%%% From File: $Id: scrkernel-listsof.dtx 4193 2025-08-12 14:24:39Z kohm $
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
@@ -26,9 +26,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-10-24 10:14:37 +0200 (Thu, 24 Oct 2024) $
+  \filedate$Date: 2025-08-12 16:24:39 +0200 (Tue, 12 Aug 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4130 $
+  \filerevision$Revision: 4193 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-listsof.dtx}%
@@ -91,15 +91,6 @@
 %
 % \subsection{Code used by all of the tables and lists of content}
 %
-% Before doing anything with the tocs we need package \pkg*{tocbasic}:
-%    \begin{macrocode}
-%<*prepare>
-\RequirePackage{tocbasic}[%
-%!KOMAScriptVersion
-]
-%</prepare>
-%    \end{macrocode}
-%
 % \begin{macro}{\numberline@numberpostfix}
 % \changes{v3.20}{2016/03/15}{used to add \cs{autodot}}
 % We extend this macro of \pkg*{tocbasic} to add the \cs{autodot} to the
@@ -132,7 +123,7 @@
 %   \texttt{chapteratlist}}
 % For classes with chapters we use the \pkg*{tocbasic} feature
 % \texttt{chapteratlist} for all directories of category/owner
-% \texttt{float}. This is done not only for already existing directories for
+% \texttt{float}. This is done not only for already existing directories but
 % also for those, that will be added later (using \pkg*{tocbasic}). Note: By
 % default this feature is used to add a vertical distance to, e.g., the list
 % of figures and the list of tables with each new chapter.
@@ -1135,22 +1126,24 @@
 % \changes{v3.30}{2020/02/25}{spurious space at end of warning message
 %   removed}
 % \changes{v3.43}{2024/10/24}{warning changed}
+% \changes{v3.45}{2025/06/04}{\cs{@ifpackageloaded} replaced by
+%   \cs{IfPackageLoadedTF}}
 % Here the warning messages, that are used for using the deprecated interface.
 %    \begin{macrocode}
 \newcommand*{\scr@float@listhead@warning}{%
   \ClassWarning{\KOMAClassName}{%
     Usage of \string\float@listhead\space detected!\MessageBreak
     This could be, because you are using\MessageBreak
-    \@ifpackageloaded{floatrow}{%
-      \@ifpackageloaded{floatrowbytocbasic}{%
+    \IfPackageLoadedTF{floatrow}{%
+      \IfPackageLoadedTF{floatrowbytocbasic}{%
         a package that does not support the KOMA-Script\MessageBreak
         interface of KOMA-Script package `tocbasic`.\MessageBreak
       }{%
         package `floatrow` without `floatrowbytocbasic`.\MessageBreak
       }%
     }{%
-      \@ifpackageloaded{float}{%
-        \@ifpackageloaded{floatbytocbasic}{%
+      \IfPackageLoadedTF{float}{%
+        \IfPackageLoadedTF{floatbytocbasic}{%
           a package that does not support the KOMA-Script\MessageBreak
           interface of KOMA-Script package `tocbasic`.\MessageBreak
         }{%

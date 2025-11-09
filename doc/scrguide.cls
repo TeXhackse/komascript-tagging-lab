@@ -1,6 +1,6 @@
 % ======================================================================
 % scrguide.cls
-% Copyright (c) Markus Kohm, 2005-2022
+% Copyright (c) Markus Kohm, 2005-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -18,7 +18,7 @@
 % This work consists of all files listed in MANIFEST.md.
 % ----------------------------------------------------------------------
 % scrguide.cls
-% Copyright (c) Markus Kohm, 2005-2022
+% Copyright (c) Markus Kohm, 2005-2025
 %
 % Dieses Werk darf nach den Bedingungen der LaTeX Project Public Lizenz,
 % Version 1.3c, verteilt und/oder veraendert werden.
@@ -31,14 +31,14 @@
 % (allein durch den Autor verwaltet).
 %
 % Der Aktuelle Verwalter und Autor dieses Werkes ist Markus Kohm.
-% 
+%
 % Dieses Werk besteht aus den in MANIFEST.md aufgefuehrten Dateien.
 % ======================================================================
 %
 % \section{Identification}
 %
 %    \begin{macrocode}
-\ProvidesClass{scrguide}[2022/07/17 v1.28 internal KOMA-Script guide class]
+\ProvidesClass{scrguide}[2025/07/28 v1.29 internal KOMA-Script guide class]
 %    \end{macrocode}
 %
 %
@@ -202,7 +202,7 @@
   \DeclareFieldFormat{url}{%
     \href{\thefield{verba}}{\nolinkurl{#1}}%
   }
-\fi  
+\fi
 \RequirePackage{afterpage}
 \RequirePackage{makeidx}
 \RequirePackage{scrdate}
@@ -297,7 +297,7 @@
   \addtolength{\@tempdimc}{1in}%
   \KOMAoptions{headwidth=paper:-\@tempdimc}%
   % Entweder:
-  \hypersetup{colorlinks,citecolor=Green,linkcolor=Crimson,urlcolor=Blue}% 
+  \hypersetup{colorlinks,citecolor=Green,linkcolor=Crimson,urlcolor=Blue}%
   % oder:
 %    \hypersetup{pdfborderstyle={/S/U/W 1}}%
   \let\orig@maketitle\maketitle
@@ -1177,7 +1177,7 @@
     \expandafter\gdef
     \csname dhr@\label@desc@prefix\label@base.dohook.#2#1\endcsname{#3}%
   }%
-}  
+}
 \DeclareSpecialMarkup{\DoHook}{\mbox{\texttt{#1}}}{%
   \par
   \leftskip\z@
@@ -1400,7 +1400,7 @@
 % \end{macro}
 % User command to get the current label base.
 %    \begin{macrocode}
-\newcommand*{\LabelBase}{\@nameuse{label@base}} 
+\newcommand*{\LabelBase}{\@nameuse{label@base}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -1419,6 +1419,10 @@
   \colorbox{Declaration}{\usebox\Declaration@Box}%
 }
 \newenvironment{Declaration}[1][2]{%
+  \if@revertexampleskip
+    \typeout{TRACE: Fix vskip in \the\inputlineno}%
+    \vskip -\topskip
+  \fi
   \def\Declare@Lines{#1\baselineskip}%
   % Als erstes wird eine neue Index-Gruppe begonnen. Dagegen darf die
   % vorherige Index-Gruppe hier nicht automatisch geschlossen werden, weil
@@ -1503,6 +1507,7 @@
     \Declaration@UseBox{\Declaration@Box}%
     \par\nobreak\vskip\fboxsep
   \endgroup\nobreak
+  \aftergroup\@revertexampleskipfalse
   % Der nachfolgende Text soll wie bei einer Überschrift behandelt werden.
   \aftergroup\@afterindentfalse\aftergroup\@afterheading
 }
@@ -1535,10 +1540,12 @@
 % \begin{macro}{\ExampleEndFix}
 % \changes{v1.18}{2019/10/25}{New}%^^A
 % If an example is at the end of a description and before a new description
-% the vertical spacing is suboptimal. Sorry, but this cannot be fixed
-% automatically currently. But here is a manual fix:
+% the vertical spacing is suboptimal. Usually this is handled automatically,
+% but there is also a user command to force the fix.
 %    \begin{macrocode}
-\newcommand*{\ExampleEndFix}{\vskip -1\ht\strutbox plus .75\strutbox}
+\newcommand*{\ExampleEndFix}{%
+  \@revertexampleskiptrue
+}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -1582,7 +1589,7 @@
      \put(\QuadIV,-5){\line(0,1){\HighY}}%
      \qbezier(0,-5)(\QuadI,0)(\QuadII,-5)%
      \qbezier(\QuadII,-5)(\QuadIII,-10)(\QuadIV,-5)
-  \end{picture}\par  
+  \end{picture}\par
   \vspace{1ex plus 1ex minus .5ex}%
 }
 %    \end{macrocode}
@@ -1650,7 +1657,7 @@
 %   Output some text at \texttt{XmpTopPage} or \texttt{XmpBotPage}.
 %    \begin{macrocode}
 \newcommand{\XmpSetText}[2][\XmpText]{%
-        \put(#2){\makebox(0,0)[tl]{\parbox{70\unitlength}{\parfillskip=0pt 
+        \put(#2){\makebox(0,0)[tl]{\parbox{70\unitlength}{\parfillskip=0pt
               #1}}}}
 %    \end{macrocode}
 % \end{macro}
@@ -1741,7 +1748,7 @@
 }
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 % While I currently use the glossary, we have to make it:
 %    \begin{macrocode}
 \makeglossary
@@ -2204,7 +2211,7 @@
     titlehead,tocbasic@extend@babel,TOCclone,todaysname,typearea,%
     TOCEntryStyleInitCode,TOCEntryStyleStartInitCode,TOCLineLeaderFill,
     UnPreventPackageFromLoading,unitfactor,
-    unsettoc,usekomafont,useplength,usekomavar,uppertitleback% 
+    unsettoc,usekomafont,useplength,usekomavar,uppertitleback%
   }%
 }%
 \lstnewenvironment{lstoutput}[1][]{%
@@ -2262,7 +2269,7 @@ KOMAScript \endcsname
       pdftitle={\GuideTitle},
       pdfauthor={Markus Kohm},
       pdfsubject={\GuideSubject},
-      pdfkeywords={\KOMAScript, scrbook, scrreprt, scrartcl, 
+      pdfkeywords={\KOMAScript, scrbook, scrreprt, scrartcl,
         typearea, scrlfile, scrlayer, scrlayer-scrpage, scrlayer-notecolumn,
         scrletter, scrlttr2, scraddr, scrtime, scrdate, scrwfile},
       pdfcreator={\KOMAScript, hyperref}
@@ -2783,8 +2790,22 @@ KOMAScript \endcsname
                                % Index-Gruppen-Trennmarke packen.
   \push@IndexStack{\StopIndexGroup}%
 }
+\newif\if@revertexampleskip
 \newcommand*{\EndIndexGroup}{% Den Stapel bis zur nächsten Stop-Marke
                              % verarbeiten.
+  \ifvmode
+    \ifdim \lastskip=\topsep
+      \typeout{TRACE: topsep --> true}%
+      \@revertexampleskiptrue
+    \else
+      \ifdim \lastskip=\partopsep
+        \typeout{TRACE: partopsep --> true}%
+        \@revertexampleskiptrue
+      \else
+        \@revertexampleskipfalse
+      \fi
+    \fi
+  \fi
   \ifx\@IndexStack\@empty
     \ClassError{scrguide}{cannot end index group}{%
       You've told me to end the current index group,\MessageBreak
@@ -3004,9 +3025,9 @@ KOMAScript \endcsname
 %
 \endinput
 %
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: doctex
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_US"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

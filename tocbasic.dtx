@@ -14,7 +14,7 @@
 % ======================================================================
 % ======================================================================
 % tocbasic.dtx
-% Copyright (c) Markus Kohm, 2008-2023
+% Copyright (c) Markus Kohm, 2008-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -31,26 +31,26 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: tocbasic.dtx 4132 2024-10-24 09:32:44Z kohm $
+%%% From File: $Id: tocbasic.dtx 4237 2025-11-05 15:41:49Z kohm $
 %<identify>%%%            (run: identify)
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
 %<execoption>%%%            (run: execoption)
+%<preparebody>%%%            (run: preparebody)
 %<body>%%%            (run: body)
 %<exit>%%%            (run: exit)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-10-24 11:32:44 +0200 (Thu, 24 Oct 2024) $
+  \filedate$Date: 2025-11-05 16:41:49 +0100 (Wed, 05 Nov 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4132 $
+  \filerevision$Revision: 4237 $
 \endgroup
 \ProvidesFile{tocbasic.dtx}[\filedate\space\filerevision\space
 %</dtx>
-%<package&identify>\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+%<package&identify>\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 %<package&identify>\ProvidesPackage{tocbasic}[%
-%<package&identify&tagging-lab>2024-09-15
 %<*dtx|(package&identify)>
 %!KOMAScriptVersion
   package
@@ -77,6 +77,7 @@
       \from{tocbasic.dtx}{package,prepare}%
       \from{tocbasic.dtx}{package,option}%
       \from{tocbasic.dtx}{package,execoption}%
+      \from{tocbasic.dtx}{package,preparebody}%
       \from{tocbasic.dtx}{package,body,deprecated}%
       \from{scrkernel-tocstyle.dtx}{package,body}%
       \from{scrkernel-tocstyle.dtx}{package,style,gobble}%
@@ -146,6 +147,7 @@
 % \label{sec:implementation}
 %
 %    \begin{macrocode}
+%<@@=tocbasic>
 %<*package>
 %    \end{macrocode}
 %
@@ -210,30 +212,46 @@
 % \changes{v3.42}{2023/09/08}{with old \LaTeX{} all options are unknown}
 %
 % \begin{option}{enablepatch,disablepatch}
-% \changes{v3.42}{2023/09/08}{new}
+% \changes{v3.42}{2023/09/08}{added}
 % From version 3.42 there a several optional patches executed while
 % |\begin{document}|. Every one of that patch can be enabled or disabled.
 % \ExplSyntaxOn
-% \begin{macro}{\@@_patch_all_bool,\@@_patch_starttoc_bool,\@@_patch_chapter_bool,
-%               \@@_patch_listoffigures_bool,\@@_patch_listoftables_bool}
+% \begin{macro}{\g_@@_patch_all_bool,\g_@@_patch_starttoc_bool,
+%               \g_@@_patch_chapter_bool,
+%               \g_@@_patch_listoffigures_bool,\g_@@_patch_listoftables_bool}
 % \ExplSyntaxOff
-% \changes{v3.42}{2023/09/08}{new}
+% \changes{v3.42}{2023/09/08}{added}
+% \changes{v3.46}{2025/06/10}{respecting l3 naming convention}
 % Enabling and disabling will be done using a boolean variable with default
 % |false| (disabled). The |all| patch is somehow different. In enables or
 % disables doing all patches. So |disablepatch=all| does not disable all
 % patches but disables to ignore the single patches.
 %    \begin{macrocode}
-%<@@=tocbasic>
 %<*option>
 \if@tocbasic@old@latex@found\else
   \ExplSyntaxOn
 
-  \bool_new:N \@@_patch_all_bool
-  \bool_new:N \@@_patch_starttoc_bool
-  \bool_new:N \@@_patch_chapter_bool
-  \bool_new:N \@@_patch_listoffigures_bool
-  \bool_new:N \@@_patch_listoftables_bool
+  \bool_new:N \g_@@_patch_all_bool
+  \bool_new:N \g_@@_patch_starttoc_bool
+  \bool_new:N \g_@@_patch_chapter_bool
+  \bool_new:c { g_@@_patch_chapter*_bool }
+  \bool_new:N \g_@@_patch_listoffigures_bool
+  \bool_new:N \g_@@_patch_listoftables_bool
 
+%    \end{macrocode}
+% \end{macro}
+% \ExplSyntaxOff
+% \ExplSyntaxOn
+% \begin{macro}{\g_@@_patch_caption_bool}
+%   \ExplSyntaxOff
+%   \changes{v3.46}{2025/06/10}{added}
+%   From version 3.46 the caption code of the \KOMAScript{} classes is
+%   (partially) redesigned and move to \pkg*{tocbasic}. But it is only
+%   activated with option \opt{enablepatch=caption}. The \KOMAScript{} classes
+%   load \pkg*{tocbasic} with this option. Nevertheless you can overwrite it
+%   an so get lost of all the extended caption features.
+%    \begin{macrocode}
+  \bool_new:N \g_@@_patch_caption_bool
 %    \end{macrocode}
 % \end{macro}
 % \ExplSyntaxOff
@@ -241,7 +259,7 @@
 % options. Both allow a comma separated list of patches to set the
 % corresponding boolean value to |true| or |false|.
 %    \begin{macrocode}
-  \DeclareKeys
+  \keys_define:nn { tocbasic }
     {
       enablepatch  .code             = \@@_endisable_patch:nn {#1} \c_true_bool,
       enablepatch  .usage            = preamble,
@@ -255,7 +273,7 @@
 % \ExplSyntaxOn
 % \begin{macro}{\@@_endisable_patch:nn}
 % \ExplSyntaxOff
-% \changes{v3.42}{2023/09/08}{new}
+% \changes{v3.42}{2023/09/08}{added}
 % \changes{v3.43}{2024/10/22}{deprecated \cs{char\_uppercase:N} replaced by
 %   \cs{text\_uppercase:n}}
 % Switch the patch \#1 depending on argument \#2 or raise a warning for
@@ -276,9 +294,9 @@
     {
       \clist_map_inline:nn { #1 }
         {
-          \cs_if_exist:cTF { @@_patch_##1_bool }
+          \cs_if_exist:cTF { g_@@_patch_##1_bool }
             {
-              \bool_set_eq:cN { @@_patch_##1_bool } #2
+              \bool_set_eq:cN { g_@@_patch_##1_bool } #2
             }
             {
               \exp_args:Nnnx \msg_warning:nnnn { tocbasic } { unknown-patch }
@@ -322,18 +340,26 @@
 %    \end{macrocode}
 % The patches are:
 % \begin{description}
-% \item[\texttt{all}:] activate all other patches. The \texttt{chapter} patch
+% \item[\texttt{all}:]
+%   \changes{v3.46}{2025/06/13}{\opt{enablepath\quotechar=all} enables the
+%     caption patch, if \pkg*{caption} has not been loaded}
+%   activate all other patches. The \texttt{chapter} patch
 %   is not enabled for \KOMAScript{} classes. So if you want to use this patch
 %   with a \KOMAScript{} class\,---\,which usually will not make sense\,---\,,
 %   you have to use an explicit |enabelpatch=chapter|.
 %    \begin{macrocode}
-      \bool_if:NT \@@_patch_all_bool
+      \bool_if:NT \g_@@_patch_all_bool
         {
-          \bool_set_true:N \@@_patch_starttoc_bool
+          \bool_set_true:N \g_@@_patch_starttoc_bool
           \cs_if_exist:NF \KOMAClassName
-            { \bool_set_true:N \@@_patch_chapter_bool }
-          \bool_set_true:N \@@_patch_listoffigures_bool
-          \bool_set_true:N \@@_patch_listoftables_bool
+            {
+              \bool_set_true:N \g_@@_patch_chapter_bool
+              \bool_set_true:c { g_@@_patch_chapter*_bool }
+            }
+          \bool_set_true:N \g_@@_patch_listoffigures_bool
+          \bool_set_true:N \g_@@_patch_listoftables_bool
+          \IfPackageLoadedTF{ caption } { }
+            { \bool_set_true:N \g_@@_patch_caption_bool }
         }
 
 %    \end{macrocode}
@@ -343,39 +369,24 @@
 %   you are using an incompatible \cs{chapter} definition. This patch is
 %   potentially dangerous. So we raise at least a note and maybe a warning.
 %    \begin{macrocode}
-      \bool_if:NT \@@_patch_chapter_bool
+      \bool_if:NT \g_@@_patch_chapter_bool
         {
-          \cs_if_exist:NTF \KOMAClassName
-            {
-              \exp_args:Nnnx \msg_warn:nnnn { tocbasic } { dangerous-patch }
-                { \KOMAClassName } { chapter }
-            }
-            {
-              \exp_args:Nnnx \msg_note:nnnn { tocbasic } { dangerous-patch }
-                { } { chapter }
-            }
-          \hook_gput_code:nnn { cmd/@makechapterhead/before } { tocbasic }
-            {
-              \doforeachtocfile[float]{
-                \addtocontents{\@currext}{\protect\addvspace{10\p@}}
-              }
-            }
+          \@@_chapter_patch_code:
         }
 
 %    \end{macrocode}
 % \item[\texttt{starttoc}:] executes \cs{tocbasicautomode}
 %    \begin{macrocode}
-      \bool_if:NT \@@_patch_starttoc_bool \tocbasicautomode
+      \bool_if:NT \g_@@_patch_starttoc_bool \tocbasicautomode
 
 %    \end{macrocode}
 % \item[\texttt{listoffigures}] redefines \cs{listoffigures} to use
 %   \pkg*{tocbasic} (but without changing \cs{l@figure}, because
 %   \cs{DeclareTOCSTyleEntry} already has defaults for \texttt{figure}).
 %    \begin{macrocode}
-      \bool_if:NT \@@_patch_listoffigures_bool
+      \bool_if:NT \g_@@_patch_listoffigures_bool
         {
-          \renewcommand*{\listoffigures}{\listoftoc{\ext@figure}}%
-          \providecommand*{\listoflofname}{\listfigurename}%
+          \@@_listof_patch_code:n{figure}
         }
 
 %    \end{macrocode}
@@ -383,10 +394,9 @@
 %   \pkg*{tocbasic} (but without changing \cs{l@table}, because
 %   \cs{DeclareTOCSTyleEntry} already has defaults for \texttt{table}).
 %    \begin{macrocode}
-      \bool_if:NT \@@_patch_listoftables_bool
+      \bool_if:NT \g_@@_patch_listoftables_bool
         {
-          \renewcommand*{\listoftables}{\listoftoc{\ext@table}}%
-          \providecommand*{\listoflotname}{\listtablename}%
+          \@@_listof_patch_code:n{table}
         }
 
 %    \end{macrocode}
@@ -397,7 +407,6 @@
   \ExplSyntaxOff
 \fi
 %</body>
-%<@@=>
 %    \end{macrocode}
 % \end{option}
 % \ExplSyntaxOff
@@ -405,9 +414,9 @@
 %    \begin{macrocode}
 %<*execoption>
 \if@tocbasic@old@latex@found
-  \ProcessOptions
+  \ProcessOptions\relax
 \else
-  \ProcessKeyOptions
+  \ProcessKeyOptions[tocbasic]
 \fi
 %</execoption>
 %    \end{macrocode}
@@ -510,7 +519,7 @@
 % \end{command}^^A \ifattoclist,\Ifattoclist
 %
 % \begin{macro}{\tb@optowner}
-% \changes{v3.41}{2023/06/28}{new}
+% \changes{v3.41}{2023/06/28}{added}
 % Several of the following commands use an optional argument for the
 % owner. Almost always if the argument is not given but \cs{@currname} is not
 % empty \texttt{\cs{@currname}.\cs{@currext}} should be used. If the argument
@@ -545,6 +554,7 @@
 % second, mandatory argument is the extension of the toc-file. NOTE: An
 % empty first argument is not the same like omitting the first argument!
 %    \begin{macrocode}
+%<@@=>
 \NewDocumentCommand\addtotoclist{om}{%
   \edef\reserved@b{\tb@optowner{#1}}%
   \Ifattoclist{#2}{%
@@ -580,17 +590,8 @@
     }\reserved@a
   }%
 }
+%<@@=tocbasic>
 %    \end{macrocode}
-% \begin{macro}[noprint]{\@addtotoclist,\scr@addtotoclist,
-%                        \@@addtotoclist,\scr@@addtotoclist}
-% \changes{v1.0a}{2008/11/11}{\cs{@addtotoclist} renamed to
-%   \cs{scr@addtotoclist} because of package \pkg{flowfram}}
-% \changes{v1.0a}{2008/11/11}{\cs{@@addtotoclist} renamed to
-% \cs{scr@@addtotoclist} because of package \pkg{flowfram}}
-% \changes{v3.28}{2019/11/19}{\cs{ifattoclist} replaced by
-%   \cs{Ifattoclist}}
-% \changes{v3.41}{2023/06/28}{removed}
-% \end{macro}
 % \end{command}
 %
 % \begin{command}{\owneroftoc}
@@ -643,9 +644,6 @@
   \expandafter\g@addto@macro\csname tb@\reserved@a @add@hook\endcsname
 }
 %    \end{macrocode}
-% \begin{macro}[noprint]{\@AtAddToTocList,\@@AtAddToTocList}
-% \changes{v3.41}{2023/06/28}{removed}
-% \end{macro}
 % \end{command}
 %
 % \begin{macro}{\tocbasic@extend@babel}
@@ -737,14 +735,6 @@
   \endgroup
 }
 %    \end{macrocode}
-% \begin{macro}[noprint]{\scr@removefromtoclist,\@removefromtoclist,
-%                        \scr@@removefromtoclist,\@@removefromtoclist}
-% \changes{v3.28}{2019/11/22}{\cs{@removefromtoclist} renamed to
-%   \cs{scr@removefromtoclist}}
-% \changes{v3.28}{2019/11/22}{\cs{@@removefromtoclist} renamed to
-%   \cs{scr@removefromtoclist}}
-% \changes{v3.41}{2023/06/28}{removed}
-% \end{macro}
 % \end{command}
 %
 % \begin{command}{\doforeachtocfile}
@@ -791,9 +781,6 @@
   \let\do\noexpand
 }
 %    \end{macrocode}
-% \begin{macro}[noprint]{\@doforeachtocfile,\@@doforeachtocfile}
-% \changes{v3.41}{2023/06/28}{removed}
-% \end{macro}
 % \end{command}
 %
 % \begin{command}{\addtoeachtocfile}
@@ -813,10 +800,6 @@
 }
 %</body>
 %    \end{macrocode}
-% \begin{macro}[noprint]{\@addtoeachtocfile,\@@addtoeachtocfile}
-% \changes{v3.03b}{2009/06/08}{typo fix at usage of \cs{doforeachtocfile}}
-% \changes{v3.41}{2023/06/28}{removed}
-% \end{macro}
 % \end{command}
 %
 % \subsection{Adding entries into toc-files}
@@ -837,10 +820,6 @@
    \doforeachtocfile[{#1}]{\addcontentsline{\@currext}{#2}{#3}}%
 }
 %    \end{macrocode}
-% \begin{macro}[noprint]{\@addcontentslinetoeachtocfile,
-%                        \@@addcontentslinetoeachtocfile}
-% \changes{v3.41}{2023/06/28}{removed}
-% \end{macro}
 % \end{command}
 %
 % \begin{command}{\addxcontentsline}
@@ -905,14 +884,55 @@
 }
 %</body>
 %    \end{macrocode}
-% \begin{macro}[noprint]{\@addxcontentslinetoeachtocfile,
-%                        \@@addxcontentslinetoeachtocfile,
-%                        \@@@addxcontentslinetoeachtocfile,
-%                        \@@@@addxcontentslinetoeachtocfile}
-% \changes{v3.12}{2013/09/24}{added}
-% \changes{v3.41}{2023/06/28}{removed}
-% \end{macro}
 % \end{command}
+%
+% \ExplSyntaxOn
+% \begin{macro}{\@@_chapter_patch_code:,\tocbasic@chapter@skip}
+% \ExplSyntaxOff
+%   From version 3.42 \pkg*{tocbasic} provides the feature to patch
+%   \cs{@makechapterhead} to add a vertical space to every ToC of category
+%   \texttt{float}. From version 3.46 this is extended to also allow
+%   patching \cs{@makeschapterhead} and the code is moved to an internal
+%   macro. Patching of \cs{@makeschapterhead} is only supported as extension
+%   of \cs{@makechapterhead}.
+%    \begin{macrocode}
+%<*body>
+\if@tocbasic@old@latex@found\else
+  \ExplSyntaxOn
+  \cs_new:Npn \@@_chapter_patch_code:
+    {
+      \cs_if_exist:NTF \KOMAClassName
+        {
+          \exp_args:Nnnx \msg_warn:nnnn { tocbasic } { dangerous-patch }
+            { \KOMAClassName } { chapter }
+        }
+        {
+          \exp_args:Nnnx \msg_note:nnnn { tocbasic } { dangerous-patch }
+            { } { chapter }
+        }
+      \hook_gput_code:nnn { cmd/@makechapterhead/before } { tocbasic }
+        {
+          \doforeachtocfile[float]{
+            \addtocontents{\@currext}{\tocbasic@chapter@skip}
+          }
+        }
+      \bool_if:cT { g_@@_patch_chapter*_bool }
+        {
+          \hook_gput_code:nnn { cmd/@makeschapterhead/before } { tocbasic }
+            {
+              \doforeachtocfile[float]{
+                \addtocontents{\@currext}{\tocbasic@chapter@skip}
+              }
+            }
+        }
+      \ProvideDocumentCommand \tocbasic@chapter@skip { } { \addvspace{10\p@} }
+    }
+  \ExplSyntaxOff
+\fi
+%</body>
+%    \end{macrocode}
+% \end{macro}
+% \ExplSyntaxOff
 %
 %
 % \subsection{Show list of toc-file}
@@ -934,6 +954,7 @@
 % general hook wil be called, that's it.
 %    \begin{macrocode}
 %<*body>
+%<@@=>
 \newcommand*{\tocbasic@starttoc}[1]{%
   \begingroup
     \tocbasic@reentrant@warning
@@ -1034,6 +1055,7 @@
     \expandafter\g@addto@macro\csname tb@#1@after@hook\endcsname{#2}%
   \fi
 }
+%<@@=tocbasic>
 %    \end{macrocode}
 % \end{command}^^A \BeforeStartingTOC,\AfterStartingTOC
 % \end{macro}^^A \tocbasic@starttoc
@@ -1097,14 +1119,40 @@
 % \end{macro}
 % \end{command}
 %
+% \ExplSyntaxOn
+% \begin{macro}{\@@_listof_patch_code:nn}
+% \ExplSyntaxOff
+% \changes{v3.46}{2025/06/10}{added}
+% Patch \cs{listof\#1} with extension \texttt{\#2} to use \cs{listoftoc}.
+%    \begin{macrocode}
+\if@tocbasic@old@latex@found\else
+  \ExplSyntaxOn
+  \cs_new:Nn \@@_listof_patch_code:n
+    {
+      \cs_set:cpn { listof#1s } { \exp_args:Nc \listoftoc { ext@#1  } }
+      \cs_if_exist:cF { listof \use:c { ext@#1 } name }
+        {
+          \cs_new:cpn { listof \use:c { ext@#1 } name }
+            { \use:c { list#1name } }
+        }
+    }
+  \ExplSyntaxOff
+\fi
+%    \end{macrocode}
+% \end{macro}
+% \ExplSyntaxOff
+%
 % \changes{v3.25}{2017/11/21}{\pkg{tocbibind} warning added}
+% \changes{v3.46}{2025/06/16}{revert to \cs{IfPackageLoadedTF} instead of
+%   \cs{IfPackageLoadedF} and \cs{IfPackageLoadedT}, because in \LaTeX{}
+%   2022-06-01 is only the first one available}
 % Using \pkg{tocbibind} and \pkg*{tocbasic} together can break features
 % either of \pkg{tocbibind} or \pkg*{tocbasic}.  Here we add at least a
 % warning:
 %    \begin{macrocode}
-\@ifpackageloaded{tocbibind}{}{%
+\IfPackageLoadedTF{tocbibind}{}{%
   \AtBeginDocument{%
-    \@ifpackageloaded{tocbibind}{%
+    \IfPackageLoadedTF{tocbibind}{%
       \PackageInfo{tocbasic}{usage of `tocbibind' detected}%
       \newcommand*{\tb@tocbibindpatch}[3]{%
         \long\def\reserved@a{\tocfile{#2}{#1} }%
@@ -1149,9 +1197,6 @@
   \doforeachtocfile[{#1}]{\listoftoc{\@currext}}%
 }
 %    \end{macrocode}
-% \begin{macro}[noprint]{\@listofeachtoc,\@@listofeachtoc}
-% \changes{v3.41}{2023/06/28}{removed}
-% \end{macro}
 % \end{command}
 %
 % \begin{macro}{\ext@toc}
@@ -1184,6 +1229,7 @@
 % Setting the headings of a list of something. The heading is the only
 % argument.
 %    \begin{macrocode}
+%<@@=>
 \newcommand*{\tocbasic@listhead}[1]{%
   \@ifundefined{tocbasic@listhead@\@currext}{%
     \scr@ifundefinedorrelax{chapter}{%
@@ -1291,6 +1337,7 @@
   \csname tb@\@currext @afterhead@hook\endcsname
   \csname tb@@afterhead@hook\endcsname
 }
+%<@@=tocbasic>
 %    \end{macrocode}
 % \begin{command}{\BeforeTOCHead,\AfterTOCHead}
 % \changes{v3.04b}{2010/01/05}{fix: define the hook if not already defined}
@@ -1460,7 +1507,7 @@
 % \end{command}
 %
 %
-% \subsection{High level interface for generating new ToCs and floats}
+% \subsection{High level interface for generating new ToCs and floats resp. nonfloats}
 % \label{sec:newfloats}
 %
 % \begin{command}{\DeclareNewTOC}
@@ -1776,6 +1823,7 @@
 % Earch entry of a TOC/list of is idented on the left side. This is the
 % amount of the indention of the text of the entry.
 %    \begin{macrocode}
+%<*deprecated>
     \DefineFamilyKey[.toc]{KOMAarg}{hang}{%
       \scr@ifundefinedorrelax{KV@KOMAarg.toc@tocnumwidth}{%
         \PackageWarning{tocbasic}{%
@@ -1793,6 +1841,7 @@
       }%
       \FamilyKeyStateProcessed
     }%
+%</deprecated>
     \scr@ifundefinedorrelax{KV@KOMAarg.toc@tocnumwidth}{}{%
       \l@addto@macro\tb@nt@tocstyle@options{,numwidth=1.5em}%
     }%
@@ -1803,6 +1852,7 @@
 % Earch entry of a TOC/list of is idented on the left side. This is the
 % amount of the indention of the number part.
 %    \begin{macrocode}
+%<*deprecated>
     \DefineFamilyKey[.toc]{KOMAarg}{indent}{%
       \scr@ifundefinedorrelax{KV@KOMAarg.toc@tocindent}{%
         \PackageWarning{tocbasic}{%
@@ -1820,6 +1870,7 @@
       }%
       \FamilyKeyStateProcessed
     }%
+%</deprecated>
     \scr@ifundefinedorrelax{KV@KOMAarg.toc@tocindent}{}{%
 %<trace>      \PackageInfo{tocbasic}{%
 %<trace>        TRACE \string\DeclareNewTOC[...]{#2}: set default indent 1em}%
@@ -1833,6 +1884,7 @@
 % Each entry to a TOC/list of has a numeric level. You may set up your own
 % level.
 %    \begin{macrocode}
+%<*deprecated>
     \DefineFamilyKey[.toc]{KOMAarg}{level}{%
       \PackageWarning{tocbasic}{%
         deprecated option `level'.\MessageBreak
@@ -1842,6 +1894,7 @@
       \l@addto@macro\tb@nt@tocstyle@options{,level={##1}}%
       \FamilyKeyStateProcessed
     }%
+%</deprecated>
 %    \end{macrocode}
 % \begin{macro}{\tb@nt@listname}
 % \changes{v3.18}{2015/06/20}{using \cs{def} instead of \cs{edef}}
@@ -2010,6 +2063,7 @@
 % The float environments:
 % \changes{v3.09a}{2011/05/30}{fixed: floats may have an optional argument}
 % \changes{v3.12}{2013/12/10}{fixed: usage of default placement}
+% \changes{v3.46}{2025/06/13}{keys definition added}
 %    \begin{macrocode}
   \iftb@nt@float
     \expandafter\newcommand\expandafter*\csname fps@\tb@nt@type\expandafter
@@ -2043,6 +2097,10 @@
           \noexpand\csname \tb@nt@type @atend\noexpand\endcsname
           \noexpand\end@dblfloat
         }%
+        \if@tocbasic@old@latex@found\else
+          \expandafter\noexpand\csname tocbasic_define_caption_keys:n\endcsname
+            {\tb@nt@type}%
+        \fi
       }%
     \@tempa
     \@tempswatrue
@@ -2063,6 +2121,10 @@
           \noexpand\csname \tb@nt@type @atend\noexpand\endcsname
           \noexpand\endminipage\noexpand\endtrivlist
         }%
+        \if@tocbasic@old@latex@found\else
+          \expandafter\noexpand\csname tocbasic_define_caption_keys:n\endcsname
+            {\tb@nt@type}%
+        \fi
       }%
     \@tempa
     \@tempswatrue
@@ -2194,6 +2256,534 @@
 % \end{macro}
 % \end{command}
 %
+% \subsection{Caption handling}
+%
+% \changes{v3.46}{2025/06/10}{\pkg*{tocbasic} handles captions}
+% From version 3.46 package \pkg*{tocbasic} not only supports but provides the
+% caption handling that was formerly part of the \KOMAScript{} classes. This
+% allows us also a (partial) redesign of the implementation. Nevertheless, we
+% try to keep it compatible. When package \pkg{caption} is loaded, most of the
+% features are delegated to that package.
+%
+% \ExplSyntaxOn
+% \begin{macro}{\g_@@__caption_above_bool}
+%   \ExplSyntaxOff
+%   \changes{v3.46}{2025/06/13}{added}
+%   The default formation for captions should above (instead of below) the
+%   content. This has to be predefined, because
+%   \cs{tocbasic\_define\_caption\_keys:n} does not automatically define
+%   it. The initial value is \optvalue{false}.
+%    \begin{macrocode}
+%<*option>
+\if@tocbasic@old@latex@found\else
+\ExplSyntaxOn
+\bool_new:N \g_@@__caption_above_bool
+%    \end{macrocode}
+% \end{macro}
+% \begin{command}{\tocbasic_define_caption_keys:n}
+%   \ExplSyntaxOff
+%   \changes{v3.46}{2025/06/13}{added}
+%   Allows to define the boolean looking choice options \opt{\#1captionabove}
+%   and \opt{\#1captionbelow} and the choice options \opt{\#1captionposition}
+%   with the three values \optvalue{top}, \optvalue{bottom} and
+%   \optvalue{default}. Value \optvalue{default} resets the caption position
+%   for \texttt{\#1} to the default caption position. If \texttt{\#1} is
+%   empty, the default value is not defined! The code not only respects
+%   package \pkg{caption} but actively supports its use. This is the main
+%   reason, why it cannot use real boolean options, but needs to simulate them
+%   using choice options. The code looks complicated because resetting the
+%   \pkg{caption} options for floats is different for \env{figures} and
+%   \env{tables} than for other floats. Also resetting \pkg{caption} options
+%   of single floats needs an extra command (at least after
+%   \verb|\begin{document}|).
+%    \begin{macrocode}
+\cs_new:Nn \tocbasic_define_caption_keys:n
+  {
+    \keys_if_exist:nnF { tocbasic } { #1captionabove }
+      {
+        \keys_define:nn { tocbasic }
+          {
+            #1captionabove .choice:,
+            #1captionabove / true .code:n       =
+              { \@@_set_caption_position_top_bottom:nn { #1 } { t } },
+            #1captionabove / false .code:n      =
+              { \@@_set_caption_position_top_bottom:nn { #1 } { b } },
+            #1captionabove / unknown .code:n    =
+              { \msg_error:nne { keys } { boolean-values-only } \l_keys_path_str },
+            #1captionabove .usage:n             = general,
+            #1captionabove .default:n           = true,
+            #1captionbelow .choice:,
+            #1captionbelow / true .code:n       =
+              { \@@_set_caption_position_top_bottom:nn { #1 } { b } },
+            #1captionbelow / false .code:n      =
+              { \@@_set_caption_position_top_bottom:nn { #1 } { t } },
+            #1captionbelow / unknown .code:n    =
+              { \msg_error:nne { keys } { boolean-values-only } \l_keys_path_str },
+            #1captionbelow .usage:n             = general,
+            #1captionbelow .default:n           = true,
+            #1captionposition .choice:,
+            #1captionposition / top .code:n     =
+              { \@@_set_caption_position_top_bottom:nn { #1 } { t } },
+            #1captionposition / bottom .code:n  =
+              { \@@_set_caption_position_top_bottom:nn { #1 } { b } },
+            #1captionposition .usage:n          = general,
+            #1captionposition .value_required:n = true,
+          }
+        \str_if_empty:nF { #1 }
+          {
+            \keys_define:nn { tocbasic }
+              {
+                #1captionposition / default .code:n =
+                  { \@@_set_caption_position_top_bottom:nn { #1 } { default } },
+                #1captionposition .initial:n = default
+              }
+          }
+        \cs_if_exist:NTF \captionsetup
+          {
+            \bool_if_exist:cTF { g_@@_ #1 _caption_above_bool }
+              {
+                \exp_last_unbraced:Ne \captionsetup
+                  {
+                    \str_if_empty:nF {#1} {[#1]}
+                    {
+                      #1position=
+                      { \bool_if:cTF { g_@@_ #1 _caption_above_bool } tb }
+                    }
+                  }
+              }
+              {
+                \tl_if_exist:cT { caption@opt@#1 }
+                  {
+                    \tl_if_empty:cF { caption@opt@#1 }
+                      { \clearcaptionsetup[position]{#1} }
+                  }
+              }
+          }
+          {
+            \tl_if_eq:VnT \everypar { \@nodocument }
+              {
+                \str_if_in:nnTF { ,table,figure,, } { ,#1, }
+                  {
+                    \exp_args:Ne \PassOptionsToPackage
+                      {
+                        #1position=
+                        \bool_if_exist:cTF { g_@@_ #1 _caption_above_bool }
+                          { \bool_if:cTF { g_@@_ #1 _caption_above_bool } tb }
+                          { default }
+                      }
+                      { caption }
+                  }
+                  {
+                    \hook_gput_code:nnn { package / caption / after } { tocbasic }
+                      {
+                        \bool_if_exist:cT { g_@@_ #1 _caption_above_bool }
+                          {
+                            \exp_last_unbraced:Ne \captionsetup
+                              {
+                                \str_if_empty:nF {#1} {[#1]}
+                                { position=\bool_if:cTF { g_@@_ #1 _caption_above_bool } tb }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+%    \end{macrocode}
+% \ExplSyntaxOn
+% \begin{macro}{\@@_set_caption_position_top_bottom:nn}
+%   \ExplSyntaxOff
+%   This is the helper to set option \opt{position} to top (\texttt{\#2=t}) or
+%   bottom (\texttt{\#2=b}). If \texttt{\#1} is not empty but the name of a
+%   float, it can also be \optvalue{default}. Most of the logic of the options
+%   and the \pkg{caption} support is here.
+%    \begin{macrocode}
+\cs_new:Nn \@@_set_caption_position_top_bottom:nn
+  {
+    \str_if_eq:nnTF { #2 } { default }
+      {
+        \bool_if_exist:cT { g_@@_ #1 _caption_above_bool }
+          { \cs_undefine:c { g_@@_ #1 _caption_above_bool } }
+        \cs_if_exist:NTF \clearcaptionsetup
+          {
+            \tl_if_exist:cT { caption@opt@#1 }
+              {
+                \tl_if_empty:cF { caption@opt@#1 }
+                  { \clearcaptionsetup[position]{ #1 } }
+              }
+          }
+          {
+            \tl_if_eq:VnT \everypar { \@nodocument }
+              {
+                \str_if_in:nnT { ,table,figure,, } { ,#1, }
+                  {
+                    \PassOptionsToPackage { #1position=#2 } { caption }
+                  }
+              }
+          }
+      }
+      {
+        \bool_if_exist:cF { g_@@_ #1 _caption_above_bool }
+          { \bool_new:c { g_@@_ #1 _caption_above_bool } }
+        \str_if_eq:nnTF { #2 } { t }
+          { \bool_set_true:c }
+          { \bool_set_false:c }
+          { g_@@_ #1 _caption_above_bool }
+        \cs_if_exist:NTF \captionsetup
+          {
+            \exp_last_unbraced:Ne \captionsetup
+              { \str_if_empty:nF {#1} {[#1]} }
+              { position=#2 }
+          }
+          {
+            \tl_if_eq:VnT \everypar { \@nodocument }
+              {
+                \str_if_in:nnT { ,table,figure,, } { ,#1, }
+                  {
+                    \PassOptionsToPackage { #1position=#2 } { caption }
+                  }
+              }
+          }
+      }
+  }
+%    \end{macrocode}
+% \end{macro}
+% \ExplSyntaxOff
+% Now, we can initialize not only the option for the default caption position
+%    \begin{macrocode}
+\tocbasic_define_caption_keys:n {}
+%    \end{macrocode}
+% but also for usual floats like \env{table} and \env{figure}. Note, that the
+% captions of \env{lstlisting} are not configured here. If you want, you can
+% add such configuration using:
+% \begin{verbatim}
+%   \tocbasic_define_caption_keys:n { lstlisting }
+% \end{verbatim}
+%    \begin{macrocode}
+\clist_map_inline:nn { table, figure }
+  {
+    \bool_if:nT
+      {
+        { \cs_if_exist_p:c { #1 } && \cs_if_exist_p:c { end#1 } }
+        ||
+        { \cs_if_exist_p:c { #1- } && \cs_if_exist_p:c { end#1- } }
+      }
+      {
+        \tocbasic_define_caption_keys:n { #1 }
+      }
+  }
+
+\ExplSyntaxOff
+\fi
+%</option>
+%    \end{macrocode}
+% \end{command}
+%
+% \ExplSyntaxOn
+% \begin{macro}{\@@_caption_patch_code:}
+%   \ExplSyntaxOff
+%   \changes{v3.46}{2025/06/13}{added}
+%   \changes{v3.48}{2025/08/29}{%
+%     \cs{cs\_set\_eq:NN} replaced by \cs{DeclareCommandCopy}}
+%   Now we can define the patch code. Note, that the caption patch is not
+%   automatically activated if the \pkg{caption} package is detected. And if
+%   you manually activate it, you will get a warning.
+%    \begin{macrocode}
+%<*body>
+\if@tocbasic@old@latex@found\else
+\ExplSyntaxOn
+\hook_gput_code:nnn { begindocument } { tocbasic }
+  {
+    \DeclareCommandCopy { \@@_saved_caption:w } { \caption }
+    \bool_if:NT \g_@@_patch_caption_bool
+      {
+        \@@_caption_patch_code:
+      }
+  }
+
+\hook_gset_rule:nnnn { begindocument } { tocbasic } { after } { caption }
+\hook_gset_rule:nnnn { begindocument } { tocbasic } { after } { caption3 }
+
+\cs_new:Npn \@@_caption_patch_code:
+  {
+    \DeclareCommandCopy { \caption } { \@@_caption:w }
+    \DeclareCommandCopy { \captionof } { \@@_caption_of:w }
+  }
+%    \end{macrocode}
+%   \changes{v3.49}{2025/11/05}{set \cs{caption@documentclass} if loaded
+%     before package \pkg{caption3}}
+%   And as long as the \pkg{caption3} package does not load special code for
+%   the standard classes, we fake here \cs{caption@documentclass}, to avoid
+%   loading of extra caption code, when package \pkg{tocbasic} is used.
+%    \begin{macrocode}
+\hook_gput_code:nnn { package / caption3 / before } { tocbasic }
+  {
+    \cs_set:Npn \caption@documentclass { standard }
+    \msg_info:nn { tocbasic } { caption-code-by-class-deactivated }
+  }
+\msg_new:nnnn { tocbasic } { caption-code-by-class-deactivated }
+  {
+    Loading~of~class-dependent~code~for~package~caption3\\
+    prevented~\msg_line_context:.
+  }
+  {
+    The~caption3~package~attempts~to~detect~classes~known~to~it~
+    using~a~number~of~heuristics~and,~if~necessary,~
+    reload~class-dependent~code.~
+    Unfortunately,~the~code~from~caption-koma.sto,~for~example,~
+    is~no~longer~compatible~with~the~KOMA-Script~package~tocbasic~
+    since~KOMA-Script~3.46.~
+    Therefore,~the~tocbasic~package~attempts~to~prevent~these~files~
+    from~being~loaded~by~pretending~to~caption3~that~a~standard~class~
+    is~being~used.~
+    Since~the~caption3~package,~as~part~of~the~caption~collection,~
+    is~no~longer~maintained,~and~since~the~KOMA-Script~author~himself~
+    is~trying~to~maintain~the~compatibility~of~the~caption~package~
+    with~KOMA-Script,~this~is~currently~the~best~known~method~
+    to~prevent~unnecessary~warnings~from~caption~or~caption3.
+  }
+%    \end{macrocode}
+% \end{macro}
+% \ExplSyntaxOn
+% \begin{command}{\tocbasic_if_caption_above_p:n,
+%                 \tocbasic_if_caption_above:nT,
+%                 \tocbasic_if_caption_above:nF,
+%                 \tocbasic_if_caption_above:nTF,
+%                 \tocbasic_if_caption_above_p:,
+%                 \tocbasic_if_caption_above:T,
+%                 \tocbasic_if_caption_above:F,
+%                 \tocbasic_if_caption_above:TF}
+% \ExplSyntaxOff
+%    \begin{macrocode}
+\prg_new_conditional:Nnn \tocbasic_if_caption_above:n { p, T, F, TF }
+  {
+    \bool_if:nTF
+      {
+        \cs_if_exist_use:cF { g_@@_ #1 _caption_above_bool }
+          {
+            \g_@@__caption_above_bool
+          }
+      }
+      {
+        \prg_return_true:
+      }
+      {
+        \prg_return_false:
+      }
+  }
+\prg_new_conditional:Npnn \tocbasic_if_caption_above: { p, T, F, TF }
+  {
+    \bool_if:nTF
+      {
+        \cs_if_exist_use:cF { g_@@_ \@captype _caption_above_bool }
+          {
+            \g_@@__caption_above_bool
+          }
+      }
+      {
+        \prg_return_true:
+      }
+      {
+        \prg_return_false:
+      }
+  }
+%    \end{macrocode}
+% \end{command}
+% \ExplSyntaxOn
+% \begin{macro}{\@@_caption_setup:,\@@_captionof_setup:n}
+%   \changes{v3.46}{2025/06/13}{added}
+%   \changes{v3.49}{2025/10/31}{renamed to remove double \texttt{tocbasic}}
+% \begin{macro}{\@@_caption_setup:nn}
+%   \changes{v3.47}{2025/08/25}{added}
+%   \changes{v3.49}{2025/10/31}{renamed to remove double \texttt{tocbasic}}
+%   \ExplSyntaxOff
+%   Does all the setup needed before being able to call
+%   \cs{@@\_saved\_caption:w} either for a given caption type or
+%   \cs{@captype}. This should be used local only!
+%    \begin{macrocode}
+\cs_new:Nn \@@_caption_setup:
+  {
+    \tocbasic_if_caption_above:TF
+      {
+        \cs_if_exist:NTF \captionsetup
+          { \captionsetup { position=top } }
+          { \@@_swap_skip: }
+      }
+      {
+        \cs_if_exist:NT \captionsetup
+          { \captionsetup { position=bottom } }
+      }
+  }
+\cs_new:Nn \@@_captionof_setup:n
+  {
+    \exp_args:Nne \hook_gput_next_code:nn { tocbasic / caption / after }
+      {
+        \cs_if_exist:NTF \@captype
+          { \exp_not:N \tl_set:Nn \exp_not:N \@captype { \@captype } }
+          { \exp_not:n { \cs_set_eq:NN \@captype \tex_undefined:D } }
+      }
+    \tocbasic_if_caption_above:nTF { #1 }
+      {
+        \cs_if_exist:NTF \captionsetup
+          { \captionsetup { type=#1, position=top } }
+          {
+            \tl_set:Ne \@captype { #1 }
+            \@@_swap_skip:
+          }
+      }
+      {
+        \cs_if_exist:NTF \captionsetup
+          { \captionsetup { type=#1, position=bottom } }
+          { \tl_set:Ne \@captype { #1 } }
+      }
+  }
+\cs_new:Nn \@@_captionof_setup:nn
+  {
+    \exp_args:Nne \hook_gput_next_code:nn { tocbasic / caption / after }
+      {
+        \cs_if_exist:NTF \@captype
+          { \exp_not:N \tl_set:Nn \exp_not:N \@captype { \@captype } }
+          { \exp_not:n { \cs_set_eq:NN \@captype \tex_undefined:D } }
+      }
+    \str_if_eq:eeTF { #2 } { top }
+      {
+        \cs_if_exist:NTF \captionsetup
+          { \captionsetup { type=#1, position=top } }
+          {
+            \tl_set:Ne \@captype { #1 }
+            \@@_swap_skip:
+          }
+      }
+      {
+        \cs_if_exist:NTF \captionsetup
+          { \captionsetup { type=#1, position=#2 } }
+          { \tl_set:Ne \@captype { #1 } }
+      }
+  }
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \ExplSyntaxOn
+% \begin{macro}{\@@_caption:w}
+%   \ExplSyntaxOff
+%   \changes{v3.46}{2025/06/13}{added}
+%   \changes{v3.47}{2025/08/25}{extra group eliminted}
+%   \changes{v3.49}{2025/10/31}{use optional argument only, if used}
+%   This is, what will be \cs{caption}, if \cs{caption} is patched.
+%    \begin{macrocode}
+\NewDocumentCommand \@@_caption:w { s o m }
+  {
+    \@@_caption_setup:
+    \exp_last_unbraced:Ne \@@_saved_caption:w
+      { \IfBooleanT{#1}* \IfValueT{#2} { \exp_not:n {[{#2}]} } }
+      {#3}
+    \hook_use:n { tocbasic / caption / after }
+  }
+%    \end{macrocode}
+% \end{macro}
+% \ExplSyntaxOff
+% \begin{command}{\captionabove,\captionbelow}
+%   \changes{v3.46}{2025/06/13}{new implementation moved to \pkg*{tocbasic}}
+%   \changes{v3.47}{2025/08/25}{extra group eliminted}
+%    \begin{macrocode}
+\NewDocumentCommand \captionabove { s O{#3} m }
+  {
+    \cs_if_exist:NTF \captionsetup
+      { \captionsetup { position=top } }
+      { \@@_swap_skip: }
+    \exp_last_unbraced:Ne \@@_saved_caption:w { \IfBooleanT{#1}* }
+      [{#2}] {#3}
+    \hook_use:n { tocbasic / caption / after }
+  }
+
+\NewDocumentCommand \captionbelow { s O{#3} m }
+  {
+    \cs_if_exist:NT \captionsetup
+      { \captionsetup { position=bottom } }
+    \exp_last_unbraced:Ne \@@_saved_caption:w { \IfBooleanT{#1}* }
+      [{#2}] {#3}
+    \hook_use:n { tocbasic / caption / after }
+  }
+%    \end{macrocode}
+% \end{command}
+% \ExplSyntaxOn
+% \begin{command}{\captionof,\@@_caption_of:w}
+%   \ExplSyntaxOff
+%   \changes{v3.46}{2025/06/13}{added}
+%   \changes{v3.47}{2025/08/25}{extra group eliminted}
+%   \changes{v3.48}{2025/08/29}{%
+%     \cs{cs\_set\_eq:NN} replaced by \cs{DeclareCommandCopy}}
+%   \changes{v3.49}{2025/10/31}{use optional argument only, if used}
+%   This is, what will be \cs{captionof}, if \cs{captionof} is patched or not
+%   defined.
+%    \begin{macrocode}
+\NewDocumentCommand \@@_caption_of:w { s m o m }
+  {
+    \@@_captionof_setup:n { #2 }
+    \exp_last_unbraced:Ne \@@_saved_caption:w
+      { \IfBooleanT{#1}* \IfValueT{#3} { \exp_not:n {[{#3}]} } }
+      {#4}
+    \hook_use:n { tocbasic / caption / after }
+  }
+
+\cs_if_exist:NF { \captionof }
+  { \DeclareCommandCopy { \captionof } { \@@_caption_of:w } }
+%    \end{macrocode}
+% \ExplSyntaxOn
+% \begin{macro}{\@@_swap_skips:}
+% \ExplSyntaxOff
+%   Helper to (locally) interchange the values of \cs{abovecaptionskip} and
+%   \cs{belowcaptionskip}. We also provide a socket (with older \LaTeX{}
+%   kernels a hook) to react on the swap.
+%    \begin{macrocode}
+\cs_if_exist:NTF \socket_new:nn
+  { \socket_new:nn { tocbasic / swapskip / after } { 0 } }
+  { \hook_new:n { tocbasic / swapskip / after } }
+\hook_new:n { tocbasic / caption / after }
+\cs_new:Nn \@@_swap_skip:
+  {
+    \skip_set_eq:NN \l_tmpa_skip \abovecaptionskip
+    \skip_set_eq:NN \abovecaptionskip \belowcaptionskip
+    \skip_set_eq:NN \belowcaptionskip \l_tmpa_skip
+    \hook_gput_next_code:nn { tocbasic / caption / after } {
+      \skip_set_eq:NN \l_tmpa_skip \abovecaptionskip
+      \skip_set_eq:NN \abovecaptionskip \belowcaptionskip
+      \skip_set_eq:NN \belowcaptionskip \l_tmpa_skip
+    }
+    \cs_if_exist_use:NF \socket_use:n \hook_use:n
+      { tocbasic / swapskip / after }
+  }
+%    \end{macrocode}
+% \end{macro}
+% \end{command}
+% \ExplSyntaxOff
+% \begin{command}{\captionaboveof,\captionbelowof}
+%   \changes{v3.46}{2025/06/13}{new implementation moved to \pkg*{tocbasic}}
+%   \changes{v3.47}{2025/08/25}{extra group eliminted}
+%    \begin{macrocode}
+\NewDocumentCommand \captionaboveof { s m O{#4} m }
+  {
+    \@@_captionof_setup:nn { #2 } { top }
+    \exp_last_unbraced:Ne \@@_saved_caption:w { \IfBooleanT{#1}* }
+      [{#3}] {#4}
+    \hook_use:n { tocbasic / caption / after }
+  }
+
+\NewDocumentCommand \captionbelowof { s m O{#4} m }
+  {
+    \@@_captionof_setup:nn { #2 } { bottom }
+    \exp_last_unbraced:Ne \@@_saved_caption:w { \IfBooleanT{#1}* }
+      [{#3}] {#4}
+    \hook_use:n { tocbasic / caption / after }
+  }
+\ExplSyntaxOff
+\fi
+%<@@=>
+%</body>
+%    \end{macrocode}
+% \end{command}
+% \ExplSyntaxOff
 %
 % \begin{macrocode}
 %</package>
@@ -2201,11 +2791,20 @@
 %
 % \subsection{Loading the package}
 % Used at \KOMAScript{} packages and classes to load the package.
+% \changes{v3.46}{2025/06/13}{\KOMAScript{} classes need to load
+%   \pkg*{tocbasic} with option \opt{enablepatch\quotechar=caption}}
 %    \begin{macrocode}
 %<*load>
-\RequirePackage{tocbasic}[%
+\RequirePackage[enablepatch=caption]{tocbasic}[%
 %!KOMAScriptVersion
 ]
+%    \end{macrocode}
+% And do an early initialization of additional keys.
+%    \begin{macrocode}
+\ExplSyntaxOn
+\tocbasic_define_caption_keys:n { table }
+\tocbasic_define_caption_keys:n { figure }
+\ExplSyntaxOff
 %</load>
 %    \end{macrocode}
 %

@@ -1,7 +1,7 @@
 % \iffalse^^A meta-comment
 % ======================================================================
 % scrlayer.dtx
-% Copyright (c) Markus Kohm, 2012-2024
+% Copyright (c) Markus Kohm, 2012-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrlayer.dtx 4118 2024-09-02 12:05:30Z kohm $
+%%% From File: $Id: scrlayer.dtx 4145 2025-05-13 16:54:14Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -28,9 +28,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2024-09-02 14:05:30 +0200 (Mon, 02 Sep 2024) $
+  \filedate$Date: 2025-05-13 18:54:14 +0200 (Tue, 13 May 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4118 $
+  \filerevision$Revision: 4145 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrlayer.dtx}%
@@ -40,7 +40,7 @@
 \reserved@a
 %</dtx>
 %<*identify|doc>
-%<package>\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+%<package>\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 %<package>\ProvidesPackage{scrlayer}[%
 %<doc>\ProvidesFile{scrlayer.tex}[%
 %!KOMAScriptVersion
@@ -418,31 +418,39 @@
 % \end{command}^^A \MakeMarkcase
 % \end{option}^^A markcase
 %
-% \begin{command}{\rightfirstmark,\rightbotmark,\righttopmark}
-% \changes{v3.16}{2015/01/14}{added}
+% \begin{command}{\rightfirstmark,\rightbotmark,\righttopmark,
+%                 \leftfirstmark,\leftbotmark,\lefttopmark}
+%   \changes{v3.16}{2015/01/14}{added}
+%   \changes{3.44}{2025/05/13}{\LaTeX{} 2025-06-01 uses only the new mark
+%     mechanism}
 % \cs{rightfirstmark} is simply the same like the \cs{rightmark} of the
 % \LaTeX{} kernel. \cs{rightbotmark} uses \cs{botmark} instead of
 % \cs{firstmark} and \cs{righttopmark} uses \cs{topmark}.
-%    \begin{macrocode}
-%<*package&body>
-\newcommand*{\rightfirstmark}{\expandafter\@rightmark\firstmark\@empty\@empty}
-\newcommand*{\rightbotmark}{\expandafter\@rightmark\botmark\@empty\@empty}
-\newcommand*{\righttopmark}{\expandafter\@rightmark\topmark\@empty\@empty}
-%    \end{macrocode}
-% \end{command}^^A \rightfirstmark …
-%
-% \begin{command}{\leftfirstmark,\leftbotmark,\lefttopmark}
-% \changes{v3.16}{2015/01/14}{added}
 % \cs{leftbotmark} is simply the same like the \cs{leftmark} of the
 % \LaTeX{} kernel. \cs{leftfirstmark} uses \cs{firstmark} instead of
 % \cs{botmark} and \cs{lefttopmark} uses \cs{topmark}.
 %    \begin{macrocode}
-\newcommand*{\leftfirstmark}{\expandafter\@leftmark\firstmark\@empty\@empty}
-\newcommand*{\leftbotmark}{\expandafter\@leftmark\botmark\@empty\@empty}
-\newcommand*{\lefttopmark}{\expandafter\@leftmark\topmark\@empty\@empty}
+%<*package&body>
+\ExplSyntaxOn
+\IfLTXAtLeastTF{2025-06-01}{
+  \cs_new:Npn \rightfirstmark {\mark_use_first:nn{page}{2e-right}}
+  \cs_new:Npn \rightbotmark   {\mark_use_last:nn{page}{2e-right}}
+  \cs_new:Npn \righttopmark   {\mark_use_top:nn{page}{2e-right}}
+  \cs_new:Npn \leftfirstmark  {\mark_use_first:nn{page}{2e-left}}
+  \cs_new:Npn \leftbotmark    {\mark_use_last:nn{page}{2e-left}}
+  \cs_new:Npn \lefttopmark    {\mark_use_top:nn{page}{2e-left}}
+}{
+  \newcommand*{\rightfirstmark}{\expandafter\@rightmark\firstmark\@empty\@empty}
+  \newcommand*{\rightbotmark}{\expandafter\@rightmark\botmark\@empty\@empty}
+  \newcommand*{\righttopmark}{\expandafter\@rightmark\topmark\@empty\@empty}
+  \newcommand*{\leftfirstmark}{\expandafter\@leftmark\firstmark\@empty\@empty}
+  \newcommand*{\leftbotmark}{\expandafter\@leftmark\botmark\@empty\@empty}
+  \newcommand*{\lefttopmark}{\expandafter\@leftmark\topmark\@empty\@empty}
+}
+\ExplSyntaxOff
 %</package&body>
 %    \end{macrocode}
-% \end{command}^^A \leftfirstmark …
+% \end{command}^^A \rightfirstmark …
 %
 % \begin{command}{\headmark}
 % Inside a page style, this macro is either \cs{rightmark} or
@@ -553,47 +561,36 @@
 % \changes{v3.27a}{2019/10/17}{robust and long definition}
 % \changes{v3.37}{2022/06/19}{respect extended mark mechanism of \LaTeX{}
 %   2022/06/01}
+% \changes{v3.44}{2025/05/25}{\LaTeX{} 2025-06-01 does not uses the new
+%   mark mechanism also for legacy marks}
+% \changes{v3.44}{2025/05/13}{code for \LaTeX{} before 2022-06-01 removed}
 % \begin{macro}{\@markleft}
 % \LaTeX{} itself provides \cs{markboth} and \cs{markright} but not
 % \cs{markleft}. So we add it.
 %    \begin{macrocode}
 %<*package&body>
-\csname ExplSyntaxOn\endcsname
-\IfLTXAtLeastTF{2022/06/01}{%
-  \@ifundefined{markleft}{%
-    \DeclareRobustCommand{\markleft}[1]{%
+\ExplSyntaxOn
+\IfLTXAtLeastTF{2025-06-01}{
+  \ProvideDocumentCommand{\markleft}{m}{\mark_insert:nn{2e-left}{#1}}
+}{
+  \@ifundefined{markleft}{
+    \DeclareRobustCommand{\markleft}[1]{
       \begingroup
         \let\label\relax \let\index\relax \let\glossary\relax
-        \expandafter\@markleft\@themark {#1}%
-        \@temptokena \expandafter{\@themark}%
-        \mark_insert:nn{2e-left}{#1}%
-        \mark{\the\@temptokena}%
+        \expandafter\@markleft\@themark {#1}
+        \@temptokena \expandafter{\@themark}
+        \mark_insert:nn{2e-left}{#1}
+        \mark{\the\@temptokena}
       \endgroup
       \if@nobreak\ifvmode\nobreak\fi\fi
     }%
-    \providecommand{\@markleft}[3]{%
-      \@temptokena {#2}%
-      \unrestored@protected@xdef\@themark{{#3}{\the\@temptokena}}%
-    }%
-  }{}%
-}{%
-  \@ifundefined{markleft}{%
-    \DeclareRobustCommand{\markleft}[1]{%
-      \begingroup
-        \let\label\relax \let\index\relax \let\glossary\relax
-        \expandafter\@markleft\@themark {#1}%
-        \@temptokena \expandafter{\@themark}%
-        \mark{\the\@temptokena}%
-      \endgroup
-      \if@nobreak\ifvmode\nobreak\fi\fi
-    }%
-    \providecommand{\@markleft}[3]{%
-      \@temptokena {#2}%
-      \unrestored@protected@xdef\@themark{{#3}{\the\@temptokena}}%
-    }%
-  }{}%
+    \providecommand{\@markleft}[3]{
+      \@temptokena {#2}
+      \unrestored@protected@xdef\@themark{{#3}{\the\@temptokena}}
+    }
+  }{}
 }
-\csname ExplSyntaxOff\endcsname
+\ExplSyntaxOff
 %</package&body>
 %    \end{macrocode}
 % \end{macro}^^A \@markleft
