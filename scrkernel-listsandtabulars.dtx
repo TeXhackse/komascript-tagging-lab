@@ -276,6 +276,7 @@
 % Two environments for left and right indented text. The difference of both
 % is: \env{quotation} works with paragraph indent (first line is indented),
 % \env{quote} works with paragraph distance.
+% tagging: implementation changed within Standard LaTeX
 %    \begin{macrocode}
 \newenvironment{quotation}{%
   \list{}{\listparindent 1em%
@@ -326,13 +327,59 @@
 % \changes{v3.22}{2016/10/21}{unchanged \len{topsep} and \len{partopsep}}
 %    \begin{macrocode}
 %</class>
-\newenvironment{addmargin}{%
+%</body>
+%<*body|tagging-lab>
+%<*tagging-lab>
+%% Adapted code of the quote environment, taken from
+%% File: latex-lab-block.dtx (C) Copyright 2021-2025 LaTeX Project
+%% 2025-07-26, 0.9k
+%%
+\DeclareInstance{blockenv}{addmargin}{display}
+{
+	  name  = addmargin,
+	  tag-name  = addmargin,
+	  tag-attr-class      = ,
+	  tagging-recipe = standard,
+	  inner-level-counter  = ,
+	  increment-level = true,
+	  setup-code     =    ,
+	  block-instance = addmarginblock ,
+	  inner-instance =  ,
+}
+\DeclareInstance{block}{addmarginblock-1}{display}
+	  {
+	    begin-vspace= \c_zero_dim ,
+	      begin-extra-vspace= \c_zero_dim ,
+	      para-vspace= \parskip ,
+	      end-vspace= \KeyValue{begin-vspace} , % conflict with name below
+	      end-extra-vspace= \KeyValue{begin-extra-vspace} ,
+	      item-vspace= \parskip ,
+	      begin-penalty= \UseName{@beginparpenalty} ,
+	      end-penalty= \UseName{@endparpenalty} ,
+	      left-margin= \leftmargin ,
+	      right-margin= \rightmargin ,
+	      para-indent= \c_zero_dim ,
+	  }
+\DeclareInstanceCopy{block}{addmarginblock-2}{addmarginblock-1}
+\DeclareInstanceCopy{block}{addmarginblock-3}{addmarginblock-1}
+\DeclareInstanceCopy{block}{addmarginblock-4}{addmarginblock-1}
+%</tagging-lab>
+\newenvironment{
+%<tagging-lab>@@
+	addmargin
+}{%
   \@tempswafalse\@addmargin
 }{%
+%<*!tagging-lab>
   \advance\@listdepth\@ne
   \endlist
+%</!tagging-lab>
+%<tagging-lab>	\endblockenv
 }
-\newenvironment{addmargin*}{%
+\newenvironment{
+%<tagging-lab>@@
+	addmargin*
+}{%
   \@tempswafalse
   \if@twoside\is@thispageodd[]\ifthispagewasodd\else\@tempswatrue\fi
     \edef\scr@addmargin@startpage{\csname tpo@\scr@tpo\endcsname}\fi
@@ -354,11 +401,17 @@
       }%
     \fi
   \fi
+%<*!tagging-lab>
   \advance\@listdepth\@ne
   \endlist
+%</!tagging-lab>
+%<tagging-lab>	\endblockenv
 }
-\newcommand*{\@addmargin}[2][\@tempa]{%
-  \list{}{%
+\newcommand*{
+%<tagging-lab>\@@addmargin
+%<!tagging-lab>\@addmargin
+}[2][\@tempa]{%
+%<!tagging-lab>  \list{}{%
     \if@tempswa
       \def\@tempa{\leftmargin}%
       \setlength{\leftmargin}{#2}%
@@ -368,6 +421,7 @@
       \setlength{\rightmargin}{#2}%
       \setlength{\leftmargin}{#1}%
     \fi
+%<*!tagging-lab>
     \setlength{\listparindent}{\parindent}%
     \setlength{\itemsep}{\parskip}%
     \setlength{\itemindent}{\z@}%
@@ -385,7 +439,11 @@
     \setlength{\partopsep}{\@tempskipb}%
 %<!v4>  \fi
   \item\is@thispageodd@setlabel\nobreak\ignorespaces
+%</!tagging-lab>
+%<taggig-lab>  \UseInstance{blockenv}{addmargin} {}
 }
+%</body|tagging-lab>
+%<*body>
 %<*class>
 %    \end{macrocode}
 % \end{macro}
