@@ -420,7 +420,7 @@ Completed box being shipped out [3]
 ...\pdflinkstate 0
 ..\glue 20.40001
 ..\glue(\lineskip) 0.0
-..\vbox(595.80026+0.0)x418.25555, glue set 505.06012fil, direction TLT
+..\vbox(595.80026+0.0)x418.25555, glue set 501.03656fil, direction TLT
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline {1}chapter}{\thepage }{chapter.1}\protected@file@percent }}
 ...\marks1{\__mark_value:nn {1}{1\hskip .5em\relax chapter}}
 ...\marks2{\__mark_value:nn {2}{}}
@@ -470,7 +470,6 @@ Completed box being shipped out [3]
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 23.46008 plus 1.56407 minus 2.6112
-...\glue -4.02356
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ..\pdfliteral page <lua data reference ...>
@@ -650,7 +649,7 @@ Completed box being shipped out [5]
 .....\TU/lmss/bx/n/14.4 1
 .....\TU/lmss/bx/n/14.4 .
 .....\TU/lmss/bx/n/14.4 1
-.....\TU/lmss/bx/n/14.4  
+.....\TU/lmss/bx/n/14.4
 .....\glue 1.91519
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
@@ -700,7 +699,7 @@ Completed box being shipped out [5]
 .....\TU/lmss/bx/n/12 1
 .....\TU/lmss/bx/n/12 .
 .....\TU/lmss/bx/n/12 1
-.....\TU/lmss/bx/n/12  
+.....\TU/lmss/bx/n/12
 .....\glue 1.596
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
@@ -814,9 +813,8 @@ Completed box being shipped out [5]
 .\hbox(0.0+0.0)x0.0, direction TLT
 .\kern655.63496
 .\pdfliteral page <lua data reference ...>
-(scrbook-test.aux)
+<<latex-list-css.html>><<latex-align-css.html>> (scrbook-test.aux)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-<<latex-list-css.html>><<latex-align-css.html>>
 Package tagpdf Info: Finalizing the tagging structure:
 (tagpdf)             Writing out ~38 structure objects
 (tagpdf)             with ~45 'MC' leaf nodes.

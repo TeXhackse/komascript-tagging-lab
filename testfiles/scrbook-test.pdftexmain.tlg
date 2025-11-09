@@ -374,9 +374,9 @@ Completed box being shipped out [1]
 ...\marks4{e-,22,21,}
 ...\marks4{e+,22,21,}
 ...\penalty 20007
-...\glue 0.0 plus 1.0fil
 ...\kern 0.0
 ...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ..\pdfrunninglinkoff
 ..\pdfliteral page{/Artifact BMC}
@@ -430,9 +430,9 @@ Completed box being shipped out [2]
 ...\write-{}
 ...\glue(\topskip) 11.0
 ...\hbox(0.0+0.0)x0.0
-...\glue 0.0 plus 1.0fil
 ...\kern 0.0
 ...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ..\pdfrunninglinkoff
 ..\pdfliteral page{/Artifact BMC}
@@ -500,12 +500,11 @@ Completed box being shipped out [3]
 ...\pdfrunninglinkon
 ..\glue 20.40001
 ..\glue(\lineskip) 0.0
-..\vbox(595.80026+0.0)x418.25555, glue set 505.06013fil
+..\vbox(595.80026+0.0)x418.25555, glue set 501.07008fil
 ...\hbox(0.0+0.0)x0.0
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline {1}chapter}{\thepage }{chapter.1}\protected@file@percent }}
-...\marks1{\__mark_id:n {1}1\hskip .5em\relax chapter}
-...\marks2{\__mark_id:n {2}}
-...\mark{{1\hskip .5em\relax chapter}{}}
+...\marks1{\__mark_value:nn {1}{1\hskip .5em\relax chapter}}
+...\marks2{\__mark_value:nn {2}{}}
 ...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
 ...\write1{\@writefile{lot}{\protect \addvspace {10\p@ }}}
 ...\glue(\topskip) 11.0
@@ -524,7 +523,7 @@ Completed box being shipped out [3]
 ...\glue(\baselineskip) 10.23811
 ...\hbox(14.76189+3.99005)x418.25555, glue set 318.50708fil
 ....\write1{\new@label@record{mcid-28}{{tagabspage}{\__property_code_tagabspage: }{tagmcabs}{28}{tagmcid}{\__property_code_tagmcid: }}}
-....\pdfliteral shipout page{/Lbl <</MCID \flag_height:n {__tag/mcid}\flag_raise:n {__tag/mcid} >> BDC}
+....\pdfliteral shipout page{/section-number <</MCID \flag_height:n {__tag/mcid}\flag_raise:n {__tag/mcid} >> BDC}
 ....\hbox(13.51007+0.0)x24.26248
 .....\hbox(13.51007+0.0)x24.26248
 ......\T1/cmss/bx/n/20.74 1
@@ -544,8 +543,8 @@ Completed box being shipped out [3]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\marks4{b-,28,26,Lbl,,,}
-...\marks4{b+,28,26,Lbl,,,}
+...\marks4{b-,28,26,section-number,,,}
+...\marks4{b+,28,26,section-number,,,}
 ...\marks4{e-,28,26,}
 ...\marks4{e+,28,26,}
 ...\marks4{b-,29,25,chapter,,,}
@@ -555,10 +554,9 @@ Completed box being shipped out [3]
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 23.46008 plus 1.56407 minus 2.6112
-...\glue -3.99005
-...\glue 0.0 plus 1.0fil
 ...\kern 0.0
 ...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ..\pdfrunninglinkoff
 ..\pdfliteral page{/Artifact BMC}
@@ -611,9 +609,9 @@ Completed box being shipped out [4]
 ...\write-{}
 ...\glue(\topskip) 11.0
 ...\hbox(0.0+0.0)x0.0
-...\glue 0.0 plus 1.0fil
 ...\kern 0.0
 ...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ..\pdfrunninglinkoff
 ..\pdfliteral page{/Artifact BMC}
@@ -692,9 +690,8 @@ Completed box being shipped out [5]
 ..\vbox(595.80026+0.0)x418.25555, glue set 420.87904fil
 ...\hbox(0.0+0.0)x0.0
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \nonumberline chapter}{\thepage }{target*.2}\protected@file@percent }}
-...\marks1{\__mark_id:n {3}chapter}
-...\marks2{\__mark_id:n {4}}
-...\mark{{chapter}{}}
+...\marks1{\__mark_value:nn {3}{chapter}}
+...\marks2{\__mark_value:nn {4}{}}
 ...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
 ...\write1{\@writefile{lot}{\protect \addvspace {10\p@ }}}
 ...\glue(\topskip) 11.0
@@ -741,7 +738,7 @@ Completed box being shipped out [5]
 ...\glue(\baselineskip) 3.80417
 ...\hbox(10.20578+0.0)x418.25555, glue set 340.94489fil
 ....\write1{\new@label@record{mcid-35}{{tagabspage}{\__property_code_tagabspage: }{tagmcabs}{35}{tagmcid}{\__property_code_tagmcid: }}}
-....\pdfliteral shipout page{/Lbl <</MCID \flag_height:n {__tag/mcid}\flag_raise:n {__tag/mcid} >> BDC}
+....\pdfliteral shipout page{/section-number <</MCID \flag_height:n {__tag/mcid}\flag_raise:n {__tag/mcid} >> BDC}
 ....\hbox(9.87387+0.0)x29.40816
 .....\glue 0.0
 .....\hbox(0.0+0.0)x0.0
@@ -766,17 +763,17 @@ Completed box being shipped out [5]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\marks4{b-,35,31,Lbl,,,}
-...\marks4{b+,35,31,Lbl,,,}
+...\marks4{b-,35,31,section-number,,,}
+...\marks4{b+,35,31,section-number,,,}
 ...\marks4{e-,35,31,}
 ...\marks4{e+,35,31,}
 ...\marks4{b-,36,30,section,,,}
 ...\marks4{b+,36,30,section,,,}
 ...\marks4{e-,36,30,}
 ...\marks4{e+,36,30,}
-...\marks2{\__mark_id:n {5}1.1\hskip .5em\relax section}
-...\marks3{\__mark_id:n {6}1.1\hskip .5em\relax section}
-...\mark{{chapter}{1.1\hskip .5em\relax section}}
+...\marks2{\__mark_value:nn {5}{1.1\hskip .5em\relax section}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {6}{1.1\hskip .5em\relax section}}
 ...\penalty 10000
 ...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline {1.1}section}{\thepage }{target*.4}\protected@file@percent }}
 ...\penalty 10000
@@ -789,7 +786,7 @@ Completed box being shipped out [5]
 ...\glue(\baselineskip) 5.25214
 ...\hbox(8.74786+0.0)x418.25555, glue set 325.64345fil
 ....\write1{\new@label@record{mcid-37}{{tagabspage}{\__property_code_tagabspage: }{tagmcabs}{37}{tagmcid}{\__property_code_tagmcid: }}}
-....\pdfliteral shipout page{/Lbl <</MCID \flag_height:n {__tag/mcid}\flag_raise:n {__tag/mcid} >> BDC}
+....\pdfliteral shipout page{/section-number <</MCID \flag_height:n {__tag/mcid}\flag_raise:n {__tag/mcid} >> BDC}
 ....\hbox(7.9286+0.0)x34.49158
 .....\glue 0.0
 .....\hbox(0.0+0.0)x0.0
@@ -819,8 +816,8 @@ Completed box being shipped out [5]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\marks4{b-,37,34,Lbl,,,}
-...\marks4{b+,37,34,Lbl,,,}
+...\marks4{b-,37,34,section-number,,,}
+...\marks4{b+,37,34,section-number,,,}
 ...\marks4{e-,37,34,}
 ...\marks4{e+,37,34,}
 ...\marks4{b-,38,33,subsection,,,}
@@ -893,10 +890,10 @@ Completed box being shipped out [5]
 ...\marks4{b+,40,38,text,,,}
 ...\marks4{e-,40,38,}
 ...\marks4{e+,40,38,}
+...\kern -2.12863
+...\hbox(0.0+2.12863)x0.0
 ...\glue -2.12863
 ...\glue 0.0 plus 1.0fil
-...\kern 0.0
-...\hbox(0.0+0.0)x0.0
 ...\glue 0.0
 ..\pdfrunninglinkoff
 ..\pdfliteral page{/Artifact BMC}
@@ -913,14 +910,14 @@ Completed box being shipped out [5]
 .\kern -655.63496
 .\hbox(0.0+0.0)x0.0
 .\kern 655.63496
-(scrbook-test.aux)
+<<latex-list-css.html>><<latex-align-css.html>> (scrbook-test.aux)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-<<latex-list-css.html>><<latex-align-css.html>>
 Package tagpdf Info: Finalizing the tagging structure:
 (tagpdf)             Writing out ~38 structure objects
 (tagpdf)             with ~42 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
+Package tagpdf Warning: something is wrong with the mcid--rerun
 Package tagpdf Info: writing IDTree
 Package tagpdf Info: writing RoleMap
 Package tagpdf Info: writing ClassMap
