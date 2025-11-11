@@ -21,6 +21,9 @@
 %%% From File: $Id: scrkernel-listsandtabulars.dtx 4138 2025-02-10 13:55:51Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
+%<*tagging-lab>
+%<@@=scrlab>
+%</tagging-lab>
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
@@ -334,6 +337,14 @@
 %% File: latex-lab-block.dtx (C) Copyright 2021-2025 LaTeX Project
 %% 2025-07-26, 0.9k
 %%
+%<*patch-addmargin>
+%<package>\ProvidesExplPackage{patch-addmargin-scr-tagging-lab.sty}{2025-11-05}{01}{Patch to adjust addmargin compatibility for use with LaTeX formats > 2025-11-01}
+%<!package>% Patch to adjust addmargin compatibility for use with LaTeX formats > 2025-11-01. This is part of the KOMA-Script tagging lab
+%<expl>\ExplSyntaxOn
+\IfFormatAtLeastT{2025-11-01}{
+	\IfInstanceExistsT{blockenv}{quote}{
+		\IfInstanceExistsF{blockenv}{addmargin}{
+%</patch-addmargin>
 \DeclareInstance{blockenv}{addmargin}{display}
 {
 	  name  = addmargin,
@@ -408,7 +419,7 @@
 %<tagging-lab>	\endblockenv
 }
 \newcommand*{
-%<tagging-lab>\@@addmargin
+%<tagging-lab>\@@@addmargin
 %<!tagging-lab>\@addmargin
 }[2][\@tempa]{%
 %<!tagging-lab>  \list{}{%
@@ -443,6 +454,17 @@
 %<taggig-lab>  \UseInstance{blockenv}{addmargin} {}
 }
 %</body|tagging-lab>
+%<*patch-addmargin>
+\hook_gput_code:nnn {begindocument/end} {scrlab-patch-addmargin} {
+	\cs_set_eq:NN \@addmargin \@@@addmargin
+	\cs_set_eq:cc {addmargin}  {@@addmargin}
+	\cs_set_eq:cc {endaddmargin}  {end@@addmargin}
+	\cs_set_eq:cc {addmargin*}  {@@addmargin*}
+	\cs_set_eq:cc {endaddmargin*}  {end@@addmargin*}
+}
+}}}
+%<expl>\ExplSyntaxOff
+%</patch-addmargin>
 %<*body>
 %<*class>
 %    \end{macrocode}
