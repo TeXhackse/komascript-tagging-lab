@@ -362,13 +362,13 @@
 	    begin-vspace= \c_zero_dim ,
 	      begin-extra-vspace= \c_zero_dim ,
 	      para-vspace= \parskip ,
-	      end-vspace= \KeyValue{begin-vspace} , % conflict with name below
-	      end-extra-vspace= \KeyValue{begin-extra-vspace} ,
+	      end-vspace= \c_zero_dim , % conflict with name below
+	      end-extra-vspace= \c_zero_dim,
 	      item-vspace= \parskip ,
 	      begin-penalty= \UseName{@beginparpenalty} ,
 	      end-penalty= \UseName{@endparpenalty} ,
-	      left-margin= \leftmargin ,
-	      right-margin= \rightmargin ,
+	      left-margin= \KeyValue{left-margin} ,
+	      right-margin= \KeyValue{right-margin} ,
 	      para-indent= \c_zero_dim ,
 	  }
 \DeclareInstanceCopy{block}{addmarginblock-2}{addmarginblock-1}
@@ -422,15 +422,32 @@
 %<tagging-lab>\@@@addmargin
 %<!tagging-lab>\@addmargin
 }[2][\@tempa]{%
+
 %<!tagging-lab>  \list{}{%
     \if@tempswa
       \def\@tempa{\leftmargin}%
+%<*!tagging-lab>
       \setlength{\leftmargin}{#2}%
       \setlength{\rightmargin}{#1}%
+%</!tagging-lab>
+%<*tagging-lab>
+			\UseInstance{blockenv}{addmargin} {
+				left-margin=#2,
+				right-margin=#1
+			}
+%</tagging-lab>
     \else
       \def\@tempa{\rightmargin}%
+%<*!tagging-lab>
       \setlength{\rightmargin}{#2}%
       \setlength{\leftmargin}{#1}%
+%</!tagging-lab>
+%<*tagging-lab>
+			\UseInstance{blockenv}{addmargin} {
+				left-margin=#1,
+				right-margin=#2
+			}%
+%</tagging-lab>
     \fi
 %<*!tagging-lab>
     \setlength{\listparindent}{\parindent}%
@@ -451,7 +468,6 @@
 %<!v4>  \fi
   \item\is@thispageodd@setlabel\nobreak\ignorespaces
 %</!tagging-lab>
-%<taggig-lab>  \UseInstance{blockenv}{addmargin} {}
 }
 %</body|tagging-lab>
 %<*patch-addmargin>
