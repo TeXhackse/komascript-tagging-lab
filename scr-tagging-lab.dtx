@@ -47,22 +47,15 @@ testphase]
 	\cs_set_eq:NN \scr@numberline \_@@_scr@numberline
 }
 %    \end{macrocode}
-% Insted of redefining \cs{scr@startsection} it's possible to use hooks.
-% The public interface |sec-start| is enforcing a |Sect| tag.
-% As the formal structure in my opinion differs I decided to use the internals to use the Part-Tag instead.
-% The mechanism inside the latex-lab is already aware just the public interface is not (yet).
+% Instead of redefining \cs{scr@startsection} it's possible to use hooks.
+% The following command closes a previous Sect structure and opens a new one.
+% The name/role of the Sect structure can be adapted by changing the symbolic name
+% for the relevant level. 
 %    \begin{macrocode}
-\cs_new:Nn \_@@_sec_start_aux:n {
-	\tl_if_eq:nnTF {#1} {part} {
-		\bool_if:NT\l__tag_sec_Sect_bool
-			{
-				\__tag_sec_end:n   {-1}
-				\__tag_sec_begin:nn{-1}{tag=Part}
-			}
-		\tl_set:Nn\l__tag_para_tag_tl{part}
-	} {
-		\tag_tool:n {sec-start=#1}
-	}
+\cs_new:Nn \@@_sec_start_aux:n {
+  \UseTaggingSocket{sec/end}{\int_eval:n{\startsection@secnumdepth}}
+  \UseTaggingSocket{sec/begin}
+   {{\int_eval:n{\startsection@secnumdepth}}{tag=\UseStructureName{sec/\int_eval:n{\startsection@secnumdepth}}}}
 }
 %    \end{macrocode}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
@@ -89,11 +82,11 @@ testphase]
 
 \hook_gput_code:nnn {cmd/@endpart/after}{scr-tagging-lab}{
 	\ResumeTagging{endpart}
-	\tag_tool:n {restore-para}
+	\UseTaggingSocket{para/restore}
 }
 
 \hook_gput_code:nnn {cmd/scr@@@@startchapter/after}{scr-tagging-lab}{
-	\tag_tool:n {restore-para}
+	\UseTaggingSocket{para/restore}
 }
 
 \cs_new:Nn \_@@_patch_sectioning: {
@@ -106,7 +99,8 @@ testphase]
 	\let\@sect\scrlab@sect
 	\let\@xsect\scrlab@xsect
 
-	\AddtoDoHook{heading/begingroup}{\tagtool{para-flattened=true}\use_none:n}
+	\AddtoDoHook{heading/begingroup}
+      {\UseTaggingSocket{sec/title/init}{\int_eval:n{\startsection@secnumdepth}}\use_none:n}
 %    \end{macrocode}
 % probably it's a good idea to define a hook with arguments there instead of this workaround
 %    \begin{macrocode}
@@ -124,8 +118,8 @@ testphase]
 %	\AddtoDoHook{heading/endgroup/part}{
 %	   \tag_tool:n {sec-stop-part}
 %	}
-	\AddtoDoHook{heading/branch/star}{\_@@_sec_start_aux:n}
-	\AddtoDoHook{heading/branch/nostar}{\_@@_sec_start_aux:n}
+	\AddtoDoHook{heading/branch/star}{\@@_sec_start_aux:n}
+	\AddtoDoHook{heading/branch/nostar}{\@@_sec_start_aux:n}
 }
 
 \cs_new:Nn \_@@_patch_maketitle: {
