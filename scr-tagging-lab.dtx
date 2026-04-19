@@ -7,7 +7,7 @@
 \EnableCrossrefs
 \CodelineIndex
 \begin{document}
-  \DocInput{scr-tagging-lab.dtx}
+\DocInput{scr-tagging-lab.dtx}
 \end{document}
 %</driver>
 %
@@ -16,8 +16,8 @@
 %    \begin{macrocode}
 %<@@=scrlab>
 %<*testphase>
-\ProvidesFile{KOMA-fixes-latex-lab-testphase.ltx}[2024-09-14 v0.1 KOMA-fixes 
-testphase]
+\ProvidesFile{KOMA-fixes-latex-lab-testphase.ltx}[2024-09-14 v0.1 KOMA-fixes
+    testphase]
 \RequirePackage{scr-tagging-lab}
 %</testphase>
 %<*package|koma>
@@ -41,29 +41,29 @@ testphase]
 % Move the redefinitions after the tocbasic package
 %    \begin{macrocode}
 \hook_gput_code:nnn {package/tocbasic/after}{scr-tagging-lab}{
-	\cs_set_eq:cN {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
-	\cs_set_eq:cN {\string\usetocbasicnumberline} \_@@_usetocbasicnumberline
-	\cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
-	\cs_set_eq:NN \scr@numberline \_@@_scr@numberline
+  \cs_set_eq:cN {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
+  \cs_set_eq:cN {\string\usetocbasicnumberline} \_@@_usetocbasicnumberline
+  \cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
+  \cs_set_eq:NN \scr@numberline \_@@_scr@numberline
 }
 %    \end{macrocode}
 % Instead of redefining \cs{scr@startsection} it's possible to use hooks.
 % The following command closes a previous Sect structure and opens a new one.
 % The name/role of the Sect structure can be adapted by changing the symbolic name
-% for the relevant level. 
+% for the relevant level.
 %    \begin{macrocode}
 \newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
-%%\cs_new:Nn \@@_sec_start_aux:n {
-%%  \UseTaggingSocket{sec/end}{\NumDepth{#1}}
-%%  \UseTaggingSocket{sec/begin}
-%%   {{\NumDepth{#1}}{tag=\UseStructureName{sec/\NumDepth{#1}}}}
-%%}
+\cs_new:Nn \@@_sec_start_aux:n {
+  \UseTaggingSocket{sec/end}{\NumDepth{#1}}
+  \UseTaggingSocket{sec/begin}
+  {{\NumDepth{#1}}{tag=\UseStructureName{sec/\NumDepth{#1}}}}
+}
 \cs_new:Nn \@@_sec_init_aux:n {
-      \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
+  \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
 }
 %    \end{macrocode}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
-% This change has to be adjusted to match the kernel changes of the testphase.<r
+% This change has to be adjusted to match the kernel changes of the testphase.
 % The Following code has been taken from scrkernel-sections.dtx by Markus Kohm.
 % Changes have been marked
 %    \begin{macrocode}
@@ -74,116 +74,114 @@ testphase]
 %    \begin{macrocode}
 %<*package|heading-hooks>
 \hook_gput_code:nnn {cmd/partformat/before}{scr-tagging-lab} {
- \SuspendTagging{partformat}%
+  \SuspendTagging{partformat}%
 }
 \hook_gput_code:nnn {cmd/partformat/after}{scr-tagging-lab}{
- \ResumeTagging{partformat}%
+  \ResumeTagging{partformat}%
 }
 
 \hook_gput_code:nnn {cmd/@endpart/before} {scr-tagging-lab}{
-	\SuspendTagging{endpart}
+  \SuspendTagging{endpart}
 }
 
 \hook_gput_code:nnn {cmd/@endpart/after}{scr-tagging-lab}{
-	\ResumeTagging{endpart}
-	\UseTaggingSocket{para/restore}
+  \ResumeTagging{endpart}
+  \UseTaggingSocket{para/restore}
 }
 
-%%\hook_gput_code:nnn {cmd/scr@@@@startchapter/after}{scr-tagging-lab}{
-	%\UseTaggingSocket{para/restore}
-%%}
-
+%% \hook_gput_code:nnn {cmd/scr@@@@startchapter/after}{scr-tagging-lab}{
+% \UseTaggingSocket{para/restore}
+%% }
 
 \cs_new:Nn \_@@_patch_sectioning: {
-	\cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
-	\cs_set_eq:NN \chapterlinesformat \scrlab@chapterlinesformat
-	\cs_set_eq:NN \chapterformat \scrlab@chapterformat
-	\cs_set_eq:NN \chapterlineswithprefixformat \scrlab@chapterlineswithprefixformat
-	\cs_set_eq:NN \partlineswithprefixformat \scrlab@partlineswithprefixformat
-	\cs_set_eq:NN \@seccntformat \scrlab@seccntformat
-	\let\@sect\scrlab@sect
-	\let\@xsect\scrlab@xsect
+  \cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
+  \cs_set_eq:NN \chapterlinesformat \scrlab@chapterlinesformat
+  \cs_set_eq:NN \chapterformat \scrlab@chapterformat
+  \cs_set_eq:NN \chapterlineswithprefixformat \scrlab@chapterlineswithprefixformat
+  \cs_set_eq:NN \partlineswithprefixformat \scrlab@partlineswithprefixformat
+  \cs_set_eq:NN \@seccntformat \scrlab@seccntformat
+  \let\@sect\scrlab@sect
+  \let\@xsect\scrlab@xsect
 
-
-%%	\AddtoDoHook{heading/begingroup/chapter}
-%%	      {\@@_sec_init_aux:n {chapter}}
+%% \AddtoDoHook{heading/begingroup/chapter}
+%%       {\@@_sec_init_aux:n {chapter}}
 %%    	\AddtoDoHook{heading/begingroup/part}
 %  	      {\@@_sec_init_aux:n {chapter}}
 %    \end{macrocode}
 % probably it's a good idea to define a hook with arguments there instead of this workaround
 %    \begin{macrocode}
-	\AddtoDoHook{heading/endgroup}{
-		\UseTaggingSocket{para/restore}
-		\use_none:n
-	}
+  \AddtoDoHook{heading/endgroup}{
+    \UseTaggingSocket{para/restore}
+    \use_none:n
+  }
 
-	\AddtoDoHook{heading/begingroup}{
-	 	\@@_sec_init_aux:n 
-	 }
-	\AddtoDoHook{heading/branch/star}{\@@_sec_start_aux:n}
-	\AddtoDoHook{heading/branch/nostar}{\@@_sec_start_aux:n}
+  \AddtoDoHook{heading/begingroup}{
+    \@@_sec_init_aux:n
+  }
+  \AddtoDoHook{heading/branch/star}{\@@_sec_start_aux:n}
+  \AddtoDoHook{heading/branch/nostar}{\@@_sec_start_aux:n}
 }
 
 \cs_new:Nn \_@@_patch_maketitle: {
-	\cs_gset_eq:cN {\string\maketitle} \_@@_maketitle
-	\cs_gset_eq:NN \@maketitle \_@@_@maketitle
+  \cs_gset_eq:cN {\string\maketitle} \_@@_maketitle
+  \cs_gset_eq:NN \@maketitle \_@@_@maketitle
 }
 %    \end{macrocode}
 % we probably also should add those hooks after scrextend. But first the classes should work properly.
 %    \begin{macrocode}
 \hook_gput_code:nnn {class/scrartcl/after} {scr-tagging-lab} {
-	\_@@_patch_sectioning:
-	\_@@_patch_maketitle:
-	\let\numberline\scr@numberline
+  \_@@_patch_sectioning:
+  \_@@_patch_maketitle:
+  \let\numberline\scr@numberline
 }
 \hook_gput_code:nnn {class/scrbook/after} {scr-tagging-lab} {
-	\_@@_patch_sectioning:
-	\_@@_patch_maketitle:
-	\let\numberline\scr@numberline
+  \_@@_patch_sectioning:
+  \_@@_patch_maketitle:
+  \let\numberline\scr@numberline
 }
 \hook_gput_code:nnn {class/scrreprt/after} {scr-tagging-lab} {
-	\_@@_patch_sectioning:
-	\_@@_patch_maketitle:
-	\let\numberline\scr@numberline
+  \_@@_patch_sectioning:
+  \_@@_patch_maketitle:
+  \let\numberline\scr@numberline
 }
 %    \end{macrocode}
 % Workaround to avoid extra warnings
 %    \begin{macrocode}
 \AtEndOfPackage{
-	\let\@startsection\scr@saved@startsection
-	\cs_undefine:N \scr@saved@startsection
+  \let\@startsection\scr@saved@startsection
+  \cs_undefine:N \scr@saved@startsection
 }
 %    \end{macrocode}
 % \begin{macro}{\scrlab@section@target}
-% \changes{tagging}{2024/09/15}{Adapt our own \cs{@hyp@section@target@nnn}  as  \cs{\scrlab@section@target}}
-% tagging: Hyperref has some internal command \cs{@hyp@section@target@nnn} to move the anchor in case the indent in front of the section heading is negative.
-% We copy this command to adjust the anchor in the same way.
-% The definition is taken from the \pkg{latex-lab-sec}.dtx.
+%   \changes{tagging}{2024/09/15}{Adapt our own \cs{@hyp@section@target@nnn}  as  \cs{\scrlab@section@target}}
+%   tagging: Hyperref has some internal command \cs{@hyp@section@target@nnn} to move the anchor in case the indent in front of the section heading is negative.
+%   We copy this command to adjust the anchor in the same way.
+%   The definition is taken from the \pkg{latex-lab-sec}.dtx.
 %    \begin{macrocode}
 %% This definition was adapted from
 %% latex-lab-sec.dtx
 %% Copyright 2021-2023 LaTeX Project
-\cs_new_protected:Npn \scrlab@section@target #1 #2 #3 %#1 optarg #2 name/counter, #3 indent
+%% %#1 optarg #2 name/counter, #3 indent
+\cs_new_protected:Npn \scrlab@section@target #1 #2 #3 {
+  \makebox[0pt][l]
   {
-    \makebox[0pt][l]
-     {
-       \skip_set:Nn \@tempskipa {#3}
-       \dim_compare:nNnF {\@tempskipa}<{0pt}{\kern-\@tempskipa}
-         \MakeLinkTarget#1{#2}
-     }
+    \skip_set:Nn \@tempskipa {#3}
+    \dim_compare:nNnF {\@tempskipa}<{0pt}{\kern-\@tempskipa}
+    \MakeLinkTarget#1{#2}
   }
+}
 %    \end{macrocode}
 % \end{macro}^^A \scrlab@section@target
 %</package|heading-hooks>
 %    \end{macrocode}
 %<*toggle>
-%   \@namedef{@end#1}{\scr@@endpart{#1}}%
+%% \@namedef{@end#1}{\scr@@endpart{#1}}
 %<*book|report>
-%\SuspendTagging{use@preamble}
-  \vbox to\z@{\vss\use@preamble{#1@o}\strut\par}%
-  \vskip-\baselineskip\nobreak
-%  \ResumeTagging{use@preamble}
+% \SuspendTagging{use@preamble}
+\vbox to\z@{\vss\use@preamble{#1@o}\strut\par}%
+\vskip-\baselineskip\nobreak
+% \ResumeTagging{use@preamble}
 %</book|report>
-  \expandafter\SecDef\csname @#1\expandafter\endcsname\csname @s#1\endcsname
+\expandafter\SecDef\csname @#1\expandafter\endcsname\csname @s#1\endcsname
 }
 %</toggle>
