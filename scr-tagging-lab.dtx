@@ -52,14 +52,18 @@ testphase]
 % The name/role of the Sect structure can be adapted by changing the symbolic name
 % for the relevant level. 
 %    \begin{macrocode}
-\cs_new:Nn \@@_sec_start_aux:n {
-  \UseTaggingSocket{sec/end}{\int_eval:n{\startsection@secnumdepth}}
-  \UseTaggingSocket{sec/begin}
-   {{\int_eval:n{\startsection@secnumdepth}}{tag=\UseStructureName{sec/\int_eval:n{\startsection@secnumdepth}}}}
+\newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
+%%\cs_new:Nn \@@_sec_start_aux:n {
+%%  \UseTaggingSocket{sec/end}{\NumDepth{#1}}
+%%  \UseTaggingSocket{sec/begin}
+%%   {{\NumDepth{#1}}{tag=\UseStructureName{sec/\NumDepth{#1}}}}
+%%}
+\cs_new:Nn \@@_sec_init_aux:n {
+      \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
 }
 %    \end{macrocode}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
-% This change has to be adjusted to match the kernel changes of the testphase.
+% This change has to be adjusted to match the kernel changes of the testphase.<r
 % The Following code has been taken from scrkernel-sections.dtx by Markus Kohm.
 % Changes have been marked
 %    \begin{macrocode}
@@ -85,9 +89,10 @@ testphase]
 	\UseTaggingSocket{para/restore}
 }
 
-\hook_gput_code:nnn {cmd/scr@@@@startchapter/after}{scr-tagging-lab}{
-	\UseTaggingSocket{para/restore}
-}
+%%\hook_gput_code:nnn {cmd/scr@@@@startchapter/after}{scr-tagging-lab}{
+	%\UseTaggingSocket{para/restore}
+%%}
+
 
 \cs_new:Nn \_@@_patch_sectioning: {
 	\cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
@@ -99,25 +104,22 @@ testphase]
 	\let\@sect\scrlab@sect
 	\let\@xsect\scrlab@xsect
 
-	\AddtoDoHook{heading/begingroup}
-      {\UseTaggingSocket{sec/title/init}{\int_eval:n{\startsection@secnumdepth}}\use_none:n}
+
+%%	\AddtoDoHook{heading/begingroup/chapter}
+%%	      {\@@_sec_init_aux:n {chapter}}
+%%    	\AddtoDoHook{heading/begingroup/part}
+%  	      {\@@_sec_init_aux:n {chapter}}
 %    \end{macrocode}
 % probably it's a good idea to define a hook with arguments there instead of this workaround
 %    \begin{macrocode}
-%	\AddtoDoHook{heading/begingroup/chapter}{
-%		\exp_args:Ne  \tag_tool:n { sec-start=chapter}%=  \exp_not:V \l_@@_current_heading_tl  }
-%		\Ifnumbered{chapter} \relax {\MakeLinkTarget[chapter]}%
-%	}
-%	\AddtoDoHook{heading/endgroup/chapter}{
-%	   \tag_tool:n {sec-stop-chapter}
-%	}
-%	\AddtoDoHook{heading/begingroup/part}{
-	%	\exp_args:Ne  \tag_tool:n { sec-start-part=  \exp_not:V \l_@@_current_heading_tl  }
-%		\Ifnumbered{part} \relax {\MakeLinkTarget[part]}
-%	}
-%	\AddtoDoHook{heading/endgroup/part}{
-%	   \tag_tool:n {sec-stop-part}
-%	}
+	\AddtoDoHook{heading/endgroup}{
+		\UseTaggingSocket{para/restore}
+		\use_none:n
+	}
+
+	\AddtoDoHook{heading/begingroup}{
+	 	\@@_sec_init_aux:n 
+	 }
 	\AddtoDoHook{heading/branch/star}{\@@_sec_start_aux:n}
 	\AddtoDoHook{heading/branch/nostar}{\@@_sec_start_aux:n}
 }
