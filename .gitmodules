@@ -1,3 +1,7 @@
 [submodule "KOMA-SVN"]
 	path = KOMA-SVN
 	url = gitea@git.texhackse.de:KOMA-Script/koma-svn.git
+[submodule "tools/tagging-project"]
+	path = tools/tagging-project
+	url = git@github.com:latex3/tagging-project.git
+	shallow = true
