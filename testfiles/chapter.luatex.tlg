@@ -3,7 +3,7 @@ Don't change this file in any respect.
 Package tagpdf Info: Checking Parent-Child 'pdf2:Document' --> 'pdf2:Sect'
 Package tagpdf Info: Parent-Child 'Document' --> 'Sect'.
 (tagpdf)             Relation is 1 (='0..n') on line ...
-tagpdf DEBUG Info: Struct 5 begin inserted with options: tag={\int_compare:nNnTF {\cs_if_exist_use:c {toclevel@chapter}+0}={-1}{Part}{Sect}},tag=Sect
+tagpdf DEBUG Info: Struct 6 begin inserted with options: tag=\UseStructureName {sec/0},tag=\UseStructureName {sec/\NumDepth {chapter}} 
 (tagpdf DEBUG)     [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{Sect}{Sect}}
@@ -25,7 +25,7 @@ tagpdf DEBUG Info: Tagging resumed
 Package tagpdf Info: Checking Parent-Child 'pdf2:Sect' --> 'latex-book:chapter'
 Package tagpdf Info: Parent-Child 'Sect' --> 'H1'.
 (tagpdf)             Relation is 1 (='0..n') on line ...
-tagpdf DEBUG Info: Struct 6 begin inserted with options: tag=\l__tag_para_tag_tl
+tagpdf DEBUG Info: Struct 7 begin inserted with options: tag=\UseStructureName {sec/\UseName {chapternumdepth}/title},title-o={\l__tag_sec_tmpa_tl } 
 (tagpdf DEBUG)     [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{chapter}{H1}}
@@ -35,7 +35,7 @@ The sequence \g__tag_struct_tag_stack_seq contains the items (without outer brac
 Package tagpdf Info: Checking Parent-Child 'latex-book:chapter' --> 'latex:section-number'
 Package tagpdf Info: Parent-Child 'H1' --> 'Span'.
 (tagpdf)             Relation is 1 (='0..n') on line ...
-tagpdf DEBUG Info: Struct 7 begin inserted with options: tag=section-number
+tagpdf DEBUG Info: Struct 8 begin inserted with options: tag=\UseStructureName {sec/\UseName {chapternumdepth}/number} 
 (tagpdf DEBUG)     [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{section-number}{Span}}
@@ -43,25 +43,14 @@ The sequence \g__tag_struct_tag_stack_seq contains the items (without outer brac
 >  {{Sect}{Sect}}
 >  {{Document}{Document}}
 >  {{Root}{StructTreeRoot}}.
-Package tagpdf Info: Checking Parent-Child 'latex:section-number' --> 'MC (real content)'
-Package tagpdf Info: Parent-Child 'Span' --> 'MC'.
-(tagpdf)             Relation is 1 (='0..n') on line ...
 tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: chapterformat [on line ...]
 tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: chapterformat [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
-==> @endpe=false on input line ...
-==> increment P on input line ...
-tagpdf DEBUG Info: Struct 7 begin ignored with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl
-(tagpdf DEBUG)     [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
 Package tagpdf Info: Checking Parent-Child 'latex:section-number' --> 'MC (real content)'
 Package tagpdf Info: Parent-Child 'Span' --> 'MC'.
 (tagpdf)             Relation is 1 (='0..n') on line ...
-Package tagpdf Info: closing structure 7 tagged /section-number
+Package tagpdf Info: closing structure 8 tagged /section-number
 tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{chapter}{H1}}
@@ -72,7 +61,7 @@ Package tagpdf Info: Checking Parent-Child 'latex-book:chapter' --> 'MC (real co
 Package tagpdf Info: Parent-Child 'H1' --> 'MC'.
 (tagpdf)             Relation is 1 (='0..n') on line ...
 ==> increment /P on input line ...
-Package tagpdf Info: closing structure 6 tagged /chapter
+Package tagpdf Info: closing structure 7 tagged /chapter
 tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{Sect}{Sect}}
@@ -82,7 +71,7 @@ The sequence \g__tag_struct_tag_stack_seq contains the items (without outer brac
 Package tagpdf Info: Checking Parent-Child 'pdf2:Sect' --> 'latex:text-unit'
 Package tagpdf Info: Parent-Child 'Sect' --> 'Part'.
 (tagpdf)             Relation is 1 (='0..n') on line ...
-tagpdf DEBUG Info: Struct 8 begin inserted with options: tag=\l__tag_para_main_tag_tl ,attribute-class=\l__tag_para_main_attr_class_tl ,
+tagpdf DEBUG Info: Struct 9 begin inserted with options: tag=\l__tag_para_main_tag_tl ,attribute-class=\l__tag_para_main_attr_class_tl , 
 (tagpdf DEBUG)     [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{text-unit}{Part}}
@@ -95,7 +84,7 @@ Package tagpdf Info: Parent-Child 'Part' --> 'P'.
 (tagpdf)             Relation is 7 (='‡') on line ...
 Package tagpdf Info: Parent-Child 'Sect' --> 'P'.
 (tagpdf)             Relation is 1 (='0..n') on line ...
-tagpdf DEBUG Info: Struct 9 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl
+tagpdf DEBUG Info: Struct 10 begin inserted with options: tag=\l__tag_para_tag_tl ,attribute-class=\l__tag_para_attr_class_tl  
 (tagpdf DEBUG)     [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{text}{P}}
@@ -107,14 +96,14 @@ Package tagpdf Info: Checking Parent-Child 'latex:text' --> 'MC (real content)'
 Package tagpdf Info: Parent-Child 'P' --> 'MC'.
 (tagpdf)             Relation is 1 (='0..n') on line ...
 ==> increment /P on input line ...
-Package tagpdf Info: closing structure 9 tagged /text
+Package tagpdf Info: closing structure 10 tagged /text
 tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{text-unit}{Part}}
 >  {{Sect}{Sect}}
 >  {{Document}{Document}}
 >  {{Root}{StructTreeRoot}}.
-Package tagpdf Info: closing structure 8 tagged /text-unit
+Package tagpdf Info: closing structure 9 tagged /text-unit
 tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{Sect}{Sect}}
@@ -130,7 +119,7 @@ tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 [1
 ]<<latex-list-css.html>><<latex-align-css.html>> (chapter.aux)
-Package tagpdf Info: closing structure 5 tagged /Sect
+Package tagpdf Info: closing structure 6 tagged /Sect
 tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{Document}{Document}}
@@ -140,8 +129,8 @@ tagpdf DEBUG Info: Struct end inserted [on line ...]
 The sequence \g__tag_struct_tag_stack_seq contains the items (without outer braces):
 >  {{Root}{StructTreeRoot}}.
 Package tagpdf Info: Finalizing the tagging structure:
-(tagpdf)             Writing out ~9 structure objects
-(tagpdf)             with ~6 'MC' leaf nodes.
+(tagpdf)             Writing out ~10 structure objects
+(tagpdf)             with ~5 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
 Package tagpdf Info: writing IDTree

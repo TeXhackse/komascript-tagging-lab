@@ -93,14 +93,13 @@ Completed box being shipped out [1]
 .....\localleftbox=null
 .....\localrightbox=null
 ....\hbox(0.0+0.0)x0.0, direction TLT
-.....\hbox(0.0+0.0)x0.0, direction TLT
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
 ....\TU/lmss/bx/n/20.74 C
 ....\TU/lmss/bx/n/20.74 o
 ....\TU/lmss/bx/n/20.74 n
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/20.74 ^^ad
+.....< \TU/lmss/bx/n/20.74 -
 ....\TU/lmss/bx/n/20.74 t
 ....\TU/lmss/bx/n/20.74 e
 ....\TU/lmss/bx/n/20.74 n
@@ -141,7 +140,7 @@ Completed box being shipped out [1]
 ....\TU/lmss/bx/n/10.95 a
 ....\TU/lmss/bx/n/10.95 p
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 ^^ad
+.....< \TU/lmss/bx/n/10.95 -
 ....\TU/lmss/bx/n/10.95 t
 ....\TU/lmss/bx/n/10.95 e
 ....\TU/lmss/bx/n/10.95 r
@@ -180,7 +179,7 @@ Completed box being shipped out [1]
 ....\TU/lmss/bx/n/10.95 a
 ....\TU/lmss/bx/n/10.95 p
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 ^^ad
+.....< \TU/lmss/bx/n/10.95 -
 ....\TU/lmss/bx/n/10.95 t
 ....\TU/lmss/bx/n/10.95 e
 ....\TU/lmss/bx/n/10.95 r
@@ -224,7 +223,7 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10.95 e
 ....\TU/lmr/m/n/10.95 c
 ....\discretionary (penalty 50)
-.....< \TU/lmr/m/n/10.95 ^^ad
+.....< \TU/lmr/m/n/10.95 -
 ....\TU/lmr/m/n/10.95 t
 ....\TU/lmr/m/n/10.95 i
 ....\TU/lmr/m/n/10.95 o
@@ -282,12 +281,12 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10.95 u
 ....\TU/lmr/m/n/10.95 b
 ....\discretionary (penalty 50)
-.....< \TU/lmr/m/n/10.95 ^^ad
+.....< \TU/lmr/m/n/10.95 -
 ....\TU/lmr/m/n/10.95 s
 ....\TU/lmr/m/n/10.95 e
 ....\TU/lmr/m/n/10.95 c
 ....\discretionary (penalty 50)
-.....< \TU/lmr/m/n/10.95 ^^ad
+.....< \TU/lmr/m/n/10.95 -
 ....\TU/lmr/m/n/10.95 t
 ....\TU/lmr/m/n/10.95 i
 ....\TU/lmr/m/n/10.95 o
@@ -388,10 +387,6 @@ tagpdf DEBUG Info: Tagging suspended
 tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: chapterformat [on line ...]
 tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
 tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
@@ -460,7 +455,7 @@ Completed box being shipped out [3]
 ....\TU/lmss/bx/n/20.74 a
 ....\TU/lmss/bx/n/20.74 p
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/20.74 ^^ad
+.....< \TU/lmss/bx/n/20.74 -
 ....\TU/lmss/bx/n/20.74 t
 ....\TU/lmss/bx/n/20.74 e
 ....\TU/lmss/bx/n/20.74 r
@@ -542,17 +537,9 @@ tagpdf DEBUG Info: Tagging suspended
 tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
 tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
 tagpdf DEBUG Info: Tagging resumed
 (tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: hangfrom [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: hangfrom [on line ...]
 tagpdf DEBUG Info: Tagging suspended
 (tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
 tagpdf DEBUG Info: Tagging resumed
@@ -583,7 +570,7 @@ Completed box being shipped out [5]
 ..\glue 20.40001
 ..\glue(\lineskip) 0.0
 ..\vbox(595.80026+0.0)x418.25555, glue set 420.84702fil, direction TLT
-...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \nonumberline chapter}{\thepage }{target*.2}\protected@file@percent }}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \nonumberline chapter}{\thepage }{target*.1}\protected@file@percent }}
 ...\marks1{\__mark_value:nn {3}{chapter}}
 ...\marks2{\__mark_value:nn {4}{}}
 ...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
@@ -609,7 +596,6 @@ Completed box being shipped out [5]
 .....\localleftbox=null
 .....\localrightbox=null
 ....\hbox(0.0+0.0)x0.0, direction TLT
-.....\hbox(0.0+0.0)x0.0, direction TLT
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
 ....\TU/lmss/bx/n/20.74 c
@@ -617,7 +603,7 @@ Completed box being shipped out [5]
 ....\TU/lmss/bx/n/20.74 a
 ....\TU/lmss/bx/n/20.74 p
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/20.74 ^^ad
+.....< \TU/lmss/bx/n/20.74 -
 ....\TU/lmss/bx/n/20.74 t
 ....\TU/lmss/bx/n/20.74 e
 ....\TU/lmss/bx/n/20.74 r
@@ -649,7 +635,7 @@ Completed box being shipped out [5]
 .....\TU/lmss/bx/n/14.4 1
 .....\TU/lmss/bx/n/14.4 .
 .....\TU/lmss/bx/n/14.4 1
-.....\TU/lmss/bx/n/14.4
+.....\TU/lmss/bx/n/14.4  
 .....\glue 1.91519
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
@@ -657,7 +643,7 @@ Completed box being shipped out [5]
 ....\TU/lmss/bx/n/14.4 e
 ....\TU/lmss/bx/n/14.4 c
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/14.4 ^^ad
+.....< \TU/lmss/bx/n/14.4 -
 ....\TU/lmss/bx/n/14.4 t
 ....\TU/lmss/bx/n/14.4 i
 ....\TU/lmss/bx/n/14.4 o
@@ -671,7 +657,7 @@ Completed box being shipped out [5]
 ...\penalty 10000
 ...\marks3{\__mark_value:nn {6}{1.1\hskip .5em\relax section}}
 ...\penalty 10000
-...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline {1.1}section}{\thepage }{target*.4}\protected@file@percent }}
+...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline {1.1}section}{\thepage }{target*.2}\protected@file@percent }}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 10.85475 plus 0.94386
@@ -699,7 +685,7 @@ Completed box being shipped out [5]
 .....\TU/lmss/bx/n/12 1
 .....\TU/lmss/bx/n/12 .
 .....\TU/lmss/bx/n/12 1
-.....\TU/lmss/bx/n/12
+.....\TU/lmss/bx/n/12  
 .....\glue 1.596
 ....\pdfliteral page <lua data reference ...>
 ....\pdfliteral page <lua data reference ...>
@@ -707,12 +693,12 @@ Completed box being shipped out [5]
 ....\TU/lmss/bx/n/12 u
 ....\TU/lmss/bx/n/12 b
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/12 ^^ad
+.....< \TU/lmss/bx/n/12 -
 ....\TU/lmss/bx/n/12 s
 ....\TU/lmss/bx/n/12 e
 ....\TU/lmss/bx/n/12 c
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/12 ^^ad
+.....< \TU/lmss/bx/n/12 -
 ....\TU/lmss/bx/n/12 t
 ....\TU/lmss/bx/n/12 i
 ....\TU/lmss/bx/n/12 o
@@ -722,7 +708,7 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\pdfliteral page <lua data reference ...>
 ...\pdfliteral page <lua data reference ...>
-...\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline {1.1.1}subsection}{\thepage }{target*.5}\protected@file@percent }}
+...\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline {1.1.1}subsection}{\thepage }{target*.3}\protected@file@percent }}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 7.07918 plus 0.94386
@@ -749,17 +735,17 @@ Completed box being shipped out [5]
 ....\TU/lmss/bx/n/10.95 u
 ....\TU/lmss/bx/n/10.95 b
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 ^^ad
+.....< \TU/lmss/bx/n/10.95 -
 ....\TU/lmss/bx/n/10.95 s
 ....\TU/lmss/bx/n/10.95 u
 ....\TU/lmss/bx/n/10.95 b
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 ^^ad
+.....< \TU/lmss/bx/n/10.95 -
 ....\TU/lmss/bx/n/10.95 s
 ....\TU/lmss/bx/n/10.95 e
 ....\TU/lmss/bx/n/10.95 c
 ....\discretionary (penalty 50)
-.....< \TU/lmss/bx/n/10.95 ^^ad
+.....< \TU/lmss/bx/n/10.95 -
 ....\TU/lmss/bx/n/10.95 t
 ....\TU/lmss/bx/n/10.95 i
 ....\TU/lmss/bx/n/10.95 o
@@ -769,7 +755,7 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\pdfliteral page <lua data reference ...>
 ...\pdfliteral page <lua data reference ...>
-...\write1{\@writefile{toc}{\protect \contentsline {subsubsection}{\protect \nonumberline subsubsection}{\thepage }{target*.6}\protected@file@percent }}
+...\write1{\@writefile{toc}{\protect \contentsline {subsubsection}{\protect \nonumberline subsubsection}{\thepage }{target*.4}\protected@file@percent }}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 7.07918 plus 0.94386
@@ -789,7 +775,7 @@ Completed box being shipped out [5]
 ....\TU/lmr/m/n/10.95 r
 ....\TU/lmr/m/n/10.95 a
 ....\discretionary (penalty 50)
-.....< \TU/lmr/m/n/10.95 ^^ad
+.....< \TU/lmr/m/n/10.95 -
 ....\TU/lmr/m/n/10.95 g
 ....\TU/lmr/m/n/10.95 r
 ....\TU/lmr/m/n/10.95 a
@@ -816,7 +802,7 @@ Completed box being shipped out [5]
 <<latex-list-css.html>><<latex-align-css.html>> (scrbook-test.aux)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package tagpdf Info: Finalizing the tagging structure:
-(tagpdf)             Writing out ~38 structure objects
+(tagpdf)             Writing out ~42 structure objects
 (tagpdf)             with ~45 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
@@ -825,6 +811,6 @@ Package tagpdf Info: writing RoleMap
 Package tagpdf Info: writing ClassMap
 Package tagpdf Info: writing NameSpaces
 Package tagpdf Info: writing StructElems
-Package tagpdf Warning: Destination 'target*.2' has no related structure.
+Package tagpdf Warning: Destination 'target*.1' has no related structure.
 (tagpdf)                /Ref not updated.
 Package tagpdf Info: writing Root
