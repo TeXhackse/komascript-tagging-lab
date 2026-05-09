@@ -145,13 +145,6 @@
   \let\numberline\scr@numberline
 }
 %    \end{macrocode}
-% Workaround to avoid extra warnings
-%    \begin{macrocode}
-\AtEndOfPackage{
-  \let\@startsection\scr@saved@startsection
-  \cs_undefine:N \scr@saved@startsection
-}
-%    \end{macrocode}
 % \begin{macro}{\scrlab@section@target}
 %   \changes{tagging}{2024/09/15}{Adapt our own \cs{@hyp@section@target@nnn}  as  \cs{\scrlab@section@target}}
 %   tagging: Hyperref has some internal command \cs{@hyp@section@target@nnn} to move the anchor in case the indent in front of the section heading is negative.
