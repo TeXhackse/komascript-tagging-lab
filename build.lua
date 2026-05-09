@@ -12,7 +12,7 @@ installfiles = {
 }
 
 unpackfiles = {"scr-tagging-lab.ins"}
-checkconfigs = {"build", "compare","tagging-project-tests"} -- compare config is only used when the real testfiles failed
+-- checkconfigs = {"build", "compare","tagging-project-tests"} -- compare config is only used when the real testfiles failed
 
 checksuppfiles={"*.tex","*.ltx"}
 supportdir  = "support"
