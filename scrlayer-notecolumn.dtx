@@ -19,7 +19,7 @@
 % This work consists of all files listed in MANIFEST.md.
 % ----------------------------------------------------------------------
 % ======================================================================
-%%% From File: $Id: scrlayer-notecolumn.dtx 4235 2025-10-31 14:00:36Z kohm $
+%%% From File: $Id: scrlayer-notecolumn.dtx 4254 2025-12-31 12:10:11Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -29,9 +29,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-10-31 15:00:36 +0100 (Fri, 31 Oct 2025) $
+  \filedate$Date: 2025-12-31 13:10:11 +0100 (Wed, 31 Dec 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{v0.4.#2}}
-  \filerevision$Revision: 4235 $
+  \filerevision$Revision: 4254 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrlayer-notecolumn.dtx}%
@@ -1803,18 +1803,34 @@
       }%
   \fi
 }
-\AddToHook{cmd/thispagestyle/after}{%
-  \ifslnc@autoconvertps
-    \if@specialpage
-      \IfLayerPageStyleExists{\@specialstyle}{}{%
-        \AddToHook{cmd/ps@\@specialstyle/after}{%
-          \slnc@LayerizePageStyle{\@specialstyle}%
-          \@nameuse{ps@\@specialstyle}%
+%    \end{macrocode}
+%   \changes{v0.4.4254}{2025/12/31}{\pkg{babel} catcode change workaround}
+%   Because generic command hooks are dangerous if catcodes are changed, we
+%   use catcodes suitable for packages. This is only a workaround for packages
+%   like \pkg{babel}, which change catcodes. But it can still fail, e.g., if
+%   a page style is defined using other catcodes.
+%    \begin{macrocode}
+\ExplSyntaxOn
+\cctab_new:N \c__scrlayer_notecolumn_cmdhook_cctab
+\cctab_gsave_current:N \c__scrlayer_notecolumn_cmdhook_cctab
+\hook_gput_code:nnn { cmd / thispagestyle / after } { . }
+  {
+    \ifslnc@autoconvertps
+      \if@specialpage
+        \IfLayerPageStyleExists{\@specialstyle}{}{%
+          \cctab_begin:N \c__scrlayer_notecolumn_cmdhook_cctab
+          \hook_gput_code:nnn { cmd / ps@\@specialstyle / after }
+            { scrlayer-notecolumn }
+            {
+              \slnc@LayerizePageStyle{\@specialstyle}
+              \@nameuse{ps@\@specialstyle}%
+            }
+          \cctab_end:
         }%
-      }%
+      \fi
     \fi
-  \fi
-}
+  }
+\ExplSyntaxOff
 %</body>
 %    \end{macrocode}
 % \end{macro}

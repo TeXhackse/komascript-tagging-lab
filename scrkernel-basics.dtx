@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-basics.dtx 4198 2025-08-15 09:19:27Z kohm $
+%%% From File: $Id: scrkernel-basics.dtx 4267 2026-03-14 16:56:01Z kohm $
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
@@ -28,9 +28,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\def\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-08-15 11:19:27 +0200 (Fri, 15 Aug 2025) $
+  \filedate$Date: 2026-03-14 17:56:01 +0100 (Sat, 14 Mar 2026) $
   \def\filerevision$#1: #2 ${\def\filerevision{r#2}}
-  \filerevision$Revision: 4198 $
+  \filerevision$Revision: 4267 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-basics.dtx}%
@@ -206,15 +206,12 @@
 %
 % \subsection{The \KOMAScript-only package loads the universal package}
 %
-% Once again the same version is wanted.
-%    \begin{macrocode}
-%<koma>\RequirePackage{scrbase}[\KOMAScriptVersion]
-%    \end{macrocode}
-%
 % \changes{v3.44}{2025/05/13}{at least \LaTeX{} 2022-06-01 required}
+% \changes{v3.49.3}{2026/03/14}{\LaTeX{} version check moved to begin}
 %    \begin{macrocode}
 %<*koma>
-\IfLTXAtLeastTF{2022/06/01}{}{%
+\@ifundefined{IfFormatAtLeastTF}{\@ifl@t@r\fmtversion}{\IfFormatAtLeastTF}
+{2022/06/01}{}{%
   \@ifundefined{KOMAClassName}
     {\PackageError{scrkbase}}
     {\ClassError{\KOMAClassName}}
@@ -231,6 +228,11 @@
     \batchmode \immediate\read -1 to \@tempa
 }
 %</koma>
+%    \end{macrocode}
+%
+% Once again the same version is wanted.
+%    \begin{macrocode}
+%<koma>\RequirePackage{scrbase}[\KOMAScriptVersion]
 %    \end{macrocode}
 %
 %

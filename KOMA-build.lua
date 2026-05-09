@@ -1,6 +1,6 @@
 --[[
   Build script for the KOMA-Script project
-  Copyright (C) 2022–2023 Markus Kohm
+  Copyright (C) 2022–2026 Markus Kohm
 
   This file is part of the build system of KOMA-Script.
 
@@ -64,6 +64,10 @@ sourcefiles     = { "*.dtx", "*.ins", "*.inc", "scrdocstrip.tex" }
 installfiles    = { "*.sty", "*.cls", "*.clo", "*.lco", "*.hak" }
 
 textfiles       = { "*.md", "*.txt", "README.md" }
+
+-- Checking
+
+checkengines    = { "pdftex", "luatex" }
 
 -- Implementation documentation
 

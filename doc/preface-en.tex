@@ -19,50 +19,75 @@
 % ======================================================================
 
 \KOMAProvidesFile{preface-en.tex}
-                 [$Date: 2025-08-19 15:21:00 +0200 (Tue, 19 Aug 2025) $
+                 [$Date: 2025-11-25 12:50:16 +0100 (Tue, 25 Nov 2025) $
                   preface to dedicated version]
 \translator{Markus Kohm\and DeepL}
 
-\addchap{Preface to \KOMAScript~3.46}
+\addchap{Preface to \KOMAScript~3.49}
 
-While working on \KOMAScript{} 3.46, I received the bad news that Axel
-Sommerfeldt intends to discontinue maintenance of the \Package{caption}
-package and will therefore no longer accept suggestions for changes and
-improvements. This is relevant for \KOMAScript{} insofar as, after some
-improvements to \Macro{caption} processing, it became apparent that
-\Package{caption} also needs some minor changes to maintain and improve
-compatibility with \KOMAScript{}. Under no circumstances should improvements
-to \Macro{caption} processing within \KOMAScript{} have a negative impact on
-the compatibility of the \Package{caption} package. The consequence is that
-the \Package{caption} package itself no longer ensures compatibility, but
-rather \KOMAScript{} reacts to the loading of \Package{caption} in order to
-then establish compatibility itself.
+Recent \KOMAScript{} releases have been marked by changes due to external
+developments. These included changes to the \LaTeX{} kernel as well as to
+other packages. In addition, there were many internal changes, but also the
+implementation of frequently requested features, even though I had already
+announced in December~2019 with version~3.28 that there would be no more
+completely new features.
 
-As in many other cases, this naturally means more work for me in terms of both
-development and testing. Together with the countless changes that have
-recently become necessary due to the rapid development of \LaTeX{} itself,
-this unfortunately means that some urgent work on \KOMAScript{} is constantly
-being put on hold. Several other projects, which are ultimately becoming
-increasingly important for the continued existence of \KOMAScript{}, could not
-be worked on again. Unfortunately, this also includes tagging support.
+For \KOMAScript~3.49, work on changes as far-reaching as those triggered by
+Axel Sommerfeldt's discontinuation of maintenance of the caption package in
+version 3.46 was already underway when I was once again distracted by other
+external circumstances. This time, the decisive factors were support for
+\Macro{DocumentMetadata} and PDF tagging. Suffice it to say that using
+\Macro{DocumentMetadata} replaces many internal \LaTeX{} functions. This
+includes a considerable number of macros from the interface for class and
+package authors, which I was forced to replace with extended versions in
+\KOMAScript{} long ago. When tagging is enabled, further changes relevant to
+\KOMAScript{} occur in the \LaTeX{} kernel. In order to support all of this, a
+lot of code would also have to be added to \KOMAScript{} depending on the use
+of \Macro{DocumentMetadata} and any features enabled with it. To make matters
+more difficult, parts of the new code in \LaTeX{} itself are located in the
+\texttt{latex-lab} area and are even prefixed with
+\texttt{latex-lab-testphase}. Changes are to be expected here at any time, and
+it will be necessary to react quickly to them.
 
-Nevertheless, this version of \KOMAScript{} has succeeded in further advancing
-the urgently needed revision of the distribution of tasks between classes and
-packages. A few other problems have also been addressed, but these may lead to
-changed page breaks in two-column documents with chapter headings. See the
-website »\href{https://sourceforge.net/p/koma-script/wiki-en/Releases/}
-{Important notes and changes}« and, in particular,
-»\href{https://sourceforge.net/p/koma-script/wiki-en/Release%203.46/}
-{Known issues and important changes in \KOMAScript{} 3.46}«.
+Although Marei Peischl has thankfully been working on providing the necessary
+support for some time now, part of her work would have been undone by my
+aforementioned work on \KOMAScript~3.49. Even in a larger team, coordinating
+such different code branches is time-consuming. In a small team, it means
+constant extra work, which repeatedly brings any planning to a standstill.
 
-My thanks go mainly to my wife. She cushions all my unpleasant experiences on
-the Internet. She has also put up with me for more than 30~years when I am
-once again unresponsive because I am completely immersed in \KOMAScript{} or
-some \LaTeX{} problems. The fact that I can afford to invest such an insane
-amount of time in a project like this is also thanks to my wife alone.
+I have therefore decided on the following:
+\begin{itemize}
+\item Most of my modifications for KOMA-Script 3.49 were removed from the
+  code.
+\item Until further notice, there will be no new features.
+\item Internal improvements to the code will only be made if they facilitate
+  the work of supporting \Macro{DocumentMetadata} or PDF tagging.
+\item Requested features will not be implemented for the time being.
+\item Until further notice, KOMA-Script will no longer include workarounds for
+  problems with third-party packages. Problems with third-party packages
+  should therefore be reported to the maintainers of the third-party packages.
+\item Even bugs will only be fixed in exceptional cases. Anything that hasn't
+  been noticed so far shouldn't be particularly serious.
+\item Adjustments to new \LaTeX{} releases will also only be made if they are
+  absolutely necessary.
+\item The integration of the code developed independently by Marei to date
+  must be planned and tackled at the appropriate time.
+\item The consequences for the management, maintainance and further
+  development of \KOMAScript{} must be considered and planned.
+\end{itemize}
+So I have essentially closed some tracks so that trains can continue to run on
+the remaining ones without constantly changing the points.
+
+To be clear: I cannot say today whether there will ever be a version of
+\KOMAScript{} that will work both with and without the use of
+\Macro{DocumentMetadata}. In the medium term, it is to be expected that
+\KOMAScript{} will require the current \LaTeX{} release in the future and, for
+the sake of code simplification, both the option
+\DescRef{maincls.option.version} will disappear and the use of
+\Macro{DocumentMetadata} will become mandatory.
 
 \bigskip\noindent
-Markus Kohm, Neckarhausen in August 2025.
+Markus Kohm, Neckarhausen in November 2025.
 
 \endinput
 

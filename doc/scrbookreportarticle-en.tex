@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrbookreportarticle-en.tex}
-                 [$Date: 2025-10-28 12:58:48 +0100 (Tue, 28 Oct 2025) $
+                 [$Date: 2025-11-26 08:49:14 +0100 (Wed, 26 Nov 2025) $
                   KOMA-Script guide (chapter: scrbook, scrreprt, scrartcl)]
 
 \translator{Jens-Uwe Morawski\and Gernot Hassenpflug\and Markus Kohm\and
@@ -1941,7 +1941,7 @@ corresponding preamble (see \DescRef{\LabelBase.cmd.setpartpreamble},
 
 The \Macro{chapter}\important{\Macro{chapter}}\OnlyAt{\Class{scrbook}\and
   \Class{scrreprt}} command only exists in the book and report classes, that
-is, in \Class{book}, \Class{scrbook}, \Class{report} and \Class{scrreport},
+is, in \Class{book}, \Class{scrbook}, \Class{report} and \Class{scrreprt},
 but not in the article classes \Class{article} and \Class{scrartcl}.
 Furthermore, the \Macro{chapter}\textnote{\KOMAScript{} vs. standard classes}
 command in {\KOMAScript} differs substantially from the version in the
@@ -2160,7 +2160,7 @@ several pages, then the running head of the previous chapter suddenly
 reappears.  {\KOMAScript} offers a solution for this problem, described below.
 \Macro{chapter*}\OnlyAt{\Class{scrbook}\and\Class{scrreprt}} only exists in
 book and report classes, that is, \Class{book}, \Class{scrbook},
-\Class{report} and \Class{scrreport}, not in the article classes
+\Class{report} and \Class{scrreprt}, not in the article classes
 \Class{article} and \Class{scrartcl}.
 
 Please\textnote{Attention!} note that \DescRef{\LabelBase.cmd.part} and
@@ -2217,7 +2217,7 @@ the running heads are deleted. This eliminates the side effect of obsolete
 headers mentioned above. Instead, the running heads on subsequent pages remain
 empty. \OnlyAt{\Class{book}\and \Class{scrreprt}}\Macro{addchap} and
 \Macro{addchap*} only exist, of course, in book and report classes, namely
-\Class{book}, \Class{scrbook}, \Class{report} and \Class{scrreport}, not in
+\Class{book}, \Class{scrbook}, \Class{report} and \Class{scrreprt}, not in
 the article classes \Class{article} and \Class{scrartcl}.
 
 The \Macro{addpart} command  produces an unnumbered document part with an
@@ -2730,7 +2730,7 @@ here.%
 \end{Declaration}%
 \BeginIndex{}{Nummerierung}%
 Normally, the \Class{scrbook}\IndexClass{scrbook} and
-\Class{scrreport}\IndexClass{scrreprt} classes number the section headings
+\Class{scrreprt}\IndexClass{scrreprt} classes number the section headings
 from \DescRef{\LabelBase.cmd.part}\IndexCmd{part}\IndexCmd{chapter}%
 \IndexCmd{section} down to
 \DescRef{\LabelBase.cmd.subsection}\IndexCmd{subsection} and the

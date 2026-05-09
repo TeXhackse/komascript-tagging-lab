@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: tocbasic.dtx 4237 2025-11-05 15:41:49Z kohm $
+%%% From File: $Id: tocbasic.dtx 4251 2025-12-31 10:31:49Z kohm $
 %<identify>%%%            (run: identify)
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
@@ -43,9 +43,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-11-05 16:41:49 +0100 (Wed, 05 Nov 2025) $
+  \filedate$Date: 2025-12-31 11:31:49 +0100 (Wed, 31 Dec 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4237 $
+  \filerevision$Revision: 4251 $
 \endgroup
 \ProvidesFile{tocbasic.dtx}[\filedate\space\filerevision\space
 %</dtx>
@@ -185,22 +185,32 @@
   }
   \@tocbasic@old@latex@foundtrue
 \fi
-%</prepare>
 %    \end{macrocode}
 % \changes{v3.41}{2023/06/28}{required packages moved to \texttt{prepare} run}
 % \changes{v3.41}{2023/06/28}{\pkg{expl3} and \pkg{xparse} are required}
 % Package \pkg*{scrbase} is needed to process all macro options.
 %    \begin{macrocode}
-%<*prepare>
 \RequirePackage{scrbase}
-%</prepare>
 %    \end{macrocode}
 %
 % Now we can load \pkg{xparse} if needed, which also would load \pkg{expl3}:
 %    \begin{macrocode}
-%<*prepare>
 \scr@ifundefinedorrelax{NewDocumentCommand}{%
   \RequirePackage{xparse}[2018-04-12]%
+}{}
+%    \end{macrocode}
+%
+% \changes{v3.50}{2025/12/31}{stop loading with \cls{beamer}}
+% Now we can detect \cls{beamer} to stop loading the package.
+%    \begin{macrocode}
+\IfClassLoadedTF{beamer}{%
+  \PackageWarningNoLine{tocbasic}{%
+    beamer class detected,\MessageBreak
+    loading package tocbasic aborted%
+  }%
+  \DeclareOption*{}
+  \ProcessOptions
+  \endinput
 }{}
 %</prepare>
 %    \end{macrocode}
@@ -223,7 +233,7 @@
 % \changes{v3.42}{2023/09/08}{added}
 % \changes{v3.46}{2025/06/10}{respecting l3 naming convention}
 % Enabling and disabling will be done using a boolean variable with default
-% |false| (disabled). The |all| patch is somehow different. In enables or
+% |false| (disabled). The |all| patch is somehow different. It enables or
 % disables doing all patches. So |disablepatch=all| does not disable all
 % patches but disables to ignore the single patches.
 %    \begin{macrocode}
@@ -2513,15 +2523,12 @@
 %    \end{macrocode}
 %   \changes{v3.49}{2025/11/05}{set \cs{caption@documentclass} if loaded
 %     before package \pkg{caption3}}
+%   \changes{v3.50}{2025/12/31}{set \cs{caption@documentclass} only with
+%     \KOMAScript{} classes}
 %   And as long as the \pkg{caption3} package does not load special code for
 %   the standard classes, we fake here \cs{caption@documentclass}, to avoid
 %   loading of extra caption code, when package \pkg{tocbasic} is used.
 %    \begin{macrocode}
-\hook_gput_code:nnn { package / caption3 / before } { tocbasic }
-  {
-    \cs_set:Npn \caption@documentclass { standard }
-    \msg_info:nn { tocbasic } { caption-code-by-class-deactivated }
-  }
 \msg_new:nnnn { tocbasic } { caption-code-by-class-deactivated }
   {
     Loading~of~class-dependent~code~for~package~caption3\\
@@ -2534,7 +2541,7 @@
     Unfortunately,~the~code~from~caption-koma.sto,~for~example,~
     is~no~longer~compatible~with~the~KOMA-Script~package~tocbasic~
     since~KOMA-Script~3.46.~
-    Therefore,~the~tocbasic~package~attempts~to~prevent~these~files~
+    Therefore,~the~tocbasic~package~attempts~to~prevent~this~file~
     from~being~loaded~by~pretending~to~caption3~that~a~standard~class~
     is~being~used.~
     Since~the~caption3~package,~as~part~of~the~caption~collection,~
@@ -2542,6 +2549,14 @@
     is~trying~to~maintain~the~compatibility~of~the~caption~package~
     with~KOMA-Script,~this~is~currently~the~best~known~method~
     to~prevent~unnecessary~warnings~from~caption~or~caption3.
+  }
+\cs_if_exist:NT \KOMAClassName
+  {
+    \hook_gput_code:nnn { package / caption3 / before } { tocbasic }
+      {
+        \cs_set:Npn \caption@documentclass { standard }
+        \msg_info:nn { tocbasic } { caption-code-by-class-deactivated }
+      }
   }
 %    \end{macrocode}
 % \end{macro}
@@ -2670,9 +2685,10 @@
 %   \changes{v3.46}{2025/06/13}{added}
 %   \changes{v3.47}{2025/08/25}{extra group eliminted}
 %   \changes{v3.49}{2025/10/31}{use optional argument only, if used}
+%   \changes{v3.50}{2025/12/01}{use long mandatory argument}
 %   This is, what will be \cs{caption}, if \cs{caption} is patched.
 %    \begin{macrocode}
-\NewDocumentCommand \@@_caption:w { s o m }
+\NewDocumentCommand \@@_caption:w { s o +m }
   {
     \@@_caption_setup:
     \exp_last_unbraced:Ne \@@_saved_caption:w
@@ -2686,8 +2702,9 @@
 % \begin{command}{\captionabove,\captionbelow}
 %   \changes{v3.46}{2025/06/13}{new implementation moved to \pkg*{tocbasic}}
 %   \changes{v3.47}{2025/08/25}{extra group eliminted}
+%   \changes{v3.50}{2025/12/01}{use long mandatory argument}
 %    \begin{macrocode}
-\NewDocumentCommand \captionabove { s O{#3} m }
+\NewDocumentCommand \captionabove { s O{#3} +m }
   {
     \cs_if_exist:NTF \captionsetup
       { \captionsetup { position=top } }
@@ -2697,7 +2714,7 @@
     \hook_use:n { tocbasic / caption / after }
   }
 
-\NewDocumentCommand \captionbelow { s O{#3} m }
+\NewDocumentCommand \captionbelow { s O{#3} +m }
   {
     \cs_if_exist:NT \captionsetup
       { \captionsetup { position=bottom } }
@@ -2715,10 +2732,11 @@
 %   \changes{v3.48}{2025/08/29}{%
 %     \cs{cs\_set\_eq:NN} replaced by \cs{DeclareCommandCopy}}
 %   \changes{v3.49}{2025/10/31}{use optional argument only, if used}
+%   \changes{v3.50}{2025/12/01}{use long last mandatory argument}
 %   This is, what will be \cs{captionof}, if \cs{captionof} is patched or not
 %   defined.
 %    \begin{macrocode}
-\NewDocumentCommand \@@_caption_of:w { s m o m }
+\NewDocumentCommand \@@_caption_of:w { s m o +m }
   {
     \@@_captionof_setup:n { #2 }
     \exp_last_unbraced:Ne \@@_saved_caption:w
@@ -2761,8 +2779,9 @@
 % \begin{command}{\captionaboveof,\captionbelowof}
 %   \changes{v3.46}{2025/06/13}{new implementation moved to \pkg*{tocbasic}}
 %   \changes{v3.47}{2025/08/25}{extra group eliminted}
+%   \changes{v3.50}{2025/12/01}{use long last mandatory argument}
 %    \begin{macrocode}
-\NewDocumentCommand \captionaboveof { s m O{#4} m }
+\NewDocumentCommand \captionaboveof { s m O{#4} +m }
   {
     \@@_captionof_setup:nn { #2 } { top }
     \exp_last_unbraced:Ne \@@_saved_caption:w { \IfBooleanT{#1}* }
@@ -2770,7 +2789,7 @@
     \hook_use:n { tocbasic / caption / after }
   }
 
-\NewDocumentCommand \captionbelowof { s m O{#4} m }
+\NewDocumentCommand \captionbelowof { s m O{#4} +m }
   {
     \@@_captionof_setup:nn { #2 } { bottom }
     \exp_last_unbraced:Ne \@@_saved_caption:w { \IfBooleanT{#1}* }

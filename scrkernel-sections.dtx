@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4231 2025-10-28 12:57:25Z kohm $
+%%% From File: $Id: scrkernel-sections.dtx 4253 2025-12-31 12:09:32Z kohm $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-10-28 13:57:25 +0100 (Tue, 28 Oct 2025) $
+  \filedate$Date: 2025-12-31 13:09:32 +0100 (Wed, 31 Dec 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4231 $
+  \filerevision$Revision: 4253 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -522,6 +522,8 @@
 %   \changes{v3.13a}{2014/09/11}{re-definition for extended optional argument}
 %   \changes{v3.49}{2025/09/11}{no longer redefined or used}
 %   \changes{v3.49}{2025/09/11}{warning message added if used}
+%   \changes{v3.50}{2025/12/31}{improved workaround for \pkg{babel} catcode
+%     issues}
 %   We add a warning message to the very beginning of \cs{@startsection}. So
 %   if a package or any other preamble code or the user himself uses
 %   \cs{@startsection} there will be an information about the caveats.
@@ -540,15 +542,21 @@
     instead.
   }
   { See~the~KOMA-Script~user~manual~for~more~information. }
-\hook_gput_code:nnn { begindocument / end } { \KOMAClassName }
+\cctab_new:c { c_ \KOMAClassName _cmdhook_cctab }
+\cctab_gsave_current:c { c_ \KOMAClassName _cmdhook_cctab }
+\hook_gput_code:nnn { begindocument / end } { . }
   {
+    \cctab_begin:c { c_ \KOMAClassName _cmdhook_cctab }
+    \exp_args:Nne
     \hook_gput_code:nnn { cmd / @startsection / before } { \KOMAClassName }
       {
         \msg_warning:nnn { \KOMAClassName }
                          { sectioning-features-not-available }
                          { \@startsection }
       }
+    \cctab_end:
   }
+\hook_gset_rule:nnnn { begindocument / end } { . } < { babel }
 \ExplSyntaxOff
 %</body>
 %    \end{macrocode}
@@ -2829,7 +2837,7 @@
 % from the depth. If package \pkg{bookmark} has not been loaded until the end
 % of \cs{begin{document}} we also renumber the levels if needed.
 %    \begin{macrocode}
-\hook_gput_code:nnn { package / hyperref / after } { \KOMAClassName }
+\hook_gput_code:nnn { package / hyperref / after } { . }
   {
     \clist_map_inline:nn
       { part, chapter,
@@ -2855,7 +2863,7 @@
           }
       }
   }
-\hook_gput_code:nnn { begindocument }  { \KOMAClassName }
+\hook_gput_code:nnn { begindocument }  { . }
   {
     \seq_map_inline:Nn \g__scrkernel_section_command_seq
       {
@@ -2874,7 +2882,7 @@
           }
       }
   }
-\hook_gput_code:nnn { begindocument / end } { \KOMAClassName }
+\hook_gput_code:nnn { begindocument / end } { . }
   {
     \IfPackageLoadedT { hyperref }
       {

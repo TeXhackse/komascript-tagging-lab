@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-version.dtx 4224 2025-09-11 12:26:42Z kohm $
+%%% From File: $Id: scrkernel-version.dtx 4265 2026-03-14 16:22:53Z kohm $
 %
 % ATTENTION: In this file parts of the code and documentation are before the
 % driver. This must be, because this part of the code is needed by the driver
@@ -74,6 +74,9 @@
 %   hard}
 % \changes{v3.42}{2024/04/17}{command is no longer defined in \file{clo}
 %   or \file{lco} files}
+%    \end{macrocode}
+% \changes{v3.49.3}{2026/03/14}{masked usage of \cs{ExplSyntaxOff}}
+%    \begin{macrocode}
 % Depending on \cs{KOMAScriptVersion} already defined or not, the existing
 % definition is compared with the version here or \cs{KOMAScriptVersion} is
 % newly and globally defined. This has to work not only in class or package
@@ -102,17 +105,19 @@
         \fi
       }\expandafter\@defbeta\KOMAvar@KOMAScriptVersion
     \fi
-    \expandafter\ifx\csname ifbeta\endcsname\relax
-      \def\@defbeta##1 ##2.##3.##4 KOMA-Script\@nil{%
-        \def\@cmpstrA{##4}\def\@cmpstrB{}%
-        \ifx\@cmpstrA\@cmpstrB\else
-          \expandafter\expandafter\expandafter\global
-          \expandafter\expandafter\expandafter\let
-          \expandafter\csname ifbeta\expandafter\endcsname
-          \csname iftrue\endcsname
-        \fi
-      }\expandafter\@defbeta\KOMAvar@KOMAScriptVersion. KOMA-Script\@nil
-    \fi
+% \changes{v3.49.2}{2026/01/31}{version numbers with two dots are not
+%   automatically beta versions}
+%    \expandafter\ifx\csname ifbeta\endcsname\relax
+%      \def\@defbeta##1 ##2.##3.##4 KOMA-Script\@nil{%
+%        \def\@cmpstrA{##4}\def\@cmpstrB{}%
+%        \ifx\@cmpstrA\@cmpstrB\else
+%          \expandafter\expandafter\expandafter\global
+%          \expandafter\expandafter\expandafter\let
+%          \expandafter\csname ifbeta\expandafter\endcsname
+%          \csname iftrue\endcsname
+%        \fi
+%      }\expandafter\@defbeta\KOMAvar@KOMAScriptVersion. KOMA-Script\@nil
+%    \fi
     \expandafter\ifx\csname ifbeta\endcsname\relax
       \expandafter\expandafter\expandafter\global
       \expandafter\expandafter\expandafter\let
@@ -142,7 +147,7 @@
 %<*class|package>
 \providecommand*{\@CheckKOMAScriptVersion}{%
   \begingroup
-    \ExplSyntaxOff
+    \csname ExplSyntaxOff\endcsname% for lco files only
     \@@CheckKOMAScriptVersion
 }
 \providecommand*{\@@CheckKOMAScriptVersion}[1]{%
@@ -173,7 +178,7 @@
 % therefore the syntax or general structure of the line must not be changed!
 %    \begin{macrocode}
 %<*!v4>
-\@CheckKOMAScriptVersion{2025/09/11 v3.49 BETA KOMA-Script}%
+\@CheckKOMAScriptVersion{2026/02/02 v3.49.2 KOMA-Script}%
 %</!v4>
 %<v4>  \@nameuse{@CheckKOMAScriptVersion}{2022/10/25 v3.99 ALPHA KOMA-Script}%
 %    \end{macrocode}

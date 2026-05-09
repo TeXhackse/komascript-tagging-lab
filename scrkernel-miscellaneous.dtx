@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-miscellaneous.dtx 4223 2025-09-11 09:09:44Z kohm $
+%%% From File: $Id: scrkernel-miscellaneous.dtx 4264 2026-03-12 16:07:48Z kohm $
 %<init>%%%            (run: init)
 %<option>%%%            (run: option)
 %<execoption>%%%            (run: execoption)
@@ -27,9 +27,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-09-11 11:09:44 +0200 (Thu, 11 Sep 2025) $
+  \filedate$Date: 2026-03-12 17:07:48 +0100 (Thu, 12 Mar 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4223 $
+  \filerevision$Revision: 4264 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-miscellaneous.dtx}%
@@ -73,45 +73,88 @@
 %
 % \MaybeStop{\PrintIndex}
 %
-% \section{\KOMAScript{} Classes do Currently not Support Tagging}
+% \section{\KOMAScript{} Classes do Currently not \cs{DocumentMetaData}}
 %
 % \changes{v3.49}{2025/09/11}{tagging warning added}
-% In future \KOMAScript{} classes should support tagging, but currently they
-% don't. So if tagging is enabled, we warn. I expect the tagging support to be
-% added step by step. So the warning here will also change step by
-% step. However the name of the message used to warn, will not change. So
-% packages can add tagging support and also deactivate the message using
+% \ExplSyntaxOn
+% \begin{macro}{
+%   \komascript_tagging_test:,
+%   \komascript_documentmetadata_test:
+% }
+%   \ExplSyntaxOff
+%   \changes{v3.49.3}{2026/06/13}{meta data warning added}
+%   In future \KOMAScript{} classes should support tagging, but currently they
+%   don't. So if tagging is enabled, we warn. I expect the tagging support to
+%   be added step by step. So the warning here will also change step by
+%   step. However the name of the message used to warn, will not change. So
+%   packages can add tagging support and also deactivate the message using
 %\begin{verbatim}
 %\msg_redirect_name:nnn { \KOMAClassName } { tagging-not-supported } { none }
 %\end{verbatim}
-% As an alternative packages could change the message.
+%   As an alternative packages (and wrapper classes) can change the test and
+%   messages by defining \cs{komascript\_documentmetadata\_test:}
+%   resp. \cs{komascript\_tagging\_test:} before loading the \KOMAScript{}
+%   class.
 %    \begin{macrocode}
 %<*class&body>
 \ExplSyntaxOn
-\cs_if_exist:NT \tag_if_active:T
+\cs_if_exist:NF \komascript_documentmetadata_test:
   {
-    \msg_new:nnn { \KOMAClassName } { tagging-not-supported }
+    \msg_new:nnn { \KOMAClassName } { metadata-not-supported }
       {
-        Activated~tagging~detected~but~not~supported!\\
-        Note:~This~class~currently~does~not~actively~support~tagging.~
-        This~means:~Several~elements~will~not~be~tagged~correctly.~
-        We~therefore~currently~suggest~to~not~use~tagging~and~i.e.~
-        use\\
-        \ \ \token_to_str:N\RequirePackage{pdfmetadata}\\
+        \token_to_str:N\DocumentMetadata\ not~supported!\\
+        Note:~This~class~currently~does~not~support~usage~of~
+        \token_to_str:N\DocumentMetadata.\\
+        Instead~of~using~\token_to_str:N\DocumentMetadata\ you~should~
+        currently~use:\\
+        \ \ \token_to_str:N\RequirePackage{pdfmanagement}\\
         \ \ \token_to_str:N\SetKeys[document/metadata]{...}\\
-        instead~of\\
-        \ \ \token_to_str:N\DocumentMetadata{...}\\
-        to~avoid~automatic~activation~of~tagging.
+        before~\token_to_str:N\documentclass.
       }
-    \hook_gput_code:nnn { begindocument } { \KOMAClassName }
+    \cs_new:Npn \komascript_documentmetadata_test:
       {
-        \tag_if_active:T
-          { \msg_warning:nn { \KOMAClassName } { tagging-not-supported } }
+        \cs_if_exist:NT \IfDocumentMetadataT
+          {
+            \IfDocumentMetadataT
+              {
+                \msg_fatal:nn { \KOMAClassName } { metadata-not-supported }
+              }
+          }
       }
   }
+\komascript_documentmetadata_test:
+\cs_if_exist:NF \komascript_tagging_test:
+  {
+    \cs_new:Npn \komascript_tagging_test:
+      {
+        \cs_if_exist:NT \tag_if_active:T
+          {
+            \msg_new:nnn { \KOMAClassName } { tagging-not-supported }
+              {
+                Activated~tagging~detected~but~not~supported!\\
+                Note:~This~class~currently~does~not~actively~support~tagging.~
+                This~means:~Several~elements~will~not~be~tagged~correctly~
+                and~also~several~errors~could~happen.\\
+                Sorry!
+              }
+            \hook_gput_code:nnn { begindocument } { \KOMAClassName }
+              {
+                \tag_if_active:T
+                  {
+                    \msg_warning:nn
+                      { \KOMAClassName }
+                      { tagging-not-supported }
+                  }
+              }
+          }
+      }
+  }
+\komascript_tagging_test:
 \ExplSyntaxOff
 %</class&body>
 %    \end{macrocode}
+% \end{macro}
+% \ExplSyntaxOff
 %
 % \section{Implementation of Special Requirements of Package \pkg*{scrletter}}
 %

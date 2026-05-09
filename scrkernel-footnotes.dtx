@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-footnotes.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2025
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-footnotes.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrkernel-footnotes.dtx 4245 2025-11-26 08:59:26Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2025-11-26 09:59:26 +0100 (Wed, 26 Nov 2025) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4245 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-footnotes.dtx}%
@@ -567,6 +567,7 @@
 % \begin{macro}{\@makefnmark}
 % \changes{v3.10}{2011/09/27}{\pkg*{scrextend} redefines \cs{@makefnmark}
 %   to use \cs{thefootnotemark}}
+% \changes{v3.39}{2025/11/26}{first try \pkg{xpatch}}
 %    \begin{macrocode}
 %<*class>
 \deffootnote[1em]{1.5em}{1em}{\textsuperscript{\thefootnotemark}}
@@ -578,13 +579,13 @@
 \deffootnotemark{\textsuperscript{\thefootnotemark}}
 %<*package>
 \else
-  \IfFileExists{etoolbox.\@pkgextension}{%
+  \IfFileExists{xpatch.\@pkgextension}{%
     \PackageInfo{scrextend}{%
       unexpected definition of `\string\@makefnmark'.\MessageBreak
       Trying to patch it%
     }%
-    \RequirePackage{etoolbox}%
-    \patchcmd{\@makefnmark}{\@thefnmark}{\thefootnotemark}{%
+    \RequirePackage{xpatch}%
+    \xpatchcmd{\@makefnmark}{\@thefnmark}{\thefootnotemark}{%
       \PackageInfo{scrextend}{patch seems to be successfull}%
     }{%
       \PackageWarning{scrextend}{%
@@ -594,11 +595,28 @@
       \deffootnotemark{\textsuperscript{\thefootnotemark}}%
    }%
   }{%
-    \PackageWarning{scrextend}{%
-      unexpected definition of `\string\@makefnmark'.\MessageBreak
-      Using hard coded redefintion%
+    \IfFileExists{etoolbox.\@pkgextension}{%
+      \PackageInfo{scrextend}{%
+        unexpected definition of `\string\@makefnmark'.\MessageBreak
+        Trying to patch it%
+      }%
+      \RequirePackage{etoolbox}%
+      \patchcmd{\@makefnmark}{\@thefnmark}{\thefootnotemark}{%
+        \PackageInfo{scrextend}{patch seems to be successfull}%
+      }{%
+        \PackageWarning{scrextend}{%
+          patching `\string\@makefnmark' failed.\MessageBreak
+          Using hard coded redefinition%
+        }%
+        \deffootnotemark{\textsuperscript{\thefootnotemark}}%
+     }%
+    }{%
+      \PackageWarning{scrextend}{%
+        unexpected definition of `\string\@makefnmark'.\MessageBreak
+        Using hard coded redefintion%
+      }%
+      \deffootnotemark{\textsuperscript{\thefootnotemark}}%
     }%
-    \deffootnotemark{\textsuperscript{\thefootnotemark}}%
   }%
 \fi
 %</package>
