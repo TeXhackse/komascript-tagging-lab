@@ -9,14 +9,32 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  l3build:
     runs-on: ubuntu-latest
-    name: check
+    strategy:
+      fail-fast: false
+      matrix:
+        engine:
+          - luatex
+          - pdftex
+        config:
+            - build
+    name: "Tests: ${{ matrix.engine }} - ${{ matrix.config }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: libglut3 and libpdf-api2-perl
+        run: sudo apt update; sudo apt-get install -y freeglut3-dev libpdf-api2-perl
       - name: Install TeX Live
         uses: zauguin/install-texlive@v4
         with:
            package_file: .github/tl_packages
-      - run: l3build check
+      - run: "l3build check -S -e ${{ matrix.engine }} -c ${{ matrix.config }}"
+      - name: Archive failed test output
+        if: ${{ always() }}
+        uses: zauguin/l3build-failure-artifacts@v1
+        with:
+          path: build
+          name: testfiles-${{ matrix.engine }}-${{ matrix.config }}
+          # Decide how long to keep the test output artifact:
+          retention-days: 3
