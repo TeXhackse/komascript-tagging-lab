@@ -161,27 +161,6 @@ Version:        2026/02/02 v3.49.2
 </pre>
 ***
 
-### `scrdate` — calender date operations, e.g. calculation of the day of the week
-<pre>
-Maintainer:     Markus Kohm
-E-Mail:         komascript@gmx.info
-Abstract:       scrdate is a LaTeX package of the KOMA-Script bundle. It
-                provides several operations with calender dates, e.g., show
-                the century or the decade of a year, calculate the day of
-                the week of a given calender date, show the current
-                calender date in ISO form. It has support for several
-                languages, including English, German, French, Italian,
-                Spanish, Croatian, Finnish, Norsk, Swedish, Danish, Polish,
-                Czech, and Slovak.
-Requires:       scrkbase - KOMA-Script package for some basic features.
-                scrlfile - KOMA-Script package for file loading
-                           manipulation
-License:        LPPL 1.3c or later
-State:          Author maintained
-Version:        2026/02/02 v3.49.2
-</pre>
-***
-
 ### `scrextend` — make some features of the KOMA-Script classes available for others
 <pre>
 Maintainer:     Markus Kohm
@@ -492,20 +471,6 @@ Abstract:       scrreprt is the KOMA-Script drop-in replacement for the
 Requires:       scrkbase - internal KOMA-Script package
                 tocbasic - KOMA-Script package
                 typearea - KOMA-Script package
-License:        LPPL 1.3c or later
-State:          Author maintained
-Version:        2026/02/02 v3.49.2
-</pre>
-***
-
-### `scrtime` — show the time of the LaTeX run
-<pre>
-Maintainer:     Markus Kohm
-E-Mail:         komascript@gmx.info
-Abstract:       scrtime is a LaTeX package of the KOMA-Script bundle.  It
-                provides only some small features to show the time of the
-                LaTeX run.
-Requires:       scrkbase - internal package with some basics of KOMA-Script
 License:        LPPL 1.3c or later
 State:          Author maintained
 Version:        2026/02/02 v3.49.2

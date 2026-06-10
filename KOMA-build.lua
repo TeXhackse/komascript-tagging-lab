@@ -111,7 +111,6 @@ typesetfiles    = {
    "scrlfile.dtx",
    "scrlfile-patcholdlatex.dtx",
    "scrlogo.dtx",
-   "scrtime.dtx",
    "tocbasic.dtx",
    "scrguide-en.tex",
    "scrguide-de.tex",
@@ -205,8 +204,6 @@ docfiles     = {
    "scrbookreportarticle-en.tex",
    "scrlttr2-en.tex",
    "scrlayer-scrpage-en.tex",
-   "scrdate-en.tex",
-   "scrtime-en.tex",
    "scraddr-en.tex",
    "scrextend-en.tex",
    "scrjura-en.tex",
@@ -249,8 +246,6 @@ docfiles     = {
    "scrbookreportarticle-de.tex",
    "scrlttr2-de.tex",
    "scrlayer-scrpage-de.tex",
-   "scrdate-de.tex",
-   "scrtime-de.tex",
    "scraddr-de.tex",
    "scrextend-de.tex",
    "scrjura-de.tex",
@@ -338,11 +333,6 @@ package_doc = {
       chapter_de = 'Die Hauptklassen <tt>scrbook</tt>, <tt>scrreprt</tt>, <tt>scrartcl</tt>',
       link       = 'chapter.3'
    },
-   scrdate = {
-      chapter_en = 'The Day of the Week with <tt>scrdate</tt>',
-      chapter_de = 'Der Wochentag mit <tt>scrdate</tt>',
-      link       = 'chapter.6'
-   },
    scrextend = {
       chapter_en = 'Using Basic Features of the KOMA-Script Classes in Other Classes with the <tt>scrextend</tt> Package',
       chapter_de = 'Grundlegende Fähigkeiten der KOMA-Script-Klassen mit Hilfe des Pakets <tt>scrextend</tt> anderen Klassen erschließen',
@@ -391,11 +381,6 @@ package_doc = {
       chapter_en = 'The Main Classes: <tt>scrbook</tt>, <tt>scrreprt</tt>, and <tt>scrartcl</tt>',
       chapter_de = 'Die Hauptklassen <tt>scrbook</tt>, <tt>scrreprt</tt>, <tt>scrartcl</tt>',
       link       = 'chapter.3'
-   },
-   scrtime = {
-      chapter_en = 'The Current Time with <tt>scrtime</tt>',
-      chapter_de = 'Die aktuelle Zeit mit <tt>scrtime</tt>',
-      link       = 'chapter.7'
    },
    tocbasic = {
       chapter_en = 'Managing Content Lists with <tt>tocbasic</tt>',
@@ -1003,7 +988,6 @@ excludefiles = {
    "scrlfile*.pdf",
    "scrlayer-scrpage.pdf",
    "scrlogo.pdf",
-   "scrtime.pdf",
    "tocbasic.pdf"
 }
 
