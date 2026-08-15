@@ -1275,7 +1275,9 @@
 %<*body|tagging-lab>
 %<!tagging-lab>\newcommand{\sectionlinesformat}[4]{%
 %<tagging-lab>\newcommand{\scrlab@sectionlinesformat}[4]{%
+\IfUseNumber{\bool_set_false:N \l__scrkernel_sec_nonumber_bool}{\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
            \NoCaseChange
+           \l__scrkernel_sec_nonumber_bool
             {\UseTaggingSocket{sec/title/hang}
                {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\@currenttocentry}}
                {\@hangfrom {\hskip #2\relax#3}}}
@@ -5540,6 +5542,7 @@
 %<*(body&class&!letter&(report|book))|tagging-lab>
 %<!tagging-lab>\newcommand{\chapterlinesformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlinesformat}[3]{%
+\IfUseNumber{\bool_set_false:N \l__scrkernel_sec_nonumber_bool}{\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
 	           \NoCaseChange
 	            {
 	            	%\exp_args:Nnf \use:n {
