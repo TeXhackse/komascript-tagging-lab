@@ -1277,7 +1277,7 @@
 %<tagging-lab>\newcommand{\scrlab@sectionlinesformat}[4]{%
            \NoCaseChange
             {\UseTaggingSocket{sec/title/hang}
-               {{\UseName{#1numdepth}}\l__kernel_sec_nonumber_bool{\hskip #2\relax#3}{\@currenttocentry}}
+               {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\@currenttocentry}}
                {\@hangfrom {\hskip #2\relax#3}}}
                {\interlinepenalty \@M #4}
 %%               \ShowTagging{struct-stack}
@@ -5544,7 +5544,7 @@
 	            {
 	            	%\exp_args:Nnf \use:n {
 	            	\UseTaggingSocket{sec/title/hang}
-	               {{\UseName{#1numdepth}}\l__kernel_sec_nonumber_bool{#2}{\@currenttocentry}}
+	               {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{#2}{\@currenttocentry}}
 	               {\@hangfrom {#2}}}
 	               {\interlinepenalty \@M #3}
 }
