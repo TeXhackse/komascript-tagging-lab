@@ -88,10 +88,22 @@ The structure 2 contains:
 >  parentrole  =>  {Document}{pdf2}
 >  parentnum  =>  1 = /StructTreeRoot
 The structure has the following kids:
->  Struct 5
+>  Struct 6
 =========================
 =========================
 The structure 3 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Link
+>  NS  =>  pdf2
+>  tag  =>  {Link}{pdf2}
+>  rolemap  =>  {Link}{pdf2}
+>  parentrole  =>  {Link}{pdf2}
+>  parentnum  =>  no parent: stashed
+The structure has the following kids:
+> NONE
+=========================
+=========================
+The structure 4 contains:
 >  Type  =>  /StructElem
 >  S  =>  /figures
 >  NS  =>  latex
@@ -103,7 +115,7 @@ The structure has the following kids:
 > NONE
 =========================
 =========================
-The structure 4 contains:
+The structure 5 contains:
 >  Type  =>  /StructElem
 >  S  =>  /tables
 >  NS  =>  latex
@@ -115,7 +127,7 @@ The structure has the following kids:
 > NONE
 =========================
 =========================
-The structure 5 contains:
+The structure 6 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Sect
 >  NS  =>  pdf2
@@ -124,15 +136,15 @@ The structure 5 contains:
 >  parentrole  =>  {Sect}{pdf2}
 >  parentnum  =>  2 = /Document
 The structure has the following kids:
->  Struct 6
->  Struct 8
->  Struct 27
->  Struct 33
->  Struct 38
->  Struct 44
+>  Struct 7
+>  Struct 9
+>  Struct 28
+>  Struct 34
+>  Struct 39
+>  Struct 45
 =========================
 =========================
-The structure 6 contains:
+The structure 7 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF>
 >  S  =>  /chapter
@@ -140,25 +152,25 @@ The structure 6 contains:
 >  tag  =>  {chapter}{latex-book}
 >  rolemap  =>  {H1}{pdf2}
 >  parentrole  =>  {H1}{pdf2}
->  parentnum  =>  5 = /Sect
+>  parentnum  =>  6 = /Sect
 The structure has the following kids:
->  Struct 7
+>  Struct 8
 >  MC 2
 =========================
 =========================
-The structure 7 contains:
+The structure 8 contains:
 >  Type  =>  /StructElem
 >  S  =>  /section-number
 >  NS  =>  latex
 >  tag  =>  {section-number}{latex}
 >  rolemap  =>  {Span}{pdf2}
 >  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  6 = /chapter
+>  parentnum  =>  7 = /chapter
 The structure has the following kids:
 >  MC 1
 =========================
 =========================
-The structure 8 contains:
+The structure 9 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF0074006F0063>
 >  S  =>  /TOC
@@ -166,16 +178,16 @@ The structure 8 contains:
 >  tag  =>  {TOC}{pdf}
 >  rolemap  =>  {TOC}{pdf}
 >  parentrole  =>  {TOC}{pdf}
->  parentnum  =>  5 = /Sect
+>  parentnum  =>  6 = /Sect
 The structure has the following kids:
->  Struct 9
->  Struct 13
->  Struct 18
->  Struct 20
->  Struct 25
+>  Struct 10
+>  Struct 14
+>  Struct 19
+>  Struct 21
+>  Struct 26
 =========================
 =========================
-The structure 9 contains:
+The structure 10 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF00730065006300740069006F006E>
 >  S  =>  /TOCI
@@ -183,39 +195,27 @@ The structure 9 contains:
 >  tag  =>  {TOCI}{pdf}
 >  rolemap  =>  {TOCI}{pdf}
 >  parentrole  =>  {TOCI}{pdf}
->  parentnum  =>  8 = /TOC
+>  parentnum  =>  9 = /TOC
 >  Ref  =>  \__tag_struct_Ref_dest:nN {target*.1},
 The structure has the following kids:
->  Struct 10
+>  Struct 11
 =========================
 =========================
-The structure 10 contains:
+The structure 11 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Reference
 >  NS  =>  pdf
 >  tag  =>  {Reference}{pdf}
 >  rolemap  =>  {Reference}{pdf}
 >  parentrole  =>  {Reference}{pdf}
->  parentnum  =>  9 = /TOCI
+>  parentnum  =>  10 = /TOCI
 The structure has the following kids:
 >  MC 3
->  Struct 11
->  MC 5
 >  Struct 12
+>  MC 5
+>  Struct 13
 >  MC 7
 >  MC 9
-=========================
-=========================
-The structure 11 contains:
->  Type  =>  /StructElem
->  S  =>  /Lbl
->  NS  =>  pdf2
->  tag  =>  {Lbl}{pdf2}
->  rolemap  =>  {Lbl}{pdf2}
->  parentrole  =>  {Lbl}{pdf2}
->  parentnum  =>  10 = /Reference
-The structure has the following kids:
->  MC 4
 =========================
 =========================
 The structure 12 contains:
@@ -225,24 +225,36 @@ The structure 12 contains:
 >  tag  =>  {Lbl}{pdf2}
 >  rolemap  =>  {Lbl}{pdf2}
 >  parentrole  =>  {Lbl}{pdf2}
->  parentnum  =>  10 = /Reference
+>  parentnum  =>  11 = /Reference
+The structure has the following kids:
+>  MC 4
+=========================
+=========================
+The structure 13 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  tag  =>  {Lbl}{pdf2}
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  parentnum  =>  11 = /Reference
 The structure has the following kids:
 >  MC 6
 =========================
 =========================
-The structure 13 contains:
+The structure 14 contains:
 >  Type  =>  /StructElem
 >  S  =>  /TOC
 >  NS  =>  pdf
 >  tag  =>  {TOC}{pdf}
 >  rolemap  =>  {TOC}{pdf}
 >  parentrole  =>  {TOC}{pdf}
->  parentnum  =>  8 = /TOC
+>  parentnum  =>  9 = /TOC
 The structure has the following kids:
->  Struct 14
+>  Struct 15
 =========================
 =========================
-The structure 14 contains:
+The structure 15 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF00730075006200730065006300740069006F006E>
 >  S  =>  /TOCI
@@ -250,39 +262,27 @@ The structure 14 contains:
 >  tag  =>  {TOCI}{pdf}
 >  rolemap  =>  {TOCI}{pdf}
 >  parentrole  =>  {TOCI}{pdf}
->  parentnum  =>  13 = /TOC
+>  parentnum  =>  14 = /TOC
 >  Ref  =>  \__tag_struct_Ref_dest:nN {target*.2},
 The structure has the following kids:
->  Struct 15
+>  Struct 16
 =========================
 =========================
-The structure 15 contains:
+The structure 16 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Reference
 >  NS  =>  pdf
 >  tag  =>  {Reference}{pdf}
 >  rolemap  =>  {Reference}{pdf}
 >  parentrole  =>  {Reference}{pdf}
->  parentnum  =>  14 = /TOCI
+>  parentnum  =>  15 = /TOCI
 The structure has the following kids:
 >  MC 10
->  Struct 16
->  MC 12
 >  Struct 17
+>  MC 12
+>  Struct 18
 >  MC 14
 >  MC 16
-=========================
-=========================
-The structure 16 contains:
->  Type  =>  /StructElem
->  S  =>  /Lbl
->  NS  =>  pdf2
->  tag  =>  {Lbl}{pdf2}
->  rolemap  =>  {Lbl}{pdf2}
->  parentrole  =>  {Lbl}{pdf2}
->  parentnum  =>  15 = /Reference
-The structure has the following kids:
->  MC 11
 =========================
 =========================
 The structure 17 contains:
@@ -292,12 +292,24 @@ The structure 17 contains:
 >  tag  =>  {Lbl}{pdf2}
 >  rolemap  =>  {Lbl}{pdf2}
 >  parentrole  =>  {Lbl}{pdf2}
->  parentnum  =>  15 = /Reference
+>  parentnum  =>  16 = /Reference
+The structure has the following kids:
+>  MC 11
+=========================
+=========================
+The structure 18 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  tag  =>  {Lbl}{pdf2}
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  parentnum  =>  16 = /Reference
 The structure has the following kids:
 >  MC 13
 =========================
 =========================
-The structure 18 contains:
+The structure 19 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF006100640064007300650063>
 >  S  =>  /TOCI
@@ -305,38 +317,38 @@ The structure 18 contains:
 >  tag  =>  {TOCI}{pdf}
 >  rolemap  =>  {TOCI}{pdf}
 >  parentrole  =>  {TOCI}{pdf}
->  parentnum  =>  8 = /TOC
+>  parentnum  =>  9 = /TOC
 >  Ref  =>  \__tag_struct_Ref_dest:nN {target*.3},
 The structure has the following kids:
->  Struct 19
+>  Struct 20
 =========================
 =========================
-The structure 19 contains:
+The structure 20 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Reference
 >  NS  =>  pdf
 >  tag  =>  {Reference}{pdf}
 >  rolemap  =>  {Reference}{pdf}
 >  parentrole  =>  {Reference}{pdf}
->  parentnum  =>  18 = /TOCI
+>  parentnum  =>  19 = /TOCI
 The structure has the following kids:
 >  MC 17
 >  MC 19
 =========================
 =========================
-The structure 20 contains:
+The structure 21 contains:
 >  Type  =>  /StructElem
 >  S  =>  /TOC
 >  NS  =>  pdf
 >  tag  =>  {TOC}{pdf}
 >  rolemap  =>  {TOC}{pdf}
 >  parentrole  =>  {TOC}{pdf}
->  parentnum  =>  8 = /TOC
+>  parentnum  =>  9 = /TOC
 The structure has the following kids:
->  Struct 21
+>  Struct 22
 =========================
 =========================
-The structure 21 contains:
+The structure 22 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF0062006C00750062>
 >  S  =>  /TOCI
@@ -344,39 +356,27 @@ The structure 21 contains:
 >  tag  =>  {TOCI}{pdf}
 >  rolemap  =>  {TOCI}{pdf}
 >  parentrole  =>  {TOCI}{pdf}
->  parentnum  =>  20 = /TOC
+>  parentnum  =>  21 = /TOC
 >  Ref  =>  \__tag_struct_Ref_dest:nN {target*.4},
 The structure has the following kids:
->  Struct 22
+>  Struct 23
 =========================
 =========================
-The structure 22 contains:
+The structure 23 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Reference
 >  NS  =>  pdf
 >  tag  =>  {Reference}{pdf}
 >  rolemap  =>  {Reference}{pdf}
 >  parentrole  =>  {Reference}{pdf}
->  parentnum  =>  21 = /TOCI
+>  parentnum  =>  22 = /TOCI
 The structure has the following kids:
 >  MC 20
->  Struct 23
->  MC 22
 >  Struct 24
+>  MC 22
+>  Struct 25
 >  MC 24
 >  MC 26
-=========================
-=========================
-The structure 23 contains:
->  Type  =>  /StructElem
->  S  =>  /Lbl
->  NS  =>  pdf2
->  tag  =>  {Lbl}{pdf2}
->  rolemap  =>  {Lbl}{pdf2}
->  parentrole  =>  {Lbl}{pdf2}
->  parentnum  =>  22 = /Reference
-The structure has the following kids:
->  MC 21
 =========================
 =========================
 The structure 24 contains:
@@ -386,12 +386,24 @@ The structure 24 contains:
 >  tag  =>  {Lbl}{pdf2}
 >  rolemap  =>  {Lbl}{pdf2}
 >  parentrole  =>  {Lbl}{pdf2}
->  parentnum  =>  22 = /Reference
+>  parentnum  =>  23 = /Reference
+The structure has the following kids:
+>  MC 21
+=========================
+=========================
+The structure 25 contains:
+>  Type  =>  /StructElem
+>  S  =>  /Lbl
+>  NS  =>  pdf2
+>  tag  =>  {Lbl}{pdf2}
+>  rolemap  =>  {Lbl}{pdf2}
+>  parentrole  =>  {Lbl}{pdf2}
+>  parentnum  =>  23 = /Reference
 The structure has the following kids:
 >  MC 23
 =========================
 =========================
-The structure 25 contains:
+The structure 26 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF00730065006300740069006F006E>
 >  S  =>  /TOCI
@@ -399,39 +411,39 @@ The structure 25 contains:
 >  tag  =>  {TOCI}{pdf}
 >  rolemap  =>  {TOCI}{pdf}
 >  parentrole  =>  {TOCI}{pdf}
->  parentnum  =>  8 = /TOC
+>  parentnum  =>  9 = /TOC
 >  Ref  =>  \__tag_struct_Ref_dest:nN {target*.5},
 The structure has the following kids:
->  Struct 26
+>  Struct 27
 =========================
 =========================
-The structure 26 contains:
+The structure 27 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Reference
 >  NS  =>  pdf
 >  tag  =>  {Reference}{pdf}
 >  rolemap  =>  {Reference}{pdf}
 >  parentrole  =>  {Reference}{pdf}
->  parentnum  =>  25 = /TOCI
+>  parentnum  =>  26 = /TOCI
 The structure has the following kids:
 >  MC 27
 >  MC 29
 =========================
 =========================
-The structure 27 contains:
+The structure 28 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Sect
 >  NS  =>  pdf2
 >  tag  =>  {Sect}{pdf2}
 >  rolemap  =>  {Sect}{pdf2}
 >  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  5 = /Sect
+>  parentnum  =>  6 = /Sect
 The structure has the following kids:
->  Struct 28
->  Struct 30
+>  Struct 29
+>  Struct 31
 =========================
 =========================
-The structure 28 contains:
+The structure 29 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF00730065006300740069006F006E>
 >  S  =>  /section
@@ -439,37 +451,37 @@ The structure 28 contains:
 >  tag  =>  {section}{latex-book}
 >  rolemap  =>  {H2}{pdf2}
 >  parentrole  =>  {H2}{pdf2}
->  parentnum  =>  27 = /Sect
+>  parentnum  =>  28 = /Sect
 The structure has the following kids:
->  Struct 29
+>  Struct 30
 >  MC 31
 =========================
 =========================
-The structure 29 contains:
+The structure 30 contains:
 >  Type  =>  /StructElem
 >  S  =>  /section-number
 >  NS  =>  latex
 >  tag  =>  {section-number}{latex}
 >  rolemap  =>  {Span}{pdf2}
 >  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  28 = /section
+>  parentnum  =>  29 = /section
 The structure has the following kids:
 >  MC 30
 =========================
 =========================
-The structure 30 contains:
+The structure 31 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Sect
 >  NS  =>  pdf2
 >  tag  =>  {Sect}{pdf2}
 >  rolemap  =>  {Sect}{pdf2}
 >  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  27 = /Sect
+>  parentnum  =>  28 = /Sect
 The structure has the following kids:
->  Struct 31
+>  Struct 32
 =========================
 =========================
-The structure 31 contains:
+The structure 32 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF00730075006200730065006300740069006F006E>
 >  S  =>  /subsection
@@ -477,102 +489,102 @@ The structure 31 contains:
 >  tag  =>  {subsection}{latex-book}
 >  rolemap  =>  {H3}{pdf2}
 >  parentrole  =>  {H3}{pdf2}
->  parentnum  =>  30 = /Sect
+>  parentnum  =>  31 = /Sect
 The structure has the following kids:
->  Struct 32
+>  Struct 33
 >  MC 33
-=========================
-=========================
-The structure 32 contains:
->  Type  =>  /StructElem
->  S  =>  /section-number
->  NS  =>  latex
->  tag  =>  {section-number}{latex}
->  rolemap  =>  {Span}{pdf2}
->  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  31 = /subsection
-The structure has the following kids:
->  MC 32
 =========================
 =========================
 The structure 33 contains:
 >  Type  =>  /StructElem
->  S  =>  /Sect
->  NS  =>  pdf2
->  tag  =>  {Sect}{pdf2}
->  rolemap  =>  {Sect}{pdf2}
->  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  5 = /Sect
+>  S  =>  /section-number
+>  NS  =>  latex
+>  tag  =>  {section-number}{latex}
+>  rolemap  =>  {Span}{pdf2}
+>  parentrole  =>  {Span}{pdf2}
+>  parentnum  =>  32 = /subsection
 The structure has the following kids:
->  Struct 34
->  Struct 36
+>  MC 32
 =========================
 =========================
 The structure 34 contains:
 >  Type  =>  /StructElem
->  T  =>  <FEFF006100640064007300650063>
->  S  =>  /section
->  NS  =>  latex-book
->  tag  =>  {section}{latex-book}
->  rolemap  =>  {H2}{pdf2}
->  parentrole  =>  {H2}{pdf2}
->  parentnum  =>  33 = /Sect
+>  S  =>  /Sect
+>  NS  =>  pdf2
+>  tag  =>  {Sect}{pdf2}
+>  rolemap  =>  {Sect}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  parentnum  =>  6 = /Sect
 The structure has the following kids:
 >  Struct 35
->  MC 35
+>  Struct 37
 =========================
 =========================
 The structure 35 contains:
 >  Type  =>  /StructElem
+>  T  =>  <FEFF006100640064007300650063>
+>  S  =>  /section
+>  NS  =>  latex-book
+>  tag  =>  {section}{latex-book}
+>  rolemap  =>  {H2}{pdf2}
+>  parentrole  =>  {H2}{pdf2}
+>  parentnum  =>  34 = /Sect
+The structure has the following kids:
+>  Struct 36
+>  MC 35
+=========================
+=========================
+The structure 36 contains:
+>  Type  =>  /StructElem
 >  S  =>  /section-number
 >  NS  =>  latex
 >  tag  =>  {section-number}{latex}
 >  rolemap  =>  {Span}{pdf2}
 >  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  34 = /section
+>  parentnum  =>  35 = /section
 The structure has the following kids:
 >  MC 34
 =========================
 =========================
-The structure 36 contains:
->  Type  =>  /StructElem
->  S  =>  /text-unit
->  NS  =>  latex
->  tag  =>  {text-unit}{latex}
->  rolemap  =>  {Part}{pdf2}
->  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  33 = /Sect
-The structure has the following kids:
->  Struct 37
-=========================
-=========================
 The structure 37 contains:
 >  Type  =>  /StructElem
->  C  =>  /justify
->  S  =>  /text
+>  S  =>  /semantic-para
 >  NS  =>  latex
->  tag  =>  {text}{latex}
+>  tag  =>  {semantic-para}{latex}
+>  rolemap  =>  {Part}{pdf2}
+>  parentrole  =>  {Sect}{pdf2}
+>  parentnum  =>  34 = /Sect
+The structure has the following kids:
+>  Struct 38
+=========================
+=========================
+The structure 38 contains:
+>  Type  =>  /StructElem
+>  C  =>  /justify
+>  S  =>  /text-block
+>  NS  =>  latex
+>  tag  =>  {text-block}{latex}
 >  rolemap  =>  {P}{pdf2}
 >  parentrole  =>  {P}{pdf2}
->  parentnum  =>  36 = /text-unit
+>  parentnum  =>  37 = /semantic-para
 The structure has the following kids:
 >  MC 36
 =========================
 =========================
-The structure 38 contains:
+The structure 39 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Sect
 >  NS  =>  pdf2
 >  tag  =>  {Sect}{pdf2}
 >  rolemap  =>  {Sect}{pdf2}
 >  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  5 = /Sect
+>  parentnum  =>  6 = /Sect
 The structure has the following kids:
->  Struct 39
->  Struct 41
+>  Struct 40
+>  Struct 42
 =========================
 =========================
-The structure 39 contains:
+The structure 40 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF006100640064007300650063>
 >  S  =>  /section
@@ -580,37 +592,37 @@ The structure 39 contains:
 >  tag  =>  {section}{latex-book}
 >  rolemap  =>  {H2}{pdf2}
 >  parentrole  =>  {H2}{pdf2}
->  parentnum  =>  38 = /Sect
+>  parentnum  =>  39 = /Sect
 The structure has the following kids:
->  Struct 40
+>  Struct 41
 >  MC 38
 =========================
 =========================
-The structure 40 contains:
+The structure 41 contains:
 >  Type  =>  /StructElem
 >  S  =>  /section-number
 >  NS  =>  latex
 >  tag  =>  {section-number}{latex}
 >  rolemap  =>  {Span}{pdf2}
 >  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  39 = /section
+>  parentnum  =>  40 = /section
 The structure has the following kids:
 >  MC 37
 =========================
 =========================
-The structure 41 contains:
+The structure 42 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Sect
 >  NS  =>  pdf2
 >  tag  =>  {Sect}{pdf2}
 >  rolemap  =>  {Sect}{pdf2}
 >  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  38 = /Sect
+>  parentnum  =>  39 = /Sect
 The structure has the following kids:
->  Struct 42
+>  Struct 43
 =========================
 =========================
-The structure 42 contains:
+The structure 43 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF0062006C00750062>
 >  S  =>  /subsection
@@ -618,37 +630,37 @@ The structure 42 contains:
 >  tag  =>  {subsection}{latex-book}
 >  rolemap  =>  {H3}{pdf2}
 >  parentrole  =>  {H3}{pdf2}
->  parentnum  =>  41 = /Sect
+>  parentnum  =>  42 = /Sect
 The structure has the following kids:
->  Struct 43
+>  Struct 44
 >  MC 40
 =========================
 =========================
-The structure 43 contains:
+The structure 44 contains:
 >  Type  =>  /StructElem
 >  S  =>  /section-number
 >  NS  =>  latex
 >  tag  =>  {section-number}{latex}
 >  rolemap  =>  {Span}{pdf2}
 >  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  42 = /subsection
+>  parentnum  =>  43 = /subsection
 The structure has the following kids:
 >  MC 39
 =========================
 =========================
-The structure 44 contains:
+The structure 45 contains:
 >  Type  =>  /StructElem
 >  S  =>  /Sect
 >  NS  =>  pdf2
 >  tag  =>  {Sect}{pdf2}
 >  rolemap  =>  {Sect}{pdf2}
 >  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  5 = /Sect
+>  parentnum  =>  6 = /Sect
 The structure has the following kids:
->  Struct 45
+>  Struct 46
 =========================
 =========================
-The structure 45 contains:
+The structure 46 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF00730065006300740069006F006E>
 >  S  =>  /section
@@ -656,20 +668,20 @@ The structure 45 contains:
 >  tag  =>  {section}{latex-book}
 >  rolemap  =>  {H2}{pdf2}
 >  parentrole  =>  {H2}{pdf2}
->  parentnum  =>  44 = /Sect
+>  parentnum  =>  45 = /Sect
 The structure has the following kids:
->  Struct 46
+>  Struct 47
 >  MC 42
 =========================
 =========================
-The structure 46 contains:
+The structure 47 contains:
 >  Type  =>  /StructElem
 >  S  =>  /section-number
 >  NS  =>  latex
 >  tag  =>  {section-number}{latex}
 >  rolemap  =>  {Span}{pdf2}
 >  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  45 = /section
+>  parentnum  =>  46 = /section
 The structure has the following kids:
 >  MC 41
 =========================
@@ -685,11 +697,10 @@ tagpdf DEBUG Info: Tagging resumed
 ]<<latex-list-css.html>><<latex-align-css.html>> (toc.aux)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package tagpdf Info: Finalizing the tagging structure:
-(tagpdf)             Writing out ~46 structure objects
+(tagpdf)             Writing out ~47 structure objects
 (tagpdf)             with ~44 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
-Package tagpdf Warning: something is wrong with the mcid--rerun
 Package tagpdf Info: writing IDTree
 Package tagpdf Info: writing RoleMap
 Package tagpdf Info: writing ClassMap

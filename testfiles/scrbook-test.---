@@ -1,0 +1,2 @@
+\RequirePackage[nested,add-binaries]{depp}
+\input{scrbook-test.ltx}

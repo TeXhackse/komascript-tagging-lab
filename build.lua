@@ -38,6 +38,7 @@ specialformats["latex"] = specialformats["latex"] or
     luatexmain = {binary="luahbtex",format = "lualatex"},
   }
 
+stdengine = luatex
 checkengines = {"luatex",
 -- pdftex,
 -- main track only for local tests,
