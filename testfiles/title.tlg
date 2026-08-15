@@ -1,0 +1,46 @@
+<PDF>
+ <StructTreeRoot>
+  <Lbl xmlns="http://iso.org/pdf2/ssn"
+     id="ID.002"
+    >
+  </Lbl>
+  <?MarkedContent page="1" ?>
+  <Document xmlns="http://iso.org/pdf2/ssn"
+     id="ID.003"
+    >
+   <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+      id="ID.007"
+      rolemaps-to="Part"
+     >
+    <Title xmlns="http://iso.org/pdf2/ssn"
+       id="ID.008"
+      >
+     <text-block xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.009"
+        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+        Layout:TextAlign="Center"
+        rolemaps-to="P"
+       >
+      <?MarkedContent page="1" ?>test
+     </text-block>
+    </Title>
+    <text-block xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.010"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Center"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>
+    </text-block>
+    <text-block xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.011"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Center"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>May 20, 2016
+    </text-block>
+   </semantic-para>
+  </Document>
+ </StructTreeRoot>
+</PDF>

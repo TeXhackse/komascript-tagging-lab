@@ -1,0 +1,18 @@
+\input{regression-test}
+
+\input{testsetup}
+\documentclass{book}
+
+\pagestyle{empty}
+
+\tagpdfsetup{
+   debug/log=v
+}
+
+\begin{document}
+
+\title{test}
+\maketitle
+
+\SHOWPDFTAGS
+\end{document}
