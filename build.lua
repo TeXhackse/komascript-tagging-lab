@@ -35,8 +35,11 @@ specialformats["latex"] = specialformats["latex"] or
     luatex     = {binary="luahbtex",format = "lualatex-dev"},
     pdftex     = {format = "pdflatex-dev"},
     pdftexmain = {binary="pdftex",format = "pdflatex"},
---    xetex      = {format = "xelatex-dev"},
---    latexdvips = {binary="latex",format = "latex-dev"}
+    luatexmain = {binary="luahbtex",format = "lualatex"},
   }
 
-checkengines = {"luatex"}
+checkengines = {"luatex",
+-- pdftex,
+-- main track only for local tests,
+--	"luatexmain","pdftexmain"
+}
