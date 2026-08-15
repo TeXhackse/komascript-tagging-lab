@@ -160,9 +160,9 @@
 % tagging: \SuspendTagging does not exist before |begin{document}|
 % TODO: ask if theres a better option otherwhise we have to check if the command exists for the main version of KOMA-Script.
 %    \begin{macrocode}
+%<tagging-lab>    \tag_stop:n {toc/tocline-measure}
   \@tempswatrue
   \begingroup
-%<tagging-lab>  \measuring@true
     \def\scr@numberline##1{\global\@tempswafalse}%
 %    \end{macrocode}
 % For \cs{numberline} \cs{@tempdima} usually is the width reserved for the
@@ -173,6 +173,7 @@
     \sbox\@tempboxa{\numberline{0}}%
   \endgroup
   \if@tempswa #1\renewcommand*{\numberline}[1]{\scr@numberline{##1}}\fi
+%<tagging-lab>    \tag_start:n {toc/tocline-measure}
 }
 %</package&(body|tagging-lab)>
 %<*package&body>
