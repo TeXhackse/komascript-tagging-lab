@@ -1277,7 +1277,7 @@
 %<tagging-lab>\newcommand{\scrlab@sectionlinesformat}[4]{%
 \IfUseNumber{\bool_set_false:N \l__scrkernel_sec_nonumber_bool}{\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
            \NoCaseChange
-           \l__scrkernel_sec_nonumber_bool
+           \IfUseNumber\c_false_bool\c_true_bool
             {\UseTaggingSocket{sec/title/hang}
                {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\@currenttocentry}}
                {\@hangfrom {\hskip #2\relax#3}}}
@@ -1407,7 +1407,7 @@
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
-%<tagging-lab>    UseTaggingSocket{para/restore}
+%<tagging-lab>    \UseTaggingSocket{para/restore}
     \@afterheading
   \else
     \@nobreakfalse
@@ -1422,7 +1422,7 @@
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
-%<tagging-lab>        \tag_tool:n {sec-split-para}
+%<tagging-lab>        \tag_tool:n {sec/title/split}
         \@tempskipa #1\relax
         \ifdim \@tempskipa<\z@
           \hskip -\@tempskipa
