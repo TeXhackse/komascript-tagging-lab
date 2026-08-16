@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4274 of the repository:
+% This file is based on revision 4278 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -14,7 +14,7 @@
 % ======================================================================
 % ======================================================================
 % scrkernel-sections.dtx
-% Copyright (c) Markus Kohm, 2002-2025
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4253 2025-12-31 12:09:32Z kohm $
+%%% From File: $Id: scrkernel-sections.dtx 4278 2026-06-16 07:18:21Z kohm $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-12-31 13:09:32 +0100 (Wed, 31 Dec 2025) $
+  \filedate$Date: 2026-06-16 09:18:21 +0200 (Tue, 16 Jun 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4253 $
+  \filerevision$Revision: 4278 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -522,15 +522,17 @@
 %   \changes{v3.13a}{2014/09/11}{re-definition for extended optional argument}
 %   \changes{v3.49}{2025/09/11}{no longer redefined or used}
 %   \changes{v3.49}{2025/09/11}{warning message added if used}
-%   \changes{v3.50}{2025/12/31}{improved workaround for \pkg{babel} catcode
+%   \changes{v3.49.2}{2025/12/31}{improved workaround for \pkg{babel} catcode
 %     issues}
+%   \changes{v3.49.3}{2026/06/15}{missing expansion of message module name}
 %   We add a warning message to the very beginning of \cs{@startsection}. So
 %   if a package or any other preamble code or the user himself uses
 %   \cs{@startsection} there will be an information about the caveats.
 %    \begin{macrocode}
 %<*body>
 \ExplSyntaxOn
-\msg_new:nnnn { \KOMAClassName } { sectioning-features-not-available }
+\exp_args:NV \msg_new:nnnn \KOMAClassName
+  { sectioning-features-not-available }
   {
     Usage~of~\token_to_str:N #1 detected.\\
     Note,~the~sectioning~of~\KOMAClassName\ does~neither~use~nor~
@@ -550,9 +552,9 @@
     \exp_args:Nne
     \hook_gput_code:nnn { cmd / @startsection / before } { \KOMAClassName }
       {
-        \msg_warning:nnn { \KOMAClassName }
-                         { sectioning-features-not-available }
-                         { \@startsection }
+        \exp_args:NV \msg_warning:nnn \KOMAClassName
+          { sectioning-features-not-available }
+          { \@startsection }
       }
     \cctab_end:
   }
@@ -593,6 +595,22 @@
 %   \changes{v3.49}{2025/09/11}{removed}
 % \end{macro}
 %
+% \begin{macro}{\@currentrunintrue,\@currentruninfalse,\if@currentrunin}
+%   \changes{3.49.3}{2026/06/15}{generalization of former
+%   \cs{@startsection@runintrue}, \cs{@startsection@runinfalse},
+%   \cs{if@startsection@runin}}
+%   Before \KOMAScript~v3.49.3 only \cs{scr@startsection} setup
+%   \cs{if@startsection@runin}. But for tagging a generalization of the switch
+%   became useful. So it was renamed.
+%    \begin{macrocode}
+\newif \if@currentrunin
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\@startsection@runintrue,\@startsection@runinfalse,
+%               \if@startsection@runin}
+%   \changes{v3.49.3}{2026/06/15}{replaced by \cs{@currentrunintrue},
+%   \cs{@currentruninfalse}, \cs{if@currentrunin}}
+% \end{macro}
 % \begin{macro}{\scr@startsection}
 % \changes{v3.13a}{2014/09/11}{added}
 % \changes{v3.18}{2015/05/22}{using \cs{numexpr} for argument 2}
@@ -601,9 +619,7 @@
 % \changes{v3.26}{2018/09/18}{supporting \opt{afterindent}}
 % \begin{macro}{\startsection@sectionname,\startsection@secnumdepth,
 %               \startsection@indent,\startsection@beforeskip,
-%               \startsection@afterskip,\startsection@afterindent,
-%               \@startsection@runintrue,\@startsection@runinfalse,
-%               \if@startsection@runin}
+%               \startsection@afterskip,\startsection@afterindent}
 % \changes{v3.26}{2018/05/14}{added}
 % The \cs{@startsection} of the \LaTeX{} kernel does not provide all the
 % features we need for \KOMAScript. And the generic hooks of \LaTeX{} do not
@@ -627,7 +643,7 @@
 %   \cs{startsection@sectionname}, \cs{startsection@secnumdepth},
 %   \cs{startsection@indent}, \cs{startsection@beforeskip},
 %   \cs{startsection@afterskip}, \cs{if@afterindent},
-%   \cs{if@startsection@runin}, and \cs{startsection@afterindent} are valid
+%   \cs{if@currentrunin}, and \cs{startsection@afterindent} are valid
 %   from executing the do hook \dhook{heading/postinit}. So they can be used
 %   inside all the hooks.
 % \item[Note:] \cs{startsection@indent}, \cs{startsection@beforeskip},
@@ -636,7 +652,7 @@
 % \item[Note:] \cs{startsection@beforeskip} and \cs{startsection@afterskip}
 %   are effective values already. Not special treatment for negative or
 %   positive values must be done.
-% \item[Note:] \cs{if@startsection@runin}
+% \item[Note:] \cs{if@currentrunin}
 %   are either \cs{iftrue} or \cs{iffalse}.
 % \item[Note:] \cs{if@startsection@indentafter} does not exist and is not
 %   needed, because \cs{if@afterindent} is already valid and also either
@@ -680,20 +696,20 @@
   }%
   \scr@sect@runin{%
     \def\startsection@afterskip{\glueexpr #3\relax}%
-    \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+    \expandafter\let\csname if@currentrunin\expandafter\endcsname
     \csname iftrue\endcsname
   }{%
     \def\startsection@afterskip{\glueexpr #3\relax}%
-    \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+    \expandafter\let\csname if@currentrunin\expandafter\endcsname
     \csname iffalse\endcsname
   }{%
     \ifdim \glueexpr #5\relax <\z@
       \def\startsection@afterskip{\glueexpr (#3)*\m@ne\relax}%
-      \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+      \expandafter\let\csname if@currentrunin\expandafter\endcsname
       \csname iftrue\endcsname
     \else
       \def\startsection@afterskip{\glueexpr #3\relax}%
-      \expandafter\let\csname if@startsection@runin\expandafter\endcsname
+      \expandafter\let\csname if@currentrunin\expandafter\endcsname
       \csname iffalse\endcsname
     \fi
   }%
@@ -760,14 +776,11 @@
   \scr@startsection@ulm@error\startsection@beforeskip}
 \newcommand*\startsection@afterskip{%
   \scr@startsection@ulm@error\startsection@afterskip}
-\newcommand*{\if@startsection@runin}{%
-  \scr@startsection@ulm@error\if@startsection@runin}
-\newif\if@startsection@runin
 \newcommand*\startsection@afterindent{%
   \scr@startsection@ulm@error\startsection@afterindent}
 %    \end{macrocode}
 % \end{macro}^^A \scr@startsection@ulm@error
-% \end{macro}^^A \startsection@sectionname … \scr@startsection@runin
+% \end{macro}^^A \startsection@sectionname … \startsection@afterindent
 % \begin{macro}{\At@startsection}
 % \changes{v3.14}{2014/09/11}{added}
 % \changes{v3.27}{2019/02/04}{using \cs{AddtoDoHook}}
@@ -1321,6 +1334,19 @@
     \def\scr@s@ct@@nn@m@{\string\scr@s@ct@@nn@m@}%
   }{%
 %    \end{macrocode}
+% \changes{v3.49.3}{2026/06/15}{setting defaults for some internals similar to
+% \cs{scr@sect}}
+% For \pkg{hyperref}, \pkg{nameref} and for tagging it is useful to setup some
+% internals similar to \cs{scr@sect}, nevertheless there isn't an optional
+% argument.
+% \begin{description}
+% \item[Todo:] When doing a large revision, it would be useful to provide an
+%   optional argument also for the asterisk version, and to only use different
+%   defaults.
+%    \begin{macrocode}
+    \setkeys{KOMAarg.section}{reference={#5}}%
+%    \end{macrocode}
+% \end{description}
 % \changes{v3.31}{2020/06/02}{execute counter reset list}
 % Even for not numbered sections, the reset list für the corresponding section
 % counter has to be executed.
@@ -1352,6 +1378,9 @@
       }\reserved@a
       #4{\nobreak\interlinepenalty \@M
 %    \end{macrocode}
+%   \changes{v3.49.3}{2026/06/15}{\cs{hy@insteadofrefstepcounter} added}%
+%   This is a possible place to add a \pkg{hyperref} anchor if needed.
+%
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
         \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
@@ -1373,6 +1402,9 @@
 %    \begin{macrocode}
         \noexpand\nobreak
 %    \end{macrocode}
+%   \changes{v3.49.3}{2026/06/15}{\cs{hy@insteadofrefstepcounter} added}%
+%   This is a possible place to add a \pkg{hyperref} anchor if needed.
+%
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
         \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
@@ -4026,6 +4058,7 @@
 % \changes{v3.19}{2015/08/25}{ignoring empty \cs{partpagestyle}}
 % \changes{v3.26}{2018/10/14}{supporting option \opt{afterindent}}
 % \changes{v3.28}{2019/11/18}{\cs{ifstr} renamed to \cs{Ifstr}}
+% \changes{v3.49.3}{2026/06/15}{\cs{@currentruninfalse} added}
 % The macro
 % \begin{quote}
 %   \cs{scr@startpart}\marg{part command name}
@@ -4038,6 +4071,7 @@
 %<*body>
 \newcommand*{\scr@startpart}[1]{%
   \ExecuteDoHook{heading/preinit/#1}%
+  \@currentruninfalse
 %<article>  \par
 %<*book|report>
   \if@openright\cleardoublepage\else\clearpage\fi
@@ -4912,6 +4946,7 @@
 % \begin{macro}{\scr@startchapter}
 % \changes{v3.18}{2015/05/22}{added}
 % \changes{v3.19}{2015/08/25}{ignore empty page styles}
+% \changes{v3.49.3}{2026/06/15}{\cs{@currentruninfalse} added}
 % The macro
 % \begin{quote}
 %   \cs{scr@startchapter}\marg{chapter command name}
@@ -4924,6 +4959,7 @@
 %<*body>
 \newcommand*{\scr@startchapter}[1]{%
   \ExecuteDoHook{heading/preinit/#1}%
+  \@currentruninfalse
   \if@openright\cleardoublepage\else\clearpage\fi
   \scr@ifundefinedorrelax{#1pagestyle}{}{%
     \Ifstr{#1pagestyle}{}{}{%
