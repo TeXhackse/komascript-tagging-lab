@@ -111,6 +111,7 @@
   \cs_set_eq:NN \partlineswithprefixformat \scrlab@partlineswithprefixformat
   \cs_set_eq:NN \@seccntformat \scrlab@seccntformat
   \let\scr@sect\scrlab@sect
+  \let\scr@startsection\scrlab@startsection
   \let\scr@xsect\scrlab@xsect
 
 %% \AddtoDoHook{heading/begingroup/chapter}
@@ -124,6 +125,8 @@
     \UseTaggingSocket{para/restore}
     \use_none:n
   }
+  \AddToDoHook{heading/preinit/chapter}{\@currentruninfalse}
+  \AddToDoHook{heading/preinit/part}{\@currentruninfalse}
   \AddtoDoHook{heading/postinit}{
 	\@@_sec_start_aux:n
   }

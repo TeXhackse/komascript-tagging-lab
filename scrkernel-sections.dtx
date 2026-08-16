@@ -666,8 +666,9 @@
 %    \begin{macrocode}
 %</class&!letter>
 %<*class&!letter|workarounds>
-%<*body|workarounds>
-\newcommand*{\scr@startsection}[6]{%
+%<*body|tagging-lab>
+%<!tagging-lab>\newcommand*{\scr@startsection}[6]{%
+%<tagging-lab>\newcommand*{\scrlab@startsection}[6]{%
   \ExecuteDoHook{heading/preinit/#1}%
   \if@noskipsec \leavevmode \fi
   \par
@@ -735,6 +736,8 @@
     }%
   }%
 }
+%</body|tagging-lab>
+%<*body|workarounds>
 %    \end{macrocode}
 % \begin{macro}{\scr@sect@runin}
 % \changes{v3.26}{2018/09/18}{added}
