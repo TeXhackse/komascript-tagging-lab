@@ -2207,9 +2207,9 @@
 %    \end{macrocode}
 % tagging: tagging has to be suspended for the measuring of the number box
 %    \begin{macrocode}
-%<tagging>          \SuspendTagging{toc/numberline-measure}%
+%<tagging-lab|tagging>          \SuspendTagging{toc/numberline-measure}%
           \sbox\scr@dte@tocline@numbox{\@nameuse{scr@tso@#1@numberformat}{##1}}%
-%<tagging>          \ResumeTagging{toc/numberline-measure}%
+%<tagging-lab|tagging>          \ResumeTagging{toc/numberline-measure}%
 %    \end{macrocode}
 % We are inside a group, so we have to set the length globally.
 %    \begin{macrocode}
