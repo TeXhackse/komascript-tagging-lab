@@ -54,12 +54,12 @@
 %    \begin{macrocode}
 \newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
 \cs_new:Nn \@@_sec_start_aux:n {
-  \int_set:Nn\l__scr_sec_level_int{\use:c{toclevel@#1}} 
-   \UseTaggingSocket{sec/end}{\int_use:N\l__scr_sec_level_int}
+  \int_set:Nn\l_@@_sec_level_int{\use:c{toclevel@#1}}
+   \UseTaggingSocket{sec/end}{\int_use:N\l_@@_sec_level_int}
    \UseTaggingSocket{sec/begin}
-    {{\int_use:N\l__scr_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l__scr_sec_level_int}}}
+    {{\int_use:N\l_@@_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int}}}
      \if@currentrunin
-      \UseTaggingSocket{sec/title/init}{\int_use:N\l__scr_sec_level_int}
+      \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
      \fi
 }
 \cs_new:Nn \@@_sec_init_aux:n {
