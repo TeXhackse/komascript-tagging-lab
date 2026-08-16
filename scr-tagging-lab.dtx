@@ -103,6 +103,18 @@
 % \UseTaggingSocket{para/restore}
 %% }
 
+\cs_new:Nn \@@_sec_end_aux:n {
+  \if@currentrunin
+    \UseTaggingSocket{sec/title/split}
+  \else
+    \cs_if_exist:cTF {@end#1} {
+      \tagmcend\tagstructend
+    }{
+      \UseTaggingSocket{para/restore}
+    }
+  \fi
+}
+
 \cs_new:Nn \_@@_patch_sectioning: {
   \cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
   \cs_set_eq:NN \chapterlinesformat \scrlab@chapterlinesformat
@@ -122,19 +134,22 @@
 % probably it's a good idea to define a hook with arguments there instead of this workaround
 %    \begin{macrocode}
   \AddtoDoHook{heading/endgroup}{
-    \UseTaggingSocket{para/restore}
-    \use_none:n
+    \@@_sec_end_aux:n
   }
   \AddtoDoHook{heading/preinit/chapter}{\@currentruninfalse}
   \AddtoDoHook{heading/preinit/part}{\@currentruninfalse}
-  \AddtoDoHook{heading/preinit/part}{\let\orig@strut\strut\let\strut\scrlab@notagstrut}
-  \AddtoDoHook{heading/begingroup/part}{\global\let\strut\orig@strut}
+  \AddtoDoHook{heading/preinit/part}{
+    \let\orig@strut\strut\let\strut\scrlab@notagstrut
+  }
+  \AddtoDoHook{heading/begingroup/part}{
+    \global\let\strut\orig@strut
+  }
   \AddtoDoHook{heading/postinit}{
 	\@@_sec_start_aux:n
   }
   \AddtoDoHook{heading/begingroup}{
 	\@@_sec_init_aux:n
-}
+	}
 }
 
 \cs_new:Nn \_@@_patch_maketitle: {
@@ -160,7 +175,7 @@
   \let\numberline\scr@numberline
 }
 
-\int_new:N \l__scr_sec_level_int
+\int_new:N \l_@@_sec_level_int
 
 \def\scrlab@notagstrut{%
 	\ifhmode\else

@@ -4391,31 +4391,36 @@
 %     \end{macrocode}
 % tagging: Separate prefix and title for the part tagging.
 %    \begin{macrocode}
+%<@@=scrlab>
 %<*tagging-lab>
+\tl_new:N     \l_@@_sec_tmpa_tl
 \newcommand{\scrlab@partlineswithprefixformat}[3]{%
-	\tagstructbegin{tag=#1}
+  \pdf_purify:nN{\@currenttocentry}\l_@@_sec_tmpa_tl
+  \tagstructbegin{tag=\UseStructureName{sec/\int_use:N \l_@@_sec_level_int/title},title-o={\l_@@_sec_tmpa_tl}}
+  \cs_if_exist_use:N \@@_gincr_para_begin_int:
 		\tl_if_blank:nTF {#2}%
 			{\MakeLinkTarget[#1]{}{}}%TODO no number
 			{
-				\tagstructbegin{tag=Lbl}
+				\tagstructbegin{tag=\UseStructureName{sec/\int_use:N \l_@@_sec_level_int/number}}
 					\bool_lazy_and:nnT
 						{\tag_if_active_p:}
 						{\g__tag_mode_lua_bool}
-						{\tagmcbegin{tag=Lbl}}
+						{\tagmcbegin{}}
 					\SuspendTagging{part-number}
 				           {#2}
 					\ResumeTagging{part-number}
-				\tagmcend
-			\tagstructend
+					\tagmcend
+					\tagstructend
+					\tagpdfparaOff
 		}
-		\tagmcbegin{}
-				%\SuspendTagging {part-heading}
-				#3%
-				%\ResumeTagging{part-heading}
-		\tagmcend
-	\tagstructend
+		\tagpdfsetup{para/tag=Span}
+		\tagpdfparaOn
+		%\SuspendTagging {part-heading}
+		#3%
+		%\ResumeTagging{part-heading}
 }
 %</tagging-lab>
+%<@@=>
 %<*body>
 %    \end{macrocode}
 % \end{command}^^A \partlineswithprefixformat
