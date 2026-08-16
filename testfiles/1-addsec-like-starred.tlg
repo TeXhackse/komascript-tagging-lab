@@ -1,235 +1,113 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-(1-addsec-like-starred.toc)
+(1-addsec-like-starred.toc
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+)
 \tf@toc=\write...
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
-=========================
-The structure 1 contains:
->  Type  =>  /StructTreeRoot
->  S  =>  /StructTreeRoot
->  tag  =>  {StructTreeRoot}{pdf}
->  rolemap  =>  {StructTreeRoot}{pdf}
->  parentrole  =>  {StructTreeRoot}{pdf}
-The structure has the following kids:
->  Struct 2
-=========================
-=========================
-The structure 2 contains:
->  Type  =>  /StructElem
->  S  =>  /Document
->  NS  =>  pdf2
->  tag  =>  {Document}{pdf2}
->  rolemap  =>  {Document}{pdf2}
->  parentrole  =>  {Document}{pdf2}
->  parentnum  =>  1 = /StructTreeRoot
-The structure has the following kids:
->  Struct 6
->  Struct 10
->  Struct 13
->  Struct 16
-=========================
-=========================
-The structure 3 contains:
->  Type  =>  /StructElem
->  S  =>  /Link
->  NS  =>  pdf2
->  tag  =>  {Link}{pdf2}
->  rolemap  =>  {Link}{pdf2}
->  parentrole  =>  {Link}{pdf2}
->  parentnum  =>  no parent: stashed
-The structure has the following kids:
-> NONE
-=========================
-=========================
-The structure 4 contains:
->  Type  =>  /StructElem
->  S  =>  /figures
->  NS  =>  latex
->  tag  =>  {figures}{latex}
->  rolemap  =>  {Sect}{pdf2}
->  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  no parent: stashed
-The structure has the following kids:
-> NONE
-=========================
-=========================
-The structure 5 contains:
->  Type  =>  /StructElem
->  S  =>  /tables
->  NS  =>  latex
->  tag  =>  {tables}{latex}
->  rolemap  =>  {Sect}{pdf2}
->  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  no parent: stashed
-The structure has the following kids:
-> NONE
-=========================
-=========================
-The structure 6 contains:
->  Type  =>  /StructElem
->  S  =>  /Sect
->  NS  =>  pdf2
->  tag  =>  {Sect}{pdf2}
->  rolemap  =>  {Sect}{pdf2}
->  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  2 = /Document
-The structure has the following kids:
->  Struct 7
->  Struct 9
-=========================
-=========================
-The structure 7 contains:
->  Type  =>  /StructElem
->  T  =>  <FEFF>
->  S  =>  /section
->  NS  =>  latex
->  tag  =>  {section}{latex}
->  rolemap  =>  {H1}{pdf2}
->  parentrole  =>  {H1}{pdf2}
->  parentnum  =>  6 = /Sect
-The structure has the following kids:
->  Struct 8
->  MC 2
-=========================
-=========================
-The structure 8 contains:
->  Type  =>  /StructElem
->  S  =>  /section-number
->  NS  =>  latex
->  tag  =>  {section-number}{latex}
->  rolemap  =>  {Span}{pdf2}
->  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  7 = /section
-The structure has the following kids:
->  MC 1
-=========================
-=========================
-The structure 9 contains:
->  Type  =>  /StructElem
->  T  =>  <FEFF0074006F0063>
->  S  =>  /TOC
->  NS  =>  pdf
->  tag  =>  {TOC}{pdf}
->  rolemap  =>  {TOC}{pdf}
->  parentrole  =>  {TOC}{pdf}
->  parentnum  =>  6 = /Sect
-The structure has the following kids:
-> NONE
-=========================
-=========================
-The structure 10 contains:
->  Type  =>  /StructElem
->  S  =>  /Sect
->  NS  =>  pdf2
->  tag  =>  {Sect}{pdf2}
->  rolemap  =>  {Sect}{pdf2}
->  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  2 = /Document
-The structure has the following kids:
->  Struct 11
-=========================
-=========================
-The structure 11 contains:
->  Type  =>  /StructElem
->  T  =>  <FEFF00730065006300740069006F006E>
->  S  =>  /section
->  NS  =>  latex
->  tag  =>  {section}{latex}
->  rolemap  =>  {H1}{pdf2}
->  parentrole  =>  {H1}{pdf2}
->  parentnum  =>  10 = /Sect
-The structure has the following kids:
->  Struct 12
->  MC 4
-=========================
-=========================
-The structure 12 contains:
->  Type  =>  /StructElem
->  S  =>  /section-number
->  NS  =>  latex
->  tag  =>  {section-number}{latex}
->  rolemap  =>  {Span}{pdf2}
->  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  11 = /section
-The structure has the following kids:
->  MC 3
-=========================
-=========================
-The structure 13 contains:
->  Type  =>  /StructElem
->  S  =>  /Sect
->  NS  =>  pdf2
->  tag  =>  {Sect}{pdf2}
->  rolemap  =>  {Sect}{pdf2}
->  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  2 = /Document
-The structure has the following kids:
->  Struct 14
-=========================
-=========================
-The structure 14 contains:
->  Type  =>  /StructElem
->  T  =>  <FEFF006100640064007300650063>
->  S  =>  /section
->  NS  =>  latex
->  tag  =>  {section}{latex}
->  rolemap  =>  {H1}{pdf2}
->  parentrole  =>  {H1}{pdf2}
->  parentnum  =>  13 = /Sect
-The structure has the following kids:
->  Struct 15
->  MC 6
-=========================
-=========================
-The structure 15 contains:
->  Type  =>  /StructElem
->  S  =>  /section-number
->  NS  =>  latex
->  tag  =>  {section-number}{latex}
->  rolemap  =>  {Span}{pdf2}
->  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  14 = /section
-The structure has the following kids:
->  MC 5
-=========================
-=========================
-The structure 16 contains:
->  Type  =>  /StructElem
->  S  =>  /Sect
->  NS  =>  pdf2
->  tag  =>  {Sect}{pdf2}
->  rolemap  =>  {Sect}{pdf2}
->  parentrole  =>  {Sect}{pdf2}
->  parentnum  =>  2 = /Document
-The structure has the following kids:
->  Struct 17
-=========================
-=========================
-The structure 17 contains:
->  Type  =>  /StructElem
->  T  =>  <FEFF006100640064007300650063>
->  S  =>  /section
->  NS  =>  latex
->  tag  =>  {section}{latex}
->  rolemap  =>  {H1}{pdf2}
->  parentrole  =>  {H1}{pdf2}
->  parentnum  =>  16 = /Sect
-The structure has the following kids:
->  Struct 18
->  MC 8
-=========================
-=========================
-The structure 18 contains:
->  Type  =>  /StructElem
->  S  =>  /section-number
->  NS  =>  latex
->  tag  =>  {section-number}{latex}
->  rolemap  =>  {Span}{pdf2}
->  parentrole  =>  {Span}{pdf2}
->  parentnum  =>  17 = /section
-The structure has the following kids:
->  MC 7
-=========================
+============================================================
+TEST 1: Show PDF Tags
+============================================================
+-------- 1-addsec-like-starred.xml (start) ---------
+<PDF>
+ <StructTreeRoot>
+  <Document xmlns="http://iso.org/pdf2/ssn"
+     id="ID.002"
+    >
+   <TOC xmlns="http://iso.org/pdf/ssn"
+      id="ID.006"
+      title="toc"
+     >
+    <TOCI xmlns="http://iso.org/pdf/ssn"
+       id="ID.007"
+       title="section"
+      >
+      <?References objects="1" ?>
+     <Reference xmlns="http://iso.org/pdf/ssn"
+        id="ID.008"
+       >
+      <Lbl xmlns="http://iso.org/pdf2/ssn"
+         id="ID.009"
+        >
+       <?MarkedContent page="1" ?>1
+      </Lbl>
+      <?MarkedContent page="1" ?>section
+      <?MarkedContent page="1" ?>1
+     </Reference>
+    </TOCI>
+    <TOCI xmlns="http://iso.org/pdf/ssn"
+       id="ID.010"
+       title="addsec"
+      >
+      <?References objects="2" ?>
+     <Reference xmlns="http://iso.org/pdf/ssn"
+        id="ID.011"
+       >
+      <?MarkedContent page="1" ?>addsec
+      <?MarkedContent page="1" ?>1
+     </Reference>
+    </TOCI>
+   </TOC>
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.012"
+     >
+    <section xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.013"
+       title="section"
+       rolemaps-to="H1"
+      >
+     <section-number xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.014"
+        rolemaps-to="Span"
+        referenced-as="1"
+       >
+      <?MarkedContent page="1" ?>1 
+     </section-number>
+     <?MarkedContent page="1" ?>section
+    </section>
+   </Sect>
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.015"
+     >
+    <section xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.016"
+       title="addsec"
+       rolemaps-to="H1"
+       referenced-as="2"
+      >
+     <?MarkedContent page="1" ?>addsec
+    </section>
+   </Sect>
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.017"
+     >
+    <section xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.018"
+       title="addsec"
+       rolemaps-to="H1"
+      >
+     <?MarkedContent page="1" ?>starred
+    </section>
+   </Sect>
+  </Document>
+ </StructTreeRoot>
+</PDF>
+-------- 1-addsec-like-starred.xml (end) -----------
+============================================================
+[1
+]<<latex-list-css.html>><<latex-align-css.html>> (1-addsec-like-starred.aux)
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Package tagpdf Info: Finalizing the tagging structure:
+(tagpdf)             Writing out ~18 structure objects
+(tagpdf)             with ~12 'MC' leaf nodes.
+(tagpdf)             Be patient if there are lots of objects!
+Package tagpdf Info: writing ParentTree
+Package tagpdf Info: writing IDTree
+Package tagpdf Info: writing RoleMap
+Package tagpdf Info: writing ClassMap
+Package tagpdf Info: writing NameSpaces
+Package tagpdf Info: writing StructElems
+Package tagpdf Info: writing Root
+***************
+Compilation 1 of test file completed with exit status 0
+Compilation 2 of test file completed with exit status 0

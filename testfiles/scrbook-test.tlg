@@ -1,52 +1,12 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
 (scrbook-test.toc
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: toc/tocline-measure [on line ...]
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: toc/tocline-measure [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: toc/leaders [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: toc/leaders [on line ...]
 )
 \tf@toc=\write...
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [1]
 \vbox(655.63496+0.0)x405.73636, direction TLT
 .\hbox(0.0+0.0)x0.0, direction TLT
@@ -326,14 +286,6 @@ Completed box being shipped out [1]
 ..\pdflinkstate 0
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [2]
 \vbox(655.63496+0.0)x465.48715, direction TLT
 .\hbox(0.0+0.0)x0.0, direction TLT
@@ -370,30 +322,6 @@ Completed box being shipped out [2]
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
 chapter 1.
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: chapterformat [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: chapterformat [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [3]
 \vbox(655.63496+0.0)x405.73636, direction TLT
 .\hbox(0.0+0.0)x0.0, direction TLT
@@ -478,14 +406,6 @@ Completed box being shipped out [3]
 ..\pdflinkstate 0
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [4]
 \vbox(655.63496+0.0)x465.48715, direction TLT
 .\hbox(0.0+0.0)x0.0, direction TLT
@@ -522,34 +442,6 @@ Completed box being shipped out [4]
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
 chapter without number
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: \@settodim  [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: seccntformat [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: seccntformat [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging suspended
-(tagpdf DEBUG)     level: 0 ==> 1, label: headfoot [on line ...]
-tagpdf DEBUG Info: Tagging resumed
-(tagpdf DEBUG)     level: 1 ==> 0, label: headfoot [on line ...]
 Completed box being shipped out [5]
 \vbox(655.63496+0.0)x405.73636, direction TLT
 .\hbox(0.0+0.0)x0.0, direction TLT
@@ -807,8 +699,8 @@ Completed box being shipped out [5]
 <<latex-list-css.html>><<latex-align-css.html>> (scrbook-test.aux)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package tagpdf Info: Finalizing the tagging structure:
-(tagpdf)             Writing out ~42 structure objects
-(tagpdf)             with ~45 'MC' leaf nodes.
+(tagpdf)             Writing out ~36 structure objects
+(tagpdf)             with ~36 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
 Package tagpdf Info: writing IDTree
@@ -819,3 +711,6 @@ Package tagpdf Info: writing StructElems
 Package tagpdf Warning: Destination 'target*.1' has no related structure.
 (tagpdf)                /Ref not updated.
 Package tagpdf Info: writing Root
+***************
+Compilation 1 of test file completed with exit status 0
+Compilation 2 of test file completed with exit status 0
