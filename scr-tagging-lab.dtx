@@ -127,6 +127,8 @@
   }
   \AddtoDoHook{heading/preinit/chapter}{\@currentruninfalse}
   \AddtoDoHook{heading/preinit/part}{\@currentruninfalse}
+  \AddtoDoHook{heading/preinit/part}{\let\orig@strut\strut\let\strut\scrlab@notagstrut}
+  \AddtoDoHook{heading/begingroup/part}{\global\let\strut\orig@strut}
   \AddtoDoHook{heading/postinit}{
 	\@@_sec_start_aux:n
   }
@@ -157,6 +159,16 @@
   \_@@_patch_maketitle:
   \let\numberline\scr@numberline
 }
+
+\int_new:N \l__scr_sec_level_int
+
+\def\scrlab@notagstrut{%
+	\ifhmode\else
+	\tagpdfparaOff
+	\orig@strut\par
+	\tagpdfparaOn
+	\fi
+}
 %    \end{macrocode}
 % \begin{macro}{\scrlab@section@target}
 %   \changes{tagging}{2024/09/15}{Adapt our own \cs{@hyp@section@target@nnn}  as  \cs{\scrlab@section@target}}
@@ -177,7 +189,7 @@
   }
 }
 
-\int_new:N \l__scr_sec_level_int
+
 
 %    \end{macrocode}
 % \end{macro}^^A \scrlab@section@target
