@@ -116,8 +116,7 @@
     \UseTaggingSocket{para/restore}
     \use_none:n
   }
-
-  \AddtoDoHook{heading/begingroup}{
+  \AddtoDoHook{heading/postinit}{
     \@@_sec_init_aux:n
   }
   \AddtoDoHook{heading/branch/star}{\@@_sec_start_aux:n}
