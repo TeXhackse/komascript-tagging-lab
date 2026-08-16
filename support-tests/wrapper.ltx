@@ -7,14 +7,17 @@
 
 \pagestyle{empty}
 
+\providecommand*{\TestContentFiles}{jobname-headings.ltx}
+
 \begin{document}
+\errorstopmode
+
+\UseName{clist_map_inline:Nn} \TestContentFiles {
+	\input{content/#1}
+}
 
 \START
-
-\UseName{\jobname}{Heading \jobname\ \emph{emph} $a=b$}
-
-Text
-
 \SHOWPDFTAGS
+\OMIT
 
 \end{document}
