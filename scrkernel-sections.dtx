@@ -1385,6 +1385,7 @@
 %
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
+        \expandafter\hy@insteadofrefstepcounter\expandafter{\scr@s@ct@@nn@m@}%
         \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
         {\glueexpr #1\relax}%
 %<!tagging-lab>        \@empty
@@ -1409,6 +1410,7 @@
 %
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
+        \noexpand\hy@insteadofrefstepcounter{\scr@s@ct@@nn@m@}\noexpand\nobreak
         \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
         \unexpanded{{\glueexpr #1\relax}%
 %<!tagging-lab>          \@empty

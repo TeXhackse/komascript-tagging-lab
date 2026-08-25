@@ -100,6 +100,7 @@ typesetfiles    = {
    "scrkernel-paragraphs.dtx",
    "scrkernel-pseudolengths.dtx",
    "scrkernel-sections.dtx",
+   "scrkernel-tagging.dtx",
    "scrkernel-title.dtx",
    "scrkernel-tocstyle.dtx",
    "scrkernel-typearea.dtx",

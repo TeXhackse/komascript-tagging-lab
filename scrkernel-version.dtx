@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-version.dtx 4265 2026-03-14 16:22:53Z kohm $
+%%% From File: $Id: scrkernel-version.dtx 4278 2026-06-16 07:18:21Z kohm $
 %
 % ATTENTION: In this file parts of the code and documentation are before the
 % driver. This must be, because this part of the code is needed by the driver
@@ -74,7 +74,6 @@
 %   hard}
 % \changes{v3.42}{2024/04/17}{command is no longer defined in \file{clo}
 %   or \file{lco} files}
-%    \end{macrocode}
 % \changes{v3.49.3}{2026/03/14}{masked usage of \cs{ExplSyntaxOff}}
 %    \begin{macrocode}
 % Depending on \cs{KOMAScriptVersion} already defined or not, the existing
@@ -178,7 +177,7 @@
 % therefore the syntax or general structure of the line must not be changed!
 %    \begin{macrocode}
 %<*!v4>
-\@CheckKOMAScriptVersion{2026/02/02 v3.49.2 KOMA-Script}%
+\@CheckKOMAScriptVersion{2026/06/16 v3.49.3 KOMA-Script}%
 %</!v4>
 %<v4>  \@nameuse{@CheckKOMAScriptVersion}{2022/10/25 v3.99 ALPHA KOMA-Script}%
 %    \end{macrocode}
@@ -227,7 +226,9 @@
 % \begin{command}{\KOMAClassFileName}
 % \changes{v3.17}{2014/03/12}{added}
 % \begin{command}{\KOMAClassName}
-% \changes{v2.95}{2004/11/04}{added}
+%   \changes{v2.95}{2004/11/04}{added}
+%   \changes{v3.49.3}{2026-06-15}{putting class to
+%     \cs{g\_msg\_module\_type\_prop}}
 % \begin{command}{\KOMALongClassFileName,\KOMALongClassName}
 % \changes{v3.27}{2019/02/16}{added}
 % \begin{command}{\ClassName}
@@ -246,6 +247,9 @@
 %<*!long>
 \newcommand*{\KOMAClassFileName}{\KOMAClassName.\@clsextension}
 \edef\KOMAClassFileName{\KOMAClassFileName}
+\ExplSyntaxOn
+\prop_put:NVn \g_msg_module_type_prop \KOMAClassName {Class}
+\ExplSyntaxOff
 %</!long>
 %</!v4>
 \newcommand*{\ClassName}{%

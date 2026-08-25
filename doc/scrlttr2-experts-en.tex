@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlttr2-experts-en.tex
-% Copyright (c) Markus Kohm, 2002-2022
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlttr2-experts-en.tex}
-                 [$Date: 2023-08-10 10:46:50 +0200 (Thu, 10 Aug 2023) $
+                 [$Date: 2026-06-08 08:50:05 +0200 (Mon, 08 Jun 2026) $
                   KOMA-Script guide (chapter: scrlttr2 for experts)]
 
 \translator{Harald Bongartz\and Georg Grandke\and Raimund Kohl\and Jens-Uwe
@@ -543,38 +543,6 @@ If you use the \Package{babel}\IndexPackage{babel} package to switch to
 \PValue{french}, problems can occasionally occur. With \Package{babel},
 however, you can usually deactivate changes to a language in a targeted
 manner.%
-\iffalse% This is actually outdated!
-\ If the package \Package{french} is not installed, the problem with
-  \Package{babel} does not arise. Similarly, the problem usually does not
-  exist when you use \Package{babel} with other varieties of French such as
-  \PValue{acadian}, \PValue{canadien}, \PValue{francais} or \PValue{frenchb}
-  instead of \PValue{french}.
-\fi
-
-\iffalse% This is also outdated!
-  However, with \Package{babel} version 3.7j and above, this problem only occurs
-  if the option explicitly indicates that \Package{babel} should use the
-  \Package{french} package.
-%
-\iftrue
-  If you cannot be sure you are not using an old version of \Package{babel}, I
-  recommend you use
-\begin{lstcode}
-  \usepackage[...,frenchb,...]{babel}
-\end{lstcode}
-  to select French.
-    \iffalse %
-      If necessary, you can still switch to French with
-      \Macro{selectlanguage}\PParameter{french}.%
-    \fi%
-\fi 
-\fi  
-
-\iffalse
-  It cannot be ruled out that similar problems will not occur with other
-  languages or packages. For German and English, however, there are currently
-  no known problems with the \Package{babel} package.
-\fi
 
 
 \begin{Declaration}
@@ -612,19 +580,16 @@ preamble and cannot be redefined there. The default settings for
 %\iffree{}{\clearpage}% Siehe Kommentar zur Tabelle
 
 \begin{Declaration}
-  \Macro{captionsacadian}
   \Macro{captionsamerican}
   \Macro{captionsaustralien}
   \Macro{captionsaustrian}
   \Macro{captionsbritish}
   \Macro{captionscanadian}
-  \Macro{captionscanadien}
   \Macro{captionscroatian}
   \Macro{captionsczech}
   \Macro{captionsdutch}
   \Macro{captionsenglish}
   \Macro{captionsfinnish}
-  \Macro{captionsfrancais}
   \Macro{captionsfrench}
   \Macro{captionsgerman}
   \Macro{captionsitalian}
@@ -697,19 +662,16 @@ also use the above commands directly.
 \iffree{}{\clearpage}% Umbruchkorrektur
 
 \begin{Declaration}
-  \Macro{dateacadian}
   \Macro{dateamerican}
   \Macro{dateaustralien}
   \Macro{dateaustrian}
   \Macro{datebritish}
   \Macro{datecanadian}
-  \Macro{datecanadien}
   \Macro{datecroatian}
   \Macro{dateczech}
   \Macro{datedutch}
   \Macro{dateenglish}
   \Macro{datefinnish}
-  \Macro{datefrancais}
   \Macro{datefrench}
   \Macro{dategerman}
   \Macro{dateitalian}
@@ -745,19 +707,16 @@ The exact format can be found in \autoref{tab:date}.%
     \toprule
     Command & Date Example \\
     \midrule
-      \Macro{dateacadian}   & 24.\,12.\,1993\\
       \Macro{dateamerican}  & 12/24/1993\\
       \Macro{dateaustralien}& 24/12/1993\\
       \Macro{dateaustrian}  & 24.\,12.\,1993\\
       \Macro{datebritish}   & 24/12/1993\\
       \Macro{datecanadian}  & 1993/12/24\\
-      \Macro{datecanadien}  & 1993/12/24\\
       \Macro{datecroatian}  & 24.\,12.\,1993.\\
       \Macro{dateczech}     & 24.\,12.\,1993\\
       \Macro{datedutch}     & 24.\,12.\,1993\\
       \Macro{dateenglish}   & 24/12/1993\\
       \Macro{datefinnish }  & 24.12.1993.\\
-      \Macro{datefrancais}  & 24.\,12.\,1993\\
       \Macro{datefrench}    & 24.\,12.\,1993\\
       \Macro{dategerman}    & 24.\,12.\,1993\\
       \Macro{dateitalian}   & 24.\,12.\,1993\\

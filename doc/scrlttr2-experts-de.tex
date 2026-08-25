@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlttr2-experts-de.tex
-% Copyright (c) Markus Kohm, 2002-2022
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlttr2-experts-de.tex}%
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2026-06-08 08:50:05 +0200 (Mon, 08 Jun 2026) $
                   KOMA-Script guide (chapter: scrlttr2 for experts)]
 
 \chapter{Zusätzliche Informationen zur
@@ -626,44 +626,7 @@ Wird das Paket \Package{babel}\IndexPackage{babel} für die
 Umschaltung auf die Sprache verwendet, können vereinzelt ebenfalls
 Probleme auftreten. Bei \Package{babel} lassen sich problematische Änderungen
 einer Sprache jedoch meist gezielt abschalten.%
-\iffalse% Das ist eigentlich überholt!
-\ Ist das Paket \Package{french} nicht installiert, ergibt sich das Problem
-  mit \Package{babel} nicht.  Ebenfalls existiert das Problem normalerweise
-  nicht, wenn man bei \Package{babel} anstelle der Sprache \PValue{french}
-  eine der Sprachen \PValue{acadian}, \PValue{canadien} oder \PValue{francais}
-  verwendet.
-\fi
-
-\iffalse% Das ist ebenfalls überholt!
-Mit Babel ab Version 3.7j tritt dieses Problem jedoch nur noch auf, wenn per
-Option explizit angegeben wird, dass \Package{babel} das
-\Package{french}-Paket verwenden soll.
-%
-\iftrue
-  % Umbruchoptimierungspassage
-  Kann nicht sicher gestellt werden, dass nicht eine alte Version von
-  \Package{babel} verwendet wird, so empfehle ich%
-  \iftrue
-    , mit
-\begin{lstcode}
-  \usepackage[...,francais,...]{babel}
-\end{lstcode}
-    französische Sprache auszuwählen. 
-    \iffalse %
-      Gegebenenfalls ist dann aber trotzdem  mit
-      \Macro{selectlanguage}\PParameter{french} auf Französisch umzuschalten.%
-    \fi%
-  \else %
-    \space bei \Package{babel} die Option \Option{frenchb}.%
-  \fi 
-\fi
-\fi  
-
-\iffalse
-  %\enlargethispage*{\baselineskip}%
-  Es ist nicht auszuschließen, dass mit anderen Sprachen und Paketen ähnliche
-  Probleme auf"|treten.
-%  \iffalse
+\iftrue% Umbruchsbedarfstext
   \iftrue 
     Für Deutsch sind solche Probleme jedoch nicht bekannt  und treten weder
     mit den Paketen \Package{german}\IndexPackage{german} oder
@@ -674,7 +637,6 @@ Option explizit angegeben wird, dass \Package{babel} das
     \Package{ngerman}\IndexPackage{ngerman} oder \Package{babel} jedoch nicht
     auf.
   \fi
-%  \fi
 \fi
 
 % Hinweis: Der folgende Block kann je nach Umbruch vor oder nach
@@ -766,19 +728,16 @@ für \Option{english} und \Option{ngerman} zu finden.%
 
 
 \begin{Declaration}
-  \Macro{captionsacadian}
   \Macro{captionsamerican}
   \Macro{captionsaustralien}
   \Macro{captionsaustrian}
   \Macro{captionsbritish}
   \Macro{captionscanadian}
-  \Macro{captionscanadien}
   \Macro{captionscroatian}
   \Macro{captionsczech}
   \Macro{captionsdutch}
   \Macro{captionsenglish}
   \Macro{captionsfinnish}
-  \Macro{captionsfrancais}
   \Macro{captionsfrench}
   \Macro{captionsgerman}
   \Macro{captionsitalian}
@@ -806,19 +765,16 @@ Anweisungen notfalls auch direkt verwendet werden.%
 
 
 \begin{Declaration}
-  \Macro{dateacadian}
   \Macro{dateamerican}
   \Macro{dateaustralien}
   \Macro{dateaustrian}
   \Macro{datebritish}
   \Macro{datecanadian}
-  \Macro{datecanadien}
   \Macro{datecroatian}
   \Macro{dateczech}
   \Macro{datedutch}
   \Macro{dateenglish}
   \Macro{datefinnish}
-  \Macro{datefrancais}
   \Macro{datefrench}
   \Macro{dategerman}
   \Macro{dateitalian}
@@ -850,19 +806,16 @@ in unterschiedlicher Form umgesetzt. Die genauen Angaben sind
       \toprule
       Anweisung             & Ausgabebeispiel \\
       \midrule
-      \Macro{dateacadian}   & 24.\,12.\,1993\\
       \Macro{dateamerican}  & 12/24/1993\\
       \Macro{dateaustralien}& 24/12/1993\\
       \Macro{dateaustrian}  & 24.\,12.\,1993\\
       \Macro{datebritish}   & 24/12/1993\\
       \Macro{datecanadian}  & 1993/12/24\\
-      \Macro{datecanadien}  & 1993/12/24\\
       \Macro{datecroatian}  & 24.\,12.\,1993.\\
       \Macro{dateczech}     & 24.\,12.\,1993\\
       \Macro{datedutch}     & 24.\,12.\,1993\\
       \Macro{dateenglish}   & 24/12/1993\\
       \Macro{datefinnish }  & 24.12.1993.\\
-      \Macro{datefrancais}  & 24.\,12.\,1993\\
       \Macro{datefrench}    & 24.\,12.\,1993\\
       \Macro{dategerman}    & 24.\,12.\,1993\\
       \Macro{dateitalian}   & 24.\,12.\,1993\\
@@ -887,7 +840,7 @@ in unterschiedlicher Form umgesetzt. Die genauen Angaben sind
 %
 \EndIndexGroup
 
-\iffree{}{\clearpage}% Umbruchkorrektur zwecks Ausgabe der Tabellen
+%\iffree{}{\clearpage}% Umbruchkorrektur zwecks Ausgabe der Tabellen
 
 \section{Obsolete Anweisungen}
 \seclabel{obsolete}
