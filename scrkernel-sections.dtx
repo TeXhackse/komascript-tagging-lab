@@ -1294,7 +1294,7 @@
 \IfUseNumber{\bool_set_false:N \l__scrkernel_sec_nonumber_bool}{\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
            \NoCaseChange
             {\UseTaggingSocket{sec/title/hang}
-               {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\@currenttocentry}}
+               {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\@currentlabelname}}
                {\@hangfrom {\hskip #2\relax#3}}}
                {\interlinepenalty \@M #4}
 %%               \ShowTagging{struct-stack}
@@ -1322,6 +1322,7 @@
 %   \cs{SecDef}.
 % \end{description}
 %    \begin{macrocode}
+%</body>
 %<*body|tagging-lab>
 %<!tagging-lab>\def\scr@ssect#1#2#3#4#5{%
 %<tagging-lab>\def\scrlab@ssect#1#2#3#4#5{%
