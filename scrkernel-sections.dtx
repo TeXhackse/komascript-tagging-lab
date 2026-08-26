@@ -959,7 +959,9 @@
   \else
     \scr@istest#7=\@nil
   \fi
-  \@currentusenumbertrue
+%<tagging-lab>  \scr@ifundefinedorrelax{scr@s@ct@@nn@m@}{%
+    \@currentusenumbertrue
+%<tagging-lab>  }{\@currentusenumberfalse}%
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#8},head={#8},reference={#8},#7}%
   \else
@@ -1342,11 +1344,20 @@
 % For \pkg{hyperref}, \pkg{nameref} and for tagging it is useful to setup some
 % internals similar to \cs{scr@sect}, nevertheless there isn't an optional
 % argument.
+%
+% tagging: Replacing \cs{scr@ssect} by using \cs{scr@sect}. without adding an optional argument.
 % \begin{description}
 % \item[Todo:] When doing a large revision, it would be useful to provide an
 %   optional argument also for the asterisk version, and to only use different
 %   defaults.
 %    \begin{macrocode}
+%<*tagging-lab>
+	\def\scr@osectarg{1}
+	\scr@sect{\scr@s@ct@@nn@m@}{100}{#1}{#2}{#3}{#4}[
+		tocentry={},head={},reference={#5}	
+	]{#5}
+%</tagging-lab>
+%<*!tagging-lab>
     \setkeys{KOMAarg.section}{reference={#5}}%
 %    \end{macrocode}
 % \end{description}
@@ -1360,7 +1371,9 @@
         \csname cl@\scr@s@ct@@nn@m@\endcsname
       \endgroup
 %<!v4>    \fi
+%</!tagging-lab>
   }%
+%<*!tagging-lab>
 %    \end{macrocode}
 % \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
 % \changes{v3.27}{2019/02/02}{defining \cs{IfUseNumber} locally}
@@ -1389,8 +1402,7 @@
         \expandafter\hy@insteadofrefstepcounter\expandafter{\scr@s@ct@@nn@m@}%
         \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
         {\glueexpr #1\relax}%
-%<!tagging-lab>        \@empty
-%<tagging-lab>        {\scrlab@section@target{[section]}{}{#3}}%
+        \@empty
         {#5}\@@par}%
       \edef\reserved@a{%
         \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
@@ -1414,8 +1426,7 @@
         \noexpand\hy@insteadofrefstepcounter{\scr@s@ct@@nn@m@}\noexpand\nobreak
         \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
         \unexpanded{{\glueexpr #1\relax}%
-%<!tagging-lab>          \@empty
-%<tagging-lab>           {\scrlab@section@target{[section]}{}{#1}}%
+          \@empty
           {#5}}%
       }%
       \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
@@ -1423,9 +1434,9 @@
   \fi
   \let\scr@s@ct@@nn@m@\relax
   \scr@xsect{\glueexpr #3\relax}%
+%</!tagging-lab>
 }
 %</body|tagging-lab>
-%</body>
 %    \end{macrocode}
 % \end{macro}^^A \scr@ssect
 %
@@ -4398,7 +4409,7 @@
 %<*tagging-lab>
 \tl_new:N     \l_@@_sec_tmpa_tl
 \newcommand{\scrlab@partlineswithprefixformat}[3]{%
-  \pdf_purify:nN{\@currenttocentry}\l_@@_sec_tmpa_tl
+  \pdf_purify:nN{\@currentlabelname}\l_@@_sec_tmpa_tl
   \tagstructbegin{tag=\UseStructureName{sec/\int_use:N \l_@@_sec_level_int/title},title-o={\l_@@_sec_tmpa_tl}}
   \cs_if_exist_use:N \@@_gincr_para_begin_int:
 		\tl_if_blank:nTF {#2}%
