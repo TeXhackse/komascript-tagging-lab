@@ -1292,14 +1292,21 @@
 %</body>
 %<*body|tagging-lab>
 %<!tagging-lab>\newcommand{\sectionlinesformat}[4]{%
-%<tagging-lab>\newcommand{\scrlab@sectionlinesformat}[4]{%
-\IfUseNumber{\bool_set_false:N \l__scrkernel_sec_nonumber_bool}{\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
-           \NoCaseChange
-            {\UseTaggingSocket{sec/title/hang}
-               {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\@currentlabelname}}
-               {\@hangfrom {\hskip #2\relax#3}}}
+%<*tagging-lab>
+\newcommand{\scrlab@sectionlinesformat}[4]{%
+  \IfUseNumber{\bool_set_false:N \l__scrkernel_sec_nonumber_bool}{\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
+  \NoCaseChange{
+    \UseTaggingSocket{sec/title/hang}
+      {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\@currentlabelname}}
+      {
+%</tagging-lab>
+% The \relax + interlinepenalty below  were added within the standard class definition as well
+  \@hangfrom{\hskip #2\relax#3}
+%<*tagging-lab>
+      }
+  }
+%</tagging-lab>
                {\interlinepenalty \@M #4}
-%%               \ShowTagging{struct-stack}
 }
 %</body|tagging-lab>
 %<*body>
@@ -1346,6 +1353,7 @@
 % argument.
 %
 % tagging: Replacing \cs{scr@ssect} by using \cs{scr@sect}. without adding an optional argument.
+% the 100 is a random choice … maybe add a boolean instead?
 % \begin{description}
 % \item[Todo:] When doing a large revision, it would be useful to provide an
 %   optional argument also for the asterisk version, and to only use different

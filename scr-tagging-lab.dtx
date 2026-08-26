@@ -65,6 +65,9 @@
 \cs_new:Nn \@@_sec_init_aux:n {
   \Ifnumbered{#1}{\bool_set_false:N}{\bool_set_true:N}
  \l__scrkernel_sec_nonumber_bool
+
+	%TODO maybe rescan + expand \@currentlabelname?
+
 	\if@currentrunin
 	\else
   \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
