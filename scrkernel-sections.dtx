@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4279 of the repository:
+% This file is based on revision 4281 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4279 2026-08-27 13:25:00Z texhackse $
+%%% From File: $Id: scrkernel-sections.dtx 4281 2026-08-27 19:47:07Z texhackse $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-08-27 15:25:00 +0200 (Thu, 27 Aug 2026) $
+  \filedate$Date: 2026-08-27 21:47:07 +0200 (Thu, 27 Aug 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4279 $
+  \filerevision$Revision: 4281 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -617,6 +617,7 @@
 % \changes{v3.18}{2015/05/22}{using \cs{glueexpr} for arguments 3--5}
 % \changes{v3.20}{2016/04/12}{\cs{@ifstar} replaced by \cs{kernel@ifstar}}
 % \changes{v3.26}{2018/09/18}{supporting \opt{afterindent}}
+% \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
 % \begin{macro}{\startsection@sectionname,\startsection@secnumdepth,
 %               \startsection@indent,\startsection@beforeskip,
 %               \startsection@afterskip,\startsection@afterindent}
@@ -720,24 +721,9 @@
   \else
     \addpenalty\@secpenalty\addvspace\@tempskipa
   \fi
-%    \end{macrocode}
-% tagging: latex-lab is starting the section here.
-% As we have the hook directly after the test scr-tagging-lab is using the hook instead.
-%    \begin{macrocode}
-  \kernel@ifstar {%
-    \ExecuteDoHook{heading/branch/star/#1}%
-    \def\scr@s@ct@@nn@m@{#1}%
-    \scr@ssection@xarg{%
-    \scr@sect{#1}{\@maxdimen}{\glueexpr #3\relax}{\glueexpr #4\relax}%
-      {\glueexpr #5\relax}
-      {#6}%
-    }%
-  }{%
-    \ExecuteDoHook{heading/branch/nostar/#1}%
-    \scr@section@dblarg{%
+  \scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{%
       \scr@sect{#1}{\numexpr #2\relax}{\glueexpr #3\relax}{\glueexpr #4\relax}%
       {\glueexpr #5\relax}{#6}%
-    }%
   }%
 }
 %</body|tagging-lab>
@@ -917,18 +903,8 @@
 % \changes{v3.13a}{2014/09/11}{re-definition because of extended optional argument}
 % \changes{v3.49.3}{2026/08/27}{Ignore second Argument of SecDef to prepare removal}
 %    \begin{macrocode}
-%<*body|tagging-lab>
-\newcommand*{%
-%<body>\SecDef
-%<tagging-lab>\scrlab@SecDef
-  }[2]{%
-    \kernel@ifstar{%
-%<tagging-lab>  \scr@ssection@xarg{%
-  #1%
-%<tagging-lab>  }%
-}{\scr@section@dblarg{#1}}}%
-%</body|tagging-lab>
 %<*body>
+\newcommand*{\SecDef}[2]{\kernel@ifstar{#2}{\scr@section@dblarg{#1}}}
 \CheckCommand*{\secdef}[2]{\@ifstar{#2}{\@dblarg{#1}}}
 \let\secdef\SecDef
 %</body>
@@ -1187,22 +1163,37 @@
 % can be used for starred sections as well without creating an extra variable to
 % restore \ce{scr@osectarg}.
 %    \begin{macrocode}
-%<body>\newcommand{
-%<tagging-lab>\providecommand{
-  \scr@ssection@xarg}[2]{%
+\providecommand{\scr@ssection@xarg}[3]{%
   \begingroup
     \edef\reserved@a{%
-      \unexpanded{\endgroup\def\scr@osectarg{1}#1[nonumber=true,nohead=true,tocentry={}]{#2}\def\scr@osectarg}%
+      \unexpanded{\endgroup\def\scr@osectarg{1}#2[{#1}]{#3}\def\scr@osectarg}%
       {\scr@osectarg}}%
   \reserved@a
 }
 %    \end{macrocode}
 % \end{macro}^^A \scr@ssection@xarg
+%
+% \begin{macro}{\scr@extendedSecDef}
+% \changes{v3.49.3}{2026/08/27}{added}
+% Alternative to \cs{SecDef}.
+% In contrast to \cs{SecDef} it is also executing the hooks \dhook{heading/branch/star} or \dhook{heading/branch/nostar}
+% and accepting options to set different defaults for the starred variant.
+%    \begin{macrocode}
+\providecommand{\scr@extendedSecDef}[3]{%
+  \kernel@ifstar {%
+    \ExecuteDoHook{heading/branch/star/#2}%
+    \scr@ssection@xarg{#1}{#3}%
+  }{%
+    \ExecuteDoHook{heading/branch/nostar/#2}%
+    \scr@section@dblarg{#3}%
+  }%
+}%
+%    \end{macrocode}
+% \end{macro}^^A \scr@extendedSecDef
 %    \begin{macrocode}
 %</body|tagging-lab>
 %<*body>
 %    \end{macrocode}
-%
 % \begin{macro}{\scr@ds@tocentry,\@currenttocentry}
 % \changes{v3.10}{2011/08/30}{added}
 % \changes{v3.22}{2016/07/12}{\cs{scr@ds@tocentry} renamed to \cs{@currenttocentry}}
@@ -1347,7 +1338,7 @@
 % The \relax + interlinepenalty below  were added within the standard class definition as well
         \@hangfrom{\hskip #2\relax#3}
 %<*tagging-lab>
-      }
+}
   }
 %</tagging-lab>
                {\interlinepenalty \@M #4}
@@ -4003,6 +3994,7 @@
 % \changes{v3.26}{2018/10/14}{supporting option \opt{afterindent}}
 % \changes{v3.28}{2019/11/18}{\cs{ifstr} renamed to \cs{Ifstr}}
 % \changes{v3.49.3}{2026/06/15}{\cs{@currentruninfalse} added}
+% \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
 % The macro
 % \begin{quote}
 %   \cs{scr@startpart}\marg{part command name}
@@ -4045,10 +4037,10 @@
   \ExecuteDoHook{heading/postinit/#1}%
   \partheadstartvskip
 %<*book|report>
-  \vbox to\z@{\vss\use@preamble{#1@o}\scrlab@notagstrut\par}%
+  \vbox to\z@{\vss\use@preamble{#1@o}\strut\par}%
   \vskip-\baselineskip\nobreak
 %</book|report>
-  \expandafter\SecDef\csname @#1\expandafter\endcsname\csname @s#1\endcsname
+  \ExpArgs{nnc}\scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{@#1}
 }
 %    \end{macrocode}
 %
@@ -4061,6 +4053,7 @@
 % \changes{v3.18}{2015/05/23}{added}
 % \changes{v3.27}{2019/07/08}{support for option \opt{nonumber}}
 % \changes{v3.49.3}{2026/08/27}{support for option \opt{nohead}}
+% \changes{v3.49.3}{2026/08/27}{move hook to \cs{scr@extendedSecDef}}
 % The macro
 % \begin{quote}
 %   \cs{scr@@startpart}\marg{part command name}\oarg{extended optional
@@ -4077,7 +4070,6 @@
 %    \begin{macrocode}
 \newcommand{\scr@@startpart}{}
 \long\def\scr@@startpart#1[#2]#3{%
-  \ExecuteDoHook{heading/branch/nostar/#1}%
 %    \end{macrocode}
 % \changes{v3.10}{2011/08/30}{extended optional argument}
 % First of all, depending in \opt{headings=optionto\dots} we have different
@@ -4259,6 +4251,7 @@
 %   \cs{@parskipfalse}\cs{@parskip@indent} swapped}
 % \changes{v2.95}{2004/11/05}{\cs{@parskipfalse} and\cs{@parskip@indent}
 %   replaced}
+% \changes{v3.49.3}{2026/08/27}{Move hook to \cs{scr@extendedSecDef}}
 % \changes{v3.18}{2015/05/23}{added}
 % The macro
 % \begin{quote}
@@ -4270,7 +4263,6 @@
 % additional first argument.
 %    \begin{macrocode}
 \newcommand{\scr@@startspart}[2]{%
-  \ExecuteDoHook{heading/branch/star/#1}%
 %    \end{macrocode}
 % Some users don't learn to use \cs{addpart} for not numbered parts with entry
 % to the table of contents but insist in using \cs{addcontentsline}. Despite
@@ -4521,13 +4513,13 @@
 % \begin{macro}{\@saddpart}
 % \changes{v2.8c}{2001/06/29}{added}
 % \changes{v3.18}{2015/05/25}{redefinition}
+% \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
 % The improved not numbered version of \cs{part}. Note: This could also be
 % done using the extended optional argument of \cs{part} and option
 % \opt{nonumber=true}. So this command becomes more and more deprecated.
 %    \begin{macrocode}
 \newcommand\addpart{%
-  \SecDef\@addpart\@saddpart
-}
+  \scr@extendedSecDef{nonumber=true,head={}}{part}\@addpart}
 \newcommand*{\@addpart}{}
 \long\def\@addpart[#1]#2{%
   \edef\reserved@a{%
@@ -4900,6 +4892,7 @@
 % \changes{v3.18}{2015/05/22}{added}
 % \changes{v3.19}{2015/08/25}{ignore empty page styles}
 % \changes{v3.49.3}{2026/06/15}{\cs{@currentruninfalse} added}
+% \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
 % The macro
 % \begin{quote}
 %   \cs{scr@startchapter}\marg{chapter command name}
@@ -4932,12 +4925,13 @@
     }%
   }%
   \ExecuteDoHook{heading/postinit/#1}%
-  \expandafter\SecDef\csname @#1\expandafter\endcsname\csname @s#1\endcsname
+  \ExpandArgs{nnc}\scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{@#1}
 }
 %    \end{macrocode}
 %
 % \begin{macro}{\scr@@startchapter}
 % \changes{v3.18}{2015/05/22}{added}
+% \changes{v3.49.3}{2026/08/27}{Move hook to \cs{scr@extendedSecDef}}
 % The macro
 % \begin{quote}
 %   \cs{scr@@startchapter}\marg{chapter command name}\oarg{extended optional
@@ -4954,7 +4948,6 @@
 %    \begin{macrocode}
 \newcommand*{\scr@@startchapter}{}
 \def\scr@@startchapter#1[#2]#3{%
-  \ExecuteDoHook{heading/branch/nostar/#1}%
 %    \end{macrocode}
 % \changes{v3.10}{2011/08/30}{extended optional argument}
 % \changes{v3.27}{2019/07/08}{option \opt{nonumber} added}
@@ -5175,6 +5168,7 @@
 %
 % \begin{macro}{\scr@@startschapter}
 % \changes{v3.18}{2015/05/22}{added}
+% \changes{v3.49.3}{2026/08/27}{Move hook to \cs{scr@extendedSecDef}}
 % The macro
 % \begin{quote}
 %   \cs{scr@@startschapter}\marg{chapter command name}\marg{chapter heading}
@@ -5185,7 +5179,6 @@
 % additional first argument.
 %    \begin{macrocode}
 \newcommand*{\scr@@startschapter}[2]{%
-  \ExecuteDoHook{heading/branch/star/#1}%
 %    \end{macrocode}
 % Some users don't learn to use \cs{addchapter} for not numbered parts with
 % entry to the table of contents but insist in using
@@ -5541,7 +5534,7 @@
     \UseTaggingSocket{sec/title/hang}
       {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{#2}{\l_@@_sec_tmpa_tl }}
       {\@hangfrom {#2}}
-  }
+}
   {\interlinepenalty \@M #3}
 }
 %<!tagging-lab>\newcommand{\chapterlineswithprefixformat}[3]{%
@@ -5700,6 +5693,7 @@
 % \begin{macro}{\@saddchap}
 % \changes{v3.12}{2013/02/26}{using \cs{addchapmark}}
 % \changes{v3.18}{2015/05/22}{redefinition}
+% \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
 % Since \KOMAScript{} 3.18 using
 % \begin{quote}
 %   \cs{addchap}\oarg{head or ToC entry}\marg{heading}
@@ -5719,7 +5713,7 @@
 % \end{description}
 %    \begin{macrocode}
 \newcommand\addchap{%
-  \SecDef\@addchap\@saddchap
+  \scr@extendedSecDef{nonumber=true,head={},tocentry={}}{section}\@addchap
 }%
 \newcommand*{\@addchap}{}%
 \long\def\@addchap[#1]#2{%
@@ -6161,6 +6155,7 @@
 % \begin{macro}{\@saddsec}
 % \changes{v3.12}{2013/02/26}{using \cs{addsecmark}}
 % \changes{v3.17}{2015/04/20}{expanding \cs{scr@ds@head} in \cs{addsecmark}}
+% \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
 % Since \KOMAScript{} 3.18 using
 % \begin{quote}
 %   \cs{addsec}\oarg{head or ToC entry}\marg{heading}
@@ -6180,7 +6175,7 @@
 % \end{description}
 %    \begin{macrocode}
 %<*body>
-\newcommand\addsec{\SecDef\@addsec\@saddsec}
+\newcommand\addsec{\scr@extendedSecDef{nonumber=true,head={},tocentry={}}{section}\@addsec}
 \newcommand*{\@addsec}{}
 \def\@addsec[#1]#2{%
   \edef\reserved@a{%
