@@ -1,5 +1,6 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+\g__cctab_tmpvi_cctab=\catcodetable...
 (scrbook-test.toc
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
@@ -322,6 +323,7 @@ Completed box being shipped out [2]
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
 chapter 1.
+\g__cctab_tmpiv_cctab=\catcodetable...
 Completed box being shipped out [3]
 \vbox(655.63496+0.0)x405.73636, direction TLT
 .\hbox(0.0+0.0)x0.0, direction TLT
@@ -442,6 +444,7 @@ Completed box being shipped out [4]
 .\kern0.0
 .\pdfliteral page <lua data reference ...>
 chapter without number
+\g__cctab_tmpiii_cctab=\catcodetable...
 Completed box being shipped out [5]
 \vbox(655.63496+0.0)x405.73636, direction TLT
 .\hbox(0.0+0.0)x0.0, direction TLT
