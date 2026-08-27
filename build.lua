@@ -1,22 +1,29 @@
 #!/usr/bin/env texlua
-svn_revision = 4279
+svn_revision = 4278
 module          = "scr-tagging-lab"
 
 typesetexe      = "lualatex-dev"
+supportdir = "support-tests"
 
-typesetfiles={}
+docfiledir="experiments"
+
+typesetfiles={
+	"*.tex"
+}
 installfiles = {
-	"**/*.sty",
-	"**/*.cls",
-	"**/*.ltx",
+	"*.sty",
+--	"*.cls",
+	"*.ltx",
 }
 
 unpackfiles = {"scr-tagging-lab.ins"}
 -- checkconfigs = {"build", "compare","tagging-project-tests"} -- compare config is only used when the real testfiles failed
 
 checksuppfiles={"*.tex","**/*.ltx"}
-supportdir  = "support"
+
 testsuppdir = "support-tests"
+typesetsuppfiles=checksuppfiles
+supportdir  = testsuppdir
 checkruns = 2
 typesetruns=2
 recordstatus=true

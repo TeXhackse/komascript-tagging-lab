@@ -727,7 +727,11 @@
   \kernel@ifstar {%
     \ExecuteDoHook{heading/branch/star/#1}%
     \def\scr@s@ct@@nn@m@{#1}%
-    \scr@ssect{\glueexpr #3\relax}{\glueexpr #4\relax}{\glueexpr #5\relax}{#6}%
+    \scr@ssection@xarg{%
+    \scr@sect{#1}{\@maxdimen}{\glueexpr #3\relax}{\glueexpr #4\relax}%
+      {\glueexpr #5\relax}
+      {#6}%
+    }%
   }{%
     \ExecuteDoHook{heading/branch/nostar/#1}%
     \scr@section@dblarg{%
@@ -1165,9 +1169,29 @@
   \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
   \scr@xsect{\glueexpr #5\relax}%
 }
+%    \end{macrocode}
+% \begin{macro}{\scr@ssection@xarg}
+% \changes{v3.49.3}{2026/08/27}{added}
+% Variant to create similar expansion as \cs{scr@section@dblarg} so \cs{scr@sect}
+% can be used for starred sections as well without creating an extra variable to
+% restore \ce{scr@osectarg}.
+%    \begin{macrocode}
+%<body>\newcommand{
+%<tagging-lab>\providecommand{
+  \scr@ssection@xarg}[2]{%
+  \begingroup
+    \edef\reserved@a{%
+      \unexpanded{\endgroup\def\scr@osectarg{1}#1[nonumber=true,nohead=true,tocentry={}]{#2}\def\scr@osectarg}%
+      {\scr@osectarg}}%
+  \reserved@a
+}
+%    \end{macrocode}
+% \end{macro}^^A \scr@ssection@xarg
+%    \begin{macrocode}
 %</body|tagging-lab>
 %<*body>
 %    \end{macrocode}
+%
 % \begin{macro}{\scr@ds@tocentry,\@currenttocentry}
 % \changes{v3.10}{2011/08/30}{added}
 % \changes{v3.22}{2016/07/12}{\cs{scr@ds@tocentry} renamed to \cs{@currenttocentry}}
@@ -1324,136 +1348,12 @@
 %    \end{macrocode}
 % \end{command}^^A \sectionlinesformat,\sectioncatchphraseformat
 % \end{macro}^^A \scr@sect
+%</body>
 %
 % \begin{macro}{\scr@ssect}
 %   \changes{v3.19}{2015/07/17}{re-definition because of several new features}
 %   \changes{v3.49}{2025/09/11}{\cs{@ssect} renamed to \cs{scr@ssect}}
-% The star variant of section commands do not use \cs{@sect} but
-% \cs{@ssect}. Here we have the problem, that the command name argument is
-% missing. The whole definition is very similar to \cs{@sect} but without a
-% number, ToC entry or running head.
-% \begin{description}
-% \item[Note:] We do not have to support an extended optional argument,
-%   because there isn't an optional argument.
-% \item[Note:] \cs{chapter} and \cs{part} do not use \cs{@ssect} but
-%   \cs{SecDef}.
-% \end{description}
-%    \begin{macrocode}
-%</body>
-%<*body|tagging-lab>
-%<!tagging-lab>\def\scr@ssect#1#2#3#4#5{%
-%<tagging-lab>\def\scrlab@ssect#1#2#3#4#5{%
-  \scr@ifundefinedorrelax{scr@s@ct@@nn@m@}{%
-    \ClassWarning{\KOMAClassName}{Incompatible usage of
-      \string\scr@ssect\space detected.\MessageBreak
-      You've used the KOMA-Script implementation of
-      \string\scr@ssect\MessageBreak
-      from within a non compatible caller, that does not\MessageBreak
-      \string\scr@s@ct@@nn@m@\space locally.\MessageBreak
-      This could result in several error messages}%
-    \def\scr@s@ct@@nn@m@{\string\scr@s@ct@@nn@m@}%
-  }{%
-%    \end{macrocode}
-% \changes{v3.49.3}{2026/06/15}{setting defaults for some internals similar to
-% \cs{scr@sect}}
-% For \pkg{hyperref}, \pkg{nameref} and for tagging it is useful to setup some
-% internals similar to \cs{scr@sect}, nevertheless there isn't an optional
-% argument.
-%
-% tagging: Replacing \cs{scr@ssect} by using \cs{scr@sect}. without adding an optional argument.
-% the 100 is a random choice … maybe add a boolean instead?
-% \begin{description}
-% \item[Todo:] When doing a large revision, it would be useful to provide an
-%   optional argument also for the asterisk version, and to only use different
-%   defaults.
-%    \begin{macrocode}
-%<*tagging-lab>
-	\def\scr@osectarg{1}
-	\scr@sect{\scr@s@ct@@nn@m@}{100}{#1}{#2}{#3}{#4}[
-		tocentry={},head={},reference={#5}	
-	]{#5}
-%</tagging-lab>
-%<*!tagging-lab>
-    \setkeys{KOMAarg.section}{reference={#5}}%
-%    \end{macrocode}
-% \end{description}
-% \changes{v3.31}{2020/06/02}{execute counter reset list}
-% Even for not numbered sections, the reset list für the corresponding section
-% counter has to be executed.
-%    \begin{macrocode}
-%<!v4>    \expandafter\ifnum\scr@v@is@ge{3.31}\relax
-      \begingroup
-        \let\@elt\@stpelt
-        \csname cl@\scr@s@ct@@nn@m@\endcsname
-      \endgroup
-%<!v4>    \fi
-%</!tagging-lab>
-  }%
-%<*!tagging-lab>
-%    \end{macrocode}
-% \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
-% \changes{v3.27}{2019/02/02}{defining \cs{IfUseNumber} locally}
-%    \begin{macrocode}
-  \ifdim
-    \scr@sect@runin{\z@}{\p@}{\glueexpr #3\relax}>\z@
-    \begingroup
-%    \end{macrocode}
-% tagging: Copy change of testphase definition
-%    \begin{macrocode}
-      \let\IfUseNumber\@secondoftwo
-%    \end{macrocode}
-% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
-% \changes{v3.27}{2019/02/02}{\cs{ExecuteDoHook} added}
-%    \begin{macrocode}
-      \edef\reserved@a{%
-        \noexpand\ExecuteDoHook{heading/begingroup/\scr@s@ct@@nn@m@}%
-      }\reserved@a
-      #4{\nobreak\interlinepenalty \@M
-%    \end{macrocode}
-%   \changes{v3.49.3}{2026/06/15}{\cs{hy@insteadofrefstepcounter} added}%
-%   This is a possible place to add a \pkg{hyperref} anchor if needed.
-%
-% tagging: Adapt change of testphase definition
-%    \begin{macrocode}
-        \expandafter\hy@insteadofrefstepcounter\expandafter{\scr@s@ct@@nn@m@}%
-        \expandafter\sectionlinesformat\expandafter{\scr@s@ct@@nn@m@}%
-        {\glueexpr #1\relax}%
-        \@empty
-        {#5}\@@par}%
-      \edef\reserved@a{%
-        \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
-      }\reserved@a
-    \endgroup
-  \else
-    \edef\@svsechd{%
-      \unexpanded{\let\IfUseNumber\@secondoftwo}%
-      \noexpand\ExecuteDoHook{heading/begingroup/\scr@s@ct@@nn@m@}%
-      \unexpanded{#4}{%
-%    \end{macrocode}
-% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
-%    \begin{macrocode}
-        \noexpand\nobreak
-%    \end{macrocode}
-%   \changes{v3.49.3}{2026/06/15}{\cs{hy@insteadofrefstepcounter} added}%
-%   This is a possible place to add a \pkg{hyperref} anchor if needed.
-%
-% tagging: Adapt change of testphase definition
-%    \begin{macrocode}
-        \noexpand\hy@insteadofrefstepcounter{\scr@s@ct@@nn@m@}\noexpand\nobreak
-        \noexpand\sectioncatchphraseformat{\scr@s@ct@@nn@m@}%
-        \unexpanded{{\glueexpr #1\relax}%
-          \@empty
-          {#5}}%
-      }%
-      \noexpand\ExecuteDoHook{heading/endgroup/\scr@s@ct@@nn@m@}%
-    }%
-  \fi
-  \let\scr@s@ct@@nn@m@\relax
-  \scr@xsect{\glueexpr #3\relax}%
-%</!tagging-lab>
-}
-%</body|tagging-lab>
-%    \end{macrocode}
+%   \changes{v3.49.3}{2026/08/27}{removed by using \cs{scr@sect}}
 % \end{macro}^^A \scr@ssect
 %
 % \begin{macro}{\scr@xsect}
