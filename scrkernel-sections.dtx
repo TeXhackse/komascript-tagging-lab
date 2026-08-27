@@ -934,6 +934,7 @@
 % \changes{v3.27}{2019/07/08}{new optional \opt{nonumber}}
 % \changes{v3.30}{2020/02/25}{orphan spaces removed}
 % \changes{v3.49}{2025/09/11}{\cs{@sect} replaced by \cs{scr@sect}}
+% \changes{version}{date}{new optional \opt{nohead}}
 % Because we want to support the extended optional argument for all commands
 % defined using \cs{@startsection} we also have to redefine \cs{@sect}. Once
 % again several security tests are done, before redefining an internal
@@ -959,9 +960,8 @@
   \else
     \scr@istest#7=\@nil
   \fi
-%<tagging-lab>  \scr@ifundefinedorrelax{scr@s@ct@@nn@m@}{%
     \@currentusenumbertrue
-%<tagging-lab>  }{\@currentusenumberfalse}%
+    \@currentuseheadtrue
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#8},head={#8},reference={#8},#7}%
   \else
@@ -1125,8 +1125,10 @@
         tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
         reference=`\detokenize\expandafter{\@currentlabelname}'}%
 %</trace>
+      \if@currentusehead
       \expandafter\csname #1mark\expandafter\endcsname
       \expandafter{\@currentheadentry}%
+      \fi
       \ifx\@currenttocentry\@empty\else
         \scr@ifundefinedorrelax{add#1tocentry}{%
           \expandafter\gdef\csname add#1tocentry\endcsname####1####2{%
@@ -1176,6 +1178,8 @@
 % \changes{v3.10}{2011/08/30}{added}
 % \begin{macro}{\@currentusenumbertrue,\@currentusenumberfalse,\if@currentusenumber}
 % \changes{v3.27}{2019/07/08}{added}
+% \begin{macro}{\@currentuseheadtrue,\@currentuseheadfalse,\if@currentusehead}
+% \changes{version}{date}{added}
 % \begin{macro}{\scr@istest}
 % \changes{v3.10}{2011/08/30}{added}
 % We are using several \pkg*{scrbase} options to handle the extended
@@ -1249,6 +1253,7 @@
   \FamilyKeyStateProcessed
 }
 \FamilyInverseBoolKey[.section]{KOMAarg}{nonumber}{@currentusenumber}
+\FamilyInverseBoolKey[.section]{KOMAarg}{nohead}{@currentusehead}
 \newcommand*{\scr@istest}{}
 \def\scr@istest#1=#2\@nil{%
   \ifx\relax#2\relax\@scr@tempswafalse\else\@scr@tempswatrue\fi
@@ -1256,6 +1261,7 @@
 \newif\if@scr@tempswa
 %    \end{macrocode}
 % \end{macro}^^A \scr@istest
+% \end{macro}^^A \if@currentusehead
 % \end{macro}^^A \if@currentusenumber
 % \end{macro}^^A \if@scr@tempswa
 % \end{macro}^^A \@currentlabelname
@@ -4140,6 +4146,7 @@
 %   replaced}
 % \changes{v3.18}{2015/05/23}{added}
 % \changes{v3.27}{2019/07/08}{support for option \opt{nonumber}}
+% \changes{version}{date}{support for option \opt{nohead}}
 % The macro
 % \begin{quote}
 %   \cs{scr@@startpart}\marg{part command name}\oarg{extended optional
@@ -4168,6 +4175,7 @@
     \scr@istest#2=\@nil
   \fi
   \@currentusenumbertrue
+  \@currentuseheadtrue
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#3},head={#3},reference={#3},#2}%
   \else
@@ -5034,6 +5042,7 @@
 %    \end{macrocode}
 % \changes{v3.10}{2011/08/30}{extended optional argument}
 % \changes{v3.27}{2019/07/08}{option \opt{nonumber} added}
+% \changes{version}{date}{option \opt{nohead} added}
 % First of all, depending in \opt{headings=optionto\dots} we have different
 % defaults for the options.
 %    \begin{macrocode}
@@ -5043,6 +5052,7 @@
     \scr@istest#2=\@nil
   \fi
   \@currentusenumbertrue
+  \@currentuseheadtrue
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#3},head={#3},reference={#3},#2}%
   \else
