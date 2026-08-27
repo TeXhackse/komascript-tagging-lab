@@ -1,5 +1,18 @@
 % \iffalse meta-comment
 % ======================================================================
+% ======================================================================
+%
+% This is a modified version of scrkernel-miscellaneous.dtx, explicitly
+% permitted by Markus Kohm. Maintainer of this modified version is
+% Marei Peischl.
+%
+% This file is based on revision 4278 of the repository:
+% https://sourceforge.net/p/koma-script/.
+% The copyright notice below is left unchanged to simplify
+% the integration of this project into KOMA-Script
+%
+% ======================================================================
+% ======================================================================
 % scrkernel-tagging.dtx
 % Copyright (c) Markus Kohm, 2026
 %
@@ -173,6 +186,12 @@
 \ExplSyntaxOff
 %</class>
 %    \end{macrocode}
+% tagging: adding workaround for the tagging test
+%    \begin{macrocode}
+%<*tagging-lab>
+\cs_new:Nn \komascript_tagging_test: {}
+\cs_new:Nn \komascript_documentmetadata_test: {}
+%</tagging-lab>
 % \end{macro}
 % \ExplSyntaxOff
 %

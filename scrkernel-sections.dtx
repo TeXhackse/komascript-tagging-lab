@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4278 of the repository:
+% This file is based on revision 4279 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4278 2026-06-16 07:18:21Z kohm $
+%%% From File: $Id: scrkernel-sections.dtx 4279 2026-08-27 13:25:00Z texhackse $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-06-16 09:18:21 +0200 (Tue, 16 Jun 2026) $
+  \filedate$Date: 2026-08-27 15:25:00 +0200 (Thu, 27 Aug 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4278 $
+  \filerevision$Revision: 4279 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -934,7 +934,7 @@
 % \changes{v3.27}{2019/07/08}{new optional \opt{nonumber}}
 % \changes{v3.30}{2020/02/25}{orphan spaces removed}
 % \changes{v3.49}{2025/09/11}{\cs{@sect} replaced by \cs{scr@sect}}
-% \changes{version}{date}{new optional \opt{nohead}}
+% \changes{v3.49.3}{2026/08/27}{new optional \opt{nohead}}
 % Because we want to support the extended optional argument for all commands
 % defined using \cs{@startsection} we also have to redefine \cs{@sect}. Once
 % again several security tests are done, before redefining an internal
@@ -960,8 +960,8 @@
   \else
     \scr@istest#7=\@nil
   \fi
-    \@currentusenumbertrue
-    \@currentuseheadtrue
+  \@currentusenumbertrue
+  \@currentuseheadtrue
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#8},head={#8},reference={#8},#7}%
   \else
@@ -1074,7 +1074,9 @@
       tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
       reference=`\detokenize\expandafter{\@currentlabelname}'}%
 %</trace>
-    \expandafter\csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+    \if@currentusehead
+      \expandafter\csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+    \fi
     \ifx\@currenttocentry\@empty\else
       \scr@ifundefinedorrelax{add#1tocentry}{%
         \expandafter\gdef\csname add#1tocentry\endcsname##1##2{%
@@ -1179,7 +1181,7 @@
 % \begin{macro}{\@currentusenumbertrue,\@currentusenumberfalse,\if@currentusenumber}
 % \changes{v3.27}{2019/07/08}{added}
 % \begin{macro}{\@currentuseheadtrue,\@currentuseheadfalse,\if@currentusehead}
-% \changes{version}{date}{added}
+% \changes{v3.49.3}{2026/08/27}{added}
 % \begin{macro}{\scr@istest}
 % \changes{v3.10}{2011/08/30}{added}
 % We are using several \pkg*{scrbase} options to handle the extended
@@ -1309,7 +1311,7 @@
 % The \relax + interlinepenalty below  were added within the standard class definition as well
   \@hangfrom{\hskip #2\relax#3}
 %<*tagging-lab>
-      }
+}
   }
 %</tagging-lab>
                {\interlinepenalty \@M #4}
@@ -4146,7 +4148,7 @@
 %   replaced}
 % \changes{v3.18}{2015/05/23}{added}
 % \changes{v3.27}{2019/07/08}{support for option \opt{nonumber}}
-% \changes{version}{date}{support for option \opt{nohead}}
+% \changes{v3.49.3}{2026/08/27}{support for option \opt{nohead}}
 % The macro
 % \begin{quote}
 %   \cs{scr@@startpart}\marg{part command name}\oarg{extended optional
@@ -4306,11 +4308,13 @@
 %   \cs{@gobble}}
 % The running head.
 %    \begin{macrocode}
-      \expandafter\ifx\csname #1mark\endcsname\@gobble
-        \@mkboth{}{}%
-      \else
-        \csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
-      \fi
+      \if@currentusehead
+        \expandafter\ifx\csname #1mark\endcsname\@gobble
+          \@mkboth{}{}%
+        \else
+          \csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+        \fi
+       \fi
     }%
     \ExecuteDoHook{heading/endgroup/#1}%
   \endgroup
@@ -5042,7 +5046,7 @@
 %    \end{macrocode}
 % \changes{v3.10}{2011/08/30}{extended optional argument}
 % \changes{v3.27}{2019/07/08}{option \opt{nonumber} added}
-% \changes{version}{date}{option \opt{nohead} added}
+% \changes{v3.49.3}{2026/08/27}{option \opt{nohead} added}
 % First of all, depending in \opt{headings=optionto\dots} we have different
 % defaults for the options.
 %    \begin{macrocode}
@@ -5141,7 +5145,9 @@
 % of \cs{@currentheadentry}, because otherwise it would change with every
 % \cs{section}, \cs{subsection} \dots
 %    \begin{macrocode}
-  \csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+  \if@currentusehead
+    \csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+  \fi
 %    \end{macrocode}
 % \changes{v2.8g}{2001/07/18}{support for \cs{float@addtolists}}
 % \changes{v3.43}{2024/10/24}{support for \cs{float@addtolists} removed}

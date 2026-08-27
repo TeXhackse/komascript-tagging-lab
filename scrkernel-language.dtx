@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-language.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-language.dtx 4140 2025-02-22 12:39:23Z kohm $
+%%% From File: $Id: scrkernel-language.dtx 4274 2026-06-08 06:58:07Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-02-22 13:39:23 +0100 (Sat, 22 Feb 2025) $
+  \filedate$Date: 2026-06-08 08:58:07 +0200 (Mon, 08 Jun 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4140 $
+  \filerevision$Revision: 4274 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-language.dtx}
@@ -1311,6 +1311,13 @@
   \g@addnumerical@date{swissgerman}{\number\day.\,\number\month.\,\number\year}%
   \g@addnumerical@date{nswissgerman}{%
     \number\day.\,\number\month.\,\number\year}%
+%    \end{macrocode}
+% \begin{description}
+% \item[TODO:] The languages \texttt{acadian}, \texttt{canadien} and
+%   \texttt{francais} are removed from \Package{babel} and should be removed
+%   from support in future.
+% \end{description}
+%    \begin{macrocode}
   \providecaptionname{%
     acadian,canadien,francais,french}\yourrefname{Vos r\'ef\'erences}%
   \providecaptionname{%

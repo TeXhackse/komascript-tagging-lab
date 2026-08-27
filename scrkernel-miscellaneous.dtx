@@ -1,18 +1,5 @@
 % \iffalse meta-comment
 % ======================================================================
-% ======================================================================
-%
-% This is a modified version of scrkernel-miscellaneous.dtx, explicitly
-% permitted by Markus Kohm. Maintainer of this modified version is
-% Marei Peischl.
-%
-% This file is based on revision 4278 of the repository:
-% https://sourceforge.net/p/koma-script/.
-% The copyright notice below is left unchanged to simplify
-% the integration of this project into KOMA-Script
-%
-% ======================================================================
-% ======================================================================
 % scrkernel-miscellaneous.dtx
 % Copyright (c) Markus Kohm, 2002-2026
 %
@@ -88,93 +75,6 @@
 %
 % \section{\KOMAScript{} Classes do Currently not \cs{DocumentMetaData}}
 %
-% \changes{v3.49}{2025/09/11}{tagging warning added}
-% \ExplSyntaxOn
-% \begin{macro}{
-%   \komascript_tagging_test:,
-%   \komascript_documentmetadata_test:
-% }
-%   \ExplSyntaxOff
-%   \changes{v3.49.3}{2026/06/13}{meta data warning added}
-%   In future \KOMAScript{} classes should support tagging, but currently they
-%   don't. So if tagging is enabled, we warn. I expect the tagging support to
-%   be added step by step. So the warning here will also change step by
-%   step. However the name of the message used to warn, will not change. So
-%   packages can add tagging support and also deactivate the message using
-%\begin{verbatim}
-%\msg_redirect_name:nnn { \KOMAClassName } { tagging-not-supported } { none }
-%\end{verbatim}
-%   As an alternative packages (and wrapper classes) can change the test and
-%   messages by defining \cs{komascript\_documentmetadata\_test:}
-%   resp. \cs{komascript\_tagging\_test:} before loading the \KOMAScript{}
-%   class.
-%    \begin{macrocode}
-%<*class&body>
-\ExplSyntaxOn
-\cs_if_exist:NF \komascript_documentmetadata_test:
-  {
-    \msg_new:nnn { \KOMAClassName } { metadata-not-supported }
-      {
-        \token_to_str:N\DocumentMetadata\ not~supported!\\
-        Note:~This~class~currently~does~not~support~usage~of~
-        \token_to_str:N\DocumentMetadata.\\
-        Instead~of~using~\token_to_str:N\DocumentMetadata\ you~should~
-        currently~use:\\
-        \ \ \token_to_str:N\RequirePackage{pdfmanagement}\\
-        \ \ \token_to_str:N\SetKeys[document/metadata]{...}\\
-        before~\token_to_str:N\documentclass.
-      }
-    \cs_new:Npn \komascript_documentmetadata_test:
-      {
-        \cs_if_exist:NT \IfDocumentMetadataT
-          {
-            \IfDocumentMetadataT
-              {
-                \msg_fatal:nn { \KOMAClassName } { metadata-not-supported }
-              }
-          }
-      }
-  }
-\komascript_documentmetadata_test:
-\cs_if_exist:NF \komascript_tagging_test:
-  {
-    \cs_new:Npn \komascript_tagging_test:
-      {
-        \cs_if_exist:NT \tag_if_active:T
-          {
-            \msg_new:nnn { \KOMAClassName } { tagging-not-supported }
-              {
-                Activated~tagging~detected~but~not~supported!\\
-                Note:~This~class~currently~does~not~actively~support~tagging.~
-                This~means:~Several~elements~will~not~be~tagged~correctly~
-                and~also~several~errors~could~happen.\\
-                Sorry!
-              }
-            \hook_gput_code:nnn { begindocument } { \KOMAClassName }
-              {
-                \tag_if_active:T
-                  {
-                    \msg_warning:nn
-                      { \KOMAClassName }
-                      { tagging-not-supported }
-                  }
-              }
-          }
-      }
-  }
-\komascript_tagging_test:
-\ExplSyntaxOff
-%</class&body>
-%    \end{macrocode}
-% tagging: adding workaround for the tagging test
-%    \begin{macrocode}
-%<*tagging-lab>
-\cs_new:Nn \komascript_tagging_test: {}
-\cs_new:Nn \komascript_documentmetadata_test: {}
-%</tagging-lab>
-%    \end{macrocode}
-% \end{macro}
-% \ExplSyntaxOff
 %
 % \section{Implementation of Special Requirements of Package \pkg*{scrletter}}
 %
