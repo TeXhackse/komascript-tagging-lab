@@ -915,9 +915,20 @@
 % \changes{v3.20}{2016/04/12}{\cs{@ifstar} replaced by \cs{kernel@ifstar}}
 % \begin{command}{\secdef}
 % \changes{v3.13a}{2014/09/11}{re-definition because of extended optional argument}
+% \changes{v3.49.3}{2026/08/27}{Ignore second Argument of SecDef to prepare removal}
 %    \begin{macrocode}
+%<*body|tagging-lab>
+\newcommand*{%
+%<body>\SecDef
+%<tagging-lab>\scrlab@SecDef
+  }[2]{%
+    \kernel@ifstar{%
+%<tagging-lab>  \scr@ssection@xarg{%
+  #1%
+%<tagging-lab>  }%
+}{\scr@section@dblarg{#1}}}%
+%</body|tagging-lab>
 %<*body>
-\newcommand*{\SecDef}[2]{\kernel@ifstar{#2}{\scr@section@dblarg{#1}}}
 \CheckCommand*{\secdef}[2]{\@ifstar{#2}{\@dblarg{#1}}}
 \let\secdef\SecDef
 %</body>
