@@ -5059,25 +5059,31 @@
 % \changes{v2.8g}{2001/07/18}{support for \cs{float@addtolists}}
 % \changes{v3.43}{2024/10/24}{support for \cs{float@addtolists} removed}
 % \changes{v3.28}{2019/11/19}{\cs{iftocfeature} replaced by \cs{Iftocfeature}}
+% \changes{v3.49.3}{2026/08/28}{Only add gap if there is a toc entry.}
 % Depending on feature \texttt{chapteratlist} we have to add a vertical space
 % to other directories. And for compatibility we also support the deprecated
 % \cs{float@addtolists} but not without warning.
 % \begin{description}
 % \item[ToDo:] Why do we add the gap here but also use \cs{addcontentsline}
 %   in \cs{addchaptertocentry}? Is this a bug? Should this be standardized?
+%
+%   I understand the chapter here as a style feature vs. a heading feature …
+%   As the option is global I would rather interprete it as something connected to the heading style.
 % \end{description}
 %    \begin{macrocode}
-  \ifdim \@chapterlistsgap>\z@
-    \doforeachtocfile{%
-      \Iftocfeature{\@currext}{chapteratlist}{%
-        \addtocontents{\@currext}{\protect\addvspace{\@chapterlistsgap}}%
-      }{}%
-    }%
-    \expandafter\ifnum \scr@v@is@lt{3.43}\relax
-      \@ifundefined{float@addtolists}{}{%
-        \scr@float@addtolists@warning
-        \float@addtolists{\protect\addvspace{\@chapterlistsgap}}%
+  \ifx\@currenttocentry\@empty\else
+    \ifdim \@chapterlistsgap>\z@
+      \doforeachtocfile{%
+        \Iftocfeature{\@currext}{chapteratlist}{%
+          \addtocontents{\@currext}{\protect\addvspace{\@chapterlistsgap}}%
+        }{}%
       }%
+      \expandafter\ifnum \scr@v@is@lt{3.43}\relax
+        \@ifundefined{float@addtolists}{}{%
+          \scr@float@addtolists@warning
+          \float@addtolists{\protect\addvspace{\@chapterlistsgap}}%
+        }%
+      \fi
     \fi
   \fi
 %    \end{macrocode}
