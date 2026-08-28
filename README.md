@@ -6,7 +6,7 @@ The use within this project has been explicitly permitted by Markus Kohm.
 
 The maintainer of this project is Marei Peischl.
 
-Currently this Repository is based on revision 4120 of the KOMA-Script repository, which is located at https://sf.net/projects/koma-script/.
+This repository includes the KOMA-Script bundle on a beta release status and running `l3build` will also use those files instead of the CTAN release for testing.
 
 ## How to use this bundle
 
@@ -18,6 +18,16 @@ Currently the setup is still a bit complex but that's under development. Within 
 
 This bundle provides the option to use an extra testphase key, named `KOMA-fixes`.
 This will load some adjustments, currently the focus is on the document classes, but by “accident” (or let's say how this project is tangled) some things like the tocbasic package also got involved.
+
+## Sandboxed compilation of your documents for testing
+
+You can use the `experiments/` directory to place your own documents in there and typeset them using `l3build doc`. For a File called `document.tex` this would be done by running
+
+```
+l3build doc document
+```
+
+This would place the output within the `build/doc` subdirectory.
 
 ## Installation
 
