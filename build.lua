@@ -9,7 +9,7 @@ docfiledir = "experiments"
 
 -- This also unpacks the KOMAscript files itself to simplify testing without a local copy of the dev status.
 sourcefiles = { "*.dtx", "*.ins", "*.inc", "scrdocstrip.tex" }
-installfiles = { "*.sty", "*.cls", "*.clo", "*.lco", "*.hak" }
+installfiles = { "*.sty", "*.cls", "*.clo", "*.lco", "*.hak", "KOMA-fixes-latex-lab-testphase.ltx"}
 textfiles = { "*.md", "*.txt", "README.md" }
 unpackfiles = { "scr-tagging-lab.ins", "scrmain.ins" }
 
