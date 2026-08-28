@@ -13,7 +13,7 @@
 % ======================================================================
 % ======================================================================
 % scrmain.ins
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -31,7 +31,7 @@
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
 
-% $Id: scrmain.ins 4076 2023-07-31 13:38:10Z kohm $
+% $Id: scrmain.ins 4278 2026-06-16 07:18:21Z kohm $
 
 % ---------- KOMA-Script default docstrip declarations -----------------
 
@@ -47,6 +47,7 @@
     \from{scrkernel-version.dtx}{package,extend}%
     \from{scrextend.dtx}{package,extend,identify,prepare}%
     \from{scrkernel-basics.dtx}{package,load}%
+    \from{scrkernel-tagging.dtx}{package,scrextend,init}%
     \from{scrkernel-sections.dtx}{package,extend,prepare}%
     \from{scrkernel-compatibility.dtx}{package,extend,init}%
 %    \from{scrkernel-typearea.dtx}{package,extend,init}%
@@ -81,6 +82,7 @@
 %    \from{scrkernel-bibliography.dtx}{package,extend,body}%
 %    \from{scrkernel-index.dtx}{package,extend,body}%
     \from{scrkernel-listsandtabulars.dtx}{package,extend,body}%
+    \from{scrkernel-tagging.dtx}{package,scrextend,verylate}%
     \from{scrlogo.dtx}{logo}%
   }%
 }
@@ -104,6 +106,8 @@
   \file{scrbook.cls}{%
     \from{scrkernel-version.dtx}{class,book}%
     \from{scrkernel-basics.dtx}{class,load}%
+    \from{scrkernel-tagging.dtx}{class,book,init}%
+    \from{tocbasic.dtx}{class,load}%
     \from{scrkernel-listsof.dtx}{class,book,prepare}%
     \from{scrkernel-tocstyle.dtx}{class,book,prepare}%
     \from{scrkernel-sections.dtx}{class,book,prepare}%
@@ -148,11 +152,14 @@
     \from{scrkernel-bibliography.dtx}{class,book,body}%
     \from{scrkernel-index.dtx}{class,book,body}%
     \from{scrkernel-listsandtabulars.dtx}{class,book,body}%
+    \from{scrkernel-tagging.dtx}{class,book,verylate}%
     \from{scrlogo.dtx}{logo}%
   }%
   \file{scrreprt.cls}{%
     \from{scrkernel-version.dtx}{class,report}%
     \from{scrkernel-basics.dtx}{class,load}%
+    \from{scrkernel-tagging.dtx}{class,report,init}%
+    \from{tocbasic.dtx}{class,load}%
     \from{scrkernel-listsof.dtx}{class,report,prepare}%
     \from{scrkernel-tocstyle.dtx}{class,report,prepare}%
     \from{scrkernel-sections.dtx}{class,report,prepare}%
@@ -197,11 +204,14 @@
     \from{scrkernel-bibliography.dtx}{class,report,body}%
     \from{scrkernel-index.dtx}{class,report,body}%
     \from{scrkernel-listsandtabulars.dtx}{class,report,body}%
+    \from{scrkernel-tagging.dtx}{class,report,verylate}%
     \from{scrlogo.dtx}{logo}%
   }%
   \file{scrartcl.cls}{%
     \from{scrkernel-version.dtx}{class,article}%
     \from{scrkernel-basics.dtx}{class,load}%
+    \from{scrkernel-tagging.dtx}{class,article,init}%
+    \from{tocbasic.dtx}{class,load}%
     \from{scrkernel-listsof.dtx}{class,article,prepare}%
     \from{scrkernel-tocstyle.dtx}{class,article,prepare}%
     \from{scrkernel-sections.dtx}{class,article,prepare}%
@@ -246,6 +256,7 @@
     \from{scrkernel-bibliography.dtx}{class,article,body}%
     \from{scrkernel-index.dtx}{class,article,body}%
     \from{scrkernel-listsandtabulars.dtx}{class,article,body}%
+    \from{scrkernel-tagging.dtx}{class,article,verylate}%
     \from{scrlogo.dtx}{logo}%
   }%
 }%
@@ -268,20 +279,21 @@
   }%
 }%
 
-%\generate{\usepreamble\defaultpreamble
-%  \file{scrfontsizes.sty}{%
-%    \from{scrkernel-version.dtx}{package}%
-%    \from{scrkernel-fonts.dtx}{package,generator,identify}%
-%    \from{scrkernel-fonts.dtx}{package,generator,option}%
-%    \from{scrkernel-fonts.dtx}{package,generator,body}%
-%    \from{scrlogo.dtx}{logo}%
-%  }%
-%}%
+\generate{\usepreamble\defaultpreamble
+  \file{scrfontsizes.sty}{%
+    \from{scrkernel-version.dtx}{package}%
+    \from{scrkernel-fonts.dtx}{package,generator,identify}%
+    \from{scrkernel-fonts.dtx}{package,generator,option}%
+    \from{scrkernel-fonts.dtx}{package,generator,body}%
+    \from{scrlogo.dtx}{logo}%
+  }%
+}%
 
 \generate{\usepreamble\defaultpreamble
   \file{scrlttr2.cls}{%
     \from{scrkernel-version.dtx}{class,letter}%
     \from{scrkernel-basics.dtx}{class,load}%
+    \from{scrkernel-tagging.dtx}{class,letter,init}%
     \from{scrkernel-compatibility.dtx}{class,letter,init}%
     \from{scrkernel-typearea.dtx}{class,scrlttr2,init}%
     \from{scrkernel-compatibility.dtx}{class,letter,option}%
@@ -315,6 +327,7 @@
     \from{scrkernel-listsandtabulars.dtx}{class,letter,body}%
     \from{scrkernel-notepaper.dtx}{class,letter,body}%
     \from{scrkernel-addressfiles.dtx}{class,letter,body}%
+    \from{scrkernel-tagging.dtx}{class,letter,verylate}%
     \from{scrlogo.dtx}{logo}%
   }%
 }
@@ -323,6 +336,7 @@
    \file{scrletter.sty}{%
     \from{scrkernel-version.dtx}{package,letter}%
     \from{scrkernel-basics.dtx}{package,load}%
+    \from{scrkernel-tagging.dtx}{package,letter,init}%
     \from{scrkernel-miscellaneous.dtx}{package,letter,init}%
 %    \from{scrkernel-compatibility.dtx}{package,letter,init}%
     \from{scrkernel-typearea.dtx}{package,letter,init}%
@@ -357,23 +371,24 @@
 %     \from{scrkernel-listsandtabulars.dtx}{package,letter,body}%
     \from{scrkernel-notepaper.dtx}{package,letter,body}%
     \from{scrkernel-addressfiles.dtx}{package,letter,body}%
+    \from{scrkernel-tagging.dtx}{package,letter,verylate}%
     \from{scrlogo.dtx}{logo}%
   }%
 }%
 
 \generate{\usepreamble\defaultpreamble
-%  \file{visualize.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,visualize,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,visualize,body}%
-%    \from{scrkernel-notepaper.dtx}{lco,visualize,body}%
-%  }%
-%  \file{KOMAold.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,KOMAold,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,KOMAold,body}%
-%    \from{scrkernel-notepaper.dtx}{lco,KOMAold,body}%
-%  }%
+  \file{visualize.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,visualize,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,visualize,body}%
+    \from{scrkernel-notepaper.dtx}{lco,visualize,body}%
+  }%
+  \file{KOMAold.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,KOMAold,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,KOMAold,body}%
+    \from{scrkernel-notepaper.dtx}{lco,KOMAold,body}%
+  }%
   \file{DIN.lco}{%
     \from{scrkernel-version.dtx}{trace}%
     \from{scrkernel-letterclassoptions.dtx}{lco,DIN,head}%
@@ -384,41 +399,41 @@
     \from{scrkernel-letterclassoptions.dtx}{lco,DINmoretext,head}%
     \from{scrkernel-letterclassoptions.dtx}{lco,DINmoretext,body}%
   }%
-%  \file{DIN5008A.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,5008,A,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,5008,A,body}%
-%  }%
-%  \file{DIN5008B.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,5008,B,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,5008,B,body}%
-%  }%
-%  \file{SN.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,SN,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,SN,body}%
-%  }%
-%  \file{SNleft.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,SwissLeft,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,SwissLeft,body}%
-%  }%
-%  \file{NF.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,NF,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,NF,body}%
-%  }%
-%  \file{UScommercial9.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9,body}%
-%  }%
-%  \file{UScommercial9DW.lco}{%
-%    \from{scrkernel-version.dtx}{trace}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9DW,head}%
-%    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9DW,body}%
-%  }%
+  \file{DIN5008A.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,5008,A,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,5008,A,body}%
+  }%
+  \file{DIN5008B.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,5008,B,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,5008,B,body}%
+  }%
+  \file{SN.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,SN,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,SN,body}%
+  }%
+  \file{SNleft.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,SwissLeft,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,SwissLeft,body}%
+  }%
+  \file{NF.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,NF,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,NF,body}%
+  }%
+  \file{UScommercial9.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9,body}%
+  }%
+  \file{UScommercial9DW.lco}{%
+    \from{scrkernel-version.dtx}{trace}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9DW,head}%
+    \from{scrkernel-letterclassoptions.dtx}{lco,UScommercial9DW,body}%
+  }%
 }%
 
 % \generate{\usepreamble\defaultpreamble
@@ -443,16 +458,15 @@
 
 % --- additional package batches (maybe used with other classes, too) --
 
-%\batchinput{japanlco.dtx}% several Japanese lco-files
+\batchinput{japanlco.dtx}% several Japanese lco-files
 \batchinput{scrlogo.dtx}% scrlogo.sty
-%\batchinput{scrkernel-typearea.dtx}% typearea.sty
+\batchinput{scrkernel-typearea.dtx}% typearea.sty
 \batchinput{scrkernel-basics.dtx}% scrbase.sty
-%\batchinput{scrtime.dtx}% scrtime.sty, scrdate.sty
 \batchinput{scrlfile.dtx}% scrlfile.sty
-%\batchinput{scraddr.dtx}% scraddr.sty
+\batchinput{scraddr.dtx}% scraddr.sty
 \batchinput{tocbasic.dtx}% tocbasic.sty
-%\batchinput{scrlayer.dtx}% scrlayer.sty, scrlayer-scrpage.sty ...
-%\batchinput{scrjura.dtx}% scrjura.sty
+\batchinput{scrlayer.dtx}% scrlayer.sty, scrlayer-scrpage.sty ...
+\batchinput{scrjura.dtx}% scrjura.sty
 
 % ---------- end of docstrip process -----------------------------------
 

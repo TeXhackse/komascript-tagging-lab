@@ -388,7 +388,7 @@
 \DeclareInstanceCopy{block}{addmarginblock-3}{addmarginblock-1}
 \DeclareInstanceCopy{block}{addmarginblock-4}{addmarginblock-1}
 %</tagging-lab>
-\newenvironment{
+\newenvironment{%
 %<tagging-lab>@@
 	addmargin
 }{%
@@ -400,9 +400,9 @@
 %</!tagging-lab>
 %<tagging-lab>	\endblockenv
 }
-\newenvironment{
-%<tagging-lab>@@
-	addmargin*
+\newenvironment{%
+%<tagging-lab>@@%
+	addmargin*%
 }{%
   \@tempswafalse
   \if@twoside\is@thispageodd[]\ifthispagewasodd\else\@tempswatrue\fi
@@ -431,11 +431,10 @@
 %</!tagging-lab>
 %<tagging-lab>	\endblockenv
 }
-\newcommand*{
+\newcommand*{%
 %<tagging-lab>\@@@addmargin
 %<!tagging-lab>\@addmargin
 }[2][\@tempa]{%
-
 %<!tagging-lab>  \list{}{%
     \if@tempswa
       \def\@tempa{\leftmargin}%

@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4281 of the repository:
+% This file is based on revision 4282 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4281 2026-08-27 19:47:07Z texhackse $
+%%% From File: $Id: scrkernel-sections.dtx 4282 2026-08-28 09:03:58Z texhackse $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-08-27 21:47:07 +0200 (Thu, 27 Aug 2026) $
+  \filedate$Date: 2026-08-28 11:03:58 +0200 (Fri, 28 Aug 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4281 $
+  \filerevision$Revision: 4282 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -1109,7 +1109,7 @@
       \fi
       \ExecuteDoHook{heading/begingroup/#1}%
       #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}%
-%<!tagging-lab>        \@svsec%
+%<!tagging-lab>        \@svsec
 %<tagging-lab>         \IfUseNumber{\@svsec}{\@kernel@tag@svsec}%
         {#8}}%
 %<*trace>
@@ -1336,12 +1336,12 @@
       {
 %</tagging-lab>
 % The \relax + interlinepenalty below  were added within the standard class definition as well
-        \@hangfrom{\hskip #2\relax#3}
+        \@hangfrom{\hskip #2\relax#3}%
 %<*tagging-lab>
 }
   }
 %</tagging-lab>
-               {\interlinepenalty \@M #4}
+               {\interlinepenalty \@M #4}%
 }
 %</body|tagging-lab>
 %<*body>
@@ -4040,7 +4040,7 @@
   \vbox to\z@{\vss\use@preamble{#1@o}\strut\par}%
   \vskip-\baselineskip\nobreak
 %</book|report>
-  \ExpArgs{nnc}\scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{@#1}
+  \ExpandArgs{nnc} \scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{@#1}
 }
 %    \end{macrocode}
 %
@@ -4421,7 +4421,9 @@
 % tagging: Hyperref has \cs{\MakeLinkTarget} for this.
 % \end{description}
 %    \begin{macrocode}
-\newcommand*{\hy@insteadofrefstepcounter}[1]{}
+\newcommand*{\hy@insteadofrefstepcounter}[1]{%
+      \MakeLinkTarget[#1]{}%
+}
 \let\hy@insteadofrefstepcounter\@gobble
 \newcommand*{\scr@chapter@before@hyperref@patch}{%
   \let\scr@orig@chapter\@chapter
@@ -5528,20 +5530,26 @@
 %<*(body&class&!letter&(report|book))|tagging-lab>
 %<!tagging-lab>\newcommand{\chapterlinesformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlinesformat}[3]{%
-  \IfUseNumber{\bool_set_false:N \l__scrkernel_sec_nonumber_bool}{\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
+%<*tagging-lab>
+  \IfUseNumber{\bool_set_false:N}{\bool_set_true:N}\l__scrkernel_sec_nonumber_bool
   \NoCaseChange{
     \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab} \@currentlabelname
     \UseTaggingSocket{sec/title/hang}
       {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{#2}{\l_@@_sec_tmpa_tl }}
-      {\@hangfrom {#2}}
-}
-  {\interlinepenalty \@M #3}
+      {
+%</tagging-lab>
+        \@hangfrom{#2}%
+%<*tagging-lab>
+      }
+  }
+%</tagging-lab>
+  {\interlinepenalty \@M #3}%
 }
 %<!tagging-lab>\newcommand{\chapterlineswithprefixformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlineswithprefixformat}[3]{\leavevmode%
   #2%
-  % TODO with \IfUseNumber?
-%<tagging-lab>  \MakeLinkTarget[#1]{}{}
+% TODO with \IfUseNumber?
+%<tagging-lab>  \IfUseNumber{}{\MakeLinkTarget[#1]{}}
   #3%
 }
 %</(body&class&!letter&(report|book))|tagging-lab>
