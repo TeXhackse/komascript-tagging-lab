@@ -1,5 +1,6 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+chapter without number
 \g__cctab_tmpvi_cctab=\catcodetable...
 (toc.toc
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
@@ -24,7 +25,7 @@ TEST 1: Show PDF Tags
      >
     <chapter xmlns="https://www.latex-project.org/ns/book"
        id="ID.007"
-       title=""
+       title="Contents"
        rolemaps-to="H1"
       >
      <?MarkedContent page="1" ?>Contents
