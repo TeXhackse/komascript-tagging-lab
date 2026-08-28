@@ -1066,7 +1066,7 @@
       reference=`\detokenize\expandafter{\@currentlabelname}'}%
 %</trace>
     \if@currentusehead
-      \expandafter\csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+      \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
     \fi
     \ifx\@currenttocentry\@empty\else
       \scr@ifundefinedorrelax{add#1tocentry}{%
@@ -1092,7 +1092,7 @@
           \expandafter\gdef\csname #1tocformat\endcsname
           {\csname the#1\endcsname}%
         }{}%
-        \csname add#1tocentry\endcsname{\csname #1tocformat\endcsname}{%
+        \ExpandArgsCS{c}{add#1tocentry}{#1tocformat}{%
           \@currenttocentry}%
       \fi
     \fi
@@ -1119,8 +1119,7 @@
         reference=`\detokenize\expandafter{\@currentlabelname}'}%
 %</trace>
       \if@currentusehead
-      \expandafter\csname #1mark\expandafter\endcsname
-      \expandafter{\@currentheadentry}%
+        \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
       \fi
       \ifx\@currenttocentry\@empty\else
         \scr@ifundefinedorrelax{add#1tocentry}{%
@@ -1146,7 +1145,7 @@
           \expandafter\gdef\csname #1tocformat\endcsname
           {\csname the#1\endcsname}%
         }{}%
-        \csname add#1tocentry\endcsname{\csname #1tocformat\endcsname}{%
+        \ExpandArgsCS{c}{add#1tocentry}{#1tocformat}{%
           \@currenttocentry}%
         \fi
       \fi
@@ -4216,7 +4215,7 @@
         \expandafter\ifx\csname #1mark\endcsname\@gobble
           \@mkboth{}{}%
         \else
-          \csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+          \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
         \fi
        \fi
     }%
@@ -5053,7 +5052,7 @@
 % \cs{section}, \cs{subsection} \dots
 %    \begin{macrocode}
   \if@currentusehead
-    \csname #1mark\expandafter\endcsname\expandafter{\@currentheadentry}%
+    \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
   \fi
 %    \end{macrocode}
 % \changes{v2.8g}{2001/07/18}{support for \cs{float@addtolists}}

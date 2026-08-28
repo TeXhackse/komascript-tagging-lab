@@ -7,16 +7,17 @@ supportdir = "support-tests"
 
 docfiledir="experiments"
 
+-- This also unpacks the KOMAscript files itself to simplify testing without a local copy of the dev status.
+sourcefiles     = { "*.dtx", "*.ins", "*.inc", "scrdocstrip.tex" }
+installfiles    = { "*.sty", "*.cls", "*.clo", "*.lco", "*.hak" }
+textfiles       = { "*.md", "*.txt", "README.md" }
+unpackfiles = {"scr-tagging-lab.ins","scrmain.ins"}
+
+-- This is only for demo files - does not include building the KOMAscript documentation
 typesetfiles={
 	"*.tex"
 }
-installfiles = {
-	"*.sty",
---	"*.cls",
-	"*.ltx",
-}
 
-unpackfiles = {"scr-tagging-lab.ins"}
 -- checkconfigs = {"build", "compare","tagging-project-tests"} -- compare config is only used when the real testfiles failed
 
 checksuppfiles={"*.tex","**/*.ltx"}
