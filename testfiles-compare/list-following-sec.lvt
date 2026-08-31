@@ -1,4 +1,3 @@
 \UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
-\def\TestPreambleFiles{title.ltx}
-\def\TestContentFiles{}
+\def\TestContentFiles{list-following-sec.ltx}
 \input{wrapper.ltx}

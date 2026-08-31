@@ -1,0 +1,252 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Show PDF Tags
+============================================================
+-------- list-following-sec.xml (start) ---------
+<PDF>
+ <StructTreeRoot>
+  <Document xmlns="http://iso.org/pdf2/ssn"
+     id="ID.002"
+    >
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.006"
+     >
+    <chapter xmlns="https://www.latex-project.org/ns/book"
+       id="ID.007"
+       title="chapter"
+       rolemaps-to="H1"
+      >
+     <Span xmlns="http://iso.org/pdf2/ssn"
+        id="ID.008"
+        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+        Layout:TextAlign="Start"
+       >
+      <?MarkedContent page="1" ?>Chapter 1
+     </Span>
+     <Span xmlns="http://iso.org/pdf2/ssn"
+        id="ID.009"
+        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+        Layout:TextAlign="Start"
+       >
+      <?MarkedContent page="1" ?>chapter
+     </Span>
+    </chapter>
+    <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.010"
+       rolemaps-to="Part"
+      >
+     <itemize xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.011"
+        xmlns:List="http://iso.org/pdf/ssn/List"
+        List:ListNumbering="Unordered"
+        rolemaps-to="L"
+       >
+      <item xmlns="https://www.latex-project.org/ns/dflt"
+         id="ID.012"
+         rolemaps-to="LI"
+        >
+       <itemlabel xmlns="https://www.latex-project.org/ns/dflt"
+          id="ID.013"
+          rolemaps-to="Lbl"
+         >
+        <?MarkedContent page="1" ?>•
+       </itemlabel>
+       <itembody xmlns="https://www.latex-project.org/ns/dflt"
+          id="ID.014"
+          rolemaps-to="LBody"
+         >
+        <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+           id="ID.015"
+           rolemaps-to="Part"
+          >
+         <text-block xmlns="https://www.latex-project.org/ns/dflt"
+            id="ID.016"
+            xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+            Layout:TextAlign="Justify"
+            rolemaps-to="P"
+           >
+          <?MarkedContent page="1" ?>item
+         </text-block>
+        </semantic-para>
+       </itembody>
+      </item>
+     </itemize>
+    </semantic-para>
+    <Sect xmlns="http://iso.org/pdf2/ssn"
+       id="ID.017"
+      >
+     <section xmlns="https://www.latex-project.org/ns/book"
+        id="ID.018"
+        title="section"
+        rolemaps-to="H2"
+       >
+      <section-number xmlns="https://www.latex-project.org/ns/dflt"
+         id="ID.019"
+         rolemaps-to="Span"
+        >
+       <?MarkedContent page="1" ?>1.1 
+      </section-number>
+      <?MarkedContent page="1" ?>section
+     </section>
+     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.020"
+        rolemaps-to="Part"
+       >
+      <itemize xmlns="https://www.latex-project.org/ns/dflt"
+         id="ID.021"
+         xmlns:List="http://iso.org/pdf/ssn/List"
+         List:ListNumbering="Unordered"
+         rolemaps-to="L"
+        >
+       <item xmlns="https://www.latex-project.org/ns/dflt"
+          id="ID.022"
+          rolemaps-to="LI"
+         >
+        <itemlabel xmlns="https://www.latex-project.org/ns/dflt"
+           id="ID.023"
+           rolemaps-to="Lbl"
+          >
+         <?MarkedContent page="1" ?>•
+        </itemlabel>
+        <itembody xmlns="https://www.latex-project.org/ns/dflt"
+           id="ID.024"
+           rolemaps-to="LBody"
+          >
+         <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+            id="ID.025"
+            rolemaps-to="Part"
+           >
+          <text-block xmlns="https://www.latex-project.org/ns/dflt"
+             id="ID.026"
+             xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+             Layout:TextAlign="Justify"
+             rolemaps-to="P"
+            >
+           <?MarkedContent page="1" ?>item
+          </text-block>
+         </semantic-para>
+        </itembody>
+       </item>
+      </itemize>
+     </semantic-para>
+    </Sect>
+   </Sect>
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.027"
+     >
+    <chapter xmlns="https://www.latex-project.org/ns/book"
+       id="ID.028"
+       title="chapter"
+       rolemaps-to="H1"
+      >
+     <Span xmlns="http://iso.org/pdf2/ssn"
+        id="ID.029"
+        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+        Layout:TextAlign="Start"
+       >
+      <?MarkedContent page="3" ?>chapter
+     </Span>
+    </chapter>
+    <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.030"
+       rolemaps-to="Part"
+      >
+     <itemize xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.031"
+        xmlns:List="http://iso.org/pdf/ssn/List"
+        List:ListNumbering="Unordered"
+        rolemaps-to="L"
+       >
+      <item xmlns="https://www.latex-project.org/ns/dflt"
+         id="ID.032"
+         rolemaps-to="LI"
+        >
+       <itemlabel xmlns="https://www.latex-project.org/ns/dflt"
+          id="ID.033"
+          rolemaps-to="Lbl"
+         >
+        <?MarkedContent page="3" ?>•
+       </itemlabel>
+       <itembody xmlns="https://www.latex-project.org/ns/dflt"
+          id="ID.034"
+          rolemaps-to="LBody"
+         >
+        <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+           id="ID.035"
+           rolemaps-to="Part"
+          >
+         <text-block xmlns="https://www.latex-project.org/ns/dflt"
+            id="ID.036"
+            xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+            Layout:TextAlign="Justify"
+            rolemaps-to="P"
+           >
+          <?MarkedContent page="3" ?>item
+         </text-block>
+        </semantic-para>
+       </itembody>
+      </item>
+     </itemize>
+    </semantic-para>
+    <Sect xmlns="http://iso.org/pdf2/ssn"
+       id="ID.037"
+      >
+     <section xmlns="https://www.latex-project.org/ns/book"
+        id="ID.038"
+        title="section"
+        rolemaps-to="H2"
+       >
+      <?MarkedContent page="3" ?>section
+     </section>
+     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.039"
+        rolemaps-to="Part"
+       >
+      <itemize xmlns="https://www.latex-project.org/ns/dflt"
+         id="ID.040"
+         xmlns:List="http://iso.org/pdf/ssn/List"
+         List:ListNumbering="Unordered"
+         rolemaps-to="L"
+        >
+       <item xmlns="https://www.latex-project.org/ns/dflt"
+          id="ID.041"
+          rolemaps-to="LI"
+         >
+        <itemlabel xmlns="https://www.latex-project.org/ns/dflt"
+           id="ID.042"
+           rolemaps-to="Lbl"
+          >
+         <?MarkedContent page="3" ?>•
+        </itemlabel>
+        <itembody xmlns="https://www.latex-project.org/ns/dflt"
+           id="ID.043"
+           rolemaps-to="LBody"
+          >
+         <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+            id="ID.044"
+            rolemaps-to="Part"
+           >
+          <text-block xmlns="https://www.latex-project.org/ns/dflt"
+             id="ID.045"
+             xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+             Layout:TextAlign="Justify"
+             rolemaps-to="P"
+            >
+           <?MarkedContent page="3" ?>item
+          </text-block>
+         </semantic-para>
+        </itembody>
+       </item>
+      </itemize>
+     </semantic-para>
+    </Sect>
+   </Sect>
+  </Document>
+ </StructTreeRoot>
+</PDF>
+-------- list-following-sec.xml (end) -----------
+============================================================
+***************
+Compilation 1 of test file completed with exit status 0
+Compilation 2 of test file completed with exit status 0
