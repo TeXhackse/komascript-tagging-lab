@@ -1,5 +1,18 @@
 % \iffalse meta-comment
 % ======================================================================
+% ======================================================================
+%
+% This is a modified version of scrkernel-listsandtabulars.dtx, explicitly
+% permitted by Markus Kohm. Maintainer of this modified version is
+% Marei Peischl.
+%
+% This file is based on revision 4281 of the repository:
+% https://sourceforge.net/p/koma-script/.
+% The copyright notice below is left unchanged to simplify
+% the integration of this project into KOMA-Script
+%
+% ======================================================================
+% ======================================================================
 % scrkernel-listsandtabulars.dtx
 % Copyright (c) Markus Kohm, 2002-2025
 %
@@ -21,6 +34,9 @@
 %%% From File: $Id: scrkernel-listsandtabulars.dtx 4138 2025-02-10 13:55:51Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
+%<*tagging-lab>
+%<@@=scrlab>
+%</tagging-lab>
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
@@ -276,6 +292,7 @@
 % Two environments for left and right indented text. The difference of both
 % is: \env{quotation} works with paragraph indent (first line is indented),
 % \env{quote} works with paragraph distance.
+% tagging: implementation changed within Standard LaTeX
 %    \begin{macrocode}
 \newenvironment{quotation}{%
   \list{}{\listparindent 1em%
@@ -326,22 +343,64 @@
 % \changes{v3.22}{2016/10/21}{unchanged \len{topsep} and \len{partopsep}}
 %    \begin{macrocode}
 %</class>
-\newenvironment{addmargin}{%
-  \@tempswafalse\@addmargin
+%</body>
+%<*tagging-lab>
+\DeclareInstance{block}{addmargin-1}{std}{
+	right-margin = \KeyValue{right-margin},
+	left-margin = \KeyValue{left-margin},
+%	para-vspace = ,
+  begin-extra-vspace=0pt,
+  begin-vspace=0pt,
+  end-extra-vspace=0pt,
+  end-vspace=0pt,
+  para-indent=\parindent,
+}
+
+\DeclareInstance{blockenv}{addmargin}{std}
+{
+   name                = addmargin,
+%  ,tagging-recipe      = standard
+%  ,tag-name            =
+%  ,tag-attr-class      =
+  ,transparent-level    = true,
+%  ,early-legacy-code   =
+%  ,late-legacy-code    =
+  ,block-instance      = addmargin
+%  ,para-instance       =
+%  ,tagging-suppress-paras = false
+%  ,inner-instance      =
+%  ,inner-instance-type =         % not relevant as there is no inner instance
+%  ,inner-level-counter =         % not relevant as there is no inner instance 
+%  ,max-inner-levels    = 4       % not relevant as there is no inner instance
+  ,final-code          = \is@thispageodd@setlabel\nobreak\AddToHookNext{para/begin}{\OmitIndent}\ignorespaces,
+}
+%</tagging-lab>
+%<*body|tagging-lab>
+\NewDocumentEnvironment{%
+%<tagging-lab>@@addmargin%
+%<!tagging-lab>addmargin%
+}{O{\@tempa}m}{%
+  \@tempswafalse\@addmargin[#1]{#2}%
 }{%
+%<*!tagging-lab>
   \advance\@listdepth\@ne
   \endlist
+%</!tagging-lab>
+%<tagging-lab>	\BlockEnvEnd
 }
-\newenvironment{addmargin*}{%
+\NewDocumentEnvironment{%
+%<tagging-lab>@@addmargin*%
+%<!tagging-lab>addmargin*%
+}{O{\@tempa}m}{%
   \@tempswafalse
   \if@twoside\is@thispageodd[]\ifthispagewasodd\else\@tempswatrue\fi
     \edef\scr@addmargin@startpage{\csname tpo@\scr@tpo\endcsname}\fi
-  \@addmargin
+  \@addmargin[#1]{#2}%
 }{%
   \if@twoside
-    \unskip\nobreak\Ifthispageodd{}{}%
+  \unskip\nobreak\Ifthispageodd{}{}%
     \expandafter\ifx\csname tpo@\scr@tpo\endcsname\scr@addmargin@startpage\else
-%<class>      \ClassWarning{\KOMAClassName}{%
+%<class|tagging-lab>      \ClassWarning{\KOMAClassName}{%
 %<package>    \PackageWarning{scrextend}{%
         page break inside `addmargin*' environment.\MessageBreak
         A `addmargin*' environment starting on page
@@ -354,11 +413,17 @@
       }%
     \fi
   \fi
+%<*!tagging-lab>
   \advance\@listdepth\@ne
   \endlist
+%</!tagging-lab>
+%<tagging-lab>	\BlockEnvEnd
 }
-\newcommand*{\@addmargin}[2][\@tempa]{%
-  \list{}{%
+\NewDocumentCommand{%
+%<tagging-lab>\@@@addmargin%
+%<!tagging-lab>\@addmargin%
+}{O{\@tempa}m}{%
+%<!tagging-lab>  \list{}{%
     \if@tempswa
       \def\@tempa{\leftmargin}%
       \setlength{\leftmargin}{#2}%
@@ -368,6 +433,7 @@
       \setlength{\rightmargin}{#2}%
       \setlength{\leftmargin}{#1}%
     \fi
+%<*!tagging-lab>
     \setlength{\listparindent}{\parindent}%
     \setlength{\itemsep}{\parskip}%
     \setlength{\itemindent}{\z@}%
@@ -385,7 +451,26 @@
     \setlength{\partopsep}{\@tempskipb}%
 %<!v4>  \fi
   \item\is@thispageodd@setlabel\nobreak\ignorespaces
+%</!tagging-lab>
+%<*tagging-lab>
+			\SimpleBlockEnv{addmargin} {
+				left-margin=\leftmargin,
+				right-margin=\rightmargin
+			}%
+%</tagging-lab>
 }
+%</body|tagging-lab>
+%<*patch-addmargin>
+\hook_gput_code:nnn {begindocument/end} {scrlab-patch-addmargin} {
+	\cs_set_eq:NN \@addmargin \@@@addmargin
+	\cs_set_eq:cc {addmargin}  {@@addmargin}
+	\cs_set_eq:cc {endaddmargin}  {end@@addmargin}
+	\cs_set_eq:cc {addmargin*}  {@@addmargin*}
+	\cs_set_eq:cc {endaddmargin*}  {end@@addmargin*}
+}
+%<expl>\ExplSyntaxOff
+%</patch-addmargin>
+%<*body>
 %<*class>
 %    \end{macrocode}
 % \end{macro}
