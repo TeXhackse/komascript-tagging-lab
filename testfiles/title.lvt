@@ -1,20 +1,3 @@
-\input{regression-test}
-
-\input{testsetup}
-\documentclass{scrbook}
-
-\pagestyle{empty}
-
-\tagpdfsetup{
-   debug/log=v
-}
-
-\begin{document}
-\errorstopmode
-
-
-\title{test}
-\maketitle
-
-\SHOWPDFTAGS
-\end{document}
+\def\TestPreambleFiles{title.ltx}
+\def\TestContentFiles{}
+\input{wrapper.ltx}

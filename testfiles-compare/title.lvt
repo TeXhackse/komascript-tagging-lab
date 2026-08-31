@@ -1,18 +1,3 @@
-\input{regression-test}
-
-\input{testsetup}
-\documentclass{book}
-
-\pagestyle{empty}
-
-\tagpdfsetup{
-   debug/log=v
-}
-
-\begin{document}
-
-\title{test}
-\maketitle
-
-\SHOWPDFTAGS
-\end{document}
+\UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
+\def\TestContentFiles{title.ltx}
+\input{wrapper.ltx}

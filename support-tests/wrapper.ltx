@@ -7,13 +7,20 @@
 
 \pagestyle{empty}
 
+\providecommand*{\TestPreambleFiles}{}
 \providecommand*{\TestContentFiles}{jobname-headings.ltx}
+
+\UseName{clist_map_inline:Nn} \TestPreambleFiles {
+	\input{content/#1}
+}
 
 \begin{document}
 
 \UseName{clist_map_inline:Nn} \TestContentFiles {
 	\input{content/#1}
 }
+
+\csname DocumentContent\endcsname
 
 \START
 \SHOWPDFTAGS
