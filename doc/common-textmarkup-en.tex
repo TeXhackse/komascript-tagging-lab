@@ -1,6 +1,6 @@
 % ======================================================================
 % common-textmarkup-en.tex
-% Copyright (c) Markus Kohm, 2001-2025
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-textmarkup-en.tex}
-                 [$Date: 2025-02-12 11:47:33 +0100 (Wed, 12 Feb 2025) $
+                 [$Date: 2026-08-28 14:44:33 +0200 (Fri, 28 Aug 2026) $
                   KOMA-Script guide (common paragraphs)]
 \translator{Gernot Hassenpflug\and Markus Kohm\and Krickette Murabayashi\and
 	Karl Hagen}
@@ -64,7 +64,7 @@
     In addition to the choice of the font, this includes commands for choosing
     the font size and orientation. %
   } For more information about the standard font facilities, see
-  \cite{lshort}, \cite{latex:usrguide}, and \cite{latex:fntguide}.%
+  \cite{lshort}, \cite{latex:usrguide-historic}, and \cite{latex:fntguide}.%
 }
 
 % Both commands are in LaTeX for a long time, so I do not describe them any
@@ -211,9 +211,9 @@ With%
 \IfThisCommonLabelBase{maincls}{%
   \ChangedAt{v2.8p}{\Class{scrbook}\and \Class{scrreprt}\and
     \Class{scrartcl}}%
-}{} the help of the \Macro{setkomafont} and \Macro{addtokomafont}
-commands, you can attach particular font styling \PName{commands} that change
-the appearance of a given \PName{element}. Theoretically, all statements,
+}{} the help of the \Macro{setkomafont} and \Macro{addtokomafont} commands,
+you can attach particular font styling \PName{commands} that change the
+appearance of a given \PName{element}. Theoretically, all statements,
 including literal text, can be used as \PName{commands}. You
 should\textnote{Attention!}, however, limit yourself to those statements that
 really change font attributes only. These are usually commands like
@@ -223,18 +223,16 @@ really change font attributes only. These are usually commands like
 \Macro{Huge}, \Macro{huge}, \Macro{LARGE}, \Macro{Large}, \Macro{large},
 \Macro{normalsize}, \Macro{small}, \Macro{footnotesize}, \Macro{scriptsize},
 and \Macro{tiny}. You can find these commands explained in \cite{lshort},
-\cite{latex:usrguide}, or \cite{latex:fntguide}. Colour switching commands
-like \Macro{normalcolor} (see \cite{package:graphics} and
+\cite{latex:usrguide-historic}, or \cite{latex:fntguide}. Colour switching
+commands like \Macro{normalcolor} (see \cite{package:graphics} and
 \cite{package:xcolor}) are also acceptable.%
 \iffalse % Umbruchkorrekturtext
   \ The behaviour when using other commands, especially those that lead to
-  redefinitions or generate output, is undefined. Strange behaviour is possible
-  and does not represent a bug.
-\else
-  \ The use of other commands, in particular those that redefine things or
-  or lead to output, is not supported. Strange behaviour is possible in these
-  cases and does not represent a bug.
-\fi
+  redefinitions or generate output, is undefined. Strange behaviour is
+  possible and does not represent a bug.  \else \ The use of other commands,
+  in particular those that redefine things or or lead to output, is not
+  supported. Strange behaviour is possible in these cases and does not
+  represent a bug.  \fi
 
 The command \Macro{setkomafont} provides an element with a completely new
 definition of its font styling. In contrast, the \Macro{addtokomafont} command

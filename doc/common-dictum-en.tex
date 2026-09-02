@@ -1,6 +1,6 @@
 % ======================================================================
 % common-dictum-en.tex
-% Copyright (c) Markus Kohm, 2001-2023
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-dictum-en.tex}
-                 [$Date: 2023-04-20 10:04:17 +0200 (Thu, 20 Apr 2023) $
+                 [$Date: 2026-08-28 14:44:33 +0200 (Fri, 28 Aug 2026) $
                   KOMA-Script guide (common paragraphs)]
 \translator{Gernot Hassenpflug\and Markus Kohm\and Krickette Murabayashi\and
 	Karl Hagen}
@@ -82,7 +82,7 @@ You can set such a saying with the help of the \Macro{dictum} command. %
   obligatory.\par%
 }{}%
 The dictum, along with an optional \PName{author}, is inserted in a
-\Macro{parbox}\IndexCmd{parbox} (see \cite{latex:usrguide}) of width
+\Macro{parbox}\IndexCmd{parbox} (see \cite{latex:usrguide-historic}) of width
 \Macro{dictumwidth}. However, \Macro{dictumwidth} is not a length which can be
 set with \Macro{setlength}. It is a macro that can be redefined using
 \Macro{renewcommand}. The default is \PValue{0.3333\Length{textwidth}}, which
@@ -219,10 +219,10 @@ listed in \autoref{tab:maincls.dictumfont}. Changes can be made using the
   \begin{ShowOutput}
     {\usekomafont{disposition}\usekomafont{chapter}%
       17\enskip Modern Marriage\par} \vspace{\baselineskip}
-    \dictum[Schiller]{So pause ye who would link 
+    \dictum[Schiller]{So pause ye who would link
       your fates~\dots}
   \end{ShowOutput}
-	
+
   If you want the dictum to span only a quarter of the text width
   rather than a third, you can redefine \Macro{dictumwidth} this way:
 \begin{lstcode}
@@ -241,10 +241,10 @@ listed in \autoref{tab:maincls.dictumfont}. Changes can be made using the
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

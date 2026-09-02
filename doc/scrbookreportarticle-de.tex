@@ -1,6 +1,6 @@
 % ======================================================================
 % scrbookreportarticle-de.tex
-% Copyright (c) Markus Kohm, 2001-2025
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrbookreportarticle-de.tex}
-                 [$Date: 2025-10-28 12:58:48 +0100 (Tue, 28 Oct 2025) $
+                 [$Date: 2026-08-28 18:00:05 +0200 (Fri, 28 Aug 2026) $
                   KOMA-Script guide (chapter: scrbook, scrreprt, scrartcl)]
 
 \chapter{Die Hauptklassen \Class{scrbook}, \Class{scrreprt}, \Class{scrartcl}}
@@ -1964,16 +1964,19 @@ Bei\ChangedAt{v3.10}{\Class{scrbook}\and \Class{scrreprt}\and
 wird geprüft, ob sich ein Gleichheitszeichen in \PName{Kurzform} befindet. Ist
 dies der Fall, so wird das optionale Argument der Gliederungsbefehle selbst
 statt als \PName{Kurzform} als \PName{Optionenliste} interpretiert. Dabei
-werden die vier Optionen
-\OptionVName{head}{Kolumnentitel}\important{\Option{head}, \Option{tocentry}},
-\OptionVName{tocentry}{Inhaltsverzeichniseintrag},
-\important{\Option{reference}, \Option{nonumber}}%
+werden die fünf Optionen
+\OptionVName{head}{Kolumnentitel}\important{\Option{head}, \Option{nohead},
+  \Option{nonumber}, \Option{reference}, \Option{tocentry}},
+\OptionVName{nohead}{Ein-Aus-Wert}\ChangedAt{v3.49.3}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}},
+\OptionVName{nonumber}{Ein-Aus-Wert}\ChangedAt{v3.27}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}},
 \OptionVName{reference}{Querverweistitel}\ChangedAt{v3.22}{\Class{scrbook}\and
   \Class{scrreprt}\and \Class{scrartcl}} und
-\OptionVName{nonumber}{Ein-Aus-Wert}\ChangedAt{v3.27}{\Class{scrbook}\and
-  \Class{scrreprt}\and \Class{scrartcl}} akzeptiert. Um ein Gleichheitszeichen
-oder ein Komma in einem der Werte der ersten drei Optionen unterzubringen,
-muss dieses in zusätzliche geschweifte Klammern gesetzt werden.
+\OptionVName{tocentry}{Inhaltsverzeichniseintrag}, akzeptiert. Um ein
+Gleichheitszeichen oder ein Komma in einem der Werte von \Option{head},
+\Option{reference} oder \Option{tocentry} unterzubringen, muss dieses in
+zusätzliche geschweifte Klammern gesetzt werden.
 
 Bitte\textnote{Achtung!} beachten Sie, dass dieser Mechanismus nur
 funktioniert, solange \KOMAScript{} die Kontrolle über die Gliederungsbefehle
@@ -2102,6 +2105,18 @@ Kolumnentitel erzeugt. Für \Macro{part}, \Macro{chapter} und \Macro{section}
 entspricht dies weitgehend den auf \DescPageRef{\LabelBase.cmd.addpart}
 erklärten Anweisungen \DescRef{\LabelBase.cmd.addpart},
 \DescRef{\LabelBase.cmd.addchap} und \DescRef{\LabelBase.cmd.addsec}.
+
+Durch Verwendung von Option \OptionValue{nohead}{true}%
+\important{\Option{nohead}}\ChangedAt{v3.49.3}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}} kann man die Erzeugung eines
+automatische Kolumnentitel für die eine Überschrift deaktivieren, falls diese
+verwendet werden. Näheres zu automatischen Kolumnentiteln finden Sie bei der
+Beschreibung zu \DescRef{\LabelBase.cmd.chaptermark} bis
+\DescRef{\LabelBase.cmd.subsectionmark},
+\DescPageRef{\LabelBase.cmd.chaptermark}, bei der Beschreibung des Seitenstils
+\DescRef{\LabelBase.pagestyle.headings} in \autoref{sec:maincls.pagestyle},
+\DescPageRef{\LabelBase.pagestyle.headings} oder in
+\autoref{cha:scrlayer-scrpage}, \DescPageRef{scrlayer-scrpage.cmd.automark}.
 
 Die\important{\Macro{part}} Überschrift der Teile-Ebene (\Macro{part})
 unterscheidet sich von den anderen Gliederungsebenen dadurch, dass sie
@@ -2348,15 +2363,25 @@ die folgende Erklärung.
 Bei den Sternvarianten der Gliederungsbefehle erfolgt keine
 Nummerierung\Index{Nummerierung}, wird kein
 Kolumnentitel\Index{Kolumnentitel>automatisch} gesetzt und kein Eintrag im
-Inhaltsverzeichnis\Index{Inhaltsverzeichnis} vorgenommen.  Der Verzicht auf
-den Kolumnentitel hat übrigens einen oftmals unerwünschten Effekt. Geht
-beispielsweise ein mit \Macro{chapter*} gesetztes Kapitel über mehrere Seiten,
-so taucht plötzlich der Kolumnentitel des letzten Kapitels wieder auf.
-{\KOMAScript} bietet dafür aber eine Lösung, die im Anschluss beschrieben
-wird. \OnlyAt{\Class{scrbook}\and \Class{scrreprt}}\Macro{chapter*} existiert
-selbstverständlich nur bei Buch- und Berichtklassen, also bei \Class{book},
-\Class{scrbook}, \Class{report} und \Class{scrreprt}, nicht jedoch bei den
-Artikelklassen \Class{article} und \Class{scrartcl}.
+Inhaltsverzeichnis\Index{Inhaltsverzeichnis}
+vorgenommen. \ChangedAt{v3.49.3}{\Class{scrbook}\and \Class{scrreprt}\and
+  \Class{scrartcl}}Die Verwendung der Sternvariante entspricht damit der
+sternlosen Hauptform mit dem optionalen Argument
+\OParameter{\normalfont\PValue{\OptionValue{tocentry}{\{\}},
+    \OptionValue{nohead}{true}, \OptionValue{nonumber}{true}}}, soweit die
+erweiterte Interpretation des optionalen Arguments aktiv ist. Siehe dazu die
+vorausgehende Erklärung zu \DescRef{\LabelBase.cmd.part} bis
+\DescRef{\LabelBase.cmd.subparagraph}.
+
+Der Verzicht auf den Kolumnentitel hat übrigens einen oftmals unerwünschten
+Effekt. Geht beispielsweise ein mit \Macro{chapter*} gesetztes Kapitel über
+mehrere Seiten, so taucht plötzlich der Kolumnentitel des letzten Kapitels
+wieder auf.  {\KOMAScript} bietet dafür aber eine Lösung, die im Anschluss
+beschrieben wird. \OnlyAt{\Class{scrbook}\and
+  \Class{scrreprt}}\Macro{chapter*} existiert selbstverständlich nur bei Buch-
+und Berichtklassen, also bei \Class{book}, \Class{scrbook}, \Class{report} und
+\Class{scrreprt}, nicht jedoch bei den Artikelklassen \Class{article} und
+\Class{scrartcl}.
 
 Bitte\textnote{Achtung!} beachten Sie, dass \Macro{part*} und \Macro{chapter*}
 den Seitenstil für eine Seite umschalten. Während die
@@ -2855,7 +2880,7 @@ ist.
     Nummer und Abstand ausgemessen werden muss, um dann die aktuelle Position
     entsprechend mit \Macro{hspace} zu verändern.}
   Näheres zu den optionalen Argumenten von \Macro{makebox} ist
-  \cite{latex:usrguide} zu entnehmen.
+  \cite{latex:usrguide-historic} zu entnehmen.
 \end{Example}
 
 Für Formatierungsänderungen bei den Überschriften, die über die reine Ausgabe

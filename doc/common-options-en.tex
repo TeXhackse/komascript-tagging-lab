@@ -1,6 +1,6 @@
 % ======================================================================
 % common-options-en.tex
-% Copyright (c) Markus Kohm, 2001-2022
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-options-en.tex}
-                 [$Date: 2023-07-31 15:38:10 +0200 (Mon, 31 Jul 2023) $
+                 [$Date: 2026-08-28 14:44:33 +0200 (Fri, 28 Aug 2026) $
                   KOMA-Script guide (common paragraphs)]
 \translator{Gernot Hassenpflug\and Krickette Murabayashi\and Karl Hagen}
 
@@ -92,8 +92,8 @@ take a value, so an option does not necessarily take the form \PName{option},
 but can also take the form \PName{option}\texttt{=}\PName{value}%
 \important{\PName{option}\texttt{=}\PName{value}}. Except for this difference,
 \Macro{documentclass} and \Macro{usepackage} in \KOMAScript{} function as
-described in \cite{latex:usrguide} or any introduction to \LaTeX, for example
-\cite{lshort}.
+described in \cite{latex:usrguide-historic} or any introduction to \LaTeX, for
+example \cite{lshort}.
 
 \IfThisCommonLabelBaseNotOneOf{%
   scrjura,scrlayer,scrlayer-scrpage,scrlayer-notecolumn,scrextend%
@@ -104,7 +104,7 @@ described in \cite{latex:usrguide} or any introduction to \LaTeX, for example
   these packages without options, and \LaTeX{} refuses to load a package
   multiple times with different option settings.%
   \IfThisCommonLabelBaseOneOf{maincls,scrlttr2}{ In general, it is not
-    necessary to load either one of these packages explicitly when using any 
+    necessary to load either one of these packages explicitly when using any
     \KOMAScript{} class.}{}%
   \par
 }{}
@@ -112,7 +112,7 @@ described in \cite{latex:usrguide} or any introduction to \LaTeX, for example
 % The alternative text for wrapping optimization was redundant and, as
 % it's not required for the English version, has been deleted.
 Setting the options with \Macro{documentclass} has one\textnote{Attention!}
-major disadvantage: unlike the interface described below, the options in 
+major disadvantage: unlike the interface described below, the options in
 \Macro{documentclass} are not robust. So commands, lengths, counters, and
 similar constructs may break inside the optional argument of this command.
 For example, with many non-\KOMAScript{} classes, using a \LaTeX{} length
@@ -187,10 +187,10 @@ will report it as an error.%
 \label{sec:\ThisCommonLabelBase.options.end}
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

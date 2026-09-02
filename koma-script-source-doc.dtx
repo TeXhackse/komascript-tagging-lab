@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ==========================================================================
 % komascript-source.doc.dtx
-% Copyright (c) Markus Kohm, 2023-2025
+% Copyright (c) Markus Kohm, 2023-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -41,7 +41,7 @@
 \ProvidesFile{koma-script-source-doc.dtx}
 %</dtx>
 %<+ins>\ProvidesFile{koma-script-source-doc.ins}
-[2022-07-08 v0.92 KOMA-Script source documentation]
+[2026-09-01 v0.94 KOMA-Script source documentation]
 %<*dtx>
 \ifx\documentclass\undefined
 %</dtx>
@@ -474,6 +474,11 @@
   }%
   {#2}{\textsf{#3}}%
 }
+\AddToHook{package/hyperref/after}{%
+  \pdfstringdefDisableCommands{%
+    \RenewExpandableDocumentCommand{\pkg}{sm}{#2}%
+  }%
+}
 %    \end{macrocode}
 % \begin{command}{\opt}
 % options,
@@ -544,6 +549,43 @@
 % \end{command}
 % \end{command}
 %
+% \begin{command}{\cs}
+%   \changes{v0.93}{2026/08/28}{support for L3 names}
+%   The original definition is changed to support underscores in \cs{cs} like
+%   in \cs{exp_args:Nn}.
+%    \begin{macrocode}
+\NewCommandCopy\kssd@cs@saved\cs
+\ExplSyntaxOn
+\DeclareRobustCommand\cs
+  {
+    \begingroup
+      \char_set_catcode_letter:N \@
+      \char_set_catcode_letter:N \_
+      \char_set_catcode_letter:N \:
+      \kssd@cs
+  }
+\ExplSyntaxOff
+\newcommand*\kssd@cs[1]{%
+  \kssd@cs@saved{#1}%
+  \endgroup
+}
+%    \end{macrocode}
+% \end{command}
+%
+% \begin{command}{\MakePrivateLetters}
+%   \changes{v0.93}{2026/08/28}{support for L3 names}
+%   The original definition is extended to support underscores in names.
+%    \begin{macrocode}
+\ExplSyntaxOn
+\g@addto@macro \MakePrivateLetters
+  {
+    \char_set_catcode_letter:N \_
+    \char_set_catcode_letter:N \:
+  }
+\ExplSyntaxOff
+%    \end{macrocode}
+% \end{command}
+%
 %
 % \subsection{Documentation Items}
 % \label{sec:documentationitems}
@@ -596,7 +638,7 @@
 \RenewDocElement[%
   macrolike = false,
   toplevel  = true,
-  idxtype   = \textit{env.} ,
+  idxtype   = \textit{env.},
   idxgroup  = Environments,
   printtype = \textit{env.}
 ]{Env}{environment}

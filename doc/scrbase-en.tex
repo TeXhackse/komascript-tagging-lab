@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{scrbase-en.tex}
-                 [$Date: 2022-07-17 11:19:00 +0200 (Sun, 17 Jul 2022) $
+                 [$Date: 2026-08-28 14:51:39 +0200 (Fri, 28 Aug 2026) $
                   KOMA-Script package scrbase]
 \translator{Markus Kohm\and Melvin Hendrix\and Karl Hagen}
 
@@ -269,7 +269,7 @@ before local options. While unknown global options result in an entry in the
 \File{log} file and the option being otherwise ignored, unknown local
 options result in an error message.
 
-You can think of \Macro{FamilyProcessOptions} as an extension of either 
+You can think of \Macro{FamilyProcessOptions} as an extension of either
 \Macro{ProcessOption*} or the \PName{key=value} mechanism
 of \Package{keyval}. Ultimately, with the help of
 \Macro{FamilyProcessOptions}, \PName{key=value} pairs become options.%
@@ -596,7 +596,7 @@ message about an unknown value assignment is printed if necessary (see also
         ...
     \else
         ...
-    \fi   
+    \fi
   \end{lstcode}
   Note\textnote{Attention!} that it is essential to perform the test with
   \Macro{ifx} at this point. Fully expanding tests like \Macro{ifstr} should
@@ -794,7 +794,7 @@ or \Macro{FamilySetLengthMacro} and \Macro{FamilySetUseLengthMacro}, the
 \PName{value} is stored not in a \PName{length} but in a
 \PName{macro}. \Macro{FamilyLengthMacroKey} and
 \Macro{FamilySetLengthMacroKey} define the \PName{macro} to be the
-\PName{value} as evaluated at the point of definition, similar to 
+\PName{value} as evaluated at the point of definition, similar to
 \Macro{setlength}. In contrast,
 \Macro{FamilyUseLengthMacroKey}\ChangedAt{v3.20}{\Package{scrbase}} and
 \Macro{FamilySetUseLengthMacroKey} store the \PName{value} directly, and
@@ -887,7 +887,7 @@ currently not evaluated by \Package{scrbase}.
                                     {#1}%
     \ifx\FamilyKeyState\FamilyKeyStateProcessed
       \@thincutfalse
-    \else      
+    \else
       \Ifstr{#1}{thin}{%
         \@coltcutstrue
         \@finecuttrue
@@ -1632,6 +1632,27 @@ such commands for different purposes (see \cite{package:etoolbox} or
 \EndIndexGroup
 
 
+\begin{Declaration}
+  \Macro{ExpandArgsCS}\Parameter{specification}\Parameter{command name}\Parameter{parameter\textsubscript{1}}\dots
+\end{Declaration}
+Since\ChangedAt{v3.49.3}{\Package{scrbase}} version 2022-06-01, the \LaTeX{}
+kernel provides a \Macro{ExpandArgs} command that allows you to expand the
+parameters passed to a command according to a \PName{specification}. In the L3
+programming level, this corresponds to the \Macro{exp\_args:N\dots}
+functions. While the L3 programming level also provides
+\Macro{exp\_args:c\dots} functions, which allow you to use the same
+functionality even if the command is not yet available as a macro but only as
+\PName {command name}—referred to as \emph{csname} in L3 terminology—there is
+no equivalent at the \LaTeXe{} level. \Macro{ExpandArgsCS} is this
+equivalent. The call
+\Macro{ExpandArgsCS}\Parameter{csname}\Parameter{specification}\dots
+is therefore equivalent to
+\Macro{ExpandArg}\Macro{\PName{csname}}\Parameter{specification}\dots. For
+more details on \Macro{ExpandArgs}, see \cite{latex:usrguide}. The
+documentation for \Macro{exp\_args:\dots} can be found in
+\cite{latex:interface3}.%
+\EndIndexGroup
+
 \section{Extensions to the Mathematical Features of \eTeX}
 \seclabel{etex}
 
@@ -1674,7 +1695,7 @@ The \LaTeX{} kernel provides a few \emph{hooks} in the processing of
 a document where additional code can be inserted. Class and package authors
 should be very familiar with \Macro{AtBeginDocument} and
 \Macro{AtEndDocument}. \KOMAScript{} offers similar features in some places,
-for example to hook code into the execution of 
+for example to hook code into the execution of
 \hyperref[sec:maincls.structure]{sectioning commands}. Over the years, there
 have been two problems:
 \begin{itemize}
@@ -1793,7 +1814,7 @@ persistent code to the hook named \PName{name}. The code to be added is the
 \end{lstcode}
   Here, the appended, empty parameter of \Macro{stepcountergobble} is read but
   not used.
-  
+
   If instead of \Macro{section}, you want to count all sectioning commands, you
   only need to change the hook name:
 \begin{lstcode}
@@ -1830,7 +1851,7 @@ with \DescRef{\LabelBase.cmd.AddtoDoHook} or
 are two parameters added to the \PName{command}. The first is the hook's name;
 the second, the hook's argument.
 
-This command is a byproduct of the implementation of 
+This command is a byproduct of the implementation of
 \DescRef{\LabelBase.cmd.ExecuteDoHook}. Normally, neither end users nor package
 authors should need this command.%
 \EndIndexGroup
@@ -1923,7 +1944,7 @@ for completeness but shouldn't be used any longer.
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8

@@ -1,5 +1,5 @@
 #!/usr/bin/env texlua
-svn_revision = 4281
+svn_revision = 4292
 module = "scr-tagging-lab"
 
 typesetexe = "lualatex-dev"

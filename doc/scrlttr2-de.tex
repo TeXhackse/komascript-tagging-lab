@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlttr2-de.tex
-% Copyright (c) Markus Kohm, 2002-2025
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlttr2-de.tex}%
-                 [$Date: 2025-09-05 12:23:59 +0200 (Fri, 05 Sep 2025) $
+                 [$Date: 2026-08-28 14:44:33 +0200 (Fri, 28 Aug 2026) $
                   KOMA-Script guide (chapter: scrlttr2)]
 
 \chapter{Briefe mit Klasse \Class{scrlttr2} oder Paket \Package{scrletter}}
@@ -1129,19 +1129,20 @@ geben.\Index[indexmain]{Haken} Das folgende Beispiel zeigt dies.%
 \end{Example}
 \else%
   Wie\Index[indexmain]{Haken} in \cite{latex:clsguide} erwähnt, gibt es bei
-  \LaTeX{} die Möglichkeit, während des \LaTeX-Laufs eines Dokuments zusätzliche
-  \PName{Anweisungen} ausführen zu lassen. Zu diesem Zweck stellt der
-  \LaTeX-Kern die Anweisungen \Macro{AtEndOfClass}\IndexCmd{AtEndOfClass} und
-  \Macro{AtBeginDocument}\IndexCmd{AtBeginDocument} zur Verfügung. Man nennt
-  solche Eingriffspunkte auch \emph{hooks}\Index{hook=\emph{hook}}, also
+  \LaTeX{} die Möglichkeit, während des \LaTeX-Laufs eines Dokuments
+  zusätzliche \PName{Anweisungen} ausführen zu lassen. Zu diesem Zweck stellt
+  der \LaTeX-Kern die Anweisungen \Macro{AtEndOfClass}\IndexCmd{AtEndOfClass}
+  und \Macro{AtBeginDocument}\IndexCmd{AtBeginDocument} zur Verfügung. Man
+  nennt solche Eingriffspunkte auch \emph{hooks}\Index{hook=\emph{hook}}, also
   Haken. \KOMAScript{} fügt zwei weitere Haken hinzu, die mit
   \Macro{AtBeginLetter} und
   \Macro{AtEndLetter}\ChangedAt{v2.95}{\Class{scrlttr2}} mit Inhalt versehen
   werden können. Wie man schon daran erkennt, dass die \LaTeX-Kern-Anweisungen
-  für Haken nicht in \cite{latex:usrguide} sondern in \cite{latex:clsguide}
-  dokumentiert sind, sind diese Anweisungen eigentlich eher für Paket- und
-  Klassenautoren gedacht. Bei Briefen kann es jedoch sinnvolle Anwendungen für
-  die beiden neuen Haken auch auf Benutzerebene geben.\Index[indexmain]{Haken}%
+  für Haken nicht in \cite{latex:usrguide-historic} sondern in
+  \cite{latex:clsguide} dokumentiert sind, sind diese Anweisungen eigentlich
+  eher für Paket- und Klassenautoren gedacht. Bei Briefen kann es jedoch
+  sinnvolle Anwendungen für die beiden neuen Haken auch auf Benutzerebene
+  geben.\Index[indexmain]{Haken}%
   %
   \begin{Example}
     Angenommen, Sie haben mehrere Briefe in einem Dokument und verwenden
@@ -2331,18 +2332,18 @@ die über die oben erwähnten Option ausgewählt werden können,
 verzichten. Stattdessen gestaltet man sich seinen Briefkopf frei. Dazu
 definiert man den gewünschten Aufbau über den \PName{Inhalt} der Variablen
 \Variable{firsthead}. Dabei können beispielsweise mit Hilfe der
-\Macro{parbox}-Anweisung (siehe \cite{latex:usrguide}) mehrere Boxen neben-
-und untereinander gesetzt werden.  Einem versierten Anwender sollte es so
-möglich sein, seinen eigenen Briefkopf zu gestalten. Natürlich kann und sollte
-man dabei auch Zugriff auf andere Variablen mit Hilfe von
+\Macro{parbox}-Anweisung (siehe \cite{latex:usrguide-historic}) mehrere Boxen
+neben- und untereinander gesetzt werden.  Einem versierten Anwender sollte es
+so möglich sein, seinen eigenen Briefkopf zu gestalten. Natürlich kann und
+sollte man dabei auch Zugriff auf andere Variablen mit Hilfe von
 \DescRef{\LabelBase.cmd.usekomavar} nehmen. Die \PName{Bezeichnung} der
 Variablen \Variable{firsthead} wird von \KOMAScript{} nicht verwendet.
 \iffree{Ein ausführliches Beispiel für die Definition eines Briefkopfes ist
-  beispielsweise im Anhang von \cite{book:komascript} und
-  \cite{ebook:komascript} zu finden.%
-}{Ein ausführliches Beispiel für die Definition eines Briefkopfes wird in
-  \autoref{cha:modernletters} behandelt.}%
-\EndIndexGroup
+    beispielsweise im Anhang von \cite{book:komascript} und
+    \cite{ebook:komascript} zu finden.%
+  }{Ein ausführliches Beispiel für die Definition eines Briefkopfes wird in
+    \autoref{cha:modernletters} behandelt.}%
+  \EndIndexGroup
 %
 \EndIndexGroup
 
@@ -4509,11 +4510,12 @@ mehrzeilige Köpfe und Füße ausgelegt sind, geben sie die beider Variablen in
 einer horizontalen Box aus. Damit sind zunächst weder Absätze noch
 Zeilenumbrüche oder ähnliches möglich.  Innerhalb des Inhalts von
 \Variable{nexthead} und \Variable{nextfoot} können aber beispielsweise mit
-Hilfe der \Macro{parbox}-Anweisung (siehe \cite{latex:usrguide}) mehrere Boxen
-neben- und untereinander gesetzt werden.  Einem versierten Anwender sollte es
-so möglich sein, eigene Seitenköpfe und "~füße zu gestalten.  Natürlich kann
-und sollte im \PName{Inhalt} mit Hilfe von \DescRef{\LabelBase.cmd.usekomavar}
-auch auf weitere Variablen zugegriffen werden.
+Hilfe der \Macro{parbox}-Anweisung (siehe \cite{latex:usrguide-historic})
+mehrere Boxen neben- und untereinander gesetzt werden.  Einem versierten
+Anwender sollte es so möglich sein, eigene Seitenköpfe und "~füße zu
+gestalten.  Natürlich kann und sollte im \PName{Inhalt} mit Hilfe von
+\DescRef{\LabelBase.cmd.usekomavar} auch auf weitere Variablen zugegriffen
+werden.
 
 Als Alternative für mehrzeilige Köpf und Füße bietet sich die Verwendung des
 in \autoref{cha:scrlayer-scrpage} beschriebenen Pakets

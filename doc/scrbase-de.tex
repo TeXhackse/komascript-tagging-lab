@@ -1,6 +1,6 @@
 % ======================================================================
 % scrbase-de.tex
-% Copyright (c) Markus Kohm, 2002-2022
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{scrbase-de.tex}
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2026-08-28 14:51:39 +0200 (Fri, 28 Aug 2026) $
                   KOMA-Script package scrbase]
 
 \chapter{Grundlegende Funktionen im Paket \Package{scrbase}}
@@ -690,7 +690,7 @@ ausgegeben werden.%
       ...
   \else
       ...
-  \fi   
+  \fi
 \end{lstcode}
   ergänzen, um zusätzliche Aktionen in Abhängigkeit davon, ob
   \Macro{FamilySetBool} erfolgreich war oder nicht,
@@ -1020,7 +1020,7 @@ erwartet. Allerdings\ChangedAt{v3.12}{\Package{scrbase}} wird die
                                     {#1}%
     \ifx\FamilyKeyState\FamilyKeyStateProcessed
       \@Feinschnittfalse
-    \else      
+    \else
       \Ifstr{#1}{fein}{%
         \@Aufschnitttrue
         \@Feinschnittrue
@@ -1846,6 +1846,27 @@ Anweisungen für unterschiedliche Zwecke bieten (siehe
 \EndIndexGroup
 
 
+\begin{Declaration}
+  \Macro{ExpandArgsCS}\Parameter{Spezifikation}\Parameter{Anweisungsname}\Parameter{Argument\textsubscript{1}}\dots
+\end{Declaration}%
+Seit\ChangedAt{v3.49.3}{\Package{scrbase}} Version 2022-06-01 bietet der
+\LaTeX-Kern eine Anweisung \Macro{ExpandArgs}, mit deren Hilfe man die an eine
+Anweisung übergebenen Argumente entsprechend einer \PName{Spezifikation}
+expandieren kann. In der L3-Programmierebene entspricht dies den Funktionen
+\Macro{exp\_args:N\dots}. Während die L3-Programmierebene auch Funktionen
+\Macro{exp\_args:c\dots} bereitstellt, mit deren Hilfe man dieselbe
+Funktionalität auch nutzen kann, wenn die Anweisung noch nicht als Makro,
+sondern nur als \PName{Anweisungsname} --~in der L3-Sprechweise als
+\emph{csname} bezeichnet~-- verfügbar ist, fehlt eine Entsprechung auf
+\LaTeXe-Ebene. \Macro{ExpandArgsCS} ist diese Entsprechung. Der Aufruf
+\Macro{ExpandArgsCS}\Parameter{Anweisungsname}\Parameter{Spezifikation}\dots
+entspricht also
+\Macro{ExpandArg}\Macro{\PName{Anweisungsname}}\Parameter{Spezifikation}\dots.
+Näheres zu \Macro{ExpandArgs} ist \cite{latex:usrguide} zu entnehmen. Die
+Dokumentation von \Macro{exp\_args:\dots} ist in \cite{latex:interface3} zu
+finden.%
+\EndIndexGroup
+
 \section{Erweiterungen der mathematischen Fähigkeiten von \eTeX}
 \seclabel{etex}
 
@@ -2137,7 +2158,7 @@ werden.
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8

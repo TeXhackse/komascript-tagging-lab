@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4282 of the repository:
+% This file is based on revision 4292 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4282 2026-08-28 09:03:58Z texhackse $
+%%% From File: $Id: scrkernel-sections.dtx 4285 2026-08-28 11:32:37Z kohm $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-08-28 11:03:58 +0200 (Fri, 28 Aug 2026) $
+  \filedate$Date: 2026-08-28 13:32:37 +0200 (Fri, 28 Aug 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4282 $
+  \filerevision$Revision: 4285 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -901,7 +901,6 @@
 % \changes{v3.20}{2016/04/12}{\cs{@ifstar} replaced by \cs{kernel@ifstar}}
 % \begin{command}{\secdef}
 % \changes{v3.13a}{2014/09/11}{re-definition because of extended optional argument}
-% \changes{v3.49.3}{2026/08/27}{Ignore second Argument of SecDef to prepare removal}
 %    \begin{macrocode}
 %<*body>
 \newcommand*{\SecDef}[2]{\kernel@ifstar{#2}{\scr@section@dblarg{#1}}}
@@ -2729,9 +2728,9 @@
   \let\scr@dsc@current\relax
 }
 %    \end{macrocode}
-% \begin{macro}{\cs{\_\_scrkernel\_seq\_put\_unique:Nn}}
+% \begin{macro}{\cs{__scrkernel_seq_put_unique:Nn}}
 %   \changes{v3.44}{2025/05/14}{added}
-%   A variant of \cs{seq\_put\_left:NN} that puts the new item only to the left,
+%   A variant of \cs{seq_put_left:NN} that puts the new item only to the left,
 %   if it does not yet exist in the sequence.
 %    \begin{macrocode}
 \ExplSyntaxOn
@@ -2742,11 +2741,11 @@
   }
 %    \end{macrocode}
 % \end{macro}
-% \begin{macro}{\cs{g\_\_scrkernel\_section\_command\_seq},
-%   \cs{\_\_scrkernel\_put\_section\_command:n},
-%   \cs{\_\_scrkernel\_sort\_section\_commands\_by\_numdepth:},
-%   \cs{\_\_scrkernel\_sort\_section\_commands\_by\_tocdepth:},
-%   \cs{\_\_scrkernel\_sort\_section\_commands\_by\_toclevel:}}
+% \begin{macro}{\cs{g__scrkernel_section_command_seq},
+%   \cs{__scrkernel_put_section_command:n},
+%   \cs{__scrkernel_sort_section_commands_by_numdepth:},
+%   \cs{__scrkernel_sort_section_commands_by_tocdepth:},
+%   \cs{__scrkernel_sort_section_commands_by_toclevel:}}
 %   We store the names of all sectioning commands in an l3seq and also
 %   provide sorting of the sequence either by the numbering depth or the depth
 %   of the corresponding ToC entries. Sorting by \pkg{hyperref}'s toclevel is
@@ -3724,7 +3723,7 @@
 %   change the page numbering to lowercase Roman numbers. From \KOMAScript{}
 %   v3.49 there is also a star form without changing the page numbering style.
 %   \begin{description}
-%   \item[Note:] Because of using \cs{tl\_if\_blank:TF} instead of
+%   \item[Note:] Because of using \cs{tl_if_blank:TF} instead of
 %   \cs{IfValueTF} we have the correct order to make patches replacing
 %   \cs{pagenumbering} by \cs{@gobble} still work.
 %   \end{description}
@@ -5545,8 +5544,8 @@
 %</tagging-lab>
         \@hangfrom{#2}%
 %<*tagging-lab>
-      }
-  }
+}
+}
 %</tagging-lab>
   {\interlinepenalty \@M #3}%
 }

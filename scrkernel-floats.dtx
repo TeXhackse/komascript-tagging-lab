@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-floats.dtx 4197 2025-08-15 09:13:30Z kohm $
+%%% From File: $Id: scrkernel-floats.dtx 4288 2026-08-28 15:16:19Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-08-15 11:13:30 +0200 (Fri, 15 Aug 2025) $
+  \filedate$Date: 2026-08-28 17:16:19 +0200 (Fri, 28 Aug 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4197 $
+  \filerevision$Revision: 4288 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-floats.dtx}%
@@ -1024,6 +1024,12 @@
           }
       }
   }
+%    \end{macrocode}
+% \begin{macro}{\@@_at_caption_package:n}
+%   \changes{v3.46}{2025/06/17}{added}
+%   From \KOMAScript{} 3.46 we use an internal L3 helper macro to add code
+%   after loading the \pkg*{caption3} package.
+%    \begin{macrocode}
 \cs_new:Nn \@@_at_caption_package:n
   {
     \IfPackageLoadedTF { caption3 }
@@ -1037,10 +1043,19 @@
           { \AtCaptionPackage { #1 } }
       }
   }
+%    \end{macrocode}
+% \end{macro}^^A \@@_at_caption_package:n
+%    \begin{macrocode}
 \@@_at_caption_package:n
   {
     \cs_set:Nn \@@_at_caption_package:n { ##1 }
   }
+%    \end{macrocode}
+% \begin{macro}{\@@_set_cap_left_right:n}
+%   \changes{v3.46}{2025/06/17}{added}
+%   From \KOMAScript{} 3.46 wie use an internal L3 helper macro to setup the
+%   alignment of captions.
+%    \begin{macrocode}
 \cs_new:Nn \@@_set_cap_left_right:n
   {
     \str_case:enF { #1 }
@@ -1077,6 +1092,7 @@
       }
   }
 %    \end{macrocode}
+% \end{macro}^^A \@@_set_cap_left_right:n
 % \end{command}^^A \setcapwidth
 % \begin{command}{\setcapdynwidth}
 % \changes{v3.20}{2016/03/31}{added}

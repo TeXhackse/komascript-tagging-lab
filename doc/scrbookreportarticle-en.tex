@@ -1,6 +1,6 @@
 % ======================================================================
 % scrbookreportarticle-en.tex
-% Copyright (c) Markus Kohm, 2001-2025
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrbookreportarticle-en.tex}
-                 [$Date: 2025-11-26 08:49:14 +0100 (Wed, 26 Nov 2025) $
+                 [$Date: 2026-08-28 18:00:05 +0200 (Fri, 28 Aug 2026) $
                   KOMA-Script guide (chapter: scrbook, scrreprt, scrartcl)]
 
 \translator{Jens-Uwe Morawski\and Gernot Hassenpflug\and Markus Kohm\and
@@ -1811,17 +1811,17 @@ is not active by default.
 The \ChangedAt{v3.10}{\Class{scrbook}\and \Class{scrreprt}\and
   \Class{scrartcl}} extended interpretation of the optional argument checks to
 see if there is an equals sign in \PName{short version}. If so, the optional
-argument will be interpreted as an \PName{option list}.
-Three options\,---\,\OptionVName{head}{running head}\important{\Option{head}\\
-  \Option{tocentry}\\
-  \Option{reference}\\
-  \Option{nonumber}}, \OptionVName{tocentry}{table of contents entry},
-\OptionVName{reference}{reference title}%
+argument will be interpreted as an \PName{option list}.  Five
+options\,---\,\OptionVName{head}{running head}\important{\Option{head},
+  \Option{nohead}, \Option{nonumber}, \Option{reference}, \Option{tocentry}},
+\OptionVName{nohead}{simple switch}\ChangedAt{v3.49.3}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}}, \OptionVName{nonumber}{simple
+  switch}\ChangedAt{v3.27}{\Class{scrbook}\and \Class{scrreprt}\and
+  \Class{scrartcl}}, \OptionVName{reference}{reference title}%
 \ChangedAt{v3.22}{\Class{scrbook}\and \Class{scrreprt}\and \Class{scrartcl}},
-and \OptionVName{nonumber}{simple switch}\ChangedAt{v3.27}{\Class{scrbook}\and
-  \Class{scrreprt}\and \Class{scrartcl}}\,---\,are supported with this
-format. To use commas or equals signs within the values of those options, you
-must enclose them in braces.
+and \OptionVName{tocentry}{table of contents entry}\,---\,are supported with
+this format. To use commas or equals signs within the values of \Option{head},
+\Option{reference} or \Option{tocentry}, you must enclose them in braces.
 
 Please\textnote{Attention!} note that this mechanism only works as long as
 \KOMAScript{} controls the sectioning commands. If you use package that
@@ -1929,6 +1929,19 @@ and \Macro{section}, using \OptionValue{nonumber}{true} this essentially
 corresponds to the \DescRef{\LabelBase.cmd.addpart},
 \DescRef{\LabelBase.cmd.addchap}, and \DescRef{\LabelBase.cmd.addsec}
 commands, which are explained on \DescPageRef{\LabelBase.cmd.addpart}.
+
+By using the option \OptionValue{nohead}{true}%
+\important{\Option{nohead}}\ChangedAt{v3.49.3}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}}, you can disable the generation of an
+automatic running head for a heading, if such a title is used. For more
+information on automatic running heads, see the description of
+\DescRef{\LabelBase.cmd.chaptermark} through
+\DescRef{\LabelBase.cmd.subsectionmark},
+\DescPageRef{\LabelBase.cmd.chaptermark}, and the description of the page
+style \DescRef{\LabelBase.pagestyle.headings} in
+\autoref{sec:maincls.pagestyle}, \DescPageRef{\LabelBase.pagestyle.headings},
+or in \autoref{cha:scrlayer-scrpage},
+\DescPageRef{scrlayer-scrpage.cmd.automark}.
 
 The part-level title\important{\Macro{part}} (\Macro{part}) differs from other
 sectioning levels by being numbered independently. This means that the chapter
@@ -2154,10 +2167,19 @@ following explanation.
 The starred variants of all sectioning commands produce
 unnumbered\Index{numbering} headings which do not appear in the table of
 contents\Index{table>of contents}\Index{contents>table of} or in the running
-head\Index{running head}. The absence of a running head often has an unwanted
-side effect. If, for example, a chapter set using \Macro{chapter*} spans
-several pages, then the running head of the previous chapter suddenly
-reappears.  {\KOMAScript} offers a solution for this problem, described below.
+head\Index{running head}. \ChangedAt{v3.49.3}{\Class{scrbook}\and
+  \Class{scrreprt}\and \Class{scrartcl}}The use of the asterisk variant thus
+corresponds to the non-asterisk main form with the optional arguments
+\OParameter{\normalfont\PValue{\OptionValue{tocentry}{\{\}},
+    \OptionValue{nohead}{true}\texttt, \OptionValue{nonumber}{true}}},
+provided that the extended interpretation of the optional argument is
+active. See the preceding explanation regarding \DescRef{\LabelBase.cmd.part}
+through \DescRef{\LabelBase.cmd.subparagraph}.
+
+The absence of a running head often has an unwanted side effect. If, for
+example, a chapter set using \Macro{chapter*} spans several pages, then the
+running head of the previous chapter suddenly reappears.  {\KOMAScript} offers
+a solution for this problem, described below.
 \Macro{chapter*}\OnlyAt{\Class{scrbook}\and\Class{scrreprt}} only exists in
 book and report classes, that is, \Class{book}, \Class{scrbook},
 \Class{report} and \Class{scrreprt}, not in the article classes
@@ -2587,7 +2609,7 @@ Please also remember\textnote{Attention!} to replace \Macro{newcommand} with
     number and the spacing, and then to change the current position
     appropriately with \Macro{hspace}.}
   You can find more about the optional arguments of \Macro{makebox} in
-  \cite{latex:usrguide}.
+  \cite{latex:usrguide-historic}.
 \end{Example}
 
 For formatting changes in the headings that go beyond merely formatting the

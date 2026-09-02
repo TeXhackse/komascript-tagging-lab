@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4281 of the repository:
+% This file is based on revision 4292 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -398,7 +398,7 @@
   \@addmargin[#1]{#2}%
 }{%
   \if@twoside
-  \unskip\nobreak\Ifthispageodd{}{}%
+    \unskip\nobreak\Ifthispageodd{}{}%
     \expandafter\ifx\csname tpo@\scr@tpo\endcsname\scr@addmargin@startpage\else
 %<class|tagging-lab>      \ClassWarning{\KOMAClassName}{%
 %<package>    \PackageWarning{scrextend}{%

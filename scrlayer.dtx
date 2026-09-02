@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrlayer.dtx 4145 2025-05-13 16:54:14Z kohm $
+%%% From File: $Id: scrlayer.dtx 4288 2026-08-28 15:16:19Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -28,9 +28,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-05-13 18:54:14 +0200 (Tue, 13 May 2025) $
+  \filedate$Date: 2026-08-28 17:16:19 +0200 (Fri, 28 Aug 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4145 $
+  \filerevision$Revision: 4288 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrlayer.dtx}%
@@ -2039,8 +2039,8 @@
 %   \end{description}
 % Note: Nothing will be done to remove the layer from a page style, but this
 % shouldn't matter, because layers with, e.g.,
-% \cs{if@scr@l@\dots@nonfloatpage}=\cs{relax} and
-% \cs{if@scr@l@\dots@floatpage}=\cs{relax} won't be output ever. This
+% \cs{if@scr@l@\dots @nonfloatpage}=\cs{relax} and
+% \cs{if@scr@l@\dots @floatpage}=\cs{relax} won't be output ever. This
 % command could be used by interfaces via
 % \cs{scrlayerOnAutoRemoveInterface} to remove the generated
 % layers, if the interface commands wouldn't be depreacted.
