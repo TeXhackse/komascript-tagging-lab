@@ -53,27 +53,52 @@
 % for the relevant level.
 %    \begin{macrocode}
 \newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
-\cs_new:Nn \@@_sec_start_aux:n {
-  \int_set:Nn\l_@@_sec_level_int{\use:c{toclevel@#1}}
+
+\int_new:N \l_@@_sec_level_int
+\tl_new:N \l_@@_sec_tmpa_tl
+
+\NewTaggingSocket{scr/sec/heading/init}{1}
+\NewTaggingSocketPlug{scr/sec/heading/init}{default}{
+   \int_set:Nn\l_@@_sec_level_int{\use:c{toclevel@#1}}
    \UseTaggingSocket{sec/end}{\int_use:N\l_@@_sec_level_int}
    \UseTaggingSocket{sec/begin}
     {{\int_use:N\l_@@_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int}}}
-     \if@currentrunin
-      \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
-     \fi
-}
-\cs_new:Nn \@@_sec_init_aux:n {
+   \if@currentrunin
+    \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
+   \fi
+ }
+\AssignTaggingSocketPlug{scr/sec/heading/init}{default}
+
+\NewTaggingSocket{scr/sec/heading/begin}{1}
+\NewTaggingSocketPlug{scr/sec/heading/begin}{default}{
   \Ifnumbered{#1}{\bool_set_false:N}{\bool_set_true:N}
- \l__scrkernel_sec_nonumber_bool
-
-	%TODO maybe rescan + expand \@currentlabelname?
-
-	\if@currentrunin
-	\else
-  \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
-	\fi
+		\l__scrkernel_sec_nonumber_bool
+  \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab} \@currentlabelname
+   \if@currentrunin
+   \else
+	  \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
+   \fi
 }
+\AssignTaggingSocketPlug{scr/sec/heading/begin}{default}
 %    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewTaggingSocket{scr/sec/heading/end}{1}
+\NewTaggingSocketPlug{scr/sec/heading/end}{default}{
+  \if@currentrunin
+    \UseTaggingSocket{sec/title/split}
+  \else
+    \cs_if_exist:cTF {@end#1} {
+      \tagmcend\tagstructend
+    }{
+      \UseTaggingSocket{para/restore}
+    }
+  \fi
+}
+
+\AssignTaggingSocketPlug{scr/sec/heading/end}{default}
+
+%     \end{macrocode}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
 % This change has to be adjusted to match the kernel changes of the testphase.
 % The Following code has been taken from scrkernel-sections.dtx by Markus Kohm.
@@ -102,22 +127,6 @@
   \UseTaggingSocket{para/restore}
 }
 
-%% \hook_gput_code:nnn {cmd/scr@@@@startchapter/after}{scr-tagging-lab}{
-% \UseTaggingSocket{para/restore}
-%% }
-
-\cs_new:Nn \@@_sec_end_aux:n {
-  \if@currentrunin
-    \UseTaggingSocket{sec/title/split}
-  \else
-    \cs_if_exist:cTF {@end#1} {
-      \tagmcend\tagstructend
-    }{
-      \UseTaggingSocket{para/restore}
-    }
-  \fi
-}
-
 \cs_new:Nn \_@@_patch_sectioning: {
   \cs_set_eq:NN \sectionlinesformat \scrlab@sectionlinesformat
   \cs_set_eq:NN \chapterlinesformat \scrlab@chapterlinesformat
@@ -139,7 +148,7 @@
 % probably it's a good idea to define a hook with arguments there instead of this workaround
 %    \begin{macrocode}
   \AddtoDoHook{heading/endgroup}{
-    \@@_sec_end_aux:n
+    \UseTaggingSocket{scr/sec/heading/end}
   }
   \AddtoDoHook{heading/preinit/chapter}{\@currentruninfalse}
   \AddtoDoHook{heading/preinit/part}{\@currentruninfalse}
@@ -150,11 +159,11 @@
     \global\let\strut\orig@strut
   }
   \AddtoDoHook{heading/postinit}{
-	\@@_sec_start_aux:n
+		\UseTaggingSocket{scr/sec/heading/init}
   }
   \AddtoDoHook{heading/begingroup}{
-	\@@_sec_init_aux:n
-	}
+		\UseTaggingSocket{scr/sec/heading/begin}
+  }
 }
 
 \cs_new:Nn \_@@_patch_maketitle: {
@@ -178,9 +187,8 @@
   \_@@_patch_sectioning:
   \_@@_patch_maketitle:
   \let\numberline\scr@numberline
+    }
 }
-
-\int_new:N \l_@@_sec_level_int
 
 \def\scrlab@notagstrut{%
 	\ifhmode\else
