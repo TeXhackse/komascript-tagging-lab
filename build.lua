@@ -31,7 +31,7 @@ checksuppfiles = { "*.tex", "**/*.ltx" }
 testsuppdir = "support-tests"
 typesetsuppfiles = checksuppfiles
 supportdir = testsuppdir
-checkruns = 2
+checkruns = 3
 typesetruns = 2
 recordstatus = true
 
