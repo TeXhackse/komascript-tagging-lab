@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-%% File: scr-taggging-lab.dtx
+%% File: scr-tagging-lab.dtx
 %
 %<*driver>
 \documentclass[USenglish]{koma-script-source-doc}
@@ -15,43 +15,38 @@
 %
 %    \begin{macrocode}
 %<@@=scrlab>
-%<*testphase>
-\ProvidesFile{KOMA-fixes-latex-lab-testphase.ltx}[2024-09-14 v0.1 KOMA-fixes
-    testphase]
-\RequirePackage{scr-tagging-lab}
-%</testphase>
-%<*package|koma>
 %    \end{macrocode}
 % \section{Implementation}
 %    \begin{macrocode}
-\ProvidesExplPackage {scr-tagging-lab} {2024-06-30} {0.18}{KOMA-Script tagging experiments}
-%    \end{macrocode}
-% We need to avoid that latex-lab-testphase redefines part and chapter
-% after the class, for this we void its hook with a hook rule.
-%    \begin{macrocode}
-\AddToHook{class/after}[koma/tagging]{}
-\DeclareHookRule{class/after}{koma/tagging}{voids}{latex-lab-testphase-sec}
+%<koma>\ProvidesExplPackage   {scr-tagging-lab} {2026-09-18} {0.19}{KOMA-Script tagging code}
+%<article>\ProvidesExplPackage{scrarticle-tagging} {2026-09-18} {0.19}{KOMA-Script tagging code}
+%<report>\ProvidesExplPackage {scrreport-tagging} {2026-09-18} {0.19}{KOMA-Script tagging code}
+%<book>\ProvidesExplPackage   {scrbook-tagging} {2026-09-18} {0.19}{KOMA-Script tagging code}
 %    \end{macrocode}
 %
-% As this project is constructed to be integrated into KOMA-Script, we define some macros which are also defined by KOMA-Script itself.
+% As this project is constructed to be integrated into KOMA-Script, 
+% we define some macros which are also defined by KOMA-Script itself.
 % We use file hooks to do save the meaning before loading the class and restore it afterwards.
 % This is to simplify moving the changes from this experiment to the official KOMA-Script SVN.
 % Some hooks belong to a package to work without a KOMA-class. As they do for tocbasic
 %
 % Move the redefinitions after the tocbasic package
 %    \begin{macrocode}
+%<*tocstyle>
 \hook_gput_code:nnn {package/tocbasic/after}{scr-tagging-lab}{
   \cs_set_eq:cN {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
   \cs_set_eq:cN {\string\usetocbasicnumberline} \_@@_usetocbasicnumberline
   \cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
   \cs_set_eq:NN \scr@numberline \_@@_scr@numberline
 }
+%</tocstyle>
 %    \end{macrocode}
 % Instead of redefining \cs{scr@startsection} it's possible to use hooks.
 % The following command closes a previous Sect structure and opens a new one.
 % The name/role of the Sect structure can be adapted by changing the symbolic name
 % for the relevant level.
 %    \begin{macrocode}
+%<*koma|article|report|book>
 \newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
 
 \int_new:N \l_@@_sec_level_int
@@ -98,19 +93,19 @@
 
 \AssignTaggingSocketPlug{scr/sec/heading/end}{default}
 
-%     \end{macrocode}
-% As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
+%    \end{macrocode}
+% As the content of scrkernel-sections.dtx is overwriting the original definition of \cs{@sect} and some other macros.
 % This change has to be adjusted to match the kernel changes of the testphase.
-% The Following code has been taken from scrkernel-sections.dtx by Markus Kohm.
+% The following code has been taken from scrkernel-sections.dtx by Markus Kohm.
 % Changes have been marked
 %    \begin{macrocode}
 \bool_new:N \l_@@_sec_nonumber_bool
-%</package|koma>
+%</koma|article|report|book>
 %    \end{macrocode}
 % Because the KOMA hooks don't have additional arguments it's necessary to use hooks with arguments on the surrounding macro to save the title.
 % Maybe it's easier to pass those with changing the hooks, but this needs to be discussed.
 %    \begin{macrocode}
-%<*package|heading-hooks>
+%<*heading-hooks>
 \hook_gput_code:nnn {cmd/partformat/before}{scr-tagging-lab} {
   \SuspendTagging{partformat}%
 }
@@ -216,21 +211,7 @@
     \MakeLinkTarget#1{#2}
   }
 }
-
-
-
 %    \end{macrocode}
 % \end{macro}^^A \scrlab@section@target
-%</package|heading-hooks>
+%</heading-hooks>
 %    \end{macrocode}
-%<*toggle>
-%% \@namedef{@end#1}{\scr@@endpart{#1}}
-%<*book|report>
-% \SuspendTagging{use@preamble}
-\vbox to\z@{\vss\use@preamble{#1@o}\strut\par}%
-\vskip-\baselineskip\nobreak
-% \ResumeTagging{use@preamble}
-%</book|report>
-\expandafter\SecDef\csname @#1\expandafter\endcsname\csname @s#1\endcsname
-}
-%</toggle>

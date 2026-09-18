@@ -82,9 +82,9 @@
 % \section{Implementation of the Detection of Usage of Meta Data or Tagging}
 %
 % \changes{v3.49}{2025/09/11}{tagging warning added}
+% \changes{v3.49.4}{2026/09/18}{Simplified messages: there is no tagging without \cs{DocumentMetadata}}
 % \ExplSyntaxOn
 % \begin{macro}{
-%   \komascript_tagging_test:,
 %   \komascript_documentmetadata_test:
 % }
 %   \ExplSyntaxOff
@@ -123,13 +123,10 @@
       }
     \cs_new:Npn \komascript_documentmetadata_test:
       {
-        \cs_if_exist:NT \IfDocumentMetadataT
+        \IfDocumentMetadataT
           {
-            \IfDocumentMetadataT
-              {
-                \exp_args:NV \msg_fatal:nn \KOMAClassName
-                  { metadata-not-supported }
-              }
+            \exp_args:NV \msg_fatal:nn \KOMAClassName
+              { metadata-not-supported }
           }
       }
   }
@@ -138,60 +135,25 @@
 \IfDocumentMetadataT
   {
     \IfFileExists
-%<article|book|report>      {scr-articlebookreport-tagging.sty}
-%<letter>      {scr-letter-tagging.sty}
+%<article>      {scrarticle-tagging.sty}
+%<book>         {scrbook-tagging.sty}
+%<report>       {scrreport-tagging.sty}
+%<letter>       {scrletter-tagging.sty}
       {
         \RequirePackage
-%<article|book|report>          {scr-articlebookreport-tagging.sty}
-%<letter>          {scr-letter-tagging.sty}
+%<article>      {scrarticle-tagging}
+%<book>         {scrbook-tagging}
+%<report>       {scrreport-tagging}
+%<letter>       {scrletter-tagging}      
       }
       {
-        \InputIfFileExists
-%<article|book|report>          {scr-articlebookreport-tagging-code.tex}
-%<letter>          {scr-letter-tagging-code.tex}
-          {}
-          {\komascript_documentmetadata_test:}
-      }
+        \komascript_documentmetadata_test:
+      }  
   }
 %</verylate>
-%<*init>
-\cs_if_exist:NF \komascript_tagging_test:
-  {
-    \cs_new:Npn \komascript_tagging_test:
-      {
-        \cs_if_exist:NT \tag_if_active:T
-          {
-            \exp_args:NV \msg_new:nnn \KOMAClassName { tagging-not-supported }
-              {
-                Activated~tagging~detected~but~not~supported!\\
-                Note:~This~class~currently~does~not~actively~support~tagging.~
-                This~means:~Several~elements~will~not~be~tagged~correctly~
-                and~also~several~errors~could~happen.\\
-                Sorry!
-              }
-            \hook_gput_code:nnn { begindocument } { \KOMAClassName }
-              {
-                \tag_if_active:T
-                  {
-                    \exp_args:NV \msg_warning:nn
-                      \KOMAClassName
-                      { tagging-not-supported }
-                  }
-              }
-          }
-      }
-  }
-%</init>
-%<verylate>\komascript_tagging_test:
 \ExplSyntaxOff
 %</class>
-%    \end{macrocode}
-% tagging: adding workaround for the tagging test
-%    \begin{macrocode}
-%<*tagging-lab>
-\cs_new:Nn \komascript_tagging_test: {}
-\cs_new:Nn \komascript_documentmetadata_test: {}
-%</tagging-lab>
+%    \end{macrocode} 
 % \end{macro}
 % \ExplSyntaxOff
 %
