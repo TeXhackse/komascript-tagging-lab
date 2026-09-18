@@ -1,6 +1,7 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
 chapter without number
+\g__cctab_tmpiv_cctab=\catcodetable...
 \g__cctab_tmpvi_cctab=\catcodetable...
 (toc.toc
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
@@ -10,6 +11,7 @@ Package tocbasic Info: Using my definition of `\numberline' on input line ....
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
 )
 \tf@toc=\write...
+\g__cctab_tmpii_cctab=\catcodetable...
 \g__cctab_tmpiii_cctab=\catcodetable...
 ============================================================
 TEST 1: Show PDF Tags
@@ -131,13 +133,13 @@ TEST 1: Show PDF Tags
         title="section"
         rolemaps-to="H2"
        >
-      <section-number xmlns="https://www.latex-project.org/ns/dflt"
+      <heading-number xmlns="https://www.latex-project.org/ns/dflt"
          id="ID.027"
-         rolemaps-to="Span"
+         rolemaps-to="Lbl"
          referenced-as="1"
         >
        <?MarkedContent page="1" ?>0.1 
-      </section-number>
+      </heading-number>
       <?MarkedContent page="1" ?>section
      </section>
      <Sect xmlns="http://iso.org/pdf2/ssn"
@@ -148,13 +150,13 @@ TEST 1: Show PDF Tags
          title="subsection"
          rolemaps-to="H3"
         >
-       <section-number xmlns="https://www.latex-project.org/ns/dflt"
+       <heading-number xmlns="https://www.latex-project.org/ns/dflt"
           id="ID.030"
-          rolemaps-to="Span"
+          rolemaps-to="Lbl"
           referenced-as="2"
          >
         <?MarkedContent page="1" ?>0.1.1 
-       </section-number>
+       </heading-number>
        <?MarkedContent page="1" ?>subsection
       </subsection>
      </Sect>
@@ -202,13 +204,13 @@ TEST 1: Show PDF Tags
          title="blub"
          rolemaps-to="H3"
         >
-       <section-number xmlns="https://www.latex-project.org/ns/dflt"
+       <heading-number xmlns="https://www.latex-project.org/ns/dflt"
           id="ID.039"
-          rolemaps-to="Span"
+          rolemaps-to="Lbl"
           referenced-as="4"
          >
         <?MarkedContent page="1" ?>0.1.1 
-       </section-number>
+       </heading-number>
        <?MarkedContent page="1" ?>blub
       </subsection>
      </Sect>
@@ -221,13 +223,13 @@ TEST 1: Show PDF Tags
         title="section"
         rolemaps-to="H2"
        >
-      <section-number xmlns="https://www.latex-project.org/ns/dflt"
+      <heading-number xmlns="https://www.latex-project.org/ns/dflt"
          id="ID.042"
-         rolemaps-to="Span"
+         rolemaps-to="Lbl"
          referenced-as="5"
         >
        <?MarkedContent page="1" ?>0.2 
-      </section-number>
+      </heading-number>
       <?MarkedContent page="1" ?>section
      </section>
     </Sect>

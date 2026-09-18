@@ -17,12 +17,12 @@ TEST 1: Show PDF Tags
        title="Heading chapter emph $a=b$"
        rolemaps-to="H1"
       >
-     <section-number xmlns="https://www.latex-project.org/ns/dflt"
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
         id="ID.008"
-        rolemaps-to="Span"
+        rolemaps-to="Lbl"
        >
       <?MarkedContent page="1" ?>1 
-     </section-number>
+     </heading-number>
      <?MarkedContent page="1" ?>Heading chapter 
      <Em xmlns="http://iso.org/pdf2/ssn"
         id="ID.009"
@@ -37,7 +37,7 @@ TEST 1: Show PDF Tags
         xmlns:Layout="http://iso.org/pdf/ssn/Layout"
         Layout:Placement="Inline"
        >
-       <AssociatedFile name="tag-AFfile1.tex" xmlns="">
+       <AssociatedFile name="tag-AFfile1.tex" relationship="Source" media-type="application/x-tex" xmlns="">
        $a=b$
        </AssociatedFile>
       <?MarkedContent page="1" ?>a=b

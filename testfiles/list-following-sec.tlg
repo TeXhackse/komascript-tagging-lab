@@ -17,12 +17,12 @@ TEST 1: Show PDF Tags
        title="chapter"
        rolemaps-to="H1"
       >
-     <section-number xmlns="https://www.latex-project.org/ns/dflt"
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
         id="ID.008"
-        rolemaps-to="Span"
+        rolemaps-to="Lbl"
        >
       <?MarkedContent page="1" ?>1 
-     </section-number>
+     </heading-number>
      <?MarkedContent page="1" ?>chapter
     </chapter>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
@@ -74,12 +74,12 @@ TEST 1: Show PDF Tags
         title="section"
         rolemaps-to="H2"
        >
-      <section-number xmlns="https://www.latex-project.org/ns/dflt"
+      <heading-number xmlns="https://www.latex-project.org/ns/dflt"
          id="ID.018"
-         rolemaps-to="Span"
+         rolemaps-to="Lbl"
         >
        <?MarkedContent page="1" ?>1.1 
-      </section-number>
+      </heading-number>
       <?MarkedContent page="1" ?>section
      </section>
      <semantic-para xmlns="https://www.latex-project.org/ns/dflt"

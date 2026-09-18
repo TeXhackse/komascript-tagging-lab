@@ -55,7 +55,7 @@
 \newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
 
 \int_new:N \l_@@_sec_level_int
-\tl_new:N \l_@@_sec_tmpa_tl
+%\tl_new:N \l_@@_sec_tmpa_tl
 
 \NewTaggingSocket{scr/sec/heading/init}{1}
 \NewTaggingSocketPlug{scr/sec/heading/init}{default}{
@@ -188,7 +188,7 @@
   \_@@_patch_maketitle:
   \let\numberline\scr@numberline
     }
-}
+
 
 \def\scrlab@notagstrut{%
 	\ifhmode\else
