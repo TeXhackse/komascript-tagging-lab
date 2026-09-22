@@ -24,7 +24,9 @@
 %    \end{macrocode}
 % \section{Implementation}
 %    \begin{macrocode}
-\ProvidesExplPackage {scr-tagging-lab} {2024-06-30} {0.18}{KOMA-Script tagging experiments}
+\ProvidesExplPackage {scr-tagging-lab} {2024-06-30} {0.18}{KOMA-Script tagging code}
+\ProvidesExplPackage {scr-articlebookreport-tagging} {2026-09-22} {0.00}{KOMA-Script tagging code}
+%</package|koma>
 %    \end{macrocode}
 %
 % As this project is constructed to be integrated into KOMA-Script, we define some macros which are also defined by KOMA-Script itself.
@@ -34,18 +36,21 @@
 %
 % Move the redefinitions after the tocbasic package
 %    \begin{macrocode}
+%<*tocstyle>
 \hook_gput_code:nnn {package/tocbasic/after}{scr-tagging-lab}{
   \cs_set_eq:cN {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
   \cs_set_eq:cN {\string\usetocbasicnumberline} \_@@_usetocbasicnumberline
   \cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
   \cs_set_eq:NN \scr@numberline \_@@_scr@numberline
 }
+%</tocstyle>
 %    \end{macrocode}
 % Instead of redefining \cs{scr@startsection} it's possible to use hooks.
 % The following command closes a previous Sect structure and opens a new one.
 % The name/role of the Sect structure can be adapted by changing the symbolic name
 % for the relevant level.
 %    \begin{macrocode}
+%<*package|koma>
 \newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
 
 \int_new:N \l_@@_sec_level_int

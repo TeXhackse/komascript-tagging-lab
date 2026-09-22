@@ -104,6 +104,7 @@
 %   messages by defining \cs{komascript\_documentmetadata\_test:}
 %   resp. \cs{komascript\_tagging\_test:} before loading the \KOMAScript{}
 %   class.
+%   \changes{v3.49.3}{2026/09/22}{Fix typo in package loading}
 %    \begin{macrocode}
 %<*class>
 \ExplSyntaxOn
@@ -142,8 +143,8 @@
 %<letter>      {scr-letter-tagging.sty}
       {
         \RequirePackage
-%<article|book|report>          {scr-articlebookreport-tagging.sty}
-%<letter>          {scr-letter-tagging.sty}
+%<article|book|report>          {scr-articlebookreport-tagging}
+%<letter>          {scr-letter-tagging}
       }
       {
         \InputIfFileExists
@@ -189,8 +190,25 @@
 % tagging: adding workaround for the tagging test
 %    \begin{macrocode}
 %<*tagging-lab>
-\cs_new:Nn \komascript_tagging_test: {}
-\cs_new:Nn \komascript_documentmetadata_test: {}
+\cs_set:Nn \komascript_tagging_test: {
+    \cs_if_exist:NT \tag_if_active:T
+      {
+        \exp_args:NV \msg_new:nnn \KOMAClassName { tagging-work-in-progress }
+          {
+            Activated~tagging~detected~but~not~thos~is~still~WIP.\\
+          }
+        \hook_gput_code:nnn { begindocument } { \KOMAClassName }
+          {
+            \tag_if_active:T
+              {
+                \exp_args:NV \msg_warning:nn
+                  \KOMAClassName
+                  { tagging-work-in-progress }
+              }
+          }
+      }
+}
+\cs_set:Nn \komascript_documentmetadata_test: {}
 %</tagging-lab>
 % \end{macro}
 % \ExplSyntaxOff

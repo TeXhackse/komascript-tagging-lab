@@ -2,23 +2,42 @@
 \keepsilent
 \askforoverwritefalse
 \generate{
-\file{KOMA-fixes-latex-lab-testphase.ltx}{%
-	\from{scr-tagging-lab.dtx}{testphase}%
+	\file{KOMA-fixes-latex-lab-testphase.ltx}{%
+		\from{scr-tagging-lab.dtx}{testphase}%
+	}%
+	\file{scr-tagging-lab.sty}{%
+		\from{scr-tagging-lab.dtx}{koma}
+		  \from{scrkernel-sections.dtx}{tagging-lab,book,article,report,class}
+	%  \from{tocbasic.dtx}{package,identify}%
+	%  \from{tocbasic.dtx}{package,prepare}%
+	%  \from{tocbasic.dtx}{package,option}%
+	%  \from{tocbasic.dtx}{package,execoption}%
+	%  \from{tocbasic.dtx}{package,body,deprecated}%
+	%  \from{scrkernel-tocstyle.dtx}{package,body}%
+	%  \from{scrkernel-tocstyle.dtx}{package,style,gobble}%
+	%  \from{scrkernel-tocstyle.dtx}{package,style,dottedtocline}%
+	%  \from{scrkernel-tocstyle.dtx}{package,style,undottedtocline}%
+	%  \from{scrkernel-tocstyle.dtx}{package,style,largetocline}%
+		\from{scrkernel-tocstyle.dtx}{package,style,tocline,tagging-lab}%
+		\from{scr-tagging-lab.dtx}{tocstyle}
+		\from{scr-tagging-lab.dtx}{heading-hooks}
+	%  \from{scrkernel-sections.dtx}{workarounds}
+		\from{scrkernel-title.dtx}{package,tagging-lab}
+	%  \from{scrkernel-tocstyle.dtx}{package,style,toctext}%
+	%  \from{scrkernel-tocstyle.dtx}{package,style,default}%
+	%  \from{tocbasic.dtx}{package,exit}%
+	%  \from{scrlogo.dtx}{logo}%
+		\from{scrkernel-tagging.dtx}{tagging-lab}%
+		\from{scrkernel-listsandtabulars.dtx}{tagging-lab,patch-addmargin}
+	}%
 }%
-\file{scr-tagging-lab.sty}{%
+
+\generate{
+\file{scr-articlebookreport-tagging.sty}{%
 	\from{scr-tagging-lab.dtx}{koma}
-    \from{scrkernel-sections.dtx}{tagging-lab,book,article,report,class}
-%  \from{tocbasic.dtx}{package,identify}%
-%  \from{tocbasic.dtx}{package,prepare}%
-%  \from{tocbasic.dtx}{package,option}%
-%  \from{tocbasic.dtx}{package,execoption}%
-%  \from{tocbasic.dtx}{package,body,deprecated}%
-%  \from{scrkernel-tocstyle.dtx}{package,body}%
-%  \from{scrkernel-tocstyle.dtx}{package,style,gobble}%
-%  \from{scrkernel-tocstyle.dtx}{package,style,dottedtocline}%
-%  \from{scrkernel-tocstyle.dtx}{package,style,undottedtocline}%
-%  \from{scrkernel-tocstyle.dtx}{package,style,largetocline}%
+  \from{scrkernel-sections.dtx}{tagging-lab,book,article,report,class}
   \from{scrkernel-tocstyle.dtx}{package,style,tocline,tagging-lab}%
+  \from{scr-tagging-lab.dtx}{tocstyle}
   \from{scr-tagging-lab.dtx}{heading-hooks}
 %  \from{scrkernel-sections.dtx}{workarounds}
   \from{scrkernel-title.dtx}{package,tagging-lab}
@@ -28,12 +47,12 @@
 %  \from{scrlogo.dtx}{logo}%
   \from{scrkernel-tagging.dtx}{tagging-lab}%
   \from{scrkernel-listsandtabulars.dtx}{tagging-lab,patch-addmargin}
-}%
-}%
+	}%
+}
 
 \generate{\file{tocbasic-scr-tagging-lab.sty}{
-\from{scr-tagging-lab.dtx}{tocbasic,capture}%
-\from{scrkernel-tocstyle.dtx}{package,style,tocline,tagging-lab}%
+	\from{scrkernel-tocstyle.dtx}{package,style,tocline,tagging-lab}%
+	\from{scr-tagging-lab.dtx}{tocbasic}%
 }}
 
 \endbatchfile
