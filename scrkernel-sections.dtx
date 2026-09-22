@@ -4405,6 +4405,8 @@
 % \changes{v3.27}{2019/07/24}{added to be used by \pkg*{scrhack}}
 % \changes{v3.32}{2020/09/11}{\cs{AfterPackage!} replaced by
 %   \cs{AfterAtEndOfPackage}}
+% \changes{v3.49.3}{2026/09/22}{Use \cs{MakeLinkTarget} also if hyperref is not
+% loaded}
 % Usually \pkg{hyperref} uses \cs{refstepcounter} to process extra codes for
 % anchors and bookmarks. However, if a not numbered heading is used,
 % \pkg{hyperref} cannot use \cs{refstepcounter} but still has to add
@@ -4426,7 +4428,6 @@
 \newcommand*{\hy@insteadofrefstepcounter}[1]{%
       \MakeLinkTarget[#1]{}%
 }
-\let\hy@insteadofrefstepcounter\@gobble
 \newcommand*{\scr@chapter@before@hyperref@patch}{%
   \let\scr@orig@chapter\@chapter
   \let\scr@orig@schapter\@schapter
@@ -4437,11 +4438,6 @@
   \let\@chapter\scr@orig@chapter
   \let\@schapter\scr@orig@schapter
   \let\@addchap\scr@orig@addchap
-  \ifx\hy@insteadofrefstepcounter\@gobble
-    \renewcommand*{\hy@insteadofrefstepcounter}[1]{%
-      \MakeLinkTarget[##1]{}%
-    }%
-  \fi
 }
 \AfterAtEndOfPackage{hyperref}{\scr@chapter@after@hyperref@patch}
 %    \end{macrocode}
