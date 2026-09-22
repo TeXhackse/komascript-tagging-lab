@@ -992,12 +992,7 @@
     \else
       \z@
     \fi
-%    \end{macrocode}
-% tagging: The following line was changed to match the change between the Kernel and the Testphase version of \cs{@svsec}.
-% As we also define \cs{@svsec} if the section is not numberes we use a local boolean for the test.
-%    \begin{macrocode}
-%<tagging-lab>	   \@tempswatrue%% not numbered instead of ifx @svsec @empty
-%<!tagging-lab>    \let\@svsec\@empty
+    \let\@svsec\@empty
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/02}{execute counter reset list}
 % Even for not numbered sections, the reset list für the section counter has
@@ -1014,19 +1009,17 @@
 % At this point we have to make sure, that the \pkg{hyperref} code for not
 % increasing a counter is executed.
 %    \begin{macrocode}
-%<!tagging-lab>    \hy@insteadofrefstepcounter{#1}%
-%<tagging-lab>    \def\@svsec{\scrlab@section@target{[#1]}{}{#3}}
+  \let\IfUseNumber\@secondoftwo
+	\UseTaggingSocket{scr/sec/heading/begin}{#1}
+	\hy@insteadofrefstepcounter{#1}%
   \else
-%<tagging-lab>	  \@tempswafalse% numbered instead of ifx\@svsec\@empty
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
-%<tagging-lab>    \LinkTargetOff
+		\UseTaggingSocket{scr/sec/heading/begin}{#1}
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
-%<tagging-lab>    \LinkTargetOn
     \protected@edef\@svsec{%
-%<tagging-lab>    \scrlab@section@target{}{#1}{#3}%
       \@seccntformat{#1}\relax}%
   \fi
 %    \end{macrocode}
@@ -1037,11 +1030,8 @@
     \scr@sect@runin{\z@}{\p@}{\glueexpr #5\relax}>\z@
     \begingroup
 %    \end{macrocode}
-% tagging:
-% \cs{@svsec} is no longer empty here. The test was changed to use a boolean.
 %    \begin{macrocode}
-%<!tagging-lab>      \ifx\@svsec\@empty
-%<tagging-lab>      \if@tempswa
+      \ifx\@svsec\@empty
         \let\IfUseNumber\@secondoftwo
       \else
         \let\IfUseNumber\@firstoftwo
@@ -1325,13 +1315,13 @@
 %<*body|tagging-lab>
 %<!tagging-lab>\newcommand{\sectionlinesformat}[4]{%
 %<*tagging-lab>
+%<@@=scrlab>
 \newcommand{\scrlab@sectionlinesformat}[4]{%
-  \IfUseNumber{\bool_set_false:N \l__scrkernel_sec_nonumber_bool}{\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
   \NoCaseChange{
-    \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab} \@currentlabelname
     \UseTaggingSocket{sec/title/hang}
       {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\l_@@_sec_tmpa_tl }}
       {
+%<@@=>
 %</tagging-lab>
 % The \relax + interlinepenalty below  were added within the standard class definition as well
         \@hangfrom{\hskip #2\relax#3}%
@@ -4101,6 +4091,7 @@
 % For numbered headings we have to increase the counter and write a process
 % information to the \file{log} and the terminal.
 %    \begin{macrocode}
+	\UseTaggingSocket{scr/sec/heading/begin}{#1}
   \Ifnumbered{#1}{%
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
@@ -4277,6 +4268,7 @@
 %    \begin{macrocode}
   \begingroup
     \let\@mkboth\@gobbletwo
+	\UseTaggingSocket{scr/sec/heading/begin}{#1}
     \hy@insteadofrefstepcounter{#1}%
   \endgroup
 %    \end{macrocode}
@@ -4333,11 +4325,8 @@
 %    \begin{macrocode}
 %<@@=scrlab>
 %<*tagging-lab>
-\tl_new:N     \l_@@_sec_tmpa_tl
 \newcommand{\scrlab@partlineswithprefixformat}[3]{%
-  \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab} \@currentlabelname
   \exp_args:Nne \UseTaggingSocket{sec/title/begin}{{\use:c{toclevel@#1}}{\exp_not:V \l_@@_sec_tmpa_tl}}
-  \cs_if_exist_use:N \@@_gincr_para_begin_int:
 		\tl_if_blank:nTF {#2}%
 			{\MakeLinkTarget[#1]{}{}}%TODO no number
 			{
@@ -4991,10 +4980,11 @@
       \@tempswatrue
 %<book>    \else\@tempswafalse\fi
   }{\@tempswafalse}%
+%      TODO extend ifnumbered für mainmatter??
+	\UseTaggingSocket{scr/sec/heading/begin}{#1}
+%
   \if@tempswa
-%<tagging-lab>    \LinkTargetOff
     \refstepcounter{#1}%
-%<tagging-lab>    \LinkTargetOn
     \expandafter\@maybeautodot\csname the#1\endcsname
     \typeout{#1 \csname the#1\endcsname.}%
     \ifx\@currenttocentry\@empty\else
@@ -5202,6 +5192,7 @@
 %    \begin{macrocode}
   \begingroup
     \let\@mkboth\@gobbletwo
+    \UseTaggingSocket{scr/sec/heading/begin}{#1}
     \hy@insteadofrefstepcounter{#1}%
   \endgroup
 %    \end{macrocode}
@@ -5539,12 +5530,12 @@
 %<!tagging-lab>\newcommand{\chapterlinesformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlinesformat}[3]{%
 %<*tagging-lab>
-  \IfUseNumber{\bool_set_false:N}{\bool_set_true:N}\l__scrkernel_sec_nonumber_bool
+%<@@=scrlab>
   \NoCaseChange{
-    \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab} \@currentlabelname
     \UseTaggingSocket{sec/title/hang}
       {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{#2}{\l_@@_sec_tmpa_tl }}
       {
+%<@@=>
 %</tagging-lab>
         \@hangfrom{#2}%
 %<*tagging-lab>
@@ -5556,8 +5547,6 @@
 %<!tagging-lab>\newcommand{\chapterlineswithprefixformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlineswithprefixformat}[3]{\leavevmode%
   #2%
-% TODO with \IfUseNumber?
-%<tagging-lab>  \IfUseNumber{}{\MakeLinkTarget[#1]{}}
   #3%
 }
 %</(body&class&!letter&(report|book))|tagging-lab>
@@ -5885,7 +5874,6 @@
 %<!tagging-lab>\newcommand*{\chapterformat}{%
 %<tagging-lab>  \SuspendTagging{chapterformat}%
   \mbox{\chapappifchapterprefix{\nobreakspace}\thechapter\autodot
-%<tagging-lab>    \MakeLinkTarget {chapter}
     \IfUsePrefixLine{}{\enskip}}%
 %<tagging-lab>  \ResumeTagging{chapterformat}
 }
