@@ -76,7 +76,6 @@
     \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
 		\exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
 		\tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
-		\tagpdfparaOff
   \fi
 }
 \AssignTaggingSocketPlug{scr/sec/heading/begin}{default}
@@ -114,7 +113,6 @@
   %#3 formated number /hang space
   %#4 title
   {
-  \tagpdfparaOn
     \cs_if_exist_use:N \__tag_gincr_para_begin_int:
     \setbox\@tempboxa\hbox{{#3}}
     \bool_set_false:N \l__tag_para_bool
