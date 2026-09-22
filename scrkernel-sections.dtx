@@ -1099,7 +1099,7 @@
       \ExecuteDoHook{heading/begingroup/#1}%
       #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}%
 %<!tagging-lab>        \@svsec
-%<tagging-lab>         \IfUseNumber{\@svsec}{\@kernel@tag@svsec}%
+%<tagging-lab>         \IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}}
         {#8}}%
 %<*trace>
       \ClassInfo{\KOMAClassName}{%
