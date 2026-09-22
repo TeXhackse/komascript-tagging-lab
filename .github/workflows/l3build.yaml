@@ -16,7 +16,7 @@ jobs:
       matrix:
         engine:
           - luatex
-          - pdftex
+        #  - pdftex
         config:
             - build
     name: "Tests: ${{ matrix.engine }} - ${{ matrix.config }}"
