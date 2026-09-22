@@ -4230,6 +4230,7 @@
 %   \cls*{scrbook} or \cls*{scrreprt}}
 % And \cs{@afterheading} for all classes.
 %    \begin{macrocode}
+	\UseTaggingSocket{para/restore}%
   \@afterheading
 }
 %    \end{macrocode}
@@ -4292,11 +4293,13 @@
     }%
     \ExecuteDoHook{heading/endgroup/#1}%
   \endgroup
+%  \UseTaggingSocket{scr/sec/heading/end}
 %<*article>
   \nobreak
   \@tempskipa=\glueexpr\csname scr@#1@afterskip\endcsname\relax\relax
   \ifdim\@tempskipa<\z@\@tempskipa-\@tempskipa\fi
   \partheadendvskip
+	\UseTaggingSocket{para/restore}%
   \@afterheading
 %</article>
 %<book|report>  \@nameuse{@end#1}%
@@ -5131,6 +5134,7 @@
 % \changes{v3.18}{2015/05/21}{always using \cs{@afterheading}}
 % And finally the end of every outline command.
 %    \begin{macrocode}
+	\UseTaggingSocket{para/restore}%
   \@afterheading
 }
 %    \end{macrocode}
@@ -5245,6 +5249,7 @@
 % \changes{v3.18}{2015/05/21}{always using \cs{@afterheading}}
 % And finally the end of every outline command.
 %    \begin{macrocode}
+	\UseTaggingSocket{para/restore}%
   \@afterheading
 }
 %    \end{macrocode}
@@ -6238,7 +6243,7 @@
 %<!v4>    \fi
     \raggedsection\normalfont\sectfont\nobreak
     \usekomafont{minisec}{\nobreak\interlinepenalty \@M #1\par\nobreak}%
-  }\nobreak
+  }\UseTaggingSocket{para/restore}\nobreak
   \@afterheading
 }
 %    \end{macrocode}
