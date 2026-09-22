@@ -1,12 +1,13 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-\g__cctab_tmpiv_cctab=\catcodetable...
+\g__cctab_tmpiii_cctab=\catcodetable...
 (1-addsec-like-starred.toc
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
+Package tocbasic Info: Using my definition of `\numberline' on input line ....
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
 Package tocbasic Info: Using my definition of `\numberline' on input line ....
 )
 \tf@toc=\write...
-\g__cctab_tmpii_cctab=\catcodetable...
 ============================================================
 TEST 1: Show PDF Tags
 ============================================================
@@ -59,31 +60,60 @@ TEST 1: Show PDF Tags
        <?MarkedContent page="1" ?>1
       </Reference>
      </TOCI>
+     <TOCI xmlns="http://iso.org/pdf/ssn"
+        id="ID.014"
+        title="not numbered chapter"
+       >
+       <?References objects="3" ?>
+      <Reference xmlns="http://iso.org/pdf/ssn"
+         id="ID.015"
+        >
+       <?MarkedContent page="1" ?>not numbered chapter
+       <?MarkedContent page="1" ?>1
+      </Reference>
+     </TOCI>
+     <TOCI xmlns="http://iso.org/pdf/ssn"
+        id="ID.016"
+        title="danach wieder mit nummer"
+       >
+       <?References objects="4" ?>
+      <Reference xmlns="http://iso.org/pdf/ssn"
+         id="ID.017"
+        >
+       <Lbl xmlns="http://iso.org/pdf2/ssn"
+          id="ID.018"
+         >
+        <?MarkedContent page="1" ?>2
+       </Lbl>
+       <?MarkedContent page="1" ?>danach wieder mit nummer
+       <?MarkedContent page="1" ?>1
+      </Reference>
+     </TOCI>
     </TOC>
    </Sect>
    <Sect xmlns="http://iso.org/pdf2/ssn"
-      id="ID.014"
+      id="ID.019"
      >
     <section xmlns="https://www.latex-project.org/ns/dflt"
-       id="ID.015"
+       id="ID.020"
        title="section"
        rolemaps-to="H1"
+       referenced-as="1"
       >
-     <section-number xmlns="https://www.latex-project.org/ns/dflt"
-        id="ID.016"
-        rolemaps-to="Span"
-        referenced-as="1"
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.021"
+        rolemaps-to="Lbl"
        >
       <?MarkedContent page="1" ?>1 
-     </section-number>
+     </heading-number>
      <?MarkedContent page="1" ?>section
     </section>
    </Sect>
    <Sect xmlns="http://iso.org/pdf2/ssn"
-      id="ID.017"
+      id="ID.022"
      >
     <section xmlns="https://www.latex-project.org/ns/dflt"
-       id="ID.018"
+       id="ID.023"
        title="addsec"
        rolemaps-to="H1"
        referenced-as="2"
@@ -92,14 +122,44 @@ TEST 1: Show PDF Tags
     </section>
    </Sect>
    <Sect xmlns="http://iso.org/pdf2/ssn"
-      id="ID.019"
+      id="ID.024"
      >
     <section xmlns="https://www.latex-project.org/ns/dflt"
-       id="ID.020"
+       id="ID.025"
        title="starred"
        rolemaps-to="H1"
       >
      <?MarkedContent page="1" ?>starred
+    </section>
+   </Sect>
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.026"
+     >
+    <section xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.027"
+       title="not numbered chapter"
+       rolemaps-to="H1"
+       referenced-as="3"
+      >
+     <?MarkedContent page="1" ?>not numbered chapter
+    </section>
+   </Sect>
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.028"
+     >
+    <section xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.029"
+       title="danach wieder mit nummer"
+       rolemaps-to="H1"
+       referenced-as="4"
+      >
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.030"
+        rolemaps-to="Lbl"
+       >
+      <?MarkedContent page="1" ?>2 
+     </heading-number>
+     <?MarkedContent page="1" ?>danach wieder mit nummer
     </section>
    </Sect>
   </Document>
@@ -109,10 +169,9 @@ TEST 1: Show PDF Tags
 ============================================================
 [1
 ]<<latex-list-css.html>><<latex-align-css.html>> (1-addsec-like-starred.aux)
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package tagpdf Info: Finalizing the tagging structure:
-(tagpdf)             Writing out ~20 structure objects
-(tagpdf)             with ~13 'MC' leaf nodes.
+(tagpdf)             Writing out ~30 structure objects
+(tagpdf)             with ~22 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
 Package tagpdf Info: writing IDTree
@@ -124,3 +183,4 @@ Package tagpdf Info: writing Root
 ***************
 Compilation 1 of test file completed with exit status 0
 Compilation 2 of test file completed with exit status 0
+Compilation 3 of test file completed with exit status 0

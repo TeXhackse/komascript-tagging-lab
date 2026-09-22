@@ -17,12 +17,12 @@ TEST 1: Show PDF Tags
        title="Heading chapter emph $a=b$"
        rolemaps-to="H1"
       >
-     <section-number xmlns="https://www.latex-project.org/ns/dflt"
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
         id="ID.008"
-        rolemaps-to="Span"
+        rolemaps-to="Lbl"
        >
       <?MarkedContent page="1" ?>1 
-     </section-number>
+     </heading-number>
      <?MarkedContent page="1" ?>Heading chapter 
      <Em xmlns="http://iso.org/pdf2/ssn"
         id="ID.009"
@@ -37,25 +37,12 @@ TEST 1: Show PDF Tags
         xmlns:Layout="http://iso.org/pdf/ssn/Layout"
         Layout:Placement="Inline"
        >
-       <AssociatedFile name="tag-AFfile1.tex" xmlns="">
+       <AssociatedFile name="tag-AFfile1.tex" relationship="Source" media-type="application/x-tex" xmlns="">
        $a=b$
        </AssociatedFile>
       <?MarkedContent page="1" ?>a=b
      </Formula>
     </chapter>
-    <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
-       id="ID.011"
-       rolemaps-to="Part"
-      >
-     <text-block xmlns="https://www.latex-project.org/ns/dflt"
-        id="ID.012"
-        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
-        Layout:TextAlign="Justify"
-        rolemaps-to="P"
-       >
-      <?MarkedContent page="1" ?>Text 
-     </text-block>
-    </semantic-para>
    </Sect>
   </Document>
  </StructTreeRoot>
@@ -65,3 +52,4 @@ TEST 1: Show PDF Tags
 ***************
 Compilation 1 of test file completed with exit status 0
 Compilation 2 of test file completed with exit status 0
+Compilation 3 of test file completed with exit status 0

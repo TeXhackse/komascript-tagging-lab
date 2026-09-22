@@ -19,28 +19,22 @@ TEST 1: Show PDF Tags
        title="Contents"
        rolemaps-to="H1"
       >
-     <Span xmlns="http://iso.org/pdf2/ssn"
-        id="ID.008"
-        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
-        Layout:TextAlign="Start"
-       >
-      <?MarkedContent page="1" ?>Contents
-     </Span>
+     <?MarkedContent page="1" ?>Contents
     </chapter>
     <TOC xmlns="http://iso.org/pdf/ssn"
-       id="ID.009"
+       id="ID.008"
        title="toc"
       >
      <TOCI xmlns="http://iso.org/pdf/ssn"
-        id="ID.010"
+        id="ID.009"
         title="section"
        >
        <?References objects="1" ?>
       <Reference xmlns="http://iso.org/pdf/ssn"
-         id="ID.011"
+         id="ID.010"
         >
        <Lbl xmlns="http://iso.org/pdf2/ssn"
-          id="ID.012"
+          id="ID.011"
          >
         <?MarkedContent page="1" ?>0.1
        </Lbl>
@@ -49,18 +43,18 @@ TEST 1: Show PDF Tags
       </Reference>
      </TOCI>
      <TOC xmlns="http://iso.org/pdf/ssn"
-        id="ID.013"
+        id="ID.012"
        >
       <TOCI xmlns="http://iso.org/pdf/ssn"
-         id="ID.014"
+         id="ID.013"
          title="subsection"
         >
         <?References objects="2" ?>
        <Reference xmlns="http://iso.org/pdf/ssn"
-          id="ID.015"
+          id="ID.014"
          >
         <Lbl xmlns="http://iso.org/pdf2/ssn"
-           id="ID.016"
+           id="ID.015"
           >
          <?MarkedContent page="1" ?>0.1.1
         </Lbl>
@@ -70,30 +64,30 @@ TEST 1: Show PDF Tags
       </TOCI>
      </TOC>
      <TOCI xmlns="http://iso.org/pdf/ssn"
-        id="ID.017"
+        id="ID.016"
         title="addsec"
        >
        <?References objects="3" ?>
       <Reference xmlns="http://iso.org/pdf/ssn"
-         id="ID.018"
+         id="ID.017"
         >
        <?MarkedContent page="1" ?>addsec
        <?MarkedContent page="1" ?>1
       </Reference>
      </TOCI>
      <TOC xmlns="http://iso.org/pdf/ssn"
-        id="ID.019"
+        id="ID.018"
        >
       <TOCI xmlns="http://iso.org/pdf/ssn"
-         id="ID.020"
+         id="ID.019"
          title="blub"
         >
         <?References objects="4" ?>
        <Reference xmlns="http://iso.org/pdf/ssn"
-          id="ID.021"
+          id="ID.020"
          >
         <Lbl xmlns="http://iso.org/pdf2/ssn"
-           id="ID.022"
+           id="ID.021"
           >
          <?MarkedContent page="1" ?>0.1.2
         </Lbl>
@@ -103,15 +97,15 @@ TEST 1: Show PDF Tags
       </TOCI>
      </TOC>
      <TOCI xmlns="http://iso.org/pdf/ssn"
-        id="ID.023"
+        id="ID.022"
         title="section"
        >
        <?References objects="5" ?>
       <Reference xmlns="http://iso.org/pdf/ssn"
-         id="ID.024"
+         id="ID.023"
         >
        <Lbl xmlns="http://iso.org/pdf2/ssn"
-          id="ID.025"
+          id="ID.024"
          >
         <?MarkedContent page="1" ?>0.2
        </Lbl>
@@ -121,46 +115,48 @@ TEST 1: Show PDF Tags
      </TOCI>
     </TOC>
     <Sect xmlns="http://iso.org/pdf2/ssn"
-       id="ID.026"
+       id="ID.025"
       >
      <section xmlns="https://www.latex-project.org/ns/book"
-        id="ID.027"
+        id="ID.026"
         title="section"
         rolemaps-to="H2"
+        referenced-as="1"
        >
-      <section-number xmlns="https://www.latex-project.org/ns/dflt"
-         id="ID.028"
-         rolemaps-to="Span"
-         referenced-as="1"
+      <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+         id="ID.027"
+         rolemaps-to="Lbl"
         >
-       <?MarkedContent page="1" ?>0.1 
-      </section-number>
+       <?MarkedContent page="1" ?>0.1
+      </heading-number>
+      <?MarkedContent page="1" ?>  
       <?MarkedContent page="1" ?>section
      </section>
      <Sect xmlns="http://iso.org/pdf2/ssn"
-        id="ID.029"
+        id="ID.028"
        >
       <subsection xmlns="https://www.latex-project.org/ns/book"
-         id="ID.030"
+         id="ID.029"
          title="subsection"
          rolemaps-to="H3"
+         referenced-as="2"
         >
-       <section-number xmlns="https://www.latex-project.org/ns/dflt"
-          id="ID.031"
-          rolemaps-to="Span"
-          referenced-as="2"
+       <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+          id="ID.030"
+          rolemaps-to="Lbl"
          >
-        <?MarkedContent page="1" ?>0.1.1 
-       </section-number>
+        <?MarkedContent page="1" ?>0.1.1
+       </heading-number>
+       <?MarkedContent page="1" ?>  
        <?MarkedContent page="1" ?>subsection
       </subsection>
      </Sect>
     </Sect>
     <Sect xmlns="http://iso.org/pdf2/ssn"
-       id="ID.032"
+       id="ID.031"
       >
      <section xmlns="https://www.latex-project.org/ns/book"
-        id="ID.033"
+        id="ID.032"
         title="addsec"
         rolemaps-to="H2"
         referenced-as="3"
@@ -168,11 +164,11 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?>addsec
      </section>
      <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
-        id="ID.034"
+        id="ID.033"
         rolemaps-to="Part"
        >
       <text-block xmlns="https://www.latex-project.org/ns/dflt"
-         id="ID.035"
+         id="ID.034"
          xmlns:Layout="http://iso.org/pdf/ssn/Layout"
          Layout:TextAlign="Justify"
          rolemaps-to="P"
@@ -182,49 +178,51 @@ TEST 1: Show PDF Tags
      </semantic-para>
     </Sect>
     <Sect xmlns="http://iso.org/pdf2/ssn"
-       id="ID.036"
+       id="ID.035"
       >
      <section xmlns="https://www.latex-project.org/ns/book"
-        id="ID.037"
+        id="ID.036"
         title="starred"
         rolemaps-to="H2"
        >
       <?MarkedContent page="1" ?>starred
      </section>
      <Sect xmlns="http://iso.org/pdf2/ssn"
-        id="ID.038"
+        id="ID.037"
        >
       <subsection xmlns="https://www.latex-project.org/ns/book"
-         id="ID.039"
+         id="ID.038"
          title="blub"
          rolemaps-to="H3"
+         referenced-as="4"
         >
-       <section-number xmlns="https://www.latex-project.org/ns/dflt"
-          id="ID.040"
-          rolemaps-to="Span"
-          referenced-as="4"
+       <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+          id="ID.039"
+          rolemaps-to="Lbl"
          >
-        <?MarkedContent page="1" ?>0.1.2 
-       </section-number>
+        <?MarkedContent page="1" ?>0.1.2
+       </heading-number>
+       <?MarkedContent page="1" ?>  
        <?MarkedContent page="1" ?>blub
       </subsection>
      </Sect>
     </Sect>
     <Sect xmlns="http://iso.org/pdf2/ssn"
-       id="ID.041"
+       id="ID.040"
       >
      <section xmlns="https://www.latex-project.org/ns/book"
-        id="ID.042"
+        id="ID.041"
         title="section"
         rolemaps-to="H2"
+        referenced-as="5"
        >
-      <section-number xmlns="https://www.latex-project.org/ns/dflt"
-         id="ID.043"
-         rolemaps-to="Span"
-         referenced-as="5"
+      <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+         id="ID.042"
+         rolemaps-to="Lbl"
         >
-       <?MarkedContent page="1" ?>0.2 
-      </section-number>
+       <?MarkedContent page="1" ?>0.2
+      </heading-number>
+      <?MarkedContent page="1" ?>  
       <?MarkedContent page="1" ?>section
      </section>
     </Sect>
@@ -236,10 +234,9 @@ TEST 1: Show PDF Tags
 ============================================================
 [1
 ]<<latex-list-css.html>><<latex-align-css.html>> (toc.aux)
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package tagpdf Info: Finalizing the tagging structure:
-(tagpdf)             Writing out ~43 structure objects
-(tagpdf)             with ~37 'MC' leaf nodes.
+(tagpdf)             Writing out ~42 structure objects
+(tagpdf)             with ~41 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
 Package tagpdf Info: writing IDTree
@@ -251,3 +248,4 @@ Package tagpdf Info: writing Root
 ***************
 Compilation 1 of test file completed with exit status 0
 Compilation 2 of test file completed with exit status 0
+Compilation 3 of test file completed with exit status 0
