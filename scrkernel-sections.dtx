@@ -4130,6 +4130,11 @@
     \fi
   }{%
 %    \end{macrocode}
+% \changes{v3.49.3}{2026/09/22}{Move anchor, to also be added for headings without
+% toc entry.}
+%    \begin{macrocode}
+     \hy@insteadofrefstepcounter{#1}%
+%    \end{macrocode}
 % \changes{v3.18}{2015/05/23}{execute counter reset list for not numbered
 %   headings}
 % For not numbered headings we still have to process the reset list of the
@@ -4154,7 +4159,6 @@
 % \end{description}
 %    \begin{macrocode}
     \ifx\@currenttocentry\@empty\else
-      \hy@insteadofrefstepcounter{#1}%
       \scr@ifundefinedorrelax{add#1tocentry}{%
         \addtocentrydefault{#1}%
       }{%
@@ -5027,6 +5031,11 @@
       \endgroup
 %<!v4>    \fi
     \typeout{#1 without number}%
+%    \end{macrocode}
+% \changes{v3.49.3}{2026/09/22}{Move anchor, to also be added for headings without
+% toc entry.}
+%    \begin{macrocode}
+     \hy@insteadofrefstepcounter{#1}%
     \ifx\@currenttocentry\@empty\else
 %    \end{macrocode}
 % And before writing a not numbered entry to the table of contents we have to
@@ -5037,7 +5046,6 @@
 %   \cs{KOMAClassName}?
 % \end{description}
 %    \begin{macrocode}
-      \hy@insteadofrefstepcounter{#1}%
       \scr@ifundefinedorrelax{add#1tocentry}{%
         \addtocentrydefault{#1}%
       }{%
