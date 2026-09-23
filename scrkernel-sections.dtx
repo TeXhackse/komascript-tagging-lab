@@ -1099,7 +1099,7 @@
       \ExecuteDoHook{heading/begingroup/#1}%
       #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}%
 %<!tagging-lab>        \@svsec
-%<tagging-lab>         \IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}}
+%<tagging-lab>         {\IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}\@svsec}\@svsec}
         {#8}}%
 %<*trace>
       \ClassInfo{\KOMAClassName}{%
@@ -4107,6 +4107,7 @@
 % \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
 % \end{description}
 %    \begin{macrocode}
+   \hy@insteadofrefstepcounter{#1}%
     \ifx\@currenttocentry\@empty\else
       \@ifundefined{#1tocformat}{%
         \expandafter\gdef\csname #1tocformat\endcsname

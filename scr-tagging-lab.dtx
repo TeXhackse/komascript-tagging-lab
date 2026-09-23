@@ -85,7 +85,6 @@
 \NewTaggingSocket{scr/sec/heading/end}{1}
 \NewTaggingSocketPlug{scr/sec/heading/end}{default}{
   \if@currentrunin
-    \UseTaggingSocket{sec/title/split}
   \else
     \cs_if_exist:cTF {@end#1} {
       \tagmcend\tagstructend
