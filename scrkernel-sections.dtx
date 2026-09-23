@@ -618,6 +618,7 @@
 % \changes{v3.20}{2016/04/12}{\cs{@ifstar} replaced by \cs{kernel@ifstar}}
 % \changes{v3.26}{2018/09/18}{supporting \opt{afterindent}}
 % \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
+% \changes{v3.49.3}{2026/09/23}{Reduce arguments of \cs{scr@sect}}
 % \begin{macro}{\startsection@sectionname,\startsection@secnumdepth,
 %               \startsection@indent,\startsection@beforeskip,
 %               \startsection@afterskip,\startsection@afterindent}
@@ -722,8 +723,7 @@
     \addpenalty\@secpenalty\addvspace\@tempskipa
   \fi
   \scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{%
-      \scr@sect{#1}{\numexpr #2\relax}{\glueexpr #3\relax}{\glueexpr #4\relax}%
-      {\glueexpr #5\relax}{#6}%
+      \scr@sect{#1}{#6}%
   }%
 }
 %</body|tagging-lab>
@@ -925,6 +925,7 @@
 % \changes{v3.30}{2020/02/25}{orphan spaces removed}
 % \changes{v3.49}{2025/09/11}{\cs{@sect} replaced by \cs{scr@sect}}
 % \changes{v3.49.3}{2026/08/27}{new optional \opt{nohead}}
+% \changes{v3.49.3}{2026/08/27}{remove obsolete length arguments}
 % Because we want to support the extended optional argument for all commands
 % defined using \cs{@startsection} we also have to redefine \cs{@sect}. Once
 % again several security tests are done, before redefining an internal
@@ -943,26 +944,26 @@
 %<*(class&!letter)|tagging-lab|workarounds>
 %<*body|tagging-lab>
 %<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro \string\@sect}
-%<!tagging-lab>\def\scr@sect#1#2#3#4#5#6[#7]#8{%
-%<tagging-lab>\def\scrlab@sect#1#2#3#4#5#6[#7]#8{%
+%<!tagging-lab>\def\scr@sect#1#2[#3]#4{%
+%<tagging-lab>\def\scrlab@sect#1#2[#3]#4{%
   \ifnum \scr@osectarg=\z@
     \@scr@tempswafalse
   \else
-    \scr@istest#7=\@nil
+    \scr@istest#3=\@nil
   \fi
   \@currentusenumbertrue
   \@currentuseheadtrue
   \if@scr@tempswa
-    \setkeys{KOMAarg.section}{tocentry={#8},head={#8},reference={#8},#7}%
+    \setkeys{KOMAarg.section}{tocentry={#4},head={#4},reference={#4},#3}%
   \else
     \ifcase \scr@osectarg\relax
-      \setkeys{KOMAarg.section}{tocentry={#7},head={#7},reference={#7}}%
+      \setkeys{KOMAarg.section}{tocentry={#3},head={#3},reference={#3}}%
     \or
-      \setkeys{KOMAarg.section}{tocentry={#8},head={#7},reference={#8}}%
+      \setkeys{KOMAarg.section}{tocentry={#4},head={#3},reference={#4}}%
     \or
-      \setkeys{KOMAarg.section}{tocentry={#7},head={#8},reference={#7}}%
+      \setkeys{KOMAarg.section}{tocentry={#3},head={#4},reference={#3}}%
     \or
-      \setkeys{KOMAarg.section}{tocentry={#7},head={#7},reference={#7}}%
+      \setkeys{KOMAarg.section}{tocentry={#3},head={#3},reference={#3}}%
     \fi
   \fi
 %    \end{macrocode}
@@ -988,7 +989,7 @@
   \let\IfUsePrefixLine\@secondoftwo
   \ifcase
     \if@currentusenumber
-      \ifnum \numexpr #2\relax>\c@secnumdepth \z@\else \@ne\fi
+      \ifnum \numexpr\UseName{#1numdepth}\relax>\c@secnumdepth \z@\else \@ne\fi
     \else
       \z@
     \fi
@@ -1027,7 +1028,7 @@
 % \changes{v3.27}{2019/02/02}{\cs{IfUseNumber} defined locally}
 %    \begin{macrocode}
   \ifdim
-    \scr@sect@runin{\z@}{\p@}{\glueexpr #5\relax}>\z@
+    \scr@sect@runin{\z@}{\p@}{\glueexpr\UseName{scr@#1@afterskip}\relax}>\z@
     \begingroup
 %    \end{macrocode}
 %    \begin{macrocode}
@@ -1041,11 +1042,11 @@
 % \changes{v3.27}{2019/02/02}{\cs{scr@do@at} added}
 %    \begin{macrocode}
       \ExecuteDoHook{heading/begingroup/#1}%
-      #6{\nobreak\interlinepenalty \@M
+      #2{\nobreak\interlinepenalty \@M
 %    \end{macrocode}
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
-        \sectionlinesformat{#1}{\glueexpr #3\relax}\@svsec{#8}\@@par}%
+        \sectionlinesformat{#1}{\glueexpr\UseName{scr@#1@sectionindent}\relax}\@svsec{#4}\@@par}%
       \ExecuteDoHook{heading/endgroup/#1}%
     \endgroup
 %<*trace>
@@ -1065,7 +1066,7 @@
       }{}%
       \ifcase
         \if@currentusenumber
-          \ifnum \numexpr #2\relax>\c@secnumdepth \z@\else \@ne\fi
+          \ifnum \numexpr\UseName{#1numdepth}\relax>\c@secnumdepth \z@\else \@ne\fi
         \else
           \z@
         \fi
@@ -1097,10 +1098,10 @@
         \let\IfUseNumber\@firstoftwo
       \fi
       \ExecuteDoHook{heading/begingroup/#1}%
-      #6{\nobreak\sectioncatchphraseformat{#1}{\glueexpr #3\relax}%
+      #2{\nobreak\sectioncatchphraseformat{#1}{\glueexpr\UseName{scr@#1@sectionindent}\relax}%
 %<!tagging-lab>        \@svsec
 %<tagging-lab>         {\IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}\@svsec}\@svsec}
-        {#8}}%
+        {#4}}%
 %<*trace>
       \ClassInfo{\KOMAClassName}{%
         head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
@@ -1118,7 +1119,7 @@
         }{}%
         \ifcase
           \if@currentusenumber
-            \ifnum \numexpr #2\relax>\c@secnumdepth \z@\else \@ne\fi
+            \ifnum \numexpr\UseName{#1numdepth}\relax>\c@secnumdepth \z@\else \@ne\fi
           \else
             \z@
           \fi
@@ -1142,7 +1143,7 @@
     }%
   \fi
   \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
-  \scr@xsect{\glueexpr #5\relax}%
+  \scr@xsect{\glueexpr\UseName{scr@#1@afterskip}\relax}%
 }
 %    \end{macrocode}
 % \begin{macro}{\scr@ssection@xarg}
