@@ -2,11 +2,11 @@
 % ======================================================================
 % ======================================================================
 %
-% This is a modified version of scrkernel-miscellaneous.dtx, explicitly
+% This is a modified version of scrkernel-tagging.dtx, explicitly
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4278 of the repository:
+% This file is based on revision 4293 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -136,6 +136,12 @@
   }
 %</init>
 %<*verylate>
+% \changes{v3.49.3}{2026/09/23}{Initialize tagging sockets, even if tagging is not enabled.}
+%    \end{macrocode}
+\NewTaggingSocket{scr/sec/heading/init}{1}
+\NewTaggingSocket{scr/sec/heading/begin}{1}
+\NewTaggingSocket{scr/sec/heading/end}{1}
+%    \begin{macrocode}
 \IfDocumentMetadataT
   {
     \IfFileExists

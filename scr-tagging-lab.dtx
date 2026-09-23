@@ -54,7 +54,6 @@
 \int_new:N \l_@@_sec_level_int
 \tl_new:N \l_@@_sec_tmpa_tl
 
-\NewTaggingSocket{scr/sec/heading/init}{1}
 \NewTaggingSocketPlug{scr/sec/heading/init}{default}{
    \int_set:Nn\l_@@_sec_level_int{\use:c{toclevel@#1}}
    \UseTaggingSocket{sec/end}{\int_use:N\l_@@_sec_level_int}
@@ -66,7 +65,8 @@
  }
 \AssignTaggingSocketPlug{scr/sec/heading/init}{default}
 
-\NewTaggingSocket{scr/sec/heading/begin}{1}
+
+
 \NewTaggingSocketPlug{scr/sec/heading/begin}{default}{
   \Ifnumbered{#1}{\bool_set_false:N}{\bool_set_true:N}
     \l__scrkernel_sec_nonumber_bool
@@ -82,7 +82,7 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\NewTaggingSocket{scr/sec/heading/end}{1}
+
 \NewTaggingSocketPlug{scr/sec/heading/end}{default}{
   \if@currentrunin
   \else
