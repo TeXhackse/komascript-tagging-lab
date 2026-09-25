@@ -35,6 +35,8 @@ Completed box being shipped out [1]
 ...\write-{}
 ...\write-{}
 ...\latelua0{}
+...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
+...\write1{\@writefile{lot}{\protect \addvspace {10\p@ }}}
 ...\glue(\topskip) 11.0
 ...\vbox(0.0+0.0)x0.0, glue set - 31.28004fil, direction TLT
 ....\glue -13.6
