@@ -33,7 +33,7 @@
 \begingroup
 \catcode`\*=13
 \def*{Active}
-\TEST{active chars}{
+\TEST{active chars - Needs to be resolved!}{
 	\OMIT
 	\chapter{Some Title with activated \string*: *}
 	\TIMO

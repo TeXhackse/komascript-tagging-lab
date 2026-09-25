@@ -1,0 +1,88 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: makeatletter
+============================================================
+=========================
+The structure 7 contains:
+>  Type  =>  /StructElem
+>  T  =>  <FEFF0053006F006D00650020005400690074006C0065>
+>  S  =>  /chapter
+>  NS  =>  latex-book
+>  tag  =>  {chapter}{latex-book}
+>  rolemap  =>  {H1}{pdf2}
+>  parentrole  =>  {H1}{pdf2}
+>  parentnum  =>  6 = /Sect
+The structure has the following kids:
+> NONE
+=========================
+============================================================
+============================================================
+TEST 2: active chars - Needs to be resolved!
+============================================================
+=========================
+The structure 10 contains:
+>  Type  =>  /StructElem
+>  T  =>  <FEFF0053006F006D00650020005400690074006C00650020007700690074006800200061006300740069007600610074006500640020002A003A0020002A>
+>  S  =>  /chapter
+>  NS  =>  latex-book
+>  tag  =>  {chapter}{latex-book}
+>  rolemap  =>  {H1}{pdf2}
+>  parentrole  =>  {H1}{pdf2}
+>  parentnum  =>  9 = /Sect
+The structure has the following kids:
+> NONE
+=========================
+============================================================
+============================================================
+TEST 3: Show PDF Tags
+============================================================
+-------- 10-rescan-title.xml (start) ---------
+<PDF>
+ <StructTreeRoot>
+  <Document xmlns="http://iso.org/pdf2/ssn"
+     id="ID.002"
+    >
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.006"
+     >
+    <chapter xmlns="https://www.latex-project.org/ns/book"
+       id="ID.007"
+       title="Some Title"
+       rolemaps-to="H1"
+      >
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.008"
+        rolemaps-to="Lbl"
+       >
+      <?MarkedContent page="1" ?>1 
+     </heading-number>
+     <?MarkedContent page="1" ?>Some Title
+    </chapter>
+   </Sect>
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.009"
+     >
+    <chapter xmlns="https://www.latex-project.org/ns/book"
+       id="ID.010"
+       title="Some Title with activated *: *"
+       rolemaps-to="H1"
+      >
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.011"
+        rolemaps-to="Lbl"
+       >
+      <?MarkedContent page="3" ?>2 
+     </heading-number>
+     <?MarkedContent page="3" ?>Some Title with activated *: Active
+    </chapter>
+   </Sect>
+  </Document>
+ </StructTreeRoot>
+</PDF>
+-------- 10-rescan-title.xml (end) -----------
+============================================================
+***************
+Compilation 1 of test file completed with exit status 0
+Compilation 2 of test file completed with exit status 0
+Compilation 3 of test file completed with exit status 0
