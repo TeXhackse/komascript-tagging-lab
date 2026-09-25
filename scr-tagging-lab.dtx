@@ -70,7 +70,11 @@
 \NewTaggingSocketPlug{scr/sec/heading/begin}{default}{
   \Ifnumbered{#1}{\bool_set_false:N}{\bool_set_true:N}
     \l__scrkernel_sec_nonumber_bool
-  \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab} \@currentlabelname
+%    \end{macrocode}
+% \cs{@currentlabelname} is prepared to be read from aux file, where catcodes usually are configured with \cs{makeatletter}.
+% Currently this does not take care of otherwhise changed catcodes, so we need to ensure to captured a pure version of the section title.
+%    \begin{macrocode}
+  \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab\makeatletter} \@currentlabelname
    \if@currentrunin
    \else
     \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
