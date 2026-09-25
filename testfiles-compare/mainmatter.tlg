@@ -1,0 +1,49 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Show PDF Tags
+============================================================
+-------- frontmatter.xml (start) ---------
+<PDF>
+ <StructTreeRoot>
+  <Document xmlns="http://iso.org/pdf2/ssn"
+     id="ID.002"
+    >
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.006"
+     >
+    <chapter xmlns="https://www.latex-project.org/ns/book"
+       id="ID.007"
+       title="frontmatter chapter"
+       rolemaps-to="H1"
+      >
+     <?MarkedContent page="1" ?>frontmatter chapter
+    </chapter>
+   </Sect>
+   <Sect xmlns="http://iso.org/pdf2/ssn"
+      id="ID.008"
+     >
+    <chapter xmlns="https://www.latex-project.org/ns/book"
+       id="ID.009"
+       title="mainmatter chapter"
+       rolemaps-to="H1"
+      >
+     <?MarkedContent page="3" ?>Chapter  
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.010"
+        rolemaps-to="Lbl"
+       >
+      <?MarkedContent page="3" ?>1
+     </heading-number>
+     <?MarkedContent page="3" ?>mainmatter chapter
+    </chapter>
+   </Sect>
+  </Document>
+ </StructTreeRoot>
+</PDF>
+-------- frontmatter.xml (end) -----------
+============================================================
+***************
+Compilation 1 of test file completed with exit status 0
+Compilation 2 of test file completed with exit status 0
+Compilation 3 of test file completed with exit status 0

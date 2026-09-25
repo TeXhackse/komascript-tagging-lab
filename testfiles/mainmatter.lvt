@@ -1,0 +1,7 @@
+\def\DocumentContent{
+\frontmatter
+\chapter{frontmatter chapter}
+\mainmatter
+\chapter{mainmatter chapter}
+}
+\input{wrapper.ltx}

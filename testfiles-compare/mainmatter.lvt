@@ -1,0 +1,8 @@
+\UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
+\def\DocumentContent{
+\frontmatter
+\chapter{frontmatter chapter}
+\mainmatter
+\chapter{mainmatter chapter}
+}
+\input{wrapper.ltx}
