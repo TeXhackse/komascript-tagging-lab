@@ -8,7 +8,12 @@
 \pagestyle{empty}
 
 \providecommand*{\TestPreambleFiles}{}
-\providecommand*{\TestContentFiles}{jobname-headings.ltx}
+
+\expandafter\ifx\csname DocumentContent\endcsname\relax
+	\providecommand*{\TestContentFiles}{jobname-headings.ltx}
+\else
+	\providecommand*{\TestContentFiles}{}
+\fi
 
 \UseName{clist_map_inline:Nn} \TestPreambleFiles {
 	\input{content/#1}
