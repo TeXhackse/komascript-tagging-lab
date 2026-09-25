@@ -3,27 +3,29 @@ Don't change this file in any respect.
 ============================================================
 TEST 1: Show PDF Tags
 ============================================================
--------- frontmatter.xml (start) ---------
+-------- mainmatter.xml (start) ---------
 <PDF>
  <StructTreeRoot>
   <Document xmlns="http://iso.org/pdf2/ssn"
      id="ID.002"
     >
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   <chapter xmlns="https://www.latex-project.org/ns/book"
       id="ID.006"
+      rolemaps-to="Sect"
      >
-    <chapter xmlns="https://www.latex-project.org/ns/book"
+    <chapter-heading xmlns="https://www.latex-project.org/ns/book"
        id="ID.007"
        title="frontmatter chapter"
        rolemaps-to="H1"
       >
      <?MarkedContent page="1" ?>frontmatter chapter
-    </chapter>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+    </chapter-heading>
+   </chapter>
+   <chapter xmlns="https://www.latex-project.org/ns/book"
       id="ID.008"
+      rolemaps-to="Sect"
      >
-    <chapter xmlns="https://www.latex-project.org/ns/book"
+    <chapter-heading xmlns="https://www.latex-project.org/ns/book"
        id="ID.009"
        title="mainmatter chapter"
        rolemaps-to="H1"
@@ -35,12 +37,12 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="3" ?>1 
      </heading-number>
      <?MarkedContent page="3" ?>mainmatter chapter
-    </chapter>
-   </Sect>
+    </chapter-heading>
+   </chapter>
   </Document>
  </StructTreeRoot>
 </PDF>
--------- frontmatter.xml (end) -----------
+-------- mainmatter.xml (end) -----------
 ============================================================
 ***************
 Compilation 1 of test file completed with exit status 0

@@ -17,16 +17,17 @@ TEST 1: Show PDF Tags
   <Document xmlns="http://iso.org/pdf2/ssn"
      id="ID.002"
     >
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   <section xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.006"
+      rolemaps-to="Sect"
      >
-    <section xmlns="https://www.latex-project.org/ns/dflt"
+    <section-heading xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.007"
        title="Contents"
        rolemaps-to="H1"
       >
      <?MarkedContent page="1" ?>Contents
-    </section>
+    </section-heading>
     <TOC xmlns="http://iso.org/pdf/ssn"
        id="ID.008"
        title="toc"
@@ -90,11 +91,12 @@ TEST 1: Show PDF Tags
       </Reference>
      </TOCI>
     </TOC>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   </section>
+   <section xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.019"
+      rolemaps-to="Sect"
      >
-    <section xmlns="https://www.latex-project.org/ns/dflt"
+    <section-heading xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.020"
        title="section"
        rolemaps-to="H1"
@@ -107,47 +109,51 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?>1 
      </heading-number>
      <?MarkedContent page="1" ?>section
-    </section>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+    </section-heading>
+   </section>
+   <section xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.022"
+      rolemaps-to="Sect"
      >
-    <section xmlns="https://www.latex-project.org/ns/dflt"
+    <section-heading xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.023"
        title="addsec"
        rolemaps-to="H1"
        referenced-as="2"
       >
      <?MarkedContent page="1" ?>addsec
-    </section>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+    </section-heading>
+   </section>
+   <section xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.024"
+      rolemaps-to="Sect"
      >
-    <section xmlns="https://www.latex-project.org/ns/dflt"
+    <section-heading xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.025"
        title="starred"
        rolemaps-to="H1"
       >
      <?MarkedContent page="1" ?>starred
-    </section>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+    </section-heading>
+   </section>
+   <section xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.026"
+      rolemaps-to="Sect"
      >
-    <section xmlns="https://www.latex-project.org/ns/dflt"
+    <section-heading xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.027"
        title="not numbered chapter"
        rolemaps-to="H1"
        referenced-as="3"
       >
      <?MarkedContent page="1" ?>not numbered chapter
-    </section>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+    </section-heading>
+   </section>
+   <section xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.028"
+      rolemaps-to="Sect"
      >
-    <section xmlns="https://www.latex-project.org/ns/dflt"
+    <section-heading xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.029"
        title="danach wieder mit nummer"
        rolemaps-to="H1"
@@ -160,8 +166,8 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?>2 
      </heading-number>
      <?MarkedContent page="1" ?>danach wieder mit nummer
-    </section>
-   </Sect>
+    </section-heading>
+   </section>
   </Document>
  </StructTreeRoot>
 </PDF>

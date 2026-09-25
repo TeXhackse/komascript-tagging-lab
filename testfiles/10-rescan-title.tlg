@@ -7,12 +7,12 @@ TEST 1: makeatletter
 The structure 7 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF0053006F006D00650020005400690074006C0065>
->  S  =>  /chapter
+>  S  =>  /chapter-heading
 >  NS  =>  latex-book
->  tag  =>  {chapter}{latex-book}
+>  tag  =>  {chapter-heading}{latex-book}
 >  rolemap  =>  {H1}{pdf2}
 >  parentrole  =>  {H1}{pdf2}
->  parentnum  =>  6 = /Sect
+>  parentnum  =>  6 = /chapter
 The structure has the following kids:
 > NONE
 =========================
@@ -24,12 +24,12 @@ TEST 2: active chars - Needs to be resolved!
 The structure 10 contains:
 >  Type  =>  /StructElem
 >  T  =>  <FEFF0053006F006D00650020005400690074006C00650020007700690074006800200061006300740069007600610074006500640020002A003A0020002A>
->  S  =>  /chapter
+>  S  =>  /chapter-heading
 >  NS  =>  latex-book
->  tag  =>  {chapter}{latex-book}
+>  tag  =>  {chapter-heading}{latex-book}
 >  rolemap  =>  {H1}{pdf2}
 >  parentrole  =>  {H1}{pdf2}
->  parentnum  =>  9 = /Sect
+>  parentnum  =>  9 = /chapter
 The structure has the following kids:
 > NONE
 =========================
@@ -43,10 +43,11 @@ TEST 3: Show PDF Tags
   <Document xmlns="http://iso.org/pdf2/ssn"
      id="ID.002"
     >
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   <chapter xmlns="https://www.latex-project.org/ns/book"
       id="ID.006"
+      rolemaps-to="Sect"
      >
-    <chapter xmlns="https://www.latex-project.org/ns/book"
+    <chapter-heading xmlns="https://www.latex-project.org/ns/book"
        id="ID.007"
        title="Some Title"
        rolemaps-to="H1"
@@ -58,12 +59,13 @@ TEST 3: Show PDF Tags
       <?MarkedContent page="1" ?>1 
      </heading-number>
      <?MarkedContent page="1" ?>Some Title
-    </chapter>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+    </chapter-heading>
+   </chapter>
+   <chapter xmlns="https://www.latex-project.org/ns/book"
       id="ID.009"
+      rolemaps-to="Sect"
      >
-    <chapter xmlns="https://www.latex-project.org/ns/book"
+    <chapter-heading xmlns="https://www.latex-project.org/ns/book"
        id="ID.010"
        title="Some Title with activated *: *"
        rolemaps-to="H1"
@@ -75,8 +77,8 @@ TEST 3: Show PDF Tags
       <?MarkedContent page="3" ?>2 
      </heading-number>
      <?MarkedContent page="3" ?>Some Title with activated *: Active
-    </chapter>
-   </Sect>
+    </chapter-heading>
+   </chapter>
   </Document>
  </StructTreeRoot>
 </PDF>

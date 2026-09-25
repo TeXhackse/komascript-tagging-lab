@@ -9,17 +9,18 @@ TEST 1: Show PDF Tags
   <Document xmlns="http://iso.org/pdf2/ssn"
      id="ID.002"
     >
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   <paragraph xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.006"
+      rolemaps-to="Sect"
      >
-    <paragraph xmlns="https://www.latex-project.org/ns/book"
+    <paragraph-heading xmlns="https://www.latex-project.org/ns/book"
        id="ID.007"
        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
        Layout:TextAlign="Justify"
        rolemaps-to="H5"
       >
      <?MarkedContent page="1" ?>Test 1:
-    </paragraph>
+    </paragraph-heading>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.008"
        rolemaps-to="Part"
@@ -33,22 +34,23 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?> text in group
      </text-block>
     </semantic-para>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   </paragraph>
+   <paragraph xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.010"
+      rolemaps-to="Sect"
      >
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.011"
        rolemaps-to="Part"
       >
-     <paragraph xmlns="https://www.latex-project.org/ns/book"
+     <paragraph-heading xmlns="https://www.latex-project.org/ns/book"
         id="ID.012"
         xmlns:Layout="http://iso.org/pdf/ssn/Layout"
         Layout:TextAlign="Justify"
         rolemaps-to="H5"
        >
       <?MarkedContent page="1" ?>Test 2:
-     </paragraph>
+     </paragraph-heading>
     </semantic-para>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.013"
@@ -98,22 +100,23 @@ TEST 1: Show PDF Tags
       </item>
      </itemize>
     </semantic-para>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   </paragraph>
+   <paragraph xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.021"
+      rolemaps-to="Sect"
      >
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.022"
        rolemaps-to="Part"
       >
-     <paragraph xmlns="https://www.latex-project.org/ns/book"
+     <paragraph-heading xmlns="https://www.latex-project.org/ns/book"
         id="ID.023"
         xmlns:Layout="http://iso.org/pdf/ssn/Layout"
         Layout:TextAlign="Justify"
         rolemaps-to="H5"
        >
       <?MarkedContent page="1" ?>Test 3:
-     </paragraph>
+     </paragraph-heading>
     </semantic-para>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.024"
@@ -163,22 +166,23 @@ TEST 1: Show PDF Tags
       </item>
      </itemize>
     </semantic-para>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   </paragraph>
+   <paragraph xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.032"
+      rolemaps-to="Sect"
      >
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.033"
        rolemaps-to="Part"
       >
-     <paragraph xmlns="https://www.latex-project.org/ns/book"
+     <paragraph-heading xmlns="https://www.latex-project.org/ns/book"
         id="ID.034"
         xmlns:Layout="http://iso.org/pdf/ssn/Layout"
         Layout:TextAlign="Justify"
         rolemaps-to="H5"
        >
       <?MarkedContent page="1" ?>Test 3:
-     </paragraph>
+     </paragraph-heading>
     </semantic-para>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.035"
@@ -236,18 +240,19 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?>more text
      </text-block>
     </semantic-para>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   </paragraph>
+   <paragraph xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.044"
+      rolemaps-to="Sect"
      >
-    <paragraph xmlns="https://www.latex-project.org/ns/book"
+    <paragraph-heading xmlns="https://www.latex-project.org/ns/book"
        id="ID.045"
        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
        Layout:TextAlign="Justify"
        rolemaps-to="H5"
       >
      <?MarkedContent page="1" ?>starred paragraph
-    </paragraph>
+    </paragraph-heading>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.046"
        rolemaps-to="Part"
@@ -261,11 +266,12 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?> text following starred paragraph
      </text-block>
     </semantic-para>
-   </Sect>
-   <Sect xmlns="http://iso.org/pdf2/ssn"
+   </paragraph>
+   <paragraph xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.048"
+      rolemaps-to="Sect"
      >
-    <paragraph xmlns="https://www.latex-project.org/ns/book"
+    <paragraph-heading xmlns="https://www.latex-project.org/ns/book"
        id="ID.049"
        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
        Layout:TextAlign="Justify"
@@ -278,7 +284,7 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?>0.0.0.0.1 
      </heading-number>
      <?MarkedContent page="1" ?>numbered paragraph
-    </paragraph>
+    </paragraph-heading>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.051"
        rolemaps-to="Part"
@@ -292,7 +298,7 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?> text following numbered paragraph 
      </text-block>
     </semantic-para>
-   </Sect>
+   </paragraph>
   </Document>
  </StructTreeRoot>
 </PDF>
