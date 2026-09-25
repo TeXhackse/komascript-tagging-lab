@@ -1,0 +1,46 @@
+\input{regression-test}
+\input{testsetup}
+\documentclass{scrbook}
+\usepackage[german]{babel}
+\usepackage{tagpdf-debug}
+\pagestyle{empty}
+
+\ExplSyntaxOn
+\AddtoDoHook{heading/begingroup}{
+	\tag_get:nN {struct_num} \l_tmpa_tl
+	\TIMO
+	\ShowTagging{debug/structures=\l_tmpa_tl}
+	\OMIT
+	\use_none:n 
+}
+\ExplSyntaxOff
+
+\begin{document}
+\makeatletter
+\errorstopmode
+
+\START
+
+\makeatletter
+\def\@@title{Some Title}
+\TEST{makeatletter}{
+	\OMIT
+	\chapter{\@@title}
+	\TIMO
+}
+\makeatother
+
+\begingroup
+\catcode`\*=13
+\def*{Active}
+\TEST{active chars}{
+	\OMIT
+	\chapter{Some Title with activated \string*: *}
+	\TIMO
+}
+\endgroup
+
+\TIMO
+\SHOWPDFTAGS
+\OMIT
+\end{document}
