@@ -35,8 +35,6 @@ Completed box being shipped out [1]
 ...\write-{}
 ...\write-{}
 ...\latelua0{}
-...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
-...\write1{\@writefile{lot}{\protect \addvspace {10\p@ }}}
 ...\glue(\topskip) 11.0
 ...\vbox(0.0+0.0)x0.0, glue set - 31.28004fil, direction TLT
 ....\glue -13.6
@@ -349,7 +347,6 @@ Completed box being shipped out [3]
 ..\glue 20.40001
 ..\glue(\lineskip) 0.0
 ..\vbox(595.80026+0.0)x418.25555, glue set 501.03656fil, direction TLT
-...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline {1}chapter}{\thepage }{chapter.1}\protected@file@percent }}
 ...\marks1{\__mark_value:nn {1}{1\hskip .5em\relax chapter}}
 ...\marks2{\__mark_value:nn {2}{}}
 ...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
@@ -395,13 +392,16 @@ Completed box being shipped out [3]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0 plus 1.0fil
+...\pdfliteral page <lua data reference ...>
+...\pdfliteral page <lua data reference ...>
+...\marks1{\__mark_value:nn {3}{1\hskip .5em\relax chapter}}
+...\marks2{\__mark_value:nn {4}{}}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline {1}chapter}{\thepage }{chapter.1}\protected@file@percent }}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 23.46008 plus 1.56407 minus 2.6112
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
-..\pdfliteral page <lua data reference ...>
-..\pdfliteral page <lua data reference ...>
 ..\pdflinkstate 1
 ..\glue(\baselineskip) 47.6
 ..\hbox(0.0+0.0)x418.25555, direction TLT
@@ -468,9 +468,8 @@ Completed box being shipped out [5]
 ..\glue(\lineskip) 0.0
 ..\vbox(595.80026+0.0)x418.25555, glue set 420.84702fil, direction TLT
 ...\latelua0{}
-...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \nonumberline chapter}{\thepage }{target*.2}\protected@file@percent }}
-...\marks1{\__mark_value:nn {3}{chapter}}
-...\marks2{\__mark_value:nn {4}{}}
+...\marks1{\__mark_value:nn {5}{chapter}}
+...\marks2{\__mark_value:nn {6}{}}
 ...\write1{\@writefile{lof}{\protect \addvspace {10\p@ }}}
 ...\write1{\@writefile{lot}{\protect \addvspace {10\p@ }}}
 ...\glue(\topskip) 11.0
@@ -508,6 +507,11 @@ Completed box being shipped out [5]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0 plus 1.0fil
+...\pdfliteral page <lua data reference ...>
+...\pdfliteral page <lua data reference ...>
+...\marks1{\__mark_value:nn {7}{chapter}}
+...\marks2{\__mark_value:nn {8}{}}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \nonumberline chapter}{\thepage }{target*.2}\protected@file@percent }}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 23.46008 plus 1.56407 minus 2.6112
@@ -547,9 +551,9 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\pdfliteral page <lua data reference ...>
 ...\pdfliteral page <lua data reference ...>
-...\marks2{\__mark_value:nn {5}{1.1\hskip .5em\relax section}}
+...\marks2{\__mark_value:nn {9}{1.1\hskip .5em\relax section}}
 ...\penalty 10000
-...\marks3{\__mark_value:nn {6}{1.1\hskip .5em\relax section}}
+...\marks3{\__mark_value:nn {10}{1.1\hskip .5em\relax section}}
 ...\penalty 10000
 ...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline {1.1}section}{\thepage }{section.1.1}\protected@file@percent }}
 ...\penalty 10000

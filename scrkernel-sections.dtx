@@ -1047,6 +1047,10 @@
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
         \sectionlinesformat{#1}{\glueexpr\UseName{scr@#1@sectionindent}\relax}\@svsec{#4}\@@par}%
+%    \end{macrocode}
+% \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
+%    \begin{macrocode}
+      \scr@@sect@InsertHeadAndToc{#1}
       \ExecuteDoHook{heading/endgroup/#1}%
     \endgroup
 %<*trace>
@@ -1055,97 +1059,83 @@
       tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
       reference=`\detokenize\expandafter{\@currentlabelname}'}%
 %</trace>
-    \if@currentusehead
-      \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
-    \fi
-    \ifx\@currenttocentry\@empty\else
-      \scr@ifundefinedorrelax{add#1tocentry}{%
-        \expandafter\gdef\csname add#1tocentry\endcsname##1##2{%
-          \addtocentrydefault{#1}{##1}{##2}%
-        }%
-      }{}%
-      \ifcase
-        \if@currentusenumber
-          \ifnum \numexpr\UseName{#1numdepth}\relax>\c@secnumdepth \z@\else \@ne\fi
-        \else
-          \z@
-        \fi
-        \csname add#1tocentry\endcsname{}{\@currenttocentry}%
-      \else
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
 % \begin{description}
 % \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
 % \end{description}
 %    \begin{macrocode}
-        \@ifundefined{#1tocformat}{%
-          \expandafter\gdef\csname #1tocformat\endcsname
-          {\csname the#1\endcsname}%
-        }{}%
-        \ExpandArgsCS{c}{add#1tocentry}{#1tocformat}{%
-          \@currenttocentry}%
-      \fi
-    \fi
-  \else
+	\else
 %    \end{macrocode}
 % \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
 % \changes{v3.27}{2019/02/02}{\cs{ExecuteDoHook} added}
 %    \begin{macrocode}
-    \def\@svsechd{%
-      \ifx\@svsec\@empty
-        \let\IfUseNumber\@secondoftwo
-      \else
-        \let\IfUseNumber\@firstoftwo
-      \fi
-      \ExecuteDoHook{heading/begingroup/#1}%
-      #2{\nobreak\sectioncatchphraseformat{#1}{\glueexpr\UseName{scr@#1@sectionindent}\relax}%
+  \def\@svsechd{%
+    \ifx\@svsec\@empty
+      \let\IfUseNumber\@secondoftwo
+    \else
+      \let\IfUseNumber\@firstoftwo
+    \fi
+    \ExecuteDoHook{heading/begingroup/#1}%
+    #2{\nobreak\sectioncatchphraseformat{#1}{\glueexpr\UseName{scr@#1@sectionindent}\relax}%
 %<!tagging-lab>        \@svsec
-%<tagging-lab>         {\IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}\@svsec}\@svsec}
-        {#4}}%
+%<tagging-lab>    		{\IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}}{}}
+%%% \@svsec
+%%    {\IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}}{}}
+      {#4}}%
 %<*trace>
-      \ClassInfo{\KOMAClassName}{%
-        head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
-        tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
-        reference=`\detokenize\expandafter{\@currentlabelname}'}%
+    \ClassInfo{\KOMAClassName}{%
+      head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
+      tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
+      reference=`\detokenize\expandafter{\@currentlabelname}'}%
 %</trace>
-      \if@currentusehead
-        \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
-      \fi
-      \ifx\@currenttocentry\@empty\else
-        \scr@ifundefinedorrelax{add#1tocentry}{%
-          \expandafter\gdef\csname add#1tocentry\endcsname####1####2{%
-            \addtocentrydefault{#1}{####1}{####2}%
-          }%
-        }{}%
-        \ifcase
-          \if@currentusenumber
-            \ifnum \numexpr\UseName{#1numdepth}\relax>\c@secnumdepth \z@\else \@ne\fi
-          \else
-            \z@
-          \fi
-          \csname add#1tocentry\endcsname{}{\@currenttocentry}%
-        \else
 %    \end{macrocode}
-% \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
-% \begin{description}
-% \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
-% \end{description}
+% \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
 %    \begin{macrocode}
-        \@ifundefined{#1tocformat}{%
-          \expandafter\gdef\csname #1tocformat\endcsname
-          {\csname the#1\endcsname}%
-        }{}%
-        \ExpandArgsCS{c}{add#1tocentry}{#1tocformat}{%
-          \@currenttocentry}%
-        \fi
-      \fi
+			\scr@@sect@InsertHeadAndToc{#1}
       \ExecuteDoHook{heading/endgroup/#1}%
     }%
   \fi
-  \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
-  \scr@xsect{\glueexpr\UseName{scr@#1@afterskip}\relax}%
+\let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
+ \scr@xsect{\glueexpr\UseName{scr@#1@afterskip}\relax}%
 }
 %    \end{macrocode}
+% \begin{macro}{\scr@@sect@InsertHeadAndToc}
+% \changes{v3.49.3}{2026/09/26}{added}
+% Auxiliary command to conditionally insert head and toc for all heading variants.
+%    \begin{macrocode}
+%</body|tagging-lab>.
+%<*body>
+\NewDocumentCommand{\scr@@sect@InsertHeadAndToc}{m}{
+  \if@currentusehead
+    \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
+  \fi
+  \ifx\@currenttocentry\@empty\else
+    \scr@ifundefinedorrelax{add#1tocentry}{%
+      \ExpandArgs{c}\gdef{add#1tocentry}####1####2{%
+        \addtocentrydefault{#1}{####1}{####2}%
+      }%
+    }{}%
+    \ifcase
+      \if@currentusenumber
+        \ifnum\numexpr\UseName{#1numdepth}>\c@secnumdepth\z@\else\@ne\fi
+      \else
+        \z@
+      \fi
+      \UseName{add#1tocentry}{}{\@currenttocentry}%
+    \else
+      \@ifundefined{#1tocformat}{%
+        \ExpandArgs{c}\gdef{#1tocformat}{\UseName{the#1}}%
+      }{}%
+      \ExpandArgsCS{c}{add#1tocentry}{#1tocformat}{%
+        \@currenttocentry}%
+    \fi
+  \fi
+}
+%</body>
+%<*body|tagging-lab>
+%    \end{macrocode}
+% \end{macro}
 % \begin{macro}{\scr@ssection@xarg}
 % \changes{v3.49.3}{2026/08/27}{added}
 % Variant to create similar expansion as \cs{scr@section@dblarg} so \cs{scr@sect}
@@ -1373,7 +1363,7 @@
         \global\@noskipsecfalse
        {\setbox\z@\lastbox}%
         \clubpenalty\@M
-        \begingroup \@svsechd \endgroup
+        \begingroup\@svsechd\endgroup
         \unskip
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
@@ -2621,27 +2611,27 @@
 % \changes{v3.20}{2015/10/15}{missing \cs{expandafter} added}
 % First of all we need a counter:
 %    \begin{macrocode}
-      \@ifundefined{c@#2}{\newcounter{#2}}{}%
-      \ifx\scr@local@counterwithout\relax
-      \else\ifx\scr@local@counterwithout\@empty
-        \else
-          \@removefromreset{#2}{\scr@local@counterwithout}%
-        \fi
-        \@namedef{the#2}{\arabic{#2}}%
-      \fi
-      \ifx\scr@local@counterwithin\relax
-      \else\ifx\scr@local@counterwithin\@empty
-          \@namedef{the#2}{\arabic{#2}}%
-        \else
-          \@removefromreset{#2}{\scr@local@counterwithin}%
-          \@addtoreset{#2}{\scr@local@counterwithin}%
-          \expandafter\def\csname the#2\expandafter\endcsname\expandafter{%
-            \csname the\scr@local@counterwithin\endcsname.\arabic{#2}}%
-        \fi
-      \fi
-      \@ifundefined{#2format}{%
-        \@namedef{#2format}{\csname the#2\endcsname\autodot\enskip}%
-      }{}%
+  \@ifundefined{c@#2}{\newcounter{#2}}{}%
+  \ifx\scr@local@counterwithout\relax
+  \else\ifx\scr@local@counterwithout\@empty
+    \else
+      \@removefromreset{#2}{\scr@local@counterwithout}%
+    \fi
+    \@namedef{the#2}{\arabic{#2}}%
+  \fi
+  \ifx\scr@local@counterwithin\relax
+  \else\ifx\scr@local@counterwithin\@empty
+      \@namedef{the#2}{\arabic{#2}}%
+    \else
+      \@removefromreset{#2}{\scr@local@counterwithin}%
+      \@addtoreset{#2}{\scr@local@counterwithin}%
+      \expandafter\def\csname the#2\expandafter\endcsname\expandafter{%
+        \csname the\scr@local@counterwithin\endcsname.\arabic{#2}}%
+    \fi
+  \fi
+  \@ifundefined{#2format}{%
+    \@namedef{#2format}{\csname the#2\endcsname\autodot\enskip}%
+  }{}%
 %    \end{macrocode}
 % \changes{v3.44}{2025/05/14}{add the section command to the internal l3seq}
 % Then the command itself (but only, if the \opt{style} was not empty):
@@ -4092,8 +4082,8 @@
 % For numbered headings we have to increase the counter and write a process
 % information to the \file{log} and the terminal.
 %    \begin{macrocode}
-	\UseTaggingSocket{scr/sec/heading/begin}{#1}
   \Ifnumbered{#1}{%
+	\UseTaggingSocket{scr/sec/heading/begin}{#1}
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
     \typeout{#1 \csname the#1\endcsname.}%
@@ -4107,25 +4097,14 @@
 % \begin{description}
 % \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
 % \end{description}
+% \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
 %    \begin{macrocode}
-   \hy@insteadofrefstepcounter{#1}%
-    \ifx\@currenttocentry\@empty\else
-      \@ifundefined{#1tocformat}{%
-        \expandafter\gdef\csname #1tocformat\endcsname
-        {\csname the#1\endcsname}%
-      }{}%
-      \scr@ifundefinedorrelax{add#1tocentry}{%
-        \addtocentrydefault{#1}%
-      }{%
-        \@nameuse{add#1tocentry}%
-      }{\csname\@ifundefined{#1tocformat}{the#1}{#1tocformat}\endcsname}%
-      {\@currenttocentry}%
-    \fi
   }{%
 %    \end{macrocode}
 % \changes{v3.49.3}{2026/09/22}{Move anchor, to also be added for headings without
 % toc entry.}
 %    \begin{macrocode}
+     \UseTaggingSocket{scr/sec/heading/begin}{#1}
      \hy@insteadofrefstepcounter{#1}%
 %    \end{macrocode}
 % \changes{v3.18}{2015/05/23}{execute counter reset list for not numbered
@@ -4150,14 +4129,8 @@
 %   \KOMAScript{} class. Shouldn't this be changed using, e.g.,
 %   \cs{KOMAClassName}?
 % \end{description}
+% \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
 %    \begin{macrocode}
-    \ifx\@currenttocentry\@empty\else
-      \scr@ifundefinedorrelax{add#1tocentry}{%
-        \addtocentrydefault{#1}%
-      }{%
-        \@nameuse{add#1tocentry}%
-      }{}{\@currenttocentry}%
-    \fi
   }%
 %    \end{macrocode}
 % \changes{v2.2c}{1995/05/25}{support for CJK}
@@ -4205,16 +4178,10 @@
 %    \end{macrocode}
 % \changes{v3.10}{2011/08/30}{using\cs{@mkboth{}{}} if \cs{partmark} is
 %   \cs{@gobble}}
-% The running head.
+% \changes{v3.49.3}{2026/09/26}{Use \cs{scr@@sect@InsertHeadAndToc}}
 %    \begin{macrocode}
-      \if@currentusehead
-        \expandafter\ifx\csname #1mark\endcsname\@gobble
-          \@mkboth{}{}%
-        \else
-          \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
-        \fi
-       \fi
     }%
+    \scr@@sect@InsertHeadAndToc{#1}
     \ExecuteDoHook{heading/endgroup/#1}%
   \endgroup
 %    \end{macrocode}
@@ -4992,25 +4959,13 @@
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
     \typeout{#1 \csname the#1\endcsname.}%
-    \ifx\@currenttocentry\@empty\else
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
 % \begin{description}
 % \item[ToDo]: Move \cs{autodot} to the definition of \cs{\dots tocformat}.
 % \end{description}
+% \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc} instead of toc entry}
 %    \begin{macrocode}
-      \@ifundefined{#1tocformat}{%
-        \expandafter\gdef\csname #1tocformat\endcsname
-        {\csname the#1\endcsname}%
-      }{}%
-      \scr@ifundefinedorrelax{add#1tocentry}{%
-        \addtocentrydefault{#1}%
-      }{%
-        \@nameuse{add#1tocentry}%
-      }{\csname\@ifundefined{#1tocformat}{the#1}{#1tocformat}\endcsname}%
-      {\@currenttocentry}%
-    \fi
-  \else
 %    \end{macrocode}
 % For not numbered headings we still have to process the reset list of the
 % counter and write a process information to the \file{log} and the terminal.
@@ -5027,7 +4982,6 @@
 % toc entry.}
 %    \begin{macrocode}
      \hy@insteadofrefstepcounter{#1}%
-    \ifx\@currenttocentry\@empty\else
 %    \end{macrocode}
 % And before writing a not numbered entry to the table of contents we have to
 % execute also the \pkg{hyperref} hook \cs{hy@insteadofrefstepcounter}.
@@ -5037,12 +4991,6 @@
 %   \cs{KOMAClassName}?
 % \end{description}
 %    \begin{macrocode}
-      \scr@ifundefinedorrelax{add#1tocentry}{%
-        \addtocentrydefault{#1}%
-      }{%
-        \@nameuse{add#1tocentry}%
-      }{}{\@currenttocentry}%
-    \fi
   \fi
 %    \end{macrocode}
 % Set the mark for the running head. Here we have to do a one step expansion
@@ -5175,17 +5123,7 @@
 % \begin{macro}{\scr@@startschapter}
 % \changes{v3.18}{2015/05/22}{added}
 % \changes{v3.49.3}{2026/08/27}{Move hook to \cs{scr@extendedSecDef}}
-% The macro
-% \begin{quote}
-%   \cs{scr@@startschapter}\marg{chapter command name}\marg{chapter heading}
-% \end{quote}
-% is now part of the style \texttt{chapter}. However, the main parts
-% of the code are from the original definition of \cs{@schapter}. Therefore it
-% has the mandatory argument of a star variant of, i.e., \cs{chapter} but an
-% additional first argument.
-%    \begin{macrocode}
-\newcommand*{\scr@@startschapter}[2]{%
-%    \end{macrocode}
+% \changes{v3.49.3}{date}{removed}
 % Some users don't learn to use \cs{addchapter} for not numbered parts with
 % entry to the table of contents but insist in using
 % \cs{addcontentsline}. Despite this should not be used, because at least
@@ -5204,15 +5142,8 @@
 %    \end{macrocode}
 % Setting the heading itself is more or less a call of \cs{@makes\meta{command
 % name}head}.
-% \begin{description}
-% \item[ToDo:] Using \cs{scr@makeschapterhead}\marg{command name} would be the
-%   better solution. However in this case, every redefinition of
-%   \cs{@makeschapterhead} would be ignored. So currently we support such
-%   deprecated redefinition of internal macro \cs{@makeschapterhead} for
-%   \cs{chapter}. But this will be changed in future.
-% \end{description}
 %    \begin{macrocode}
-  \scr@t@st@nd@w@rn@m@ks@ch@pt@rh@@d{#1}%
+  \scr@makechapterhead{#1}%
   \if@twocolumn
     \if@at@twocolumn
       \@nameuse{@makes#1head}{#2}%
@@ -5257,33 +5188,8 @@
 %    \end{macrocode}
 % \begin{macro}{\scr@t@st@nd@w@rn@m@ks@ch@pt@rh@@d}
 % \changes{v3.36}{2022/03/16}{added}
+% \changes{v3.49.3}{2026/09/27}{removed}
 % The test and warning used inside \cs{scr@@startschapter}.
-%    \begin{macrocode}
-%<!v4>\expandafter\ifnum\scr@v@is@ge{3.36}%
-  \newcommand*{\scr@t@st@nd@w@rn@m@ks@ch@pt@rh@@d}[1]{%
-    \Ifstr{#1}{chapter}{%
-      \begingroup
-        \def\reserved@a{\scr@makeschapterhead{chapter}}%
-        \ifx\@makeschapterhead\reserved@a\else
-          \ClassWarningNoLine{\KOMAClassName}{%
-            Redefinition of \string\@makeschapterhead\space detected.\MessageBreak
-            Note: KOMA-Script does use styles for commands like\MessageBreak
-            \string\chapter. Currently it internally still provides and\MessageBreak
-            uses \string\@makeschapterhead, but a completely different\MessageBreak
-            definition compared to the standard classes.\MessageBreak
-            So redefining or using internal \string\@makeschapterhead\MessageBreak
-            by users or package authors may already break\MessageBreak
-            KOMA-Script and will not work with a coming version,\MessageBreak
-            that will remove this deprecated code}%
-          \let\scr@t@st@nd@w@rn@m@ks@ch@pt@rh@@d\@gobble
-        \fi
-      \endgroup
-    }{}%
-  }
-%<!v4>\else
-%<!v4>  \let\scr@t@st@nd@w@rn@m@ks@ch@pt@rh@@d\@gobble
-%<!v4>\fi
-%    \end{macrocode}
 % \end{macro}^^A \scr@t@st@nd@w@rn@m@ks@ch@pt@rh@@d
 % \end{macro}^^A \scr@@startschapter
 %
@@ -5424,6 +5330,7 @@
         }%
       }%
     }%
+    \scr@@sect@InsertHeadAndToc{#1}%
     \ExecuteDoHook{heading/endgroup/#1}%
   }%
   \nobreak\par\nobreak
@@ -5454,67 +5361,11 @@
 %   1fil}}
 % \changes{v3.25}{2017/09/07}{\cs{IfUseNumber} fixed}
 % \changes{v3.26}{2018/09/20}{no absolute of \opt{afterskip}}
-% Macros
-% \begin{quote}\raggedright
-%   \cs{scr@makeschapterhead}\marg{chapter command name}\marg{heading}\\
-%   \cs{scr@@makeschapterhead}\marg{chapter command name}\marg{heading}
-% \end{quote}
-% are used inside the definition of style \texttt{chapter} and replace
-% \cs{@makeschapterhead} resp. \cs{@@makeschapterhead} there. So they have one
-% more argument than \cs{@makeschapterhead} of the standard classes.
-%    \begin{macrocode}
-\newcommand*{\scr@makeschapterhead}[2]{%
-  \use@chapter@o@preamble{#1}%
-  \@nameuse{@@makes#1head}{#2}%
-  \use@preamble{#1@u}%
-}
-\newcommand*{\scr@@makeschapterhead}[2]{%
-%    \end{macrocode}
+% \changes{v3.49.3}{2026/09/27}{removed}
 % \changes{v3.22}{2016/12/21}{\cs{@afterindentrue} if positive
 %   \opt{beforeskip}}
 % \changes{v3.26}{2018/09/18}{supporting \opt{afterindent}}
-% This is a simplified version of \cs{scr@@makechapterhead}.
-%    \begin{macrocode}
-  \@tempskipa=\glueexpr \csname scr@#1@beforeskip\endcsname\relax\relax
-  \csname scr@#1@afterindent\endcsname
-  {\@afterindenttrue}{\@afterindentfalse}{%
-    \ifdim\@tempskipa<\z@\@tempskipa-\@tempskipa\else
-%<!v4>      \expandafter\ifnum\scr@v@is@ge{3.22}
-        \@afterindenttrue
-%<!v4>      \fi
-    \fi
-  }%
-  \chapterheadstartvskip
-  {%
-    \let\IfUseNumber\@secondoftwo
-    \ExecuteDoHook{heading/begingroup/#1}%
-    \if@chapterprefix
-      \let\IfUsePrefixLine\@firstoftwo
-    \else
-      \let\IfUsePrefixLine\@secondoftwo
-    \fi
-    \setlength{\parindent}{\z@}\setlength{\parfillskip}{\z@ plus 1fil}%
-    \normalfont\usekomafont{disposition}{%
-      \usekomafont{#1}{%
-        \raggedchapter
-        \IfUsePrefixLine{%
-          \chapterlineswithprefixformat{#1}%
-          {}%
-          {\interlinepenalty \@M#2\@@par}%
-        }{%
-          \chapterlinesformat{#1}%
-          {}%
-          {\interlinepenalty \@M#2\@@par}%
-        }%
-      }%
-    }%
-    \ExecuteDoHook{heading/endgroup/#1}%
-  }%
-  \nobreak\par\nobreak
-  \@tempskipa=\glueexpr \csname scr@#1@afterskip\endcsname\relax\relax
-  \chapterheadendvskip
-}
-%    \end{macrocode}
+% \changes{v3.49.3}{2026/09/26}{removed}
 % \end{macro}^^A \scr@@makeschapterhead
 % \end{macro}^^A \scr@makeschapterhead
 %

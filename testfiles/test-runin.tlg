@@ -19,7 +19,7 @@ TEST 1: Show PDF Tags
        Layout:TextAlign="Justify"
        rolemaps-to="H5"
       >
-     <?MarkedContent page="1" ?>Test 1:
+     <?MarkedContent page="1" ?>Test 1: 
     </paragraph-heading>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.008"
@@ -49,7 +49,7 @@ TEST 1: Show PDF Tags
         Layout:TextAlign="Justify"
         rolemaps-to="H5"
        >
-      <?MarkedContent page="1" ?>Test 2:
+      <?MarkedContent page="1" ?>Test 2: 
      </paragraph-heading>
     </semantic-para>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
@@ -115,7 +115,7 @@ TEST 1: Show PDF Tags
         Layout:TextAlign="Justify"
         rolemaps-to="H5"
        >
-      <?MarkedContent page="1" ?>Test 3:
+      <?MarkedContent page="1" ?>Test 3: 
      </paragraph-heading>
     </semantic-para>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
@@ -181,7 +181,7 @@ TEST 1: Show PDF Tags
         Layout:TextAlign="Justify"
         rolemaps-to="H5"
        >
-      <?MarkedContent page="1" ?>Test 3:
+      <?MarkedContent page="1" ?>Test 3: 
      </paragraph-heading>
     </semantic-para>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
@@ -283,7 +283,7 @@ TEST 1: Show PDF Tags
        >
       <?MarkedContent page="1" ?>0.0.0.0.1 
      </heading-number>
-     <?MarkedContent page="1" ?>numbered paragraph
+     <?MarkedContent page="1" ?>numbered paragraph 
     </paragraph-heading>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.051"
