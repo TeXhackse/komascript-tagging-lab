@@ -987,12 +987,13 @@
     \fi
   }%
   \let\IfUsePrefixLine\@secondoftwo
-  \ifcase
-    \if@currentusenumber
-      \ifnum \numexpr\UseName{#1numdepth}\relax>\c@secnumdepth \z@\else \@ne\fi
-    \else
-      \z@
-    \fi
+  \Ifnumbered{#1}{\@tempswafalse}{\@tempswatrue}%
+%<*book>
+  \ExpandArgs{c}\Ifstr{scr@#1@style}{chapter}{%
+    \if@mainmatter\else\@tempswafalse\fi
+  }{}%
+%</book>
+  \if@tempswa
     \let\@svsec\@empty
 %    \end{macrocode}
 % \changes{v3.31}{2020/06/02}{execute counter reset list}
@@ -1020,8 +1021,7 @@
 		\UseTaggingSocket{scr/sec/heading/begin}{#1}
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
-    \protected@edef\@svsec{%
-      \@seccntformat{#1}\relax}%
+    \protected@edef\@svsec{\@seccntformat{#1}\relax}%
   \fi
 %    \end{macrocode}
 % \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
