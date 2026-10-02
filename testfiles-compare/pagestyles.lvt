@@ -1,0 +1,6 @@
+\UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
+\def\DocumentPreamble{
+	\usepackage{blindtext}
+}
+\def\DocumentContent{\pagestyle{headings}\Blinddocument}
+\input{wrapper.ltx}

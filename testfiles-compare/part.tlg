@@ -4,15 +4,16 @@ Don't change this file in any respect.
 TEST 1: Show PDF Tags
 ============================================================
 -------- part.xml (start) ---------
-<PDF>
+<PDF version="2.0">
  <StructTreeRoot>
   <Document xmlns="http://iso.org/pdf2/ssn"
      id="ID.002"
     >
-   <Part xmlns="http://iso.org/pdf2/ssn"
+   <part xmlns="https://www.latex-project.org/ns/dflt"
       id="ID.006"
+      rolemaps-to="Part"
      >
-    <part xmlns="https://www.latex-project.org/ns/dflt"
+    <part-heading xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.007"
        title="Heading part emph $a=b$"
        rolemaps-to="Title"
@@ -43,7 +44,7 @@ TEST 1: Show PDF Tags
        </AssociatedFile>
       <?MarkedContent page="1" ?>a=b
      </Formula>
-    </part>
+    </part-heading>
     <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
        id="ID.011"
        rolemaps-to="Part"
@@ -57,7 +58,7 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="3" ?>Text 
      </text-block>
     </semantic-para>
-   </Part>
+   </part>
   </Document>
  </StructTreeRoot>
 </PDF>

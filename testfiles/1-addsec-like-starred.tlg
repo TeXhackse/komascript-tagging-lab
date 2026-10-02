@@ -12,7 +12,7 @@ Package tocbasic Info: Using my definition of `\numberline' on input line ....
 TEST 1: Show PDF Tags
 ============================================================
 -------- 1-addsec-like-starred.xml (start) ---------
-<PDF>
+<PDF version="2.0">
  <StructTreeRoot>
   <Document xmlns="http://iso.org/pdf2/ssn"
      id="ID.002"
