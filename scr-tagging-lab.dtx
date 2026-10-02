@@ -61,6 +61,7 @@
     {{\int_use:N\l_@@_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int}}}
    \if@currentrunin
     \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
+    \tagpdfsetup{para/flattened=true}
    \fi
  }
 \AssignTaggingSocketPlug{scr/sec/heading/init}{default}
@@ -68,8 +69,9 @@
 
 
 \NewTaggingSocketPlug{scr/sec/heading/begin}{default}{
-  \Ifnumbered{#1}{\bool_set_false:N}{\bool_set_true:N}
-    \l__scrkernel_sec_nonumber_bool
+  \IfUseNumber
+    {\bool_set_false:N \l__scrkernel_sec_nonumber_bool}
+    {\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
 %    \begin{macrocode}
 % \cs{Ifnumbered} does not include the check for \cs{if@mainmatter}.
 % Might be better to resolve this during the option handling.
@@ -84,14 +86,26 @@
 % Currently this does not take care of otherwhise changed catcodes, so we need to ensure to captured a pure version of the section title.
 %    \begin{macrocode}
   \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab\makeatletter} \@currentlabelname
-   \if@currentrunin
-   \else
+  \exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
+  \if@currentrunin
+    \tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
+    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
+    \tagpdfparaOff
+    \tagmcbegin{}
+    \tagpdfsetup{para/flattened=true}
+  \else
     \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
-		\exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
 		\tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
-  \fi
+	\fi
 }
 \AssignTaggingSocketPlug{scr/sec/heading/begin}{default}
+
+\NewTaggingSocketPlug{scr/sec/title/split}{default}{
+    \tagpdfsetup{para/flattened=true}
+    \UseTaggingSocket{sec/title/split}%
+}
+
+\AssignTaggingSocketPlug{scr/sec/title/split}{default}
 %    \end{macrocode}
 %
 %    \begin{macrocode}

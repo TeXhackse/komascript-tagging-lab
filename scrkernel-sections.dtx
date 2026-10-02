@@ -990,7 +990,7 @@
   \Ifnumbered{#1}{\@tempswafalse}{\@tempswatrue}%
 %<*book>
   \ExpandArgs{c}\Ifstr{scr@#1@style}{chapter}{%
-    \if@mainmatter\else\@tempswafalse\fi
+    \if@mainmatter\else\@tempswatrue\fi
   }{}%
 %</book>
   \if@tempswa
@@ -1011,14 +1011,15 @@
 % At this point we have to make sure, that the \pkg{hyperref} code for not
 % increasing a counter is executed.
 %    \begin{macrocode}
-  \let\IfUseNumber\@secondoftwo
-	\UseTaggingSocket{scr/sec/heading/begin}{#1}
-	\hy@insteadofrefstepcounter{#1}%
+    \let\IfUseNumber\@secondoftwo
+    \UseTaggingSocket{scr/sec/heading/begin}{#1}%
+    \hy@insteadofrefstepcounter{#1}%
   \else
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
-		\UseTaggingSocket{scr/sec/heading/begin}{#1}
+    \let\IfUseNumber\@firstoftwo
+    \UseTaggingSocket{scr/sec/heading/begin}{#1}%
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
     \protected@edef\@svsec{\@seccntformat{#1}\relax}%
@@ -1077,12 +1078,14 @@
       \let\IfUseNumber\@firstoftwo
     \fi
     \ExecuteDoHook{heading/begingroup/#1}%
-    #2{\nobreak\sectioncatchphraseformat{#1}{\glueexpr\UseName{scr@#1@sectionindent}\relax}%
-%<!tagging-lab>        \@svsec
-%<tagging-lab>    		{\IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}}{}}
-%%% \@svsec
-%%    {\IfUseNumber{\UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}}{}}
-      {#4}}%
+    #2{\nobreak
+      \sectioncatchphraseformat{#1}%
+        {\glueexpr\UseName{scr@#1@sectionindent}\relax}%
+        {%
+          \IfUseNumber{%
+            \UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}%
+          }{\@svsec}%
+        }{#4}}%
 %<*trace>
     \ClassInfo{\KOMAClassName}{%
       head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
@@ -1363,12 +1366,14 @@
         \global\@noskipsecfalse
        {\setbox\z@\lastbox}%
         \clubpenalty\@M
-        \begingroup\@svsechd\endgroup
-        \unskip
+        \begingroup
+\@svsechd
+\endgroup
+\unskip
 %    \end{macrocode}
 % tagging: Separate heading from text the following text.
 %    \begin{macrocode}
-        \UseTaggingSocket{sec/title/split}%
+        \UseTaggingSocket{scr/sec/title/split}%
         \@tempskipa #1\relax
         \ifdim \@tempskipa<\z@
           \hskip -\@tempskipa
@@ -4083,7 +4088,8 @@
 % information to the \file{log} and the terminal.
 %    \begin{macrocode}
   \Ifnumbered{#1}{%
-	\UseTaggingSocket{scr/sec/heading/begin}{#1}
+    \let\IfUseNumber\@firstoftwo
+    \UseTaggingSocket{scr/sec/heading/begin}{#1}
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
     \typeout{#1 \csname the#1\endcsname.}%
@@ -4104,8 +4110,9 @@
 % \changes{v3.49.3}{2026/09/22}{Move anchor, to also be added for headings without
 % toc entry.}
 %    \begin{macrocode}
-     \UseTaggingSocket{scr/sec/heading/begin}{#1}
-     \hy@insteadofrefstepcounter{#1}%
+    \let\IfUseNumber\@secondoftwo
+    \UseTaggingSocket{scr/sec/heading/begin}{#1}
+    \hy@insteadofrefstepcounter{#1}%
 %    \end{macrocode}
 % \changes{v3.18}{2015/05/23}{execute counter reset list for not numbered
 %   headings}
@@ -4238,7 +4245,8 @@
 %    \begin{macrocode}
   \begingroup
     \let\@mkboth\@gobbletwo
-	\UseTaggingSocket{scr/sec/heading/begin}{#1}
+    \let\IfUseNumber\@secondoftwo
+    \UseTaggingSocket{scr/sec/heading/begin}{#1}
     \hy@insteadofrefstepcounter{#1}%
   \endgroup
 %    \end{macrocode}
@@ -4948,11 +4956,11 @@
 % information to the \file{log} and the terminal.
 %    \begin{macrocode}
   \Ifnumbered{#1}{%
-%<book>    \if@mainmatter
+%<book>   \if@mainmatter
       \@tempswatrue
-%<book>    \else\@tempswafalse\fi
-  }{\@tempswafalse}%
-%      TODO extend ifnumbered für mainmatter??
+      \let\IfUseNumber\@firstoftwo
+%<book>   \else\@tempswafalse\let\IfUseNumber\@secondoftwo\fi
+  }{\@tempswafalse\let\IfUseNumber\@secondoftwo}%
 	\UseTaggingSocket{scr/sec/heading/begin}{#1}
 %
   \if@tempswa
