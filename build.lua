@@ -15,18 +15,28 @@ unpackfiles = { "scr-tagging-lab.ins", "scrmain.ins" }
 
 -- This is only for demo files - does not include building the KOMAscript documentation
 typesetexe = "lualatex-dev"
-typesetopts = "--interaction=batchmode"
+
 
 typesetruns = 4
 typesetfiles = {
 	"*.tex",
 	"scrkernel-sections.dtx"
 }
-typesetopts = ""
+if options["target"] == "doc" then
+  typesetopts = ""
+else
+  typesetopts = "--interaction=batchmode"
+end
+
 
 -- checkconfigs = {"build", "compare","tagging-project-tests"} -- compare config is only used when the real testfiles failed
 
 checksuppfiles = { "*.tex", "**/*.ltx" }
+if options["target"] == "save" then
+  checkopts = ""
+else
+  checkopts = "--interaction=batchmode"
+end
 
 testsuppdir = "support-tests"
 typesetsuppfiles = checksuppfiles
