@@ -698,20 +698,20 @@
     \csname scr@#1@runin\endcsname
   }%
   \scr@sect@runin{%
-    \def\startsection@afterskip{\glueexpr #3\relax}%
+    \def\startsection@afterskip{\glueexpr #5\relax}%
     \expandafter\let\csname if@currentrunin\expandafter\endcsname
     \csname iftrue\endcsname
   }{%
-    \def\startsection@afterskip{\glueexpr #3\relax}%
+    \def\startsection@afterskip{\glueexpr #5\relax}%
     \expandafter\let\csname if@currentrunin\expandafter\endcsname
     \csname iffalse\endcsname
   }{%
     \ifdim \glueexpr #5\relax <\z@
-      \def\startsection@afterskip{\glueexpr (#3)*\m@ne\relax}%
+      \def\startsection@afterskip{\glueexpr (#5)*\m@ne\relax}%
       \expandafter\let\csname if@currentrunin\expandafter\endcsname
       \csname iftrue\endcsname
     \else
-      \def\startsection@afterskip{\glueexpr #3\relax}%
+      \def\startsection@afterskip{\glueexpr #5\relax}%
       \expandafter\let\csname if@currentrunin\expandafter\endcsname
       \csname iffalse\endcsname
     \fi
@@ -1101,7 +1101,7 @@
 %    \begin{macrocode}
   \fi
 \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
- \scr@xsect{\glueexpr\UseName{scr@#1@afterskip}\relax}%
+ \scr@xsect
 }
 %    \end{macrocode}
 % \begin{macro}{\scr@@sect@InsertHeadAndToc}
@@ -1344,14 +1344,11 @@
 %
 % \begin{macro}{\scr@xsect}
 %   \changes{v3.49.3}{2026/10/03}{use \cs{if@currentrunin}}
+%   \changes{v3.49.3}{2026/10/03}{remove argument to prepare merging into \cs{scr@sect}}
 %    \begin{macrocode}
 %<*body|tagging-lab>
-%<body>\def\scr@xsect#1{%
-%<tagging-lab>\def\scrlab@xsect#1{%
-  \@ifundefined{scr@sect@runin}{%
-    \def\scr@sect@runin##1##2##3{##3}%
-  }%
-  \@tempskipa #1\relax
+%<body>\def\scr@xsect{%
+%<tagging-lab>\def\scrlab@xsect{%
   \if@currentrunin
     \@nobreakfalse
     \global\@noskipsectrue
@@ -1368,7 +1365,7 @@
 % tagging: Separate heading from text the following text.
 %    \begin{macrocode}
         \UseTaggingSocket{scr/sec/title/split}%
-        \@tempskipa #1\relax
+        \@tempskipa\startsection@afterskip
         \ifdim \@tempskipa<\z@
           \hskip -\@tempskipa
         \else
@@ -1378,16 +1375,15 @@
         \clubpenalty \@clubpenalty
         \everypar{}%
       \fi}%
-  \else%A^^\if@ currentrunin
+  \else
     \par \nobreak
-    \vskip \@tempskipa
+    \vskip\startsection@afterskip
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
-    \UseTaggingSocket{para/restore}
+%<tagging-lab>    \UseTaggingSocket{para/restore}
     \@afterheading
-  \fi%A^^\if@ currentrunin
-  \def\scr@sect@runin##1##2##3{##3}%
+  \fi
   \ignorespaces
 }
 %</body|tagging-lab>
@@ -4186,7 +4182,7 @@
 % \changes{v3.49.3}{2026/09/26}{Use \cs{scr@@sect@InsertHeadAndToc}}
 %    \begin{macrocode}
     }%
-    \scr@@sect@InsertHeadAndToc{#1}
+    \scr@@sect@InsertHeadAndToc{#1}%
     \ExecuteDoHook{heading/endgroup/#1}%
   \endgroup
 %    \end{macrocode}
