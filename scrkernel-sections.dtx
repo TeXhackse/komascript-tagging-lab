@@ -1027,12 +1027,45 @@
 %    \end{macrocode}
 % \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
 % \changes{v3.27}{2019/02/02}{\cs{IfUseNumber} defined locally}
+% \changes{v3.49.3}{2026/10/03}{use \cs{if@currentrunin}}
 %    \begin{macrocode}
-  \ifdim
-    \scr@sect@runin{\z@}{\p@}{\glueexpr\UseName{scr@#1@afterskip}\relax}>\z@
-    \begingroup
+  \if@currentrunin
+% runin!
+%    \end{macrocode}
+% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
+% \changes{v3.27}{2019/02/02}{\cs{ExecuteDoHook} added}
+%    \begin{macrocode}
+  \def\@svsechd{%
+    \ifx\@svsec\@empty
+      \let\IfUseNumber\@secondoftwo
+    \else
+      \let\IfUseNumber\@firstoftwo
+    \fi
+    \ExecuteDoHook{heading/begingroup/#1}%
+    #2{\nobreak
+      \sectioncatchphraseformat{#1}%
+        {\glueexpr\UseName{scr@#1@sectionindent}\relax}%
+        {%
+          \IfUseNumber{%
+            \UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}%
+          }{\@svsec}%
+        }{#4}}%
+%<*trace>
+    \ClassInfo{\KOMAClassName}{%
+      head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
+      tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
+      reference=`\detokenize\expandafter{\@currentlabelname}'}%
+%</trace>
+%    \end{macrocode}
+% \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
+%    \begin{macrocode}
+			\scr@@sect@InsertHeadAndToc{#1}%
+      \ExecuteDoHook{heading/endgroup/#1}%
+    }%
+  \else%^^A \@currentruninfalse
 %    \end{macrocode}
 %    \begin{macrocode}
+    \begingroup
       \ifx\@svsec\@empty
         \let\IfUseNumber\@secondoftwo
       \else
@@ -1066,38 +1099,6 @@
 % \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
 % \end{description}
 %    \begin{macrocode}
-	\else
-%    \end{macrocode}
-% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
-% \changes{v3.27}{2019/02/02}{\cs{ExecuteDoHook} added}
-%    \begin{macrocode}
-  \def\@svsechd{%
-    \ifx\@svsec\@empty
-      \let\IfUseNumber\@secondoftwo
-    \else
-      \let\IfUseNumber\@firstoftwo
-    \fi
-    \ExecuteDoHook{heading/begingroup/#1}%
-    #2{\nobreak
-      \sectioncatchphraseformat{#1}%
-        {\glueexpr\UseName{scr@#1@sectionindent}\relax}%
-        {%
-          \IfUseNumber{%
-            \UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}%
-          }{\@svsec}%
-        }{#4}}%
-%<*trace>
-    \ClassInfo{\KOMAClassName}{%
-      head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
-      tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
-      reference=`\detokenize\expandafter{\@currentlabelname}'}%
-%</trace>
-%    \end{macrocode}
-% \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
-%    \begin{macrocode}
-			\scr@@sect@InsertHeadAndToc{#1}%
-      \ExecuteDoHook{heading/endgroup/#1}%
-    }%
   \fi
 \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
  \scr@xsect{\glueexpr\UseName{scr@#1@afterskip}\relax}%
