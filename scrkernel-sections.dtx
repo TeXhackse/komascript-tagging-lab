@@ -1340,6 +1340,7 @@
 %   \changes{v3.19}{2015/07/17}{re-definition because of several new features}
 %   \changes{v3.49}{2025/09/11}{\cs{@ssect} renamed to \cs{scr@ssect}}
 %   \changes{v3.49.3}{2026/08/27}{removed by using \cs{scr@sect}}
+%   \changes{v3.49.3}{2026/10/03}{use \cs{if@currentrunin}}
 % \end{macro}^^A \scr@ssect
 %
 % \begin{macro}{\scr@xsect}
@@ -1351,15 +1352,7 @@
     \def\scr@sect@runin##1##2##3{##3}%
   }%
   \@tempskipa #1\relax
-  \ifdim \scr@sect@runin{\z@}{\p@}{\@tempskipa}>\z@
-    \par \nobreak
-    \vskip \@tempskipa
-%    \end{macrocode}
-% tagging: Copy change of testphase definition
-%    \begin{macrocode}
-%<tagging-lab>    \UseTaggingSocket{para/restore}
-    \@afterheading
-  \else
+  \if@currentrunin
     \@nobreakfalse
     \global\@noskipsectrue
     \everypar{%
@@ -1368,9 +1361,9 @@
        {\setbox\z@\lastbox}%
         \clubpenalty\@M
         \begingroup
-\@svsechd
-\endgroup
-\unskip
+        \@svsechd
+        \endgroup
+        \unskip
 %    \end{macrocode}
 % tagging: Separate heading from text the following text.
 %    \begin{macrocode}
@@ -1385,7 +1378,15 @@
         \clubpenalty \@clubpenalty
         \everypar{}%
       \fi}%
-  \fi
+  \else%A^^\if@ currentrunin
+    \par \nobreak
+    \vskip \@tempskipa
+%    \end{macrocode}
+% tagging: Copy change of testphase definition
+%    \begin{macrocode}
+    \UseTaggingSocket{para/restore}
+    \@afterheading
+  \fi%A^^\if@ currentrunin
   \def\scr@sect@runin##1##2##3{##3}%
   \ignorespaces
 }
