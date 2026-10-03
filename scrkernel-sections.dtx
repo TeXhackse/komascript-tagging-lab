@@ -5116,70 +5116,7 @@
 % \begin{macro}{\scr@@startschapter}
 % \changes{v3.18}{2015/05/22}{added}
 % \changes{v3.49.3}{2026/08/27}{Move hook to \cs{scr@extendedSecDef}}
-% \changes{v3.49.3}{date}{removed}
-% Some users don't learn to use \cs{addchapter} for not numbered parts with
-% entry to the table of contents but insist in using
-% \cs{addcontentsline}. Despite this should not be used, because at least
-% \cs{addchaptertocentry} should be used, we tolerate this by using our
-% \pkg{hyperref} hook.
-% \begin{description}
-% \item[ToDo:] I don't understand why \pkg{hyperref} uses a group here and
-%   locally sets \cs{@mkboth} to \cs{@gobbletwo}. However, I've copied this.
-% \end{description}
-%    \begin{macrocode}
-\newcommand*{\scr@@startschapter}[2]{%
-  \begingroup
-    \let\@mkboth\@gobbletwo
-    \UseTaggingSocket{scr/sec/heading/begin}{#1}
-    \hy@insteadofrefstepcounter{#1}%
-  \endgroup
-%    \end{macrocode}
-% Setting the heading itself is more or less a call of \cs{@makes\meta{command
-% name}head}.
-%    \begin{macrocode}
-  \scr@makechapterhead{#1}%
-  \if@twocolumn
-    \if@at@twocolumn
-      \@nameuse{@makes#1head}{#2}%
-    \else
-%    \end{macrocode}
-%   \changes{v3.46}{2025/08/19}{vertical alignment of chapters in twocolumn
-%     mode improved}
-% Here we have a problem or even two. First: Inside \cs{@topnewpage} the
-% paragraph settings are reset like with \cs{parboxrestore}. So we need to
-% store the settings outside and restore them inside. Restoring \cs{parskip}
-% usually would be enough, but we do the whole thing. Second: \cs{@topnewpage}
-% is output before \cs{topskip} us used. But here we need \cs{topskip} be used
-% first. So we need to compensate this by extra \cs{vskip} before and the
-% content.
-%    \begin{macrocode}
-      \edef\scr@restoreparsetup{%
-        \parskip\the\parskip
-        \parfillskip\the\parfillskip
-        \parindent\the\parindent
-      }%
-      \@topnewpage[%
-%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
-        \scr@restoreparsetup
-        \vskip\topskip
-%<!v4>        \fi
-        \@nameuse{@makes#1head}{#2\ifhmode\strut\fi}%
-%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
-        \vskip\dimeval{\ht\strutbox-\dp\strutbox-\topskip+\parskip}%
-%<!v4>        \fi
-      ]%
-    \fi
-  \else
-    \@nameuse{@makes#1head}{#2}%
-  \fi
-%    \end{macrocode}
-% \changes{v3.18}{2015/05/21}{always using \cs{@afterheading}}
-% And finally the end of every outline command.
-%    \begin{macrocode}
-	\UseTaggingSocket{para/restore}%
-  \@afterheading
-}
-%    \end{macrocode}
+% \changes{v3.49.3}{2026/10/03}{removed}
 % \begin{macro}{\scr@t@st@nd@w@rn@m@ks@ch@pt@rh@@d}
 % \changes{v3.36}{2022/03/16}{added}
 % \changes{v3.49.3}{2026/09/27}{removed}
