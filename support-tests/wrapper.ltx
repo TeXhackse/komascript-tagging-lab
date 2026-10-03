@@ -1,7 +1,9 @@
 \input{regression-test}
 
 \input{testsetup}
-\documentclass{scrbook}
+\expandafter\ifx\csname CLASS\endcsname\relax
+  \documentclass{scrbook}
+\fi
 \usepackage{lmodern}
 \usepackage{anyfontsize}
 
