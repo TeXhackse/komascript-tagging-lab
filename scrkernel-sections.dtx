@@ -1882,11 +1882,8 @@
 \newcommand*{\scr@dsc@def@style@chapter@command}[1]{%
   \@namedef{#1}{\scr@startchapter{#1}}%
   \@namedef{@#1}{\scr@@startchapter{#1}}%
-  \@namedef{@s#1}{\scr@@startschapter{#1}}%
   \@namedef{@make#1head}{\scr@makechapterhead{#1}}%
-  \@namedef{@makes#1head}{\scr@makeschapterhead{#1}}%
   \@namedef{@@make#1head}{\scr@@makechapterhead{#1}}%
-  \@namedef{@@makes#1head}{\scr@@makeschapterhead{#1}}%
   \@namedef{set#1preamble}{\set@preamble{#1}}%
 }
 %</book|report>
@@ -2000,7 +1997,6 @@
 \newcommand*{\scr@dsc@def@style@part@command}[1]{%
   \@namedef{#1}{\scr@startpart{#1}}%
   \@namedef{@#1}{\scr@@startpart{#1}}%
-  \@namedef{@s#1}{\scr@@startspart{#1}}%
 %<book|report>  \@namedef{@end#1}{\scr@@endpart{#1}}%
 %<book|report>  \@namedef{set#1preamble}{\set@preamble{#1}}%
 }
@@ -4225,65 +4221,12 @@
 %   replaced}
 % \changes{v3.49.3}{2026/08/27}{Move hook to \cs{scr@extendedSecDef}}
 % \changes{v3.18}{2015/05/23}{added}
-% The macro
-% \begin{quote}
-%   \cs{scr@@startspart}\marg{part command name}\marg{part heading}
-% \end{quote}
-% is now part of the style \texttt{part}. However, the main parts
-% of the code are from the original definition of \cs{@spart}. Therefore it has
-% the mandatory argument of a star variant of, i.e., \cs{part} but an
-% additional first argument.
-%    \begin{macrocode}
-\newcommand{\scr@@startspart}[2]{%
-%    \end{macrocode}
-% Some users don't learn to use \cs{addpart} for not numbered parts with entry
-% to the table of contents but insist in using \cs{addcontentsline}. Despite
-% this should not be used, because at least \cs{addparttocentry} should be
-% used, we tolerate this by using our \pkg{hyperref} hook.
-% \begin{description}
-% \item[ToDo:] I don't understand why \pkg{hyperref} uses a group here and
-%   locally sets \cs{@mkboth} to \cs{@gobbletwo}. However, I've copied this.
-% \end{description}
-%    \begin{macrocode}
-  \begingroup
-    \let\@mkboth\@gobbletwo
-    \let\IfUseNumber\@secondoftwo
-    \UseTaggingSocket{scr/sec/heading/begin}{#1}
-    \hy@insteadofrefstepcounter{#1}%
-  \endgroup
-%    \end{macrocode}
 % \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
 % \changes{v3.25}{2017/09/07}{difining \cs{IfUseNumber} locally}
 % \changes{v3.25}{2017/09/07}{\cs{sectfont} replaced by \cs{usekomafont}}
 % \changes{v3.25}{2017/09/07}{using \cs{partlineswithprefixformat}}
 % Now the printing similar to \cs{scr@@startpart}.
-%    \begin{macrocode}
-  \begingroup
-    \let\IfUseNumber\@secondoftwo
-    \ExecuteDoHook{heading/begingroup/#1}%
-    \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
-    \raggedpart
-    \normalfont\usekomafont{disposition}{%
-      \nobreak
-      \partlineswithprefixformat{#1}{}{%
-        \usekomafont{#1}{\nobreak\interlinepenalty \@M#2\strut\@@par}%
-      }%
-      \@mkboth{}{}%
-    }%
-    \ExecuteDoHook{heading/endgroup/#1}%
-  \endgroup
-%  \UseTaggingSocket{scr/sec/heading/end}
-%<*article>
-  \nobreak
-  \@tempskipa=\glueexpr\csname scr@#1@afterskip\endcsname\relax\relax
-  \ifdim\@tempskipa<\z@\@tempskipa-\@tempskipa\fi
-  \partheadendvskip
-	\UseTaggingSocket{para/restore}%
-  \@afterheading
-%</article>
-%<book|report>  \@nameuse{@end#1}%
-}
-%    \end{macrocode}
+% \changes{v3.49.3}{2026/10/03}{removed}
 % \end{macro}^^A \scr@@startspart
 %
 % \begin{command}{\partlineswithprefixformat}
