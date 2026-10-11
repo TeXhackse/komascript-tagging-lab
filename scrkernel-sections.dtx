@@ -1064,7 +1064,35 @@
     }%
   \else%^^A \@currentruninfalse
 %    \end{macrocode}
+% \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
+% \changes{v3.27}{2019/02/02}{\cs{scr@do@at} added}
+% \changes{v3.49.3}{2026/10/11}{Move actual heading to \cs{scr@section@heading}}
 %    \begin{macrocode}
+  \scr@ifundefinedorrelax{scr@\UseName{scr@#1@style}@heading}{%
+    \scr@section@heading{#1}{#2}{#4}%
+  } {%
+    \UseName{scr@\UseName{scr@#1@style}@heading}{#1}{#2}{#4}%
+  }%
+%    \end{macrocode}
+% \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
+% \begin{description}
+% \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
+% \end{description}
+%    \begin{macrocode}
+  \fi
+\let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
+ \scr@xsect
+}
+%    \end{macrocode}
+%</body|tagging-lab>
+%<*body>
+%
+% \begin{macro}{\scr@section@heading}
+% \changes{v3.49.3}{2026/10/11}{added}
+% \begin{quote}\raggedright
+%   \cs{scr@section@heading}\marg{section command name}\marg{font config}\marg{heading}
+% \end{quote}
+\NewDocumentCommand{\scr@section@heading}{mmm}{%
     \begingroup
       \ifx\@svsec\@empty
         \let\IfUseNumber\@secondoftwo
@@ -1080,7 +1108,7 @@
 %    \end{macrocode}
 % tagging: Adapt change of testphase definition
 %    \begin{macrocode}
-        \sectionlinesformat{#1}{\glueexpr\UseName{scr@#1@sectionindent}\relax}\@svsec{#4}\@@par}%
+        \sectionlinesformat{#1}{\glueexpr\UseName{scr@#1@sectionindent}\relax}\@svsec{#3}\@@par}%
 %    \end{macrocode}
 % \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
 %    \begin{macrocode}
@@ -1093,23 +1121,12 @@
       tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
       reference=`\detokenize\expandafter{\@currentlabelname}'}%
 %</trace>
-%    \end{macrocode}
-% \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
-% \begin{description}
-% \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
-% \end{description}
-%    \begin{macrocode}
-  \fi
-\let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
- \scr@xsect
 }
-%    \end{macrocode}
+%
 % \begin{macro}{\scr@@sect@InsertHeadAndToc}
 % \changes{v3.49.3}{2026/09/26}{added}
 % Auxiliary command to conditionally insert head and toc for all heading variants.
 %    \begin{macrocode}
-%</body|tagging-lab>
-%<*body>
 \NewDocumentCommand{\scr@@sect@InsertHeadAndToc}{m}{%
   \if@currentusehead
     \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
