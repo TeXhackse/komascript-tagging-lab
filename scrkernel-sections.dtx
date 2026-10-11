@@ -4442,30 +4442,18 @@
 %   \cs{@gobble}}
 % \changes{v3.17}{2015/04/20}{using \cs{addpartmark} but never \cs{@mkboth}}
 % \changes{v3.18}{2015/05/25}{redefinition}
+% \changes{v3.49.3}{2026/10/11}{Replaced by extended \cs{@addsec}}
 % \begin{macro}{\@saddpart}
 % \changes{v2.8c}{2001/06/29}{added}
 % \changes{v3.18}{2015/05/25}{redefinition}
 % \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
+% \changes{v3.49.3}{2026/10/11}{Removed}
 % The improved not numbered version of \cs{part}. Note: This could also be
 % done using the extended optional argument of \cs{part} and option
 % \opt{nonumber=true}. So this command becomes more and more deprecated.
 %    \begin{macrocode}
 \newcommand\addpart{%
-  \scr@extendedSecDef{nonumber=true,head={}}{part}\@addpart}
-\newcommand*{\@addpart}{}
-\long\def\@addpart[#1]#2{%
-  \edef\reserved@a{%
-    \unexpanded{%
-      \part[{#1}]{#2}%
-      \c@secnumdepth=
-    }\the\c@secnumdepth\relax
-  }%
-  \c@secnumdepth=\numexpr \partnumdepth-1\relax
-  \reserved@a
-}
-\newcommand{\@saddpart}[1]{%
-  \part*{#1}%
-  \addpartmark{}%
+  \scr@extendedSecDef{nonumber=true,head={}}{part}{\@addsec{part}}%
 }
 %    \end{macrocode}
 % \end{macro}^^A \@saddpart
@@ -5307,10 +5295,12 @@
 % \changes{v3.12}{2013/02/26}{using \cs{addchapmark}}
 % \changes{v3.17}{2015/04/20}{expanding \cs{scr@ds@head} in \cs{addchapmark}}
 % \changes{v3.18}{2015/05/22}{redefinition}
+% \changes{v3.49.3}{2026/10/11}{Replaced by extended \cs{@addsec}}
 % \begin{macro}{\@saddchap}
 % \changes{v3.12}{2013/02/26}{using \cs{addchapmark}}
 % \changes{v3.18}{2015/05/22}{redefinition}
 % \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
+% \changes{v3.49.3}{2026/10/11}{removed}
 % Since \KOMAScript{} 3.18 using
 % \begin{quote}
 %   \cs{addchap}\oarg{head or ToC entry}\marg{heading}
@@ -5329,51 +5319,14 @@
 %   chapters without numbering.
 % \end{description}
 %    \begin{macrocode}
-\newcommand\addchap{%
-  \scr@extendedSecDef{nonumber=true,head={},tocentry={}}{chapter}\@addchap
-}%
-\newcommand*{\@addchap}{}%
-\long\def\@addchap[#1]#2{%
-  \edef\reserved@a{%
-    \unexpanded{%
-      \chapter[{#1}]{#2}%
-      \c@secnumdepth=
-    }\the\c@secnumdepth\relax
-  }%
-  \c@secnumdepth=\numexpr \chapternumdepth-1\relax
-  \reserved@a
-}
-\newcommand{\@saddchap}[1]{%
-  \chapter*{#1}%
-  \addchapmark{}%
-}%
+\newcommand\addchap{\scr@extendedSecDef{nonumber=true,head={},tocentry={}}{chapter}{\@addsec{chapter}}}
 %    \end{macrocode}
 % \changes{v2.7e}{2001/04/16}{braces fixed}
 % \changes{v2.7f}{2001/04/17}{braces fixed}
 % \changes{v2.8q}{2001/11/17}{using \cs{AfterPackage} to test for
 %   \pkg{hyperref} version}
 % \changes{v3.27a}{2019/11/11}{warning fixed}
-% \begin{description}
-% \item[ToDo:] Unfortunately \pkg{hyperref} until version 6.71a has a big fat
-%   bug. It redefines the internal \KOMAScript{} macro \cs{@addchap} without
-%   testing the definition.  From version 6.71b this is done only, if a very
-%   old \KOMAScript{} is used. However, I would prefer removing all such code
-%   from \pkg{hyperref}. Currently we warn, if such an old \pkg{hyperref} is
-%   used. But this will be removed in future.
-% \end{description}
 %    \begin{macrocode}
-%<*book>
-\AfterPackage{hyperref}{%
-  \@ifpackagelater{hyperref}{2001/02/19}{}{%
-    \ClassWarningNoLine{\KOMAClassName}{%
-      You are using an old version of the hyperref package!\MessageBreak%
-      This version has a buggy hack in many drivers,\MessageBreak%
-      causing \string\addchap\space to behave strangely.\MessageBreak%
-      Please update hyperref to at least version 6.71b%
-    }%
-  }%
-}
-%</book>
 %</body>
 %    \end{macrocode}
 % \end{macro}^^A \@saddchap
@@ -5592,6 +5545,7 @@
 %
 % \begin{command}{\addchapmark}
 % \changes{v3.12}{2013/03/26}{added}
+% \changes{v3.49.3}{2026/10/11}{Simplify by using \cs{@currentusenumberfalse}}
 % \cs{addchap} and marks for running heads are a little bit more
 % complicated. Currently we are using a local redefinition of
 % \cs{if@mainmatter} and setting of \cnt{secnumdept} to switch of numbering
@@ -5604,10 +5558,8 @@
 %    \begin{macrocode}
 \newcommand*\addchapmark[1]{%
   \begingroup
-    \expandafter\let\csname if@mainmatter\expandafter\endcsname
-    \csname iffalse\endcsname
-    \c@secnumdepth=\numexpr \chapternumdepth-1\relax
-    \chaptermark{#1}%
+  \@currentusenumberfalse
+  \chaptermark{#1}%
   \endgroup
 }
 %    \end{macrocode}
@@ -5763,15 +5715,13 @@
 %   \cs{markright}}
 % \changes{v2.7a}{2001/01/04}{supporting \pkg{hyperref}}
 % \changes{v3.13a}{2014/09/11}{using \cs{SecDef}}
+% \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
 % \begin{macro}{\@addsec}
 % \changes{v3.10}{2011/08/30}{using \cs{addsectiontocentry}}
 % \changes{v3.10}{2011/08/30}{extended optional argument}
 % \changes{v3.12}{2013/02/26}{using \cs{addsecmark}}
 % \changes{v3.18}{2015/05/22}{redefinition}
-% \begin{macro}{\@saddsec}
-% \changes{v3.12}{2013/02/26}{using \cs{addsecmark}}
-% \changes{v3.17}{2015/04/20}{expanding \cs{scr@ds@head} in \cs{addsecmark}}
-% \changes{v3.49.3}{2026/08/27}{Switch to use \cs{scr@extendedSecDef}}
+% \changes{v3.49.3}{2026/10/11}{Generalize for all section styles}
 % Since \KOMAScript{} 3.18 using
 % \begin{quote}
 %   \cs{addsec}\oarg{head or ToC entry}\marg{heading}
@@ -5791,22 +5741,23 @@
 % \end{description}
 %    \begin{macrocode}
 %<*body>
-\newcommand\addsec{\scr@extendedSecDef{nonumber=true,head={},tocentry={}}{section}\@addsec}
+\newcommand\addsec{\scr@extendedSecDef{nonumber=true,head={},tocentry={}}{section}{\@addsec{section}}}
 \newcommand*{\@addsec}{}
-\def\@addsec[#1]#2{%
+\def\@addsec#1[#2]#3{%
   \edef\reserved@a{%
     \unexpanded{%
-      \section[{#1}]{#2}%
+      \UseName{#1}[{#2}]{#3}%
       \c@secnumdepth=
     }\the\c@secnumdepth\relax
   }%
-  \c@secnumdepth=\numexpr \sectionnumdepth-1\relax
+  \c@secnumdepth=\numexpr\UseName{#1numdepth}-1\relax
   \reserved@a
 }
-\newcommand*{\@saddsec}[1]{%
-  \section*{#1}\addsecmark{}%
-}
 %    \end{macrocode}
+% \begin{macro}{\@saddsec}
+% \changes{v3.12}{2013/02/26}{using \cs{addsecmark}}
+% \changes{v3.17}{2015/04/20}{expanding \cs{scr@ds@head} in \cs{addsecmark}}
+% \changes{v3.49.3}{2026/10/11}{Removed}
 % \end{macro}^^A \@saddsec
 % \end{macro}^^A \@addsec
 % \end{command}^^A \addsec
