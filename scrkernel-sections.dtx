@@ -976,17 +976,21 @@
 % \texttt{lot} and \texttt{lof} instead of \cs{ext@figure} and
 % \cs{ext@table}. This is a fixed one:
 %    \begin{macrocode}
-  \scr@ifundefinedorrelax{scr@mt@saved@sect}{}{%
-    \expandafter\ifx\csname #1\endcsname\section
-      \addcontentsline{\ext@figure}{xsect}{\@currenttocentry}%
-      \addcontentsline{\ext@table}{xsect}{\@currenttocentry}%
-    \fi
-    \expandafter\ifx\csname #1\endcsname\starsection\relax
-      \addcontentsline{\ext@figure}{xsect}{\@currenttocentry}%
-      \addcontentsline{\ext@table}{xsect}{\@currenttocentry}%
-    \fi
+  \ExpandArgs{c}\Ifstr{scr@#1@style}{section}{%
+    \scr@ifundefinedorrelax{scr@mt@saved@sect}{}{%
+      \expandafter\ifx\csname #1\endcsname\section
+        \addcontentsline{\ext@figure}{xsect}{\@currenttocentry}%
+        \addcontentsline{\ext@table}{xsect}{\@currenttocentry}%
+      \fi
+      \expandafter\ifx\csname #1\endcsname\starsection\relax
+        \addcontentsline{\ext@figure}{xsect}{\@currenttocentry}%
+        \addcontentsline{\ext@table}{xsect}{\@currenttocentry}%
+      \fi
+    }%
+    \let\IfUsePrefixLine\@secondoftwo
+  }{%
+    \def\scr@sect@runin##1##2##3{##1}%
   }%
-  \let\IfUsePrefixLine\@secondoftwo
   \Ifnumbered{#1}{\@tempswafalse}{\@tempswatrue}%
 %<*book>
   \ExpandArgs{c}\Ifstr{scr@#1@style}{chapter}{%
@@ -1121,6 +1125,8 @@
       tocentry=`\detokenize\expandafter{\@currenttocentry}'\MessageBreak
       reference=`\detokenize\expandafter{\@currentlabelname}'}%
 %</trace>
+    \par\nobreak
+    \ExpandArgs{c}\vskip{scr@#1@afterskip}%
 }
 %
 % \begin{macro}{\scr@@sect@InsertHeadAndToc}
@@ -1393,12 +1399,11 @@
         \everypar{}%
       \fi}%
   \else
-    \par \nobreak
-    \vskip\startsection@afterskip
 %    \end{macrocode}
-% tagging: Copy change of testphase definition
+% \changes{v3.49.3}{2026/10/11}{Moved afterskip to \cs{scr@section@heading}}
 %    \begin{macrocode}
-%<tagging-lab>    \UseTaggingSocket{para/restore}
+    \UseTaggingSocket{para/restore}
+    \nobreak
     \@afterheading
   \fi
   \ignorespaces
@@ -4852,220 +4857,42 @@
     }%
   }%
   \ExecuteDoHook{heading/postinit/#1}%
-  \ExpandArgs{nnc}\scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{@#1}
+  \scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{%
+      \scr@sect{#1}{}%
+  }%
 }
 %    \end{macrocode}
 %
 % \begin{macro}{\scr@@startchapter}
 % \changes{v3.18}{2015/05/22}{added}
 % \changes{v3.49.3}{2026/08/27}{Move hook to \cs{scr@extendedSecDef}}
-% The macro
-% \begin{quote}
-%   \cs{scr@@startchapter}\marg{chapter command name}\oarg{extended optional
-%   argument}\marg{chapter heading}
-% \end{quote}
-% is now part of the style \texttt{chapter}. However, the main parts
-% of the code are from the original definition of \cs{@chapter}. Therefore it
-% has the mandatory and optional arguments of a non-star variant of, i.e.,
-% \cs{chapter} but an additional first argument.
-% \begin{description}
-% \item[Note:] \meta{extended optional argument} is named as optional, however
-%   here it is already mandatory, because it is a delimited argument.
-% \end{description}
-%    \begin{macrocode}
-\newcommand*{\scr@@startchapter}{}
-\def\scr@@startchapter#1[#2]#3{%
-%    \end{macrocode}
 % \changes{v3.10}{2011/08/30}{extended optional argument}
 % \changes{v3.27}{2019/07/08}{option \opt{nonumber} added}
 % \changes{v3.49.3}{2026/08/27}{option \opt{nohead} added}
-% First of all, depending in \opt{headings=optionto\dots} we have different
-% defaults for the options.
-%    \begin{macrocode}
-  \ifnum \scr@osectarg=\z@
-    \@scr@tempswafalse
-  \else
-    \scr@istest#2=\@nil
-  \fi
-  \@currentusenumbertrue
-  \@currentuseheadtrue
-  \if@scr@tempswa
-    \setkeys{KOMAarg.section}{tocentry={#3},head={#3},reference={#3},#2}%
-  \else
-    \ifcase \scr@osectarg\relax
-      \setkeys{KOMAarg.section}{tocentry={#2},head={#2},reference={#2}}%
-    \or
-      \setkeys{KOMAarg.section}{tocentry={#3},head={#2},reference={#3}}%
-    \or
-      \setkeys{KOMAarg.section}{tocentry={#2},head={#3},reference={#2}}%
-    \or
-      \setkeys{KOMAarg.section}{tocentry={#2},head={#2},reference={#2}}%
-    \fi
-  \fi
-%    \end{macrocode}
+% \changes{v3.49.3}{2026/10/11}{Removed}
 % \changes{v2.8e}{2001/07/10}{using \cs{@maybeautodot}}
 % \changes{v3.08}{2010/11/01}{using \cs{addchaptertocentry}}
 % \changes{v3.18}{2015/05/20}{using \cs{add\meta{name}tocentry}}
 % \changes{v3.18}{2015/05/22}{using \meta{name} instead of \cs{@chapapp}
-%   in \cs{typeout}}
 % \changes{v3.28}{2019/11/19}{\cs{ifnumbered} renamed to
-%   \cs{Ifnumbered}}
-% For numbered headings we have to increase the counter and write a process
-% information to the \file{log} and the terminal.
-%    \begin{macrocode}
-  \Ifnumbered{#1}{%
-%<book>   \if@mainmatter
-      \@tempswatrue
-      \let\IfUseNumber\@firstoftwo
-%<book>   \else\@tempswafalse\let\IfUseNumber\@secondoftwo\fi
-  }{\@tempswafalse\let\IfUseNumber\@secondoftwo}%
-	\UseTaggingSocket{scr/sec/heading/begin}{#1}
-%
-  \if@tempswa
-    \refstepcounter{#1}%
-    \expandafter\@maybeautodot\csname the#1\endcsname
-    \typeout{#1 \csname the#1\endcsname.}%
-%    \end{macrocode}
 % \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
-% \begin{description}
-% \item[ToDo]: Move \cs{autodot} to the definition of \cs{\dots tocformat}.
-% \end{description}
 % \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc} instead of toc entry}
-%    \begin{macrocode}
-\else
-%    \end{macrocode}
-% For not numbered headings we still have to process the reset list of the
-% counter and write a process information to the \file{log} and the terminal.
-%    \begin{macrocode}
-%<!v4>    \expandafter\ifnum\scr@v@is@ge{3.15}\relax
-      \begingroup
-        \let\@elt\@stpelt
-        \csname cl@#1\endcsname
-      \endgroup
-%<!v4>    \fi
-    \typeout{#1 without number}%
-%    \end{macrocode}
 % \changes{v3.49.3}{2026/09/22}{Move anchor, to also be added for headings without
 % toc entry.}
-%    \begin{macrocode}
-     \hy@insteadofrefstepcounter{#1}%
-%    \end{macrocode}
-% And before writing a not numbered entry to the table of contents we have to
-% execute also the \pkg{hyperref} hook \cs{hy@insteadofrefstepcounter}.
-% \begin{description}
-% \item[Note:] \pkg*{scrhack} uses the existence of this command to detect a
-%   \KOMAScript{} class. Shouldn't this be changed using, e.g.,
-%   \cs{KOMAClassName}?
-% \end{description}
-%    \begin{macrocode}
-  \fi
-%    \end{macrocode}
-% Set the mark for the running head. Here we have to do a one step expansion
-% of \cs{@currentheadentry}, because otherwise it would change with every
-% \cs{section}, \cs{subsection} \dots
-%    \begin{macrocode}
-
-%    \end{macrocode}
 % \changes{v2.8g}{2001/07/18}{support for \cs{float@addtolists}}
 % \changes{v3.43}{2024/10/24}{support for \cs{float@addtolists} removed}
 % \changes{v3.28}{2019/11/19}{\cs{iftocfeature} replaced by \cs{Iftocfeature}}
 % \changes{v3.49.3}{2026/08/28}{Only add gap if there is a toc entry}
-% Depending on feature \texttt{chapteratlist} we have to add a vertical space
-% to other directories. And for compatibility we also support the deprecated
-% \cs{float@addtolists} but not without warning.
-% \begin{description}
-% \item[ToDo:] Why do we add the gap here but also use \cs{addcontentsline}
-%   in \cs{addchaptertocentry}? Is this a bug? Should this be standardized?
-%
-%   I understand the chapter here as a style feature vs. a heading feature …
-%   As the option is global I would rather interprete it as something connected to the heading style.
-% \end{description}
-%    \begin{macrocode}
-%    \end{macrocode}
 %   \changes{v3.18}{2015/05/22}{\cs{@makechapterhead} replaced by
 %     \cs{@make\meta{Name}head}}
 %   \changes{v3.36}{2022/03/16}{warning about deprecated \cs{@makechapterhead}}
-% Setting the heading itself is more or less a call of \cs{@make\meta{command
-% name}head}.
-% \begin{description}
-% \item[ToDo:] Using \cs{scr@makechapterhead}\marg{command name} would be the
-%   better solution. However in this case, every redefinition of
-%   \cs{@makechapterhead} would be ignored. So currently we support such
-%   deprecated redefinition of internal macro \cs{@makechapterhead} for
-%   \cs{chapter}. But this will be changed in future.
-% \end{description}
-%    \begin{macrocode}
-  \if@twocolumn
-    \if@at@twocolumn
-      \@nameuse{@make#1head}{#3}%
-    \else
-%    \end{macrocode}
 %   \changes{v3.46}{2025/08/19}{vertical alignment of chapters in twocolumn
 %     mode improved}
-% Here we have a problem or even two. First: Inside \cs{@topnewpage} the
-% paragraph settings are reset like with \cs{parboxrestore}. So we need to
-% store the settings outside and restore them inside. Restoring \cs{parskip}
-% usually would be enough, but we do the whole thing. Second: \cs{@topnewpage}
-% is output before \cs{topskip} us used. But here we need \cs{topskip} be used
-% first. So we need to compensate this by extra \cs{vskip} before and the
-% content.
-%    \begin{macrocode}
-      \edef\scr@restoreparsetup{%
-        \parskip\the\parskip
-        \parfillskip\the\parfillskip
-        \parindent\the\parindent
-      }%
-      \@topnewpage[%
-%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
-        \scr@restoreparsetup
-        \vskip\topskip
-%<!v4>        \fi
-        \@nameuse{@make#1head}{#3\ifhmode\strut\fi}%
-%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
-        \vskip\dimeval{\ht\strutbox-\dp\strutbox-\topskip+\parskip}%
-%<!v4>        \fi
-      ]%
-    \fi
-  \else
-    \@nameuse{@make#1head}{#3}%
-  \fi
-%    \end{macrocode}
 % \changes{v3.18}{2015/05/21}{always using \cs{@afterheading}}
-% And finally the end of every outline command.
-%    \begin{macrocode}
-	\UseTaggingSocket{para/restore}%
-  \@afterheading
-}
-%    \end{macrocode}
+%
 % \begin{macro}{\scr@t@st@nd@w@rn@m@k@ch@pt@rh@@d}
 % \changes{v3.36}{2022/03/16}{added}
-% The test and warning used inside \cs{scr@@startchapter}.
-%    \begin{macrocode}
-%<!v4>\expandafter\ifnum\scr@v@is@ge{3.36}%
-  \newcommand*{\scr@t@st@nd@w@rn@m@k@ch@pt@rh@@d}[1]{%
-    \Ifstr{#1}{chapter}{%
-      \begingroup
-        \def\reserved@a{\scr@makechapterhead{chapter}}%
-        \ifx\@makechapterhead\reserved@a\else
-          \ClassWarningNoLine{\KOMAClassName}{%
-            Redefinition of \string\@makechapterhead\space detected.\MessageBreak
-            Note: KOMA-Script does use styles for commands like\MessageBreak
-            \string\chapter. Currently it internally still provides and\MessageBreak
-            uses \string\@makechapterhead, but a completely different\MessageBreak
-            definition compared to the standard classes.\MessageBreak
-            So redefining or using internal \string\@makechapterhead\MessageBreak
-            by users or package authors may already break\MessageBreak
-            KOMA-Script and will not work with a coming version,\MessageBreak
-            that will remove this deprecated code}%
-          \let\scr@t@st@nd@w@rn@m@k@ch@pt@rh@@d\@gobbble
-        \fi
-      \endgroup
-    }{}%
-  }
-%<!v4>\else
-%<!v4>  \let\scr@t@st@nd@w@rn@m@k@ch@pt@rh@@d\@gobble
-%<!v4>\fi
-%    \end{macrocode}
+% \changes{v3.49.3}{2026/10/11}{Removed}
 % \end{macro}^^A \scr@t@st@nd@w@rn@m@k@ch@pt@rh@@d
 % \end{macro}^^A \scr@@startchapter
 %
@@ -5124,6 +4951,46 @@
 % \changes{v3.15}{2014/12/09}{\cs{raggedchapter} replaced by \cs{raggedsection}}
 % \changes{v3.17}{2015/04/03}{using \cs{usefontofkomafont} for initial font
 %   changed}
+\NewDocumentCommand{\scr@chapter@heading}{mmm}{
+  \if@twocolumn
+    \if@at@twocolumn
+      \@nameuse{@make#1head}{#3}%
+    \else
+%    \end{macrocode}
+%   \changes{v3.46}{2025/08/19}{vertical alignment of chapters in twocolumn
+%     mode improved}
+% Here we have a problem or even two. First: Inside \cs{@topnewpage} the
+% paragraph settings are reset like with \cs{parboxrestore}. So we need to
+% store the settings outside and restore them inside. Restoring \cs{parskip}
+% usually would be enough, but we do the whole thing. Second: \cs{@topnewpage}
+% is output before \cs{topskip} us used. But here we need \cs{topskip} be used
+% first. So we need to compensate this by extra \cs{vskip} before and the
+% content.
+%    \begin{macrocode}
+      \edef\scr@restoreparsetup{%
+        \parskip\the\parskip
+        \parfillskip\the\parfillskip
+        \parindent\the\parindent
+      }%
+      \@topnewpage[%
+%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
+        \scr@restoreparsetup
+        \vskip\topskip
+%<!v4>        \fi
+        \@nameuse{@make#1head}{#3\ifhmode\strut\fi}%
+%<!v4>        \expandafter\ifnum\scr@v@is@ge{3.46}\relax
+        \vskip\dimeval{\ht\strutbox-\dp\strutbox-\topskip+\parskip}%
+%<!v4>        \fi
+      ]%
+    \fi
+  \else
+    \@nameuse{@make#1head}{#3}%
+  \fi
+%    \end{macrocode}
+% \changes{v3.18}{2015/05/21}{always using \cs{@afterheading}}
+% \changes{v3.49.3}{2026/10/11}{\cs{@afterheading} will be used by \cs{scr@xsect}}
+%    \begin{macrocode}
+}
 % Macros
 % \begin{quote}\raggedright
 %   \cs{scr@makechapterhead}\marg{chapter command name}\marg{heading}\\
@@ -5463,7 +5330,7 @@
 % \end{description}
 %    \begin{macrocode}
 \newcommand\addchap{%
-  \scr@extendedSecDef{nonumber=true,head={},tocentry={}}{section}\@addchap
+  \scr@extendedSecDef{nonumber=true,head={},tocentry={}}{chapter}\@addchap
 }%
 \newcommand*{\@addchap}{}%
 \long\def\@addchap[#1]#2{%

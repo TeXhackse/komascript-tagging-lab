@@ -76,12 +76,6 @@
 % \cs{Ifnumbered} does not include the check for \cs{if@mainmatter}.
 % Might be better to resolve this during the option handling.
 %    \end{macrocode}
-  \Ifstr{\@nameuse{scr@#1@style}}{chapter}{
-		\if@tempswa\else
-			\bool_set_true:N\l__scrkernel_sec_nonumber_bool
-		\fi
-	}{}
-%    \end{macrocode}
 % \cs{@currentlabelname} is prepared to be read from aux file, where catcodes usually are configured with \cs{makeatletter}.
 % Currently this does not take care of otherwhise changed catcodes, so we need to ensure to captured a pure version of the section title.
 %    \begin{macrocode}
