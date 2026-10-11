@@ -4533,15 +4533,14 @@
 % \begin{command}{\addpartmark}
 % \changes{v3.17}{2015/04/20}{added}
 % \changes{v3.18}{2015/05/24}{depends on \cs{partnumdepth}}
+% \changes{v3.49.3}{2026/10/11}{Simplify using \cs{@currentusenumberfalse}}
 % To be used to add the marks with \cs{addpart}. Locally we define
 % \cs{if@mainmatter}, because it makes life easier for users or package
 % authors, who (re-)define \cs{partmark}.
 %    \begin{macrocode}
 \newcommand*\addpartmark[1]{%
   \begingroup
-    \expandafter\let\csname if@mainmatter\expandafter\endcsname
-    \csname iffalse\endcsname
-    \c@secnumdepth=\numexpr \partnumdepth-1\relax
+    \@currentusenumberfalse
     \partmark{#1}%
   \endgroup
 }
@@ -5976,14 +5975,13 @@
 %
 % \begin{command}{\addsecmark}
 % \changes{v3.12}{2013/03/26}{added}
+% \changes{v3.49.3}{2026/10/11}{Simplified using \cs{@currentusenumberfalse}}
 % \cs{addsec} and marks for running heads are a little bit
-% complicated. Currently we are using a local setting of \cnt{secnumdept} to
-% switch of numbering and then using \cs{sectionmark}. So the \cs{sectionmark}
-% definition should always respect \cnt{secnumdepth}.
+% complicated.
 %    \begin{macrocode}
 \newcommand*\addsecmark[1]{%
   \begingroup
-    \c@secnumdepth=\numexpr \sectionnumdepth-1\relax
+    \@currentusenumberfalse
     \sectionmark{#1}%
   \endgroup
 }
