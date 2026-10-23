@@ -951,8 +951,16 @@
   \else
     \scr@istest#3=\@nil
   \fi
-  \@currentusenumbertrue
-  \@currentuseheadtrue
+%    \end{macrocode}
+% \changes{v3.49.4}{2026/10/23}{Add Support to change default behaviour of Number/Head for \cs{addsec}/\cs{addchap}/\cs{addpart} commands}
+%    \begin{macrocode}
+  \scr@ifundefinedorrelax{scr@reset@osectarg}{%
+    \@currentusenumbertrue
+    \@currentuseheadtrue
+  }{%
+    \scr@reset@osectarg
+    \global\let\scr@reset@osectarg\relax
+  }%
   \if@scr@tempswa
     \setkeys{KOMAarg.section}{tocentry={#4},head={#4},reference={#4},#3}%
   \else
@@ -1134,31 +1142,39 @@
 % Auxiliary command to conditionally insert head and toc for all heading variants.
 %    \begin{macrocode}
 \NewDocumentCommand{\scr@@sect@InsertHeadAndToc}{m}{%
+%	\ifvmode\UseName{tl_show:n}{vmode1-#1}\else\UseName{tl_show:n}{not-vmode1-#1}\fi
   \if@currentusehead
     \ExpandArgsCS{o}{#1mark}{\@currentheadentry}%
   \fi
+%	\ifvmode\UseName{tl_show:n}{vmode2}\else\UseName{tl_show:n}{not-vmode2}\fi
   \ifx\@currenttocentry\@empty\else
     \scr@ifundefinedorrelax{add#1tocentry}{%
-      \ExpandArgs{c}\gdef{add#1tocentry}####1####2{%
-        \addtocentrydefault{#1}{####1}{####2}%
+      \scr@ifundefinedorrelax{add\UseName{scr@#1@style}tocentry}{%
+        \ExpandArgs{c}\gdef{add#1tocentry}####1####2{%
+          \addtocentrydefault{#1}{####1}{####2}%
+        }%
+      }{%
+        \ExpandArgs{c}\gdef{add#1tocentry}####1####2{%
+          \UseName{add\UseName{scr@#1@style}tocentry}{#1}{####1}{####2}%
+        }%
       }%
     }{}%
-    \ifcase
-      \if@currentusenumber
-        \ifnum\numexpr\UseName{#1numdepth}>\c@secnumdepth\z@\else\@ne\fi
-      \else
-        \z@
-      \fi
-      \UseName{add#1tocentry}{}{\@currenttocentry}%
-    \else
+	%\ifvmode\UseName{tl_show:n}{vmode3}\else\UseName{tl_show:n}{not-vmode3}\fi
+    \IfUseNumber{%
       \@ifundefined{#1tocformat}{%
         \ExpandArgs{c}\gdef{#1tocformat}{\UseName{the#1}}%
       }{}%
       \ExpandArgsCS{c}{add#1tocentry}{#1tocformat}{%
         \@currenttocentry}%
-    \fi
+    }{%
+      \UseName{add#1tocentry}{}{\@currenttocentry}%
+    }
+%	\ifvmode\UseName{tl_show:n}{vmode4}\else\UseName{tl_show:n}{not-vmode4}\fi
   \fi
 }
+
+
+
 %</body>
 %<*body|tagging-lab>
 %    \end{macrocode}
@@ -1403,7 +1419,6 @@
 % \changes{v3.49.3}{2026/10/11}{Moved afterskip to \cs{scr@section@heading}}
 %    \begin{macrocode}
     \UseTaggingSocket{para/restore}
-    \nobreak
     \@afterheading
   \fi
   \ignorespaces
@@ -4170,15 +4185,10 @@
 % \changes{v3.25}{2018/02/12}{using correct fontelement}
 % \changes{v3.28}{2019/11/19}{\cs{ifnumbered} renamed to
 % \cs{Ifnumbered}}
-% Now the main printing code.
-% \begin{description}
-% \item[ToDo:] This code is almost the same as \cs{scr@@startchapter}. Only
-%   the procession of the reset list was there already with
-%   \KOMAScript~v3.15. And in \cs{scr@@startchapter} we are using
-%   \cs{@make\meta{name}head} here. So maybe we should do the same here and
-%   really use the same definition instead of having it twice.
-% \end{description}
+% \changes{v3.49.4}{2026/10/23}{move printing code to \cs{scr@part@heading}}
+% \begin{macro}{\scr@chapter@heading}
 %    \begin{macrocode}
+\NewDocumentCommand{\scr@part@heading}{mmm}{
   \begingroup
     \def\IfUseNumber{\Ifnumbered{#1}}%
     \ExecuteDoHook{heading/begingroup/#1}%
@@ -4362,14 +4372,10 @@
 }
 \newcommand*{\scr@chapter@before@hyperref@patch}{%
   \let\scr@orig@chapter\@chapter
-  \let\scr@orig@schapter\@schapter
-  \let\scr@orig@addchap\@addchap
 }
 \BeforePackage{hyperref}{\scr@chapter@before@hyperref@patch}
 \newcommand*{\scr@chapter@after@hyperref@patch}{%
   \let\@chapter\scr@orig@chapter
-  \let\@schapter\scr@orig@schapter
-  \let\@addchap\scr@orig@addchap
 }
 \AfterAtEndOfPackage{hyperref}{\scr@chapter@after@hyperref@patch}
 %    \end{macrocode}
@@ -5731,14 +5737,11 @@
 \newcommand\addsec{\scr@extendedSecDef{nonumber=true,head={},tocentry={}}{section}{\@addsec{section}}}
 \newcommand*{\@addsec}{}
 \def\@addsec#1[#2]#3{%
-  \edef\reserved@a{%
-    \unexpanded{%
-      \UseName{#1}[{#2}]{#3}%
-      \c@secnumdepth=
-    }\the\c@secnumdepth\relax
-  }%
-  \c@secnumdepth=\numexpr\UseName{#1numdepth}-1\relax
-  \reserved@a
+  \def\scr@reset@osectarg{%
+    \@currentusenumberfalse
+    \@currentuseheadtrue
+  }
+  \UseName{#1}[{#2}]{#3}%
 }
 %    \end{macrocode}
 % \begin{macro}{\@saddsec}
@@ -5941,7 +5944,6 @@
 %<*(body&class&!letter)|tagging-lab>
 %<!tagging-lab>\renewcommand*{\@seccntformat}[1]{%
 %<tagging-lab>\newcommand*{\scrlab@seccntformat}[1]{%
-%<tagging-lab>   \SuspendTagging{seccntformat}{}
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
 %<!v4>    \protect\othersectionlevelsformat{#1}{%
 %<!v4>      \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
@@ -5951,7 +5953,6 @@
         \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
     }{\expandafter\protect\csname #1format\endcsname}%
 %<!v4>  \fi
-%<tagging-lab>    \ResumeTagging{seccntformat}%
 }
 %</(body&class&!letter)|tagging-lab>
 %<*class&!letter>
