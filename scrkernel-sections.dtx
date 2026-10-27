@@ -4094,109 +4094,23 @@
 % \changes{v3.49.3}{2026/08/27}{support for option \opt{nohead}}
 % \changes{v3.49.3}{2026/08/27}{move hook to \cs{scr@extendedSecDef}}
 % \changes{v3.49.4}{2026/10/23}{removed}
-% The macro
-% \begin{quote}
-%   \cs{scr@@startpart}\marg{part command name}\oarg{extended optional
-%   argument}\marg{part heading}
-% \end{quote}
-% is now part of the style \texttt{part}. However, the main parts
-% of the code are from the original definition of \cs{@part}. Therefore it has
-% the mandatory and optional arguments of a non-star variant of, i.e.,
-% \cs{part} but an additional first argument.
-% \begin{description}
-% \item[Note:] \meta{extended optional argument} is named as optional, however
-%   here it is already mandatory, because it is a delimited argument.
-% \end{description}
-%    \begin{macrocode}
-\newcommand{\scr@@startpart}{}
-\long\def\scr@@startpart#1[#2]#3{%
-%    \end{macrocode}
 % \changes{v3.10}{2011/08/30}{extended optional argument}
-% First of all, depending in \opt{headings=optionto\dots} we have different
-% defaults for the options.
-%    \begin{macrocode}
-  \ifnum \scr@osectarg=\z@
-    \@scr@tempswafalse
-  \else
-    \scr@istest#2=\@nil
-  \fi
-  \@currentusenumbertrue
-  \@currentuseheadtrue
-  \if@scr@tempswa
-    \setkeys{KOMAarg.section}{tocentry={#3},head={#3},reference={#3},#2}%
-  \else
-    \ifcase \scr@osectarg\relax
-      \setkeys{KOMAarg.section}{tocentry={#2},head={#2},reference={#2}}%
-    \or
-      \setkeys{KOMAarg.section}{tocentry={#3},head={#2},reference={#3}}%
-    \or
-      \setkeys{KOMAarg.section}{tocentry={#2},head={#3},reference={#2}}%
-    \or
-      \setkeys{KOMAarg.section}{tocentry={#2},head={#2},reference={#2}}%
-    \fi
-  \fi
-%    \end{macrocode}
 % \changes{v2.8e}{2001/07/10}{using \cs{@maybeautodot}}
 % \changes{v3.28}{2019/11/19}{\cs{ifnumbered} renamed to
 %   \cs{Ifnumbered}}
 % \changes{v3.31}{2020/06/02}{\cs{@maybeautodot}\cs{thepart} removed}
-% For numbered headings we have to increase the counter and write a process
-% information to the \file{log} and the terminal.
-%    \begin{macrocode}
-  \Ifnumbered{#1}{%
-    \let\IfUseNumber\@firstoftwo
-    \UseTaggingSocket{scr/sec/heading/begin}{#1}
-    \refstepcounter{#1}%
-    \expandafter\@maybeautodot\csname the#1\endcsname
-    \typeout{#1 \csname the#1\endcsname.}%
-%    \end{macrocode}
 % \changes{v3.08}{2010/11/01}{using \cs{addparttocentry}}
 % \changes{v3.18}{2015/05/20}{using \cs{add\meta{Name}tocentry} for
 %   \cs{typeout}}
 % \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}
-% And if the ToC entry is not empty add a numbered entry to the table of
-% contents.
-% \begin{description}
-% \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
-% \end{description}
 % \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
-%    \begin{macrocode}
-  }{%
-%    \end{macrocode}
 % \changes{v3.49.3}{2026/09/22}{Move anchor, to also be added for headings without
 % toc entry.}
-%    \begin{macrocode}
-    \let\IfUseNumber\@secondoftwo
-    \UseTaggingSocket{scr/sec/heading/begin}{#1}
-    \hy@insteadofrefstepcounter{#1}%
-%    \end{macrocode}
 % \changes{v3.18}{2015/05/23}{execute counter reset list for not numbered
 %   headings}
-% For not numbered headings we still have to process the reset list of the
-% counter and write a process information to the \file{log} and the terminal.
-%    \begin{macrocode}
-%<!v4>    \expandafter\ifnum\scr@v@is@ge{3.18}\relax
-      \begingroup
-        \let\@elt\@stpelt
-        \csname cl@#1\endcsname
-      \endgroup
-%<!v4>    \fi
-    \typeout{#1 without number}%
-%    \end{macrocode}
 % \changes{v3.08}{2010/11/01}{using \cs{addparttocentry}}
 % \changes{v3.18}{2015/05/23}{generalized \cs{addparttocentry}}
-% And before writing a not numbered entry to the table of contents we have to
-% execute also the \pkg{hyperref} hook \cs{hy@insteadofrefstepcounter}.
-% \begin{description}
-% \item[Note:] \pkg*{scrhack} uses the existence of this command to detect a
-%   \KOMAScript{} class. Shouldn't this be changed using, e.g.,
-%   \cs{KOMAClassName}?
-% \end{description}
 % \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
-%    \begin{macrocode}
-  }%
-}
-%    \end{macrocode}
 % \changes{v3.49.4}{2026/10/23}{move printing code to \cs{scr@part@heading}}
 % \changes{v2.2c}{1995/05/25}{support for CJK}
 % \changes{v2.4b}{1996/03/29}{\cs{size@partnumer} replaced by
@@ -4213,6 +4127,7 @@
 % \changes{v3.28}{2019/11/19}{\cs{ifnumbered} renamed to
 % \cs{Ifnumbered}}
 % \begin{macro}{\scr@part@heading}
+% \changes{v3.49.4}{2026/10/23}{Added as a more generic replacement for \cs{scr@@startpart}
 %    \begin{macrocode}
 \NewDocumentCommand{\scr@part@heading}{mmm}{
   \begingroup
