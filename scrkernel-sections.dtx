@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4293 of the repository:
+% This file is based on revision 4332 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-sections.dtx 4293 2026-09-02 18:13:58Z texhackse $
+%%% From File: $Id: scrkernel-sections.dtx 4322 2026-10-16 07:00:00Z kohm $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -53,9 +53,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-09-02 20:13:58 +0200 (Wed, 02 Sep 2026) $
+  \filedate$Date: 2026-10-16 09:00:00 +0200 (Fri, 16 Oct 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4293 $
+  \filerevision$Revision: 4322 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-sections.dtx}%
@@ -451,6 +451,8 @@
 % otherwise execute code \meta{not numbered}.
 %    \begin{macrocode}
 %<*body>
+%<*deprecated>
+\expandafter\ifnum\scr@v@is@eq{first}\relax
 \providecommand*{\ifnumbered}{%
   \ClassWarning{\KOMAClassName}{Usage of deprecated command
     `\string\ifnumbered'.\MessageBreak
@@ -460,6 +462,8 @@
   }%
   \Ifnumbered
 }
+\fi
+%</deprecated>
 \newcommand*{\Ifnumbered}[1]{%
   \if@currentusenumber
     \scr@ifundefinedorrelax{#1numdepth}{%
@@ -475,6 +479,8 @@
     \expandafter\@secondoftwo
   \fi
 }
+%<*deprecated>
+\expandafter\ifnum\scr@v@is@eq{first}\relax
 \providecommand*{\ifunnumbered}{%
   \ClassWarning{\KOMAClassName}{Usage of deprecated command
     `\string\ifunnumbered'.\MessageBreak
@@ -484,6 +490,8 @@
   }%
   \Ifunnumbered
 }
+\fi
+%</deprecated>
 \newcommand*{\Ifunnumbered}[1]{%
   \Ifnumbered{#1}{\@secondoftwo}{\@firstoftwo}%
 }
@@ -697,6 +705,9 @@
     \expandafter\let\expandafter\scr@sect@runin
     \csname scr@#1@runin\endcsname
   }%
+%    \end{macrocode}
+% \changes{v3.49.3}{2026/10/11}{Fix definition of \cs{startsection@afterskip}}
+%    \begin{macrocode}
   \scr@sect@runin{%
     \def\startsection@afterskip{\glueexpr #5\relax}%
     \expandafter\let\csname if@currentrunin\expandafter\endcsname
@@ -782,6 +793,8 @@
 % \dhook{heading/postinit} do hook. However the do hooks are command specific,
 % but the argument of \cs{At@startsection} is style specific.
 %    \begin{macrocode}
+%<*deprecated>
+\expandafter\ifnum\scr@v@is@eq{first}\relax
 \newcommand*{\At@startsection}[1]{%
   \ClassInfo{\KOMAClassName}{%
     Usage of deprecated command `\string\At@startsection'
@@ -791,6 +804,8 @@
   }%
   \AddtoDoHook{heading/postinit}{\scr@doonlyifstyleofargis{#1}{section}}%
 }
+\fi
+%</deprecated>
 %    \end{macrocode}
 % \begin{macro}{\scr@doonlyifstyleofargis}
 % \changes{v3.27}{2019/02/04}{added}
@@ -813,6 +828,8 @@
 % \dhook{heading/branch/star} do hook. However the do hooks are command
 % specific, but the argument of \cs{Before@ssect} is style specific.
 %    \begin{macrocode}
+%<*deprecated>
+\expandafter\ifnum\scr@v@is@eq{first}\relax
 \newcommand*{\Before@ssect}[1]{%
   \ClassWarning{\KOMAClassName}{%
     Usage of deprecated command `\string\Before@ssect'
@@ -822,6 +839,8 @@
   }%
   \AddtoDoHook{heading/branch/star}{\scr@doonlyifstyleofargis{#1}{section}}%
 }
+\fi
+%</deprecated>
 %    \end{macrocode}
 % \end{macro}^^A \Before@ssect
 % \begin{macro}{\Before@sect}
@@ -834,6 +853,8 @@
 % \dhook{heading/branch/nostar} do hook. However the do hooks are command
 % specific, but the argument of \cs{Before@sect} is style specific.
 %    \begin{macrocode}
+%<*deprecated>
+\expandafter\ifnum\scr@v@is@eq{first}\relax
 \newcommand*{\Before@sect}[1]{%
   \ClassWarning{\KOMAClassName}{%
     Usage of deprecated command `\string\Before@sect'
@@ -843,6 +864,8 @@
   }%
   \AddtoDoHook{heading/branch/nostar}{\scr@doonlyifstyleofargis{#1}{section}}%
 }
+\fi
+%</deprecated>
 %    \end{macrocode}
 % \end{macro}^^A \Before@sect
 % \begin{macro}{\scr@section@dblarg,\scr@section@xdblarg}
@@ -1091,9 +1114,9 @@
 % \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
 % \end{description}
 %    \begin{macrocode}
-  \fi
-\let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
- \scr@xsect
+  \fi%^^A \if@currentrunin
+  \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
+  \scr@xsect
 }
 %    \end{macrocode}
 %</body|tagging-lab>
@@ -1344,7 +1367,6 @@
 %   the command.
 % \end{description}
 %    \begin{macrocode}
-
 %</body>
 %<*body|tagging-lab>
 %<!tagging-lab>\newcommand{\sectionlinesformat}[4]{%
@@ -2716,10 +2738,12 @@
       \csname add#2tocentry\endcsname[2]{%
         \addtocentrydefault{#2}{##1}{##2}%
       }%
+%<*deprecated>
       \scr@ifundefinedorrelax{scr@tso@#2@style}{%
         \expandafter\let\csname scr@tso@#2@style\expandafter\endcsname
         \csname scr@dte@#2@style\endcsname
       }{}%
+%</deprecated>
       \scr@ifundefinedorrelax{scr@tso@#2@style}{%
       }{%
         \DeclareTOCStyleEntry[\scr@dsc@tocstyle@options]{%
@@ -4055,7 +4079,7 @@
   \vbox to\z@{\vss\use@preamble{#1@o}\strut\par}%
   \vskip-\baselineskip\nobreak
 %</book|report>
-  \ExpandArgs{nnc} \scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{@#1}
+  \scr@extendedSecDef{nonumber=true,nohead=true,tocentry={}}{#1}{\scr@sect{#1}{}}%
 }
 %    \end{macrocode}
 %
@@ -4069,6 +4093,7 @@
 % \changes{v3.27}{2019/07/08}{support for option \opt{nonumber}}
 % \changes{v3.49.3}{2026/08/27}{support for option \opt{nohead}}
 % \changes{v3.49.3}{2026/08/27}{move hook to \cs{scr@extendedSecDef}}
+% \changes{v3.49.4}{2026/10/23}{removed}
 % The macro
 % \begin{quote}
 %   \cs{scr@@startpart}\marg{part command name}\oarg{extended optional
@@ -4170,7 +4195,9 @@
 % \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc}}
 %    \begin{macrocode}
   }%
+}
 %    \end{macrocode}
+% \changes{v3.49.4}{2026/10/23}{move printing code to \cs{scr@part@heading}}
 % \changes{v2.2c}{1995/05/25}{support for CJK}
 % \changes{v2.4b}{1996/03/29}{\cs{size@partnumer} replaced by
 %   \cs{size@partnumber}}
@@ -4185,8 +4212,7 @@
 % \changes{v3.25}{2018/02/12}{using correct fontelement}
 % \changes{v3.28}{2019/11/19}{\cs{ifnumbered} renamed to
 % \cs{Ifnumbered}}
-% \changes{v3.49.4}{2026/10/23}{move printing code to \cs{scr@part@heading}}
-% \begin{macro}{\scr@chapter@heading}
+% \begin{macro}{\scr@part@heading}
 %    \begin{macrocode}
 \NewDocumentCommand{\scr@part@heading}{mmm}{
   \begingroup
@@ -4236,6 +4262,7 @@
   \@afterheading
 }
 %    \end{macrocode}
+% \end{macro}^^A \scr@part@heading
 % \end{macro}^^A \scr@@startpart
 %
 % \begin{macro}{\scr@@startspart}

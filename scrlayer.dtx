@@ -1,7 +1,7 @@
 % \iffalse^^A meta-comment
 % ======================================================================
 % scrlayer.dtx
-% Copyright (c) Markus Kohm, 2012-2025
+% Copyright (c) Markus Kohm, 2012-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrlayer.dtx 4288 2026-08-28 15:16:19Z kohm $
+%%% From File: $Id: scrlayer.dtx 4314 2026-10-09 08:51:42Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -28,9 +28,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-08-28 17:16:19 +0200 (Fri, 28 Aug 2026) $
+  \filedate$Date: 2026-10-09 10:51:42 +0200 (Fri, 09 Oct 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4288 $
+  \filerevision$Revision: 4314 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrlayer.dtx}%
@@ -490,12 +490,8 @@
 % this and it may already be defined. These commands will not become part of
 % the interface!
 %    \begin{macrocode}
-\@ifundefined{pnumfont}{%
-  \newcommand{\pnumfont}{\normalfont}%
-}{}
-\@ifundefined{scr@fnt@pagenumber}{%
-  \newcommand{\scr@fnt@pagenumber}{\pnumfont}%
-}{}
+\providecommand*{\pnumfont}{\normalfont}
+\providecommand*{\scr@fnt@pagenumber}{\pnumfont}
 %</package&body>
 %    \end{macrocode}
 % \end{macro}^^A \scr@fnt@pagenumber
@@ -4154,6 +4150,9 @@
 % \subsection{Deprecated declaration of end user interfaces}
 %
 % \changes{v3.32}{2020/09/11}{the interface commands are deprecated}
+%\iffalse
+%<*deprecated>
+%\fi
 %
 % All commands of this subsection are deprecated. So they are declared as
 % internal independent from their name.
@@ -4423,6 +4422,10 @@
 %</package&init>
 %    \end{macrocode}
 % \end{macro}
+%
+%\iffalse
+%</deprecated>
+%\fi
 %
 %    \begin{macrocode}
 %</package|interface|class>

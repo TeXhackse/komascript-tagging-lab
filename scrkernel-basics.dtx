@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-basics.dtx
-% Copyright (c) Markus Kohm, 2002-2025
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-basics.dtx 4280 2026-08-27 14:34:06Z texhackse $
+%%% From File: $Id: scrkernel-basics.dtx 4303 2026-10-07 08:22:23Z kohm $
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
@@ -28,9 +28,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\def\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-08-27 16:34:06 +0200 (Thu, 27 Aug 2026) $
+  \filedate$Date: 2026-10-07 10:22:23 +0200 (Wed, 07 Oct 2026) $
   \def\filerevision$#1: #2 ${\def\filerevision{r#2}}
-  \filerevision$Revision: 4280 $
+  \filerevision$Revision: 4303 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-basics.dtx}%
@@ -39,16 +39,24 @@
   }
 \reserved@a
 %</dtx>
+%<package&base>\DeclareRelease{}{2026-02-02}{scrbase-20260202.sty}
+%<package&base>\DeclareRelease{v3.49}{2026-02-02}{scrbase-20260202.sty}
+%<package&base>\DeclareRelease{v3.49.3}{2026-02-02}{scrbase-20260202.sty}
+%<package&base>\DeclareCurrentRelease{v3.50}{2026-10-07}
 %<*dtx|(package&prepare)>
 %<package>\ProvidesPackage{%
 %<package&base>  scrbase%
 %<package&koma>  scrkbase%
 %<package>}[%
+%<*!deprecated>
 %!KOMAScriptVersion
+%</!deprecated>
+%<deprecated>  2026/02/02 v3.49.2 KOMA-Script
   package
 %<*dtx>
   source
 %</dtx>
+%<deprecated>  with deprecated options and commans
   (%
 %<base>    KOMA-Script-independent
 %<koma>    KOMA-Script-dependent
@@ -61,6 +69,15 @@
   \@@input scrstrip.inc
   \KOMAdefVariable{COPYRIGHTFROM}{2002}
   \generate{\usepreamble\defaultpreamble
+    \file{scrbase-20260202.sty}{%
+      \from{scrkernel-version.dtx}{package,scrbase,deprecated}%
+      \from{scrkernel-basics.dtx}{package,prepare,base,deprecated}%
+      \from{scrkernel-basics.dtx}{package,option,base,deprecated}%
+      \from{scrkernel-language.dtx}{package,option,base,deprecated}%
+      \from{scrkernel-basics.dtx}{package,body,base,deprecated}%
+      \from{scrkernel-language.dtx}{package,body,base,deprecated}%
+      \from{scrlogo.dtx}{logo,deprecated}%
+    }%
     \file{scrbase.sty}{%
       \from{scrkernel-version.dtx}{package,scrbase}%
       \from{scrkernel-basics.dtx}{package,prepare,base}%
@@ -172,10 +189,12 @@
 %
 % \subsection{\eTeX{} test}
 % \changes{v3.02c}{2009/02/19}{error message without \eTeX}
+% \changes{v3.49.3}{2026-10-07}{shouldn't be needed any longer}
 %
 %    \begin{macrocode}
 %<*prepare>
 %<*base>
+%<*deprecated>
 \begingroup
   \def\reserved@b{}%
   \def\reserved@a#1{%
@@ -200,6 +219,7 @@
     \fi
   \fi
 \expandafter\reserved@a\expandafter{\reserved@b}
+%</deprecated>
 %</base>
 %    \end{macrocode}
 %
@@ -1490,10 +1510,12 @@
 %<*base>
 \DefineFamily{KOMA}
 \DefineFamilyMember{KOMA}
+%<*deprecated>
 \DefineFamilyKey{KOMA}{internalonly}[\relax]{%
   \PackageInfo{scrbase}{Ignoring deprecated option `internalonly'}%
   \FamilyKeyStateProcessed
 }
+%</deprecated>
 \AtEndOfPackage{%
   \RelaxFamilyKey[.scrbase.sty]{KOMA}{internalonly}%
 }
@@ -1505,12 +1527,12 @@
 % deprecated the following code should never been used.
 %    \begin{macrocode}
 %</option>
-%<*load&class&neveruse>
+%<*load&class&deprecated&neveruse>
 \KOMA@key{internalonly}[\relax]{%
   \FamilyKeyStateProcessed
 }
 \AtEndOfClass{\RelaxFamilyKey[.\KOMAClassFileName]{KOMA}{internalonly}}%
-%</load&class&neveruse>
+%</load&class&deprecated&neveruse>
 %<*option>
 %    \end{macrocode}
 % \end{option}
@@ -1635,6 +1657,7 @@
 % This is the opposite to \cs{Ifundefinedorrelax}. Sometimes it is useful.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifnotundefined}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifnotundefined'.\MessageBreak
@@ -1644,6 +1667,7 @@
   }%
   \Ifnotundefined
 }
+%</deprecated>
 \newcommand{\Ifnotundefined}[1]{%
   \ifcsname #1\endcsname
     \expandafter\@firstoftwo
@@ -1665,6 +1689,7 @@
 % would be \cs{Ifxequal}.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifstr}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifstr'.\MessageBreak
@@ -1674,6 +1699,7 @@
   }%
   \Ifstr
 }
+%</deprecated>
 \newcommand\Ifstr[2]{%
   \begingroup\protected@edef\reserved@a{#1}\protected@edef\reserved@b{#2}%
   \ifx\reserved@a\reserved@b
@@ -1694,6 +1720,7 @@
 % one use the third argument, otherwise the fourth.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifstrstart}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifstrstart'.\MessageBreak
@@ -1703,6 +1730,7 @@
   }%
   \Ifstrstart
 }
+%</deprecated>
 \newcommand*{\Ifstrstart}[2]{%
   \begingroup
     \edef\reserved@a{\noexpand\@ifstrstart{#1}{#2}}%
@@ -1761,6 +1789,7 @@
 % execute the second argument, otherwise the third one.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifislengthprimitive}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifislengthprimitive'.\MessageBreak
@@ -1770,6 +1799,7 @@
   }%
   \Ifislengthprimitive
 }
+%</deprecated>
 \newcommand*{\Ifislengthprimitive}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifislengthprimitive#1\@nil}%
 }
@@ -1815,6 +1845,7 @@
 % execute the second argument, otherwise the third one.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisdimen}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisdimen'.\MessageBreak
@@ -1824,6 +1855,7 @@
   }%
   \Ifisdimen
 }
+%</deprecated>
 \newcommand*{\Ifisdimen}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisdimen#1\@nil}%
 }
@@ -1916,6 +1948,7 @@
 % execute the second argument, otherwise the third one.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisskip}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisskip'.\MessageBreak
@@ -1925,6 +1958,7 @@
   }%
   \Ifisskip
 }
+%</deprecated>
 \newcommand*{\Ifisskip}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisskip#1\@nil}%
 }
@@ -1976,6 +2010,7 @@
 % execute the second argument, otherwise the third one.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifiscount}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifiscount'.\MessageBreak
@@ -1985,6 +2020,7 @@
   }%
   \Ifiscount
 }
+%</deprecated>
 \newcommand*{\Ifiscount}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifiscount#1\@nil}%
 }
@@ -2040,6 +2076,7 @@
 % \cs{dimexpr}, but using this expression later will result in an error.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisdimexpr}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisdimexpr'.\MessageBreak
@@ -2049,6 +2086,7 @@
   }%
   \Ifisdimexpr
 }
+%</deprecated>
 \newcommand*{\Ifisdimexpr}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisdimexpr#1\relax\@nil}%
 }
@@ -2089,6 +2127,7 @@
 % \cs{göueexpr}, but using this expression later will result in an error.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisglueexpr}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisglueexpr'.\MessageBreak
@@ -2098,6 +2137,7 @@
   }%
   \Ifisglueexpr
 }
+%</deprecated>
 \newcommand*{\Ifisglueexpr}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisglueexpr#1\relax\@nil}%
 }
@@ -2138,6 +2178,7 @@
 % \cs{numexpr}, but using this expression later will result in an error.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisnumexpr}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisnumexpr'.\MessageBreak
@@ -2147,6 +2188,7 @@
   }%
   \Ifisnumexpr
 }
+%</deprecated>
 \newcommand*{\Ifisnumexpr}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisnumexpr#1\relax\@nil}%
 }
@@ -2186,6 +2228,7 @@
 % result in an error.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisdefchar}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisdefchar'.\MessageBreak
@@ -2195,6 +2238,7 @@
   }%
   \Ifisdefchar
 }
+%</deprecated>
 \newcommand*{\Ifisdefchar}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisdefchar#1\@nil}%
 }
@@ -2231,6 +2275,7 @@
 % argument, otherwise the third one.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifiscounter}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifiscounter'.\MessageBreak
@@ -2240,6 +2285,7 @@
   }%
   \Ifiscounter
 }
+%</deprecated>
 \newcommand*{\Ifiscounter}[1]{%
   \begingroup
     \scr@ifundefinedorrelax{c@#1}{%
@@ -2263,6 +2309,7 @@
 % the second argument, otherwise the third one.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisinteger}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisinteger'.\MessageBreak
@@ -2272,6 +2319,7 @@
   }%
   \Ifisinteger
 }
+%</deprecated>
 \newcommand*{\Ifisinteger}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisinteger#1\@nil}%
 }
@@ -2385,6 +2433,7 @@
 % third one.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisdimension}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisdimension'.\MessageBreak
@@ -2394,6 +2443,7 @@
   }%
   \Ifisdimension
 }
+%</deprecated>
 \newcommand*{\Ifisdimension}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisdimension#1\@nil}%
 }
@@ -2546,6 +2596,7 @@
 % third one.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifisglue}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifisglue'.\MessageBreak
@@ -2555,6 +2606,7 @@
   }%
   \Ifisglue
 }
+%</deprecated>
 \newcommand*{\Ifisglue}[1]{%
   \IfArgIsEmpty{#1}{\@secondoftwo}{\scr@ifisglue#1\@nil}%
 }
@@ -2682,6 +2734,7 @@
 % executed, otherwise the third.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifnumber}{%
 %    \end{macrocode}
 % Note: We must not output the warning if package \pkg{babelbib} has been
@@ -2703,6 +2756,7 @@
   }{}%
   \Ifnumber
 }
+%</deprecated>
 \newcommand\Ifnumber[1]{%
   \begingroup\@tempswafalse\let\scr@next\scr@test@number
     \IfArgIsEmpty{#1}{}{\expandafter\scr@next#1\scr@next}%
@@ -2756,6 +2810,7 @@
 % argument, otherwise the third one. There are multiple arithmetic signs allowed.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifintnumber}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifintnumber'.\MessageBreak
@@ -2765,6 +2820,7 @@
   }%
   \Ifintnumber
 }
+%</deprecated>
 \newcommand\Ifintnumber[1]{%
   \begingroup\@tempswafalse\let\scr@next\scr@test@sign
     \expandafter\scr@next#1\scr@next
@@ -2804,6 +2860,7 @@
 % executed, otherwise the third.
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \providecommand*{\ifdimen}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifdimen'.\MessageBreak
@@ -2813,6 +2870,7 @@
   }%
   \Ifdimen
 }
+%</deprecated>
 \newcommand{\Ifdimen}[1]{%
   \begingroup\@tempswatrue\let\scr@next\scr@test@posdimen
   \expandafter\scr@test@dimen#1\scr@next
@@ -3018,6 +3076,7 @@
     \fi
   }%
 }%
+%<*deprecated>
 \providecommand*{\ifpdfoutput}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifpdfoutput'.\MessageBreak
@@ -3027,6 +3086,7 @@
   }%
   \Ifpdfoutput
 }
+%</deprecated>
 \newcommand*{\Ifpdfoutput}{\scr@ifpdfoutput}
 %</base>
 %    \end{macrocode}
@@ -3065,6 +3125,7 @@
     }%
   }%
 }
+%<*deprecated>
 \providecommand*{\ifpsoutput}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifpsoutput'.\MessageBreak
@@ -3074,6 +3135,7 @@
   }%
   \Ifpsoutput
 }
+%</deprecated>
 \newcommand*{\Ifpsoutput}{\scr@ifpsoutput}
 %</base>
 %    \end{macrocode}
@@ -3119,6 +3181,7 @@
     \fi
   }%
 }
+%<*deprecated>
 \providecommand*{\ifdvioutput}{%
   \PackageWarning{scrbase}{Usage of deprecated command
     `\string\ifdvioutput'.\MessageBreak
@@ -3128,6 +3191,7 @@
   }%
   \Ifdvioutput
 }
+%</deprecated>
 \newcommand*{\Ifdvioutput}{\scr@ifdvioutput}
 %</base>
 %    \end{macrocode}
@@ -3474,6 +3538,7 @@
 %    \begin{macrocode}
 %<*koma>
 \newcommand*{\KOMAExecuteOptions}[1][\@currname.\@currext]{%
+%<*deprecated>
 %<*!v4>
   \Ifstrstart{#1}{.}{%
     \PackageWarning{scrkbase}{Deprecated initial dot of member
@@ -3483,8 +3548,9 @@
     \expandafter\FamilyExecuteOptions[#1]%
   }{%
 %</!v4>
+%</deprecated>
     \FamilyExecuteOptions[.#1]%
-%<!v4>  }%
+%<!v4&deprecated>  }%
   {KOMA}%
 }
 %</koma>
@@ -4275,6 +4341,7 @@
 %<*base>
 \newcommand{\FamilyUnknownKeyValue}[4]{%
   \FamilyKeyStateUnknownValue
+%<*deprecated>
   \ifx\FamilyElseValues\@empty\else
     \PackageWarning{scrbase}{non empty \string\FamilyElseValue
       ignored.\MessageBreak
@@ -4284,6 +4351,7 @@
       but has been found%
     }%
   \fi
+%</deprecated>
 }
 %</base>
 %    \end{macrocode}
@@ -4292,7 +4360,9 @@
 % \changes{v3.12}{2013/03/04}{deprecated and not used internally}
 %    \begin{macrocode}
 %<*base>
+%<*deprecated>
 \newcommand*{\FamilyElseValues}{}
+%</deprecated>
 %</base>
 %    \end{macrocode}
 % \end{command}^^A \FamilyUnknownKeyValue
@@ -5090,7 +5160,9 @@
 % \changes{v3.22}{2016/07/29}{added several \cs{detokenize}}
 % \changes{v3.37}{2022/06/21}{message text ``obsolete'' replaced by
 %   ``deprecated''}
-% One more helper:
+% \changes{v3.49.3}{2026-09-24}{deprecated options are not used unless
+%   \opt{version\quotechar=first}}
+%   One more helper:
 % \begin{quote}
 %   \cs{KOMA@UseDeprecatedOption}\marg{warning command}\marg{classic
 %   option}\marg{\pkg*{keyval} option}
@@ -5102,35 +5174,54 @@
 %    \begin{macrocode}
 \newcommand*{\KOMA@UseDeprecatedOption}[3]{%
   \begingroup
-    \scr@ifundefinedorrelax{KV@KOMA.\@currname.\@currext @version}{%
+    \expandafter\ifnum\scr@v@is@gt{first}
       \edef\reserved@a{\noexpand\endgroup
         \noexpand#1{%
-          You've used deprecated option `\detokenize{#2}'.\noexpand\MessageBreak
-          Usage of this option is deprecated.\noexpand\MessageBreak
-          You should simply replace `\detokenize{#2}'\noexpand\MessageBreak
-          by `\detokenize{#3}'%
+          Deprecated option `\detokenize{#2}' ignored,\noexpand\MessageBreak
+          because `version=first' not set.\noexpand\MessageBreak
+          Note: To avoid this warning and achieve the desired%
+          \noexpand\MessageBreak\@spaces\space\space
+          functionality, you should use the%
+          \noexpand\MessageBreak\@spaces\space\space
+          `\detokenize{#3}' option instead of the%
+          \noexpand\MessageBreak\@spaces\space\space
+          `\detokenize{#2}' option, which has been%
+          \noexpand\MessageBreak\@spaces\space\space
+          deprecated for more than 20 years%
         }%
-        \noexpand\KOMAExecuteOptions{#3}%
-        \noexpand\def\noexpand\CurrentOption{\CurrentOption}%
+        \noexpand\OptionNotUsed
       }%
-    }{%
-      \edef\reserved@a{\noexpand\endgroup
-        \noexpand#1{%
-          You've used deprecated option `\detokenize{#2}'.\noexpand\MessageBreak
-          Usage of this option indicates an old document\noexpand\MessageBreak
-          and changes compatibility level using\noexpand\MessageBreak
-          `\detokenize{#3},version=first,\noexpand\MessageBreak
-          enabledeprecatedfontcommands' that may result\noexpand\MessageBreak
-          in further warnings.\noexpand\MessageBreak
-          If you don't want this, you should simply\noexpand\MessageBreak
-          replace option `\detokenize{#2}' by `\detokenize{#3}'%
+    \else
+      \scr@ifundefinedorrelax{KV@KOMA.\@currname.\@currext @version}{%
+        \edef\reserved@a{\noexpand\endgroup
+          \noexpand#1{%
+            You've used deprecated option `\detokenize{#2}'.\noexpand\MessageBreak
+            Usage of this option is deprecated.\noexpand\MessageBreak
+            You should simply replace `\detokenize{#2}'\noexpand\MessageBreak
+            by `\detokenize{#3}'%
+          }%
+          \noexpand\KOMAExecuteOptions{#3}%
+          \noexpand\def\noexpand\CurrentOption{\CurrentOption}%
         }%
-        \noexpand\KOMAExecuteOptions{%
-          #3,version=first}%
-        \noexpand\ExecuteOptions{enabledeprecatedfontcommands}%
-        \noexpand\def\noexpand\CurrentOption{\CurrentOption}%
+      }{%
+        \edef\reserved@a{\noexpand\endgroup
+          \noexpand#1{%
+            You've used deprecated option `\detokenize{#2}'.\noexpand\MessageBreak
+            Usage of this option indicates an old document\noexpand\MessageBreak
+            and changes compatibility level using\noexpand\MessageBreak
+            `\detokenize{#3},version=first,\noexpand\MessageBreak
+            enabledeprecatedfontcommands' that may result\noexpand\MessageBreak
+            in further warnings.\noexpand\MessageBreak
+            If you don't want this, you should simply\noexpand\MessageBreak
+            replace option `\detokenize{#2}' by `\detokenize{#3}'%
+          }%
+          \noexpand\KOMAExecuteOptions{%
+            #3,version=first}%
+          \noexpand\ExecuteOptions{enabledeprecatedfontcommands}%
+          \noexpand\def\noexpand\CurrentOption{\CurrentOption}%
+        }%
       }%
-    }%
+    \fi
   \reserved@a
 }
 %</koma&!v4>

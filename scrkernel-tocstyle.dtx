@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4293 of the repository:
+% This file is based on revision 4332 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -14,7 +14,7 @@
 % ======================================================================
 % ======================================================================
 % scrkernel-tocstyle.dtx
-% Copyright (c) Markus Kohm, 2015-2025
+% Copyright (c) Markus Kohm, 2015-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-tocstyle.dtx 4228 2025-10-08 14:10:51Z kohm $
+%%% From File: $Id: scrkernel-tocstyle.dtx 4313 2026-10-09 08:45:53Z kohm $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -55,9 +55,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-10-08 16:10:51 +0200 (Wed, 08 Oct 2025) $
+  \filedate$Date: 2026-10-09 10:45:53 +0200 (Fri, 09 Oct 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4228 $
+  \filerevision$Revision: 4313 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-tocstyle.dtx}%
@@ -1027,7 +1027,7 @@
 % \cs{scr@dte@\meta{level name}@style} is deprecated and should be replaced by
 % \cs{scr@tso@\meta{level name}@style}.
 %    \begin{macrocode}
-      \expandafter\edef\csname scr@dte@#3@style\endcsname{#2}%
+%<deprecated>      \expandafter\edef\csname scr@dte@#3@style\endcsname{#2}%
       \expandafter\edef\csname scr@tso@#3@style\endcsname{#2}%
 %    \end{macrocode}
 % \changes{v3.21}{2016/06/09}{\cs{toclevel@\emph{level}} added for \pkg{hyperref}}

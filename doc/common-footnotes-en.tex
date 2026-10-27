@@ -1,6 +1,6 @@
 % ======================================================================
 % common-footnotes-en.tex
-% Copyright (c) Markus Kohm, 2001-2022
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-footnotes-en.tex}
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2026-10-23 12:31:29 +0200 (Fri, 23 Oct 2026) $
                   KOMA-Script guide (common paragraphs: Footnotes)]
 \translator{Markus Kohm\and Krickette Murabayashi\and Karl Hagen}
 
@@ -65,27 +65,30 @@
     \textnote{\KOMAScript{} vs. standard classes} provides additional features
     to change the format of the footnote block. %
     \iffalse % Umbruchoptimierung
-	
+
       Whether footnotes should be allowed for letters depends very much on the
       type of letter and its layout. For example, you should not allow
       footnotes to overlap visually with the letterhead footer or be confused
       with the courtesy-copy list. Doing so is the responsibility of the
       user.%
 
-      Since footnotes are rarely used in letters, examples in this section have
-      been omitted. If you need examples, you can find them in
-      \autoref{sec:\ThisCommonFirstLabelBase.footnotes}, 
+      Since footnotes are rarely used in letters, examples in this section
+      have been omitted. If you need examples, you can find them in
+      \autoref{sec:\ThisCommonFirstLabelBase.footnotes},
       \autopageref{sec:\ThisCommonFirstLabelBase.footnotes}.%
     \fi%
   }{%
     \IfThisCommonLabelBase{scrextend}{%
-      The footnote capabilities of the \KOMAScript{} classes are also
-      provided by \Package{scrextend}. By default, the formatting of
-      footnotes is left to the class used. This changes as soon as you
-      issue the \DescRef{\ThisCommonLabelBase.cmd.deffootnote} command,
-      which is explained in detail on
+      The footnote capabilities of the \KOMAScript{} classes are also provided
+      by \Package{scrextend}. By default, the formatting of footnotes is left
+      to the class used. This changes as soon as you issue
+      the\ChangedAt{v3.49.4}{\Package{scrextend}}
+      \DescRef{\ThisCommonLabelBase.option.extendedfeature.footnote} option or
+      the \DescRef{\ThisCommonLabelBase.cmd.deffootnote} and
+      \DescRef{\ThisCommonLabelBase.cmd.deffootnotemark} commands, which are
+      explained in detail on
       \DescPageRef{\ThisCommonLabelBase.cmd.deffootnote}.
-      
+
       The options for adjusting the dividing line above footnotes, however,
       are not provided by \Package{scrextend}.%
     }{\InternalCommonFileUsageError}%
@@ -122,21 +125,23 @@ defined as a comma without a space:
 \end{lstcode}
 This can be redefined.
 
-The whole mechanism is compatible with the 
-\Package{footmisc}\IndexPackage{footmisc}\important{\Package{footmisc}} 
+The whole mechanism is compatible with the
+\Package{footmisc}\IndexPackage{footmisc}\important{\Package{footmisc}}
 package, version~5.3d to 5.5b (see \cite{package:footmisc}). It affects
-footnote markers placed using 
-\DescRef{\ThisCommonLabelBase.cmd.footnote}\IndexCmd{footnote}, as well as 
-those placed directly with 
+footnote markers placed using
+\DescRef{\ThisCommonLabelBase.cmd.footnote}\IndexCmd{footnote}, as well as
+those placed directly with
 \DescRef{\ThisCommonLabelBase.cmd.footnotemark}\IndexCmd{footnotemark}.
 
-You can switch back to the default 
-\OptionValue{footnotes}{nomultiple} at any time using the 
-\DescRef{\ThisCommonLabelBase.cmd.KOMAoptions} or
-\DescRef{\ThisCommonLabelBase.cmd.KOMAoption} command. However, if you
-encounter any problems using another package that alters the footnotes, you
-should not use this option, nor should you change the \PName{setting} anywhere
-inside the document.
+You can switch back to the default \OptionValue{footnotes}{nomultiple} at any
+time using the \DescRef{\ThisCommonLabelBase.cmd.KOMAoptions} or
+\DescRef{\ThisCommonLabelBase.cmd.KOMAoption} command.
+\IfThisCommonLabelBase{scrextend}{The\ChangedAt{v3.49.4}{\Package{scrextend}}
+  option automatically also activates option
+  \DescRef{\ThisCommonLabelBase.option.extendedfeature.footnote}. }{}However,
+if you encounter any problems using another package that alters the footnotes,
+you should not use this option, nor should you change the \PName{setting}
+anywhere inside the document.
 
 A summary of the available \PName{setting} values of \Option{footnotes} can
 be found in \autoref{tab:\ThisCommonFirstLabelBase.footnotes}%
@@ -186,7 +191,7 @@ Unlike\textnote{\KOMAScript{} vs. standard classes}
   }{}%
 } %
 the standard classes, \KOMAScript{} can recognize and separate consecutive
-footnotes automatically. 
+footnotes automatically.
 See\important{\DescRef{\ThisCommonLabelBase.option.footnotes}} the previously
 documented option \DescRef{\ThisCommonLabelBase.option.footnotes}.
 
@@ -226,7 +231,7 @@ delimiter itself is stored in the previously described
 \end{lstcode}
     This should give you the desired result even if automatic detection
     fails or cannot be used for some reason.
-	
+
     Now suppose you also want the footnote numbers to be separated not just by
     a comma, but by a comma and a space. In this case, write
 \begin{lstcode}
@@ -279,7 +284,7 @@ other marks for this footnote in the text.
     \DescRef{\ThisCommonLabelBase.cmd.footnote} itself, and the following two
     footnote marks are produced by the additional \Macro{footref}
     commands. The footnote text will be produced by
-    \DescRef{\ThisCommonLabelBase.cmd.footnote}. 
+    \DescRef{\ThisCommonLabelBase.cmd.footnote}.
   \end{Example}
 \fi%
 When setting footnote marks with the \Macro{label} mechanism, any
@@ -346,9 +351,9 @@ shows the different parameters%
   }
 \end{lstcode}
 \fi%
-\Macro{textsuperscript} controls both the
-superscript and the smaller font size. The command \Macro{thefootnotemark}
-contains the current footnote mark without any formatting.%
+\Macro{textsuperscript} controls both the superscript and the smaller font
+size. The command \Macro{thefootnotemark} contains the current footnote mark
+without any formatting.%
 \IfThisCommonLabelBase{scrextend}{ %
   The \Package{scrextend} package, by contrast, does not change the default
   footnote settings of the class you are using. Simply loading the package,
@@ -356,7 +361,9 @@ contains the current footnote mark without any formatting.%
   marks or footnote text. To use the default settings of the \KOMAScript{}
   classes with \Package{scrextend}, you must change the settings above
   yourself. For example, you can insert the line of code above immediately
-  after loading the \Package{scrextend} package.%
+  after loading the \Package{scrextend}
+  package. As\ChangedAt{v3.49.4}{\Package{scrextend}} an alternative you can
+  use option \DescRef{\ThisCommonLabelBase.option.extendedfeature.footnote}.%
 }{}%
 
 \IfThisCommonLabelBase{maincls}{%
@@ -398,12 +405,12 @@ contains the current footnote mark without any formatting.%
         \put(5,7){\line(1,0){5}}
         \put(15,7){\vector(-1,0){5}}
         \put(15,7){\makebox(0,0)[l]{\small\PName{parindent}}}
-        % 
+        %
         \put(-3,13){\vector(1,0){3}}
         \put(0,13){\line(1,0){5}}
         \put(10,13){\vector(-1,0){5}}
         \put(10,13){\makebox(0,0)[l]{\small\PName{indent}}}
-        % 
+        %
         \put(-3,19){\vector(1,0){3}}
         \put(0,19){\line(1,0){14.5}}
         \put(19.5,19){\vector(-1,0){5}}
@@ -420,7 +427,7 @@ The footnote\IfThisCommonLabelBase{maincls}{%
     \Class{scrartcl}%
 }}{}, including the footnote mark, uses the font specified in the
 \FontElement{footnote}\important{\FontElement{footnote}} element. You can
-change the font of the footnote mark separately using the 
+change the font of the footnote mark separately using the
 \DescRef{\ThisCommonLabelBase.cmd.setkomafont} and
 \DescRef{\ThisCommonLabelBase.cmd.addtokomafont} commands (see
 \autoref{sec:\ThisCommonLabelBase.textmarkup},
@@ -430,7 +437,7 @@ element. See also \autoref{tab:\ThisCommonLabelBase.fontelements},
 \autopageref{tab:\ThisCommonLabelBase.fontelements}.
 The default setting is no change to the font.%
 \IfThisCommonLabelBase{scrextend}{ %
-  However, with \Package{scrextend} these elements will only change the fonts 
+  However, with \Package{scrextend} these elements will only change the fonts
   if footnotes are handled by the package, that is, after using
   \Macro{deffootnote}.%
 }{} Please don't misuse this element for other purposes, for example to set
@@ -439,9 +446,11 @@ the footnotes ragged right (see also \DescRef{\LabelBase.cmd.raggedfootnote},
 
 \BeginIndex{FontElement}{footnotereference}%
 \LabelFontElement{footnotereference}%
-The footnote mark in the text is defined separately from the mark in
-front of the actual footnote. This is done with
-\Macro{deffootnotemark}. The default setting is:
+The footnote mark in the text is defined separately from the mark in front of
+the actual footnote. This is done with \Macro{deffootnotemark}. The default
+setting
+\IfThisCommonLabelBase{scrextend}{with\ChangedAt{v3.49.4}{\Package{scrextend}}
+  option \DescRef{\ThisCommonLabelBase.option.extendedfeature.footnote}}{} is:
 \begin{lstcode}
   \deffootnotemark{%
     \textsuperscript{\thefootnotemark}}
@@ -449,7 +458,7 @@ front of the actual footnote. This is done with
 With\IfThisCommonLabelBase{maincls}{%
   \ChangedAt{v2.8q}{\Class{scrbook}\and \Class{scrreprt}\and
     \Class{scrartcl}}%
-}{} this default, the font for the 
+}{} this default, the font for the
 \FontElement{footnotereference}\important{\FontElement{footnotereference}}
 element is used (see \autoref{tab:\ThisCommonLabelBase.fontelements},
 \autopageref{tab:\ThisCommonLabelBase.fontelements}). Thus, the footnote marks
@@ -470,8 +479,8 @@ with the commands \DescRef{\ThisCommonLabelBase.cmd.setkomafont} and
 \begin{lstcode}
   \deffootnote{1em}{1em}{\thefootnotemark\ }
 \end{lstcode}
-    This will set the footnote mark and subsequent space right-aligned in a 
-    box of width 1\Unit{em}. The lines of the footnote text that follow are 
+    This will set the footnote mark and subsequent space right-aligned in a
+    box of width 1\Unit{em}. The lines of the footnote text that follow are
     also indented by 1\Unit{em} from the left margin.
 
     Another\textnote{Hint!} layout that is often requested is footnote marks
@@ -481,7 +490,7 @@ with the commands \DescRef{\ThisCommonLabelBase.cmd.setkomafont} and
   \deffootnote{1.5em}{1em}{%
       \makebox[1.5em][l]{\thefootnotemark}}
 \end{lstcode}
-  
+
     If, however you want to change the font for all footnotes, for example
     to sans serif, this can easily be done with the commands
     \DescRef{\ThisCommonLabelBase.cmd.setkomafont} and
@@ -600,7 +609,7 @@ empty definition, which is the default. The alignment commands of the
     links, where line breaks would produce poor results if justified. You can
     use
 \begin{lstcode}
-  \let\raggedfootnote\raggedright    
+  \let\raggedfootnote\raggedright
 \end{lstcode}
     in your document's preamble to switch to ragged-right footnotes.
   \end{Example}%

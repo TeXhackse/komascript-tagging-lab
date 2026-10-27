@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{scrextend-de.tex}
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2026-10-23 12:31:29 +0200 (Fri, 23 Oct 2026) $
                   KOMA-Script package scrextend]
 
 \chapter[tocentry={Grundlegende Fähigkeiten der
@@ -127,34 +127,35 @@ ausgewählt werden. Diese Option steht nur während des Ladens von
 \Package{scrextend} zur Verfügung. Anwender geben diese Option daher als
 optionales Argument von
 \DescRef{\LabelBase.cmd.usepackage}\PParameter{scrextend} an. %
-\iffree{%
-  Eine Übersicht über die verfügbaren optionalen Möglichkeiten bietet
-  \autoref{tab:scrextend.optionalFeatures}.
-
-  \begin{table}
-    \caption[{Optional verfügbare, erweiterte Möglichkeiten
-      von \Package{scrextend}}]{Übersicht über die optional verfügbaren,
-      erweiterten Möglichkeiten von \Package{scrextend}}
-    \label{tab:scrextend.optionalFeatures}
-    \begin{desctabular}
-      \entry{\PName{title}}{%
-        die Titelseiten werden auf die Möglichkeiten der \KOMAScript-Klassen
-        erweitert; dies betrifft neben den Anweisungen für die Titelseiten
-        auch die Option \DescRef{\LabelBase.option.titlepage} (siehe
-        \autoref{sec:scrextend.titlepage}, ab
-        \autopageref{sec:scrextend.titlepage})%
-      }
-    \end{desctabular}
-  \end{table}%
-}{%
-  \par%
-  Die derzeit einzige optionale Möglichkeit ist
-  \PValue{title}\IndexOption[indexmain]{extendedfeature~=\textKValue{title}}%
-  \important{\OptionValue{extendedfeature}{title}}.
-  Damit werden die Titelseiten auf die Möglichkeiten der \KOMAScript-Klassen
-  erweitert, wie sie in \autoref{sec:scrextend.titlepage} ab
-  \autopageref{sec:scrextend.titlepage} beschrieben sind.%
-}%
+Eine Übersicht über die verfügbaren optionalen Möglichkeiten bietet
+\autoref{tab:scrextend.optionalFeatures}.%
+%
+\begin{table}
+  \caption[{Optional verfügbare, erweiterte Möglichkeiten
+    von \Package{scrextend}}]{Übersicht über die optional verfügbaren,
+    erweiterten Möglichkeiten von \Package{scrextend}}
+  \label{tab:scrextend.optionalFeatures}
+  \begin{desctabular}
+    \pventry{footnote}{%
+      \LabelOptionValue{extendedfeature}{footnote}%
+      \ChangedAt{v3.49.4}{\Package{scrextend}}%
+      die Fußnotenvoreinstellungen der \KOMAScript-Klassen werden
+      automatisch übernommen; dies kann abhängig von der verwendeten Klasse
+      oder den verwendeten weiteren Paketen zu Warnungen oder auch echten
+      Problemen führen (siehe
+      \autoref{sec:scrextend.footnotes}, ab
+      \autopageref{sec:scrextend.footnotes}).%
+    }%
+    \pventry{title}{%
+      \LabelOptionValue{extendedfeature}{title}%
+      die Titelseiten werden auf die Möglichkeiten der \KOMAScript-Klassen
+      erweitert; dies betrifft neben den Anweisungen für die Titelseiten
+      auch die Option \DescRef{\LabelBase.option.titlepage} (siehe
+      \autoref{sec:scrextend.titlepage}, ab
+      \autopageref{sec:scrextend.titlepage}).%
+    }%
+  \end{desctabular}
+\end{table}%
 %
 \EndIndexGroup
 
@@ -216,10 +217,10 @@ verfügbar sein.%
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

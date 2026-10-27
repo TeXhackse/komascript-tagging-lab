@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-pseudolengths.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-pseudolengths.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrkernel-pseudolengths.dtx 4301 2026-10-06 09:20:28Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2026-10-06 11:20:28 +0200 (Tue, 06 Oct 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4301 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-pseudolengths.dtx}%
@@ -102,11 +102,14 @@
 % exists or not.
 %
 %
-% \begin{command}{\Ifplength}
-% \changes{v3.27}{2019/03/29}{added}
 % \begin{macro}{\if@plength}
 % \changes{v3.27}{2019/03/29}{added}
 % \changes{v3.36}{2022/02/14}{deprecated}
+% \changes{v3.49.3}{2026-10-06}{removed}
+% \end{macro}^^A \if@plength
+%
+% \begin{command}{\Ifplength}
+% \changes{v3.27}{2019/03/29}{added}
 % Test whether or not a given pseudo-length (\texttt{\#1}) already exists. If
 % so execute argument \texttt{\#2}, otherwise \texttt{\#3}.
 %    \begin{macrocode}
@@ -114,15 +117,7 @@
 \newcommand*{\Ifplength}[1]{%
   \@ifundefined{ltr@len@#1}{\@secondoftwo}{\@firstoftwo}%
 }
-\newcommand*{\if@plength}{%
-%<class>  \ClassWarning{\KOMAClassName}{%
-%<package>  \PackageWarning{scrletter}{%
-    Internal macro `\string\if@plength' is deprecated.\MessageBreak
-    Please use `\string\Ifplength' instead}%
-  \Ifplength
-}
 %    \end{macrocode}
-% \end{macro}^^A \if@plength
 % \end{command}^^A \Ifplength
 %
 %
@@ -153,6 +148,8 @@
     }%
   }%
 }
+%<*deprecated>
+%<class>\expandafter\ifnum \scr@v@is@lt{3.36}\relax
 \newcommand*{\@newplength}{%
 %<class>  \ClassWarning{\KOMAClassName}{%
 %<package>  \PackageWarning{scrletter}{%
@@ -160,6 +157,8 @@
     Please use `\string\newplength' instead}%
   \newplength
 }
+%<class> \fi
+%</deprecated>
 %    \end{macrocode}
 % \end{macro}
 % \end{command}
@@ -212,6 +211,8 @@
     }%
   \@tempa
 }
+%<*deprecated>
+%<class>\expandafter\ifnum \scr@v@is@lt{3.36}\relax
 \newcommand*{\@setplength}{%
 %<class>  \ClassWarning{\KOMAClassName}{%
 %<package>  \PackageWarning{scrletter}{%
@@ -219,6 +220,8 @@
     Please use `\string\setplength' instead}%
   \setplength
 }
+%<class> \fi
+%</deprecated>
 %    \end{macrocode}
 % \end{macro}
 % \end{command}
@@ -313,12 +316,16 @@
       }%
   \@tempa%
 }
+%<*deprecated>
+%<class>\expandafter\ifnum \scr@v@is@lt{3.36}\relax
 \newcommand*{\@addtoplength}{%
 %<class>  \ClassWarning{\KOMAClassName}{%
 %<package>  \PackageWarning{scrletter}{%
     Internal macro `\string\@addtoplength' is deprecated.\MessageBreak
     Please use `\string\addtoplength' instead}%
   \addtoplength}
+%<class> \fi
+%</deprecated>
 %</body>
 %    \end{macrocode}
 % \end{macro}

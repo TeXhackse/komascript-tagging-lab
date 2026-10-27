@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-variables.dtx
-% Copyright (c) Markus Kohm, 2006-2023
+% Copyright (c) Markus Kohm, 2006-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-variables.dtx 4151 2025-06-02 11:34:40Z kohm $
+%%% From File: $Id: scrkernel-variables.dtx 4299 2026-10-06 08:23:13Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\def\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-06-02 13:34:40 +0200 (Mon, 02 Jun 2025) $
+  \filedate$Date: 2026-10-06 10:23:13 +0200 (Tue, 06 Oct 2026) $
   \def\filerevision$#1: #2 ${\def\filerevision{r#2}}
-  \filerevision$Revision: 4151 $
+  \filerevision$Revision: 4299 $
   \xdef\fileinfo{\filedate\space\filerevision\space}
   \edef\reserved@a{%
     \noexpand\endgroup
@@ -252,16 +252,20 @@
 % because of a new recommendation of The \LaTeX{} Team (who does break its own
 % recommendation, e.g., with \cs{ifToplevel}, \cs{ifthenelse} \dots).
 %    \begin{macrocode}
+%<*deprecated>
+%<class>\expandafter\ifnum \scr@v@is@lt{3.28}\relax
 \newcommand*{\ifkomavar}{%
 %<package>  \PackageWarning{scrletter}{%
 %<class>  \ClassWarning{\KOMAClassName}{%
     Usage of deprecated command `\string\ifkomavar'.\MessageBreak
-    The command has been renamed to because of a\MessageBreak
-    recommendation of LaTeX3 team members.\MessageBreak
+    The command has been renamed because of\MessageBreak
+    a recommendation of LaTeX3 team members.\MessageBreak
     Please replace `\string\ifkomavar' by `\string\Ifkomavar'%
   }%
   \Ifkomavar
 }
+%<class>\fi
+%</deprecated>
 \DeclareRobustCommand*{\Ifkomavar}[1]{%
   \scr@ifundefinedorrelax{scr@#1@var}{%
     \expandafter\@secondoftwo
@@ -293,16 +297,20 @@
 % because of a new recommendation of The \LaTeX{} Team (who does break its own
 % recommendation, e.g., with \cs{ifToplevel}, \cs{ifthenelse} \dots).
 %    \begin{macrocode}
+%<*deprecated>
+%<class>\expandafter\ifnum \scr@v@is@lt{3.28}\relax
 \newcommand*{\ifkomavarempty}{%
 %<package>  \PackageWarning{scrletter}{%
 %<class>  \ClassWarning{\KOMAClassName}{%
     Usage of deprecated command `\string\ifkomavarempty'.\MessageBreak
-    The command has been renamed to because of a\MessageBreak
-    recommendation of LaTeX3 team members.\MessageBreak
+    The command has been renamed because of \MessageBreak
+    a recommendation of LaTeX3 team members.\MessageBreak
     Please replace `\string\ifkomavarempty' by `\string\Ifkomavarempty'%
   }%
   \Ifkomavarempty
 }
+%<class> \fi
+%</deprecated>
 \NewDocumentCommand{\Ifkomavarempty}{sm}{%
   \Ifkomavar{#2}{%
     \IfBooleanTF{#1}{%

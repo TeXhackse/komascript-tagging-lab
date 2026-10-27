@@ -229,6 +229,7 @@ of LaTeX classes and packages.
 
 * `scraddr.sty`
 * `scrbase.sty`
+* `scrbase-20260202.sty`
 * `scrextend.sty`
 * `scrfontsizes.sty`
 * `scrjura.sty`

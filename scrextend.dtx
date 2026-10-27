@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrextend.dtx
-% Copyright (c) Markus Kohm, 2002-2023
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrextend.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrextend.dtx 4328 2026-10-23 07:30:30Z kohm $
 %<preidentify>%%%            (run: preidentify)
 %<prepare>%%%            (run: prepare)
 %<option>%%%            (run: option)
@@ -26,9 +26,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2026-10-23 09:30:30 +0200 (Fri, 23 Oct 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4328 $
 \endgroup
 \ProvidesFile{scrextend.dtx}[\filedate\space\filerevision\space
                              KOMA-Script package source
@@ -206,13 +206,15 @@
 % \changes{v3.17}{2015/03/09}{internal value storage}
 % \changes{v3.39}{2022/11/11}{initial dot in member argument of option storage
 %   commands removed}
+% \changes{v3.49.4}{2026/10/23}{infinite loop at warning fixed}
 %    \begin{macrocode}
 %<*option>
 \KOMA@key{extendedfeature}{%
   \scr@ext@activate{#1}%
   \AtEndOfPackage{%
     \scr@ifundefinedorrelax{scr@ext@immediate@#1}{}{%
-      \PackageWarningNoLine{unkown extended feature `#1'\MessageBreak
+      \PackageWarningNoLine{scrextend}{%
+        unkown extended feature `#1'.\MessageBreak
         You have used option `extendedfeature' to\MessageBreak
         activate an extended feature `#1',\MessageBreak
         but there is no such extended feature.\MessageBreak

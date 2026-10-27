@@ -76,7 +76,7 @@ typesetopts     = "--interaction=batchmode"
 
 typesetruns     = 4
 
-typesetfiles    = {
+typesetsrcfiles    = {
    "koma-script-source-doc.dtx",
    "japanlco.dtx",
    "scraddr.dtx",
@@ -113,6 +113,9 @@ typesetfiles    = {
    "scrlfile-patcholdlatex.dtx",
    "scrlogo.dtx",
    "tocbasic.dtx",
+}
+
+typesetfiles    = {
    "scrguide-en.tex",
    "scrguide-de.tex",
 }
@@ -287,6 +290,8 @@ guideglossarystyle = "scrguide.gst"
 
 -- Typesetting
 
+usetypesetparallel = true
+
 function docinit_hook()
    local demofile
    local guidefile
@@ -305,8 +310,45 @@ function docinit_hook()
 					 cmd  = "pdflatex-dev"}
       end
    end
+   if errorlevel == 0 and os.type ~= "linux" and usetypesetparallel==true
+      and typesetsrcfiles and next(typesetsrcfiles) then
+      local cmd, file
+      cmd = lfs.currentdir()
+      cmd = cmd .. '/developer/scripts/typesetparallel.sh'
+      for _,file in ipairs(typesetsrcfiles) do
+	 cmd = cmd .. ' "' .. file ..'"'
+      end
+      errorlevel = runcmd( cmd,typesetdir,{"TEXINPUTS","LUAINPUTS"})
+   else
+      -- workaround for typesetting source files
+      -- Note: This adds the implementation docs to the docs!
+      local newtypesetfiles
+      newtypesetfiles = typesetsrcfiles
+      for i=1,#typesetfiles do
+	 newtypesetfiles[#newtypesetfiles+1] = typesetfiles[i]
+      end
+      typesetfiles = newtypesetfiles
+   end
    return errorlevel
 end
+
+function xdoc(files)
+   if files and next(files) then
+      local file
+      for _,file in pairs(files) do
+	 local typesetsrcffile
+	 for _,typesetsrcfile in ipairs(typesetsrcfiles) do
+	    if file == jobname(typesetsrcfile) then
+	       typesetfiles[#typesetfiles+1] = typesetsrcfile
+	    end
+	 end
+      end
+      typesetsrcfiles={}
+   end
+   return doc(files)
+end
+
+target_list.doc.func = xdoc
 
 package_doc = {
    scraddr = {
@@ -1036,3 +1078,5 @@ function rewrite_log(source, result, engine, errlevels)
    io.write(new_content)
    io.close(newfile)
 end
+
+testfiledir="KOMA-testfiles"

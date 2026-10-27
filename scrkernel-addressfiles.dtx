@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-addressfiles.dtx
-% Copyright (c) Markus Kohm, 2006-2023
+% Copyright (c) Markus Kohm, 2006-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-addressfiles.dtx 4032 2023-04-17 09:45:11Z kohm $
+%%% From File: $Id: scrkernel-addressfiles.dtx 4298 2026-10-02 07:58:03Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2023-04-17 11:45:11 +0200 (Mon, 17 Apr 2023) $
+  \filedate$Date: 2026-10-02 09:58:03 +0200 (Fri, 02 Oct 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4032 $
+  \filerevision$Revision: 4298 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-addressfiles.dtx}%
@@ -106,13 +106,20 @@
 % \cs{addrentry}.
 %    \begin{macrocode}
 %<*body>
-\newcommand*{\adrentry}[7]{%
+%<*deprecated>
+%<class>\expandafter\ifnum\scr@v@is@lt{3.36}
+\newcommand*{\adrentry}[8]{%
 %<class>  \ClassWarning{\KOMAClassName}{%
 %<package>  \PackageWarning{scrletter}{%
     command `\string\adrentry' is deprecated.\MessageBreak
     You should use `\string\addrentry' with additional\MessageBreak
-    empty 8th argument}%
-  \addrentry{#1}{#2}{#3}{#4}{#5}{#6}{#7}{}}
+    empty argument between the 7th argument and the\MessageBreak
+    the previous 8th argument, e.g.\MessageBreak
+    \detokenize{\addrentry{#1}{#2}{#3}{#4}{#5}{#6}{#7}{}{#8}}%
+  }%
+  \addrentry{#1}{#2}{#3}{#4}{#5}{#6}{#7}{}{#8}}
+%<class>\fi
+%</deprecated>
 \newcommand*{\addrentry}[9]{\def\@tempa{#1}\ifx \@tempa\@empty \else
  \def\@tempa{#2}\ifx \@tempa\@empty
   \expandafter\def\csname #9\endcsname{#1\\#3}%
@@ -134,12 +141,16 @@
 % the new letter, but ignored by the default implementation. The default of
 % deprecated \cs{adrchar} is to use \cs{addrchar}.
 %    \begin{macrocode}
+%<*deprecated>
+%<class>\expandafter\ifnum\scr@v@is@lt{3.36}
 \newcommand*{\adrchar}{%
 %<class>  \ClassWarning{\KOMAClassName}{%
 %<package>  \PackageWarning{scrletter}{%
     command `\string\adrchar' is deprecated.\MessageBreak
     You should use `\string\addrchar'}
   \addrchar}
+%<class>\fi
+%</deprecated>
 \newcommand*{\addrchar}[1]{}
 %</body>
 %    \end{macrocode}

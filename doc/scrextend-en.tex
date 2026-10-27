@@ -1,6 +1,6 @@
 % ======================================================================
 % scrextend-en.tex
-% Copyright (c) Markus Kohm, 2002-2022
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{scrextend-en.tex}
-                 [$Date: 2023-09-18 09:02:03 +0200 (Mon, 18 Sep 2023) $
+                 [$Date: 2026-10-23 12:31:29 +0200 (Fri, 23 Oct 2026) $
                   KOMA-Script package scrextend]
 \translator{Markus Kohm\and Karl Hagen}
 
@@ -63,7 +63,7 @@ does not already provide the feature you need.
 
 In addition to the features described in this chapter, there are a few more
 that are primarily intended for authors of classes and packages. These can be
-found in \autoref{cha:scrbase}, starting on \autopageref{cha:scrbase}. The 
+found in \autoref{cha:scrbase}, starting on \autopageref{cha:scrbase}. The
 \hyperref[cha:scrbase]{\Package{scrbase}}%
 \important{\hyperref[cha:scrbase]{\Package{scrbase}}}\IndexPackage{scrbase}
 package documented there is used by all \KOMAScript{} classes and the
@@ -107,34 +107,32 @@ With this option, you can activate an extended \PName{feature} of
 \Package{scrextend}. This option is available only while loading
 \Package{scrextend}. You must therefore specify this option in the optional
 argument of \DescRef{\LabelBase.cmd.usepackage}\PParameter{scrextend}. %
-\iffree{%
-  An overview of all available features is shown in
-  \autoref{tab:scrextend.optionalFeatures}.
-
-  \begin{table}
-    \caption[{Available extended features of
-      \Package{scrextend}}]{Overview of the optional extended
-      features of \Package{scrextend}}
-    \label{tab:scrextend.optionalFeatures}
-    \begin{desctabular}
-      \entry{\PName{title}}{%
-        title pages have the additional features of the \KOMAScript{} classes;
-        this applies not only to the commands for the title page but also to
-        the \DescRef{\LabelBase.option.titlepage} option (see
-        \autoref{sec:scrextend.titlepage}, from
-        \autopageref{sec:scrextend.titlepage})%
-      }%
-    \end{desctabular}
-  \end{table}
-}{%
-  \par%
-  Currently the only available extended \PName{feature} is 
-  \PValue{title}\IndexOption[indexmain]{extendedfeature~=\textKValue{title}}%
-    \important{\OptionValue{extendedfeature}{title}}.
-  This \PName{feature} gives title pages the features of the \KOMAScript{}
-  classes, as described in \autoref{sec:scrextend.titlepage} starting on
-  \autopageref{sec:scrextend.titlepage}.%
-}%
+%
+\begin{table}
+  \caption[{Available extended features of
+    \Package{scrextend}}]{Overview of the optional extended
+    features of \Package{scrextend}}
+  \label{tab:scrextend.optionalFeatures}
+  \begin{desctabular}
+    \pventry{footnote}{%
+      \LabelOptionValue{extendedfeature}{footnote}%
+      \ChangedAt{v3.49.4}{\Package{scrextend}}%
+      The footnote defaults of the \KOMAScript{} classes are automatically
+      adopted; depending on the class used or the additional packages used,
+      this can lead to warnings or even real problems (see
+      \autoref{sec:scrextend.footnotes}, from
+      \autopageref{sec:scrextend.footnotes}).%
+    }%
+    \pventry{title}{%
+      \LabelOptionValue{extendedfeature}{title}%
+      title pages have the additional features of the \KOMAScript{} classes;
+      this applies not only to the commands for the title page but also to
+      the \DescRef{\LabelBase.option.titlepage} option (see
+      \autoref{sec:scrextend.titlepage}, from
+      \autopageref{sec:scrextend.titlepage})%
+    }%
+  \end{desctabular}
+\end{table}%
 %
 \EndIndexGroup
 
@@ -189,10 +187,10 @@ specified in \DescRef{maincls.cmd.thispagestyle} will be used. The default for
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

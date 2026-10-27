@@ -59,7 +59,7 @@
    \UseTaggingSocket{sec/end}{\int_use:N\l_@@_sec_level_int}
    \UseTaggingSocket{sec/begin}
     {{\int_use:N\l_@@_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int}}}
-   \if@currentrunin
+  \if@currentrunin
     \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
     \tagpdfsetup{para/flattened=true}
    \fi
@@ -100,6 +100,13 @@
 }
 
 \AssignTaggingSocketPlug{scr/sec/title/split}{default}
+
+\NewTaggingSocketPlug{scr/sec/title/hang}{default}{
+    \UseTaggingSocket{sec/title/hang}
+     % {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\l_@@_sec_tmpa_tl }}
+}
+
+\AssignTaggingSocketPlug{scr/sec/title/hang}{default}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -189,7 +196,6 @@
   \cs_set_eq:NN \chapterlineswithprefixformat \scrlab@chapterlineswithprefixformat
   \cs_set_eq:NN \partlineswithprefixformat \scrlab@partlineswithprefixformat
   \cs_set_eq:NN \@seccntformat \scrlab@seccntformat
-  \let\scr@sect\scrlab@sect
   \let\scr@startsection\scrlab@startsection
   \let\scr@xsect\scrlab@xsect
   \let\scr@ssect\scrlab@ssect

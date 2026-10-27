@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-typearea.dtx
-% Copyright (c) Markus Kohm, 2002-2025
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-typearea.dtx 4181 2025-06-14 09:11:13Z kohm $
+%%% From File: $Id: scrkernel-typearea.dtx 4311 2026-10-09 08:25:34Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -29,9 +29,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-06-14 11:11:13 +0200 (Sat, 14 Jun 2025) $
+  \filedate$Date: 2026-10-09 10:25:34 +0200 (Fri, 09 Oct 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4181 $
+  \filerevision$Revision: 4311 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-typearea.dtx}[%
@@ -64,7 +64,7 @@
       \from{scrkernel-compatibility.dtx}{package,typearea,option}%
       \from{scrkernel-typearea.dtx}{package,typearea,options}%
       \from{scrkernel-compatibility.dtx}{package,typearea,body}%
-      \from{scrkernel-typearea.dtx}{package,typearea,body}%
+      \from{scrkernel-typearea.dtx}{package,typearea,body,deprecated}%
       \from{scrkernel-typearea.dtx}{package,typearea,final}%
       \from{scrlogo.dtx}{logo}%
     }%
@@ -1536,7 +1536,8 @@
 % \changes{v3.24}{2017/07/23}{deprecated}
 % The command is deprecated. Don't use it any longer.
 %    \begin{macrocode}
-%<*package&typearea&body>
+%<*package&typearea&body&deprecated>
+\expandafter\ifnum\scr@ta@v@is@lt{3.24}\relax
 \newcommand*\SetDIVList[1]{%
   \PackageWarning{typearea}{\string\SetDIVList\space is
     deprecated!\MessageBreak
@@ -1563,7 +1564,8 @@
     for compatibility only. You should not use it\MessageBreak
     any longer}%
   \def\ta@divlist{#1}}
-%</package&typearea&body>
+\fi
+%</package&typearea&body&deprecated>
 %    \end{macrocode}
 % \end{command}^^A \SetXDIVList
 %

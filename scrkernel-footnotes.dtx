@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-footnotes.dtx
-% Copyright (c) Markus Kohm, 2002-2025
+% Copyright (c) Markus Kohm, 2002-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,16 +18,16 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-footnotes.dtx 4245 2025-11-26 08:59:26Z kohm $
+%%% From File: $Id: scrkernel-footnotes.dtx 4329 2026-10-23 08:42:15Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2025-11-26 09:59:26 +0100 (Wed, 26 Nov 2025) $
+  \filedate$Date: 2026-10-23 10:42:15 +0200 (Fri, 23 Oct 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4245 $
+  \filerevision$Revision: 4329 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-footnotes.dtx}%
@@ -99,7 +99,17 @@
 % package.
 %    \begin{macrocode}
 %<*option>
-\KOMA@key{footnotes}{%
+%<*package>
+\scr@ext@activateable{footnote}{%
+  \def\scr@ext@immediate@footnote{%
+    \scr@ext@activate{footnote}%
+    \let\scr@ext@immediate@footnote\relax
+  }%
+}
+%</package>
+\KOMA@key{footnotes}
+%<package>[true]
+{%
   \ifx\@footnotemark\scr@saved@footnotemark
   \else
     \ifx\@footnotemark\scr@footnotemark
@@ -133,7 +143,15 @@
 %<package&extend>      scrextend.\scr@pkgextension
       }{footnotes}{nomultiple}%
     }{%
-      \KOMA@unknown@keyval{footnotes}{#1}{`multiple' and `nomultiple'}%
+%<*package>
+      \Ifstr{#1}{true}{%
+        \KOMAExecuteOptions{extendedfeature=footnote}%
+        \def\CurrentOption{footnotes}%
+        \FamilyKeyStateProcessed
+      }{%
+%</package>
+        \KOMA@unknown@keyval{footnotes}{#1}{`multiple' and `nomultiple'}%
+%<package>      }%
     }%
   }%
 }
@@ -569,57 +587,23 @@
 %   to use \cs{thefootnotemark}}
 % \changes{v3.39}{2025/11/26}{first try \pkg{xpatch}}
 %    \begin{macrocode}
-%<*class>
-\deffootnote[1em]{1.5em}{1em}{\textsuperscript{\thefootnotemark}}
-%</class>
 %<*package>
-\def\reserved@a{\hbox{\@textsuperscript{\normalfont\@thefnmark}}}
-\ifx\reserved@a\@makefnmark
-%</package>
-\deffootnotemark{\textsuperscript{\thefootnotemark}}
-%<*package>
-\else
-  \IfFileExists{xpatch.\@pkgextension}{%
-    \PackageInfo{scrextend}{%
-      unexpected definition of `\string\@makefnmark'.\MessageBreak
-      Trying to patch it%
+\scr@ext@addto@activateable{footnote}{%
+  \PackageInfoNoLine{scrextend}{using extended footnote feature}%
+  \def\reserved@a{\hbox{\@textsuperscript{\normalfont\@thefnmark}}}%
+  \ifx\reserved@a\@makefnmark\else
+    \PackageWarningNoLine{scrextend}{%
+      Unexpected definition of `\string\@makefnmark' detected.\MessageBreak
+      Usage of then extended footnote feature may break\MessageBreak
+      another package or the class!\MessageBreak
+      In this case you should remove the usage of option\MessageBreak
+      `footnote' and `extendedfeature=footnote'%
     }%
-    \RequirePackage{xpatch}%
-    \xpatchcmd{\@makefnmark}{\@thefnmark}{\thefootnotemark}{%
-      \PackageInfo{scrextend}{patch seems to be successfull}%
-    }{%
-      \PackageWarning{scrextend}{%
-        patching `\string\@makefnmark' failed.\MessageBreak
-        Using hard coded redefinition%
-      }%
-      \deffootnotemark{\textsuperscript{\thefootnotemark}}%
-   }%
-  }{%
-    \IfFileExists{etoolbox.\@pkgextension}{%
-      \PackageInfo{scrextend}{%
-        unexpected definition of `\string\@makefnmark'.\MessageBreak
-        Trying to patch it%
-      }%
-      \RequirePackage{etoolbox}%
-      \patchcmd{\@makefnmark}{\@thefnmark}{\thefootnotemark}{%
-        \PackageInfo{scrextend}{patch seems to be successfull}%
-      }{%
-        \PackageWarning{scrextend}{%
-          patching `\string\@makefnmark' failed.\MessageBreak
-          Using hard coded redefinition%
-        }%
-        \deffootnotemark{\textsuperscript{\thefootnotemark}}%
-     }%
-    }{%
-      \PackageWarning{scrextend}{%
-        unexpected definition of `\string\@makefnmark'.\MessageBreak
-        Using hard coded redefintion%
-      }%
-      \deffootnotemark{\textsuperscript{\thefootnotemark}}%
-    }%
-  }%
-\fi
+  \fi
 %</package>
+\deffootnote[1em]{1.5em}{1em}{\textsuperscript{\thefootnotemark}}%
+\deffootnotemark{\textsuperscript{\thefootnotemark}}%
+%<package>}\csname scr@ext@immediate@footnote\endcsname
 %    \end{macrocode}
 % \end{macro}
 %

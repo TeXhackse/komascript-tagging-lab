@@ -1,10 +1,10 @@
 ============================================================================
-List of things that I may have to do or to decide whether or not I have 
+List of things that I may have to do or to decide whether or not I have
 to do them.
 Language of this file is mixed. Charset is UTF-8.
 ----------------------------------------------------------------------------
 Liste der Dinge, die ich noch zu tun oder von denen ich noch zu entscheiden
-habe, ob ich sie noch zu tun habe. 
+habe, ob ich sie noch zu tun habe.
 Die Sprache dieser Datei ist gemischt. Der Zeichensatz ist UTF-8.
 ============================================================================
 
@@ -15,6 +15,13 @@ Fehler/Issues:
   auf Verzeichnisse des Besitzers "float" vorgenommen werden. Noch besser wäre
   eventuell, das ganze als tocbasic feature zu implementieren. Dann stünde es
   auch für andere Klassen zur Verfügung.
+  Hinweis: Das ist teilweise längst geschehen aber für die genannte Option
+           nicht vollständig umgestellt. Hier gibt es einen Bruch zwischen
+	   Paket tocbasic und den KOMA-Script-Klassen.
+
+- Seit 20 Jahren werden veraltete Optionen und Befehle mit entsprechenden
+  Warnungen und teilweise mit automatischer Umschaltung auf version=first
+  mitgeschleppt. Es ist Zeit, diese los zu werden.
 
 ----------------------------------------------------------------------------
 
@@ -23,6 +30,12 @@ Doku/Doc:
 ----------------------------------------------------------------------------
 
 Baustelle/Nice to have:
+
+- Das Laden von Paket bookmark ist mit \DocumentMetadata nicht mehr
+  erforderlich, da hyperref das dann selbst erledigt. Damit kann auch die
+  komplette Fallback-Lösung für das explizite Nicht-Laden von bookmark
+  entfallen. Ohne \DocumentMetadata passiert das leider noch nicht. Sollte
+  man im Auge behalten.
 
 - scrletter:
   - Seitenstil notepaper mit Layer foldmarks + notepaper
@@ -42,51 +55,45 @@ Baustelle/Nice to have:
   behandelter Abstand wäre (auch wenn die derzeitige Implementierung
   einfacher war und diverse Stellen zu ändern sind).
 
-- Überlegen wie die Optionen für die Voreinstellungen der Behandlung des
-  optionalen Arguments von \chapter, \section etc. bezüglich `reference' zu
-  überarbeiten sind.
-
-- Spezielle Bedeutung der Mitgliedsoption @else@ auch für 
+- Spezielle Bedeutung der Mitgliedsoption @else@ auch für
   \FamilyProcessOptions.
 
-- Neues TOC-Feature pagestyle (eventuell auch noch firstpagestyle und
-  nextpagestyle). Vorsicht: Benötigt ggf. ein \clearpage am Ende des
-  Verzeichnisses, was bei \section natürlich nicht in Frage kommt.
+- Die Erklärung zu \chaptermark, \sectionmark etc. erneuern und dabei auf
+  den Umstand \addchap, \addsec und allgemein auf nicht nummerierte
+  Überschriften mit oder ohne lebende Kolumnentitel etwas genauer eingehen.
 
-- Die Erklärung zu \chaptermark, \sectionmark etc. erneuern und dabei auf 
-  den Umstand \addchap, \addsec etwas genauer eingehen.
-
-- Ev. \RedeclareSectionCommand bereits im Anwenderteil (teilweise) 
+- Ev. \RedeclareSectionCommand bereits im Anwenderteil (teilweise)
   erklären.
+
+- Neue Option für \DeclareSectionCommand, um einen anderen Zähler als den
+  aus dem Namen der Gliederungsebene zu verwenden, so dass man beispielsweise
+  etwas wie \DeclareSectionCommand[counter=section]{specialsection} machen
+  kann.
 
 - Dokumentieren (und dabei weiter implementieren) wie man eigene
   Überschriftenstile erstellen kann.
-
-- In scrlayer-notecolumn.dtx eventuell bei einigen Boxen \color@begingroup
-  und \color@endgroup ergänzen.
 
 - Da ein Seitenstil selbst \pagestyle verwenden kann (was Alias-Seitenstile
   auch tun) wird der \BeforeSelectAnyPageStyle in diesem Fall ggf. auch
   innerhalb eines mit \thispagestyle aktivierten Seitenstils aufgerufen, nur
   nicht für den Seitenstil selbst. Die Doku ist diesbezüglich also etwas
-  missverständlich. Eventuell sollte man sogar das Verhalten so abändern, 
+  missverständlich. Eventuell sollte man sogar das Verhalten so abändern,
   dass zumindest \thispagestyle den Hook (natürlich verzögert) auch für den
   Seitenstil selbst aufruft. Das wäre über die Verwendung eines Aliases
   @specialstyle möglich.
 
-- Dokumentation für das Paket scrfontsizes.
+- Dokumentation für das Paket scrfontsizes einschl. dessen
+  Neuimplementierung (siehe unten).
 
 ----------------------------------------------------------------------------
 
 Neue Ideen/Ideas:
 
 - Eventuell wäre es sinnvoll eine ganze Reihe von Optionen von scrlayer und
-  scrlayer-scrpage je Seitenstil(paar) zu betrachten und die globalen 
+  scrlayer-scrpage je Seitenstil(paar) zu betrachten und die globalen
   Optionen lediglich als Voreinstellungen dafür zu verwenden. Das würde es
-  beispielsweise ermöglichen im init-Code von Seitenstilen Optionen zu 
+  beispielsweise ermöglichen im init-Code von Seitenstilen Optionen zu
   setzen, die dann nur für diesen Seitenstil bzw. dieses Paar gelten.
-
-- Eigene \raggedright-, \raggedleft- und \centering-Definition verwenden.
 
 - Erweiterung des Pakets scrfontsizes, so dass man für jede Größe die Größen
   auch explizit vorgeben kann.

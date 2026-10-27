@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 % ======================================================================
 % scrkernel-compatibility.dtx
-% Copyright (c) Markus Kohm, 2006-2025
+% Copyright (c) Markus Kohm, 2006-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-compatibility.dtx 4277 2026-06-15 17:09:10Z kohm $
+%%% From File: $Id: scrkernel-compatibility.dtx 4325 2026-10-19 09:38:29Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<option>%%%            (run: option)
@@ -27,9 +27,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\def\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-06-15 19:09:10 +0200 (Mon, 15 Jun 2026) $
+  \filedate$Date: 2026-10-19 11:38:29 +0200 (Mon, 19 Oct 2026) $
   \def\filerevision$#1: #2 ${\def\filerevision{r#2}}
-  \filerevision$Revision: 4277 $
+  \filerevision$Revision: 4325 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-compatibility.dtx}%
@@ -199,7 +199,7 @@
   {\scr@compatibility}{\scr@v@last}
 %<typearea>\newcommand*{\scr@ta@compatibility}{\scr@compatibility}
 %</init>
-%<*option>
+%<*option&(class|scrextend|typearea)>
 \KOMA@key{version}[last]{%
   \scr@ifundefinedorrelax{scr@v@#1}{%
     \def\scr@compatibility{0}%
@@ -208,7 +208,6 @@
     \PackageWarningNoLine{%
 %<extend>      scrextend%
 %<typearea>      typearea%
-%<letter>      scrletter%
     }{%
 %</package>
       You have set option `version' to value `#1', but\MessageBreak
@@ -220,7 +219,6 @@
 %<class>      \KOMAClassFileName
 %<package&extend>      scrextend.\scr@pkgextension
 %<package&typearea>      typearea.\scr@pkgextension
-%<package&letter>      scrletter.\scr@pkgextension
     }{version}{first}%
   }{%
 %<class>    \ClassInfoNoLine{\KOMAClassName}{%
@@ -228,7 +226,6 @@
     \PackageInfoNoLine{%
 %<extend>      scrextend%
 %<typearea>      typearea%
-%<letter>      scrletter%
     }{%
 %</package>
       Switching compatibility level to `#1'%
@@ -240,7 +237,6 @@
 %<class>      \KOMAClassFileName
 %<package&extend>      scrextend.\scr@pkgextension
 %<package&typearea>      typearea.\scr@pkgextension
-%<package&letter>      scrletter.\scr@pkgextension
     }{version}{#1}%
     \ifnum\scr@compatibility<\scr@v@last
 %<class>      \ClassWarningNoLine{\KOMAClassName}{%
@@ -248,7 +244,6 @@
       \PackageWarningNoLine{%
 %<extend>        scrextend%
 %<typearea>        typearea%
-%<letter>        scrletter%
       }{%
 %</package>
         Switching back to an old KOMA-Script release does\MessageBreak
@@ -280,7 +275,6 @@
     \PackageError{%
 %<extend>      scrextend%
 %<typearea>      typearea%
-%<letter>      scrletter%
     }{%
 %</package>
       Option `version' too late%
@@ -293,7 +287,7 @@
     \FamilyKeyStateProcessed
   }%
 }
-%</option>
+%</option&(class|scrextend|typearea)>
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -576,6 +570,8 @@
 % \changes{v3.49.2}{2026/02/02}{added}
 % \begin{macro}{\scr@v@3.49.3}
 % \changes{v3.49.3}{2026/06/15}{added}
+% \begin{macro}{\scr@v@3.49.4}
+% \changes{v3.49.4}{2026/10/19}{added}
 % \begin{macro}{\scr@v@last}
 % \changes{v2.9u}{2005/03/05}{added}
 %    \begin{macrocode}
@@ -675,8 +671,10 @@
 \@namedef{scr@v@3.49.1}{34901}
 \@namedef{scr@v@3.49.2}{34902}
 \@namedef{scr@v@3.49.3}{34903}
-\@namedef{scr@v@last}{34903}
+\@namedef{scr@v@3.49.4}{34904}
+\@namedef{scr@v@last}{34904}
 %    \end{macrocode}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}

@@ -101,8 +101,8 @@
 %\msg_redirect_name:nnn { \KOMAClassName } { tagging-not-supported } { none }
 %\end{verbatim}
 %   As an alternative packages (and wrapper classes) can change the test and
-%   messages by defining \cs{komascript\_documentmetadata\_test:}
-%   resp. \cs{komascript\_tagging\_test:} before loading the \KOMAScript{}
+%   messages by defining \cs{komascript_documentmetadata_test:}
+%   resp. \cs{komascript_tagging_test:} before loading the \KOMAScript{}
 %   class.
 %   \changes{v3.49.3}{2026/09/22}{Fix typo in package loading}
 %    \begin{macrocode}
@@ -141,6 +141,7 @@
 \NewTaggingSocket{scr/sec/heading/init}{1}
 \NewTaggingSocket{scr/sec/heading/begin}{1}
 \NewTaggingSocket{scr/sec/heading/end}{1}
+\NewTaggingSocket{scr/sec/title/hang}{1}
 \NewTaggingSocket{scr/sec/title/split}{0}
 %    \begin{macrocode}
 \IfDocumentMetadataT

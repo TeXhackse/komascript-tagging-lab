@@ -1,6 +1,6 @@
 % ======================================================================
 % common-footnotes-de.tex
-% Copyright (c) Markus Kohm, 2001-2022
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-footnotes-de.tex}%
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2026-10-23 12:31:29 +0200 (Fri, 23 Oct 2026) $
                   KOMA-Script guide (common paragraphs)]
 
 \section{Fußnoten}
@@ -61,15 +61,19 @@
   }{%
     \IfThisCommonLabelBase{scrextend}{%
       \ In der Voreinstellung wird die Formatierung der Fußnoten jedoch der
-      verwendeten Klasse überlassen. Dies ändert sich, sobald die Anweisung
-      \DescRef{\ThisCommonLabelBase.cmd.deffootnote} %
+      verwendeten Klasse überlassen. Dies ändert sich, sobald
+      Option\ChangedAt{v3.49.4}{\Package{scrextend}}
+      \DescRef{\ThisCommonLabelBase.option.extendedfeature.footnote}
+      oder die Anweisungen
+      \DescRef{\ThisCommonLabelBase.cmd.deffootnote} und
+      \DescRef{\ThisCommonLabelBase.cmd.deffootnotemark}
       \iftrue % Umbruchkorrektur
-      (siehe \DescPageRef{\ThisCommonLabelBase.cmd.deffootnote}) verwendet
-      wird. %
+        (siehe \DescPageRef{\ThisCommonLabelBase.cmd.deffootnote})
+        verwendet werden. %
       \else %
-      verwendet wird, die auf
-      \DescPageRef{\ThisCommonLabelBase.cmd.deffootnote} näher erläutert
-      wird. %
+        verwendet werden, die auf
+        \DescPageRef{\ThisCommonLabelBase.cmd.deffootnote} näher erläutert
+        werden. %
       \fi %
       Die Einstellmöglichkeiten für die Trennlinie über den Fußnoten werden
       hingegen von \Package{scrextend} nicht bereitgestellt.%
@@ -91,7 +95,7 @@
     verändern. %
     \IfThisCommonLabelBase{scrlttr2}{%
       \iffalse % Umbruchoptimierung
-  
+
       Ob Fußnoten bei Briefen überhaupt zulässig sind, hängt sehr stark von
       der Art des Briefs und dessen Layout ab. So sind beispielsweise optische
       Kollisionen mit dem Fuß des Briefbogens oder Verwechslungen mit der
@@ -155,8 +159,10 @@ als auch auf solche, die direkt mit
 ausgegeben werden.
 %
 \IfThisCommonLabelBase{scrextend}{%
-  Bei Problemen mit der verwendeten Klasse oder anderen Paketen, die Einfluss
-  auf die Fußnoten nehmen, sollte Option \Option{footnotes} nicht verwendet
+  Die Option aktiviert automatisch auch Option
+  \DescRef{\ThisCommonLabelBase.option.extendedfeature.footnote}. Bei
+  Problemen mit der verwendeten Klasse oder anderen Paketen, die Einfluss auf
+  die Fußnoten nehmen, sollte Option \Option{footnotes} nicht verwendet
   werden.%
 }{%
   \par
@@ -320,12 +326,12 @@ weiteren Fußnotenmarken für diese Fußnote im Text setzen.
     um einen geschützten Markennamen handelt. Sie schreiben beispielsweise:%
     \IfThisCommonLabelBase{maincls}{\iftrue}{\csname iffalse\endcsname}%
 \begin{lstcode}
-  Die Firma SplischSplasch\footnote{Bei diesem 
+  Die Firma SplischSplasch\footnote{Bei diesem
     Namen handelt es sich um eine registrierte
-    Marke. Alle Rechte daran sind dem 
+    Marke. Alle Rechte daran sind dem
     Markeninhaber vorbehalten.\label{refnote}}
   stellt neben SplischPlumps\footref{refnote}
-  auch noch die verbesserte Version 
+  auch noch die verbesserte Version
   SplischPlatsch\footref{refnote} her.
 \end{lstcode}
       Es wird dann dreimal eine Marke auf dieselbe Fußnote gesetzt, einmal mit
@@ -333,12 +339,12 @@ weiteren Fußnotenmarken für diese Fußnote im Text setzen.
       \Macro{footref}.
     \else\iftrue
 \begin{lstcode}
-  Die Firma SplischSplasch\footnote{Bei diesem 
+  Die Firma SplischSplasch\footnote{Bei diesem
     Namen handelt es sich um eine registrierte
-    Marke. Alle Rechte daran sind dem 
+    Marke. Alle Rechte daran sind dem
     Markeninhaber vorbehalten.\label{refnote}}
   stellt neben SplischPlumps\footref{refnote}
-  auch noch die verbesserte Version 
+  auch noch die verbesserte Version
   SplischPlatsch\footref{refnote} her.
 \end{lstcode}
         Es wird dann dreimal eine Marke auf dieselbe Fußnote gesetzt, einmal
@@ -348,13 +354,13 @@ weiteren Fußnotenmarken für diese Fußnote im Text setzen.
 \begin{lstcode}
   Die Firma SplischSplasch\footnote{Bei diesem
     Namen handelt es sich um eine registrierte
-    Marke. Alle Rechte daran sind dem 
+    Marke. Alle Rechte daran sind dem
     Markeninhaber, der Firma SplischSplasch,
     vorbehalten.\label{refnote}}
   stellt neben SplischPlumps\footref{refnote}
-  auch noch die verbesserte Version 
+  auch noch die verbesserte Version
   SplischPlatsch\footref{refnote} und das sehr
-  beliebte 
+  beliebte
   SplischSplaschPlumps\footref{refnote} her.
 \end{lstcode}
         Es wird dann vier Mal eine Marke auf dieselbe Fußnote gesetzt, einmal
@@ -446,10 +452,13 @@ Fußnotenmarke ohne jegliche Formatierung.%
   \KOMAScript-Klassen muss man vielmehr obige Einstellung selbst vornehmen%
   \iffalse %
   . Dazu können obige Code-Zeilen beispielsweise unmittelbar nach dem
-  Laden von \Package{scrextend} eingefügt werden.%
+  Laden von \Package{scrextend} eingefügt werden.
   \else %
-  , indem man den gezeigten Code in die Dokumentpräambel übernimmt.%
-  \fi%
+  , indem man den gezeigten Code in die Dokumentpräambel übernimmt.
+  \fi
+  Alternativ\ChangedAt{v3.49.4}{\Package{scrextend}} kann man mit
+  \DescRef{\ThisCommonLabelBase.option.extendedfeature.footnote} die
+  Voreinstellung ebenfalls übernehmen.
 }{}%
 
 \IfThisCommonLabelBase{maincls}{%
@@ -493,12 +502,12 @@ Fußnotenmarke ohne jegliche Formatierung.%
         \put(5,7){\line(1,0){5}}
         \put(15,7){\vector(-1,0){5}}
         \put(15,7){\makebox(0,0)[l]{\small\PName{Absatzeinzug}}}
-        % 
+        %
         \put(-3,13){\vector(1,0){3}}
         \put(0,13){\line(1,0){5}}
         \put(10,13){\vector(-1,0){5}}
         \put(10,13){\makebox(0,0)[l]{\small\PName{Einzug}}}
-        % 
+        %
         \put(-3,19){\vector(1,0){3}}
         \put(0,19){\line(1,0){14.5}}
         \put(19.5,19){\vector(-1,0){5}}
@@ -543,7 +552,10 @@ Zwecke, beispielsweise zur Verwendung von Flattersatz in den Fußnoten (siehe
 \LabelFontElement{footnotereference}%
 Die Fußnotenmarkierung im Text wird getrennt von der Markierung vor der
 Fußnote definiert. Dies geschieht mit der Anweisung
-\Macro{deffootnotemark}. Voreingestellt ist hier:
+\Macro{deffootnotemark}. Voreingestellt ist
+\IfThisCommonLabelBase{scrextend}{bei\ChangedAt{v3.49.4}{\Package{scrextend}}
+  Verwendung von Option
+  \DescRef{\ThisCommonLabelBase.option.extendedfeature.footnote}}{hier}:
 \begin{lstcode}
   \deffootnotemark{\textsuperscript{\thefootnotemark}}
 \end{lstcode}
@@ -579,7 +591,7 @@ werden.\IfThisCommonLabelBase{scrextend}{\ Ohne \Macro{deffootnote} kann sich
     in eine Box der Breite 1\Unit{em} gesetzt.  Die folgenden Zeilen der
     Fußnote werden gegenüber dem linken Rand ebenfalls um 1\Unit{em}
     eingezogen.
-  
+
     Eine\textnote{Tipp!} weitere, oft gefragte Formatierung sind linksbündige
     Fußnotenmarkierungen in der Fußnote. Diese können mit folgender Definition
     erhalten werden:
@@ -588,7 +600,7 @@ werden.\IfThisCommonLabelBase{scrextend}{\ Ohne \Macro{deffootnote} kann sich
     \makebox[1.5em][l]{\thefootnotemark}%
   }
 \end{lstcode}
-  
+
     Sollen jedoch die Fußnoten insgesamt lediglich in einer anderen
     Schriftart, beispielsweise serifenlos, gesetzt werden, so ist dies ganz
     einfach mit Hilfe der Anweisungen
@@ -719,7 +731,7 @@ zulässig (siehe \cite{package:ragged2e}).
   Links anzugeben, deren Umbruch im Blocksatz zu schlechten Ergebnissen
   führen. Dann könnten Sie in der Dokumentpräambel mit
 \begin{lstcode}
-  \let\raggedfootnote\raggedright    
+  \let\raggedfootnote\raggedright
 \end{lstcode}
   für die Fußnoten einfach auf linksbündigen Flattersatz umschalten.
 \end{Example}%
@@ -743,13 +755,13 @@ werden beide Haken von \KOMAScript{} selbst nicht verwendet.%
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:
 
 %  LocalWords:  Fußnotennummern Fußnotenmarkierung Satzspiegels
 %  LocalWords:  Standardklassen Fußnotenformatierungen Dokumentpräambel
