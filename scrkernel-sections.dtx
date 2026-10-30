@@ -1115,8 +1115,8 @@
 % \end{description}
 %    \begin{macrocode}
   \fi%^^A \if@currentrunin
-  \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
-  \scr@xsect
+\let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
+ \scr@xsect
 }
 %    \end{macrocode}
 %</body|tagging-lab>
@@ -1814,6 +1814,7 @@
 % \begin{macro}{\scr@dsc@def@style@section@command}
 % \changes{v3.18}{2015/05/21}{added}
 % \changes{v3.20}{2016/01/19}{inline section test fixed}
+% \changes{v3.49.4}{2026/10/30}{use font element \fnt{disposition} instead of \cs{sectfont}}
 % Macro
 % \begin{quote}
 %   \cs{scr@dsc@def@style@section@command}\marg{command name}
@@ -1839,7 +1840,7 @@
           \setlength{\parfillskip}{\z@ plus 1fil}%
 %<!v4>        \fi
       \fi
-      \raggedsection\normalfont\sectfont\nobreak
+      \raggedsection\normalfont\usekomafont{disposition}\nobreak
       \usekomafont{#1}%
     }%
   }%
@@ -5022,7 +5023,7 @@
     \scr@@sect@InsertHeadAndToc{#1}%
     \ExecuteDoHook{heading/endgroup/#1}%
   }%
-  \nobreak\par\nobreak
+  \par\nobreak
 %    \end{macrocode}
 % \changes{v3.26}{2018/09/20}{no absolute value}
 % Last but not least the final skip.
@@ -5707,6 +5708,7 @@
 % \begin{fontelement}{minisec}
 % \changes{v2.8o}{2001/09/14}{using font element \fnt{minisec}}
 % \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
+% \changes{v3.49.4}{2026/10/30}{use font element \fnt{disposition} instead of \cs{sectfont}}
 % \cs{minisec} is a very special additional outline of \KOMAScript. It is
 % always free standing but without numbering. Something like
 % \cs{sectionlinesformat} is not supported currently. Also entries to the
@@ -5731,7 +5733,7 @@
 %<!v4>    \expandafter\ifnum\scr@v@is@gt{2.96}\relax
       \setlength{\parfillskip}{\z@ plus 1fil}%
 %<!v4>    \fi
-    \raggedsection\normalfont\sectfont\nobreak
+    \raggedsection\normalfont\usekomafont{disposition}\nobreak
     \usekomafont{minisec}{\nobreak\interlinepenalty \@M #1\par\nobreak}%
   }\UseTaggingSocket{para/restore}\nobreak
   \@afterheading
