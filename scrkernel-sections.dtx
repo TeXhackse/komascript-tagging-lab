@@ -1077,6 +1077,12 @@
       \let\IfUseNumber\@firstoftwo
     \fi
     \ExecuteDoHook{heading/begingroup/#1}%
+%    \end{macrocode}
+% \changes{v3.49.4}{2026/10/31}{locally overwrite \cs{@hangfrom} to simplify customization with tagging.}
+%    \begin{macrocode}
+    \scr@ifundefinedorrelax{scr@heading@hangfrom}{}{%
+      \def\@hangfrom{\scr@heading@hangfrom{#1}}%
+    }%
     #2{\nobreak
       \sectioncatchphraseformat{#1}%
         {\glueexpr\UseName{scr@#1@sectionindent}\relax}%
@@ -1139,6 +1145,12 @@
 % \changes{v3.27}{2019/02/02}{\cs{scr@do@at} added}
 %    \begin{macrocode}
       \ExecuteDoHook{heading/begingroup/#1}%
+%    \end{macrocode}
+% \changes{v3.49.4}{2026/10/31}{locally overwrite \cs{@hangfrom} to simplify customization with tagging.}
+%    \begin{macrocode}
+    \scr@ifundefinedorrelax{scr@heading@hangfrom}{}{%
+      \def\@hangfrom{\scr@heading@hangfrom{#1}}%
+    }%
       #2{\nobreak\interlinepenalty \@M
 %    \end{macrocode}
 % tagging: Adapt change of testphase definition
@@ -1367,28 +1379,9 @@
 %   the command.
 % \end{description}
 %    \begin{macrocode}
-%</body>
-%<*body|tagging-lab>
-%<!tagging-lab>\newcommand{\sectionlinesformat}[4]{%
-%<*tagging-lab>
-%<@@=scrlab>
-\newcommand{\scrlab@sectionlinesformat}[4]{%
-  \NoCaseChange{
-    \UseTaggingSocket{scr/sec/title/hang}
-      {{\UseName{#1numdepth}}{\hskip #2\relax#3}{\l_@@_sec_tmpa_tl }}
-      {
-%<@@=>
-%</tagging-lab>
-% The \relax + interlinepenalty below  were added within the standard class definition as well
-        \@hangfrom{\hskip #2\relax#3}%
-%<*tagging-lab>
+\newcommand{\sectionlinesformat}[4]{%
+  \@hangfrom{\hskip #2\relax#3}{\interlinepenalty \@M #4}%
 }
-  }
-%</tagging-lab>
-               {\interlinepenalty \@M #4}%
-}
-%</body|tagging-lab>
-%<*body>
 \newcommand{\sectioncatchphraseformat}[4]{%
   \hskip #2#3#4%
 }
@@ -3518,7 +3511,6 @@
 %    \end{macrocode}
 % \end{option}^^A bookmarkpackage
 %
-%
 % \subsection{Preambles of parts or chapters}
 %
 % The \KOMAScript{} classes \cls*{scrbook} and \cls*{scrreprt} provide
@@ -4134,6 +4126,12 @@
   \begingroup
     \def\IfUseNumber{\Ifnumbered{#1}}%
     \ExecuteDoHook{heading/begingroup/#1}%
+%    \end{macrocode}
+% \changes{v3.49.4}{2026/10/31}{locally overwrite \cs{@hangfrom} to simplify customization with tagging.}
+%    \begin{macrocode}
+    \scr@ifundefinedorrelax{scr@heading@hangfrom}{}{%
+      \def\@hangfrom{\scr@heading@hangfrom{#1}}%
+    }%
     \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
     \raggedpart
     \normalfont\usekomafont{disposition}{\nobreak
@@ -4982,6 +4980,12 @@
     \def\IfUseNumber{\Ifnumbered{#1}}%
 %<book>    \if@mainmatter\else\let\IfUseNumber\@secondoftwo\fi
     \ExecuteDoHook{heading/begingroup/#1}%
+%    \end{macrocode}
+% \changes{v3.49.4}{2026/10/31}{locally overwrite \cs{@hangfrom} to simplify customization with tagging.}
+%    \begin{macrocode}
+    \scr@ifundefinedorrelax{scr@heading@hangfrom}{}{%
+      \def\@hangfrom{\scr@heading@hangfrom{#1}}%
+    }%
     \if@chapterprefix
       \let\IfUsePrefixLine\@firstoftwo
     \else
@@ -5077,23 +5081,9 @@
 % prevent page breaks!
 %    \begin{macrocode}
 %</body>
-%<*(body&class&!letter&(report|book))|tagging-lab>
-%<!tagging-lab>\newcommand{\chapterlinesformat}[3]{%
-%<tagging-lab>\newcommand{\scrlab@chapterlinesformat}[3]{%
-%<*tagging-lab>
-%<@@=scrlab>
-  \NoCaseChange{
-    \UseTaggingSocket{scr/sec/title/hang}
-      {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{#2}{\l_@@_sec_tmpa_tl }}
-      {
-%<@@=>
-%</tagging-lab>
-        \@hangfrom{#2}%
-%<*tagging-lab>
-}
-}
-%</tagging-lab>
-  {\interlinepenalty \@M #3}%
+%<*(body&class&!letter&(report|book))>
+\newcommand{\chapterlinesformat}[3]{%
+  \@hangfrom{#2}{\interlinepenalty \@M #3}%
 }
 %<!tagging-lab>\newcommand{\chapterlineswithprefixformat}[3]{%
 %<tagging-lab>\newcommand{\scrlab@chapterlineswithprefixformat}[3]{\leavevmode%

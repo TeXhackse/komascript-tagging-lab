@@ -197,7 +197,7 @@
 %<*init>
 %<*tagging-lab>
 %<@@=scrlab>
-\ProvidesExplPackage {scr-articlebookreport-tagging}{2026-10-31}{3.49.4}{KOMA-Script tagging code}
+\ProvidesExplPackage {scr-articlebookreport-tagging}{v3.49.4}{2026/10/31}
 %     \end{macrocode}
 %
 % Warning that tagging is generally supported but development in progress.
@@ -320,7 +320,7 @@
 %<class>\NewTaggingSocket{scr/sec/title/hang}{2}
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/title/hang}{default}{
-    \_@@_set_title_hang:nnn #1
+    \_@@_set_title_hang:nn #1
 }
 \AssignTaggingSocketPlug{scr/sec/title/hang}{default}
 %    \end{macrocode}
@@ -328,10 +328,9 @@
 %% Copyright 2021-2026 LaTeX Project
 %%
 %% The structure has alredy begun within scr/sec/heading/begin
-\cs_new_protected:Nn \_@@_set_title_hang:nnn
+\cs_new_protected:Nn \_@@_set_title_hang:nn
   %#1 level,
   %#2 formated number /hang space,
-  %#3 title
   {
     \cs_if_exist_use:N \__tag_gincr_para_begin_int:
     \setbox\@tempboxa\hbox{{#2}}
@@ -351,6 +350,23 @@
      }
    \tagmcbegin{}
   }
+%    \end{macrocode}
+% \begin{macro}{\scr@heading@hangfrom,\scr@hangfrom}
+% \changes{v3.49.4}{2026/10/31}{added.}
+% Variant of \cs{@hangfrom} wich supports tagging.
+%    \begin{macrocode}
+\let\scr@hangfrom\@hangfrom
+\NewDocumentCommand{\scr@heading@hangfrom}{mmm}{
+  %#1 level,
+  %#2 formated number /hang space,
+  %#3 title
+  \NoCaseChange{%
+   \UseTaggingSocket{scr/sec/title/hang}%
+     {{\UseName{#1numdepth}}{#2}}%
+     {\scr@hangfrom{#2}}%
+  }%
+    {\interlinepenalty \@M #3}%
+}
 %     \end{macrocode}
 %</tagging-lab>
 %    \end{macrocode}
