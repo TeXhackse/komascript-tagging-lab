@@ -33,6 +33,7 @@
 % ======================================================================
 %%% From File: $Id: scrkernel-tagging.dtx 4032 2023-04-17 09:45:11Z kohm $
 %<init>%%%            (run: init)
+%<tagging-lab>%%%            (run: tagging-lab)
 %<verylate>%%%            (run: verylate)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
@@ -136,15 +137,6 @@
   }
 %</init>
 %<*verylate>
-% \changes{v3.49.3}{2026/09/23}{Initialize tagging sockets, even if tagging is not enabled.}
-%    \end{macrocode}
-%    \begin{macrocode}
-\NewTaggingSocket{scr/sec/heading/init}{1}
-\NewTaggingSocket{scr/sec/heading/begin}{1}
-\NewTaggingSocket{scr/sec/heading/end}{1}
-\NewTaggingSocket{scr/sec/title/hang}{1}
-\NewTaggingSocket{scr/sec/title/split}{0}
-%    \end{macrocode}
 %    \begin{macrocode}
 \IfDocumentMetadataT
   {
@@ -197,32 +189,192 @@
 \ExplSyntaxOff
 %</class>
 %    \end{macrocode}
+%
+% \section{Code created by the komascript-tagging-lab project}
+%
+% \changes{v3.49.4}{2026/10/31}{Move code of the komascript-tagging-lab project into \file{scrkernel-tagging}}
+%    \begin{macrocode}
+%<*init>
+%<*tagging-lab>
+%<@@=scrlab>
+\ProvidesExplPackage {scr-articlebookreport-tagging}{2026-10-31}{3.49.4}{KOMA-Script tagging code}
+%     \end{macrocode}
+%
 % Warning that tagging is generally supported but development in progress.
 %    \begin{macrocode}
-%<*tagging-lab>
-\cs_set:Nn \komascript_tagging_test: {
-    \cs_if_exist:NT \tag_if_active:T
-      {
-        \exp_args:NV \msg_new:nnn \KOMAClassName { tagging-work-in-progress }
-          {
-            Activated~tagging~detected~but~not~this~is~still~WIP.\\
-            Use~at~your~own~risk~and~be~welcome~to~report~your~experiences.
-          }
-        \hook_gput_code:nnn { begindocument } { \KOMAClassName }
-          {
-            \tag_if_active:T
-              {
-                \exp_args:NV \msg_warning:nn
-                  \KOMAClassName
-                  { tagging-work-in-progress }
-              }
-          }
-      }
+\exp_args:NV \msg_new:nnn \KOMAClassName { tagging-work-in-progress }
+{
+  Activated~tagging~detected~but~not~this~is~still~WIP.\\
+  Use~at~your~own~risk~and~be~welcome~to~report~your~experiences.
 }
+\hook_gput_code:nnn { begindocument } { \KOMAClassName }{
+  \tag_if_active:T
+    {
+      \exp_args:NV \msg_warning:nn
+        \KOMAClassName
+        { tagging-work-in-progress }
+    }
+}
+\cs_set:Nn \komascript_tagging_test: {}
 \cs_set:Nn \komascript_documentmetadata_test: {}
+
+\int_new:N \l_@@_sec_level_int
+\tl_new:N \l_@@_sec_tmpa_tl
+\bool_new:N \l_@@_sec_nonumber_bool
+\newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
+
+\cs_new:Nn \_TEST_numdepth:n {
+  \int_compare:nNnF {\use:c {toclevel@#1}} = {\NumDepth{#1}}{\PackageError{TESt}{Doesn't math \NumDepth{#1} -- \use:c {toclevel@#1} }}
+}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{macro}
+%
+% \subsection{Tagging Sockets}
+% \changes{v3.49.3}{2026/09/23}{Initialize tagging sockets, even if tagging is not enabled.}
+%    \end{macrocode}
+% \begin{Socket}{scr/sec/heading/init}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/sec/heading/init}{1}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/heading/init}{default}{
+  \int_set:Nn\l_@@_sec_level_int{\use:c{toclevel@#1}}
+\_TEST_numdepth:n {#1}
+  \UseTaggingSocket{sec/end}{\int_use:N\l_@@_sec_level_int}
+  \UseTaggingSocket{sec/begin}
+  {{\int_use:N\l_@@_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int}}}
+  \if@currentrunin
+  \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
+  \tagpdfsetup{para/flattened=true}
+  \fi
+}
+\AssignTaggingSocketPlug{scr/sec/heading/init}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+%
+%
+% \begin{Socket}{scr/sec/heading/begin}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/sec/heading/begin}{1}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/heading/begin}{default}{
+  \IfUseNumber
+    {\bool_set_false:N \l__scrkernel_sec_nonumber_bool}
+    {\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
+%    \begin{macrocode}
+% \cs{Ifnumbered} does not include the check for \cs{if@mainmatter}.
+% Might be better to resolve this during the option handling.
+%    \end{macrocode}
+% \cs{@currentlabelname} is prepared to be read from aux file, where catcodes usually are configured with \cs{makeatletter}.
+% Currently this does not take care of otherwhise changed catcodes, so we need to ensure to captured a pure version of the section title.
+%    \begin{macrocode}
+  \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab\makeatletter} \@currentlabelname
+  \exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
+  \if@currentrunin
+    \tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
+\_TEST_numdepth:n {#1}
+    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
+    \tagpdfparaOff
+    \tagmcbegin{}
+    \tagpdfsetup{para/flattened=true}
+  \else
+    \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
+\_TEST_numdepth:n {#1}
+		\tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
+	\fi
+}
+\AssignTaggingSocketPlug{scr/sec/heading/begin}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+%
+%
+% \begin{Socket}{scr/sec/heading/end}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/sec/heading/end}{1}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/heading/end}{default}{
+  \if@currentrunin
+  \else
+    \cs_if_exist:cTF {@end#1} {
+      \tagmcend\tagstructend
+%      \UseTaggingSocket{para/restore}
+    }{
+      \UseTaggingSocket{para/restore}
+    }
+	%%\ShowTagging{struct-stack}
+  \fi
+}
+
+\AssignTaggingSocketPlug{scr/sec/heading/end}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+
+
+%    \end{macrocode}
+% \changes{v3.49.3}{2026/09/22}{Add KOMA specific plug to sec/title/hang socket}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/sec/title/hang}{2}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/title/hang}{default}{
+    \_@@_set_title_hang:nNnn #1
+}
+\AssignTaggingSocketPlug{scr/sec/title/hang}{default}
+%    \end{macrocode}
+%% This code is an adapted version of \__tag_set_title_hang:nNnn from the \LaTeX-Lab bundle
+%% Copyright 2021-2026 LaTeX Project
+%%
+%% The structure has alredy begun within scr/sec/heading/begin
+\cs_new_protected:Npn \_@@_set_title_hang:nNnn #1 #2 #3 #4
+  %#1 level,
+  %#2 boolean: nonumber? (will be later \l__head_nonumber_bool)
+  %#3 formated number /hang space
+  %#4 title
+  {
+    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
+    \setbox\@tempboxa\hbox{{#3}}
+    \bool_set_false:N \l__tag_para_bool
+    \hangindent \wd\@tempboxa\noindent
+    \bool_if:NF #2
+     {\tagstructbegin{tag=\UseStructureName{sec/#1/number}}}
+    \bool_set_true:N \l__tag_para_bool
+    \bool_if:NTF #2
+     {
+       \box\@tempboxa
+     }
+     {
+       \tagmcbegin{}
+       \tag_mc_reset_box:N\@tempboxa
+       \box\@tempboxa
+       \tagmcend
+       \tagstructend
+     }
+   \tagmcbegin{}
+  }
+%     \end{macrocode}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+%
+%
+% \begin{Socket}{scr/sec/title/split}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/sec/title/split}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/title/split}{default}{
+    \tagpdfsetup{para/flattened=true}
+    %%\tagpdfparaOn
+    \UseTaggingSocket{sec/title/split}%
+    %%\tagpdfsetup{para/flattened=false}
+}
+
+\AssignTaggingSocketPlug{scr/sec/title/split}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+%
 % \ExplSyntaxOff
 %
 % \Finale

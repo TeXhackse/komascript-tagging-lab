@@ -24,7 +24,6 @@
 % \section{Implementation}
 %    \begin{macrocode}
 %<package>\ProvidesExplPackage {scr-tagging-lab} {2024-06-30} {0.18}{KOMA-Script tagging code}
-%<koma>\ProvidesExplPackage {scr-articlebookreport-tagging} {2026-09-22} {0.00}{KOMA-Script tagging code}
 %    \end{macrocode}
 %
 % As this project is constructed to be integrated into KOMA-Script, we define some macros which are also defined by KOMA-Script itself.
@@ -49,117 +48,6 @@
 % for the relevant level.
 %    \begin{macrocode}
 %<*package|koma>
-\newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
-
-\int_new:N \l_@@_sec_level_int
-\tl_new:N \l_@@_sec_tmpa_tl
-
-\NewTaggingSocketPlug{scr/sec/heading/init}{default}{
-   \int_set:Nn\l_@@_sec_level_int{\use:c{toclevel@#1}}
-   \UseTaggingSocket{sec/end}{\int_use:N\l_@@_sec_level_int}
-   \UseTaggingSocket{sec/begin}
-    {{\int_use:N\l_@@_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int}}}
-  \if@currentrunin
-    \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
-    \tagpdfsetup{para/flattened=true}
-   \fi
- }
-\AssignTaggingSocketPlug{scr/sec/heading/init}{default}
-
-
-
-\NewTaggingSocketPlug{scr/sec/heading/begin}{default}{
-  \IfUseNumber
-    {\bool_set_false:N \l__scrkernel_sec_nonumber_bool}
-    {\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
-%    \begin{macrocode}
-% \cs{Ifnumbered} does not include the check for \cs{if@mainmatter}.
-% Might be better to resolve this during the option handling.
-%    \end{macrocode}
-% \cs{@currentlabelname} is prepared to be read from aux file, where catcodes usually are configured with \cs{makeatletter}.
-% Currently this does not take care of otherwhise changed catcodes, so we need to ensure to captured a pure version of the section title.
-%    \begin{macrocode}
-  \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab\makeatletter} \@currentlabelname
-  \exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
-  \if@currentrunin
-    \tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
-    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
-    \tagpdfparaOff
-    \tagmcbegin{}
-    \tagpdfsetup{para/flattened=true}
-  \else
-    \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
-		\tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
-	\fi
-}
-\AssignTaggingSocketPlug{scr/sec/heading/begin}{default}
-
-\NewTaggingSocketPlug{scr/sec/title/split}{default}{
-    \tagpdfsetup{para/flattened=true}
-    \UseTaggingSocket{sec/title/split}%
-}
-
-\AssignTaggingSocketPlug{scr/sec/title/split}{default}
-
-\NewTaggingSocketPlug{scr/sec/title/hang}{default}{
-    \UseTaggingSocket{sec/title/hang}
-     % {{\UseName{#1numdepth}}\l__scrkernel_sec_nonumber_bool{\hskip #2\relax#3}{\l_@@_sec_tmpa_tl }}
-}
-
-\AssignTaggingSocketPlug{scr/sec/title/hang}{default}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
-
-\NewTaggingSocketPlug{scr/sec/heading/end}{default}{
-  \if@currentrunin
-  \else
-    \cs_if_exist:cTF {@end#1} {
-      \tagmcend\tagstructend
-    }{
-      \UseTaggingSocket{para/restore}
-    }
-  \fi
-}
-
-\AssignTaggingSocketPlug{scr/sec/heading/end}{default}
-%    \end{macrocode}
-% \changes{v3.49.3}{2026/09/22}{Add KOMA specific plug to sec/title/hang socket}
-%    \begin{macrocode}
-\NewTaggingSocketPlug{sec/title/hang}{koma}{
-    \_@@_set_title_hang:nNnn #1
-}
-%    \end{macrocode}
-%% This code is an adapted version of \__tag_set_title_hang:nNnn from the \LaTeX-Lab bundle
-%% Copyright 2021-2026 LaTeX Project
-%%
-%% The structure has alredy begun within scr/sec/heading/begin
-\cs_new_protected:Npn \_@@_set_title_hang:nNnn #1 #2 #3 #4
-  %#1 level,
-  %#2 boolean: nonumber? (will be later \l__head_nonumber_bool)
-  %#3 formated number /hang space
-  %#4 title
-  {
-    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
-    \setbox\@tempboxa\hbox{{#3}}
-    \bool_set_false:N \l__tag_para_bool
-    \hangindent \wd\@tempboxa\noindent
-    \bool_if:NF #2
-     {\tagstructbegin{tag=\UseStructureName{sec/#1/number}}}
-    \bool_set_true:N \l__tag_para_bool
-    \bool_if:NTF #2
-     {
-       \box\@tempboxa
-     }
-     {
-       \tagmcbegin{}
-       \tag_mc_reset_box:N\@tempboxa
-       \box\@tempboxa
-       \tagmcend
-       \tagstructend
-     }
-   \tagmcbegin{}
-  }
 %     \end{macrocode}
 % As the content of scrkernel-sections.dtx is overwriting the orignal definition of \cs{@sect} and some other macros.
 % This change has to be adjusted to match the kernel changes of the testphase.
@@ -222,7 +110,6 @@
   \AddtoDoHook{heading/postinit}{
     \UseTaggingSocket{scr/sec/heading/init}
   }
-  \AssignTaggingSocketPlug{sec/title/hang}{koma}
 }
 
 \cs_new:Nn \_@@_patch_maketitle: {
@@ -255,28 +142,6 @@
 	\tagpdfparaOn
 	\fi
 }
-%    \end{macrocode}
-% \begin{macro}{\scrlab@section@target}
-%   \changes{tagging}{2024/09/15}{Adapt our own \cs{@hyp@section@target@nnn}  as  \cs{\scrlab@section@target}}
-%   tagging: Hyperref has some internal command \cs{@hyp@section@target@nnn} to move the anchor in case the indent in front of the section heading is negative.
-%   We copy this command to adjust the anchor in the same way.
-%   The definition is taken from the \pkg{latex-lab-sec}.dtx.
-%    \begin{macrocode}
-%% This definition was adapted from
-%% latex-lab-sec.dtx
-%% Copyright 2021-2023 LaTeX Project
-%% %#1 optarg #2 name/counter, #3 indent
-\cs_new_protected:Npn \scrlab@section@target #1 #2 #3 {
-  \makebox[0pt][l]
-  {
-    \skip_set:Nn \@tempskipa {#3}
-    \dim_compare:nNnF {\@tempskipa}<{0pt}{\kern-\@tempskipa}
-    \MakeLinkTarget#1{#2}
-  }
-}
-
-
-
 %    \end{macrocode}
 % \end{macro}^^A \scrlab@section@target
 %</heading-hooks>
