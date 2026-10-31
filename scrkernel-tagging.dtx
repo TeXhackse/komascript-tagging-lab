@@ -315,11 +315,12 @@
 
 %    \end{macrocode}
 % \changes{v3.49.3}{2026/09/22}{Add KOMA specific plug to sec/title/hang socket}
+% The socket with 2 arguments is using the second argument even if tagging is disabled.
 %    \begin{macrocode}
 %<class>\NewTaggingSocket{scr/sec/title/hang}{2}
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/title/hang}{default}{
-    \_@@_set_title_hang:nNnn #1
+    \_@@_set_title_hang:nnn #1
 }
 \AssignTaggingSocketPlug{scr/sec/title/hang}{default}
 %    \end{macrocode}
@@ -327,29 +328,26 @@
 %% Copyright 2021-2026 LaTeX Project
 %%
 %% The structure has alredy begun within scr/sec/heading/begin
-\cs_new_protected:Npn \_@@_set_title_hang:nNnn #1 #2 #3 #4
+\cs_new_protected:Nn \_@@_set_title_hang:nnn
   %#1 level,
-  %#2 boolean: nonumber? (will be later \l__head_nonumber_bool)
-  %#3 formated number /hang space
-  %#4 title
+  %#2 formated number /hang space,
+  %#3 title
   {
     \cs_if_exist_use:N \__tag_gincr_para_begin_int:
-    \setbox\@tempboxa\hbox{{#3}}
+    \setbox\@tempboxa\hbox{{#2}}
     \bool_set_false:N \l__tag_para_bool
     \hangindent \wd\@tempboxa\noindent
-    \bool_if:NF #2
-     {\tagstructbegin{tag=\UseStructureName{sec/#1/number}}}
+    \IfUseNumber{\tagstructbegin{tag=\UseStructureName{sec/#1/number}}}{}
     \bool_set_true:N \l__tag_para_bool
-    \bool_if:NTF #2
-     {
-       \box\@tempboxa
-     }
+     \IfUseNumber
      {
        \tagmcbegin{}
        \tag_mc_reset_box:N\@tempboxa
        \box\@tempboxa
        \tagmcend
        \tagstructend
+     }{
+       \box\@tempboxa
      }
    \tagmcbegin{}
   }
