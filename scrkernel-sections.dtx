@@ -676,9 +676,8 @@
 %    \begin{macrocode}
 %</class&!letter>
 %<*class&!letter|workarounds>
-%<*body|tagging-lab>
-%<!tagging-lab>\newcommand*{\scr@startsection}[6]{%
-%<tagging-lab>\newcommand*{\scrlab@startsection}[6]{%
+%<*body>
+\newcommand*{\scr@startsection}[6]{%
   \ExecuteDoHook{heading/preinit/#1}%
   \if@noskipsec \leavevmode \fi
   \par
@@ -737,8 +736,6 @@
       \scr@sect{#1}{#6}%
   }%
 }
-%</body|tagging-lab>
-%<*body|workarounds>
 %    \end{macrocode}
 % \begin{macro}{\scr@sect@runin}
 % \changes{v3.26}{2018/09/18}{added}
@@ -887,7 +884,7 @@
       {\scr@osectarg}}%
   \reserved@a
 }
-%</body|workarounds>
+%</body>
 %    \end{macrocode}
 % \end{macro}^^A \scr@section@dblarg,\scr@section@xdblarg
 % \end{macro}^^A \scr@startsection
@@ -4439,16 +4436,9 @@
 %    \begin{macrocode}
 \newcounter{part}
 \renewcommand*{\thepart}{\@Roman\c@part}
-%</body>
-%<*tagging-lab|body>
-%<!tagging-lab>  \newcommand*{\partformat}{%
-%<tagging-lab>  \newcommand*{\scrlab@partformat}{%
-%<tagging-lab>  \SuspendTagging{partformat}%
+  \newcommand*{\partformat}{%
 	\partname~\thepart\MakeLinkTarget{part}{}\autodot%
-%<tagging-lab>  \ResumeTagging{partformat}	%
 }
-%</tagging-lab|body>
-%<*body>
 %    \end{macrocode}
 % \end{command}^^A \partformat
 % \end{command}^^A \thepart
@@ -5090,7 +5080,7 @@
   #2%
   #3%
 }
-%</(body&class&!letter&(report|book))|tagging-lab>
+%</(body&class&!letter&(report|book))>
 %<*body>
 %    \end{macrocode}
 % \end{command}^^A \chapterlinesformat,\chapterlineswithprefixformat
@@ -5374,17 +5364,10 @@
 %    \begin{macrocode}
 \newcounter{chapter}
 \renewcommand*{\thechapter}{\@arabic\c@chapter}
-%</body>
-%<*tagging-lab|body>
-%<tagging-lab>\newcommand*{\scrlab@chapterformat}{%
-%<!tagging-lab>\newcommand*{\chapterformat}{%
-%<tagging-lab>  \SuspendTagging{chapterformat}%
+\newcommand*{\chapterformat}{%
   \mbox{\chapappifchapterprefix{\nobreakspace}\thechapter\autodot
     \IfUsePrefixLine{}{\enskip}}%
-%<tagging-lab>  \ResumeTagging{chapterformat}
 }
-%</tagging-lab|body>
-%<*body>
 \newcommand*\chaptermarkformat{\chapappifchapterprefix{\ }%
   \thechapter\autodot
   \enskip}
@@ -5878,9 +5861,8 @@
 \newcommand*{\othersectionlevelsformat}[3]{#3\autodot\enskip}
 %</body>
 %</class&!letter>
-%<*(body&class&!letter)|tagging-lab>
-%<!tagging-lab>\renewcommand*{\@seccntformat}[1]{%
-%<tagging-lab>\newcommand*{\scrlab@seccntformat}[1]{%
+%<*(body&class&!letter)>
+\renewcommand*{\@seccntformat}[1]{%
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
 %<!v4>    \protect\othersectionlevelsformat{#1}{%
 %<!v4>      \expandafter\aftergroup\noexpand\@gobble}{\csname the#1\endcsname}%
@@ -5891,7 +5873,7 @@
     }{\expandafter\protect\csname #1format\endcsname}%
 %<!v4>  \fi
 }
-%</(body&class&!letter)|tagging-lab>
+%</(body&class&!letter)>
 %<*class&!letter>
 %<*body>
 %    \end{macrocode}

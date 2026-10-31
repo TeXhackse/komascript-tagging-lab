@@ -78,19 +78,9 @@
 }
 
 \cs_new:Nn \_@@_patch_sectioning: {
-  \cs_set_eq:NN \chapterformat \scrlab@chapterformat
   \cs_set_eq:NN \chapterlineswithprefixformat \scrlab@chapterlineswithprefixformat
   \cs_set_eq:NN \partlineswithprefixformat \scrlab@partlineswithprefixformat
-  \cs_set_eq:NN \@seccntformat \scrlab@seccntformat
-  \let\scr@startsection\scrlab@startsection
   \let\scr@xsect\scrlab@xsect
-  \let\scr@ssect\scrlab@ssect
-  \let\SecDef\scrlab@SecDef
-  \let\secdef\SecDef
-%% \AddtoDoHook{heading/begingroup/chapter}
-%%       {\@@_sec_init_aux:n {chapter}}
-%%    	\AddtoDoHook{heading/begingroup/part}
-%  	      {\@@_sec_init_aux:n {chapter}}
 %    \end{macrocode}
 % probably it's a good idea to define a hook with arguments there instead of this workaround
 %    \begin{macrocode}
