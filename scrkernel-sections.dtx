@@ -674,8 +674,6 @@
 % \end{description}
 % tagging: We need this definition to be able to remove the warning when the testphase key is used.
 %    \begin{macrocode}
-%</class&!letter>
-%<*class&!letter|workarounds>
 %<*body>
 \newcommand*{\scr@startsection}[6]{%
   \ExecuteDoHook{heading/preinit/#1}%
@@ -958,14 +956,9 @@
 % \item[Note:] \cs{chapter} and \cs{part} do not use \cs{@sect} but
 %   \cs{SecDef}.
 % \end{description}
-% tagging: We need this definition to be able to remove the warning when the testphase key is used.
 %    \begin{macrocode}
-%</class&!letter|workarounds>
-%<*(class&!letter)|tagging-lab|workarounds>
-%<*body|tagging-lab>
-%<trace>\ClassInfo{\KOMAClassName}{redefining LaTeX kernel macro \string\@sect}
-%<!tagging-lab>\def\scr@sect#1#2[#3]#4{%
-%<tagging-lab>\def\scrlab@sect#1#2[#3]#4{%
+%<*body>
+\def\scr@sect#1#2[#3]#4{%
   \ifnum \scr@osectarg=\z@
     \@scr@tempswafalse
   \else
@@ -1122,8 +1115,6 @@
  \scr@xsect
 }
 %    \end{macrocode}
-%</body|tagging-lab>
-%<*body>
 %
 % \begin{macro}{\scr@section@heading}
 % \changes{v3.49.3}{2026/10/11}{added}
@@ -1204,11 +1195,6 @@
 %	\ifvmode\UseName{tl_show:n}{vmode4}\else\UseName{tl_show:n}{not-vmode4}\fi
   \fi
 }
-
-
-
-%</body>
-%<*body|tagging-lab>
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\scr@ssection@xarg}
@@ -1244,10 +1230,6 @@
 }%
 %    \end{macrocode}
 % \end{macro}^^A \scr@extendedSecDef
-%    \begin{macrocode}
-%</body|tagging-lab>
-%<*body>
-%    \end{macrocode}
 % \begin{macro}{\scr@ds@tocentry,\@currenttocentry}
 % \changes{v3.10}{2011/08/30}{added}
 % \changes{v3.22}{2016/07/12}{\cs{scr@ds@tocentry} renamed to \cs{@currenttocentry}}
@@ -1382,10 +1364,10 @@
 \newcommand{\sectioncatchphraseformat}[4]{%
   \hskip #2#3#4%
 }
+%</body>
 %    \end{macrocode}
 % \end{command}^^A \sectionlinesformat,\sectioncatchphraseformat
 % \end{macro}^^A \scr@sect
-%</body>
 %
 % \begin{macro}{\scr@ssect}
 %   \changes{v3.19}{2015/07/17}{re-definition because of several new features}
@@ -1397,9 +1379,8 @@
 %   \changes{v3.49.3}{2026/10/03}{use \cs{if@currentrunin}}
 %   \changes{v3.49.3}{2026/10/03}{remove argument to prepare merging into \cs{scr@sect}}
 %    \begin{macrocode}
-%<*body|tagging-lab>
-%<body>\def\scr@xsect{%
-%<tagging-lab>\def\scrlab@xsect{%
+%<*body>
+\def\scr@xsect{%
   \if@currentrunin
     \@nobreakfalse
     \global\@noskipsectrue
@@ -1435,9 +1416,7 @@
   \fi
   \ignorespaces
 }
-%</body|tagging-lab>
-%</(class&!letter)|tagging-lab|workarounds>
-%<*class&!letter>
+%</body>
 %    \end{macrocode}
 % \end{macro}^^A \scr@xsect
 %
@@ -4813,7 +4792,6 @@
 %   \changes{v3.46}{2025/08/19}{vertical alignment of chapters in twocolumn
 %     mode improved}
 % \changes{v3.18}{2015/05/21}{always using \cs{@afterheading}}
-%
 % \begin{macro}{\scr@t@st@nd@w@rn@m@k@ch@pt@rh@@d}
 % \changes{v3.36}{2022/03/16}{added}
 % \changes{v3.49.3}{2026/10/11}{Removed}
@@ -5369,8 +5347,7 @@
     \IfUsePrefixLine{}{\enskip}}%
 }
 \newcommand*\chaptermarkformat{\chapappifchapterprefix{\ }%
-  \thechapter\autodot
-  \enskip}
+  \thechapter\autodot\enskip}
 %    \end{macrocode}
 % \end{command}^^A \chaptermarkformat
 % \end{command}^^A \chapterformat
@@ -5854,14 +5831,8 @@
 % \item[ToDo:] Can we somehow change this for \KOMAScript~4 to no longer
 %   support the second argument (unless a low compatibility level is used)?
 % \end{description}
-% tagging: As the number format might be changed by the user using a
-% redefinition of \cs{…format} tagging has to be disabled in here to avoid
-% nesting inside the Lbl tag.
 %    \begin{macrocode}
 \newcommand*{\othersectionlevelsformat}[3]{#3\autodot\enskip}
-%</body>
-%</class&!letter>
-%<*(body&class&!letter)>
 \renewcommand*{\@seccntformat}[1]{%
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
 %<!v4>    \protect\othersectionlevelsformat{#1}{%
@@ -5873,9 +5844,6 @@
     }{\expandafter\protect\csname #1format\endcsname}%
 %<!v4>  \fi
 }
-%</(body&class&!letter)>
-%<*class&!letter>
-%<*body>
 %    \end{macrocode}
 % \end{command}^^A \othersectonlevelsformat
 % \end{macro}^^A \@seccntformat
