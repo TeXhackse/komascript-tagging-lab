@@ -194,6 +194,7 @@
 % \DescribeCommand{\plen}
 % \DescribeCommand{\pstyle}
 % \DescribeCommand{\dhook}
+% \DescribeCommand{\socket}
 % There are some very simple formatting commands. They all expect one
 % mandatory argument \meta{object name}. The default formatting is to use
 % \cs{texttt}. The commands are mentioned for the name of a file, option,
@@ -531,10 +532,18 @@
 %    \end{macrocode}
 % \begin{command}{\dhook}
 % \changes{v0.91}{2022/03/10}{added}
-% do hooks.
+% do hooks,
 %    \begin{macrocode}
 \newcommand*{\dhook}{\texttt}
 %    \end{macrocode}
+% \begin{command}{\socket}
+% sockets.
+% \changes{v3.49.4}{2026/10/31}{added}
+% do hooks.
+%    \begin{macrocode}
+\newcommand*{\socket}{\texttt}
+%    \end{macrocode}
+% \end{command}
 % \end{command}
 % \end{command}
 % \end{command}
@@ -797,7 +806,7 @@
 % \changes{v0.91}{2022/03/10}{added}
 % \begin{environment}{dohook}
 % \changes{v0.91}{2022/03/10}{added}
-% Do hooks.
+% Do hooks,
 %    \begin{macrocode}
 \NewDocElement[%
   macrolike = false,
@@ -806,6 +815,26 @@
   idxgroup  = Do hooks,
   printtype = \textit{dohook}
 ]{DoHook}{dohook}
+%    \end{macrocode}
+% \end{environment}
+% \end{command}
+% \end{docitem}
+%
+% \begin{docitem}{Socket}
+% \changes{v3.49.4}{2026/10/31}{added}
+% \begin{command}{\DescribeDoHook}
+% \changes{v3.49.4}{2026/10/31}{added}
+% \begin{environment}{dohook}
+% \changes{v3.49.4}{2026/10/31}{added}
+% Sockets
+%    \begin{macrocode}
+\NewDocElement[%
+  macrolike = false,
+  toplevel  = true,
+  idxtype   = \textit{socket},
+  idxgroup  = Sockets,
+  printtype = \textit{socket}
+]{Socket}{socket}
 %    \end{macrocode}
 % \end{environment}
 % \end{command}
