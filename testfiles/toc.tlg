@@ -245,7 +245,7 @@ TEST 1: Show PDF Tags
 ]<<latex-list-css.html>><<latex-align-css.html>> (toc.aux)
 Package tagpdf Info: Finalizing the tagging structure:
 (tagpdf)             Writing out ~42 structure objects
-(tagpdf)             with ~37 'MC' leaf nodes.
+(tagpdf)             with ~48 'MC' leaf nodes.
 (tagpdf)             Be patient if there are lots of objects!
 Package tagpdf Info: writing ParentTree
 Package tagpdf Info: writing IDTree
