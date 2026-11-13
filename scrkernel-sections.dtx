@@ -1049,6 +1049,11 @@
     \expandafter\@maybeautodot\csname the#1\endcsname
     \protected@edef\@svsec{\@seccntformat{#1}\relax}%
   \fi
+  \ifx\@svsec\@empty
+    \let\IfUseNumber\@secondoftwo
+  \else
+    \let\IfUseNumber\@firstoftwo
+  \fi
 %    \end{macrocode}
 % \changes{v3.26}{2018/09/18}{support for \cs{scr@sect@runin}}
 % \changes{v3.27}{2019/02/02}{\cs{IfUseNumber} defined locally}
@@ -1061,11 +1066,6 @@
 % \changes{v3.27}{2019/02/02}{\cs{ExecuteDoHook} added}
 %    \begin{macrocode}
   \def\@svsechd{%
-    \ifx\@svsec\@empty
-      \let\IfUseNumber\@secondoftwo
-    \else
-      \let\IfUseNumber\@firstoftwo
-    \fi
     \ExecuteDoHook{heading/begingroup/#1}%
 %    \end{macrocode}
 % \changes{v3.49.4}{2026/10/31}{locally overwrite \cs{@hangfrom} to simplify customization with tagging.}
@@ -1076,11 +1076,7 @@
     #2{\nobreak
       \sectioncatchphraseformat{#1}%
         {\glueexpr\UseName{scr@#1@sectionindent}\relax}%
-        {%
-          \IfUseNumber{%
-            \UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{\@svsec}%
-          }{\@svsec}%
-        }{#4}}%
+        {\@svsec}{#4}}%
 %<*trace>
     \ClassInfo{\KOMAClassName}{%
       head=`\detokenize\expandafter{\@currentheadentry}'\MessageBreak
@@ -1123,11 +1119,6 @@
 % \end{quote}
 \NewDocumentCommand{\scr@section@heading}{mmm}{%
     \begingroup
-      \ifx\@svsec\@empty
-        \let\IfUseNumber\@secondoftwo
-      \else
-        \let\IfUseNumber\@firstoftwo
-      \fi
 %    \end{macrocode}
 % \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
 % \changes{v3.27}{2019/02/02}{\cs{scr@do@at} added}
@@ -4100,7 +4091,6 @@
 %    \begin{macrocode}
 \NewDocumentCommand{\scr@part@heading}{mmm}{
   \begingroup
-    \def\IfUseNumber{\Ifnumbered{#1}}%
     \ExecuteDoHook{heading/begingroup/#1}%
 %    \end{macrocode}
 % \changes{v3.49.4}{2026/10/31}{locally overwrite \cs{@hangfrom} to simplify customization with tagging.}
@@ -4945,8 +4935,6 @@
 % recommended.
 %    \begin{macrocode}
   {%
-    \def\IfUseNumber{\Ifnumbered{#1}}%
-%<book>    \if@mainmatter\else\let\IfUseNumber\@secondoftwo\fi
     \ExecuteDoHook{heading/begingroup/#1}%
 %    \end{macrocode}
 % \changes{v3.49.4}{2026/10/31}{locally overwrite \cs{@hangfrom} to simplify customization with tagging.}
