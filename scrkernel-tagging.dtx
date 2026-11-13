@@ -197,7 +197,7 @@
 %<*init>
 %<*tagging-lab>
 %<@@=scrlab>
-\ProvidesExplPackage {scr-articlebookreport-tagging}{2026-10-31}{3.49.4}{KOMA-Script tagging code}
+\ProvidesExplPackage {scr-articlebookreport-tagging}{2026-11-12}{3.49.4}{KOMA-Script tagging code}
 %     \end{macrocode}
 %
 % Warning that tagging is generally supported but development in progress.
@@ -222,10 +222,6 @@
 \tl_new:N \l_@@_sec_tmpa_tl
 \bool_new:N \l_@@_sec_nonumber_bool
 \newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
-
-\cs_new:Nn \_TEST_numdepth:n {
-  \int_compare:nNnF {\use:c {toclevel@#1}} = {\NumDepth{#1}}{\PackageError{TESt}{Doesn't math \NumDepth{#1} -- \use:c {toclevel@#1} }}
-}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{macro}
@@ -239,7 +235,6 @@
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/heading/init}{default}{
   \int_set:Nn\l_@@_sec_level_int{\use:c{toclevel@#1}}
-\_TEST_numdepth:n {#1}
   \UseTaggingSocket{sec/end}{\int_use:N\l_@@_sec_level_int}
   \UseTaggingSocket{sec/begin}
   {{\int_use:N\l_@@_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int}}}
@@ -273,18 +268,67 @@
   \exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
   \if@currentrunin
     \tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
-\_TEST_numdepth:n {#1}
-    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
     \tagpdfparaOff
+    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
     \tagmcbegin{}
     \tagpdfsetup{para/flattened=true}
   \else
     \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
-\_TEST_numdepth:n {#1}
 		\tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
+    \tagpdfparaOff
 	\fi
 }
 \AssignTaggingSocketPlug{scr/sec/heading/begin}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+%
+% \begin{Socket}{scr/sec/heading/flat-par}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/sec/heading/flat-par}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/heading/flat-par}{default}{
+    \tagpdfparaOff
+    \noindent
+    \__tag_gincr_para_begin_int:
+    \tagmcbegin{}
+    \tagpdfsetup{para/flattened=true}
+    \tagpdfparaOn
+}
+\AssignTaggingSocketPlug{scr/sec/heading/flat-par}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+
+
+% \begin{Socket}{scr/sec/heading/title}
+%    \begin{macrocode}
+%<*class>
+\NewTaggingSocket{scr/sec/heading/title}{1}
+\NewTaggingSocketPlug{scr/sec/heading/title}{transparent}{\use:n {#1}}
+\AssignTaggingSocketPlug{scr/sec/heading/title}{transparent}
+%</class>
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/heading/title}{display}{
+    \noindent
+    \UseTaggingSocket{scr/sec/heading/flat-par}
+    #1
+    \tagmcend
+%%    \tagpdfparaOff
+}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+%
+% \begin{Socket}{scr/sec/heading/display}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/sec/heading/display}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/heading/display}{default}{
+    \noindent
+    \UseTaggingSocket{scr/sec/heading/title}
+}
+\AssignTaggingSocketPlug{scr/sec/heading/display}{default}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{Socket}
@@ -297,13 +341,7 @@
 \NewTaggingSocketPlug{scr/sec/heading/end}{default}{
   \if@currentrunin
   \else
-    \cs_if_exist:cTF {@end#1} {
-      \tagmcend\tagstructend
-%      \UseTaggingSocket{para/restore}
-    }{
-      \UseTaggingSocket{para/restore}
-    }
-	%%\ShowTagging{struct-stack}
+    \UseTaggingSocket{para/restore}
   \fi
 }
 
@@ -383,8 +421,26 @@
     \UseTaggingSocket{sec/title/split}%
     %%\tagpdfsetup{para/flattened=false}
 }
-
 \AssignTaggingSocketPlug{scr/sec/title/split}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
+%
+% \begin{Socket}{scr/sec/prefix}
+%    \begin{macrocode}
+%<*class>
+\NewTaggingSocket{scr/sec/prefix}{1}
+\NewTaggingSocketPlug{scr/sec/prefix}{transparent}{\use:n {#1}}
+\AssignTaggingSocketPlug{scr/sec/prefix}{transparent}
+%</class>
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/prefix}{default}{
+  \leavevmode\tagmcbegin{}#1\tagmcend{}
+}
+\AssignTaggingSocketPlug{scr/sec/prefix}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{Socket}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{Socket}

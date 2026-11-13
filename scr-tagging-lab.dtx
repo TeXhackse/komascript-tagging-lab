@@ -61,24 +61,10 @@
 % Maybe it's easier to pass those with changing the hooks, but this needs to be discussed.
 %    \begin{macrocode}
 %<*heading-hooks>
-\hook_gput_code:nnn {cmd/partformat/before}{scr-tagging-lab} {
-  \SuspendTagging{partformat}%
-}
-\hook_gput_code:nnn {cmd/partformat/after}{scr-tagging-lab}{
-  \ResumeTagging{partformat}%
-}
-
-\hook_gput_code:nnn {cmd/@endpart/before} {scr-tagging-lab}{
-  \SuspendTagging{endpart}
-}
-
 \hook_gput_code:nnn {cmd/@endpart/after}{scr-tagging-lab}{
-  \ResumeTagging{endpart}
   \UseTaggingSocket{para/restore}
 }
-
 \cs_new:Nn \_@@_patch_sectioning: {
-  \cs_set_eq:NN \partlineswithprefixformat \scrlab@partlineswithprefixformat
 %    \end{macrocode}
 % probably it's a good idea to define a hook with arguments there instead of this workaround
 %    \begin{macrocode}
@@ -92,6 +78,10 @@
   }
   \AddtoDoHook{heading/begingroup/part}{
     \global\let\strut\orig@strut
+    \AssignTaggingSocketPlug{scr/sec/heading/title}{display}
+  }
+  \AddtoDoHook{heading/begingroup/chapter}{
+    \IfChapterUsesPrefixLine{\AssignTaggingSocketPlug{scr/sec/heading/title}{display}}{}
   }
   \AddtoDoHook{heading/postinit}{
     \UseTaggingSocket{scr/sec/heading/init}

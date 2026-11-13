@@ -2648,8 +2648,11 @@
         \csname the\scr@local@counterwithin\endcsname.\arabic{#2}}%
     \fi
   \fi
+%    \begin{macrocode}
+% \changes{v3.49.4}{2026/11/12}{use expansion of \cs{othersectionlevelsformat} as default format}
+%    \end{macrocode}
   \@ifundefined{#2format}{%
-    \@namedef{#2format}{\csname the#2\endcsname\autodot\enskip}%
+    \ExpandArgs{co}\def{#2format}{\othersectionlevelsformat{#2}{}{\@nameuse{the#2}}}%
   }{}%
 %    \end{macrocode}
 % \changes{v3.44}{2025/05/14}{add the section command to the internal l3seq}
@@ -4107,11 +4110,15 @@
 %<book|report>        \setlength{\@tempskipa}{\@nameuse{scr@#1@innerskip}}%
           \partheadmidvskip
         }{%
-          \usekomafont{#1}{\nobreak\interlinepenalty \@M#3\strut\@@par}%
+          \usekomafont{#1}{\nobreak\interlinepenalty \@M%
+          \UseTaggingSocket{scr/sec/heading/title}{#3}%
+          \strut\@@par}%
         }%
       }{%
         \partlineswithprefixformat{#1}{}{%
-          \usekomafont{#1}{\nobreak\interlinepenalty \@M#3\strut\@@par}%
+          \usekomafont{#1}{\nobreak\interlinepenalty \@M%%
+          \UseTaggingSocket{scr/sec/heading/title}{#3}%
+          \strut\@@par}%
         }
       }%
 %    \end{macrocode}
@@ -4179,38 +4186,6 @@
 \newcommand{\partlineswithprefixformat}[3]{%
   #2#3%
 }
-%</body>
-%     \end{macrocode}
-% tagging: Separate prefix and title for the part tagging.
-%    \begin{macrocode}
-%<@@=scrlab>
-%<*tagging-lab>
-\newcommand{\scrlab@partlineswithprefixformat}[3]{%
-  \exp_args:Nne \UseTaggingSocket{sec/title/begin}{{\use:c{toclevel@#1}}{\exp_not:V \l_@@_sec_tmpa_tl}}
-		\tl_if_blank:nTF {#2}%
-			{\MakeLinkTarget[#1]{}{}}%TODO no number
-			{
-				\tagstructbegin{tag=\UseStructureName{sec/\int_use:N \l_@@_sec_level_int/number}}
-					\bool_lazy_and:nnT
-						{\tag_if_active_p:}
-						{\g__tag_mode_lua_bool}
-						{\tagmcbegin{}}
-					\SuspendTagging{part-number}
-				           {#2}
-					\ResumeTagging{part-number}
-					\tagmcend
-					\tagstructend
-					\tagpdfparaOff
-		}
-		\tagpdfsetup{para/tag=Span}
-		\tagpdfparaOn
-		%\SuspendTagging {part-heading}
-		#3%
-		%\ResumeTagging{part-heading}
-}
-%</tagging-lab>
-%<@@=>
-%<*body>
 %    \end{macrocode}
 % \end{command}^^A \partlineswithprefixformat
 %
@@ -4405,8 +4380,9 @@
 %    \begin{macrocode}
 \newcounter{part}
 \renewcommand*{\thepart}{\@Roman\c@part}
-  \newcommand*{\partformat}{%
-	\partname~\thepart\MakeLinkTarget{part}{}\autodot%
+\newcommand*{\partformat}{%
+  \UseTaggingSocket{scr/sec/prefix}{\partname~}%
+  \UseTaggingSocket{sec/title/number}{\NumDepth{part}}{\thepart\autodot}%
 }
 %    \end{macrocode}
 % \end{command}^^A \partformat
@@ -4958,20 +4934,20 @@
         \IfUseNumber{%
           \IfUsePrefixLine{%
             \chapterlineswithprefixformat{#1}%
-            {{\usekomafont{#1prefix}{\csname #1format\endcsname%
+            {{\usekomafont{#1prefix}{\@seccntformat{#1}%
                   \setlength{\@tempskipa}{\csname scr@#1@innerskip\endcsname}%
                   \chapterheadmidvskip}}}%
-            {\interlinepenalty \@M#2\@@par}%
+            {\interlinepenalty \@M\UseTaggingSocket{scr/sec/heading/title}{#2}\@@par}%
           }{%
             \chapterlinesformat{#1}%
-            {\csname #1format\endcsname}%
+            {\@seccntformat{#1}}%
             {\interlinepenalty \@M#2\@@par}%
           }%
         }{%
           \IfUsePrefixLine{%
             \chapterlineswithprefixformat{#1}%
             {}%
-            {\interlinepenalty \@M#2\@@par}%
+            {\interlinepenalty \@M\UseTaggingSocket{scr/sec/heading/title}{#2}\@@par}%
           }{%
             \chapterlinesformat{#1}%
             {}%
@@ -5036,18 +5012,12 @@
 % user used more paragraphs than this is final one, the user is responsible to
 % prevent page breaks!
 %    \begin{macrocode}
-%</body>
-%<*(body&class&!letter&(report|book))>
+%<*(class&!letter&(report|book))>
 \newcommand{\chapterlinesformat}[3]{%
   \@hangfrom{#2}{\interlinepenalty \@M #3}%
 }
-%<!tagging-lab>\newcommand{\chapterlineswithprefixformat}[3]{%
-%<tagging-lab>\newcommand{\scrlab@chapterlineswithprefixformat}[3]{\leavevmode%
-  #2%
-  #3%
-}
-%</(body&class&!letter&(report|book))>
-%<*body>
+\newcommand{\chapterlineswithprefixformat}[3]{#2#3}
+%</(class&!letter&(report|book))>
 %    \end{macrocode}
 % \end{command}^^A \chapterlinesformat,\chapterlineswithprefixformat
 %
@@ -5331,8 +5301,11 @@
 \newcounter{chapter}
 \renewcommand*{\thechapter}{\@arabic\c@chapter}
 \newcommand*{\chapterformat}{%
-  \mbox{\chapappifchapterprefix{\nobreakspace}\thechapter\autodot
-    \IfUsePrefixLine{}{\enskip}}%
+  \mbox{\chapappifchapterprefix{\nobreakspace}%
+    \UseTaggingSocket{sec/title/number}{\NumDepth{chapter}}{%
+      \thechapter\autodot%
+      \IfUsePrefixLine{}{\enskip}%
+  }}%
 }
 \newcommand*\chaptermarkformat{\chapappifchapterprefix{\ }%
   \thechapter\autodot\enskip}
@@ -5406,7 +5379,9 @@
 % \cs{else code} otherwise (both without extra prefix).
 %    \begin{macrocode}
 \newcommand*{\chapappifchapterprefix}[1]{%
-  \IfChapterUsesPrefixLine{\chapapp#1}{}%
+  \IfChapterUsesPrefixLine{%
+    \UseTaggingSocket{scr/sec/prefix}{\chapapp#1}%
+  }{}%
 }
 \newcommand*{\IfChapterUsesPrefixLine}{%
   \if@chapterprefix\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
@@ -5801,6 +5776,7 @@
 % \changes{v2.7}{2000/01/03}{\cs{quad} replaced by \cs{enskip}}
 % \changes{v2.7i}{2001/05/17}{\cs{let} replaced by \cs{def}}
 % \changes{v2.97}{2007/01/24}{three arguments instead of only one}
+% \changes{v3.49.4}{2026/11/12}{use \cs{@othersectionlevelsformat} for number tag}
 % With \KOMAScript~2 \cs{othersectionlevelsformat} has had only one argument,
 % the \cs{…format} command of the level. But with there has been expansion
 % issues. So we have had to change the definition to
@@ -5820,7 +5796,9 @@
 %   support the second argument (unless a low compatibility level is used)?
 % \end{description}
 %    \begin{macrocode}
-\newcommand*{\othersectionlevelsformat}[3]{#3\autodot\enskip}
+\newcommand*{\othersectionlevelsformat}[3]{%
+  \UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{#3\autodot\enskip}%
+}
 \renewcommand*{\@seccntformat}[1]{%
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
 %<!v4>    \protect\othersectionlevelsformat{#1}{%
