@@ -123,9 +123,8 @@
 
 \def\scrlab@notagstrut{%
 	\ifhmode\else
-	\tagpdfparaOff
-	\orig@strut\par
-	\tagpdfparaOn
+	{\tagpdfparaOff
+	\orig@strut}\par
 	\fi
 }
 %    \end{macrocode}
