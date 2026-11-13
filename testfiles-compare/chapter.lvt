@@ -1,2 +1,7 @@
 \UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
+\def\DocumentContent{
+  \input{content/jobname-headings.ltx}
+%%  \KOMAoptions{chapterprefix=true}
+  \input{content/jobname-headings.ltx}
+}
 \input{wrapper.ltx}

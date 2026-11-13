@@ -58,6 +58,56 @@ TEST 1: Show PDF Tags
      </text-block>
     </semantic-para>
    </chapter>
+   <chapter xmlns="https://www.latex-project.org/ns/book"
+      id="ID.013"
+      rolemaps-to="Sect"
+     >
+    <chapter-heading xmlns="https://www.latex-project.org/ns/book"
+       id="ID.014"
+       title="Heading chapter emph $a=b$"
+       rolemaps-to="H1"
+      >
+     <?MarkedContent page="3" ?>Chapter 
+     <heading-number xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.015"
+        rolemaps-to="Lbl"
+       >
+      <?MarkedContent page="3" ?>2
+     </heading-number>
+     <?MarkedContent page="3" ?>Heading chapter 
+     <Em xmlns="http://iso.org/pdf2/ssn"
+        id="ID.016"
+       >
+      <?MarkedContent page="3" ?>emph
+     </Em>
+     <?MarkedContent page="3" ?> 
+     <Formula xmlns="http://iso.org/pdf2/ssn"
+        id="ID.017"
+        title="math"
+        af="tag-AFfile2.tex"
+        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+        Layout:Placement="Inline"
+       >
+       <AssociatedFile name="tag-AFfile2.tex" relationship="Source" media-type="application/x-tex" xmlns="">
+       $a=b$
+       </AssociatedFile>
+      <?MarkedContent page="3" ?>a=b
+     </Formula>
+    </chapter-heading>
+    <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.018"
+       rolemaps-to="Part"
+      >
+     <text-block xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.019"
+        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+        Layout:TextAlign="Justify"
+        rolemaps-to="P"
+       >
+      <?MarkedContent page="3" ?>Text
+     </text-block>
+    </semantic-para>
+   </chapter>
   </Document>
  </StructTreeRoot>
 </PDF>
