@@ -1,0 +1,13 @@
+\def\CLASS{scrartcl}
+\UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
+\makeatletter
+\def\DocumentContent{
+  \part{Heading \jobname\ \emph{emph} $a=b$}
+
+  Text
+
+  \UseName{toclevel@part}
+\errorstopmode
+\show\toclevel@part
+}
+\input{wrapper.ltx}

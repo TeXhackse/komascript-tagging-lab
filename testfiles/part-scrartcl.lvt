@@ -1,0 +1,10 @@
+\def\CLASS{scrartcl}
+\def\DocumentContent{
+  \part{Heading \jobname\ \emph{emph} $a=b$}
+
+  Text
+
+  \UseName{toclevel@part}//
+  \UseName{partnumdepth}
+}
+\input{wrapper.ltx}
