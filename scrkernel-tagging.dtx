@@ -221,7 +221,7 @@
 \int_new:N \l_@@_sec_level_int
 \tl_new:N \l_@@_sec_tmpa_tl
 \bool_new:N \l_@@_sec_nonumber_bool
-\newcommand*{\NumDepth}[1]{\use:c {#1numdepth}}
+\newcommand*{\NumDepth}[1]{\use:c {toclevel@#1}}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{macro}
@@ -239,9 +239,10 @@
   \UseTaggingSocket{sec/begin}
   {{\int_use:N\l_@@_sec_level_int}{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int}}}
   \if@currentrunin
-  \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
-  \tagpdfsetup{para/flattened=true}
+    \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
   \fi
+  \tagpdfsetup{para/flattened=true}
+  \tagpdfparaOff
 }
 \AssignTaggingSocketPlug{scr/sec/heading/init}{default}
 %</tagging-lab>
@@ -400,7 +401,7 @@
   %#3 title
   \NoCaseChange{%
    \UseTaggingSocket{scr/sec/title/hang}%
-     {{\UseName{#1numdepth}}{#2}}%
+     {{\NumDepth{#1}}{#2}}%
      {\scr@hangfrom{#2}}%
   }%
     {\interlinepenalty \@M #3}%
