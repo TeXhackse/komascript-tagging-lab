@@ -367,28 +367,15 @@
 %% Copyright 2021-2026 LaTeX Project
 %%
 %% The structure has alredy begun within scr/sec/heading/begin
-\cs_new_protected:Nn \_@@_set_title_hang:nn
+\cs_new_protected:Nn \_@@_set_title_hang:nn {
   %#1 level,
   %#2 formated number /hang space,
-  {
-    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
-    \setbox\@tempboxa\hbox{{#2}}
-    \bool_set_false:N \l__tag_para_bool
-    \hangindent \wd\@tempboxa\noindent
-    \IfUseNumber{\tagstructbegin{tag=\UseStructureName{sec/#1/number}}}{}
-    \bool_set_true:N \l__tag_para_bool
-     \IfUseNumber
-     {
-       \tagmcbegin{}
-       \tag_mc_reset_box:N\@tempboxa
-       \box\@tempboxa
-       \tagmcend
-       \tagstructend
-     }{
-       \box\@tempboxa
-     }
-   \tagmcbegin{}
-  }
+  \UseTaggingSocket{scr/sec/heading/flat-par}
+  \setbox\@tempboxa\hbox{{#2}}
+  \hangindent \wd\@tempboxa
+  \box\@tempboxa
+  \tagmcbegin{}
+}
 %    \end{macrocode}
 % \begin{macro}{\scr@heading@hangfrom,\scr@hangfrom}
 % \changes{v3.49.4}{2026/10/31}{added.}
@@ -442,7 +429,8 @@
 %</tagging-lab>
 %    \end{macrocode}
 % \end{Socket}
-%</tagging-lab>
+%    \begin{macrocode}
+%</init>
 %    \end{macrocode}
 % \end{Socket}
 %
