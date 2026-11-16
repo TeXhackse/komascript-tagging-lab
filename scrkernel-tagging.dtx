@@ -220,7 +220,6 @@
 
 \int_new:N \l_@@_sec_level_int
 \tl_new:N \l_@@_sec_tmpa_tl
-\newcommand*{\NumDepth}[1]{\use:c {toclevel@#1}}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{macro}
@@ -263,14 +262,14 @@
   \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab\makeatletter} \@currentlabelname
   \exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
   \if@currentrunin
-    \tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
+    \tagstructbegin{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int/title},title-o={\l_@@_sec_tmpa_tl}}
     \tagpdfparaOff
     \cs_if_exist_use:N \__tag_gincr_para_begin_int:
     \tagmcbegin{}
     \tagpdfsetup{para/flattened=true}
   \else
-    \UseTaggingSocket{sec/title/init}{\NumDepth{#1}}
-		\tagstructbegin{tag=\UseStructureName{sec/\NumDepth{#1}/title},title-o={\l_@@_sec_tmpa_tl}}
+    \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
+		\tagstructbegin{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int/title},title-o={\l_@@_sec_tmpa_tl}}
     \tagpdfparaOff
 	\fi
 }
@@ -344,9 +343,25 @@
 %</tagging-lab>
 %    \end{macrocode}
 % \end{socket}
+%
+% \begin{socket}{scr/sec/title/number}
+% \changes{v3.49.4}{2026/11/16}{added.}
+%    \begin{macrocode}
+%<*class>
+\NewTaggingSocket{scr/sec/title/number}{0}
+%</class>
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/sec/title/number}{default}{
+  \UseTaggingSocket{sec/title/number}{\int_use:N \l_@@_sec_level_int}
+}
+\AssignTaggingSocketPlug{scr/sec/title/number}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{socket}
+%
+% \begin{socket}{scr/sec/title/hang}
 % \changes{v3.49.3}{2026/09/22}{Add KOMA specific plug to sec/title/hang socket}
 % The socket with 2 arguments is using the second argument even if tagging is disabled.
-% \begin{socket}{scr/sec/title/hang}
 %    \begin{macrocode}
 %<class>\NewTaggingSocket{scr/sec/title/hang}{2}
 %<*tagging-lab>
@@ -380,7 +395,7 @@
   %#3 title
   \NoCaseChange{%
    \UseTaggingSocket{scr/sec/title/hang}%
-     {{\NumDepth{#1}}{#2}}%
+     {{\int_use:N\l_@@_sec_level_int}{#2}}%
      {\scr@hangfrom{#2}}%
   }%
     {\interlinepenalty \@M #3}%

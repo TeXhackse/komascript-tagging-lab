@@ -4383,7 +4383,7 @@
 \renewcommand*{\thepart}{\@Roman\c@part}
 \newcommand*{\partformat}{%
   \UseTaggingSocket{scr/sec/prefix}{\partname~}%
-  \UseTaggingSocket{sec/title/number}{\NumDepth{part}}{\thepart\autodot}%
+  \UseTaggingSocket{scr/sec/title/number}{\thepart\autodot}%
 }
 %    \end{macrocode}
 % \end{command}^^A \partformat
@@ -5306,7 +5306,7 @@
 \renewcommand*{\thechapter}{\@arabic\c@chapter}
 \newcommand*{\chapterformat}{%
   \mbox{\chapappifchapterprefix{\nobreakspace}%
-    \UseTaggingSocket{sec/title/number}{\NumDepth{chapter}}{%
+    \UseTaggingSocket{scr/sec/title/number}{%
       \thechapter\autodot%
       \IfUsePrefixLine{}{\enskip}%
   }}%
@@ -5801,7 +5801,7 @@
 % \end{description}
 %    \begin{macrocode}
 \newcommand*{\othersectionlevelsformat}[3]{%
-  \UseTaggingSocket{sec/title/number}{\NumDepth{#1}}{#3\autodot\enskip}%
+  \UseTaggingSocket{scr/sec/title/number}{#3\autodot\enskip}%
 }
 \renewcommand*{\@seccntformat}[1]{%
 %<!v4>  \expandafter\ifnum\scr@v@is@lt{3.17}\relax
