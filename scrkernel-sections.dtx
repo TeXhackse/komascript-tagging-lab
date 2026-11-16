@@ -1354,7 +1354,10 @@
   \@hangfrom{\hskip #2\relax#3}{\interlinepenalty \@M #4}%
 }
 \newcommand{\sectioncatchphraseformat}[4]{%
-  \hskip #2#3#4%
+  \hskip #2
+  \UseTaggingSocket{scr/sec/title/begin}%
+  #3%
+  #4%
 }
 %</body>
 %    \end{macrocode}

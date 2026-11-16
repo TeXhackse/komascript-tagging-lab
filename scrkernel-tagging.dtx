@@ -248,6 +248,7 @@
 %
 %
 % \begin{socket}{scr/sec/heading/begin}
+% \changes{v3.49.4}{2026/11/6}{added.}
 %    \begin{macrocode}
 %<class>\NewTaggingSocket{scr/sec/heading/begin}{1}
 %<*tagging-lab>
@@ -262,35 +263,27 @@
   \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab\makeatletter} \@currentlabelname
   \exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
   \if@currentrunin
-    \tagstructbegin{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int/title},title-o={\l_@@_sec_tmpa_tl}}
-    \tagpdfparaOff
-    \cs_if_exist_use:N \__tag_gincr_para_begin_int:
-    \tagmcbegin{}
-    \tagpdfsetup{para/flattened=true}
   \else
     \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}
-		\tagstructbegin{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int/title},title-o={\l_@@_sec_tmpa_tl}}
-    \tagpdfparaOff
 	\fi
+	\tagstructbegin{tag=\UseStructureName{sec/\int_use:N\l_@@_sec_level_int/title},title-o={\l_@@_sec_tmpa_tl}}
 }
 \AssignTaggingSocketPlug{scr/sec/heading/begin}{default}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{socket}
 %
-% \begin{socket}{scr/sec/heading/flat-par}
+% \begin{socket}{scr/sec/title/begin}
 %    \begin{macrocode}
-%<class>\NewTaggingSocket{scr/sec/heading/flat-par}{0}
+%<class>\NewTaggingSocket{scr/sec/title/begin}{0}
 %<*tagging-lab>
-\NewTaggingSocketPlug{scr/sec/heading/flat-par}{default}{
-    \tagpdfparaOff
+\NewTaggingSocketPlug{scr/sec/title/begin}{default}{
     \noindent
     \__tag_gincr_para_begin_int:
     \tagmcbegin{}
-    \tagpdfsetup{para/flattened=true}
     \tagpdfparaOn
 }
-\AssignTaggingSocketPlug{scr/sec/heading/flat-par}{default}
+\AssignTaggingSocketPlug{scr/sec/title/begin}{default}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{socket}
@@ -304,8 +297,7 @@
 %</class>
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/heading/title}{display}{
-    \noindent
-    \UseTaggingSocket{scr/sec/heading/flat-par}
+    \UseTaggingSocket{scr/sec/title/begin}
     #1
     \tagmcend
 %%    \tagpdfparaOff
@@ -333,6 +325,7 @@
 %<class>\NewTaggingSocket{scr/sec/heading/end}{1}
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/heading/end}{default}{
+  \AssignTaggingSocketPlug{para/restore}{default}
   \if@currentrunin
   \else
     \UseTaggingSocket{para/restore}
@@ -376,7 +369,7 @@
 \cs_new_protected:Nn \_@@_set_title_hang:nn {
   %#1 level,
   %#2 formated number /hang space,
-  \UseTaggingSocket{scr/sec/heading/flat-par}
+  \UseTaggingSocket{scr/sec/title/begin}
   \setbox\@tempboxa\hbox{{#2}}
   \hangindent \wd\@tempboxa
   \box\@tempboxa
@@ -412,9 +405,7 @@
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/title/split}{default}{
     \tagpdfsetup{para/flattened=true}
-    %%\tagpdfparaOn
     \UseTaggingSocket{sec/title/split}%
-    %%\tagpdfsetup{para/flattened=false}
 }
 \AssignTaggingSocketPlug{scr/sec/title/split}{default}
 %</tagging-lab>
