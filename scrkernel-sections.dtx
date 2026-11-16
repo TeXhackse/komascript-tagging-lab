@@ -1117,6 +1117,7 @@
 % \begin{quote}\raggedright
 %   \cs{scr@section@heading}\marg{section command name}\marg{font config}\marg{heading}
 % \end{quote}
+%    \begin{macrocode}
 \NewDocumentCommand{\scr@section@heading}{mmm}{%
     \begingroup
 %    \end{macrocode}
@@ -2648,9 +2649,9 @@
         \csname the\scr@local@counterwithin\endcsname.\arabic{#2}}%
     \fi
   \fi
-%    \begin{macrocode}
-% \changes{v3.49.4}{2026/11/12}{use expansion of \cs{othersectionlevelsformat} as default format}
 %    \end{macrocode}
+% \changes{v3.49.4}{2026/11/12}{use expansion of \cs{othersectionlevelsformat} as default format}
+%    \begin{macrocode}
   \@ifundefined{#2format}{%
     \ExpandArgs{co}\def{#2format}{\othersectionlevelsformat{#2}{}{\@nameuse{the#2}}}%
   }{}%
@@ -4090,7 +4091,7 @@
 % \changes{v3.28}{2019/11/19}{\cs{ifnumbered} renamed to
 % \cs{Ifnumbered}}
 % \begin{macro}{\scr@part@heading}
-% \changes{v3.49.4}{2026/10/23}{Added as a more generic replacement for \cs{scr@@startpart}
+% \changes{v3.49.4}{2026/10/23}{Added as a more generic replacement for \cs{scr@@startpart}}
 %    \begin{macrocode}
 \NewDocumentCommand{\scr@part@heading}{mmm}{
   \begingroup
@@ -4743,7 +4744,9 @@
 % \changes{v3.08}{2010/11/01}{using \cs{addchaptertocentry}}
 % \changes{v3.18}{2015/05/20}{using \cs{add\meta{name}tocentry}}
 % \changes{v3.18}{2015/05/22}{using \meta{name} instead of \cs{@chapapp}
+%   in \cs{typeout}}
 % \changes{v3.28}{2019/11/19}{\cs{ifnumbered} renamed to
+%   \cs{Ifnumbered}}
 % \changes{v3.31}{2020/06/06}{using \cs{\dots tocformat}}%
 % \changes{v3.49.3}{2026/09/26}{use \cs{scr@@sect@InsertHeadAndToc} instead of toc entry}
 % \changes{v3.49.3}{2026/09/22}{Move anchor, to also be added for headings without
@@ -4819,6 +4822,7 @@
 % \changes{v3.15}{2014/12/09}{\cs{raggedchapter} replaced by \cs{raggedsection}}
 % \changes{v3.17}{2015/04/03}{using \cs{usefontofkomafont} for initial font
 %   changed}
+%    \begin{macrocode}
 \NewDocumentCommand{\scr@chapter@heading}{mmm}{
   \if@twocolumn
     \if@at@twocolumn

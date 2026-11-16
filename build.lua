@@ -11,7 +11,7 @@ docfiledir = "experiments"
 sourcefiles = { "*.dtx", "*.ins", "*.inc", "scrdocstrip.tex" }
 installfiles = { "*.sty", "*.cls", "*.clo", "*.lco", "*.hak", "KOMA-fixes-latex-lab-testphase.ltx"}
 textfiles = { "*.md", "*.txt", "README.md" }
-unpackfiles = { "scr-tagging-lab.ins", "scrmain.ins" }
+unpackfiles = { "scr-tagging-lab.ins", "scrmain.ins", "koma-script-source-doc.dtx"}
 
 -- This is only for demo files - does not include building the KOMAscript documentation
 typesetexe = "lualatex-dev"
@@ -20,7 +20,8 @@ typesetexe = "lualatex-dev"
 typesetruns = 4
 typesetfiles = {
 	"*.tex",
-	"scrkernel-sections.dtx"
+	"scrkernel-sections.dtx",
+	"scrkernel-tagging.dtx"
 }
 if options["target"] == "doc" then
   typesetopts = ""
