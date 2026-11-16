@@ -220,7 +220,6 @@
 
 \int_new:N \l_@@_sec_level_int
 \tl_new:N \l_@@_sec_tmpa_tl
-\bool_new:N \l_@@_sec_nonumber_bool
 \newcommand*{\NumDepth}[1]{\use:c {toclevel@#1}}
 %</tagging-lab>
 %    \end{macrocode}
@@ -254,9 +253,6 @@
 %<class>\NewTaggingSocket{scr/sec/heading/begin}{1}
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/heading/begin}{default}{
-  \IfUseNumber
-    {\bool_set_false:N \l__scrkernel_sec_nonumber_bool}
-    {\bool_set_true:N \l__scrkernel_sec_nonumber_bool}
 %    \begin{macrocode}
 % \cs{Ifnumbered} does not include the check for \cs{if@mainmatter}.
 % Might be better to resolve this during the option handling.
