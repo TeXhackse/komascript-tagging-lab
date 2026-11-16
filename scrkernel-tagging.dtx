@@ -105,7 +105,7 @@
 %   messages by defining \cs{komascript_documentmetadata_test:}
 %   resp. \cs{komascript_tagging_test:} before loading the \KOMAScript{}
 %   class.
-%   \changes{v3.49.3}{2026/09/22}{Fix typo in package loading}
+%   \changes{v3.49.4}{2026/09/22}{Fix loading of \pkg{scr-articlebookreport-tagging}}
 %    \begin{macrocode}
 %<*class>
 \ExplSyntaxOn
@@ -225,7 +225,7 @@
 % \end{macro}
 %
 % \subsection{Tagging Sockets}
-% \changes{v3.49.3}{2026/09/23}{Initialize tagging sockets, even if tagging is not enabled.}
+% \changes{v3.49.4}{2026/09/23}{Initialize tagging sockets, even if tagging is not enabled.}
 % \begin{socket}{scr/sec/heading/init}
 %    \begin{macrocode}
 %<class>\NewTaggingSocket{scr/sec/heading/init}{1}
@@ -324,9 +324,7 @@
 % \begin{socket}{scr/sec/title/number}
 % \changes{v3.49.4}{2026/11/16}{added.}
 %    \begin{macrocode}
-%<*class>
-\NewTaggingSocket{scr/sec/title/number}{0}
-%</class>
+%<class>\NewTaggingSocket{scr/sec/title/number}{0}
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/title/number}{default}{
   \UseTaggingSocket{sec/title/number}{\int_use:N \l_@@_sec_level_int}
@@ -399,13 +397,12 @@
 % \begin{socket}{scr/sec/prefix}
 %    \begin{macrocode}
 %<*class>
-\NewTaggingSocket{scr/sec/prefix}{1}
-\NewTaggingSocketPlug{scr/sec/prefix}{transparent}{#1}
-\AssignTaggingSocketPlug{scr/sec/prefix}{transparent}
+\NewTaggingSocket{scr/sec/prefix}{0}
 %</class>
 %<*tagging-lab>
+\cs_new:Nn \_@@_sec_prefix:n {\leavevmode\tagmcbegin{}#1\tagmcend{}}
 \NewTaggingSocketPlug{scr/sec/prefix}{default}{
-  \leavevmode\tagmcbegin{}#1\tagmcend{}
+  \_@@_sec_prefix:n
 }
 \AssignTaggingSocketPlug{scr/sec/prefix}{default}
 %</tagging-lab>
