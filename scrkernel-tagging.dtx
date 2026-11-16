@@ -299,13 +299,12 @@
 %</tagging-lab>
 %    \end{macrocode}
 % \end{socket}
-
-
+%
 % \begin{socket}{scr/sec/heading/title}
 %    \begin{macrocode}
 %<*class>
 \NewTaggingSocket{scr/sec/heading/title}{1}
-\NewTaggingSocketPlug{scr/sec/heading/title}{transparent}{\use:n {#1}}
+\NewTaggingSocketPlug{scr/sec/heading/title}{transparent}{#1}
 \AssignTaggingSocketPlug{scr/sec/heading/title}{transparent}
 %</class>
 %<*tagging-lab>
@@ -415,7 +414,7 @@
 %    \begin{macrocode}
 %<*class>
 \NewTaggingSocket{scr/sec/prefix}{1}
-\NewTaggingSocketPlug{scr/sec/prefix}{transparent}{\use:n {#1}}
+\NewTaggingSocketPlug{scr/sec/prefix}{transparent}{#1}
 \AssignTaggingSocketPlug{scr/sec/prefix}{transparent}
 %</class>
 %<*tagging-lab>
