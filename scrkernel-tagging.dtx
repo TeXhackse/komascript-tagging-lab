@@ -288,44 +288,28 @@
 %    \end{macrocode}
 % \end{socket}
 %
-% \begin{socket}{scr/sec/heading/title}
+% \begin{socket}{scr/sec/title/end}
 %    \begin{macrocode}
-%<*class>
-\NewTaggingSocket{scr/sec/heading/title}{1}
-\NewTaggingSocketPlug{scr/sec/heading/title}{transparent}{#1}
-\AssignTaggingSocketPlug{scr/sec/heading/title}{transparent}
-%</class>
+%<class>\NewTaggingSocket{scr/sec/title/end}{0}
 %<*tagging-lab>
-\NewTaggingSocketPlug{scr/sec/heading/title}{display}{
-    \UseTaggingSocket{scr/sec/title/begin}
-    #1
+\NewTaggingSocketPlug{scr/sec/title/end}{default}{
+  \if@currentrunin
+    \tagpdfsetup{para/flattened=true}
+    \UseTaggingSocket{sec/title/split}%
+  \else
     \tagmcend
-%%    \tagpdfparaOff
+  \fi
 }
+\AssignTaggingSocketPlug{scr/sec/title/end}{default}
 %</tagging-lab>
 %    \end{macrocode}
 % \end{socket}
-%
-% \begin{socket}{scr/sec/heading/display}
-%    \begin{macrocode}
-%<class>\NewTaggingSocket{scr/sec/heading/display}{0}
-%<*tagging-lab>
-\NewTaggingSocketPlug{scr/sec/heading/display}{default}{
-    \noindent
-    \UseTaggingSocket{scr/sec/heading/title}
-}
-\AssignTaggingSocketPlug{scr/sec/heading/display}{default}
-%</tagging-lab>
-%    \end{macrocode}
-% \end{socket}
-%
 %
 % \begin{socket}{scr/sec/heading/end}
 %    \begin{macrocode}
 %<class>\NewTaggingSocket{scr/sec/heading/end}{1}
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/sec/heading/end}{default}{
-  \AssignTaggingSocketPlug{para/restore}{default}
   \if@currentrunin
   \else
     \UseTaggingSocket{para/restore}
@@ -429,6 +413,42 @@
 % \end{socket}
 %    \begin{macrocode}
 %</init>
+%<*verylate>
+%<*tagging-lab>
+%    \end{macrocode}
+%
+% patch sectioning
+%    \begin{macrocode}
+\def\scrlab@notagstrut{%
+  \ifhmode\else
+  {\tagpdfparaOff
+  \orig@strut}\par
+  \fi
+}
+\AddtoDoHook{heading/preinit/part}{
+  \let\orig@strut\strut\let\strut\scrlab@notagstrut
+}
+\AddtoDoHook{heading/begingroup/part}{
+  \global\let\strut\orig@strut
+}
+\AddtoDoHook{heading/postinit}{
+  \UseTaggingSocket{scr/sec/heading/init}
+}
+\cs_gset_eq:cN {\string\maketitle} \_@@_maketitle
+\cs_gset_eq:NN \@maketitle \_@@_@maketitle
+%    \end{macrocode}
+%
+% patch tocbasic
+%    \begin{macrocode}
+\let\numberline\scr@numberline
+
+\cs_set_eq:cN {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
+\cs_set_eq:cN {\string\usetocbasicnumberline} \_@@_usetocbasicnumberline
+\cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
+\cs_set_eq:NN \scr@numberline \_@@_scr@numberline
+%    \begin{macrocode}
+%</tagging-lab>
+%</verylate>
 %    \end{macrocode}
 %
 % \ExplSyntaxOff

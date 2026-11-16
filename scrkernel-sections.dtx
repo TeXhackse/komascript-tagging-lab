@@ -1391,7 +1391,7 @@
 %    \end{macrocode}
 % tagging: Separate heading from text the following text.
 %    \begin{macrocode}
-        \UseTaggingSocket{scr/sec/title/split}%
+        \UseTaggingSocket{scr/sec/title/end}%
         \@tempskipa\startsection@afterskip
         \ifdim \@tempskipa<\z@
           \hskip -\@tempskipa
@@ -4115,13 +4115,17 @@
           \partheadmidvskip
         }{%
           \usekomafont{#1}{\nobreak\interlinepenalty \@M%
-          \UseTaggingSocket{scr/sec/heading/title}{#3}%
+          \UseTaggingSocket{scr/sec/title/begin}%
+            #3%
+          \UseTaggingSocket{scr/sec/title/end}%
           \strut\@@par}%
         }%
       }{%
         \partlineswithprefixformat{#1}{}{%
           \usekomafont{#1}{\nobreak\interlinepenalty \@M%%
-          \UseTaggingSocket{scr/sec/heading/title}{#3}%
+          \UseTaggingSocket{scr/sec/title/begin}%
+            #3%
+          \UseTaggingSocket{scr/sec/title/end}%
           \strut\@@par}%
         }
       }%
@@ -4944,7 +4948,11 @@
             {{\usekomafont{#1prefix}{\@seccntformat{#1}%
                   \setlength{\@tempskipa}{\csname scr@#1@innerskip\endcsname}%
                   \chapterheadmidvskip}}}%
-            {\interlinepenalty \@M\UseTaggingSocket{scr/sec/heading/title}{#2}\@@par}%
+            {\interlinepenalty\@M
+              \UseTaggingSocket{scr/sec/title/begin}%
+              #2%
+              \UseTaggingSocket{scr/sec/title/end}%
+              \@@par}%
           }{%
             \chapterlinesformat{#1}%
             {\@seccntformat{#1}}%
@@ -4954,7 +4962,11 @@
           \IfUsePrefixLine{%
             \chapterlineswithprefixformat{#1}%
             {}%
-            {\interlinepenalty \@M\UseTaggingSocket{scr/sec/heading/title}{#2}\@@par}%
+            {\interlinepenalty\@M
+              \UseTaggingSocket{scr/sec/title/begin}%
+              #2%
+              \UseTaggingSocket{scr/sec/title/end}%
+              \@@par}%
           }{%
             \chapterlinesformat{#1}%
             {}%
