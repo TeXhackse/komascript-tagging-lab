@@ -6,10 +6,43 @@
   uncompress,
 }
 
-\newcommand{\addpart}[2][]{\part*{#2}\addcontentsline{toc}{part}{#2}}
-\newcommand{\addsec}[2][]{\section*{#2}\addcontentsline{toc}{section}{#2}}
-\newcommand{\addchap}[2][]{\chapter*{#2}\addcontentsline{toc}{chapter}{#2}}
 \makeatletter
+\NewDocumentCommand{\addpart}{O{#2}m}{
+  \edef\reserved@a{%
+    \unexpanded{%
+      \part[{#1}]{#2}%
+      \c@secnumdepth=
+    }\the\c@secnumdepth\relax
+  }%
+  \c@secnumdepth=\numexpr \UseName{toclevel@part}-1\relax
+  \reserved@a
+  \let\@elt\@stpelt
+  \csname cl@part\endcsname
+}
+\NewDocumentCommand{\addsec}{O{#2}m}{
+  \edef\reserved@a{%
+    \unexpanded{%
+      \section[{#1}]{#2}%
+      \c@secnumdepth=
+    }\the\c@secnumdepth\relax
+  }%
+  \c@secnumdepth=\numexpr \UseName{toclevel@section}-1\relax
+  \reserved@a
+  \let\@elt\@stpelt
+  \csname cl@section\endcsname
+}
+\NewDocumentCommand{\addchap}{O{#2}m}{
+  \edef\reserved@a{%
+    \unexpanded{%
+      \chapter[{#1}]{#2}%
+      \c@secnumdepth=
+    }\the\c@secnumdepth\relax
+  }%
+  \c@secnumdepth=\numexpr \UseName{toclevel@chapter}-1\relax
+  \reserved@a
+  \let\@elt\@stpelt
+  \csname cl@chapter\endcsname
+}
 \declare@file@substitution {scrartcl.cls} {article.cls}
 \declare@file@substitution {scrbook.cls} {book.cls}
 \makeatother
