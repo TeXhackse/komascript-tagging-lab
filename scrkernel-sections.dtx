@@ -1037,14 +1037,14 @@
 % increasing a counter is executed.
 %    \begin{macrocode}
     \let\IfUseNumber\@secondoftwo
-    \UseTaggingSocket{scr/sec/heading/begin}{#1}%
+    \UseTaggingSocket{scr/sec/heading/begin}{#4}%
     \hy@insteadofrefstepcounter{#1}%
   \else
 %    \end{macrocode}
 % tagging: Copy change of testphase definition
 %    \begin{macrocode}
     \let\IfUseNumber\@firstoftwo
-    \UseTaggingSocket{scr/sec/heading/begin}{#1}%
+    \UseTaggingSocket{scr/sec/heading/begin}{#4}%
     \refstepcounter{#1}%
     \expandafter\@maybeautodot\csname the#1\endcsname
     \protected@edef\@svsec{\@seccntformat{#1}\relax}%

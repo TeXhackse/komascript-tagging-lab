@@ -249,6 +249,7 @@
 %
 % \begin{socket}{scr/sec/heading/begin}
 % \changes{v3.49.4}{2026/11/6}{added.}
+% \changes{v3.49.4}{date}{avoid rescan.}
 %    \begin{macrocode}
 %<class>\NewTaggingSocket{scr/sec/heading/begin}{1}
 %<*tagging-lab>
@@ -260,8 +261,7 @@
 % \cs{@currentlabelname} is prepared to be read from aux file, where catcodes usually are configured with \cs{makeatletter}.
 % Currently this does not take care of otherwhise changed catcodes, so we need to ensure to captured a pure version of the section title.
 %    \begin{macrocode}
-  \tl_set_rescan:NnV \l_@@_sec_tmpa_tl {\cctab_select:N \c_document_cctab\makeatletter} \@currentlabelname
-  \exp_args:NV \pdf_purify:nN \l_@@_sec_tmpa_tl \l_@@_sec_tmpa_tl
+  \pdf_purify:nN {#1} \l_@@_sec_tmpa_tl
   \if@currentrunin
   \else
     \UseTaggingSocket{sec/title/init}{\int_use:N\l_@@_sec_level_int}

@@ -23,7 +23,7 @@ TEST 2: active chars - Needs to be resolved!
 =========================
 The structure 10 contains:
 >  Type  =>  /StructElem
->  T  =>  <FEFF0053006F006D00650020005400690074006C00650020007700690074006800200061006300740069007600610074006500640020002A003A0020002A>
+>  T  =>  <FEFF0053006F006D00650020005400690074006C00650020007700690074006800200061006300740069007600610074006500640020002A003A0020004100630074006900760065>
 >  S  =>  /chapter-heading
 >  NS  =>  latex-book
 >  tag  =>  {chapter-heading}{latex-book}
@@ -67,7 +67,7 @@ TEST 3: Show PDF Tags
      >
     <chapter-heading xmlns="https://www.latex-project.org/ns/book"
        id="ID.010"
-       title="Some Title with activated *: *"
+       title="Some Title with activated *: Active"
        rolemaps-to="H1"
       >
      <heading-number xmlns="https://www.latex-project.org/ns/dflt"
