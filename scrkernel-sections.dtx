@@ -1089,6 +1089,26 @@
 			\scr@@sect@InsertHeadAndToc{#1}%
       \ExecuteDoHook{heading/endgroup/#1}%
     }%
+   \@nobreakfalse
+    \global\@noskipsectrue
+    \everypar{%
+      \if@noskipsec
+        \global\@noskipsecfalse
+       {\setbox\z@\lastbox}%
+        \clubpenalty\@M
+        \begingroup
+        \@svsechd
+        \endgroup
+        \unskip
+%    \end{macrocode}
+% tagging: Separate heading from text the following text.
+%    \begin{macrocode}
+        \UseTaggingSocket{scr/sec/title/end}%
+        \hskip\startsection@afterskip\relax
+      \else
+        \clubpenalty \@clubpenalty
+        \everypar{}%
+      \fi}%
   \else%^^A \@currentruninfalse
 %    \end{macrocode}
 % \changes{v3.21}{2016/06/12}{missing \cs{nobreak} added}
@@ -1106,9 +1126,11 @@
 % \item[ToDo:] Move \cs{autodot} to the definition of \cs{\dots tocformat}.
 % \end{description}
 %    \begin{macrocode}
+ \UseTaggingSocket{para/restore}%
+  \@afterheading
   \fi%^^A \if@currentrunin
-\let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
- \scr@xsect
+  \let\IfUsePrefixLine\scr@IfUsePrefixLineWarning
+  \ignorespaces
 }
 %    \end{macrocode}
 %
@@ -1373,46 +1395,7 @@
 % \begin{macro}{\scr@xsect}
 %   \changes{v3.49.3}{2026/10/03}{use \cs{if@currentrunin}}
 %   \changes{v3.49.3}{2026/10/03}{remove argument to prepare merging into \cs{scr@sect}}
-%    \begin{macrocode}
-%<*body>
-\def\scr@xsect{%
-  \if@currentrunin
-    \@nobreakfalse
-    \global\@noskipsectrue
-    \everypar{%
-      \if@noskipsec
-        \global\@noskipsecfalse
-       {\setbox\z@\lastbox}%
-        \clubpenalty\@M
-        \begingroup
-        \@svsechd
-        \endgroup
-        \unskip
-%    \end{macrocode}
-% tagging: Separate heading from text the following text.
-%    \begin{macrocode}
-        \UseTaggingSocket{scr/sec/title/end}%
-        \@tempskipa\startsection@afterskip
-        \ifdim \@tempskipa<\z@
-          \hskip -\@tempskipa
-        \else
-          \hskip \@tempskipa
-        \fi
-      \else
-        \clubpenalty \@clubpenalty
-        \everypar{}%
-      \fi}%
-  \else
-%    \end{macrocode}
-% \changes{v3.49.3}{2026/10/11}{Moved afterskip to \cs{scr@section@heading}}
-%    \begin{macrocode}
-    \UseTaggingSocket{para/restore}
-    \@afterheading
-  \fi
-  \ignorespaces
-}
-%</body>
-%    \end{macrocode}
+%   \changes{v3.49.4}{2026/11/17}{merged into \cs{scr@sect}}
 % \end{macro}^^A \scr@xsect
 %
 % \begin{command}{\IfUsePrefixLine}
