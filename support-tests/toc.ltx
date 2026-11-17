@@ -1,11 +1,13 @@
 \input{regression-test}
 \input{testsetup}
-\documentclass{scrbook}
+\documentclass{scrartcl}
 
 % don't handle pagestyles here
 \pagestyle{empty}\def\chapterpagestyle{empty}
 
 \title{title}
+
+% it's important to not use duplicate section numbers which would mess up the targets!
 
 \begin{document}
 
@@ -17,15 +19,9 @@
 
 \subsection{subsection}
 
-\addsec{addsec}
-
-text
-
 \section*{starred}
 
-\subsection{blub}
-
-\section{section}
+\addsec{addsec}
 
 \SHOWPDFTAGS
 
