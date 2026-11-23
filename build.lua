@@ -21,7 +21,8 @@ typesetruns = 4
 typesetfiles = {
 	"*.tex",
 	"scrkernel-sections.dtx",
-	"scrkernel-tagging.dtx"
+	"scrkernel-tagging.dtx",
+	"scrkernel-tocstyle.dtx"
 }
 if options["target"] == "doc" then
   typesetopts = ""
