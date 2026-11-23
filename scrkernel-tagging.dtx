@@ -197,7 +197,7 @@
 %<*init>
 %<*tagging-lab>
 %<@@=scrlab>
-\ProvidesExplPackage {scr-articlebookreport-tagging}{2026-11-12}{3.49.4}{KOMA-Script tagging code}
+\ProvidesExplPackage{scr-articlebookreport-tagging}{2026-11-23}{3.49.4}{KOMA-Script tagging code}
 %     \end{macrocode}
 %
 % Warning that tagging is generally supported but development in progress.
@@ -225,6 +225,7 @@
 % \end{macro}
 %
 % \subsection{Tagging Sockets}
+% \subsection{Disposition}
 % \changes{v3.49.4}{2026/09/23}{Initialize tagging sockets, even if tagging is not enabled.}
 % \begin{socket}{scr/sec/heading/init}
 %    \begin{macrocode}
@@ -396,9 +397,7 @@
 %
 % \begin{socket}{scr/sec/prefix}
 %    \begin{macrocode}
-%<*class>
-\NewTaggingSocket{scr/sec/prefix}{0}
-%</class>
+%<class>\NewTaggingSocket{scr/sec/prefix}{0}
 %<*tagging-lab>
 \cs_new:Nn \_@@_sec_prefix:n {\leavevmode\tagmcbegin{}#1\tagmcend{}}
 \NewTaggingSocketPlug{scr/sec/prefix}{default}{
@@ -433,19 +432,103 @@
 }
 \cs_gset_eq:cN {\string\maketitle} \_@@_maketitle
 \cs_gset_eq:NN \@maketitle \_@@_@maketitle
-%    \end{macrocode}
-%
-% patch tocbasic
-%    \begin{macrocode}
-\let\numberline\scr@numberline
-
-\cs_set_eq:cN {\string\TOCLineLeaderFill} \_@@_TOCLineLeaderFill
-\cs_set_eq:cN {\string\usetocbasicnumberline} \_@@_usetocbasicnumberline
-\cs_set_eq:NN \scr@dte@tocline \_@@_scr@dte@tocline
-\cs_set_eq:NN \scr@numberline \_@@_scr@numberline
-%    \begin{macrocode}
 %</tagging-lab>
 %</verylate>
+%    \end{macrocode}
+%
+% \subsection{\pkg{tocbasic}}
+%    \begin{macrocode}
+%<*toc>
+%    \end{macrocode}
+%
+% \begin{socket}{scr/toc/number/before,scr/toc/number/after}
+% \changes{v3.49.4}{2026/11/23}{added.}
+%    \begin{macrocode}
+%<package>\NewTaggingSocket{scr/toc/number/before}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/toc/number/before}{default}{
+ \tag_mc_end:
+ \tag_struct_begin:n{tag=\UseStructureName{toc/item/label}}
+ \tag_mc_begin:n{}
+}
+\AssignTaggingSocketPlug{scr/toc/number/before}{default}
+%</tagging-lab>
+%
+%<package>\NewTaggingSocket{scr/toc/number/after}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/toc/number/after}{default}{
+  \tag_mc_end:
+  \tag_struct_end:
+  \tag_mc_begin:n{}
+}
+\AssignTaggingSocketPlug{scr/toc/number/after}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{socket}
+%
+%
+% \begin{socket}{scr/toc/text/before,scr/toc/text/after}
+% \changes{v3.49.4}{2026/11/23}{added.}
+%    \begin{macrocode}
+%<package>\NewTaggingSocket{scr/toc/text/before}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/toc/text/before}{default}{
+  \tag_struct_begin:n{tag=\UseStructureName{toc/item/text}}%
+  \tag_mc_begin:n{}
+}
+\AssignTaggingSocketPlug{scr/toc/text/before}{default}
+%</tagging-lab>
+%
+%<package>\NewTaggingSocket{scr/toc/text/after}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/toc/text/after}{default}
+ {\tag_mc_end:}
+\AssignTaggingSocketPlug{scr/toc/text/after}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{socket}
+%
+% \begin{socket}{scr/toc/leaders/before,scr/toc/leaders/after}
+% \changes{v3.49.4}{2026/11/23}{added.}
+%    \begin{macrocode}
+%<package>\NewTaggingSocket{scr/toc/leaders/before}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/toc/leaders/before}{artifact}
+ {\tag_mc_begin:n{artifact}\nobreak}
+\AssignTaggingSocketPlug{scr/toc/leaders/before}{artifact}
+%</tagging-lab>
+%
+%<package>\NewTaggingSocket{scr/toc/leaders/after}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/toc/leaders/after}{artifact}
+ {\nobreak\tag_mc_end:}
+\AssignTaggingSocketPlug{scr/toc/leaders/after}{artifact}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{socket}
+%
+% \begin{socket}{scr/toc/page}
+%    \begin{macrocode}
+%<package>\NewTaggingSocket{scr/toc/page/before}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/toc/page/before}{default}{
+  \tag_mc_begin:n{}
+}
+\AssignTaggingSocketPlug{scr/toc/page/before}{default}
+%</tagging-lab>
+
+%<package>\NewTaggingSocket{scr/toc/page/after}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/toc/page/after}{default}{
+  \tag_mc_end:
+  \tag_struct_end:
+}
+\AssignTaggingSocketPlug{scr/toc/page/after}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{socket}
+%    \begin{macrocode}
+%</toc>
 %    \end{macrocode}
 %
 % \ExplSyntaxOff

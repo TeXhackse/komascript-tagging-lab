@@ -1884,7 +1884,7 @@
 %    \begin{macrocode}
 \newcommand*{\scr@dsc@def@style@chapter@command}[1]{%
   \@namedef{#1}{\scr@startchapter{#1}}%
-  \@namedef{@#1}{\scr@@startchapter{#1}}%
+
   \@namedef{@make#1head}{\scr@makechapterhead{#1}}%
   \@namedef{@@make#1head}{\scr@@makechapterhead{#1}}%
   \@namedef{set#1preamble}{\set@preamble{#1}}%
@@ -4653,7 +4653,6 @@
 % \begin{description}
 % \item[ToDo:] Do we need them in the \texttt{prepare} run or can we move then
 %   even to the \texttt{body} run?
-% \item[ToDo:] Do we really need to define \cs{scr@chapter@style}?
 % \end{description}
 %    \begin{macrocode}
 %<*prepare>
@@ -4663,7 +4662,6 @@
 \let\scr@chapter@afterskip\z@
 \newcommand*{\scr@chapter@innerskip}{\z@}
 \let\scr@chapter@innerskip\z@
-\newcommand*{\scr@chapter@style}{chapter}
 %    \end{macrocode}
 % \end{macro}^^A \scr@chapter@style
 % \end{macro}^^A \scr@chapter@afterskip

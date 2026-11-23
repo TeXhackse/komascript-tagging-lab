@@ -124,23 +124,20 @@
 % \changes{v3.12}{2013/11/22}{use \cs{numberline@numberformat} only, if the
 %   argument expands to a non-empty string}
 % \changes{v3.28}{2019/11/18}{\cs{ifstr} renamed into \cs{Ifstr}}
+% \changes{v3.49.4}{2026/11/23}{add tagging sockets}
 % This macro is used indirectly in the ToC and has to be redefined to fulfil
 % rules~5 and 6 of DUDDEN, 20th edition.
 %    \begin{macrocode}
-%<*tagging-lab>
-%<@@=scrlab>
-%</tagging-lab>
-%<*package&(body|tagging-lab)>
-%<!tagging-lab>\newcommand*{\scr@numberline}[1]{%
-%<tagging-lab>\newcommand*{\_@@_scr@numberline}[1]{%
+%<*package&body>
+\newcommand*{\scr@numberline}[1]{%
   \numberline@box{%
-%<tagging-lab|tagging>    \UseHookWithArguments{contentsline/number/before}{1}{#1}%
+    \UseTaggingSocket{scr/toc/number/before}%
     \numberline@prefix
     \Ifstr{#1}{}{#1}{%
       \numberline@numberformat{#1}%
     }%
     \numberline@postfix
-%<tagging-lab|tagging>    \UseHookWithArguments{contentsline/number/after}{1}{#1}%
+    \UseTaggingSocket{scr/toc/number/after}%
   }%
 }
 %    \end{macrocode}
@@ -150,19 +147,15 @@
 % the optional argument is executed and a afterwards \cs{numberline} is
 % redefined.
 %    \begin{macrocode}
-%<tagging-lab>\cs_new:Npn \_@@_usetocbasicnumberline [ #1 ]{%
-%<*!tagging-lab>
 \newcommand*{\usetocbasicnumberline}[1][%
   \PackageInfo{tocbasic}{Using my definition of `\string\numberline'}%
 ]{%
-%</!tagging-lab>
-%    \end{macrocode}
-% tagging: \SuspendTagging does not exist before |begin{document}|
-% TODO: ask if theres a better option otherwhise we have to check if the command exists for the main version of KOMA-Script.
-%    \begin{macrocode}
-%<tagging-lab>    \tag_stop:n {toc/tocline-measure}
   \@tempswatrue
   \begingroup
+%    \end{macrocode}
+% \changes{v3.49.4}{2026/11/23}{Disable tagging for measuring.}
+%    \begin{macrocode}
+    \UseName{measuring@true}%
     \def\scr@numberline##1{\global\@tempswafalse}%
 %    \end{macrocode}
 % For \cs{numberline} \cs{@tempdima} usually is the width reserved for the
@@ -173,10 +166,7 @@
     \sbox\@tempboxa{\numberline{0}}%
   \endgroup
   \if@tempswa #1\renewcommand*{\numberline}[1]{\scr@numberline{##1}}\fi
-%<tagging-lab>    \tag_start:n {toc/tocline-measure}
 }
-%</package&(body|tagging-lab)>
-%<*package&body>
 %    \end{macrocode}
 % \end{command}^^A \usetocbasicnumberline
 % \begin{macro}{\numberline@prefix}
@@ -1195,10 +1185,7 @@
 % code several times to generate all the styles.
 %
 %    \begin{macrocode}
-%<*tagging-lab>
-%<@@=scrlab>
-%</tagging-lab>
-%<*style&!tagging-lab>
+%<*style>
 %    \end{macrocode}
 %
 % \begin{macro}{\scr@dte@def@l@gobble}
@@ -2026,8 +2013,6 @@
 %</toctext>
 }
 %</dottedtocline|undottedtocline|largetocline|tocline|toctext>
-%</style&!tagging-lab>
-%<*style>
 %    \end{macrocode}
 % \end{macro}^^A \scr@dte@def@l@toctext
 % \end{macro}^^A \scr@dte@def@l@tocline
@@ -2038,7 +2023,6 @@
 % Style |tocline| needs several additional settings and macros:
 %    \begin{macrocode}
 %<*tocline>
-%<*!tagging-lab>
 \AtBeginDocument{%
   \BeforeClosingMainAux{%
     \begingroup
@@ -2076,6 +2060,7 @@
 % \changes{v3.20}{2015/11/22}{added}
 % \changes{v3.27}{2019/05/12}{support for \opt{noindent}}
 % \changes{v3.28}{2019/11/19}{\cs{iftocfeature} replaced by \cs{Iftocfeature}}
+% \changes{v3.49.4}{2026/11/23}{add tagging sockets}
 % This is somehow like the \LaTeX{} kernel macro \cs{@dottedtocline}. But it
 % supports a lot of more attributes, not only the level, the numberwidth, the
 % indent and the text. The attributes are handled by options. So we need only
@@ -2091,9 +2076,7 @@
 % it in \len{scr@dte@tocline@numberwidth}.
 %    \begin{macrocode}
 \newlength\scr@dte@tocline@numberwidth
-%</!tagging-lab>
-%<!tagging-lab>\newcommand*{\scr@dte@tocline}[3]{%
-%<tagging-lab>\newcommand*{\_@@_scr@dte@tocline}[3]{%
+\newcommand*{\scr@dte@tocline}[3]{%
   \ifnum \@nameuse{#1tocdepth}>\c@tocdepth
   \else
     \tocbasic@DependOnPenaltyAndTOCLevel{#1}%
@@ -2205,11 +2188,12 @@
         \let\scr@dte@numberline@box\numberline@box
         \def\numberline@box##1{%
 %    \end{macrocode}
-% tagging: tagging has to be suspended for the measuring of the number box
+% Tagging is locally suspended using \cs{measuring@true}.
 %    \begin{macrocode}
-%<tagging-lab|tagging>          \SuspendTagging{toc/numberline-measure}%
-          \sbox\scr@dte@tocline@numbox{\@nameuse{scr@tso@#1@numberformat}{##1}}%
-%<tagging-lab|tagging>          \ResumeTagging{toc/numberline-measure}%
+          \sbox\scr@dte@tocline@numbox{%
+            \UseName{measuring@true}%
+            \@nameuse{scr@tso@#1@numberformat}{##1}%
+           }%
 %    \end{macrocode}
 % We are inside a group, so we have to set the length globally.
 %    \begin{macrocode}
@@ -2243,7 +2227,6 @@
             \fi
           }%
 %    \end{macrocode}
-% tagging: Enable the number tags for the actual output.
 % See Redefinition of \cs{scr@numberline} for more information.
 %    \begin{macrocode}
           \scr@dte@numberline@box{\@nameuse{scr@tso@#1@numberformat}{##1}}%
@@ -2252,14 +2235,9 @@
           }{}%
         }%
         \@nameuse{scr@tso@#1@entryformat}{%
-%    \end{macrocode}
-% tagging: Inserting the contentsline/text hooks defined in \file{latex-lab-testphase-toc.sty}
-%    \begin{macrocode}
-%<tagging-lab|tagging>          \UseHookWithArguments{contentsline/text/before}{4}
-%<tagging-lab|tagging>            {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
-          #2%
-%<tagging-lab|tagging>          \UseHookWithArguments{contentsline/text/after}{4}%
-%<tagging-lab|tagging>             {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+          \UseTaggingSocket{scr/toc/text/before}%
+            #2%
+          \UseTaggingSocket{scr/toc/text/after}%
           \nobreak
           {%
             \normalfont\normalsize\@nameuse{scr@tso@#1@linefill}%
@@ -2275,14 +2253,9 @@
             \csname scr@tso@#1@pagenumberwidth\endcsname
             \@nameuse{scr@tso@#1@pagenumberbox}{%
               \@nameuse{scr@tso@#1@pagenumberformat}{%
-%    \end{macrocode}
-% tagging: Inserting the contentsline/page hooks defined in \file{latex-lab-testphase-toc.sty}
-%    \begin{macrocode}
-%<tagging-lab|tagging>              \UseHookWithArguments{contentsline/page/before}{4}%
-%<tagging-lab|tagging>                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
-                #3%
-%<tagging-lab|tagging>              \UseHookWithArguments{contentsline/page/after}{4}%
-%<tagging-lab|tagging>                {\@nameuse{toclevel@#1}}{#1}{#2}{\@contentsline@destination}%
+                \UseTaggingSocket{scr/toc/page/before}%
+                  #3%
+                \UseTaggingSocket{scr/toc/page/after}%
               }%
             }%
           }%
@@ -2293,7 +2266,6 @@
     \tocbasic@SetPenaltyByTOCLevel{#1}%
   \fi
 }
-%<*!tagging-lab>
 %    \end{macrocode}
 % \end{length}^^A \scr@dte@tocline@numberwidth
 % \begin{macro}{\scr@dte@tocline@numbox}
@@ -2339,38 +2311,20 @@
 %    \end{macrocode}
 % \end{command}^^A \LastTOCLevelWasHigher … \LastTOCLevelWasLower
 % \end{macro}^^A \tocbasic@SetPenaltyByTOCLevel,\tocbasic@DependOnPenaltyAndTOCLevel
-%</!tagging-lab>
 % \begin{command}{\TOCLineLeaderFill}
 % \changes{v3.20}{2015/11/14}{added}
+% \changes{v3.49.4}{2026/11/23}{add tagging sockets}
 % Filler between the last text line and the page number. The optional argument
 % \texttt{\#1} is the character used for filling.
 %    \begin{macrocode}
-%<*tagging-lab|(tagging&body)>
-\NewSocket{tagsupport/@@/toc/leaders/before}{0}
-\NewSocket{tagsupport/@@/toc/leaders/after}{0}
-%</tagging-lab|(tagging&body)>
-%<!tagging-lab>\newcommand*{\TOCLineLeaderFill}[1][.]{%
-%<tagging-lab>\cs_new:Npn \_@@_TOCLineLeaderFill  [ #1 ] {%
-%<tagging-lab|tagging&tocline>  \UseTaggingSocket{@@/toc/leaders/before}\SuspendTagging{toc/leaders}%
+\newcommand*{\TOCLineLeaderFill}[1][.]{%
+  \UseTaggingSocket{scr/toc/leaders/before}%
   \leaders\hbox{$\m@th
     \mkern \@dotsep mu\hbox{#1}\mkern \@dotsep
     mu$}\hfill
-%<tagging-lab|(tagging&tocline)>  \ResumeTagging{toc/leaders}\UseTaggingSocket{@@/toc/leaders/after}%
+  \UseTaggingSocket{scr/toc/leaders/after}%
 }
 %</tocline>
-%    \end{macrocode}
-% Socket setup is the same as provided by \pkg{latex-lab-testphase-toc.sty}.
-%    \begin{macrocode}
-%<tagging&body>\ExplSyntaxOn
-%<*tagging-lab|(tagging&body)>
-\NewSocketPlug{tagsupport/@@/toc/leaders/before}{artifact}
- {\tag_mc_begin:n{artifact}\nobreak}
-\NewSocketPlug{tagsupport/@@/toc/leaders/after}{artifact}
- {\nobreak\tag_mc_end:}
-\AssignSocketPlug{tagsupport/@@/toc/leaders/before}{artifact}
-\AssignSocketPlug{tagsupport/@@/toc/leaders/after}{artifact}
-%</tagging-lab|(tagging&body)>
-%<tagging&body>\ExplSyntaxOff
 %    \end{macrocode}
 % \end{command}^^A \TOCLineLeaderFill
 % \end{macro}^^A \scr@dte@tocline
