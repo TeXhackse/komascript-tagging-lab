@@ -23,7 +23,7 @@ TEST 2: runin=false,afterskip=-1em
 ============================================================
 TEST 3: runin=true,afterskip=-1em
 ============================================================
-> \startsection@afterskip=macro:->\glueexpr \csname scr@paragraph@afterskip\endcsname \relax .
+> \startsection@afterskip=macro:->\glueexpr (\csname scr@paragraph@afterskip\endcsname )*\m@ne \relax .
 > \startsection@indent=macro:->\glueexpr \csname scr@paragraph@sectionindent\endcsname \relax .
 > \scr@paragraph@afterskip=macro:->-1em.
 > \scr@paragraph@sectionindent=macro:->\z@ .
