@@ -450,8 +450,6 @@
 \AddtoDoHook{heading/postinit}{
   \UseTaggingSocket{scr/sec/heading/init}
 }
-\cs_gset_eq:cN {\string\maketitle} \_@@_maketitle
-\cs_gset_eq:NN \@maketitle \_@@_@maketitle
 %</tagging-lab>
 %</verylate>
 %    \end{macrocode}
@@ -536,7 +534,7 @@
 }
 \AssignTaggingSocketPlug{scr/toc/page/before}{default}
 %</tagging-lab>
-
+%
 %<package>\NewTaggingSocket{scr/toc/page/after}{0}
 %<*tagging-lab>
 \NewTaggingSocketPlug{scr/toc/page/after}{default}{
@@ -549,6 +547,50 @@
 % \end{socket}
 %    \begin{macrocode}
 %</toc>
+%<*init>
+%    \end{macrocode}
+%
+% \subsection{Title}
+% \begin{socket}{scr/title/begin}
+% \changes{v3.49.4}{2026/11/24}{added.}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/title/begin}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/title/begin}{default}{
+      \tagpdfsetup{table/tagging=false}%
+      \DeclareRobustCommand\and{%   % \begin{tabular}
+        \end{tabular}\UseTaggingSocket{inline/end}{}%
+        \hskip 1em \@plus.17fil%
+        \UseTaggingSocket{inline/begin}{tag=title-author,attribute-class=center}%
+        \begin{tabular}[t]{c}}%     % \end{tabular}
+}
+\AssignTaggingSocketPlug{scr/title/begin}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{socket}
+%
+% \begin{socket}{scr/title/author,scr/title/date}
+% \changes{v3.49.4}{2026/11/24}{added.}
+%    \begin{macrocode}
+%<class>\NewTaggingSocket{scr/title/author}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/title/author}{default}{
+   \AssignStructureRole{para/textblock}{title-author}%
+}
+\AssignTaggingSocketPlug{scr/title/author}{default}
+%</tagging-lab>
+%<class>\NewTaggingSocket{scr/title/date}{0}
+%<*tagging-lab>
+\NewTaggingSocketPlug{scr/title/date}{default}{
+  \AssignStructureRole{para/textblock}{title-date}%
+}
+\AssignTaggingSocketPlug{scr/title/date}{default}
+%</tagging-lab>
+%    \end{macrocode}
+% \end{socket}
+%
+%    \begin{macrocode}
+%</init>
 %<*tagging-lab>
 %<@@=>
 %</tagging-lab>

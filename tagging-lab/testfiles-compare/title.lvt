@@ -1,4 +1,5 @@
 \UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
+\def\CLASS{scrartcl}
 \def\TestPreambleFiles{title.ltx}
 \def\TestContentFiles{}
 \input{wrapper.ltx}

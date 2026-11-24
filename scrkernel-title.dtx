@@ -34,6 +34,7 @@
 %%% From File: $Id: scrkernel-title.dtx 4032 2023-04-17 09:45:11Z kohm $
 %<option>%%%            (run: option)
 %<body>%%%            (run: body)
+%<tagging-lab>%%%            (run: tagging-lab)
 %<*dtx>
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
@@ -335,6 +336,32 @@
 % \end{macro}^^A \next@tdpage
 % \end{macro}^^A \next@tpage
 %
+% \begin{environment}{scr@titleblock}
+% \changes{v3.49.4}{2026/11/24}{added.}
+% To simplify tagging support the \env{scr@titleblock} environment is replacing the \env{center} environment.
+%    \begin{macrocode}
+%</body>
+%<*body|tagging-lab>
+%<!tagging-lab>\newenvironment
+%<tagging-lab>\renewenvironment
+	{scr@titleblock}{%
+	\begin{center}%
+%<*tagging-lab>
+	[tagging-suppress-paras=true,
+    tagging-recipe=standalone,
+    tag-name=\UseStructureName{title/block},
+    tag-attr-class=aria-banner]
+    \tagpdfsetup{table/tagging=false}%
+%</tagging-lab>
+	\ignorespaces
+}{%
+	\end{center}%
+}
+%</body|tagging-lab>
+%<*body>
+%    \end{macrocode}
+% \end{environment}^^A scr@titleblock
+%
 % \begin{command}{\maketitle}
 % \changes{v2.3a}{1995/07/08}{\texttt{plus} replaced by \cs{@plus}}
 % \changes{v2.3a}{1995/07/08}{\texttt{fill} replaced by \cs{fill}}
@@ -385,6 +412,7 @@
 %   mode}
 % \changes{v3.27}{2019/03/18}{empty \cs{@thanks} after usage}
 % \changes{v3.27}{2019/03/18}{deleting \cs{@thanks} always globally}
+% \changes{v3.49.4}{2026/11/24}{add tagging sockets}
 % The user command that prints either the in-page title or the title pages
 % with all the title macros filled before.
 %    \begin{macrocode}
@@ -393,9 +421,8 @@
 %<*tagging-lab>
 %<@@=scrlab>
 %</tagging-lab>
-%<*body|tagging-lab>
+%<*body>
 %<body>\newcommand*\maketitle[1][1]{%
-%<tagging-lab>\cs_set:Npn\_@@_maketitle[#1]{%
 %    \end{macrocode}
 % \changes{v3.39}{2022/10/25}{using \cs{scr@v@is@ge}}
 % To support several \cs{maketitle} in the same document, we have to take care
@@ -403,11 +430,11 @@
 % outside).
 %    \begin{macrocode}
 %<!v4>  \expandafter\ifnum \scr@v@is@ge{3.12}%
-    \def\and{%
-      \end{tabular}%
-      \hskip 1em \@plus.17fil%
-      \begin{tabular}[t]{c}%
-    }%
+  \DeclareRobustCommand\and{%
+   \end{tabular}\UseTaggingSocket{inline/end}{}%
+    \hskip 1em \@plus.17fil%
+    \UseTaggingSocket{inline/begin}{tag=title-author,attribute- class=center}%
+  \begin{tabular}[t]{c}}%
 %<!v4>  \fi
 %    \end{macrocode}
 % Depending on in-page titles or title pages, we have to use different
@@ -415,11 +442,6 @@
 %    \begin{macrocode}
   \if@titlepage
     \begin{titlepage}
-%    \end{macrocode}
-% tagging: This is an internal command. This is copied from the latex-lab for the moment.
-% TODO: Ask for an interface
-%    \begin{macrocode}
-%<tagging-lab>      \cs_if_exist_use:N\__tag_tbl_disable:
       \setcounter{page}{%
 %<extend>        ##1%
 %<!extend>        #1%
@@ -459,6 +481,7 @@
       \else
         \let\titlepage@restore\relax
       \fi
+      \UseTaggingSocket{scr/title/begin}%
       \let\footnotesize\small
       \let\footnoterule\relax
       \let\footnote\thanks
@@ -488,7 +511,7 @@
         \end{minipage}\par
       \fi
       \null\vfill
-      \begin{center}
+      \begin{scr@titleblock}
         \ifx\@subject\@empty \else
           {\usekomafont{subject}{\@subject\par}}%
           \vskip 3em
@@ -496,17 +519,13 @@
 %    \end{macrocode}
 % tagging: it's possible to reduce the code, but to keep it easier to compare the variants, I decided to repeat, similar to the latex-lab-testphase-title definition
 %    \begin{macrocode}
-%<!tagging-lab>        {\usekomafont{title}{\huge \@title\par}}%
-%<*tagging-lab>
-	\pdf_version_compare:NnTF > {1.7}
-          {\usekomafont{title}{\huge\tag_struct_begin:n{tag=Title}\@title\par\tag_struct_end:}}%
-          {\usekomafont{title}{\huge\tagtool{paratag=Title}\@title \par}}%
-%</tagging-lab>
+   {\usekomafont{title}{\huge\UseTaggingSocket{title}{}{\@title}\par}}
         \vskip 1em
         {\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi}%
         \vskip 2em
         {%
           \usekomafont{author}{%
+            \UseTaggingSocket{scr/title/author}%
             \lineskip 0.75em
             \begin{tabular}[t]{c}
               \@author
@@ -514,11 +533,13 @@
           }%
         }%
         \vskip 1.5em
-        {\usekomafont{date}{\@date \par}}%
+        {\usekomafont{date}{%
+          \UseTaggingSocket{scr/title/date}%
+          \@date \par}}%
         \vskip \z@ \@plus3fill
         {\usekomafont{publishers}{\@publishers \par}}%
         \vskip 3em
-      \end{center}\par
+      \end{scr@titleblock}\par
       \@thanks\global\let\@thanks\@empty
       \vfill\null
       \if@twoside
@@ -622,6 +643,7 @@
       }%
     \fi
     \begingroup
+      \UseTaggingSocket{scr/title/begin}
       \let\titlepage@restore\relax
       \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
       \let\@oldmakefnmark\@makefnmark
@@ -709,8 +731,6 @@
 %</!v4>
   \global\let\and\relax
 }%
-%</body|tagging-lab>
-%<*body>
 %    \end{macrocode}
 % \begin{macro}{\@maketitle}
 % \changes{v2.95c}{2006/08/21}{default paragraph settings}
@@ -719,25 +739,30 @@
 % \begin{macro}{\@makeextratitle}
 % \changes{v3.11c}{2013/02/14}{added}
 % \changes{v3.12a}{2014/03/03}{\cs{next@tdpage} removed}
-% \begin{macro}{\@makefrontispiece}
-% \changes{v3.25}{2017/11/21}{added}
-% These do the printing of the main title, the extra or mock title and the
-% frontispiece (retro page of the mock title).
 %    \begin{macrocode}
 \newcommand*{\@makeextratitle}{%
   \ifx\@extratitle\@empty \else
     \noindent\@extratitle\par
   \fi
 }
+%    \end{macrocode}
+% \end{macro}^^A \@makeextratitle
+% \begin{macro}{\@makefrontispiece}
+% \changes{v3.25}{2017/11/21}{added}
+% These do the printing of the main title, the extra or mock title and the
+% frontispiece (retro page of the mock title).
+%    \begin{macrocode}
 \newcommand*{\@makefrontispiece}{%
   \ifx\@frontispiece\@empty \else
     \noindent\@frontispiece\par
   \fi
 }
-%</body>
-%<*body|tagging-lab>
+%    \end{macrocode}
+% \end{macro}^^A \@makefrontispiece
+% \changes{v3.49.4}{2026/11/24}{add tagging sockets}
+%    \begin{macrocode}
 %<body>\newcommand*{\@maketitle}{%
-%<tagging-lab>\newcommand*\_@@_@maketitle{%
+%<tagging-lab>\renewcommand*\@maketitle{%
   \global\@topnum=\z@
 %<!extend>  \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
 %<extend>  \parskip\z@ \parindent\z@ \parfillskip\z@\@plus 1fil
@@ -748,17 +773,18 @@
   \fi
   \null
   \vskip 2em%
-  \begin{center}%
+  \begin{scr@titleblock}
     \ifx\@subject\@empty \else
       {\usekomafont{subject}{\@subject \par}}%
       \vskip 1.5em
     \fi
-    {\usekomafont{title}{\huge \@title \par}}%
+    {\usekomafont{title}{\huge\UseTaggingSocket{title}{}{\@title}\par}}%
     \vskip .5em
     {\ifx\@subtitle\@empty\else\usekomafont{subtitle}\@subtitle\par\fi}%
     \vskip 1em
     {%
       \usekomafont{author}{%
+        \UseTaggingSocket{scr/title/author}%
         \lineskip .5em%
         \begin{tabular}[t]{c}
           \@author
@@ -766,22 +792,20 @@
       }%
     }%
     \vskip 1em%
-    {\usekomafont{date}{\@date \par}}%
+    {\usekomafont{date}{%
+      \UseTaggingSocket{scr/title/date}
+      \@date \par}}%
     \vskip \z@ \@plus 1em
     {\usekomafont{publishers}{\@publishers \par}}%
     \ifx\@dedication\@empty \else
       \vskip 2em
       {\usekomafont{dedication}{\@dedication \par}}%
     \fi
-  \end{center}%
+  \end{scr@titleblock}%
   \par
   \vskip 2em
 }%
-%</body|tagging-lab>
-%<*body>
 %    \end{macrocode}
-% \end{macro}^^A \@makefrontispiece
-% \end{macro}^^A \@makeextratitle
 % \end{macro}^^A \@maketitle
 % \end{command}^^A \maketitle
 %

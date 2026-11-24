@@ -1,0 +1,4 @@
+\UseName{declare@file@substitution} {testsetup.tex} {testsetup-compare.tex}
+\def\TestPreambleFiles{title.ltx}
+\def\TestContentFiles{}
+\input{wrapper.ltx}
