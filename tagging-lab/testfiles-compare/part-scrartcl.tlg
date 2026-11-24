@@ -58,19 +58,6 @@ TEST 1: Show PDF Tags
       <?MarkedContent page="1" ?>Text
      </text-block>
     </semantic-para>
-    <semantic-para xmlns="https://www.latex-project.org/ns/dflt"
-       id="ID.013"
-       rolemaps-to="Part"
-      >
-     <text-block xmlns="https://www.latex-project.org/ns/dflt"
-        id="ID.014"
-        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
-        Layout:TextAlign="Justify"
-        rolemaps-to="P"
-       >
-      <?MarkedContent page="1" ?>-1
-     </text-block>
-    </semantic-para>
    </part>
   </Document>
  </StructTreeRoot>
@@ -78,6 +65,6 @@ TEST 1: Show PDF Tags
 -------- part-scrartcl.xml (end) -----------
 ============================================================
 ***************
-Compilation 1 of test file completed with exit status 1
-Compilation 2 of test file completed with exit status 1
-Compilation 3 of test file completed with exit status 1
+Compilation 1 of test file completed with exit status 0
+Compilation 2 of test file completed with exit status 0
+Compilation 3 of test file completed with exit status 0

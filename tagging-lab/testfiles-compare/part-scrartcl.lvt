@@ -5,9 +5,5 @@
   \part{Heading \jobname\ \emph{emph} $a=b$}
 
   Text
-
-  \UseName{toclevel@part}
-\errorstopmode
-\show\toclevel@part
 }
 \input{wrapper.ltx}
