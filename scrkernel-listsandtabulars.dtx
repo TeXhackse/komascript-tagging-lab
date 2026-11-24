@@ -232,6 +232,16 @@
   \hspace{\labelsep}\usekomafont{descriptionlabel}{#1}%
 }
 %    \end{macrocode}
+%</class>
+%</body>
+%<*tagging-lab>
+    \DeclareInstance{item}{description}{std}
+      {
+        ,label-format = \usekomafont{descriptionlabel}#1
+        ,label-align  = left
+      }
+%</tagging-lab>
+%<*body>
 % \end{command}
 % \end{environment}
 %
@@ -246,7 +256,6 @@
 % an optional separation string (\texttt{\#1}) added behind every label. The
 % width of the labels are the width of the mandatory argument (\texttt{\#2}).
 %    \begin{macrocode}
-%</class>
 \newenvironment{labeling}[2][]{%
   \def\sc@septext{#1}%
   \list{}{\settowidth{\labelwidth}{{%
