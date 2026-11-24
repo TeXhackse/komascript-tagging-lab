@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlayer-de.tex
-% Copyright (c) Markus Kohm, 2013-2023
+% Copyright (c) Markus Kohm, 2013-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlayer-de.tex}%
-                 [$Date: 2023-04-25 09:00:44 +0200 (Tue, 25 Apr 2023) $
+                 [$Date: 2026-11-04 13:36:13 +0100 (Wed, 04 Nov 2026) $
                   KOMA-Script guide (chapter:scrlayer)]
 
 \chapter[{Definition von Ebenen und Seitenstilen mit \Package{scrlayer}}]
@@ -860,16 +860,6 @@ derart zerstörte Ebenen ignoriert. Zerstörte Ebenen können mit
 vor einer neuerlichen Definition nicht länger mit
 \DescRef{\LabelBase.cmd.RedeclareLayer} oder
 \DescRef{\LabelBase.cmd.ModifyLayer} verändert werden.%
-\iffalse % Siehe Hinweis zur Interface-Schnittstelle
-\par
-Die Anweisung ist dazu bestimmt, innerhalb des Arguments \PName{Code} von
-\DescRef{\LabelBase.cmd.scrlayerOnAutoRemoveInterface} (siehe
-\autoref{sec:scrlayer.enduserinterfaces},
-\DescPageRef{scrlayer.cmd.scrlayerOnAutoRemoveInterface}) verwendet zu
-werden. Damit können Ebenen, die unter Verwendung von entfernbaren Anweisungen
-einer entfernbaren Benutzerschnittstelle definiert wurden, zusammen mit dieser
-Benutzerschnittstelle entfernt werden.%
-\fi%
 \EndIndexGroup
 
 
@@ -1087,15 +1077,6 @@ Mit dieser Anweisung wird der Seitenstil-Alias mit dem angegebenen Namen
 tatsächlich einen Alias-Seitenstil dieses Namens gibt. Anschließend kann der
 Seitenstil auch mit \DescRef{\LabelBase.cmd.DeclareNewPageStyleAlias} oder
 \DescRef{\LabelBase.cmd.ProvidePageStyleAlias} neu definiert werden.%
-\iffalse % Siehe Hinweis zur Interface-Schnittstelle
-\par
-Die Anweisung ist dazu bestimmt, innerhalb des Arguments \PName{Code} von
-\DescRef{\LabelBase.cmd.scrlayerOnAutoRemoveInterface} (siehe
-\autoref{sec:scrlayer.enduserinterfaces},
-\DescPageRef{scrlayer.cmd.scrlayerOnAutoRemoveInterface}) verwendet zu
-werden, um Seitenstile, die als Teil eines Endanwender-Interfaces definiert
-wurden, beim automatischen Entfernen dieses Interfaces mit zu entfernen.%
-\fi%
 \EndIndexGroup
 
 
@@ -1435,7 +1416,7 @@ zu deaktivieren und damit zu verstecken.%
 Diese Anweisungen können verwendet werden, um Ebenen zu einem Seitenstil
 hinzuzufügen oder davon zu entfernen. Der Seitenstil wird dabei über
 \PName{Seitenstil-Name} referenziert. Die Ebenen werden in einer durch Komma
-separierten \PName{Ebenenliste} angegeben. 
+separierten \PName{Ebenenliste} angegeben.
 
 Sowohl die Anweisung \Macro{AddLayersToPageStyle} als auch die Anweisung
 \Macro{AddLayersAtEndOfPageStyle}\textnote{hinzufügen am Ende} fügt die Ebenen
@@ -1659,167 +1640,16 @@ möchten, so können Sie dies beispielsweise mit
   \ForEachLayerOfPageStyle{...}{\DestroyLayer{#1}}
 \end{lstcode}
 vor der Vernichtung des Seitenstils selbst erreichen.%
-\iffalse % Siehe Hinweis zur Interface-Schnittstelle
-\par
-Die Anweisung ist dazu bestimmt, innerhalb des Arguments \PName{Code} von
-\DescRef{\LabelBase.cmd.scrlayerOnAutoRemoveInterface} (siehe
-\autoref{sec:scrlayer.enduserinterfaces},
-\DescPageRef{scrlayer.cmd.scrlayerOnAutoRemoveInterface}) verwendet zu
-werden, um Seitenstile, die als Teil eines Endanwender-Interfaces definiert
-wurden, beim automatischen Entfernen dieses Interfaces mit zu entfernen.%
-\fi %
 \EndIndexGroup
 \EndIndexGroup
 
 \LoadCommonFile{headfootheight}% \section{Höhe von Kopf und Fuß}
 
 \LoadCommonFile{pagestylemanipulation}% \section{Beeinflussung der Inhalte von Seitenstilen}
-
-\section{Definition und Verwaltung von Schnittstellen für Endanwender}
-\seclabel{enduserinterfaces}
-
-\iftrue% Der komplette Mechanismus ist überholt und sollte nicht mehr
-       % verwendet werden. Daher wird die Doku dazu deaktiviert.
-%\begin{sloppypar}
-Bis Version 3.27\ChangedAt{v3.28}{\Package{scrlayer}} stellte das Paket
-\Package{scrlayer} noch einen als experimentell dokumentierten Mechanismus zur
-Verwaltung konkurrierender Benutzerschnittstellen zur Verfügung. Da der Nutzen
-dieses lediglich von \KOMAScript{} selbst eingesetzten Mechanismus sehr
-begrenzt war, ist er inzwischen als überholt gekennzeichnet. Die Befehle
-\Macro{scrlayerInitInterface}\IndexCmd{scrlayerInitInterface},
-\Macro{scrlayerOnAutoRemoveInterface}\IndexCmd{scrlayerOnAutoRemoveInterface},
-\Macro{scrlayerAddToInterface}\IndexCmd{scrlayerAddToInterface} und
-\Macro{scrlayerAddCsToInterface}\IndexCmd{scrlayerAddCsToInterface} und die
-Optionen \Option{forceoverwrite}\IndexOption{forceoverwrite} und
-\Option{autoremoveinterfaces}\IndexOption{autoremoveinterfaces} sollten daher
-nicht mehr verwendet werden.%
-%\end{sloppypar}%
-\else%
-Das Paket \Package{scrlayer} stellt eine experimentelle Benutzerschnittstelle
-zur Verfügung um (konkurrierende) Schnittstellen für Endanwender definieren
-und verwalten zu können. \iffree{% Umbruchvarianten
-  Möglicherweise wird diese Schnittstelle langfristig wieder aus
-  \Package{scrlayer} verschwinden und dann stattdessen von \Package{scrbase}
-  übernommen werden. }{}%
-Derzeit ist die Schnittstelle aber noch hoch
-experimentell\iffree{% Umbruchvariante
-  und wird daher von eigenen Befehlen innerhalb von \Package{scrlayer} nur für
-  Unterpakete von \Package{scrlayer} bereit gestellt}{}%
-. Es empfiehlt sich beim aktuellen Entwicklungsstand nicht, sich darauf zu
-verlassen, dass die automatische Entfernung einer konkurrierenden
-Schnittstelle funktioniert. Stattdessen sollte die Verwendung konkurrierender
-Schnittstellen vermieden werden.
-
-Dieser Abschnitt beschreibt lediglich die Schnittstellen"=Anweisungen für die
-Definition einer Endanwender-Schnittstelle. Für Endanwender selbst ist er
-damit von geringem Interesse. Vielmehr richtet sich dieser Teil der Anleitung
-an Autoren von Paketen und Klassen, die auf \Package{scrlayer}
-aufbauen. Endanwender finden Informationen zu konkreten
-Endanwender-Schnittstellen in \autoref{cha:scrlayer-scrpage},
-\autoref{cha:scrlayer-scrpage-experts} und \autoref{cha:scrlayer-notecolumn}.
-
-
-\begin{Declaration}
-  \Macro{scrlayerInitInterface}\OParameter{Schnittstellen-Name}
-\end{Declaration}
-Mit dieser Anweisung wird eine neue Schnittstelle mit dem Namen
-\PName{Schnittstellen-Name} registriert. Der
-\PName{Schnittstellen-Name} muss einzigartig sein. Das bedeutet, dass eine
-Schnittstelle gleichen Namens noch nicht registriert sein darf. Sollte dies
-doch der Fall sein, so wird ein Fehler ausgegeben.
-
-Diese Anweisung sollte immer ganz am Anfang einer Endanwender-Schnittstelle
-stehen. Daher wird sie hier auch zuerst erklärt. Wird das optionale Argument
--- einschließlich der eckigen Klammern -- weggelassen, so wird dafür
-\PValue{\Macro{@currname}.\Macro{@currext}} verwendet. Für Klassen und
-Pakete ist dies der Dateiname der Klasse respektive des Pakets. Aber
-selbstverständlich kann jede andere Zeichenfolge der Kategorie \emph{letter}
-oder \emph{other} verwendet werden. Dies ist beispielsweise sinnvoll, wenn
-eine Klasse oder ein Paket mehrere Endanwender-Schnittstellen definiert.%
-\EndIndexGroup
-
-
-\begin{Declaration}
-  \OptionVName{forceoverwrite}{Ein-Aus-Wert}
-  \OptionVName{autoremoveinterfaces}{Ein-Aus-Wert}
-  \Macro{scrlayerAddToInterface}\OParameter{Schnittstellen-Name}
-                                \Parameter{Befehl}\Parameter{Code}
-  \Macro{scrlayerAddCsToInterface}\OParameter{Schnittstellen-Name}
-                                  \Parameter{Befehlssequenz}\Parameter{Code}
-\end{Declaration}
-Eine der besonderen Eigenschaften der Endanwender-Schnittstellen von
-\Package{scrlayer} ist es, dass die Schnittstelle verwendete Befehle (auch
-bekannt als \emph{Makros} oder engl. \emph{macros}) registrieren sollte. Dies
-kann mit \Macro{scrlayerAddToInterface} erfolgen. Das optionale Argument
-\PName{Schnittstellen-Name} entspricht hier dem Namen, der mit
-\DescRef{\LabelBase.cmd.scrlayerInitInterface} zuvor registriert wurde.
-
-Werden\textnote{Achtung!} Anweisungen nicht nur während des Ladens einer
-Klasse oder eines Pakets, sondern auch zur Laufzeit definiert, so ist das
-optionale Argument auch dann zu verwenden, wenn es dem Dateinamen der Klasse
-beziehungsweise des Pakets entspricht, da die Werte von \Macro{@currname} und
-\Macro{@currext} nur während des Ladens Gültigkeit besitzen.
-
-Das erste obligatorische Argument ist der
-\PName{Befehl}\footnote{\PName{Befehl} besteht aus einem umgekehrten
-  Schrägstrich (engl. \emph{backslash}), gefolgt von einer
-  \PName{Befehlssequenz}, die entweder aus Zeichen der Kategorie \emph{letter}
-  oder aus genau einem Zeichen der Kategorie \emph{other} besteht, oder aus
-  einem Zeichen der Kategorie \emph{active} (ohne umgekehrten Schrägstrich
-  davor).}, der zu der Endanwender-Schnittstelle hinzugefügt werden
-soll. Falls der Befehl definiert werden kann, erfolgt dies. Außerdem wird dann
-der Befehl auf \Macro{relax} gesetzt und \PName{Code} wird
-ausgeführt. Innerhalb von \PName{Code} kann der \PName{Befehl} dann
-beispielsweise mit Hilfe von \Macro{newcommand} definiert werden.
-
-Wann aber kann ein \PName{Befehl}\textnote{definierbare Befehle} definiert
-werden? Ist ein \PName{Befehl} undefiniert oder \Macro{relax}, so kann er
-immer definiert werden. Wurde ein \PName{Befehl} bereits definiert \emph{und}
-für eine andere Endanwender-Schnittstelle registriert \emph{und} wurde auch die
-\KOMAScript-Option \Option{autoremoveinterfaces} aktiviert, so wird diese
-andere Endanwender-Schnittstelle automatisch entfernt, der \PName{Befehl} auf
-\Macro{relax} gesetzt und für die angegebene neue Endanwender-Schnittstelle
-registriert. Damit ist \PName{Befehl} auch dann definierbar. Falls ein
-\PName{Befehl} bereits definiert ist, \emph{aber nicht} Teil einer anderen
-Endanwender-Schnittstelle ist, \emph{und} falls die \KOMAScript-Option
-\Option{forceoverwrite} aktiviert wurde, wird \PName{Befehl} ebenfalls
-\Macro{relax} und für die angegebene Endanwender-Schnittstelle
-registriert. Der \PName{Befehl} ist also auch in diesem Fall definierbar. In
-allen anderen Fällen ist er jedoch nicht definierbar, also insbesondere, falls
-er bereits definiert ist und die \KOMAScript-Optionen
-\Option{autoremoveinterfaces} und \Option{forceoverwrite} deaktiviert sind.
-
-Die Anweisung \Macro{scrlayerAddCsToInterface} arbeitet ganz ähnlich der
-vorgenannten Anweisung \Macro{scrlayerAddToInterface}. Allerdings erwartet sie
-als erstes Argument keinen \PName{Befehl}, sondern eine
-\PName{Befehlssequenz}\footnote{Eine \PName{Befehlssequenz} muss voll
-  expandierbar sein und ihre Expansion muss zu Zeichen der Kategorie
-  \emph{letter}, \emph{other} oder \emph{space} führen.}.%
 %
 \EndIndexGroup
 
-
-\begin{Declaration}
-  \Macro{scrlayerOnAutoRemoveInterface}\OParameter{Schnittstellen-Name}
-                                       \Parameter{Code}
-\end{Declaration}
-Für den Fall, dass die Endanwender-Schnittstelle mit dem angegebenen
-\PName{Schnittstellen-Name} automatisch entfernt wird (siehe
-\KOMAScript-Option \DescRef{\LabelBase.option.autoremoveinterfaces} zuvor in
-diesem Abschnitt) kann zusätzlich \PName{Code} ausgeführt werden. Dies kann
-beispielsweise verwendet werden, um Ebenen oder Seitenstile automatisch mit zu
-vernichten (siehe \DescRef{\LabelBase.cmd.DestroyLayer},
-\DescRef{\LabelBase.cmd.DestroyPageStyleAlias}, and
-\DescRef{\LabelBase.cmd.DestroyRealLayerPageStyle}), die auf Befehlen der
-Endanwender-Schnittstelle beruhen. Bezüglich der Voreinstellung für das
-optionale Argument sei auf die Erklärung zu
-\DescRef{\LabelBase.cmd.scrlayerInitInterface} verwiesen.%
-\EndIndexGroup%
-\fi%
-%
-\EndIndexGroup
-
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8

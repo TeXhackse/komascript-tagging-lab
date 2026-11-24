@@ -6,7 +6,7 @@
 % permitted by Markus Kohm. Maintainer of this modified version is
 % Marei Peischl.
 %
-% This file is based on revision 4332 of the repository:
+% This file is based on revision 4339 of the repository:
 % https://sourceforge.net/p/koma-script/.
 % The copyright notice below is left unchanged to simplify
 % the integration of this project into KOMA-Script
@@ -31,7 +31,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrkernel-tocstyle.dtx 4313 2026-10-09 08:45:53Z kohm $
+%%% From File: $Id: scrkernel-tocstyle.dtx 4339 2026-11-23 19:00:44Z texhackse $
 % The runs of run-time file generation:
 %<preidentify>%%%            (run: preidentify)
 % - everything that is needed before selfidentification of resulting files
@@ -55,9 +55,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-10-09 10:45:53 +0200 (Fri, 09 Oct 2026) $
+  \filedate$Date: 2026-11-23 20:00:44 +0100 (Mon, 23 Nov 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4313 $
+  \filerevision$Revision: 4339 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrkernel-tocstyle.dtx}%
@@ -2226,9 +2226,6 @@
               }%
             \fi
           }%
-%    \end{macrocode}
-% See Redefinition of \cs{scr@numberline} for more information.
-%    \begin{macrocode}
           \scr@dte@numberline@box{\@nameuse{scr@tso@#1@numberformat}{##1}}%
           \@nameuse{Ifscr@tso@#1@breakafternumber}{%
             {\parfillskip\@flushglue\par}\nobreak\hskip-\leftskip
@@ -2341,7 +2338,6 @@
 % \item[\marg{entry}:] The ToC entry \meta{string}.
 % \item[\marg{pagenumber}:] The page number \meta{string} of the ToC entry.
 % \end{description}
-% tagging: TODO: this style is not adapted yet!!
 %    \begin{macrocode}
 %<*toctext>
 \newcommand*{\scr@dte@toctext}[3]{%

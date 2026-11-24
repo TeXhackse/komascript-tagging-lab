@@ -1,6 +1,6 @@
 % ======================================================================
 % scrbookreportarticle-experts-de.tex
-% Copyright (c) Markus Kohm, 2001-2022
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -25,15 +25,15 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrbookreportarticle-experts-de.tex}%
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2026-11-04 13:36:13 +0100 (Wed, 04 Nov 2026) $
                   KOMA-Script guide (chapter: scrbook, scrreprt, scrartcl for
                   experts)]
 
-\chapter[{Zusätzliche Informationen zu den Hauptklassen und 
+\chapter[{Zusätzliche Informationen zu den Hauptklassen und
   \Package{scrextend}}]{Zusätzliche
-  Informationen zu den Hauptklassen 
+  Informationen zu den Hauptklassen
   \Class{scrbook}, \Class{scrreprt} und
-  \Class{scrartcl} sowie dem 
+  \Class{scrartcl} sowie dem
   Paket \Package{scrextend}}
 \labelbase{maincls-experts}
 
@@ -177,7 +177,7 @@ soll. In der Voreinstellung wird dies mit
 \begin{quote}\small\raggedright
   \Macro{addcontentsline}\PParameter{toc}\Parameter{Ebene}%
   \PParameter{\%\\
-    \quad\Macro{protect}\DescRef{tocbasic.cmd.nonumberline} 
+    \quad\Macro{protect}\DescRef{tocbasic.cmd.nonumberline}
     \PName{Überschrift}\%\\
   }
 \end{quote}
@@ -311,7 +311,7 @@ viele dieser eigentlich verbotenen Einstellungen trotzdem keinen Schaden
 anrichten und es meist sogar funktioniert, wenn der letzte Befehl in der
 Schrifteinstellung ein Argument erwartet, also beispielsweise \Macro{textbf}
 anstelle von \Macro{bfseries} verwendet wird. Eine Garantie gibt es dafür
-jedoch nicht. 
+jedoch nicht.
 
 In Einzelfällen war es innerhalb von \KOMAScript{} notwendig, die Umschaltung
 wirklich auf Schrifteinstellungen zu beschränken. Dies erfolgt dann
@@ -565,7 +565,7 @@ Schrifteinstellung der Elemente kann mit \DescRef{maincls.cmd.setkomafont} und
     \PName{Schlüssel}
     & \PName{Wert}
     & Bedeutung \\
-    \midrule 
+    \midrule
     \PValue{counterwithin}
     & \PName{Zählername}
     & Der zur Gliederungsebene gehörende Zähler soll vom als Wert angegebenen
@@ -613,18 +613,18 @@ Schrifteinstellung der Elemente kann mit \DescRef{maincls.cmd.setkomafont} und
       \Class{scrartcl}}%
     & \PName{Wert}
     & Weitere Optionen in Abhängigkeit vom via \Option{tocstyle} gewählten
-      Verzeichniseintragsstil. Siehe dazu \autoref{sec:tocbasic.tocstyle} ab 
+      Verzeichniseintragsstil. Siehe dazu \autoref{sec:tocbasic.tocstyle} ab
       \autopageref{sec:tocbasic.tocstyle}. Für die von
       \hyperref[cha:tocbasic]{\Package{tocbasic}} vordefinierten
       Verzeichniseintragsstile finden sich die als \PName{Option} verwendbaren
-      Attribute in \autoref{tab:tocbasic.tocstyle.attributes}, ab 
+      Attribute in \autoref{tab:tocbasic.tocstyle.attributes}, ab
       \autopageref{tab:tocbasic.tocstyle.attributes}.\\
   % \PValue{tocindent}
   % & \PName{Länge}
   % & Der horizontale Einzug des zum Gliederungsbefehls gehörenden
   %   Eintrags ins Inhaltsverzeichnis, falls ein solcher abhängig von
   %   \DescRef{maincls.counter.tocdepth} (siehe \autoref{sec:maincls.toc},
-  %   \DescPageRef{maincls.counter.tocdepth}) erzeugt wird.\\ 
+  %   \DescPageRef{maincls.counter.tocdepth}) erzeugt wird.\\
   % \PValue{toclevel}
   % & \PName{Ganzzahl}
   % & Die Ebene des zum Gliederungsbefehl gehörenden Eintrags ins
@@ -702,8 +702,8 @@ Schrifteinstellung der Elemente kann mit \DescRef{maincls.cmd.setkomafont} und
     & Die Schrifteinstellungen, die zusätzlich zum Element
       \DescRef{maincls.fontelement.disposition} ab der Ausgabe einer
       Präfixzeile oder Nummer in der Überschrift verwendet werden sollen. Hier
-      sind alle \PName{Befehle} erlaubt, die 
-      auch über \DescRef{maincls.cmd.setkomafont} und 
+      sind alle \PName{Befehle} erlaubt, die
+      auch über \DescRef{maincls.cmd.setkomafont} und
       \DescRef{maincls.cmd.addtokomafont} für das Element der Präfixzeile des
       Gliederungsbefehls erlaubt sind.\\
     \bottomrule
@@ -747,7 +747,7 @@ Schrifteinstellung der Elemente kann mit \DescRef{maincls.cmd.setkomafont} und
     & Die Schrifteinstellungen, die zusätzlich zum Element
       \DescRef{maincls.fontelement.disposition} bei der Ausgabe der
       Überschrift verwendet werden sollen. Hier sind alle \PName{Befehle}
-      erlaubt, die auch über \DescRef{maincls.cmd.setkomafont} und 
+      erlaubt, die auch über \DescRef{maincls.cmd.setkomafont} und
       \DescRef{maincls.cmd.addtokomafont} für das Element des
       Gliederungsbefehls erlaubt sind.\\
     \PValue{innerskip}
@@ -766,9 +766,9 @@ Schrifteinstellung der Elemente kann mit \DescRef{maincls.cmd.setkomafont} und
       \DescRef{maincls.fontelement.disposition} und dem Element des
       Gliederungsbefehls bei der Ausgabe einer Präfixzeile in der Überschrift
       verwendet werden sollen. Hier sind alle \PName{Befehle} erlaubt, die
-      auch über \DescRef{maincls.cmd.setkomafont} und 
+      auch über \DescRef{maincls.cmd.setkomafont} und
       \DescRef{maincls.cmd.addtokomafont}für das Element der Präfixzeile des
-      Gliederungsbefehls erlaubt sind.\\    
+      Gliederungsbefehls erlaubt sind.\\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -1007,7 +1007,7 @@ aus der Originaldefinition bleiben so enthalten. Bei
       & \PValue{1.725\Length{baselineskip} plus .115\Length{baselineskip}} \\
       & \PValue{\phantom{1.725\Length{baselineskip}}
          minus .192\Length{baselineskip}} \\
-    \PValue{beforeskip} 
+    \PValue{beforeskip}
       & \PValue{-3.3\Length{baselineskip}-\Length{parskip}} \\
     \PValue{font} & \Macro{huge} \\
     \bottomrule\\
@@ -1019,7 +1019,7 @@ aus der Originaldefinition bleiben so enthalten. Bei
       & \PValue{1.5\Length{baselineskip} plus .1\Length{baselineskip}} \\
       & \PValue{\phantom{1.5\Length{baselineskip}}
         minus .167\Length{baselineskip}} \\
-    \PValue{beforeskip} 
+    \PValue{beforeskip}
       & \PValue{-3\Length{baselineskip}-\Length{parskip}} \\
     \PValue{font} & \Macro{LARGE} \\
     \bottomrule\\
@@ -1031,7 +1031,7 @@ aus der Originaldefinition bleiben so enthalten. Bei
       & \PValue{1.35\Length{baselineskip} plus .09\Length{baselineskip}} \\
       & \PValue{\phantom{1.35\Length{baselineskip}}
         minus .15\Length{baselineskip}} \\
-    \PValue{beforeskip} 
+    \PValue{beforeskip}
       & \PValue{-2.8\Length{baselineskip}-\Length{parskip}} \\
     \PValue{font} & \Macro{Large} \\
     \bottomrule
@@ -1080,14 +1080,14 @@ interne Makro \Macro{scr@parindent} ist übrigens, der per Option
     \midrule
     \PValue{afterskip}   & \PValue{0pt plus 1fil} \\
     \PValue{beforeskip}  & \PValue{0pt plus 1fil + \Length{baselineskip}} \\
-    \PValue{font}        & siehe  \DescRef{maincls.fontelement.part}, 
-                           \autoref{tab:maincls.structureElementsFont}, 
+    \PValue{font}        & siehe  \DescRef{maincls.fontelement.part},
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{innerskip}   & \PValue{20pt} \\
     \PValue{level}       & -1 \\
-    \PValue{prefixfont}  & siehe 
+    \PValue{prefixfont}  & siehe
                            \DescRef{maincls.fontelement.partnumber},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{tocindent}   & \PValue{0pt} \\
     \PValue{toclevel}    & -1 \\
@@ -1104,13 +1104,13 @@ interne Makro \Macro{scr@parindent} ist übrigens, der per Option
     \PValue{afterskip}   & siehe \autoref{tab:maincls.chapter.skips} \\
     \PValue{beforeskip}  & siehe \autoref{tab:maincls.chapter.skips} \\
     \PValue{font}        & siehe  \DescRef{maincls.fontelement.chapter},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{innerskip}   & \PValue{0.5\Length{baselineskip}} \\
     \PValue{level}       & 0 \\
-    \PValue{prefixfont}  & siehe 
+    \PValue{prefixfont}  & siehe
                            \DescRef{maincls.fontelement.chapterprefix},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{tocindent}   & \PValue{0pt} \\
     \PValue{toclevel}    & 0 \\
@@ -1127,7 +1127,7 @@ interne Makro \Macro{scr@parindent} ist übrigens, der per Option
     \PValue{afterskip}   & \PValue{2.3ex plus .2ex} \\
     \PValue{beforeskip}  & \PValue{-3.5ex plus -1ex minus -.2ex} \\
     \PValue{font}        & siehe  \DescRef{maincls.fontelement.section},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \PValue{0pt} \\
     \PValue{level}       & 1 \\
@@ -1145,9 +1145,9 @@ interne Makro \Macro{scr@parindent} ist übrigens, der per Option
     \midrule\nopagebreak
     \PValue{afterskip}   & \PValue{1.5ex plus .2ex} \\
     \PValue{beforeskip}  & \PValue{-3.25ex plus -1ex minus -.2ex} \\
-    \PValue{font}        & siehe 
+    \PValue{font}        & siehe
                            \DescRef{maincls.fontelement.subsection},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \PValue{0pt} \\
     \PValue{level}       & 2 \\
@@ -1165,9 +1165,9 @@ interne Makro \Macro{scr@parindent} ist übrigens, der per Option
     \midrule\nopagebreak
     \PValue{afterskip}   & \PValue{1.5ex plus .2ex} \\
     \PValue{beforeskip}  & \PValue{-3.25ex plus -1ex minus -.2ex} \\
-    \PValue{font}        & siehe 
+    \PValue{font}        & siehe
                            \DescRef{maincls.fontelement.subsubsection},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \PValue{0pt} \\
     \PValue{level}       & 3 \\
@@ -1185,9 +1185,9 @@ interne Makro \Macro{scr@parindent} ist übrigens, der per Option
     \midrule\nopagebreak
     \PValue{afterskip}   & \PValue{-1em} \\
     \PValue{beforeskip}  & \PValue{3.25ex plus 1ex minus .2ex} \\
-    \PValue{font}        & siehe 
+    \PValue{font}        & siehe
                            \DescRef{maincls.fontelement.paragraph},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \PValue{0pt} \\
     \PValue{level}       & 4 \\
@@ -1205,9 +1205,9 @@ interne Makro \Macro{scr@parindent} ist übrigens, der per Option
     \midrule\nopagebreak
     \PValue{afterskip}   & \PValue{-1em} \\
     \PValue{beforeskip}  & \PValue{3.25ex plus 1ex minus .2ex} \\
-    \PValue{font}        & siehe 
+    \PValue{font}        & siehe
                            \DescRef{maincls.fontelement.subparagraph},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \Macro{scr@parindent} \\
     \PValue{level}       & 5 \\
@@ -1399,7 +1399,7 @@ wird generell nicht empfohlen, zu diesem Zweck stattdessen die hier
 beschriebenen Anweisungen umzudefinieren. Sie sollten für tiefgreifendere
 Änderungen reserviert bleiben, die nicht über
 \DescRef{\LabelBase.cmd.RedeclareSectionCommand} zu erreichen sind.
-Auf\textnote{Beispiel!} \cite{homepage} findet sich dazu ein Beispiel, bei
+Auf\textnote{Beispiel!} \cite{wiki-de} findet sich dazu ein Beispiel, bei
 dem durch Umdefinierung von \Macro{chapterheadstartvskip} und
 \Macro{chapterheadendvskip} Linien über und unter der Kapitelüberschrift
 gesetzt werden.%
@@ -1441,7 +1441,7 @@ Vordefiniert ist die Anweisung mit:
   }
   \begin{document}
   \part{Umrahmte Teile}
-  \end{document}  
+  \end{document}
 \end{lstcode}
   Allerdings fällt Ihnen auf, dass die Überschrift dabei nicht wie sonst
   für Teile üblich zentriert wird -- weder die Box selbst noch der Text
@@ -1469,7 +1469,7 @@ Vordefiniert ist die Anweisung mit:
   }
   \begin{document}
   \part{Umrahmte Teile}
-  \end{document}  
+  \end{document}
 \end{lstcode}
   erhalten Sie die gewünschte Formatierung.
 \end{Example}
@@ -1555,7 +1555,7 @@ Vordefiniert\textnote{Voreinstellung} sind die beiden Anweisungen mit:
     }%
   }
 \end{lstcode}
-  Allerdings fällt Ihnen nach einiger Zeit auf, dass mit dieser Umdefinierung 
+  Allerdings fällt Ihnen nach einiger Zeit auf, dass mit dieser Umdefinierung
   die Überschriften wieder im Blocksatz gesetzt werden. Das liegt daran, dass
   \Macro{parbox} sein Argument so setzt. Um dies zu korrigieren, fügen Sie die
   Anweisung \DescRef{maincls.cmd.raggedchapter} (siehe
@@ -1692,7 +1692,7 @@ verhindern. \KOMAScript{} hilft hier lediglich mit entsprechend gesetztem
   hinterlegt. Durch Verschiebung der \Macro{hspace*}-Anweisung in die
   \Macro{colorbox} kann dieses Verhalten verändert werden.%
   \iffalse Umbruchkorrekturtext
-  
+
   Erneut sei daran erinnert, dass \Macro{makeatletter} und \Macro{makeatother}
   nur in der Dokumentpräambel zu verwenden sind. In einer eigenen
   Wrapper-Klasse oder einem Paket haben sie zu entfallen. Sie werden auch nur
@@ -2087,13 +2087,13 @@ umdefiniert wird.%
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-de.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "de_DE"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:
 
 % LocalWords:  Sternvarianten Kapitelüberschrift Standardklassen Paketautoren
 % LocalWords:  Klassenoptionen Gliederungsbefehlen Namensliste umzudefinieren

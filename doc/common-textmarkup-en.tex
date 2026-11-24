@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-textmarkup-en.tex}
-                 [$Date: 2026-10-23 12:05:58 +0200 (Fri, 23 Oct 2026) $
+                 [$Date: 2026-11-04 13:36:13 +0100 (Wed, 04 Nov 2026) $
                   KOMA-Script guide (common paragraphs)]
 \translator{Gernot Hassenpflug\and Markus Kohm\and Krickette Murabayashi\and
 	Karl Hagen}
@@ -513,7 +513,8 @@ refer to the sections for the respective element.%
       element \DescRef{\ThisCommonLabelBase.fontelement.sectionentry} (only
       available in \Class{scrartcl}, see \autoref{sec:maincls.toc},
       \DescPageRef{\ThisCommonLabelBase.cmd.tableofcontents})}%
-    \feentry{sectioning}{alternative name for
+    \feentry{sectioning}{\LabelFontElement{sectioning}%
+      alternative name for
       \DescRef{\ThisCommonLabelBase.fontelement.disposition}}%
     \feentry{subject}{%
       topic of the document, i.\,e., the argument of
@@ -703,7 +704,7 @@ refer to the sections for the respective element.%
           page number in the header or footer %
           (\autoref{sec:\LabelBase.pagestyle},
           \DescPageRef{\ThisCommonLabelBase.fontelement.pagenumber})}%
-        \feentry{pagination}{%
+        \feentry{pagination}{\LabelFontElement{pagination}%
           alternative name for
           \DescRef{\ThisCommonLabelBase.fontelement.pagenumber}}%
         \feentry{placeanddate}{%

@@ -1,6 +1,6 @@
 % ======================================================================
 % scrlayer-en.tex
-% Copyright (c) Markus Kohm, 2013-2023
+% Copyright (c) Markus Kohm, 2013-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrlayer-en.tex}
-                 [$Date: 2023-04-25 09:00:44 +0200 (Tue, 25 Apr 2023) $
+                 [$Date: 2026-11-04 13:36:13 +0100 (Wed, 04 Nov 2026) $
                   KOMA-Script guide (chapter:scrlayer)]
 
 \translator{Markus Kohm\and Karl Hagen}
@@ -187,7 +187,7 @@ questions:
   foreground or the background.
 \item[What is the position of the layer?]%
   \leavevmode\textnote{horizontal and vertical position}\hskip 0pt
-  To answer this question, there are attributes to define the layer's 
+  To answer this question, there are attributes to define the layer's
   horizontal and vertical position.
 \item[How big is the layer?\textnote{horizontal and vertical size}]%
   As with the position, there are also attributes to define the width and
@@ -195,9 +195,9 @@ questions:
   and it can be placed at different positions on the paper.
 \item[How are the horizontal and vertical positions measured?]%
   \leavevmode\textnote{alignment}\hskip 0pt
-  This question is answered by the alignment attribute. The horizontal 
+  This question is answered by the alignment attribute. The horizontal
   position can be measured from the left edge of the paper to the left edge of
-  the layer, to the centre of the layer, to the right edge of the layer. 
+  the layer, to the centre of the layer, to the right edge of the layer.
   Similarly, the vertical position can be measured from the top edge of the
   paper to the top edge of the layer, the centre of the layer, or the bottom
   edge of the layer.
@@ -205,8 +205,8 @@ questions:
   \leavevmode\textnote{text or	picture}\hskip 0pt
   This question is closely related to the position. For example, users often
   expect the origin for a picture to be at the lower left corner of the layer.
-  But this would not be suitable for text output. Therefore the origin of a 
-  text layer is the height of a standard text line below the top left corner 
+  But this would not be suitable for text output. Therefore the origin of a
+  text layer is the height of a standard text line below the top left corner
   of the layer. Picture layers, on the other hand, create a
   \Environment{picture}\IndexEnv{picture} environment in which additional
   positioning commands are available.
@@ -223,13 +223,13 @@ questions:
   be printed in one-sided printing and therefore is not a one-sided layer.
 \item[Should the layer be printed on float pages or normal pages?]%
   \leavevmode\textnote{float page or normal page}\hskip 0pt
-  \LaTeX{} produces float pages for objects from environments like tables or 
+  \LaTeX{} produces float pages for objects from environments like tables or
   figures if they are allowed to appear on a page without normal page contents
-  (see option \PValue{p} for \Environment{figure} or \Environment{table}). In 
+  (see option \PValue{p} for \Environment{figure} or \Environment{table}). In
   effect, the entire page is allowed to float within the document. Normal
   pages in this sense are all pages that are not float pages. Normal pages can
   also contain floats at the top, in the middle, or at the bottom of the page.
-  Very large floats can give the impression of being page floats, while in 
+  Very large floats can give the impression of being page floats, while in
   reality they are floating environments placed at the top of a normal page.
 \item[What are the contents of the layer?]%
   \leavevmode\textnote{contents}\hskip 0pt
@@ -264,22 +264,22 @@ space within the value of an option, you must put the value inside curly
 brackets. See \autoref{tab:scrlayer.layerkeys} for more information on keys,
 values, and the corresponding attributes.
 
-Unlike \Macro{DeclareLayer}, \Macro{DeclareNewLayer} reports an error if a 
+Unlike \Macro{DeclareLayer}, \Macro{DeclareNewLayer} reports an error if a
 layer with the same \PName{layer name} already exists. This prevents the user
-from accidentally using the same \PName{layer name} more than once. This 
+from accidentally using the same \PName{layer name} more than once. This
 is especially useful when classes or packages also define layers internally.
 
-In contrast, \Macro{ProvideLayer} only defines a layer if there is no layer 
-with the same name already. If the name is in use for another layer, the new 
+In contrast, \Macro{ProvideLayer} only defines a layer if there is no layer
+with the same name already. If the name is in use for another layer, the new
 definition is ignored. Therefore this command has the meaning, \emph{define
 	the layer only if it does not already exist.}
 
-If you want to redefine an existing layer, you can use \Macro{RedeclareLayer} 
+If you want to redefine an existing layer, you can use \Macro{RedeclareLayer}
 or \Macro{ModifyLayer}. With \Macro{RedeclareLayer}, the layer is first reset
-to the default settings and then completely redefined via the specified 
+to the default settings and then completely redefined via the specified
 options list. In contrast, \Macro{ModifyLayer} does not reset the layer.
 Only those attributes which are explicitly set in the \PName{option list} will
-be changed. Applying either command to a previously undefined \PName{layer 
+be changed. Applying either command to a previously undefined \PName{layer
 	name} results in an error.
 
 \begin{desclist}
@@ -294,44 +294,44 @@ be changed. Applying either command to a previously undefined \PName{layer
     \OptionVName{addcontents}{Code}}{%
     The specified \PName{code} will be appended to the current value of the
     \Option{contents} attribute, so the new content will appear at the end of
-    the existing content. For more information about the handling of 
+    the existing content. For more information about the handling of
     \PName{code} see the \Option{contents} option.%
   }%
   \entry{%
     \ChangedAt{v3.16}{\Package{scrlayer}}%
     \OptionVName{addheight}{additional height}}{%
-    The current value of the \Option{height} attribute will be increased by 
+    The current value of the \Option{height} attribute will be increased by
     the value of this option. You can use the same kind of values as for
     \Option{height}.%
   }%
   \entry{%
     \ChangedAt{v3.16}{\Package{scrlayer}}%
     \OptionVName{addhoffset}{additional horizontal offset}}{%
-    The current value of the \Option{hoffset} attribute will be increased by 
+    The current value of the \Option{hoffset} attribute will be increased by
     the value of this option. You can use the same kind of values as for
     \Option{hoffset}.%
   }%
   \entry{%
     \ChangedAt{v3.16}{\Package{scrlayer}}%
     \OptionVName{addvoffset}{additional vertical offset}}{%
-    The current value of the \Option{voffset} attribute will be increased by 
+    The current value of the \Option{voffset} attribute will be increased by
     the value of this option. You can use the same kind of values as for
     \Option{voffset}.%
   }%
   \entry{%
     \ChangedAt{v3.16}{\Package{scrlayer}}%
     \OptionVName{addwidth}{additional width}}{%
-    The current value of the \Option{width} attribute will be increased by 
+    The current value of the \Option{width} attribute will be increased by
     the value of this option. You can use the same kind of values as for
     \Option{width}.%
   }%
   \nentry{\KOption{align}{\PName{alignment characters}}}{%
     The \PName{alignment characters} define the desired alignment of the
     layer. Each \PName{alignment character} determines how the \PName{length}
-    of either the \Option{hoffset} or the \Option{voffset} option is 
-    interpreted. Multiple \PName{alignment character}s can be used together 
-    (without spaces or commas) and are evaluated in the order they occur. 
-    Macros are not permitted in the value of the option. Valid 
+    of either the \Option{hoffset} or the \Option{voffset} option is
+    interpreted. Multiple \PName{alignment character}s can be used together
+    (without spaces or commas) and are evaluated in the order they occur.
+    Macros are not permitted in the value of the option. Valid
     \PName{alignment character}s are:
     \begin{description}
     \item[\PValue{b} --] align the layer at its bottom edge; the value of
@@ -610,7 +610,7 @@ The primary layer attribute \PValue{align} is mapped to
 \Macro{layerhalign}\ChangedAt{v3.19}{\Package{scrlayer}} and
 \Macro{layervalign}. The horizontal values \PValue{l} and \PValue{r} are
 copied to \Macro{layerhalign}. The vertical values \PValue{t} and \PValue{b}
-are copied to \Macro{layervalign}. The value \PValue{c}, which is both 
+are copied to \Macro{layervalign}. The value \PValue{c}, which is both
 horizontal and vertical, is copied to both commands. If there are several
 conflicting values for \PValue{align}, only the last one is copied. Thus the
 resulting \Macro{layerhalign} is either \PValue{l}, \PValue{c}, or \PValue{r},
@@ -630,7 +630,7 @@ This\ChangedAt{v3.19}{\Package{scrlayer}} command originally came from
 multiples of \Length{unit length} and can therefore be used everywhere \LaTeX{}
 expects \Environment{picture} coordinates or \Length{unit length}-dependent
 values. For more information, see \cite{package:eso-pic} and the descriptions
-of \Macro{putUR}, \Macro{putLL}, and \Macro{putLR} below. If the command is 
+of \Macro{putUR}, \Macro{putLL}, and \Macro{putLR} below. If the command is
 already defined, e.\,g., by loading \Package{eso-pic} before
 \Package{scrlayer}, the package does not define it again.%
 \iffalse% Umbruchkorrekturtext
@@ -751,15 +751,6 @@ redefined using \DescRef{\LabelBase.cmd.DeclareNewLayer} or
 \DescRef{\LabelBase.cmd.ProvideLayer}, but they can no longer be changed using
 \DescRef{\LabelBase.cmd.RedeclareLayer} or
 \DescRef{\LabelBase.cmd.ModifyLayer}.%
-\iffalse % See the note at the beginning of the end user interface section
-\par
-The command is intended to be used inside
-\DescRef{\LabelBase.cmd.scrlayerOnAutoRemoveInterface} (see
-\autoref{sec:scrlayer.enduserinterfaces},
-\DescPageRef{scrlayer.cmd.scrlayerOnAutoRemoveInterface})
-to remove layers defined using removable macros of an interface along with
-that interface.%
-\fi
 \EndIndexGroup
 
 
@@ -781,13 +772,13 @@ exclusive content of a layer.%
 
 \BeginIndexGroup
 \BeginIndex{}{page>style}%
-We now understand how to define and manage layers, but so far we do not know 
+We now understand how to define and manage layers, but so far we do not know
 how they are used. The possibly surprising answer is, with page styles. In
 \LaTeX{}, page styles usually define headers and footers of the page.
 
 The header and footer of odd or right-hand pages\textnote{even or odd page}
 are printed on pages with odd page numbers in two-sided printing or on all
-pages in one-sided printing. This is directly comparable to the layer 
+pages in one-sided printing. This is directly comparable to the layer
 options\important[i]{\Option{evenpage}\\\Option{oddpage}} \Option{oddpage} and
 \Option{evenpage}.
 
@@ -799,12 +790,12 @@ options\important[i]{\Option{background}\\\Option{foreground}}
 
 Therefore it makes sense to define page styles as lists of layers. But instead
 of just the four options mentioned above, you can use all the properties
-explained in \autoref{sec:scrlayer.layers}, \autoref{tab:scrlayer.layerkeys}, 
+explained in \autoref{sec:scrlayer.layers}, \autoref{tab:scrlayer.layerkeys},
 on \autopageref{tab:scrlayer.layerkeys}.
 
 As a result of these considerations, layer page
 styles\textnote{layer page style}\Index{page style>layer}%
-\Index{layer>page style}\Index{page>style} are one type of page style that 
+\Index{layer>page style}\Index{page>style} are one type of page style that
 \Package{scrlayer} provides. A layer page style consists of layers as well as
 several hooks. The layers have already been described in
 \autoref{sec:scrlayer.layers}. The hooks\Index[indexmain]{hooks}%
@@ -947,13 +938,6 @@ for \LaTeX{} if it is an alias for another page style. Afterwards, the page
 style can be newly defined with
 \DescRef{\LabelBase.cmd.DeclareNewPageStyleAlias} or
 \DescRef{\LabelBase.cmd.ProvidePageStyleAlias}.%
-\iffalse % See the note at the beginning of the end user interface section
-\par
-This command is intended to be used inside the argument code of
-\DescRef{\LabelBase.cmd.scrlayerOnAutoRemoveInterface} to remove page styles
-that have been declared as part of an end-user interface when removing this
-interface automatically.%
-\fi%
 \EndIndexGroup
 
 
@@ -1219,7 +1203,7 @@ reference to the name of the current layer.
 \end{lstcode}
 \end{Example}
 In\textnote{Attention!} the example above, we had to use \Macro{gdef} instead
-of \Macro{def} because \Macro{ForEachLayerOfPageStyle} executes the 
+of \Macro{def} because \Macro{ForEachLayerOfPageStyle} executes the
 \PName{code} inside a group to minimise side effects. However, \Macro{gdef}
 redefines \Macro{commaatlist} globally so the change will persist when the
 \PName{code} for the next layer is executed.
@@ -1446,157 +1430,21 @@ be reset. The previous \DescRef{maincls.cmd.thispagestyle} command loses its
 current effect.
 
 Note\textnote{Attention!} that the layers of the page style are not destroyed
-automatically. If you want to destroy the layers too, you can do this with: 
+automatically. If you want to destroy the layers too, you can do this with:
 \begin{lstcode}
   \ForEachLayerOfPageStyle{...}{\DestroyLayer{#1}}
 \end{lstcode}
 before destroying the layer page style itself.%
-\iffalse % See the note at the beginning of the end user interface section
-\par
-The command is intended to be used within the \PName{code} argument of
-\DescRef{\LabelBase.cmd.scrlayerOnAutoRemoveInterface} to remove page styles
-that are defined as part of an end-user interface. See
-\autoref{sec:scrlayer.enduserinterfaces} below for more information about
-auto-removal code.%
-\fi%
 \EndIndexGroup
 \EndIndexGroup
 
 \LoadCommonFile{headfootheight}% \section{Height of Page Head and Foot}
 
 \LoadCommonFile{pagestylemanipulation}% \section{Manipulation of Defined Page Styles}
-
-\section{Defining and Managing Interfaces for End Users}
-\seclabel{enduserinterfaces}
-
-\iftrue% The whole mechanism is deprecated and should not be used any
-       % longer. So the documentation is also deactivated.
-% TODO: Fix new translation
-Until version 3.27\ChangedAt{v3.28}{\Package{scrlayer}} package
-\Package{scrlayer} provided mechanism to manage concurrent end user
-interfaces. The mechanism has been marked as experimental and the usability
-limited. Only \KOMAScript{} itself has used this mechanism and from version
-3.28 it is marked as deprecated. So the commands
-\Macro{scrlayerInitInterface}\IndexCmd{scrlayerInitInterface},
-\Macro{scrlayerAddToInterface}\IndexCmd{scrlayerAddToInterface},
-\Macro{scrlayerAddCsToInterface}\IndexCmd{scrlayerAddCsToInterface},
-\Macro{scrlayerOnAutoRemoveInterface}\IndexCmd{scrlayerOnAutoRemoveInterface}%
-\important{\Macro{scrlayerOnAutoRemoveInterface}}
-and the options
-\Option{forceoverwrite}\IndexOption{forceoverwrite},
-\Option{autoremoveinterfaces}\IndexOption{autoremoveinterfaces}
-should not be used any longer.%
-% :ODOT
-\else%
-The \Package{scrlayer} package provides an experimental interface to define
-and manage (concurrent) interfaces for end users. \iffree{In the long run,
-  this interface may disappear from \Package{scrlayer} and be taken over by
-  \Package{scrbase} instead.}{} Currently, this interface is highly
-experimental%
-\iffree{ and therefore \Package{scrlayer} provides these interface commands
-  only for the use of subpackages of \Package{scrlayer}}{}%
-. Given the current state of development, you should not depend on automatic
-removal of a concurrent interface to work. Instead, you should avoid using
-concurrent end-user interfaces.
-
-This section only describes the interface commands for defining an end-user
-interface. For end users themselves, it is of little interest. Rather, this
-section is intended for authors of packages and classes that build on
-\Package{scrlayer}. End users will find information about specific end-user
-interfaces in \autoref{cha:scrlayer-scrpage},
-\autoref{cha:scrlayer-scrpage-experts}, and \autoref{cha:scrlayer-notecolumn}.
-
-\begin{Declaration}
-  \Macro{scrlayerInitInterface}\OParameter{interface name}
-\end{Declaration}
-The \Macro{scrlayerInitInterface} command registers a new interface named
-\PName{interface name}. The \PName{interface name} must be unique. If an
-interface with the same name has already been registered, an error will occur.
-
-This command should always appear as the first command when defining an
-end-user interface and therefore is described here first. If the optional
-argument\,---\,including the square brackets\,---\,is omitted,
-\PValue{\Macro{@currname}.\Macro{@currext}} will be used instead. For classes
-and packages, this is the file name of the class or package. But of course you
-can use any other sequence of characters with a category of \emph{letter} or
-\emph{other}. This is useful, for example, when a class or package defines
-multiple end-user interfaces%
-\EndIndexGroup
-
-
-\begin{Declaration}
-  \OptionVName{forceoverwrite}{simple switch}%
-  \OptionVName{autoremoveinterfaces}{simple switch}%
-  \Macro{scrlayerAddToInterface}%
-  \OParameter{interface name}\Parameter{command}\Parameter{code}%
-  \Macro{scrlayerAddCsToInterface}%
-  \OParameter{interface name}\Parameter{command sequence}\Parameter{code}
-\end{Declaration}
-One of the special features of \Package{scrlayer}'s end user interfaces is
-that they should register all interface-dependent commands (also known as
-\emph{macros}). You can do this using \Macro{scrlayerAddToInterface}. The
-optional argument \PName{interface name} must be an interface name previously
-registered with \DescRef{\LabelBase.cmd.scrlayerInitInterface}. An error will
-occur if the interface has not been initialised.
-
-If\textnote{Attention!} your interface defines macros not just when the class
-or package is being loaded but also at runtime, you must provide the interface
-name in the optional argument even if it corresponds to the file name of the
-class or package, since the values of \Macro{@currname} and \Macro{@currext}
-are only valid while the class or package is being loaded.
-
-The first mandatory argument is the \PName{command}\footnote{The
-  \PName{command} consists of a backslash followed by a \PName{command
-    sequence} that consists of characters of the category code \emph{letter},
-  or of exactly one character of the category \emph{other}, or of a character
-  of the category \emph{active} (without the backslash).} to be added to the
-interface. If the command can be defined, this will be done. In addition, it
-will set to \Macro{relax} and \PName{code} will be executed. Within
-\PName{code}, you can then define \PName{command}, e.\,g., using
-\Macro{newcommand}.
-
-But when can a command be defined? If a command is undefined or \Macro{relax},
-it can always be defined. If a command has already been defined \emph{and}
-registered for another interface \emph{and} if the \KOMAScript{} option
-\Option{autoremoveinterfaces} has been activated, the other interface will be
-removed automatically, and the \PName{command} will be set to \Macro{relax}
-and registered for the new interface specified. If a \PName{command} is
-already defined but is \emph{not} part of another interface, \emph{and} if the
-\KOMAScript{} option \Option{forceoverwrite} has been activated, the
-\PName{command} is also set to \Macro{relax} and registered for the specified
-interface. In all other cases, however, the command is not definable, in
-particular if it is already defined and the \KOMAScript{} options
-\Option{autoremoveinterfaces} and \Option{forceoverwrite} are deactivated.
-
-The \Macro{scrlayerAddCsToInterface} command is similar to
-\Macro{scrlayerAddToInterface} but it expects the first argument to be not a
-\PName{command} but a command sequence\footnote{A command sequence must be
-  fully expandable and its expansion must result in characters of the category
-  code \emph{letter}, \emph{other}, or \emph{space}.}.%
-\EndIndexGroup
-
-
-\begin{Declaration}
-  \Macro{scrlayerOnAutoRemoveInterface}%
-  \OParameter{interface name}\Parameter{code}
-\end{Declaration}
-The \Macro{scrlayerOnAutoRemoveInterface} command registers \PName{code} to be
-executed in the event that the end-user interface with the specified
-\PName{interface name} is automatically removed (see
-\DescRef{\LabelBase.option.autoremoveinterfaces} earlier in this section).
-This can be used, for example, to automatically destroy layers or page styles
-that rely on commands from the end-user interface (see
-\DescRef{\LabelBase.cmd.DestroyLayer},
-\DescRef{\LabelBase.cmd.DestroyPageStyleAlias}, and
-\DescRef{\LabelBase.cmd.DestroyRealLayerPageStyle}). Regarding the default for
-the optional argument, please refer to the explanation for
-\DescRef{\LabelBase.cmd.scrlayerInitInterface}.%
-\EndIndexGroup%
-\fi%
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8

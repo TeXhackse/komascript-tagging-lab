@@ -18,7 +18,7 @@
 %
 % This work consists of all files listed in MANIFEST.md.
 % ======================================================================
-%%% From File: $Id: scrlayer.dtx 4314 2026-10-09 08:51:42Z kohm $
+%%% From File: $Id: scrlayer.dtx 4336 2026-11-04 12:35:35Z kohm $
 %<identify>%%%            (run: identify)
 %<init>%%%            (run: init)
 %<options>%%%            (run: options)
@@ -28,9 +28,9 @@
 \ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
 \begingroup
   \def\filedate$#1: #2-#3-#4 #5${\gdef\filedate{#2/#3/#4}}
-  \filedate$Date: 2026-10-09 10:51:42 +0200 (Fri, 09 Oct 2026) $
+  \filedate$Date: 2026-11-04 13:35:35 +0100 (Wed, 04 Nov 2026) $
   \def\filerevision$#1: #2 ${\gdef\filerevision{r#2}}
-  \filerevision$Revision: 4314 $
+  \filerevision$Revision: 4336 $
   \edef\reserved@a{%
     \noexpand\endgroup
     \noexpand\ProvidesFile{scrlayer.dtx}%
@@ -67,7 +67,6 @@
   }
 
   \batchinput{scrlayer-scrpage.dtx}
-  \batchinput{scrlayer-notecolumn.dtx}
   \@@input scrstrop.inc
 \else
   \let\endbatchfile\relax

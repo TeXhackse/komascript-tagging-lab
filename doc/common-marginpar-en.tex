@@ -1,6 +1,6 @@
 % ======================================================================
 % common-marginpar-en.tex
-% Copyright (c) Markus Kohm, 2001-2022
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-marginpar-en.tex}
-                 [$Date: 2022-06-05 12:40:11 +0200 (Sun, 05 Jun 2022) $
+                 [$Date: 2026-11-04 13:35:35 +0100 (Wed, 04 Nov 2026) $
                   KOMA-Script guide (common paragraphs)]
 \translator{Gernot Hassenpflug\and Markus Kohm\and Karl Hagen}
 
@@ -42,10 +42,10 @@
 }
 
 In addition to the text area, which normally fills the type area, documents
-often contain a column for marginalia. You can set marginal notes in this 
+often contain a column for marginalia. You can set marginal notes in this
 area.
 \IfThisCommonLabelBase{scrlttr2}{%
-  In letters, however, marginal notes are unusual and should be used 
+  In letters, however, marginal notes are unusual and should be used
   sparingly.%
 }{%
   This \iffree{guide}{book} makes frequent use of them.%
@@ -100,23 +100,22 @@ Advanced users\textnote{Attention!} will find notes about difficulties that
 can arise using \Macro{marginpar} in \autoref{sec:maincls-experts.addInfos}%
 \iffree{}{, on \DescPageRef{maincls-experts.cmd.marginpar}}. These remarks
 also apply to \Macro{marginline}. In addition,
-\autoref{cha:scrlayer-notecolumn} introduces a package that you can use to
-create note columns with their own page breaks.%
+\cite{package:scrlayer-notecolumn} introduces a package
+\Package{scrlayer-notecolumn}\IndexPackage{scrlayer-notecolumn} that you can
+use to create note columns with their own page breaks.%
 \iffalse% Umbruchkorrektur
-  \ However, the
-  \hyperref[cha:scrlayer-notecolumn]{\Package{scrlayer-notecolumn}}%
-  \IndexPackage{scrlayer-notecolumn} package is more a proof of concept than a
-  finished package.%
+  \ However, the \Package{scrlayer-notecolumn}
+  package is more a proof of concept than a finished package.%
 \fi%
 %
 \EndIndexGroup
 %
 \EndIndexGroup
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

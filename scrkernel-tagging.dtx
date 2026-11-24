@@ -50,6 +50,26 @@
                            (tagging)]%
   }%
 \reserved@a
+% batch file:
+\ifx\documentclass\undefined
+  \input scrdocstrip.tex
+  \@@input scrkernel-version.dtx
+  \@@input scrstrip.inc
+  \KOMAdefVariable{COPYRIGHTFROM}{2026}
+  \generate{\usepreamble\defaultpreamble
+    \file{scr-articlebookreport-tagging.sty}{%
+    \from{scrkernel-tagging.dtx}{tagging-lab,init,toc}%
+    \from{scrkernel-sections.dtx}{tagging-lab,book,article,report,class}%
+    \from{scrkernel-title.dtx}{package,tagging-lab}%
+    \from{scrkernel-listsandtabulars.dtx}{tagging-lab,patch-addmargin}%
+    \from{scrkernel-tagging.dtx}{tagging-lab,package,verylate}%
+	}%
+ }%
+  \@@input scrstrop.inc
+\else
+  \let\endbatchfile\relax
+\fi
+\endbatchfile
 \documentclass[USenglish]{koma-script-source-doc}
 \usepackage{babel}
 \setcounter{StandardModuleDepth}{2}
@@ -529,6 +549,9 @@
 % \end{socket}
 %    \begin{macrocode}
 %</toc>
+%<*tagging-lab>
+%<@@=>
+%</tagging-lab>
 %    \end{macrocode}
 %
 % \ExplSyntaxOff

@@ -45,7 +45,6 @@ KOMA-Script bundle of LaTeX classes and packages.
 * `scrkernel-variables.dtx`
 * `scrkernel-version.dtx`
 * `scrlayer.dtx`
-* `scrlayer-notecolumn.dtx`
 * `scrlayer-scrpage.dtx`
 * `scrlfile.dtx`
 * `scrlfile-hook.dtx`
@@ -130,8 +129,6 @@ distributions of the KOMA-Script bundle of LaTeX classes and packages.
 * `book-remarkbox-patch-en.tex`
 * `scrlayer-en.tex`
 * `scrlayer-scrpage-experts-en.tex`
-* `scrlayer-notecolumn-en.tex`
-* `scrlayer-notecolumn-example-en.tex`
 * `typearea-experts-en.tex`
 * `scrbookreportarticle-experts-en.tex`
 * `scrlttr2-experts-en.tex`
@@ -175,8 +172,6 @@ distributions of the KOMA-Script bundle of LaTeX classes and packages.
 * `book-remarkbox-patch-de.tex`
 * `scrlayer-de.tex`
 * `scrlayer-scrpage-experts-de.tex`
-* `scrlayer-notecolumn-de.tex`
-* `scrlayer-notecolumn-example-de.tex`
 * `typearea-experts-de.tex`
 * `scrbookreportarticle-experts-de.tex`
 * `scrlttr2-experts-de.tex`
@@ -203,7 +198,6 @@ of the KOMA-Script bundle of LaTeX classes and packages.
 * `README.scrfontsizes.sty`
 * `README.scrjura.sty`
 * `README.scrkbase.sty`
-* `README.scrlayer-notecolumn.sty`
 * `README.scrlayer-scrpage.sty`
 * `README.scrlayer.sty`
 * `README.scrletter.cls`
@@ -234,7 +228,6 @@ of LaTeX classes and packages.
 * `scrfontsizes.sty`
 * `scrjura.sty`
 * `scrkbase.sty`
-* `scrlayer-notecolumn.sty`
 * `scrlayer-scrpage.sty`
 * `scrlayer.sty`
 * `scrletter.sty`
@@ -313,7 +306,6 @@ KOMA-Script bundle of LaTeX classes and packages.
 * `scrreport.html`
 * `typearea.html`
 * `scrarticle.html`
-* `scrlayer-notecolumn.html`
 * `scraddr.html`
 * `scrlfile-hook-3.34.html`
 * `scrlttr2.html`

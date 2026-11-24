@@ -107,7 +107,6 @@ typesetsrcfiles    = {
    "scrkernel-variables.dtx",
    "scrkernel-version.dtx",
    "scrlayer.dtx",
-   "scrlayer-notecolumn.dtx",
    "scrlayer-scrpage.dtx",
    "scrlfile.dtx",
    "scrlfile-patcholdlatex.dtx",
@@ -168,7 +167,6 @@ typesetdemofiles = {
    "letter-example-20-en.tex", "letter-example-21-en.tex",
    "letter-example-22-en.tex", "letter-example-23-en.tex",
    "scrjura-example-en.tex",
-   "scrlayer-notecolumn-example-en.tex",
    "book-remarkbox-nopatch-en.tex",
    "book-remarkbox-patch-en.tex",
    -- The German examples:
@@ -185,7 +183,6 @@ typesetdemofiles = {
    "letter-example-20-de.tex", "letter-example-21-de.tex",
    "letter-example-22-de.tex", "letter-example-23-de.tex",
    "scrjura-example-de.tex",
-   "scrlayer-notecolumn-example-de.tex",
    "book-remarkbox-nopatch-de.tex",
    "book-remarkbox-patch-de.tex"
 }
@@ -235,7 +232,6 @@ docfiles     = {
    "tocbasic-en.tex",
    "scrlayer-en.tex",
    "scrlayer-scrpage-experts-en.tex",
-   "scrlayer-notecolumn-en.tex",
    "typearea-experts-en.tex",
    "scrbookreportarticle-experts-en.tex",
    "scrlttr2-experts-en.tex",
@@ -277,7 +273,6 @@ docfiles     = {
    "tocbasic-de.tex",
    "scrlayer-de.tex",
    "scrlayer-scrpage-experts-de.tex",
-   "scrlayer-notecolumn-de.tex",
    "typearea-experts-de.tex",
    "scrbookreportarticle-experts-de.tex",
    "scrlttr2-experts-de.tex",
@@ -443,12 +438,6 @@ package_doc["scrlfile-hook"] = {
 }
 package_doc["scrlfile-hook-3.34"]     = package_doc["scrlfile-hook"]
 package_doc["scrlfile-patcholdlatex"] = package_doc["scrlfile-hook"]
-
-package_doc["scrlayer-notecolumn"] = {
-   chapter_en = 'Note Columns with <tt>scrlayer-notecolumn</tt>',
-   chapter_de = 'Notizspalten mit <tt>scrlayer-notecolumn</tt>',
-   link       = 'chapter.18'
-}
 
 package_doc["scrlayer-scrpage"] = {
    chapter_en = 'Headers and Footers with <tt>scrlayer-scrpage</tt>',
@@ -656,12 +645,6 @@ specialtypesetting = {
 					     cmd  = "pdflatex-dev"},
    ["scrguide-de.tex"]                    = {func = typeset_guide,
 					     cmd  = "pdflatex-dev"},
-   ["scrlayer-notecolumn-example-en.tex"] = {func = typeset_example,
-					     cmd  = "pdflatex-dev",
-					     runs = 5},
-   ["scrlayer-notecolumn-example-de.tex"] = {func = typeset_example,
-					     cmd  = "pdflatex-dev",
-					     runs = 5},
    ["scrjura-example-en.tex"]             = {func = typeset_example,
 					     cmd  = "pdflatex-dev",
 					     runs = 3},
@@ -1026,7 +1009,6 @@ excludefiles = {
    "scrjura.pdf",
    "scrkernel-*.pdf",
    "scrlayer.pdf",
-   "scrlayer-notecolumn.pdf",
    "scrlayer-scrpage.pdf",
    "scrlfile*.pdf",
    "scrlayer-scrpage.pdf",
@@ -1078,5 +1060,3 @@ function rewrite_log(source, result, engine, errlevels)
    io.write(new_content)
    io.close(newfile)
 end
-
-testfiledir="KOMA-testfiles"

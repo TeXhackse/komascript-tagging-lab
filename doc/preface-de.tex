@@ -1,6 +1,6 @@
 % ======================================================================
 % preface-de.tex
-% Copyright (c) Markus Kohm, 2008-2025
+% Copyright (c) Markus Kohm, 2008-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -19,79 +19,55 @@
 % ======================================================================
 
 \KOMAProvidesFile{preface-de.tex}
-                 [$Date: 2025-11-25 12:50:16 +0100 (Tue, 25 Nov 2025) $
+                 [$Date: 2026-10-30 10:47:19 +0100 (Fri, 30 Oct 2026) $
                   preface to a dedicated version]
 
-\addchap{Vorwort zu \KOMAScript~3.49}
+\addchap{Vorwort zu \KOMAScript~3.49.3}
 
-Die \KOMAScript-Releases der letzten Zeit waren von Umbauten aufgrund äußerer
-Veränderungen gekennzeichnet. Dazu gehörten neben Änderungen am \LaTeX-Kern
-auch solche bei anderen Paketen. Daneben gab es viele interne Umbauten aber
-auch immer wieder die Implementierung nachgefragter Features, obwohl ich schon
-bei Version~3.28 im Dezember~2019 verkündet hatte, dass es keine komplett
-neuen Features mehr geben werde.
+Der seit langem dokumentierte Umbau bei \KOMAScript{} ist mit dieser Version
+in eine entscheidende Phase eingetreten. Erstmals werden Optionen und
+Anweisungen in größerem Umfang aus Klassen und Paketen entfernt. Dies betrifft
+alle Optionen, vor deren Verwendung schon lange gewarnt wird.
 
-Für \KOMAScript~3.49 waren die Arbeiten für ähnlich tiefgreifende Änderungen
-wie die durch Axel Sommerfeldts Einstellung der Pflege des
-\Package{caption}-Pakets in Version~3.46 ausgelösten Umbauten bereits im
-Gange, als ich wieder einmal durch andere äußere Umstände davon abgelenkt
-wurde. Dieses Mal ging es maßgeblich um die Unterstützung von
-\Macro{DocumentMetadata} und PDF-Tagging. Dazu sei nur soviel erklärt, dass
-bei Verwendung von \Macro{DocumentMetadata} viele Interna von \LaTeX{} ersetzt
-werden. Darunter ist auch eine beträchtliche Anzahl an Makros aus der
-Schnittstelle für Klassen- und Paketautoren, die ich gezwungenermaßen in
-\KOMAScript{} längst durch erweiterte Versionen ersetzt habe. Bei aktiviertem
-Tagging ergeben sich im \LaTeX-Kern weitere für \KOMAScript{} relevante
-Änderungen. Um all das zu unterstützen, müsste in \KOMAScript{} ebenfalls
-reichlich Code in Abhängigkeit von der Verwendung von \Macro{DocumentMetadata}
-und gegebenenfalls damit aktivierten Features hinzugefügt werden. Erschwerend
-kommt hinzu dass bei \LaTeX{} selbst Teile des neuen Codes im Bereich
-\texttt{latex-lab} untergebracht und dort sogar mit dem Präfix
-\texttt{latex-lab-testphase} versehen sind. Hier ist jederzeit mit Änderungen
-zu rechnen, auf die dann auch schnell reagiert werden muss.
+Wer also beispielsweise trotz aller Warnungen noch immer eine seit zwanzig
+Jahren veraltete Option wie \Option{noheadsepline} verwendet, wird damit in
+der aktuellen Version allenfalls noch eine Warnung erzielen. Die tatsächliche
+Funktion ist den aktuellen und dokumentierten Optionen vorbehalten.
+Wer trotz aller Warnungen noch immer eine veraltete Anweisung verwendet,
+erhält sogar eine Fehlermeldung.
 
-Zwar arbeitet Marei Peischl dankenswerter Weise schon seit einiger Zeit an
-entsprechender Unterstützung, allerdings wäre ein Teil ihrer Arbeiten durch
-meine bereits erwähnen Arbeiten an \KOMAScript~3.49 wieder zunichte gemacht
-worden. Selbst in einem größeren Team ist die Koordination solcher
-unterschiedlicher Code-Zweige aufwändig. In einem winzigen Team bedeutet es
-ständige Mehrarbeit, durch die jegliche Planung immer wieder ins Stocken
-gerät.
+Anwender sollten darauf gefasst sein, dass es ab \KOMAScript~3.50 dann auch
+bei veralteten Optionen keine Warnung mehr geben wird. Auch
+Rückschaltmöglichkeiten mit Option \Option{version} soll es ab dann nicht mehr
+geben.
 
-Ich habe mich deshalb zu folgendem entschlossen:
-\begin{itemize}
-\item Die meisten meiner Umbauten für \KOMAScript~3.49 wurden wieder aus dem
-  Code geworfen.
-\item Bis auf Weiteres wird es wirklich keine neuen Features mehr geben.
-\item Interne Verbesserungen des Codes finden nur dann statt, wenn sie die
-  Arbeit für die Unterstützung von \Macro{DocumentMetadata} oder PDF-Tagging
-  erleichtern.
-\item Nachgefragte Features werden vorerst nicht implementiert.
-\item In \KOMAScript{} werden bis auf Weiteres keine Workarounds für Probleme
-  mit Drittpaketen mehr eingebaut. Probleme mit Drittpaketen sollten daher den
-  Entwicklern der Drittpakete gemeldet werden.
-\item Selbst Bugs werden nur in Ausnahmefällen beseitigt werden. Was bisher
-  nicht aufgefallen ist, sollte auch nicht sonderlich schwerwiegend sein.
-\item Anpassungen an neue \LaTeX-Versionen werden ebenfalls nur dann
-  stattfinden, wenn diese zwingend erforderlich sind.
-\item Die Integration des von Marei bisher unabhängig entwickelten Codes ist
-  zu planen und zu gegebener Zeit in Angriff zu nehmen.
-\item Folgen für die Verwaltung und Weiterentwicklung von \KOMAScript{}
-  sind zu bedenken und zu planen.
-\end{itemize}
-Ich habe also quasi einige Gleise gesperrt, damit auf den verbliebenen ohne
-ständige Änderung der Weichenstellung weiter gefahren werden kann.
+Für Anwender, die diese Übergangsphase verpasst haben, gibt es im Wiki die
+Auflistung von
+\href{https://sourceforge.net/p/koma-script/wiki-de/Messages/}{Fehlermeldungen
+  und Warnungen}. Darüber hinaus gibt es einen Beitrag mit Hinweisen
+\href{https://sourceforge.net/p/koma-script/wiki-de/HowTo_DeprecatedOptions/}{wie
+  veraltete Optionen zu ersetzen sind}.
 
-Um es deutlich zu sagen: Ob es je eine \KOMAScript-Version geben wird, die
-sowohl mit als auch ohne Verwendung von \Macro{DocumentMetadata} funktionieren
-wird, kann ich heute nicht sagen. Mittelfristig ist zu erwarten, dass
-\KOMAScript{} künftig die jeweils aktuelle \LaTeX-Version voraussetzen und
-zwecks Code-Vereinfachung sowohl Option \DescRef{maincls.option.version}
-verschwinden als auch die Verwendung von \Macro{DocumentMetadata}
-obligatorisch werden wird.
+Ich bin mir bewusst, dass einigen Anwendern dieser scheinbare
+Paradigmenwechsel nicht gefallen wird. Aber absolute Kompatibilität sowohl im
+Ergebnis als auch im Code ist ohnehin längst eine Illusion. Mit der rasanten
+Entwicklung beim \LaTeX-Kern und bei weit verbreiteten Paketen ist sie
+abhängig vom Dokument längst nicht mehr zu erreichen. Immerhin sind
+Anpassungen in der Regel aber leicht umsetzbar.
+
+Für mich als Entwickler bringt die Codevereinfachung eine deutliche
+Verringerung des Aufwands. Angekündigt war der Schritt ohnehin schon lange.
+
+Einen besonderen Dank möchte ich an dieser Stelle Marei Peischl
+aussprechen. Sie ist derzeit die treibende Kraft auf dem Weg zu PDF-Tagging
+mit \KOMAScript. Das hat mir den Anschub gegeben, die Umbauarbeiten weiter
+voran zu treiben. Wenn es nach ihr ginge, würde bereits diese Release
+\Macro{DocumentMetadata} ermöglichen.  Dass das kurzfristig und hoffentlich
+kurzzeitig verschoben wurde, liegt allein in meiner Verantwortung. Dasselbe
+gilt für alle Fehler, die sich in dieser Release befinden.
 
 \bigskip\noindent
-Markus Kohm, Neckarhausen im November 2025
+Markus Kohm, Neckarhausen im Oktober 2026
 \endinput
 
 %%% Local Variables:
@@ -104,4 +80,6 @@ Markus Kohm, Neckarhausen im November 2025
 
 % LocalWords:  Dokumentationsklasse Teststruktur Benutzeranleitung Releases
 % LocalWords:  Pseudolängen Buchausgaben Sommerfeldts Paketautoren Marei
-% LocalWords:  Peischl Drittpaketen Drittpakete Workarounds Tagging
+% LocalWords:  Peischl Drittpaketen Drittpakete Workarounds Tagging Release
+% LocalWords:  noheadsepline Rückschaltmöglichkeiten Übergangsphase
+% LocalWords:  Codevereinfachung Umbauarbeiten

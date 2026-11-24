@@ -1,6 +1,6 @@
 % ======================================================================
 % scrbookreportarticle-experts-en.tex
-% Copyright (c) Markus Kohm, 2001-2022
+% Copyright (c) Markus Kohm, 2001-2026
 %
 % This file is part of the LaTeX2e KOMA-Script bundle.
 %
@@ -8,7 +8,7 @@
 % the LaTeX Project Public License, version 1.3c of the license.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX
 % version 2005/12/01 or later and of this work.
 %
 % This work has the LPPL maintenance status "author-maintained".
@@ -25,14 +25,14 @@
 % ============================================================================
 
 \KOMAProvidesFile{scrbookreportarticle-experts-en.tex}
-                 [$Date: 2023-09-06 10:22:04 +0200 (Wed, 06 Sep 2023) $
+                 [$Date: 2026-11-04 13:36:13 +0100 (Wed, 04 Nov 2026) $
                   KOMA-Script guide (chapter: scrbook, scrreprt, scrartcl for
                                      experts)]
 
 \translator{Gernot Hassenpflug\and Markus Kohm\and Karl Hagen}
 
-\chapter[{Additional Information about the Main Classes and 
-  \Package{scrextend}}]{Additional Information about the Main Classes 
+\chapter[{Additional Information about the Main Classes and
+  \Package{scrextend}}]{Additional Information about the Main Classes
   \Class{scrbook},
   \Class{scrreprt}, and \Class{scrartcl} as well as the Package
   \Package{scrextend}}
@@ -97,7 +97,7 @@ Note\textnote{Attention!} in this context, however, that the existence of
 \KOMAScript{} class is in use. For one thing, all \KOMAScript{} packages
 define this command. For another, other packages may find it useful to define
 the \KOMAScript{} label using this name.%
-% 
+%
 \EndIndexGroup
 
 \section{Entries to the Table of Contents}
@@ -492,7 +492,7 @@ available:
   a command, the \ChangedAt{v3.24}{\Class{scrbook}\and
   \Class{scrreprt}\and \Class{scrartcl}} \PName{key}s
   \PValue{style}, \PValue{afterskip}, \PValue{beforeskip}, and \PValue{level}
-  are mandatory. The keys 
+  are mandatory. The keys
   \PValue{afterindent}\ChangedAt{v3.26}{\Class{scrbook}\and
     \Class{scrreprt}\and \Class{scrartcl}},\PValue{font} and \PValue{indent}
   are recommended. \PValue{tocindent} and
@@ -509,7 +509,7 @@ Defining a sectioning command also creates an element with the same
 its font settings using \DescRef{maincls.cmd.setkomafont} or
 \DescRef{maincls.cmd.addtokomafont} (see \autoref{sec:maincls.textmarkup},
 \DescPageRef{maincls.cmd.setkomafont}).
-  
+
 \begin{table}
   \caption[{Style-independent attributes for declaring sectioning
     commands}]{Available \PName{key}s and \PName{value}s for
@@ -577,7 +577,7 @@ its font settings using \DescRef{maincls.cmd.setkomafont} or
     % & Total indentation from the left margin of the entry in the table of
     %   contents corresponding to this heading, if and only if such an
     %   entry will be made (see \DescRef{maincls.counter.tocdepth},
-    %   \autoref{sec:maincls.toc}, \DescPageRef{maincls.counter.tocdepth}).\\ 
+    %   \autoref{sec:maincls.toc}, \DescPageRef{maincls.counter.tocdepth}).\\
     % \PValue{toclevel}
     % & \PName{integer}
     % & A number denoting the depth of the entry in the table of contents
@@ -609,7 +609,7 @@ its font settings using \DescRef{maincls.cmd.setkomafont} or
     & The \PName{switch} determines whether the current paragraph indent is
       applied to the first line following a freestanding heading (see
       \PValue{runin}). With the default, \PValue{bysign}, the sign of
-      \PValue{beforeskip} determines the behaviour. If the value of 
+      \PValue{beforeskip} determines the behaviour. If the value of
       \PValue{beforeskip} is negative, the indentation of the first paragraph
       following the heading is suppressed. You can use any value from
       \autoref{tab:truefalseswitch}, \autopageref{tab:truefalseswitch} to
@@ -625,7 +625,7 @@ its font settings using \DescRef{maincls.cmd.setkomafont} or
     \PValue{beforeskip}
     & \PName{length}
     & Specifies the vertical space before the heading. With
-      \OptionValue{afterindent}{bysign}, if the value is negative, a positive 
+      \OptionValue{afterindent}{bysign}, if the value is negative, a positive
       distance\,---\,the amount of \PName{length}\,---\,is still inserted, but
       in this case the indentation of the paragraph following the heading is
       suppressed.\\
@@ -681,7 +681,7 @@ its font settings using \DescRef{maincls.cmd.setkomafont} or
     \PValue{beforeskip}
     & \PName{length}
     & The vertical skip before the heading. With
-      \OptionValue{afterindent}{bysign}, if the value is negative, a positive 
+      \OptionValue{afterindent}{bysign}, if the value is negative, a positive
       distance\,---\,the amount of \PName{length}\,---\,is still inserted, but
       in this case the indentation of the first paragraph following the heading
       is suppressed.\\
@@ -734,7 +734,7 @@ its font settings using \DescRef{maincls.cmd.setkomafont} or
     \PValue{beforeskip}
     & \PName{length}
     & The vertical skip before the heading. With
-      \OptionValue{afterindent}{bysign}, if the value is negative, a positive 
+      \OptionValue{afterindent}{bysign}, if the value is negative, a positive
       distance\,---\,the amount of \PName{length}\,---\,is still inserted, but
       in this case the indentation of the first paragraph following the heading
       is suppressed.\\
@@ -891,7 +891,7 @@ table of contents entry.%
     option}
   \label{tab:maincls.chapter.skips}
   \begin{tabular}{ll}
-    \multicolumn{2}{@{}l}{\bfseries 
+    \multicolumn{2}{@{}l}{\bfseries
       With \OptionValueRef{maincls}{headings}{big}:}\\
     \toprule
     Attribute & Default Value \\
@@ -899,11 +899,11 @@ table of contents entry.%
     \PValue{afterskip}
       & \PValue{1.725\Length{baselineskip} plus .115\Length{baselineskip}
         minus .192\Length{baselineskip}} \\
-    \PValue{beforeskip} 
+    \PValue{beforeskip}
       & \PValue{-3.3\Length{baselineskip}-\Length{parskip}} \\
     \PValue{font} & \Macro{huge} \\
     \bottomrule\\
-    \multicolumn{2}{@{}l}{\bfseries 
+    \multicolumn{2}{@{}l}{\bfseries
       With \OptionValueRef{maincls}{headings}{normal}:}\\
     \toprule
     Attribute & Default Value \\
@@ -911,11 +911,11 @@ table of contents entry.%
     \PValue{afterskip}
       & \PValue{1.5\Length{baselineskip} plus .1\Length{baselineskip}
         minus .167\Length{baselineskip}} \\
-    \PValue{beforeskip} 
+    \PValue{beforeskip}
       & \PValue{-3\Length{baselineskip}-\Length{parskip}} \\
     \PValue{font} & \Macro{LARGE} \\
     \bottomrule\\
-    \multicolumn{2}{@{}l}{\bfseries 
+    \multicolumn{2}{@{}l}{\bfseries
       With \OptionValueRef{maincls}{headings}{small}:}\\
     \toprule
     Attribute & Default Value \\
@@ -923,7 +923,7 @@ table of contents entry.%
     \PValue{afterskip}
       & \PValue{1.35\Length{baselineskip} plus .09\Length{baselineskip}
         minus .15\Length{baselineskip}} \\
-    \PValue{beforeskip} 
+    \PValue{beforeskip}
       & \PValue{-2.8\Length{baselineskip}-\Length{parskip}} \\
     \PValue{font} & \Macro{Large} \\
     \bottomrule
@@ -951,14 +951,14 @@ table of contents entry.%
     \midrule
     \PValue{afterskip}   & \PValue{0pt plus 1fil} \\
     \PValue{beforeskip}  & \PValue{0pt plus 1fil + \Length{baselineskip}} \\
-    \PValue{font}        & see element \DescRef{maincls.fontelement.part}, 
-                           \autoref{tab:maincls.structureElementsFont}, 
+    \PValue{font}        & see element \DescRef{maincls.fontelement.part},
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{innerskip}   & \PValue{20pt} \\
     \PValue{level}       & -1 \\
-    \PValue{prefixfont}  & see element 
+    \PValue{prefixfont}  & see element
                            \DescRef{maincls.fontelement.partnumber},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{tocindent}   & \PValue{0pt} \\
     \PValue{toclevel}    & -1 \\
@@ -975,13 +975,13 @@ table of contents entry.%
     \PValue{afterskip}   & see \autoref{tab:maincls.chapter.skips} \\
     \PValue{beforeskip}  & see \autoref{tab:maincls.chapter.skips} \\
     \PValue{font}        & see element \DescRef{maincls.fontelement.chapter},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{innerskip}   & \PValue{0.5\Length{baselineskip}} \\
     \PValue{level}       & 0 \\
-    \PValue{prefixfont}  & see element 
+    \PValue{prefixfont}  & see element
                            \DescRef{maincls.fontelement.chapterprefix},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{tocindent}   & \PValue{0pt} \\
     \PValue{toclevel}    & 0 \\
@@ -998,7 +998,7 @@ table of contents entry.%
     \PValue{afterskip}   & \PValue{2.3ex plus .2ex} \\
     \PValue{beforeskip}  & \PValue{-3.5ex plus -1ex minus -.2ex} \\
     \PValue{font}        & see element \DescRef{maincls.fontelement.section},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \PValue{0pt} \\
     \PValue{level}       & 1 \\
@@ -1016,9 +1016,9 @@ table of contents entry.%
     \midrule\nopagebreak
     \PValue{afterskip}   & \PValue{1.5ex plus .2ex} \\
     \PValue{beforeskip}  & \PValue{-3.25ex plus -1ex minus -.2ex} \\
-    \PValue{font}        & see element 
+    \PValue{font}        & see element
                            \DescRef{maincls.fontelement.subsection},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \PValue{0pt} \\
     \PValue{level}       & 2 \\
@@ -1036,9 +1036,9 @@ table of contents entry.%
     \midrule\nopagebreak
     \PValue{afterskip}   & \PValue{1.5ex plus .2ex} \\
     \PValue{beforeskip}  & \PValue{-3.25ex plus -1ex minus -.2ex} \\
-    \PValue{font}        & see element 
+    \PValue{font}        & see element
                            \DescRef{maincls.fontelement.subsubsection},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \PValue{0pt} \\
     \PValue{level}       & 3 \\
@@ -1057,7 +1057,7 @@ table of contents entry.%
     \PValue{afterskip}   & \PValue{-1em} \\
     \PValue{beforeskip}  & \PValue{3.25ex plus 1ex minus .2ex} \\
     \PValue{font}        & see element \DescRef{maincls.fontelement.paragraph},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \PValue{0pt} \\
     \PValue{level}       & 4 \\
@@ -1077,7 +1077,7 @@ table of contents entry.%
     \PValue{beforeskip}  & \PValue{3.25ex plus 1ex minus .2ex} \\
     \PValue{font}        & see element
                            \DescRef{maincls.fontelement.subparagraph},
-                           \autoref{tab:maincls.structureElementsFont}, 
+                           \autoref{tab:maincls.structureElementsFont},
                            \autopageref{tab:maincls.structureElementsFont} \\
     \PValue{indent}      & \Macro{scr@parindent} \\
     \PValue{level}       & 5 \\
@@ -1171,7 +1171,7 @@ the definitions of \DescRef{maincls.cmd.chapter}\IndexCmd{chapter},
 variants \DescRef{maincls.cmd.chapter*}\IndexCmd{chapter*},
 \DescRef{maincls.cmd.part*}\IndexCmd{part*},
 \DescRef{maincls.cmd.addchap*}\IndexCmd{addchap*}, and
-\DescRef{maincls.cmd.addpart*}\IndexCmd{addpart*}. 
+\DescRef{maincls.cmd.addpart*}\IndexCmd{addpart*}.
 The \Macro{chapterheadstartvskip} command is intended to insert a
 vertical skip before the chapter heading. Similarly,
 \Macro{chapterheadendvskip} is a command intended to insert a vertical
@@ -1265,7 +1265,7 @@ should be reserved for more complex changes that cannot be accomplished with
 \DescRef{\LabelBase.cmd.RedeclareSectionCommand}. An\textnote{Example!}
 example that redefines \Macro{chapterheadstartvskip} and
 \Macro{chapterheadendvskip} to print extra rules above and below the chapter
-heading can be found at \cite{homepage} (in German).%
+heading can be found at \cite{wiki-en}.%
 %
 \EndIndexGroup
 
@@ -1303,7 +1303,7 @@ The default definition is rather Spartan:
   }
   \begin{document}
   \part{Framed Part}
-  \end{document}  
+  \end{document}
 \end{lstcode}
   But surprisingly the heading is not longer centred\,---\,neither the box
   itself nor the text inside the box.
@@ -1331,9 +1331,9 @@ The default definition is rather Spartan:
   \par
   \begin{document}
   \part{Framed Part}
-  \end{document}  
+  \end{document}
 \end{lstcode}
-  you get the expected result.  
+  you get the expected result.
 \end{Example}
 
 As the example shows, users who redefine this command must watch out for
@@ -1601,7 +1601,7 @@ Similarly\textnote{\DoHook{\dots/begingroup/\dots}}, the hook
 group used to process the heading. Currently this is the last hook inside
 a section command.
 
-Note\textnote{\DescRef{maincls.cmd.minisec}} that 
+Note\textnote{\DescRef{maincls.cmd.minisec}} that
 \DescRef{maincls.cmd.minisec} is not a real sectioning command and therefore
 these hooks are not available for it.%
 \EndIndexGroup
@@ -1749,13 +1749,13 @@ realising it.
       \appendixname~\thechapter\autodot\enskip}
   }
 \end{lstcode}
-%  
+%
   In case you subsequently change your mind and decide to use the option
   \DescRef{maincls.option.appendixprefix} at a later stage, you will get an
   error message because of the already defined \Macro{appendixmore} command.
   This behaviour prevents the definition made above from invisibly changing
   the settings intended with the option.
-  
+
   It is also possible to get a similar behaviour for the appendix of the class
   \Class{scrartcl}. For example, you can write in the preamble of your
   document:
@@ -1766,7 +1766,7 @@ realising it.
     \renewcommand*{\sectionmarkformat}{%
       \appendixname~\thesection\autodot\enskip}}
 \end{lstcode}
-  
+
   The redefined commands are explained in more detail in
   \autoref{sec:maincls.structure},
   \DescPageRef{maincls.cmd.chapterformat} and
@@ -1884,10 +1884,10 @@ is redefined, for example by using
 
 \endinput
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "scrguide-en.tex"
 %%% coding: utf-8
 %%% ispell-local-dictionary: "en_GB"
 %%% eval: (flyspell-mode 1)
-%%% End: 
+%%% End:

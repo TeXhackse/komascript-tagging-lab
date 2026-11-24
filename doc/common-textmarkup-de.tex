@@ -24,7 +24,7 @@
 % ======================================================================
 
 \KOMAProvidesFile{common-textmarkup-de.tex}
-                 [$Date: 2026-10-23 12:05:58 +0200 (Fri, 23 Oct 2026) $
+                 [$Date: 2026-11-04 13:36:13 +0100 (Wed, 04 Nov 2026) $
                   KOMA-Script guide (common paragraphs)]
 
 \section{Textauszeichnungen}
@@ -285,7 +285,7 @@ den jeweiligen Elementen.%
 }%
 
 \IfThisCommonLabelBaseOneOf{scrlttr2,scrextend,scrlayer-notecolumn}{% Umbruchvarianten
-  \IfThisCommonLabelBase{scrlayer-notecolumn}{\pagebreak}{}% Umbruchkorrektur
+%  \IfThisCommonLabelBase{scrlayer-notecolumn}{\pagebreak}{}% Umbruchkorrektur
   Mit der Anweisung \Macro{usekomafont}\important{\Macro{usekomafont}} kann
   die aktuelle Schriftart auf die für das angegebene \PName{Element}
   umgeschaltet werden.%
@@ -563,7 +563,7 @@ den jeweiligen Elementen.%
       \DescRef{\ThisCommonLabelBase.fontelement.sectionentry} (nur bei
       \Class{scrartcl} verfügbar, siehe \autoref{sec:maincls.toc},
       \DescPageRef{maincls.cmd.tableofcontents})}%
-    \feentry{sectioning}{%
+    \feentry{sectioning}{\LabelFontElement{sectioning}%
       alternative Bezeichnung für
       \DescRef{\ThisCommonLabelBase.fontelement.disposition}}%
     \feentry{subject}{%
@@ -784,7 +784,7 @@ den jeweiligen Elementen.%
           Seitenzahl im Kopf oder Fuß der Seite
           (\autoref{sec:\LabelBase.pagestyle},
           \DescPageRef{\ThisCommonLabelBase.fontelement.pagenumber})}%
-        \feentry{pagination}{%
+        \feentry{pagination}{\LabelFontElement{pagination}%
           alternative Bezeichnung für
           \DescRef{\ThisCommonLabelBase.fontelement.pagenumber}}%
         \feentry{placeanddate}{%
