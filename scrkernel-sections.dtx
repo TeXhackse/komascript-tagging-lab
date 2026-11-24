@@ -4829,6 +4829,11 @@
 %   changed}
 %    \begin{macrocode}
 \NewDocumentCommand{\scr@chapter@heading}{mmm}{
+  \IfUseNumber{
+    \typeout{#1 \csname the#1\endcsname.}%
+  }{
+    \typeout{#1 without number}%
+  }
   \if@twocolumn
     \if@at@twocolumn
       \@nameuse{@make#1head}{#3}%
