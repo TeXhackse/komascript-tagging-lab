@@ -3,7 +3,7 @@ Don't change this file in any respect.
 ============================================================
 TEST 1: Show PDF Tags
 ============================================================
--------- titlehead.xml (start) ---------
+-------- title.xml (start) ---------
 <PDF version="2.0">
  <StructTreeRoot>
   <Document xmlns="http://iso.org/pdf2/ssn"
@@ -100,7 +100,7 @@ TEST 1: Show PDF Tags
   </Document>
  </StructTreeRoot>
 </PDF>
--------- titlehead.xml (end) -----------
+-------- title.xml (end) -----------
 ============================================================
 ***************
 Compilation 1 of test file completed with exit status 0
