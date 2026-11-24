@@ -18,7 +18,9 @@ jobs:
           - luatex
         #  - pdftex
         config:
+            - tagging
             - build
+            - compare
     name: "Tests: ${{ matrix.engine }} - ${{ matrix.config }}"
     steps:
       - name: Checkout
