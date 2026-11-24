@@ -706,7 +706,17 @@
 % \changes{v3.49.3}{2026/10/11}{Fix definition of \cs{startsection@afterskip}}
 %    \begin{macrocode}
   \scr@sect@runin{%
-    \def\startsection@afterskip{\glueexpr #5\relax}%
+%    \end{macrocode}
+% \changes{v3.49.4}{2026/11/24}{move conversion of afterskip to absolute value within \cs{scr@sect@runin}}
+% \begin{description}
+% \item[ToDo:] Maybe it's better to drop this to have a unified mechanism.
+% Would probably require a warning as negative values were accepted already.
+%    \begin{macrocode}
+    \ifdim \glueexpr #5\relax <\z@
+      \def\startsection@afterskip{\glueexpr(#5)*\m@ne\relax}%
+    \else
+      \def\startsection@afterskip{\glueexpr#5\relax}%
+    \fi
     \expandafter\let\csname if@currentrunin\expandafter\endcsname
     \csname iftrue\endcsname
   }{%
