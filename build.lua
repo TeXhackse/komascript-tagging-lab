@@ -1,74 +1,11 @@
 #!/usr/bin/env texlua
 svn_revision = 4339
+
+dofile("KOMA-build.lua")
+
 module = "scr-tagging-lab"
 
 typesetexe = "lualatex-dev"
-supportdir = "support-tests"
 
-docfiledir = "experiments"
+checkconfigs = {"build","tagging", "compare"}
 
--- This also unpacks the KOMAscript files itself to simplify testing without a local copy of the dev status.
-sourcefiles = { "*.dtx", "*.ins", "*.inc", "scrdocstrip.tex" }
-installfiles = { "*.sty", "*.cls", "*.clo", "*.lco", "*.hak", "KOMA-fixes-latex-lab-testphase.ltx"}
-textfiles = { "*.md", "*.txt", "README.md" }
-unpackfiles = { "scrmain.ins", "koma-script-source-doc.dtx"}
-
--- This is only for demo files - does not include building the KOMAscript documentation
-typesetexe = "lualatex-dev"
-
-
-typesetruns = 4
-typesetfiles = {
-	"*.tex",
-	"scrkernel-sections.dtx",
-	"scrkernel-tagging.dtx",
-	"scrkernel-tocstyle.dtx"
-}
-if options["target"] == "doc" then
-  typesetopts = ""
-else
-  typesetopts = "--interaction=batchmode"
-end
-
-
--- checkconfigs = {"build", "compare","tagging-project-tests"} -- compare config is only used when the real testfiles failed
-
-checksuppfiles = { "*.tex", "**/*.ltx" }
-if options["target"] == "save" then
-  checkopts = ""
-else
-  checkopts = "--interaction=batchmode"
-end
-
-testsuppdir = "support-tests"
-typesetsuppfiles = checksuppfiles
-supportdir = testsuppdir
-checkruns = 3
-typesetruns = 2
-recordstatus = true
-
-demofiles = { "tagging-experiments/*.tex" }
-typesetdemofiles = { "tagging-experiments/*.tex" }
-
--- The following part of the configuration has been take from the tagpdf project by Ulrike Ficher
--- Copyright (C) 2019-2024 Ulrike Fischer
--- https://github.com/latex3/tagpdf
--- This is required to run the tests engine specific.
-
--- tests are mostly with dev-format always
-specialformats = specialformats or {}
-specialformats["latex"] = specialformats["latex"]
-	or {
-		luatex = { binary = "luahbtex", format = "lualatex-dev" },
-		pdftex = { format = "pdflatex-dev" },
-		pdftexmain = { binary = "pdftex", format = "pdflatex" },
-		luatexmain = { binary = "luahbtex", format = "lualatex" },
-	}
-
-stdengine = luatex
-checkengines = {
-	"luatex",
-	-- pdftex,
-	-- main track only for local tests,
-	--	"luatexmain","pdftexmain"
-}

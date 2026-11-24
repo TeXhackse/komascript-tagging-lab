@@ -3,73 +3,45 @@ Don't change this file in any respect.
 ============================================================
 TEST 1: not numbered index results in no number at page head
 ============================================================
-(scrbook-numberedandnotnumberedidxpagehead.ind
-[1
+(scrartcl-numberedandnotnumberedidxpagehead.ind [1
 ]
-[2]
-[3])
+Package babel Info: 'ngerman' activates 'german' shorthands.
+(babel)             Reported on input line ....
+[2])
 ============================================================
-[4
-]
 ============================================================
 TEST 2: not numbered index with toc entry results in one number at page head
 ============================================================
-(scrbook-numberedandnotnumberedidxpagehead.ind
-chapter without number
-[5
-]
-[6]
-[7])
+(scrartcl-numberedandnotnumberedidxpagehead.ind [3
+] [4])
 ============================================================
-[8
-]
 ============================================================
 TEST 3: numbered index results in one number at page head
 ============================================================
-(scrbook-numberedandnotnumberedidxpagehead.ind
-chapter 1.
-[9
+(scrartcl-numberedandnotnumberedidxpagehead.ind [5
 ]
 index number in page head
-[10]
-[11])
+[6])
 ============================================================
-[12
-]
-chapter without number
-[13
-]
-[14
+[7
 ]
 ============================================================
 TEST 4: not numbered, leveldown index results in no number at page head
 ============================================================
-(scrbook-numberedandnotnumberedidxpagehead.ind
-[15
-]
-[16]
-[17])
+(scrartcl-numberedandnotnumberedidxpagehead.ind [8
+] [9])
 ============================================================
-[18
-]
 ============================================================
 TEST 5: not numbered, leveldown index with toc entry results in no number at page head
 ============================================================
-(scrbook-numberedandnotnumberedidxpagehead.ind
-[19
-]
-[20]
-[21])
+(scrartcl-numberedandnotnumberedidxpagehead.ind [10
+] [11])
 ============================================================
-[22
-]
 ============================================================
 TEST 6: numbered, leveldown index results in one number at page head
 ============================================================
-(scrbook-numberedandnotnumberedidxpagehead.ind
-[23
+(scrartcl-numberedandnotnumberedidxpagehead.ind [12
 ]
-[24]
 index number in page head
-[25])
+[13])
 ============================================================

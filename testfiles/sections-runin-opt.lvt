@@ -1,0 +1,67 @@
+\input{regression-test}
+\documentclass{scrartcl}
+
+\makeatletter
+\ExplSyntaxOn
+
+\NewDocumentCommand{\TraceHeadingSkips}{mm}{
+  % Don't use lengths to avoid difference between engines
+  \cs_log:N \startsection@afterskip
+  \cs_log:N \startsection@indent
+  \cs_log:c {scr@#2@afterskip}
+  \cs_log:c {scr@#2@sectionindent}
+  \TraceRunin{#1}
+}
+
+\NewDocumentCommand{\TraceRunin}{mm}{
+  \cs_if_exist:NTF \if@currentrunin {
+  	\if@currentrunin
+    \tl_log:n {runin~#1}
+  \else
+    \tl_log:n {not~runin~#1}
+  \fi
+  }{
+  	\if@startsection@runin
+  	    \tl_log:n {runin~#1}
+  	  \else
+  	    \tl_log:n {not~runin~#1}
+  	  \fi
+  	}
+}
+
+\AddtoDoHook{heading/postinit}{\TraceHeadingSkips{postinit}}
+\AddtoDoHook{heading/begingroup}{\TraceRunin{begingroup}}
+
+\NewDocumentCommand{\HeadingOptTest}{O{#2}m}{
+	\TEST{#2}{
+	  \RedeclareSectionCommand[#2]{paragraph}
+    \paragraph{#1}
+  	Text after heading
+	  \par
+  }
+}
+
+\ExplSyntaxOff
+\makeatother
+
+\begin{document}
+
+\START
+
+\HeadingOptTest[Standard paragraph (runin=bysign,afterskip=negative)]{}
+
+\HeadingOptTest{runin=false,afterskip=-1em}
+
+\HeadingOptTest{runin=true,afterskip=-1em}
+
+\HeadingOptTest{runin=true,afterskip=1em}
+
+\HeadingOptTest{runin=false,afterskip=1em}
+
+\HeadingOptTest{runin=false,afterskip=1em}
+
+\HeadingOptTest{runin=false,afterskip=1em,indent=2cm}
+
+\END
+
+\end{document}

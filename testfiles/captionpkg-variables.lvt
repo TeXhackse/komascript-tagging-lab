@@ -1,0 +1,172 @@
+% tesfile
+% test various caption variables inside and outside of floats
+
+\input{regression-test.tex}
+\documentclass[paper=a5,paper=landscape]{scrartcl}
+\usepackage{iftex,caption}
+\newcommand*{\captionalignmenttest}[1]{%
+  \noindent\rule[-\dp\strutbox]{\linewidth}{\baselineskip}
+  #1{Short caption}
+  \noindent\rule[-\dp\strutbox]{\linewidth}{\baselineskip}
+  #1{Long caption long caption long caption long caption long
+    caption long caption long caption long caption long caption long caption
+    long caption long caption long caption long caption long}
+  \noindent\rule[-\dp\strutbox]{\linewidth}{\baselineskip}
+}
+\pagestyle{empty}
+\newcommand*{\captionofalignmenttests}[1]{%
+  \TEST{#1 \captionof{figure}}{%
+    \setbox0=\vbox{\captionalignmenttest{\captionof{figure}}}
+    \ShowBox0\clearpage
+  }%
+  \TEST{#1 \captionaboveof{figure}}{%
+    \setbox0=\vbox{\captionalignmenttest{\captionaboveof{figure}}}
+    \ShowBox0\clearpage
+  }%
+  \TEST{#1 \captionbelowof{figure}}{%
+    \setbox0=\vbox{\captionalignmenttest{\captionbelowof{figure}}}
+    \ShowBox0\clearpage
+  }%
+}
+\newcommand*{\captionalignmenttests}[1]{%
+  \TEST{#1 \caption}{%
+    \begin{table}[p]
+      \setbox0=\vbox{\captionalignmenttest{\caption}}
+      \ShowBox0
+    \end{table}
+    \clearpage
+  }
+  \TEST{#1 \captionabove}{%
+    \begin{table}[p]
+      \setbox0=\vbox{\captionalignmenttest{\captionabove}}
+      \ShowBox0
+    \end{table}
+    \clearpage
+  }
+  \TEST{#1 \captionbelow}{%
+    \begin{table}[p]
+      \setbox0=\vbox{\captionalignmenttest{\captionbelow}}
+      \ShowBox0
+    \end{table}
+    \clearpage
+  }
+}
+\newcommand*{\captionwidthtest}[1]{%
+  \TEST{#1 \captionof}{%
+    \setbox0=\vbox{%
+      \captionof{figure}{Short caption}
+      \captionof{figure}{Long caption long caption long caption long caption
+        long caption long caption long caption long caption long caption long
+        caption long caption long caption long caption long caption long}
+    }
+    \ShowBox0\clearpage
+  }
+  \TEST{#1 \caption}{%
+    \begin{table}[p]
+      \setbox0=\vbox{%
+        \caption{Short caption}
+        \caption{Long caption long caption long caption long caption
+          long caption long caption long caption long caption long caption long
+          caption long caption long caption long caption long caption long}
+      }
+      \ShowBox0
+    \end{table}
+    \clearpage
+  }
+}
+\newcommand\ShowBox[1]{%
+  \showbox#1
+  \noindent\unvbox#1
+}
+\begin{document}
+\START
+\errorcontextlines=100
+\captionofalignmenttests{default}
+\begingroup
+\KOMAoptions{captions=heading}
+\captionofalignmenttests{captions=heading}
+\endgroup
+\begingroup
+\KOMAoptions{captions=signature}
+\captionofalignmenttests{caption=signature}
+\endgroup
+\begingroup
+\KOMAoptions{captions=figureheading}
+\captionofalignmenttests{captions=figureheading}
+\endgroup
+\begingroup
+\KOMAoptions{captions=figuresignature}
+\captionofalignmenttests{caption=figuresignature}
+\endgroup
+\captionalignmenttests{default}
+\begingroup
+\KOMAoptions{captions=heading}
+\captionalignmenttests{captions=heading}
+\endgroup
+\begingroup
+\KOMAoptions{captions=signature}
+\captionalignmenttests{caption=signature}
+\endgroup
+\begingroup
+\KOMAoptions{captions=tableheading}
+\captionalignmenttests{captions=tableheading}
+\endgroup
+\begingroup
+\KOMAoptions{captions=tablesignature}
+\captionalignmenttests{caption=tablesignature}
+\endgroup
+
+\begingroup
+\setcapwidth{.5\textwidth}
+\captionwidthtest{\setcapwidth{.5\textwidth}}
+\endgroup
+
+\begingroup
+\setcapmargin{.25\textwidth}
+\captionwidthtest{\setcapmargin{.25\textwidth}}
+\endgroup
+
+\begingroup
+\setcapmargin[0pt]{.5\textwidth}
+\captionwidthtest{\setcapmargin[0pt]{.5\textwidth}}
+\endgroup
+
+\begingroup
+\setcapmargin[.5\textwidth]{0pt}
+\captionwidthtest{\setcapmargin[.5\textwidth]{0pt}}
+\endgroup
+
+\begingroup
+\setcapmargin*{.25\textwidth}
+\captionwidthtest{\setcapmargin*{.25\textwidth}}
+\endgroup
+
+\ifpdftex
+\begingroup
+\setcapmargin*[0pt]{.5\textwidth}
+\captionwidthtest{\setcapmargin*[0pt]{.5\textwidth}}
+\endgroup
+
+\begingroup
+\setcapmargin*[.5\textwidth]{0pt}
+\captionwidthtest{\setcapmargin*[.5\textwidth]{0pt}}
+\endgroup
+\fi
+
+\begingroup
+\setcapindent{1em}
+\captionwidthtest{\setcapindent{1em}}
+\endgroup
+
+\begingroup
+\setcapindent{-1em}
+\captionwidthtest{\setcapindent{-1em}}
+\endgroup
+
+\begingroup
+\setcapindent*{1em}
+\captionwidthtest{\setcapindent*{1em}}
+\endgroup
+
+\END
+\end{document}
