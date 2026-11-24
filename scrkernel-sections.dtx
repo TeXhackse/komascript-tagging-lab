@@ -1340,8 +1340,15 @@
   }%
   \FamilyKeyStateProcessed
 }
+%    \end{macrocode}
+% \changes{v3.49.4}{2026/11/24}{globally initialize \cs{if@currentusenumber}/\cs{if@currentusename}}
+%    \begin{macrocode}
 \FamilyInverseBoolKey[.section]{KOMAarg}{nonumber}{@currentusenumber}
+\newif\if@currentusenumber
+\@currentusenumbertrue
 \FamilyInverseBoolKey[.section]{KOMAarg}{nohead}{@currentusehead}
+\newif\if@currentusehead
+\@currentuseheadtrue
 \newcommand*{\scr@istest}{}
 \def\scr@istest#1=#2\@nil{%
   \ifx\relax#2\relax\@scr@tempswafalse\else\@scr@tempswatrue\fi
@@ -5609,8 +5616,10 @@
   \def\scr@reset@osectarg{%
     \@currentusenumberfalse
     \@currentuseheadtrue
-  }
+  }%
   \UseName{#1}[{#2}]{#3}%
+  \@currentusenumbertrue
+  \@currentuseheadtrue
 }
 %    \end{macrocode}
 % \begin{macro}{\@saddsec}
